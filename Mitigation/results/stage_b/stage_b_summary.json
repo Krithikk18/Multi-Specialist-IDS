@@ -1,0 +1,31 @@
+{
+  "n_samples": 5000,
+  "static_weights": {
+    "severity": 0.35,
+    "confidence": 0.25,
+    "distrust": 0.25,
+    "frequency": 0.15
+  },
+  "final_online_weights": {
+    "severity": 0.7889618351938553,
+    "confidence": 0.11139721993518176,
+    "distrust": 0.049820472435481475,
+    "frequency": 0.049820472435481475
+  },
+  "auroc_static": 0.8759056998693568,
+  "auroc_online": 0.908436737511127,
+  "escalation_precision_static": 0.9597855227882037,
+  "escalation_recall_static": 0.17425164273545876,
+  "escalation_precision_online": 0.9676180021953897,
+  "escalation_recall_online": 0.4290581650036505,
+  "final_cumulative_regret_static": 2198.853276766103,
+  "final_cumulative_regret_online": 1827.7224934352228,
+  "regret_reduction_pct": 16.87837871004789,
+  "weight_stability_variance_last_20pct": {
+    "severity": 0.0003997126792667758,
+    "confidence": 0.00039850785919713524,
+    "distrust": 3.525003113191876e-08,
+    "frequency": 3.1151261656237386e-08
+  },
+  "decision_latency_note": "weighted-sum + lookup; sub-millisecond on any hub-class hardware, not separately benchmarked here"
+}

@@ -1,0 +1,14 @@
+,Backdoor,DDoS_HTTP,DDoS_ICMP,DDoS_TCP,DDoS_UDP,Normal,Password,Port_Scanning,Ransomware,SQL_injection,Uploading,Vulnerability_scanner,XSS
+Backdoor,1233,39,1,3,0,0,24,2,24,0,58,97,0
+DDoS_HTTP,195,830,0,0,0,0,30,0,62,59,22,67,319
+DDoS_ICMP,0,0,2114,0,0,0,0,0,0,0,0,0,0
+DDoS_TCP,0,0,0,1404,0,0,0,113,16,0,4,0,0
+DDoS_UDP,0,0,0,0,2175,0,0,0,0,0,0,0,0
+Normal,0,0,0,0,0,3624,0,0,0,0,0,0,0
+Password,69,181,0,0,0,0,286,1,19,403,12,62,464
+Port_Scanning,0,4,0,0,0,0,0,1321,12,0,0,0,3
+Ransomware,209,96,0,0,0,0,1,1,1075,0,73,0,0
+SQL_injection,9,114,2,0,0,0,79,0,110,666,35,12,517
+Uploading,109,343,1,0,0,0,68,0,147,301,196,3,367
+Vulnerability_scanner,4,76,0,0,0,0,23,0,20,98,0,1169,119
+XSS,229,232,0,0,0,0,66,1,19,134,16,106,631

@@ -1,0 +1,9 @@
+{
+  "n_queries": 2000,
+  "context_adjusted_decision_agreement_pct": 100.0,
+  "twin_query_latency_ms_mean": 0.0005596144970922978,
+  "twin_query_latency_ms_p95": 0.000791050047155295,
+  "stale_state_rate_pct": 5.85,
+  "stale_threshold_hours": 3,
+  "note": "Agreement is measured against an oracle drawn from the same synthetic twin generator (evaluates rule-logic consistency, not twin-vs-reality drift -- no independent ground truth exists since the twin itself is synthetic)."
+}

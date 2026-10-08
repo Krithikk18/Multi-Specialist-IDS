@@ -1,0 +1,1610 @@
+{
+  "meta": {
+    "run_timestamp_utc": "2026-10-08T18:27:20+00:00",
+    "flows": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/BenignTraffic.pcap_Flow__singlepkt.csv",
+    "flows_sha256": "b8a757e7339c1a97c4941efa8f6bea2f07981651d86e699e606315a2ee8b2606",
+    "map": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv",
+    "map_sha256": "d819eea5f3d874974e58d0e6009db764b7844b03f63f8a642f64540548a4fa14",
+    "devices": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv",
+    "devices_sha256": "50dcde5b0dd547d580cdb9124e7d12ffdcb40f4a2d2b3c9804ec7af9df67945c",
+    "out": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/benign_flows_tagged.csv",
+    "out_sha256": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+    "subnet_broadcasts": [
+      "10.22.22.255",
+      "169.254.255.255",
+      "192.168.137.255"
+    ],
+    "window_tolerance_s": 1.0,
+    "timestamp_format": "%d/%m/%Y %I:%M:%S %p (UTC)",
+    "resolve_conflicts": true,
+    "conflict_rule": "sender_mac",
+    "runtime_s": 162.2,
+    "python": "3.11.17",
+    "pandas": "3.0.6"
+  },
+  "rules": "Endpoint: broadcast (multicast/255.255.255.255/subnet .255) > unspecified > external (not LAN-scope, as in 02) > LAN map lookup with window [first_seen-1s, last_seen+1s] (1 MAC -> device role, >1 -> ambiguous, 0 -> lan_unmapped). Ambiguous TCP/UDP flows are then resolved from pcap packets, time window start-1s .. start+duration+1s, exactly one MAC -> resolved. Rule sender_mac: only packets sent by the conflict IP (MAC = eth.src); key (conflict IP, peer IP, conflict-side port, peer port, protocol); ICMP errors matched via their inner UDP/TCP header. Owner: ambiguous side -> ip_conflict; both smart-home -> Src (device_device_initiator); one smart-home -> that side (device_side); both external + Protocol 0 -> invalid_parse; else unowned (no_device:<src_role>-<dst_role>). Smart-home = device-table role 'iot'. exclude_reason: ip_conflict_unresolved (still ambiguous), invalid_parse, ip_clash_artifact (pcap-resolved flow whose matched conflict-IP-sent packets are all ICMP destination-unreachable; owner kept); blank = usable.",
+  "integrity": {
+    "input_rows": 223108,
+    "output_columns": 98,
+    "original_columns_in_order": true,
+    "tag_columns_appended": true,
+    "output_rows": 223108,
+    "row_count_equal": true,
+    "text_mismatch_cells": 0,
+    "text_mismatch_by_column": {},
+    "value_mismatch_cells_nan_aware": 0,
+    "value_mismatch_by_column": {},
+    "nan_cells_input": 190221,
+    "input_sha256_before": "b8a757e7339c1a97c4941efa8f6bea2f07981651d86e699e606315a2ee8b2606",
+    "input_sha256_after": "b8a757e7339c1a97c4941efa8f6bea2f07981651d86e699e606315a2ee8b2606",
+    "input_sha256_unchanged": true,
+    "PASS": true
+  },
+  "expectations": {
+    "lan_unmapped_is_zero": true,
+    "ambiguous_ips": [
+      "192.168.137.249"
+    ],
+    "ambiguous_ips_all_map_conflicts": true,
+    "ambiguous_within_overlap_window": true
+  },
+  "conflict_resolution": {
+    "enabled": true,
+    "rule": "sender_mac",
+    "pcap": {
+      "cached_path": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+      "saved_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+      "source_unchanged_since_hash": true,
+      "cache_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+      "verified": true
+    },
+    "conflicts": [
+      {
+        "ip": "192.168.137.249",
+        "macs": [
+          "24:05:88:30:6f:89",
+          "84:7a:b6:62:3a:6c"
+        ],
+        "devices": [
+          "Unknown",
+          "Yi Indoor 2 Camera"
+        ],
+        "overlap_start": 1665162900.88919,
+        "overlap_end": 1665176784.758781,
+        "tshark_lo": 1665162898.88919,
+        "tshark_hi": 1665176786.758781
+      }
+    ],
+    "display_filter": "(ip.addr == 192.168.137.249 && frame.time_epoch >= 1665162898.889190 && frame.time_epoch <= 1665176786.758781)",
+    "packets_extracted": 63540,
+    "tshark_seconds": 112.7,
+    "tshark_stderr": "",
+    "match": {
+      "rule": "sender_mac",
+      "packets_sent_by_conflict_ip": 41792,
+      "packets_sent_mac_counts": {
+        "84:7a:b6:62:3a:6c": 21692,
+        "24:05:88:30:6f:89": 20100
+      },
+      "packets_non_candidate_mac": 0,
+      "packets_icmp_with_inner_header": 19745,
+      "packets_icmp_dest_unreachable": 19745,
+      "packets_icmp_dest_unreachable_by_mac": {
+        "84:7a:b6:62:3a:6c": 19745
+      },
+      "packets_usable": 41482,
+      "join_rows_before_time_filter": 87319,
+      "packet_flow_matches": 41569,
+      "packets_matched_to_any_flow": 41482,
+      "flows_with_matched_packets": 10568,
+      "flows_mixed_unreach_and_other": 0
+    },
+    "ambiguous_before": 10673,
+    "ambiguous_after": 105,
+    "resolved_flows": 10568,
+    "resolved_to": [
+      {
+        "mac": "84:7a:b6:62:3a:6c",
+        "device": "Yi Indoor 2 Camera",
+        "role": "iot",
+        "flows": 5476
+      },
+      {
+        "mac": "24:05:88:30:6f:89",
+        "device": "Unknown",
+        "role": "unknown",
+        "flows": 5092
+      }
+    ],
+    "resolved_ownership": [
+      {
+        "owner_status": "owned",
+        "owner_rule": "device_side",
+        "flows": 5476
+      },
+      {
+        "owner_status": "unowned",
+        "owner_rule": "no_device:unknown-external",
+        "flows": 3177
+      },
+      {
+        "owner_status": "unowned",
+        "owner_rule": "no_device:unknown-gateway",
+        "flows": 1915
+      }
+    ],
+    "still_ambiguous_by_reason": [
+      {
+        "ambiguous_reason": "no_packet_match",
+        "protocol": 0,
+        "flows": 104
+      },
+      {
+        "ambiguous_reason": "no_packet_match",
+        "protocol": 17,
+        "flows": 1
+      }
+    ],
+    "ip_clash_artifacts": 5102,
+    "ip_clash_artifacts_by_device": [
+      {
+        "mac": "84:7a:b6:62:3a:6c",
+        "device": "Yi Indoor 2 Camera",
+        "flows": 5102
+      }
+    ],
+    "owned_before_after": [
+      {
+        "mac": "24:05:88:30:6f:89",
+        "device": "Unknown",
+        "before": 0,
+        "after": 0,
+        "after_usable": 0
+      },
+      {
+        "mac": "84:7a:b6:62:3a:6c",
+        "device": "Yi Indoor 2 Camera",
+        "before": 537,
+        "after": 6013,
+        "after_usable": 911
+      }
+    ]
+  },
+  "stats": {
+    "flows": 223108,
+    "by_owner_status": [
+      {
+        "value": "owned",
+        "flows": 209946,
+        "pct": 94.101
+      },
+      {
+        "value": "unowned",
+        "flows": 12739,
+        "pct": 5.71
+      },
+      {
+        "value": "invalid_parse",
+        "flows": 318,
+        "pct": 0.143
+      },
+      {
+        "value": "ambiguous",
+        "flows": 105,
+        "pct": 0.047
+      }
+    ],
+    "by_owner_rule": [
+      {
+        "value": "device_side",
+        "flows": 206749,
+        "pct": 92.668
+      },
+      {
+        "value": "no_device:unknown-external",
+        "flows": 4703,
+        "pct": 2.108
+      },
+      {
+        "value": "device_device_initiator",
+        "flows": 3197,
+        "pct": 1.433
+      },
+      {
+        "value": "no_device:unknown-gateway",
+        "flows": 2673,
+        "pct": 1.198
+      },
+      {
+        "value": "no_device:excluded-gateway",
+        "flows": 2380,
+        "pct": 1.067
+      },
+      {
+        "value": "no_device:excluded-external",
+        "flows": 943,
+        "pct": 0.423
+      },
+      {
+        "value": "no_device:gateway-broadcast",
+        "flows": 560,
+        "pct": 0.251
+      },
+      {
+        "value": "no_device:testbed_pi-broadcast",
+        "flows": 400,
+        "pct": 0.179
+      },
+      {
+        "value": "no_device:excluded-broadcast",
+        "flows": 341,
+        "pct": 0.153
+      },
+      {
+        "value": "invalid_parse:external-external-proto0",
+        "flows": 318,
+        "pct": 0.143
+      },
+      {
+        "value": "no_device:unspecified-broadcast",
+        "flows": 256,
+        "pct": 0.115
+      },
+      {
+        "value": "no_device:external-excluded",
+        "flows": 177,
+        "pct": 0.079
+      },
+      {
+        "value": "ip_conflict",
+        "flows": 105,
+        "pct": 0.047
+      },
+      {
+        "value": "no_device:external-unknown",
+        "flows": 101,
+        "pct": 0.045
+      },
+      {
+        "value": "no_device:testbed_pi-external",
+        "flows": 83,
+        "pct": 0.037
+      },
+      {
+        "value": "no_device:gateway-testbed_pi",
+        "flows": 53,
+        "pct": 0.024
+      },
+      {
+        "value": "no_device:unknown-unknown",
+        "flows": 36,
+        "pct": 0.016
+      },
+      {
+        "value": "no_device:gateway-excluded",
+        "flows": 12,
+        "pct": 0.005
+      },
+      {
+        "value": "no_device:testbed_pi-gateway",
+        "flows": 8,
+        "pct": 0.004
+      },
+      {
+        "value": "no_device:testbed_pi-unknown",
+        "flows": 5,
+        "pct": 0.002
+      },
+      {
+        "value": "no_device:gateway-unknown",
+        "flows": 3,
+        "pct": 0.001
+      },
+      {
+        "value": "no_device:excluded-unknown",
+        "flows": 2,
+        "pct": 0.001
+      },
+      {
+        "value": "no_device:external-testbed_pi",
+        "flows": 2,
+        "pct": 0.001
+      },
+      {
+        "value": "no_device:unknown-testbed_pi",
+        "flows": 1,
+        "pct": 0.0
+      }
+    ],
+    "by_owner_resolution": [
+      {
+        "value": "ip_time",
+        "flows": 212435,
+        "pct": 95.216
+      },
+      {
+        "value": "pcap_packet_mac",
+        "flows": 10568,
+        "pct": 4.737
+      },
+      {
+        "value": "unresolved",
+        "flows": 105,
+        "pct": 0.047
+      }
+    ],
+    "by_exclude_reason": [
+      {
+        "value": "(blank = usable)",
+        "flows": 217583,
+        "pct": 97.524
+      },
+      {
+        "value": "ip_clash_artifact",
+        "flows": 5102,
+        "pct": 2.287
+      },
+      {
+        "value": "invalid_parse",
+        "flows": 318,
+        "pct": 0.143
+      },
+      {
+        "value": "ip_conflict_unresolved",
+        "flows": 105,
+        "pct": 0.047
+      }
+    ],
+    "lan_unmapped_endpoints": 0,
+    "lan_unmapped_cases": [],
+    "ambiguous_flows": 105,
+    "ambiguous_by_ip": [
+      {
+        "ip": "192.168.137.249",
+        "flows": 105,
+        "candidate_macs": [
+          "24:05:88:30:6f:89",
+          "84:7a:b6:62:3a:6c"
+        ],
+        "first_flow_utc": "2022-10-07T17:15:06+00:00",
+        "last_flow_utc": "2022-10-07T21:06:21+00:00"
+      }
+    ],
+    "smart_home_devices": 55,
+    "owner_devices_with_flows": 55,
+    "flows_per_owner_device": [
+      {
+        "owner_mac": "ac:17:02:05:34:27",
+        "owner_device": "Fibaro Home Center Lite",
+        "owner_category": "Hub",
+        "flows": 101507,
+        "usable": 101507,
+        "device_side": 101507,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "34:75:63:73:f3:36",
+        "owner_device": "Home Eye Camera",
+        "owner_category": "Camera",
+        "flows": 21760,
+        "usable": 21760,
+        "device_side": 21760,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "b0:f1:ec:d3:e7:98",
+        "owner_device": "Harman Kardon speaker (Ampak)",
+        "owner_category": "Audio",
+        "flows": 9619,
+        "usable": 9619,
+        "device_side": 9217,
+        "device_device_initiator": 402,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "7c:78:b2:86:0d:81",
+        "owner_device": "Wyze Camera",
+        "owner_category": "Camera",
+        "flows": 9609,
+        "usable": 9609,
+        "device_side": 9609,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "84:7a:b6:62:3a:6c",
+        "owner_device": "Yi Indoor 2 Camera",
+        "owner_category": "Camera",
+        "flows": 6013,
+        "usable": 911,
+        "device_side": 6013,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "2c:71:ff:05:f1:15",
+        "owner_device": "Amazon Echo Show",
+        "owner_category": "Audio",
+        "flows": 5247,
+        "usable": 5247,
+        "device_side": 4142,
+        "device_device_initiator": 1105,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "ac:f1:08:4e:00:82",
+        "owner_device": "LG Smart TV",
+        "owner_category": "Home Automation",
+        "flows": 4253,
+        "usable": 4253,
+        "device_side": 3957,
+        "device_device_initiator": 296,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "cc:f4:11:9c:d0:00",
+        "owner_device": "Google Nest Mini Speaker",
+        "owner_category": "Audio",
+        "flows": 3891,
+        "usable": 3891,
+        "device_side": 3891,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "40:5d:82:35:14:c8",
+        "owner_device": "Arlo Q Indoor Camera",
+        "owner_category": "Camera",
+        "flows": 3752,
+        "usable": 3752,
+        "device_side": 3752,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "08:7c:39:ce:6e:2a",
+        "owner_device": "Amazon Alexa Echo Studio",
+        "owner_category": "Audio",
+        "flows": 3252,
+        "usable": 3252,
+        "device_side": 2410,
+        "device_device_initiator": 842,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "8c:85:80:6c:b6:47",
+        "owner_device": "Eufy HomeBase 2",
+        "owner_category": "Hub",
+        "flows": 3112,
+        "usable": 3112,
+        "device_side": 3112,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "84:7a:b6:64:62:58",
+        "owner_device": "Yi Indoor Camera",
+        "owner_category": "Camera",
+        "flows": 2807,
+        "usable": 2807,
+        "device_side": 2807,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "00:17:88:60:d6:4f",
+        "owner_device": "Philips Hue Bridge",
+        "owner_category": "Hub",
+        "flows": 2692,
+        "usable": 2692,
+        "device_side": 2638,
+        "device_device_initiator": 54,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "9c:8e:cd:1d:ab:9f",
+        "owner_device": "AMCREST WiFi Camera",
+        "owner_category": "Camera",
+        "flows": 2432,
+        "usable": 2432,
+        "device_side": 2418,
+        "device_device_initiator": 14,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "6c:5a:b0:44:1d:90",
+        "owner_device": "TP-Link Tapo Camera",
+        "owner_category": "Camera",
+        "flows": 2244,
+        "usable": 2244,
+        "device_side": 2244,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "28:6d:97:7a:2b:2d",
+        "owner_device": "SmartThings Hub",
+        "owner_category": "Hub",
+        "flows": 2159,
+        "usable": 2159,
+        "device_side": 2157,
+        "device_device_initiator": 2,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "28:6d:97:9e:f4:d5",
+        "owner_device": "Aeotec Smart Home Hub",
+        "owner_category": "Hub",
+        "flows": 2111,
+        "usable": 2111,
+        "device_side": 2104,
+        "device_device_initiator": 7,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "10:5a:17:97:a5:c6",
+        "owner_device": "Rbcior Camera",
+        "owner_category": "Camera",
+        "flows": 1767,
+        "usable": 1767,
+        "device_side": 1767,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "1c:fe:2b:98:16:dd",
+        "owner_device": "Amazon Alexa Echo Dot 1",
+        "owner_category": "Audio",
+        "flows": 1573,
+        "usable": 1573,
+        "device_side": 1499,
+        "device_device_initiator": 74,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "48:a6:b8:f9:1b:88",
+        "owner_device": "Sonos One Speaker",
+        "owner_category": "Audio",
+        "flows": 1536,
+        "usable": 1536,
+        "device_side": 1511,
+        "device_device_initiator": 25,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "70:ee:50:68:0e:32",
+        "owner_device": "Netatmo Camera",
+        "owner_category": "Camera",
+        "flows": 1488,
+        "usable": 1488,
+        "device_side": 1488,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "3c:37:86:6f:b9:51",
+        "owner_device": "Arlo Base Station",
+        "owner_category": "Camera",
+        "flows": 1385,
+        "usable": 1385,
+        "device_side": 1385,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "2c:d2:6b:66:d2:87",
+        "owner_device": "Yi Outdoor Camera",
+        "owner_category": "Camera",
+        "flows": 1169,
+        "usable": 1169,
+        "device_side": 1169,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "44:01:bb:ec:10:4a",
+        "owner_device": "HeimVision Smart WiFi Camera",
+        "owner_category": "Camera",
+        "flows": 910,
+        "usable": 910,
+        "device_side": 910,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "18:69:d8:eb:d4:3e",
+        "owner_device": "Teckin Light Strip",
+        "owner_category": "Lighting",
+        "flows": 626,
+        "usable": 626,
+        "device_side": 626,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "68:57:2d:56:ac:47",
+        "owner_device": "Atomi Coffee Maker",
+        "owner_category": "Home Automation",
+        "flows": 623,
+        "usable": 623,
+        "device_side": 623,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "84:e3:42:42:ed:0b",
+        "owner_device": "Lumiman Bulb",
+        "owner_category": "Lighting",
+        "flows": 617,
+        "usable": 617,
+        "device_side": 617,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d4:a6:51:30:64:b7",
+        "owner_device": "HeimVision SmartLife Radio/Lamp",
+        "owner_category": "Lighting",
+        "flows": 615,
+        "usable": 615,
+        "device_side": 615,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d4:a6:51:20:91:d1",
+        "owner_device": "Yutron Plug 1",
+        "owner_category": "Power Outlet",
+        "flows": 609,
+        "usable": 609,
+        "device_side": 609,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d4:a6:51:76:06:64",
+        "owner_device": "Teckin Plug 1",
+        "owner_category": "Power Outlet",
+        "flows": 607,
+        "usable": 607,
+        "device_side": 607,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d4:a6:51:78:97:4e",
+        "owner_device": "Teckin Plug 2",
+        "owner_category": "Power Outlet",
+        "flows": 607,
+        "usable": 607,
+        "device_side": 607,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d4:a6:51:21:6c:29",
+        "owner_device": "Yutron Plug 2",
+        "owner_category": "Power Outlet",
+        "flows": 606,
+        "usable": 606,
+        "device_side": 606,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "50:02:91:1a:ce:e1",
+        "owner_device": "GoSund Power Strip (1)",
+        "owner_category": "Power Outlet",
+        "flows": 546,
+        "usable": 546,
+        "device_side": 546,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "b8:f0:09:03:9a:af",
+        "owner_device": "GoSund Power Strip (2)",
+        "owner_category": "Power Outlet",
+        "flows": 544,
+        "usable": 544,
+        "device_side": 544,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "c4:dd:57:0c:39:94",
+        "owner_device": "Unidentified ESP plug (3)",
+        "owner_category": "Unidentified (Espressif)",
+        "flows": 543,
+        "usable": 543,
+        "device_side": 543,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "c4:dd:57:13:07:c6",
+        "owner_device": "Unidentified ESP plug (4)",
+        "owner_category": "Unidentified (Espressif)",
+        "flows": 543,
+        "usable": 543,
+        "device_side": 543,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "b8:f0:09:03:29:79",
+        "owner_device": "GoSund Smart Plug WP2 (1)",
+        "owner_category": "Power Outlet",
+        "flows": 542,
+        "usable": 542,
+        "device_side": 542,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "f4:cf:a2:34:48:6b",
+        "owner_device": "LampUX RGB",
+        "owner_category": "Lighting",
+        "flows": 541,
+        "usable": 541,
+        "device_side": 541,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "50:02:91:10:ac:d8",
+        "owner_device": "GoSund Smart Plug WP2 (2)",
+        "owner_category": "Power Outlet",
+        "flows": 538,
+        "usable": 538,
+        "device_side": 538,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "24:a1:60:14:7f:f9",
+        "owner_device": "Unidentified ESP plug (1)",
+        "owner_category": "Unidentified (Espressif)",
+        "flows": 538,
+        "usable": 538,
+        "device_side": 538,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "50:02:91:10:09:8f",
+        "owner_device": "Unidentified ESP plug (2)",
+        "owner_category": "Unidentified (Espressif)",
+        "flows": 538,
+        "usable": 538,
+        "device_side": 538,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "30:23:03:f3:57:cb",
+        "owner_device": "Wemo Smart Plug 2",
+        "owner_category": "Power Outlet",
+        "flows": 471,
+        "usable": 471,
+        "device_side": 457,
+        "device_device_initiator": 14,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "70:ee:50:6b:a8:1a",
+        "owner_device": "Netatmo Weather Station",
+        "owner_category": "Home Automation",
+        "flows": 443,
+        "usable": 443,
+        "device_side": 443,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "b0:09:da:3e:82:6c",
+        "owner_device": "Ring Base Station",
+        "owner_category": "Hub",
+        "flows": 438,
+        "usable": 438,
+        "device_side": 438,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "a0:d0:dc:c4:08:ff",
+        "owner_device": "Amazon Alexa Echo Dot 2",
+        "owner_category": "Audio",
+        "flows": 372,
+        "usable": 372,
+        "device_side": 26,
+        "device_device_initiator": 346,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d0:73:d5:35:fb:c8",
+        "owner_device": "LIFX Lightbulb",
+        "owner_category": "Lighting",
+        "flows": 339,
+        "usable": 339,
+        "device_side": 323,
+        "device_device_initiator": 16,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "b8:5f:98:d0:76:e6",
+        "owner_device": "Amazon Smart Plug",
+        "owner_category": "Power Outlet",
+        "flows": 308,
+        "usable": 308,
+        "device_side": 308,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "1c:9d:c2:8c:9a:94",
+        "owner_device": "Levoit Air Purifier",
+        "owner_category": "Home Automation",
+        "flows": 300,
+        "usable": 300,
+        "device_side": 300,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "44:bb:3b:00:39:07",
+        "owner_device": "Nest Indoor Camera",
+        "owner_category": "Camera",
+        "flows": 294,
+        "usable": 294,
+        "device_side": 294,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "08:3a:f2:1f:bc:68",
+        "owner_device": "Cocoon Smart HVAC Fan",
+        "owner_category": "Home Automation",
+        "flows": 290,
+        "usable": 290,
+        "device_side": 290,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "d4:ad:fc:29:c8:a2",
+        "owner_device": "Govee Smart Humidifier",
+        "owner_category": "Home Automation",
+        "flows": 286,
+        "usable": 286,
+        "device_side": 286,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "b0:c5:54:59:2e:99",
+        "owner_device": "D-Link DCS8000LHA1 Mini Camera",
+        "owner_category": "Camera",
+        "flows": 225,
+        "usable": 225,
+        "device_side": 225,
+        "device_device_initiator": 0,
+        "low_flag": false
+      },
+      {
+        "owner_mac": "00:02:75:f6:e3:cb",
+        "owner_device": "Smart Board",
+        "owner_category": "Home Automation",
+        "flows": 64,
+        "usable": 64,
+        "device_side": 64,
+        "device_device_initiator": 0,
+        "low_flag": true
+      },
+      {
+        "owner_mac": "50:14:79:37:80:18",
+        "owner_device": "iRobot Roomba",
+        "owner_category": "Home Automation",
+        "flows": 32,
+        "usable": 32,
+        "device_side": 32,
+        "device_device_initiator": 0,
+        "low_flag": true
+      },
+      {
+        "owner_mac": "30:23:03:f3:84:2b",
+        "owner_device": "Wemo Smart Plug 1",
+        "owner_category": "Power Outlet",
+        "flows": 13,
+        "usable": 13,
+        "device_side": 13,
+        "device_device_initiator": 0,
+        "low_flag": true
+      }
+    ],
+    "low_flow_devices": [
+      {
+        "owner_mac": "00:02:75:f6:e3:cb",
+        "owner_device": "Smart Board",
+        "owner_category": "Home Automation",
+        "flows": 64,
+        "usable": 64,
+        "device_side": 64,
+        "device_device_initiator": 0,
+        "low_flag": true
+      },
+      {
+        "owner_mac": "50:14:79:37:80:18",
+        "owner_device": "iRobot Roomba",
+        "owner_category": "Home Automation",
+        "flows": 32,
+        "usable": 32,
+        "device_side": 32,
+        "device_device_initiator": 0,
+        "low_flag": true
+      },
+      {
+        "owner_mac": "30:23:03:f3:84:2b",
+        "owner_device": "Wemo Smart Plug 1",
+        "owner_category": "Power Outlet",
+        "flows": 13,
+        "usable": 13,
+        "device_side": 13,
+        "device_device_initiator": 0,
+        "low_flag": true
+      }
+    ],
+    "device_device_flows": 3197,
+    "device_device_distinct_pairs": 18,
+    "device_device_top10": [
+      {
+        "src_device": "Amazon Echo Show",
+        "dst_device": "Amazon Alexa Echo Dot 2",
+        "flows": 1105
+      },
+      {
+        "src_device": "Amazon Alexa Echo Studio",
+        "dst_device": "Amazon Alexa Echo Dot 2",
+        "flows": 842
+      },
+      {
+        "src_device": "Harman Kardon speaker (Ampak)",
+        "dst_device": "Amazon Alexa Echo Dot 2",
+        "flows": 402
+      },
+      {
+        "src_device": "LG Smart TV",
+        "dst_device": "Amazon Alexa Echo Dot 2",
+        "flows": 296
+      },
+      {
+        "src_device": "Amazon Alexa Echo Dot 2",
+        "dst_device": "Harman Kardon speaker (Ampak)",
+        "flows": 196
+      },
+      {
+        "src_device": "Amazon Alexa Echo Dot 1",
+        "dst_device": "Amazon Alexa Echo Dot 2",
+        "flows": 74
+      },
+      {
+        "src_device": "Amazon Alexa Echo Dot 2",
+        "dst_device": "Amazon Alexa Echo Dot 1",
+        "flows": 57
+      },
+      {
+        "src_device": "Philips Hue Bridge",
+        "dst_device": "Amazon Alexa Echo Dot 2",
+        "flows": 54
+      },
+      {
+        "src_device": "Amazon Alexa Echo Dot 2",
+        "dst_device": "Amazon Alexa Echo Studio",
+        "flows": 51
+      },
+      {
+        "src_device": "Amazon Alexa Echo Dot 2",
+        "dst_device": "Amazon Echo Show",
+        "flows": 37
+      }
+    ],
+    "protocol0_flows": 2768,
+    "protocol0_by_owner_device": [
+      {
+        "owner_device": "Google Nest Mini Speaker",
+        "flows": 472
+      },
+      {
+        "owner_device": "(invalid_parse)",
+        "flows": 318
+      },
+      {
+        "owner_device": "Wyze Camera",
+        "flows": 306
+      },
+      {
+        "owner_device": "(unowned)",
+        "flows": 301
+      },
+      {
+        "owner_device": "Netatmo Camera",
+        "flows": 282
+      },
+      {
+        "owner_device": "Philips Hue Bridge",
+        "flows": 277
+      },
+      {
+        "owner_device": "LG Smart TV",
+        "flows": 170
+      },
+      {
+        "owner_device": "Fibaro Home Center Lite",
+        "flows": 111
+      },
+      {
+        "owner_device": "Amazon Echo Show",
+        "flows": 109
+      },
+      {
+        "owner_device": "Amazon Alexa Echo Studio",
+        "flows": 109
+      },
+      {
+        "owner_device": "Amazon Alexa Echo Dot 1",
+        "flows": 109
+      },
+      {
+        "owner_device": "(ambiguous)",
+        "flows": 104
+      },
+      {
+        "owner_device": "Rbcior Camera",
+        "flows": 27
+      },
+      {
+        "owner_device": "Aeotec Smart Home Hub",
+        "flows": 8
+      },
+      {
+        "owner_device": "Wemo Smart Plug 2",
+        "flows": 8
+      },
+      {
+        "owner_device": "Smart Board",
+        "flows": 5
+      },
+      {
+        "owner_device": "Cocoon Smart HVAC Fan",
+        "flows": 3
+      },
+      {
+        "owner_device": "Arlo Q Indoor Camera",
+        "flows": 3
+      },
+      {
+        "owner_device": "Teckin Plug 1",
+        "flows": 2
+      },
+      {
+        "owner_device": "Lumiman Bulb",
+        "flows": 2
+      },
+      {
+        "owner_device": "Yi Outdoor Camera",
+        "flows": 2
+      },
+      {
+        "owner_device": "Yutron Plug 1",
+        "flows": 2
+      },
+      {
+        "owner_device": "Yutron Plug 2",
+        "flows": 2
+      },
+      {
+        "owner_device": "Unidentified ESP plug (2)",
+        "flows": 2
+      },
+      {
+        "owner_device": "GoSund Smart Plug WP2 (1)",
+        "flows": 2
+      },
+      {
+        "owner_device": "D-Link DCS8000LHA1 Mini Camera",
+        "flows": 2
+      },
+      {
+        "owner_device": "LampUX RGB",
+        "flows": 2
+      },
+      {
+        "owner_device": "LIFX Lightbulb",
+        "flows": 2
+      },
+      {
+        "owner_device": "Unidentified ESP plug (1)",
+        "flows": 2
+      },
+      {
+        "owner_device": "AMCREST WiFi Camera",
+        "flows": 2
+      },
+      {
+        "owner_device": "SmartThings Hub",
+        "flows": 2
+      },
+      {
+        "owner_device": "Netatmo Weather Station",
+        "flows": 2
+      },
+      {
+        "owner_device": "Unidentified ESP plug (3)",
+        "flows": 1
+      },
+      {
+        "owner_device": "Teckin Light Strip",
+        "flows": 1
+      },
+      {
+        "owner_device": "Ring Base Station",
+        "flows": 1
+      },
+      {
+        "owner_device": "Levoit Air Purifier",
+        "flows": 1
+      },
+      {
+        "owner_device": "Atomi Coffee Maker",
+        "flows": 1
+      },
+      {
+        "owner_device": "Govee Smart Humidifier",
+        "flows": 1
+      },
+      {
+        "owner_device": "HeimVision SmartLife Radio/Lamp",
+        "flows": 1
+      },
+      {
+        "owner_device": "Teckin Plug 2",
+        "flows": 1
+      },
+      {
+        "owner_device": "Nest Indoor Camera",
+        "flows": 1
+      },
+      {
+        "owner_device": "GoSund Smart Plug WP2 (2)",
+        "flows": 1
+      },
+      {
+        "owner_device": "Amazon Smart Plug",
+        "flows": 1
+      },
+      {
+        "owner_device": "Unidentified ESP plug (4)",
+        "flows": 1
+      },
+      {
+        "owner_device": "GoSund Power Strip (2)",
+        "flows": 1
+      },
+      {
+        "owner_device": "GoSund Power Strip (1)",
+        "flows": 1
+      },
+      {
+        "owner_device": "TP-Link Tapo Camera",
+        "flows": 1
+      },
+      {
+        "owner_device": "Yi Indoor Camera",
+        "flows": 1
+      },
+      {
+        "owner_device": "Harman Kardon speaker (Ampak)",
+        "flows": 1
+      },
+      {
+        "owner_device": "Yi Indoor 2 Camera",
+        "flows": 1
+      }
+    ],
+    "protocol0_by_roles": [
+      {
+        "src_role": "iot",
+        "dst_role": "gateway",
+        "flows": 711
+      },
+      {
+        "src_role": "iot",
+        "dst_role": "external",
+        "flows": 363
+      },
+      {
+        "src_role": "external",
+        "dst_role": "external",
+        "flows": 318
+      },
+      {
+        "src_role": "iot",
+        "dst_role": "broadcast",
+        "flows": 301
+      },
+      {
+        "src_role": "external",
+        "dst_role": "iot",
+        "flows": 265
+      },
+      {
+        "src_role": "unknown",
+        "dst_role": "iot",
+        "flows": 216
+      },
+      {
+        "src_role": "iot",
+        "dst_role": "iot",
+        "flows": 166
+      },
+      {
+        "src_role": "unknown",
+        "dst_role": "gateway",
+        "flows": 144
+      },
+      {
+        "src_role": "excluded",
+        "dst_role": "broadcast",
+        "flows": 142
+      },
+      {
+        "src_role": "ambiguous",
+        "dst_role": "gateway",
+        "flows": 103
+      },
+      {
+        "src_role": "iot",
+        "dst_role": "unknown",
+        "flows": 23
+      },
+      {
+        "src_role": "testbed_pi",
+        "dst_role": "broadcast",
+        "flows": 6
+      },
+      {
+        "src_role": "testbed_pi",
+        "dst_role": "unknown",
+        "flows": 5
+      },
+      {
+        "src_role": "excluded",
+        "dst_role": "unknown",
+        "flows": 2
+      },
+      {
+        "src_role": "ambiguous",
+        "dst_role": "unknown",
+        "flows": 1
+      },
+      {
+        "src_role": "unknown",
+        "dst_role": "testbed_pi",
+        "flows": 1
+      },
+      {
+        "src_role": "unknown",
+        "dst_role": "unknown",
+        "flows": 1
+      }
+    ],
+    "unowned_flows": 12739,
+    "unowned_by_rule": [
+      {
+        "value": "no_device:unknown-external",
+        "flows": 4703,
+        "pct": 2.108
+      },
+      {
+        "value": "no_device:unknown-gateway",
+        "flows": 2673,
+        "pct": 1.198
+      },
+      {
+        "value": "no_device:excluded-gateway",
+        "flows": 2380,
+        "pct": 1.067
+      },
+      {
+        "value": "no_device:excluded-external",
+        "flows": 943,
+        "pct": 0.423
+      },
+      {
+        "value": "no_device:gateway-broadcast",
+        "flows": 560,
+        "pct": 0.251
+      },
+      {
+        "value": "no_device:testbed_pi-broadcast",
+        "flows": 400,
+        "pct": 0.179
+      },
+      {
+        "value": "no_device:excluded-broadcast",
+        "flows": 341,
+        "pct": 0.153
+      },
+      {
+        "value": "no_device:unspecified-broadcast",
+        "flows": 256,
+        "pct": 0.115
+      },
+      {
+        "value": "no_device:external-excluded",
+        "flows": 177,
+        "pct": 0.079
+      },
+      {
+        "value": "no_device:external-unknown",
+        "flows": 101,
+        "pct": 0.045
+      },
+      {
+        "value": "no_device:testbed_pi-external",
+        "flows": 83,
+        "pct": 0.037
+      },
+      {
+        "value": "no_device:gateway-testbed_pi",
+        "flows": 53,
+        "pct": 0.024
+      },
+      {
+        "value": "no_device:unknown-unknown",
+        "flows": 36,
+        "pct": 0.016
+      },
+      {
+        "value": "no_device:gateway-excluded",
+        "flows": 12,
+        "pct": 0.005
+      },
+      {
+        "value": "no_device:testbed_pi-gateway",
+        "flows": 8,
+        "pct": 0.004
+      },
+      {
+        "value": "no_device:testbed_pi-unknown",
+        "flows": 5,
+        "pct": 0.002
+      },
+      {
+        "value": "no_device:gateway-unknown",
+        "flows": 3,
+        "pct": 0.001
+      },
+      {
+        "value": "no_device:excluded-unknown",
+        "flows": 2,
+        "pct": 0.001
+      },
+      {
+        "value": "no_device:external-testbed_pi",
+        "flows": 2,
+        "pct": 0.001
+      },
+      {
+        "value": "no_device:unknown-testbed_pi",
+        "flows": 1,
+        "pct": 0.0
+      }
+    ],
+    "invalid_parse_flows": 318,
+    "invalid_parse_ip_counts": {
+      "8.6.0.1": 278,
+      "8.0.6.4": 278,
+      "0.6.0.1": 40,
+      "175.129.1.2": 40
+    },
+    "invalid_parse_examples": [
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:15:00 PM",
+        "Flow Duration": "119580202",
+        "Total Fwd Packet": "232",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:17:02 PM",
+        "Flow Duration": "119411456",
+        "Total Fwd Packet": "224",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:19:02 PM",
+        "Flow Duration": "118398290",
+        "Total Fwd Packet": "242",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:21:02 PM",
+        "Flow Duration": "119105291",
+        "Total Fwd Packet": "231",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:23:02 PM",
+        "Flow Duration": "119813326",
+        "Total Fwd Packet": "236",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:25:02 PM",
+        "Flow Duration": "118003617",
+        "Total Fwd Packet": "229",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:27:02 PM",
+        "Flow Duration": "119508572",
+        "Total Fwd Packet": "237",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:29:02 PM",
+        "Flow Duration": "119374858",
+        "Total Fwd Packet": "238",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:31:02 PM",
+        "Flow Duration": "119445197",
+        "Total Fwd Packet": "228",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      },
+      {
+        "Flow ID": "8.6.0.1-8.0.6.4-0-0-0",
+        "Src IP": "8.6.0.1",
+        "Dst IP": "8.0.6.4",
+        "Protocol": "0",
+        "Timestamp": "07/10/2022 05:33:02 PM",
+        "Flow Duration": "119992849",
+        "Total Fwd Packet": "261",
+        "Total Bwd packets": "0",
+        "Total Length of Fwd Packet": "0.0"
+      }
+    ],
+    "src_role_counts": [
+      {
+        "value": "iot",
+        "flows": 166174,
+        "pct": 74.481
+      },
+      {
+        "value": "external",
+        "flows": 43270,
+        "pct": 19.394
+      },
+      {
+        "value": "unknown",
+        "flows": 7629,
+        "pct": 3.419
+      },
+      {
+        "value": "excluded",
+        "flows": 3666,
+        "pct": 1.643
+      },
+      {
+        "value": "gateway",
+        "flows": 1150,
+        "pct": 0.515
+      },
+      {
+        "value": "testbed_pi",
+        "flows": 859,
+        "pct": 0.385
+      },
+      {
+        "value": "unspecified",
+        "flows": 256,
+        "pct": 0.115
+      },
+      {
+        "value": "ambiguous",
+        "flows": 104,
+        "pct": 0.047
+      }
+    ],
+    "dst_role_counts": [
+      {
+        "value": "external",
+        "flows": 98509,
+        "pct": 44.153
+      },
+      {
+        "value": "gateway",
+        "flows": 63976,
+        "pct": 28.675
+      },
+      {
+        "value": "iot",
+        "flows": 46969,
+        "pct": 21.052
+      },
+      {
+        "value": "broadcast",
+        "flows": 11894,
+        "pct": 5.331
+      },
+      {
+        "value": "testbed_pi",
+        "flows": 1399,
+        "pct": 0.627
+      },
+      {
+        "value": "excluded",
+        "flows": 189,
+        "pct": 0.085
+      },
+      {
+        "value": "unknown",
+        "flows": 171,
+        "pct": 0.077
+      },
+      {
+        "value": "ambiguous",
+        "flows": 1,
+        "pct": 0.0
+      }
+    ]
+  }
+}

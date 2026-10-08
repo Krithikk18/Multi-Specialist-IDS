@@ -1,0 +1,54 @@
+--- CICFlowMeter/src/main/java/cic/cs/unb/ca/jnetpcap/FlowGenerator.java	2026-09-06 08:39:22.377177239 +0000
++++ CICFlowMeter-singlepkt/src/main/java/cic/cs/unb/ca/jnetpcap/FlowGenerator.java	2026-09-06 09:55:55.614115288 +0000
+@@ -91,7 +91,7 @@
+     		// 2.- we eliminate the flow from the current flow list
+     		// 3.- we create a new flow with the packet-in-process
+     		if((currentTimestamp -flow.getFlowStartTime())>flowTimeOut){
+-    			if(flow.packetCount()>1){
++    			if(flow.packetCount()>0){
+ 					if (mListener != null) {
+ 						mListener.onFlowGenerated(flow);
+ 					    }
+@@ -236,13 +236,13 @@
+     		Set<Integer> fkeys = finishedFlows.keySet();    		
+ 			for(Integer key:fkeys){
+ 	    		flow = finishedFlows.get(key);
+-	    		if(flow.packetCount()>1)				
++	    		if(flow.packetCount()>0)				
+ 	    			output.write((flow.dumpFlowBasedFeaturesEx()+"\n").getBytes());
+ 			}
+ 			Set<String> ckeys = currentFlows.keySet();   		
+ 			for(String key:ckeys){
+ 	    		flow = currentFlows.get(key);
+-	    		if(flow.packetCount()>1)				
++	    		if(flow.packetCount()>0)				
+ 	    			output.write((flow.dumpFlowBasedFeaturesEx()+"\n").getBytes());
+ 			}			
+ 			
+@@ -268,7 +268,7 @@
+     		Set<Integer> fkeys = finishedFlows.keySet();    		
+ 			for(Integer key:fkeys){
+ 	    		flow = finishedFlows.get(key);
+-                         if (flow.packetCount() > 1) {
++                         if (flow.packetCount() > 0) {
+                            output.write((flow.dumpFlowBasedFeaturesEx() + "\n").getBytes());
+                            total++;
+                            } 
+@@ -282,7 +282,7 @@
+ 		output.write((header + "\n").getBytes());
+ 			for(String key:ckeys){
+ 	    		flow = currentFlows.get(key);
+-	    		if(flow.packetCount()>1) {
++	    		if(flow.packetCount()>0) {
+                     output.write((flow.dumpFlowBasedFeaturesEx() + "\n").getBytes());
+                     total++;
+                 }else{
+@@ -321,7 +321,7 @@
+             }
+ 
+             for (BasicFlow flow : currentFlows.values()) {
+-                if(flow.packetCount()>1) {
++                if(flow.packetCount()>0) {
+                     output.write((flow.dumpFlowBasedFeaturesEx() + LINE_SEP).getBytes());
+                     total++;
+                 }else{

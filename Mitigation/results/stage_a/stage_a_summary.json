@@ -1,0 +1,9 @@
+{
+  "n_catalog_devices": 12,
+  "tier_assignment_coverage_pct": 100.0,
+  "unknown_device_probes": 50,
+  "unknown_device_fallback_correct_pct": 100.0,
+  "safety_critical_device_count": 3,
+  "stage_a2_structural_proof_holds": true,
+  "note": "stage_a2_structural_proof_holds is a design proof (verified by exhaustive check over the catalog), not a sampled runtime statistic -- per the implementation spec's treatment of the zero-auto-action guarantee."
+}

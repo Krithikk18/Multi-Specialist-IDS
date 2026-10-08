@@ -1,0 +1,9 @@
+{
+  "threshold": 0.8,
+  "n_total": 22829,
+  "n_high_confidence": 20927,
+  "n_low_confidence": 1902,
+  "pct_high_confidence": 91.6684918305664,
+  "pct_low_confidence": 8.331508169433615,
+  "best_calibration_method": "IsotonicRegression"
+}

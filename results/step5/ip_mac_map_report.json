@@ -1,0 +1,1072 @@
+{
+  "meta": {
+    "run_timestamp_utc": "2026-10-08T16:37:43+00:00",
+    "pcap": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/raw/ciciot2023/benign/BenignTraffic.pcap",
+    "pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+    "pcap_cache": {
+      "cached_path": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+      "action": "reused existing cache",
+      "source_hash_from": "sidecar (source size+mtime unchanged)",
+      "sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+      "verified": true
+    },
+    "devices": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv",
+    "devices_sha256": "50dcde5b0dd547d580cdb9124e7d12ffdcb40f4a2d2b3c9804ec7af9df67945c",
+    "flows": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/BenignTraffic.pcap_Flow__singlepkt.csv",
+    "flows_sha256": "b8a757e7339c1a97c4941efa8f6bea2f07981651d86e699e606315a2ee8b2606",
+    "out_map": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv",
+    "tshark_version": "TShark (Wireshark) 4.2.2 (Git v4.2.2 packaged as 4.2.2-1.1build3).",
+    "packets_processed": 3664164,
+    "packets_expected": 3664164,
+    "runtime_s": 141.0,
+    "python": "3.11.17",
+    "pandas": "3.0.6"
+  },
+  "summary": {
+    "map_rows": 109,
+    "map_rows_ipv4": 75,
+    "map_rows_ipv6": 34,
+    "distinct_ips": 108,
+    "distinct_macs": 72,
+    "smart_home_devices_mapped": "55/55",
+    "listed_devices_mapped": "72/73",
+    "ip_conflicts_sequential": 0,
+    "ip_conflicts_overlapping": 1,
+    "macs_with_multiple_ipv4": 4,
+    "gateway_ipv4": "192.168.137.1, 192.168.1.108",
+    "unmapped_listed_devices": 1,
+    "lan_ips_with_unlisted_mac": 0,
+    "flows_either_end_smart_home_pct": 96.43,
+    "runtime_s": 141.0
+  },
+  "packet_stats": {
+    "packets": 3664164,
+    "ipv4": 3534248,
+    "dst_skipped_non_unicast_mac": 183380,
+    "arp": 88527,
+    "ipv6": 18428,
+    "other_non_ip": 22961,
+    "tshark_seconds": 136.4,
+    "tshark_stderr": ""
+  },
+  "subnet_assumption": "Subnets inferred as the /24 networks containing private IPv4 addresses seen as a SOURCE (eth.src/ip.src or ARP sender) with a unicast MAC; the /24's .255 (plus 169.254.255.255) is treated as subnet broadcast and excluded.",
+  "subnets": [
+    {
+      "subnet": "192.168.137.0/24",
+      "broadcast": "192.168.137.255",
+      "hosts_seen": 71,
+      "source_evidence_packets": 2228735,
+      "host_range": "192.168.137.1 - 192.168.137.253",
+      "tightest_covering_prefix": "/24"
+    },
+    {
+      "subnet": "10.22.22.0/24",
+      "broadcast": "10.22.22.255",
+      "hosts_seen": 1,
+      "source_evidence_packets": 2,
+      "host_range": "10.22.22.1 - 10.22.22.1",
+      "tightest_covering_prefix": "/32"
+    }
+  ],
+  "filtering": {
+    "pairs": {
+      "not_lan_scope": 1066,
+      "unspecified": 65
+    },
+    "evidence_packets": {
+      "not_lan_scope": 2920685,
+      "unspecified": 7249
+    }
+  },
+  "device_columns": {
+    "mac": "mac",
+    "device_name": "device_name",
+    "category": "paper_category",
+    "role": "role"
+  },
+  "checks": {
+    "ip_multi_mac": [
+      {
+        "ip": "192.168.137.249",
+        "classification": "OVERLAPPING",
+        "macs": [
+          {
+            "mac": "24:05:88:30:6f:89",
+            "device_name": "Unknown",
+            "role": "unknown",
+            "first_seen_utc": "2022-10-07T17:15:00.886613+00:00",
+            "last_seen_utc": "2022-10-07T21:06:24.758781+00:00",
+            "packets": 20517,
+            "evidence_src": 20100,
+            "evidence_dst": 29,
+            "evidence_arp": 388
+          },
+          {
+            "mac": "84:7a:b6:62:3a:6c",
+            "device_name": "Yi Indoor 2 Camera",
+            "role": "iot",
+            "first_seen_utc": "2022-10-07T17:15:00.889190+00:00",
+            "last_seen_utc": "2022-10-08T02:30:25.239514+00:00",
+            "packets": 49506,
+            "evidence_src": 24254,
+            "evidence_dst": 24222,
+            "evidence_arp": 1030
+          }
+        ]
+      }
+    ],
+    "ip_multi_mac_sequential": 0,
+    "ip_multi_mac_overlapping": 1,
+    "mac_multi_ip": [
+      {
+        "mac": "30:23:03:f3:57:cb",
+        "device_name": "Wemo Smart Plug 2",
+        "role": "iot",
+        "n_ipv4": 2,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": true,
+        "ips": [
+          {
+            "ip": "192.168.137.66",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:29.785452+00:00",
+            "last_seen_utc": "2022-10-08T02:29:36.996088+00:00",
+            "packets": 1910
+          },
+          {
+            "ip": "fe80::3223:3ff:fef3:57cb",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:16:21.470443+00:00",
+            "last_seen_utc": "2022-10-08T02:29:37.001732+00:00",
+            "packets": 778
+          },
+          {
+            "ip": "10.22.22.1",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-08T00:07:46.244434+00:00",
+            "last_seen_utc": "2022-10-08T00:09:05.048897+00:00",
+            "packets": 2
+          }
+        ]
+      },
+      {
+        "mac": "3c:18:a0:41:c3:a0",
+        "device_name": "Gateway / router",
+        "role": "gateway",
+        "n_ipv4": 2,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": true,
+        "ips": [
+          {
+            "ip": "192.168.137.1",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:00.886613+00:00",
+            "last_seen_utc": "2022-10-08T02:30:28.260263+00:00",
+            "packets": 225172
+          },
+          {
+            "ip": "fe80::9913:912c:c2be:a3d8",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T18:24:59.241936+00:00",
+            "last_seen_utc": "2022-10-08T00:10:21.992395+00:00",
+            "packets": 12
+          },
+          {
+            "ip": "192.168.1.108",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T18:54:33.559637+00:00",
+            "last_seen_utc": "2022-10-07T18:54:33.559637+00:00",
+            "packets": 1
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e6:f4",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.23",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:21:21.594241+00:00",
+            "last_seen_utc": "2022-10-08T02:21:46.865824+00:00",
+            "packets": 132
+          },
+          {
+            "ip": "fe80::dea6:32ff:fec9:e6f4",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T18:01:59.812777+00:00",
+            "last_seen_utc": "2022-10-08T02:21:03.609545+00:00",
+            "packets": 20
+          }
+        ]
+      },
+      {
+        "mac": "70:ee:50:68:0e:32",
+        "device_name": "Netatmo Camera",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.35",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:05.815486+00:00",
+            "last_seen_utc": "2022-10-08T02:30:21.144256+00:00",
+            "packets": 40306
+          },
+          {
+            "ip": "fe80::72ee:50ff:fe68:e32",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:16:13.265999+00:00",
+            "last_seen_utc": "2022-10-08T02:29:39.166864+00:00",
+            "packets": 742
+          }
+        ]
+      },
+      {
+        "mac": "b0:f1:ec:d3:e7:98",
+        "device_name": "Harman Kardon speaker (Ampak)",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.47",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:03.634939+00:00",
+            "last_seen_utc": "2022-10-08T02:30:28.260263+00:00",
+            "packets": 50191
+          },
+          {
+            "ip": "fe80::b2f1:ecff:fed3:e798",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T20:30:46.088894+00:00",
+            "last_seen_utc": "2022-10-08T01:50:51.010073+00:00",
+            "packets": 24
+          }
+        ]
+      },
+      {
+        "mac": "56:4f:8a:e1:f3:2d",
+        "device_name": "Randomised MAC (phone/laptop)",
+        "role": "excluded",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.51",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:01.740510+00:00",
+            "last_seen_utc": "2022-10-08T02:30:08.733964+00:00",
+            "packets": 101470
+          },
+          {
+            "ip": "fe80::848:1d26:ac40:7c5e",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:15:08.959122+00:00",
+            "last_seen_utc": "2022-10-08T02:30:08.733966+00:00",
+            "packets": 2868
+          }
+        ]
+      },
+      {
+        "mac": "00:02:75:f6:e3:cb",
+        "device_name": "Smart Board",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "fe80::202:75ff:fef6:e3cb",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:57:24.203622+00:00",
+            "last_seen_utc": "2022-10-08T02:24:46.033333+00:00",
+            "packets": 65
+          },
+          {
+            "ip": "192.168.137.56",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T18:04:34.098225+00:00",
+            "last_seen_utc": "2022-10-08T02:16:00.876926+00:00",
+            "packets": 484
+          }
+        ]
+      },
+      {
+        "mac": "30:23:03:f3:84:2b",
+        "device_name": "Wemo Smart Plug 1",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.57",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T20:02:05.023580+00:00",
+            "last_seen_utc": "2022-10-08T02:20:51.140417+00:00",
+            "packets": 19
+          },
+          {
+            "ip": "fe80::3223:3ff:fef3:842b",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T20:32:16.115899+00:00",
+            "last_seen_utc": "2022-10-08T02:20:51.142249+00:00",
+            "packets": 17
+          }
+        ]
+      },
+      {
+        "mac": "cc:f4:11:9c:d0:00",
+        "device_name": "Google Nest Mini Speaker",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.61",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:01.351204+00:00",
+            "last_seen_utc": "2022-10-08T02:30:26.915916+00:00",
+            "packets": 78945
+          },
+          {
+            "ip": "fe80::cef4:11ff:fe9c:d000",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-08T00:05:50.407953+00:00",
+            "last_seen_utc": "2022-10-08T00:06:02.524298+00:00",
+            "packets": 12
+          }
+        ]
+      },
+      {
+        "mac": "08:3a:f2:1f:bc:68",
+        "device_name": "Cocoon Smart HVAC Fan",
+        "role": "iot",
+        "n_ipv4": 3,
+        "n_ipv6": 0,
+        "flag_multiple_ipv4": true,
+        "ips": [
+          {
+            "ip": "192.168.137.171",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:08.506589+00:00",
+            "last_seen_utc": "2022-10-07T18:33:21.237104+00:00",
+            "packets": 1749
+          },
+          {
+            "ip": "192.168.137.71",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T18:33:21.269339+00:00",
+            "last_seen_utc": "2022-10-07T22:42:57.477508+00:00",
+            "packets": 5619
+          },
+          {
+            "ip": "192.168.137.110",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T22:42:57.519989+00:00",
+            "last_seen_utc": "2022-10-08T02:30:14.910223+00:00",
+            "packets": 5118
+          }
+        ]
+      },
+      {
+        "mac": "3c:37:86:6f:b9:51",
+        "device_name": "Arlo Base Station",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.78",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:06.494494+00:00",
+            "last_seen_utc": "2022-10-08T02:30:23.570017+00:00",
+            "packets": 11564
+          },
+          {
+            "ip": "fe80::3e37:86ff:fe6f:b951",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:15:59.157620+00:00",
+            "last_seen_utc": "2022-10-08T02:29:55.759309+00:00",
+            "packets": 551
+          }
+        ]
+      },
+      {
+        "mac": "08:7c:39:ce:6e:2a",
+        "device_name": "Amazon Alexa Echo Studio",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.83",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:03.287521+00:00",
+            "last_seen_utc": "2022-10-08T02:30:20.019779+00:00",
+            "packets": 72417
+          },
+          {
+            "ip": "fe80::a7c:39ff:fece:6e2a",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-08T00:05:38.339809+00:00",
+            "last_seen_utc": "2022-10-08T00:05:46.384855+00:00",
+            "packets": 5
+          }
+        ]
+      },
+      {
+        "mac": "28:6d:97:9e:f4:d5",
+        "device_name": "Aeotec Smart Home Hub",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.86",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:06.311974+00:00",
+            "last_seen_utc": "2022-10-08T02:30:25.483110+00:00",
+            "packets": 31454
+          },
+          {
+            "ip": "fe80::2a6d:97ff:fe9e:f4d5",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:48:48.491273+00:00",
+            "last_seen_utc": "2022-10-08T02:08:04.966964+00:00",
+            "packets": 71
+          }
+        ]
+      },
+      {
+        "mac": "e8:1b:69:f8:d4:e3",
+        "device_name": "Unknown",
+        "role": "unknown",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.103",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:01.683600+00:00",
+            "last_seen_utc": "2022-10-08T02:28:46.556024+00:00",
+            "packets": 2334
+          },
+          {
+            "ip": "fe80::ea1b:69ff:fef8:d4e3",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:16:58.982115+00:00",
+            "last_seen_utc": "2022-10-08T02:28:26.926334+00:00",
+            "packets": 276
+          }
+        ]
+      },
+      {
+        "mac": "b0:09:da:3e:82:6c",
+        "device_name": "Ring Base Station",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.118",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:18.811115+00:00",
+            "last_seen_utc": "2022-10-08T02:30:03.691711+00:00",
+            "packets": 11614
+          },
+          {
+            "ip": "fe80::b209:daff:fe3e:826c",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T18:12:35.137055+00:00",
+            "last_seen_utc": "2022-10-08T01:34:57.303384+00:00",
+            "packets": 10
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:dc:27:d5",
+        "device_name": "Raspberry Pi 4 (8 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.128",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:02.200756+00:00",
+            "last_seen_utc": "2022-10-08T02:30:26.915916+00:00",
+            "packets": 34940
+          },
+          {
+            "ip": "fe80::dea6:32ff:fedc:27d5",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:22:23.364080+00:00",
+            "last_seen_utc": "2022-10-08T02:22:23.388072+00:00",
+            "packets": 28
+          }
+        ]
+      },
+      {
+        "mac": "e8:1b:69:f8:d6:e6",
+        "device_name": "Unknown",
+        "role": "unknown",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.131",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:02.043489+00:00",
+            "last_seen_utc": "2022-10-08T02:30:22.084122+00:00",
+            "packets": 6013
+          },
+          {
+            "ip": "fe80::ea1b:69ff:fef8:d6e6",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:16:54.582225+00:00",
+            "last_seen_utc": "2022-10-08T02:30:12.618301+00:00",
+            "packets": 276
+          }
+        ]
+      },
+      {
+        "mac": "70:ee:50:6b:a8:1a",
+        "device_name": "Netatmo Weather Station",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.135",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:00.769974+00:00",
+            "last_seen_utc": "2022-10-08T02:30:28.305341+00:00",
+            "packets": 10969
+          },
+          {
+            "ip": "fe80::72ee:50ff:fe6b:a81a",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:16:13.077495+00:00",
+            "last_seen_utc": "2022-10-08T02:29:28.475879+00:00",
+            "packets": 675
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e4:c6",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "fe80::7751:923:3c0f:1915",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:21:23.722530+00:00",
+            "last_seen_utc": "2022-10-08T02:21:47.276346+00:00",
+            "packets": 61
+          },
+          {
+            "ip": "192.168.137.138",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:21:29.907169+00:00",
+            "last_seen_utc": "2022-10-08T02:21:53.313649+00:00",
+            "packets": 226
+          }
+        ]
+      },
+      {
+        "mac": "48:a6:b8:f9:1b:88",
+        "device_name": "Sonos One Speaker",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.148",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:24.831311+00:00",
+            "last_seen_utc": "2022-10-08T02:30:09.917090+00:00",
+            "packets": 8344
+          },
+          {
+            "ip": "fe80::4aa6:b8ff:fef9:1b88",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:43:55.011107+00:00",
+            "last_seen_utc": "2022-10-08T02:10:43.682688+00:00",
+            "packets": 18
+          }
+        ]
+      },
+      {
+        "mac": "00:17:88:60:d6:4f",
+        "device_name": "Philips Hue Bridge",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.154",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:06.035698+00:00",
+            "last_seen_utc": "2022-10-08T02:30:08.903537+00:00",
+            "packets": 36230
+          },
+          {
+            "ip": "fe80::217:88ff:fe60:d64f",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:16:27.315403+00:00",
+            "last_seen_utc": "2022-10-08T02:28:52.402109+00:00",
+            "packets": 660
+          }
+        ]
+      },
+      {
+        "mac": "e4:5f:01:55:90:c4",
+        "device_name": "Raspberry Pi 4 (4 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.165",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:16:39.105821+00:00",
+            "last_seen_utc": "2022-10-08T02:16:39.150493+00:00",
+            "packets": 9
+          },
+          {
+            "ip": "fe80::e65f:1ff:fe55:90c4",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:43:37.415048+00:00",
+            "last_seen_utc": "2022-10-08T02:00:36.289906+00:00",
+            "packets": 18
+          }
+        ]
+      },
+      {
+        "mac": "2c:71:ff:05:f1:15",
+        "device_name": "Amazon Echo Show",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.172",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:00.523815+00:00",
+            "last_seen_utc": "2022-10-08T02:30:20.820963+00:00",
+            "packets": 252365
+          },
+          {
+            "ip": "fe80::2e71:ffff:fe05:f115",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:28:39.243141+00:00",
+            "last_seen_utc": "2022-10-08T02:23:51.781658+00:00",
+            "packets": 21
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e5:02",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "fe80::dea6:32ff:fec9:e502",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:37:27.593605+00:00",
+            "last_seen_utc": "2022-10-08T01:38:03.279678+00:00",
+            "packets": 21
+          },
+          {
+            "ip": "192.168.137.173",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:40:32.953264+00:00",
+            "last_seen_utc": "2022-10-08T02:21:44.947898+00:00",
+            "packets": 155
+          }
+        ]
+      },
+      {
+        "mac": "28:6d:97:7a:2b:2d",
+        "device_name": "SmartThings Hub",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.186",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:03.679095+00:00",
+            "last_seen_utc": "2022-10-08T02:30:19.124744+00:00",
+            "packets": 33649
+          },
+          {
+            "ip": "fe80::2a6d:97ff:fe7a:2b2d",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:24:45.782660+00:00",
+            "last_seen_utc": "2022-10-08T02:09:02.918504+00:00",
+            "packets": 25
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e4:90",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.203",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:25:59.610385+00:00",
+            "last_seen_utc": "2022-10-08T02:25:59.627233+00:00",
+            "packets": 17
+          },
+          {
+            "ip": "fe80::dea6:32ff:fec9:e490",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:49:54.833502+00:00",
+            "last_seen_utc": "2022-10-08T02:14:56.695552+00:00",
+            "packets": 18
+          }
+        ]
+      },
+      {
+        "mac": "24:05:88:30:6f:89",
+        "device_name": "Unknown",
+        "role": "unknown",
+        "n_ipv4": 2,
+        "n_ipv6": 0,
+        "flag_multiple_ipv4": true,
+        "ips": [
+          {
+            "ip": "192.168.137.249",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:00.886613+00:00",
+            "last_seen_utc": "2022-10-07T21:06:24.758781+00:00",
+            "packets": 20517
+          },
+          {
+            "ip": "192.168.137.207",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T21:06:20.398629+00:00",
+            "last_seen_utc": "2022-10-08T02:30:26.177460+00:00",
+            "packets": 189050
+          }
+        ]
+      },
+      {
+        "mac": "d0:73:d5:35:fb:c8",
+        "device_name": "LIFX Lightbulb",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.210",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:01.382010+00:00",
+            "last_seen_utc": "2022-10-08T02:30:16.415543+00:00",
+            "packets": 1276
+          },
+          {
+            "ip": "fe80::d273:d5ff:fe35:fbc8",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:15:01.388022+00:00",
+            "last_seen_utc": "2022-10-08T02:28:59.234332+00:00",
+            "packets": 576
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e4:d5",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.221",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:17:14.319556+00:00",
+            "last_seen_utc": "2022-10-08T02:25:55.326286+00:00",
+            "packets": 17
+          },
+          {
+            "ip": "fe80::dea6:32ff:fec9:e4d5",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:52:03.576543+00:00",
+            "last_seen_utc": "2022-10-08T01:55:33.309043+00:00",
+            "packets": 18
+          }
+        ]
+      },
+      {
+        "mac": "8c:85:80:6c:b6:47",
+        "device_name": "Eufy HomeBase 2",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.224",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:15:06.850268+00:00",
+            "last_seen_utc": "2022-10-08T02:30:10.922529+00:00",
+            "packets": 20834
+          },
+          {
+            "ip": "fe80::8e85:80ff:fe6c:b647",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:15:59.979950+00:00",
+            "last_seen_utc": "2022-10-08T02:28:55.341299+00:00",
+            "packets": 631
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e5:ef",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.240",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:26:01.932388+00:00",
+            "last_seen_utc": "2022-10-08T02:26:01.975104+00:00",
+            "packets": 20
+          },
+          {
+            "ip": "fe80::dea6:32ff:fec9:e5ef",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:49:44.696837+00:00",
+            "last_seen_utc": "2022-10-08T02:20:13.351857+00:00",
+            "packets": 18
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e5:a4",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.246",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:16:34.732062+00:00",
+            "last_seen_utc": "2022-10-08T02:25:55.560177+00:00",
+            "packets": 18
+          },
+          {
+            "ip": "fe80::dea6:32ff:fec9:e5a4",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:43:31.934857+00:00",
+            "last_seen_utc": "2022-10-08T02:05:58.478663+00:00",
+            "packets": 18
+          }
+        ]
+      },
+      {
+        "mac": "dc:a6:32:c9:e4:ab",
+        "device_name": "Raspberry Pi 4 (2 GB)",
+        "role": "testbed_pi",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.248",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T17:19:25.902628+00:00",
+            "last_seen_utc": "2022-10-08T00:19:25.945295+00:00",
+            "packets": 4
+          },
+          {
+            "ip": "fe80::dea6:32ff:fec9:e4ab",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T17:27:44.429488+00:00",
+            "last_seen_utc": "2022-10-08T02:27:44.444417+00:00",
+            "packets": 19
+          }
+        ]
+      },
+      {
+        "mac": "ac:f1:08:4e:00:82",
+        "device_name": "LG Smart TV",
+        "role": "iot",
+        "n_ipv4": 1,
+        "n_ipv6": 1,
+        "flag_multiple_ipv4": false,
+        "ips": [
+          {
+            "ip": "192.168.137.253",
+            "ip_version": 4,
+            "first_seen_utc": "2022-10-07T20:30:22.459272+00:00",
+            "last_seen_utc": "2022-10-08T02:30:28.319030+00:00",
+            "packets": 40037
+          },
+          {
+            "ip": "fe80::aef1:8ff:fe4e:82",
+            "ip_version": 6,
+            "first_seen_utc": "2022-10-07T20:30:24.822302+00:00",
+            "last_seen_utc": "2022-10-08T02:29:38.857293+00:00",
+            "packets": 207
+          }
+        ]
+      }
+    ],
+    "mac_multi_ipv4_count": 4,
+    "gateway_mac": "3c:18:a0:41:c3:a0",
+    "gateway_ips": [
+      {
+        "ip": "192.168.137.1",
+        "ip_version": 4,
+        "packets": 225172,
+        "first_seen_utc": "2022-10-07T17:15:00.886613+00:00",
+        "last_seen_utc": "2022-10-08T02:30:28.260263+00:00"
+      },
+      {
+        "ip": "fe80::9913:912c:c2be:a3d8",
+        "ip_version": 6,
+        "packets": 12,
+        "first_seen_utc": "2022-10-07T18:24:59.241936+00:00",
+        "last_seen_utc": "2022-10-08T00:10:21.992395+00:00"
+      },
+      {
+        "ip": "192.168.1.108",
+        "ip_version": 4,
+        "packets": 1,
+        "first_seen_utc": "2022-10-07T18:54:33.559637+00:00",
+        "last_seen_utc": "2022-10-07T18:54:33.559637+00:00"
+      }
+    ],
+    "devices_without_lan_ip": [
+      {
+        "mac": "00:a3:d1:07:6f:03",
+        "device_name": "Unknown",
+        "category": "Unknown",
+        "role": "unknown"
+      }
+    ],
+    "lan_ips_with_unlisted_mac": []
+  },
+  "coverage": {
+    "flow_columns": {
+      "src_ip": "Src IP",
+      "dst_ip": "Dst IP"
+    },
+    "smart_home": {
+      "flows": 223108,
+      "src_smart_home": 171370,
+      "src_smart_home_pct": 76.81,
+      "dst_smart_home": 46970,
+      "dst_smart_home_pct": 21.053,
+      "either_smart_home": 215143,
+      "either_smart_home_pct": 96.43,
+      "neither_smart_home": 7965,
+      "neither_smart_home_pct": 3.57
+    },
+    "by_role": {
+      "smart-home": {
+        "src": 171370,
+        "src_pct": 76.81,
+        "dst": 46970,
+        "dst_pct": 21.053,
+        "either": 215143,
+        "either_pct": 96.43
+      },
+      "gateway": {
+        "src": 1150,
+        "src_pct": 0.515,
+        "dst": 63976,
+        "dst_pct": 28.675,
+        "either": 65126,
+        "either_pct": 29.19
+      },
+      "testbed": {
+        "src": 859,
+        "src_pct": 0.385,
+        "dst": 1399,
+        "dst_pct": 0.627,
+        "either": 2258,
+        "either_pct": 1.012
+      },
+      "phone": {
+        "src": 3666,
+        "src_pct": 1.643,
+        "dst": 189,
+        "dst_pct": 0.085,
+        "either": 3855,
+        "either_pct": 1.728
+      },
+      "unknown": {
+        "src": 2537,
+        "src_pct": 1.137,
+        "dst": 171,
+        "dst_pct": 0.077,
+        "either": 2672,
+        "either_pct": 1.198
+      },
+      "unlisted": {
+        "src": 0,
+        "src_pct": 0.0,
+        "dst": 0,
+        "dst_pct": 0.0,
+        "either": 0,
+        "either_pct": 0.0
+      },
+      "unmapped": {
+        "src": 43526,
+        "src_pct": 19.509,
+        "dst": 110403,
+        "dst_pct": 49.484,
+        "either": 153355,
+        "either_pct": 68.736
+      }
+    },
+    "flows_touching_multi_mac_ip": 11210,
+    "lan_scope_unmapped_distinct_ips": 0,
+    "top10_lan_scope_unmapped": []
+  }
+}

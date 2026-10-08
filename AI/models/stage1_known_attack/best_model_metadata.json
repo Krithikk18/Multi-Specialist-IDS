@@ -1,0 +1,22 @@
+{
+  "model_name": "XGBoost",
+  "imbalance_strategy": "ClassWeightOnly",
+  "model_path": "/home/laasya/AI/models/stage1_known_attack/best_model_XGBoost.joblib",
+  "labels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "val_f1_macro": 0.9556344681933081,
+  "test_f1_macro": 0.9550264628591806
+}

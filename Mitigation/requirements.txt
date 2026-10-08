@@ -1,0 +1,14 @@
+# Core
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.4
+joblib>=1.3
+
+# Stage B AUROC / metrics
+# (scikit-learn already covers roc_auc_score, no extra dep needed)
+
+# No boosted-tree / deep-learning dependencies required -- the
+# mitigation engine's stages are rule engines, a weighted-sum risk
+# score, and lightweight simulation code, per the architecture spec
+# (all resource-light by design since Stage B is the only learned
+# component and it's a linear model).

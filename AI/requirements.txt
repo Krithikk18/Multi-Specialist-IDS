@@ -1,0 +1,25 @@
+# Core
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.4
+joblib>=1.3
+psutil>=5.9
+
+# Stage 1 boosted-tree models
+xgboost>=2.0
+lightgbm>=4.0
+catboost>=1.2          # optional -- Stage 1 auto-skips CatBoost if not installed
+
+# Stage 1 imbalance handling
+imbalanced-learn>=0.12
+
+# Stage 4 adversarial verification
+shap>=0.45
+
+# Stage 3 deep anomaly detectors (optional -- Stage 3 auto-skips
+# Autoencoder / VariationalAutoencoder / DeepSVDD if not installed)
+torch>=2.0
+
+# Stage 5 online learning strategies (optional -- Stage 5 auto-skips
+# AdaptiveRandomForest / HoeffdingTree / OnlineBagging if not installed)
+river>=0.21

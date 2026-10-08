@@ -1,0 +1,10 @@
+{
+  "n_contained_devices": 2000,
+  "false_restore_rate_pct": 17.1,
+  "false_escalation_to_admin_rate_pct": 1.65,
+  "oscillation_rate_pct": 17.1,
+  "mean_time_to_recovery_events": 5.0,
+  "correct_restore_count": 562,
+  "correct_escalation_count": 1063,
+  "note": "Ground-truth genuineness and post-containment behavior are both synthetic (see module docstring) -- results describe recovery-logic behavior under a stated outcome-distribution model, not empirically observed device behavior."
+}

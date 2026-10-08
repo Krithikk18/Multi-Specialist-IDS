@@ -1,0 +1,11 @@
+{
+  "n_legitimate_messages": 2000,
+  "n_accepted": 2000,
+  "n_legitimate_rejected": 0,
+  "feedback_staleness_ms_mean": 32.20302999019623,
+  "spoofed_message_rejection_rate_pct": 100.0,
+  "replayed_message_rejection_rate_pct": 100.0,
+  "simulated_outage_drop_rate_pct": 28.0,
+  "simulated_outage_messages_still_accepted": 360,
+  "failure_mode_note": "Dropped messages during simulated outage are never enqueued -- the gateway's trust decay is NOT paused or frozen waiting for them; it continues on schedule with no reward/penalty applied until a later message for that device arrives (verified: consume_outcomes has no blocking dependency on message arrival)."
+}

@@ -1,0 +1,29 @@
+{
+  "closed_loop_vs_open_loop": {
+    "closed_loop_n_offending_devices": 14,
+    "closed_loop_still_trusted_at_end_pct": 0.0,
+    "closed_loop_mean_events_to_full_scrutiny": 1.0,
+    "open_loop_n_offending_devices": 14,
+    "open_loop_still_trusted_at_end_pct": 100.0,
+    "open_loop_mean_events_to_full_scrutiny": NaN,
+    "improvement_still_trusted_pct_points": 100.0
+  },
+  "static_vs_adaptive_weighting": {
+    "n_events": 1000,
+    "n_noise_events": 12,
+    "final_regret_static": 337.05802663392467,
+    "final_regret_online": 332.72988724779947,
+    "regret_reduction_pct": 1.2840932552025974,
+    "escalation_precision_static": 1.0,
+    "escalation_recall_static": 0.18253968253968253,
+    "escalation_precision_online": 1.0,
+    "escalation_recall_online": 0.21428571428571427,
+    "final_online_weights": {
+      "severity": 0.38746804356152903,
+      "confidence": 0.2662681053015479,
+      "distrust": 0.2237612969293524,
+      "frequency": 0.12250255420757075
+    }
+  },
+  "label": "controlled_synthetic_simulation_study -- see stage_c_synthetic_streams.py docstring"
+}

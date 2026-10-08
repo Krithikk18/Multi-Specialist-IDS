@@ -1,0 +1,18 @@
+======================================================================
+CICFlowMeter — offline extraction
+======================================================================
+  build    : singlepkt
+  cfm      : /home/krithikk/tools/CICFlowMeter-singlepkt/build/install/CICFlowMeter/bin/cfm
+  cwd      : /home/krithikk/tools/CICFlowMeter-singlepkt/build/install/CICFlowMeter/bin   (required: java.library.path is relative)
+  input    : /mnt/d/Projects/Company Project/Paper_Implemetation/data/raw/ciciot2023/benign/BenignTraffic.pcap
+  output   : /mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign
+Traceback (most recent call last):
+  File "/mnt/d/Projects/Company Project/Implemetation_Demo/extraction/run_cicflowmeter.py", line 361, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/mnt/d/Projects/Company Project/Implemetation_Demo/extraction/run_cicflowmeter.py", line 340, in main
+    rel = result["csv_path"].relative_to(REPO_ROOT)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krithikk/miniconda3/envs/lgids/lib/python3.11/pathlib.py", line 730, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: '/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/BenignTraffic.pcap_Flow__singlepkt.csv' is not in the subpath of '/mnt/d/Projects/Company Project/Implemetation_Demo' OR one path is relative and the other is absolute.

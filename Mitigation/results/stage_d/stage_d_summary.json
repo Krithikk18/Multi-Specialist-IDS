@@ -1,0 +1,9 @@
+{
+  "n_events": 3000,
+  "containment_action_correctness_pct": 100.0,
+  "time_to_containment_ms_mean": 0.0005092863303464886,
+  "time_to_containment_ms_p95": 0.000682999836953968,
+  "containment_success_rate_pct": 95.51569506726457,
+  "n_auto_actions": 2230,
+  "n_notify_admin_only": 770
+}

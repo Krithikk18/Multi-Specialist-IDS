@@ -1,0 +1,4 @@
+{
+  "best_strategy": "PeriodicXGBoostRetraining",
+  "accuracy_after_update": 0.9619343817074774
+}

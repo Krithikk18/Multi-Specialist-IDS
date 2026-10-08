@@ -1,0 +1,7 @@
+{
+  "model_name": "Autoencoder",
+  "model_path": "/home/laasya/AI/models/stage3_zero_day/Autoencoder.joblib",
+  "detection_rate": 0.6772875816993464,
+  "false_positive_rate": 0.012618296529968454,
+  "f2": 0.7209949556444599
+}

@@ -1,0 +1,393 @@
+{
+  "mode": "apply",
+  "run_utc": "2026-10-10T18:31:17+00:00",
+  "device": {
+    "mac": "1c:12:b0:9b:0c:ec",
+    "name": "Unidentified Amazon device (1c:12:b0)",
+    "ips_in_map": [
+      "192.168.137.206",
+      "192.168.137.50"
+    ]
+  },
+  "pcap": {
+    "path": "/home/krithikk/lgids_cache/ciciot2023/attack/DictionaryBruteForce/DictionaryBruteForce.pcap",
+    "sha256": "09ad3cfabd139b950da3078fec0f0fd196fe36cd82237d898035437f4c69161b"
+  },
+  "behaviour_groups": {
+    "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json",
+    "sha256": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532",
+    "version": "1.0"
+  },
+  "flows": {
+    "action": "reused",
+    "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/attack/DictionaryBruteForce/DictionaryBruteForce.pcap_Flow__singlepkt.csv",
+    "meta": {
+      "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/attack/DictionaryBruteForce/DictionaryBruteForce.pcap_Flow__singlepkt.csv",
+      "input_pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DictionaryBruteForce/DictionaryBruteForce.pcap",
+      "input_pcap_sha256": "09ad3cfabd139b950da3078fec0f0fd196fe36cd82237d898035437f4c69161b",
+      "jar_path": "/home/krithikk/tools/CICFlowMeter-singlepkt/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar",
+      "jar_sha256": "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d",
+      "jar_sha256_expected": "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d",
+      "upstream": "ahlashkari/CICFlowMeter",
+      "commit": "98a5eba",
+      "patch": "extractor/guard_gt0.patch",
+      "build": "singlepkt",
+      "flow_timeout_s": 120,
+      "activity_timeout_s": 5,
+      "timeouts_check": "verified against /home/krithikk/tools/CICFlowMeter-singlepkt/src/main/java/cic/cs/unb/ca/ifm/Cmd.java",
+      "tz": "UTC",
+      "started_utc": "2026-10-10T18:17:12+00:00",
+      "ended_utc": "2026-10-10T18:18:03+00:00",
+      "elapsed_s": 50.184,
+      "row_count": 9795,
+      "cfm_reported_flows": 9796,
+      "packets": {
+        "total": 133138,
+        "valid": 129446,
+        "discarded": 3692
+      },
+      "wrapper": "/mnt/d/Projects/Company Project/Paper_Implemetation/extraction/run_cicflowmeter.py",
+      "wrapper_git_commit": "fb5822423f6a95d16f632423b00f98645e29114b-dirty"
+    }
+  },
+  "check": {
+    "overall": "WARN",
+    "json": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/flow_check/DictionaryBruteForce.pcap_Flow__singlepkt_check.json",
+    "checks": {
+      "1 Structure": "PASS",
+      "2 Packet total": "WARN",
+      "3 Single-packet flows": "PASS",
+      "4 Time span": "PASS",
+      "5 Flow duration": "PASS",
+      "6 NaN / Infinity": "WARN",
+      "7 Protocol mix": "PASS",
+      "8 Duplicates": "PASS",
+      "9 IPs": "PASS"
+    }
+  },
+  "map": {
+    "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/maps/DictionaryBruteForce_ip_mac_map.csv",
+    "rows": 142,
+    "packets": 133138,
+    "subnets": [
+      "192.168.137.0/24"
+    ],
+    "ip_conflicts_overlapping": 1,
+    "ip_conflicts_sequential": 11
+  },
+  "tag": {
+    "conflicts": 1,
+    "ambiguous_before": 1169,
+    "resolved_flows": 264,
+    "flows": 9795,
+    "ambiguous_after": 905,
+    "tagged_csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/attack/DictionaryBruteForce/DictionaryBruteForce.pcap_Flow__singlepkt_tagged_newdev.csv"
+  },
+  "normalisation": "05 time-normalises only `log_flows_per_hour` = usable flows / capture hours, where capture hours = first..last Timestamp over ALL flows in the input CSV (every device shares one window); all other features are per-flow distributions or shares, and gap_cv is scale-free. 06c applies exactly this to the pcap's flow CSV.",
+  "counts": {
+    "all_flows_in_capture": 9795,
+    "device_on_either_side": 243,
+    "owned_by_device": 219,
+    "owned_and_exclude_reason_blank": 219,
+    "dropped_other_endpoint_attacker": 0,
+    "usable_for_fingerprint": 219
+  },
+  "fingerprint": {
+    "mac": "1c:12:b0:9b:0c:ec",
+    "device_name": "Unidentified Amazon device (1c:12:b0)",
+    "category": "Unidentified (Amazon)",
+    "vendor_family": "",
+    "usable_flows": 219,
+    "confidence": "high",
+    "log_flows_per_hour": 0.612374,
+    "log_median_bytes": 1.50515,
+    "log_p90_bytes": 3.143015,
+    "median_packets": 2.0,
+    "pct_single_packet": 14.155,
+    "log_median_duration_us": 5.507563,
+    "upload_ratio": 0.682378,
+    "pct_tcp": 82.648,
+    "pct_udp": 17.352,
+    "pct_dns": 14.612,
+    "pct_discovery": 0.0,
+    "gap_cv": 14.330644,
+    "pct_internet": 56.164,
+    "pct_device": 3.196,
+    "log_distinct_peers": 1.612784,
+    "capture_hours": 70.7333
+  },
+  "scaled": {
+    "log_flows_per_hour": -1.9571696549002338,
+    "log_median_bytes": -1.6819307411768742,
+    "log_p90_bytes": -0.558716946819796,
+    "median_packets": -0.4948453608247423,
+    "pct_single_packet": 1.3601208948376824,
+    "log_median_duration_us": -0.8401832360364822,
+    "upload_ratio": -0.30146623997881455,
+    "pct_udp": -1.3309920802479944,
+    "pct_dns": 0.6838903373627242,
+    "pct_discovery": 0.0,
+    "gap_cv": 3.0,
+    "pct_internet": 0.06300783340631547,
+    "pct_device": 0.24021044720030174,
+    "log_distinct_peers": 1.3241662896496258
+  },
+  "placement": {
+    "decision": "G1",
+    "reason": "nearest centroid G1 within its max spread (4.354 <= 5.953)",
+    "nearest": "G1",
+    "distance": {
+      "G1": 4.3544,
+      "G2": 5.3257
+    },
+    "ratio_to_max_spread": {
+      "G1": 0.731,
+      "G2": 1.198
+    },
+    "ratio_to_median_spread": {
+      "G1": 1.644,
+      "G2": 4.888
+    }
+  },
+  "context": [
+    {
+      "device": "Amazon Alexa Echo Dot 1",
+      "locked_group": "G1",
+      "usable_flows": 1573,
+      "d_G1": 2.5711,
+      "d_G2": 3.2212,
+      "d_G1/max": 0.432,
+      "d_G2/max": 0.725
+    },
+    {
+      "device": "Amazon Alexa Echo Dot 2",
+      "locked_group": "G1",
+      "usable_flows": 372,
+      "d_G1": 5.9531,
+      "d_G2": 7.1078,
+      "d_G1/max": 1.0,
+      "d_G2/max": 1.599
+    },
+    {
+      "device": "Amazon Alexa Echo Studio",
+      "locked_group": "G1",
+      "usable_flows": 3252,
+      "d_G1": 3.056,
+      "d_G2": 3.9344,
+      "d_G1/max": 0.513,
+      "d_G2/max": 0.885
+    },
+    {
+      "device": "Amazon Echo Show",
+      "locked_group": "G1",
+      "usable_flows": 5247,
+      "d_G1": 2.6493,
+      "d_G2": 4.2375,
+      "d_G1/max": 0.445,
+      "d_G2/max": 0.953
+    },
+    {
+      "device": "Google Nest Mini Speaker",
+      "locked_group": "G1",
+      "usable_flows": 3891,
+      "d_G1": 1.9615,
+      "d_G2": 2.8124,
+      "d_G1/max": 0.329,
+      "d_G2/max": 0.633
+    }
+  ],
+  "capture_segments": [
+    [
+      "2022-10-14 16:18:00+00:00",
+      "2022-10-14 16:19:00+00:00",
+      247
+    ],
+    [
+      "2022-10-14 16:32:00+00:00",
+      "2022-10-14 16:33:00+00:00",
+      417
+    ],
+    [
+      "2022-10-17 13:21:00+00:00",
+      "2022-10-17 13:51:00+00:00",
+      7908
+    ],
+    [
+      "2022-10-17 14:56:00+00:00",
+      "2022-10-17 15:02:00+00:00",
+      1223
+    ]
+  ],
+  "sensitivity": {
+    "window": [
+      "2022-10-17 13:21:00+00:00",
+      "2022-10-17 13:51:00+00:00"
+    ],
+    "fingerprint": {
+      "mac": "1c:12:b0:9b:0c:ec",
+      "device_name": "Unidentified Amazon device (1c:12:b0)",
+      "category": "Unidentified (Amazon)",
+      "vendor_family": "",
+      "usable_flows": 200,
+      "confidence": "high",
+      "log_flows_per_hour": 2.603144,
+      "log_median_bytes": 1.50515,
+      "log_p90_bytes": 3.143015,
+      "median_packets": 2.0,
+      "pct_single_packet": 14.0,
+      "log_median_duration_us": 5.982904,
+      "upload_ratio": 0.629463,
+      "pct_tcp": 82.0,
+      "pct_udp": 18.0,
+      "pct_dns": 15.0,
+      "pct_discovery": 0.0,
+      "gap_cv": 2.080041,
+      "pct_internet": 54.0,
+      "pct_device": 2.5,
+      "log_distinct_peers": 1.518514,
+      "capture_hours": 0.5
+    },
+    "counts": {
+      "all_flows_in_capture": 7908,
+      "device_on_either_side": 219,
+      "owned_by_device": 200,
+      "owned_and_exclude_reason_blank": 200,
+      "dropped_other_endpoint_attacker": 0,
+      "usable_for_fingerprint": 200
+    },
+    "scaled": {
+      "log_flows_per_hour": 1.236648606112673,
+      "log_median_bytes": -1.6819307411768742,
+      "log_p90_bytes": -0.558716946819796,
+      "median_packets": -0.4948453608247423,
+      "pct_single_packet": 1.3433899128369806,
+      "log_median_duration_us": -0.6651543977081412,
+      "upload_ratio": -0.3961469263891883,
+      "pct_udp": -1.3042976755682347,
+      "pct_dns": 0.7084143161886702,
+      "pct_discovery": 0.0,
+      "gap_cv": 1.176528234877868,
+      "pct_internet": -0.007184677013898991,
+      "pct_device": 0.18789928598271413,
+      "log_distinct_peers": 1.134612175136983
+    },
+    "placement": {
+      "decision": "G1",
+      "reason": "nearest centroid G1 within its max spread (2.232 <= 5.953)",
+      "nearest": "G1",
+      "distance": {
+        "G1": 2.2317,
+        "G2": 4.1556
+      },
+      "ratio_to_max_spread": {
+        "G1": 0.375,
+        "G2": 0.935
+      },
+      "ratio_to_median_spread": {
+        "G1": 0.842,
+        "G2": 3.814
+      }
+    }
+  },
+  "feature_table": [
+    {
+      "feature": "log_flows_per_hour",
+      "raw": "0.612374",
+      "scaled": "-1.95717",
+      "raw_segment": "2.60314",
+      "scaled_segment": "1.23665"
+    },
+    {
+      "feature": "log_median_bytes",
+      "raw": "1.50515",
+      "scaled": "-1.68193",
+      "raw_segment": "1.50515",
+      "scaled_segment": "-1.68193"
+    },
+    {
+      "feature": "log_p90_bytes",
+      "raw": "3.14302",
+      "scaled": "-0.558717",
+      "raw_segment": "3.14302",
+      "scaled_segment": "-0.558717"
+    },
+    {
+      "feature": "median_packets",
+      "raw": "2",
+      "scaled": "-0.494845",
+      "raw_segment": "2",
+      "scaled_segment": "-0.494845"
+    },
+    {
+      "feature": "pct_single_packet",
+      "raw": "14.155",
+      "scaled": "1.36012",
+      "raw_segment": "14",
+      "scaled_segment": "1.34339"
+    },
+    {
+      "feature": "log_median_duration_us",
+      "raw": "5.50756",
+      "scaled": "-0.840183",
+      "raw_segment": "5.9829",
+      "scaled_segment": "-0.665154"
+    },
+    {
+      "feature": "upload_ratio",
+      "raw": "0.682378",
+      "scaled": "-0.301466",
+      "raw_segment": "0.629463",
+      "scaled_segment": "-0.396147"
+    },
+    {
+      "feature": "pct_udp",
+      "raw": "17.352",
+      "scaled": "-1.33099",
+      "raw_segment": "18",
+      "scaled_segment": "-1.3043"
+    },
+    {
+      "feature": "pct_dns",
+      "raw": "14.612",
+      "scaled": "0.68389",
+      "raw_segment": "15",
+      "scaled_segment": "0.708414"
+    },
+    {
+      "feature": "pct_discovery",
+      "raw": "0",
+      "scaled": "0",
+      "raw_segment": "0",
+      "scaled_segment": "0"
+    },
+    {
+      "feature": "gap_cv",
+      "raw": "14.3306",
+      "scaled": "3",
+      "raw_segment": "2.08004",
+      "scaled_segment": "1.17653"
+    },
+    {
+      "feature": "pct_internet",
+      "raw": "56.164",
+      "scaled": "0.0630078",
+      "raw_segment": "54",
+      "scaled_segment": "-0.00718468"
+    },
+    {
+      "feature": "pct_device",
+      "raw": "3.196",
+      "scaled": "0.24021",
+      "raw_segment": "2.5",
+      "scaled_segment": "0.187899"
+    },
+    {
+      "feature": "log_distinct_peers",
+      "raw": "1.61278",
+      "scaled": "1.32417",
+      "raw_segment": "1.51851",
+      "scaled_segment": "1.13461"
+    }
+  ],
+  "apply": "added 1c:12:b0:9b:0c:ec as G1 to /mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv; backup /mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/device_table_backup_20261010T183117Z.csv"
+}

@@ -1,0 +1,986 @@
+{
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood10.pcap",
+ "stem": "DDoS-SYN_Flood10",
+ "S": {
+  "packets": 26762773,
+  "background": 138883,
+  "att_src": 26420022,
+  "att_dst": 203868,
+  "t_min": 1661865009.100902,
+  "t_max": 1661867121.248973,
+  "att_first": 1661865009.100902,
+  "att_last": 1661867121.248973,
+  "tshark_seconds": 765.3,
+  "minutes": 35.20246784687042
+ },
+ "census": [
+  {
+   "rank": 1,
+   "eth_src": "dc:a6:32:c9:e4:d5",
+   "tag": "attacker",
+   "packets": 5030100,
+   "pct": 18.795
+  },
+  {
+   "rank": 2,
+   "eth_src": "dc:a6:32:c9:e4:ab",
+   "tag": "attacker",
+   "packets": 4093872,
+   "pct": 15.297
+  },
+  {
+   "rank": 3,
+   "eth_src": "dc:a6:32:c9:e5:a4",
+   "tag": "attacker",
+   "packets": 3677130,
+   "pct": 13.74
+  },
+  {
+   "rank": 4,
+   "eth_src": "dc:a6:32:dc:27:d5",
+   "tag": "attacker",
+   "packets": 3671284,
+   "pct": 13.718
+  },
+  {
+   "rank": 5,
+   "eth_src": "e4:5f:01:55:90:c4",
+   "tag": "attacker",
+   "packets": 3577962,
+   "pct": 13.369
+  },
+  {
+   "rank": 6,
+   "eth_src": "dc:a6:32:c9:e4:90",
+   "tag": "attacker",
+   "packets": 3517920,
+   "pct": 13.145
+  },
+  {
+   "rank": 7,
+   "eth_src": "dc:a6:32:c9:e5:ef",
+   "tag": "attacker",
+   "packets": 2851409,
+   "pct": 10.654
+  },
+  {
+   "rank": 8,
+   "eth_src": "2c:71:ff:05:f1:15",
+   "tag": "Amazon Echo Show",
+   "packets": 125515,
+   "pct": 0.469
+  },
+  {
+   "rank": 9,
+   "eth_src": "18:69:d8:eb:d4:3e",
+   "tag": "Teckin Light Strip",
+   "packets": 82317,
+   "pct": 0.308
+  },
+  {
+   "rank": 10,
+   "eth_src": "3c:18:a0:41:c3:a0",
+   "tag": "gateway",
+   "packets": 55703,
+   "pct": 0.208
+  },
+  {
+   "rank": 11,
+   "eth_src": "ac:17:02:05:34:27",
+   "tag": "Fibaro Home Center Lite",
+   "packets": 14380,
+   "pct": 0.054
+  },
+  {
+   "rank": 12,
+   "eth_src": "a0:d0:dc:c4:08:ff",
+   "tag": "Amazon Alexa Echo Dot 2",
+   "packets": 5798,
+   "pct": 0.022
+  },
+  {
+   "rank": 13,
+   "eth_src": "b0:f1:ec:d3:e7:98",
+   "tag": "Harman Kardon speaker (Ampak)",
+   "packets": 3547,
+   "pct": 0.013
+  },
+  {
+   "rank": 14,
+   "eth_src": "1c:12:b0:9b:0c:ec",
+   "tag": "Unidentified Amazon device (1c:12:b0)",
+   "packets": 3386,
+   "pct": 0.013
+  },
+  {
+   "rank": 15,
+   "eth_src": "ee:06:3b:b8:d1:df",
+   "tag": "unknown",
+   "packets": 3203,
+   "pct": 0.012
+  },
+  {
+   "rank": 16,
+   "eth_src": "e8:1b:69:f8:d4:e3",
+   "tag": "Unknown",
+   "packets": 2944,
+   "pct": 0.011
+  },
+  {
+   "rank": 17,
+   "eth_src": "1c:fe:2b:98:16:dd",
+   "tag": "Amazon Alexa Echo Dot 1",
+   "packets": 2679,
+   "pct": 0.01
+  },
+  {
+   "rank": 18,
+   "eth_src": "08:7c:39:ce:6e:2a",
+   "tag": "Amazon Alexa Echo Studio",
+   "packets": 2603,
+   "pct": 0.01
+  },
+  {
+   "rank": 19,
+   "eth_src": "9c:8e:cd:1d:ab:9f",
+   "tag": "AMCREST WiFi Camera",
+   "packets": 2489,
+   "pct": 0.009
+  },
+  {
+   "rank": 20,
+   "eth_src": "40:5d:82:35:14:c8",
+   "tag": "Arlo Q Indoor Camera",
+   "packets": 1696,
+   "pct": 0.006
+  },
+  {
+   "rank": 21,
+   "eth_src": "10:2c:6b:1b:43:be",
+   "tag": "unknown",
+   "packets": 1636,
+   "pct": 0.006
+  },
+  {
+   "rank": 22,
+   "eth_src": "7c:78:b2:86:0d:81",
+   "tag": "Wyze Camera",
+   "packets": 1406,
+   "pct": 0.005
+  },
+  {
+   "rank": 23,
+   "eth_src": "6c:5a:b0:44:1d:90",
+   "tag": "TP-Link Tapo Camera",
+   "packets": 1305,
+   "pct": 0.005
+  },
+  {
+   "rank": 24,
+   "eth_src": "84:e3:42:42:ed:0b",
+   "tag": "Lumiman Bulb",
+   "packets": 1289,
+   "pct": 0.005
+  },
+  {
+   "rank": 25,
+   "eth_src": "44:bb:3b:00:39:07",
+   "tag": "Nest Indoor Camera",
+   "packets": 1235,
+   "pct": 0.005
+  },
+  {
+   "rank": 26,
+   "eth_src": "00:a3:d1:07:6f:03",
+   "tag": "Unknown",
+   "packets": 1201,
+   "pct": 0.004
+  },
+  {
+   "rank": 27,
+   "eth_src": "44:01:bb:ec:10:4a",
+   "tag": "HeimVision Smart WiFi Camera",
+   "packets": 1183,
+   "pct": 0.004
+  },
+  {
+   "rank": 28,
+   "eth_src": "cc:f4:11:9c:d0:00",
+   "tag": "Google Nest Mini Speaker",
+   "packets": 1171,
+   "pct": 0.004
+  },
+  {
+   "rank": 29,
+   "eth_src": "c4:dd:57:13:07:c6",
+   "tag": "Unidentified ESP plug (4)",
+   "packets": 955,
+   "pct": 0.004
+  },
+  {
+   "rank": 30,
+   "eth_src": "28:6d:97:7a:2b:2d",
+   "tag": "SmartThings Hub",
+   "packets": 928,
+   "pct": 0.003
+  }
+ ],
+ "pairs": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 2845586,
+   "control_packets": 0,
+   "rate_ratio": 44901019.11,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:2555136;TCP/2544:46;TCP/2545:46;TCP/2546:46;TCP/2556:46;TCP/2901:46;TCP/3608:46;TCP/3609:46",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:23:23.309781+00:00",
+   "last_ts": "2022-08-30T13:33:00.639043+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 1771587,
+   "control_packets": 0,
+   "rate_ratio": 27954193.53,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1590737;TCP/6090:29;TCP/6091:29;TCP/6092:29;TCP/6130:29;TCP/6131:29;TCP/6132:29;TCP/6133:29",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:24:19.579572+00:00",
+   "last_ts": "2022-08-30T13:35:00.076909+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 1734579,
+   "control_packets": 0,
+   "rate_ratio": 27370237.56,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1557357;TCP/2229:29;TCP/2230:29;TCP/2231:29;TCP/2171:28;TCP/2184:28;TCP/2185:28;TCP/2186:28",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:23:23.346059+00:00",
+   "last_ts": "2022-08-30T13:34:54.123408+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 1605783,
+   "control_packets": 0,
+   "rate_ratio": 25337942.05,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1439904;none:66;TCP/0:25;TCP/1:25;TCP/2:25;TCP/3:25;TCP/4:25;TCP/5:25",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:09.108684+00:00",
+   "last_ts": "2022-08-30T13:20:00.855803+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 1590743,
+   "control_packets": 0,
+   "rate_ratio": 25100623.16,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1426153;TCP/2311:26;TCP/2312:26;TCP/2313:26;TCP/2314:26;TCP/2315:26;TCP/2511:26;TCP/2512:26",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:23:23.850218+00:00",
+   "last_ts": "2022-08-30T13:34:55.116107+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 1505975,
+   "control_packets": 302,
+   "rate_ratio": 78685.61,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/3744:26;TCP/4182:26;TCP/2780:25;TCP/2781:25;TCP/3523:25;TCP/3524:25;TCP/2776:24;TCP/2777:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:27.055655+00:00",
+   "last_ts": "2022-08-30T13:45:21.209120+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 1433460,
+   "control_packets": 0,
+   "rate_ratio": 22618826.09,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1282801;TCP/2312:25;TCP/2313:25;TCP/2314:25;TCP/2161:24;TCP/2162:24;TCP/2163:24;TCP/2164:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:23:23.289130+00:00",
+   "last_ts": "2022-08-30T13:34:59.984195+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 1343687,
+   "control_packets": 0,
+   "rate_ratio": 21202281.59,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1204470;TCP/0:21;TCP/1:21;TCP/2:21;TCP/3:21;TCP/4:21;TCP/5:21;TCP/6:21",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:09.259957+00:00",
+   "last_ts": "2022-08-30T13:20:00.791212+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 1228334,
+   "control_packets": 0,
+   "rate_ratio": 19382105.62,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1099877;TCP/4248:22;TCP/4249:22;TCP/5450:22;TCP/5451:22;TCP/5924:22;TCP/5925:22;TCP/5926:22",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:23:47.293514+00:00",
+   "last_ts": "2022-08-30T13:35:00.085142+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 1205212,
+   "control_packets": 0,
+   "rate_ratio": 19017259.38,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1078952;TCP/0:19;TCP/1:19;TCP/2:19;TCP/3:19;TCP/4:19;TCP/5:19;TCP/6:19",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:11.200735+00:00",
+   "last_ts": "2022-08-30T13:20:00.396295+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 1186897,
+   "control_packets": 0,
+   "rate_ratio": 18728263.66,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1067153;none:57;TCP/3913:20;TCP/0:18;TCP/1:18;TCP/2:18;TCP/3:18;TCP/4:18",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:09.116444+00:00",
+   "last_ts": "2022-08-30T13:20:00.790050+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 1134811,
+   "control_packets": 0,
+   "rate_ratio": 17906389.19,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8009:993638;TCP/2992:20;TCP/6260:20;TCP/6261:20;TCP/6262:20;TCP/2980:19;TCP/2981:19;TCP/2982:19",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:27.258230+00:00",
+   "last_ts": "2022-08-30T13:45:21.231857+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 1134424,
+   "control_packets": 0,
+   "rate_ratio": 17900282.65,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1012138;none:52;TCP/645:19;TCP/646:19;TCP/647:19;TCP/648:19;TCP/649:19;TCP/650:19",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:09.104307+00:00",
+   "last_ts": "2022-08-30T13:19:56.513333+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 1030102,
+   "control_packets": 0,
+   "rate_ratio": 16254166.84,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:928789;TCP/2647:17;TCP/3287:17;TCP/3288:17;TCP/3289:17;TCP/3290:17;TCP/3291:17;TCP/3292:17",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:23:18.719209+00:00",
+   "last_ts": "2022-08-30T13:31:59.362980+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 1010213,
+   "control_packets": 0,
+   "rate_ratio": 15940334.69,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:910698;none:52;TCP/0:15;TCP/1:15;TCP/2:15;TCP/3:15;TCP/4:15;TCP/5:15",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:09.100902+00:00",
+   "last_ts": "2022-08-30T13:20:00.851721+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 932679,
+   "control_packets": 0,
+   "rate_ratio": 14716911.6,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:833306;TCP/0:15;TCP/1:15;TCP/2:15;TCP/3:15;TCP/4:15;TCP/5:15;TCP/6:15",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:10:09.152790+00:00",
+   "last_ts": "2022-08-30T13:20:00.856059+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 931781,
+   "control_packets": 0,
+   "rate_ratio": 14702741.89,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8009:812665;TCP/3037:17;TCP/3355:17;TCP/3356:17;TCP/3357:17;TCP/3358:17;TCP/3359:17;TCP/3360:17",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:27.220479+00:00",
+   "last_ts": "2022-08-30T13:45:21.103937+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 781359,
+   "control_packets": 0,
+   "rate_ratio": 12329205.79,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8009:687589;none:124;TCP/5186:15;TCP/5187:15;TCP/5188:15;TCP/5189:15;TCP/5190:15;TCP/5191:15",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:48.270065+00:00",
+   "last_ts": "2022-08-30T13:45:21.188821+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 740244,
+   "control_packets": 0,
+   "rate_ratio": 11680444.73,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8009:646116;TCP/3483:14;TCP/4288:14;TCP/4289:14;TCP/4290:14;TCP/4357:14;TCP/4358:14;TCP/4359:14",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:32.321946+00:00",
+   "last_ts": "2022-08-30T13:45:21.099455+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 689674,
+   "control_packets": 0,
+   "rate_ratio": 10882491.5,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8009:605752;TCP/7243:14;TCP/7245:14;TCP/7246:14;TCP/7247:14;TCP/7244:13;TCP/7577:13;TCP/7578:13",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:47.919278+00:00",
+   "last_ts": "2022-08-30T13:45:20.264243+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 578105,
+   "control_packets": 0,
+   "rate_ratio": 9122023.95,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8009:512045;TCP/2741:10;TCP/2742:10;TCP/2743:10;TCP/2744:10;TCP/2745:10;TCP/2746:10;TCP/2747:10",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-30T13:38:27.244870+00:00",
+   "last_ts": "2022-08-30T13:45:21.248973+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 75,
+   "control_packets": 81,
+   "rate_ratio": 14.61,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": true,
+   "reason": "rate",
+   "first_ts": "2022-08-30T13:12:03.235713+00:00",
+   "last_ts": "2022-08-30T13:42:07.210711+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 50,
+   "control_packets": 60,
+   "rate_ratio": 13.15,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": true,
+   "reason": "rate",
+   "first_ts": "2022-08-30T13:13:04.737774+00:00",
+   "last_ts": "2022-08-30T13:45:16.130750+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 40,
+   "control_packets": 59,
+   "rate_ratio": 10.7,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": true,
+   "reason": "rate",
+   "first_ts": "2022-08-30T13:39:44.997970+00:00",
+   "last_ts": "2022-08-30T13:44:17.816399+00:00",
+   "distinct_dst_ports": 2
+  }
+ ],
+ "victims": [
+  {
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "attack_packets": 11634391,
+   "first_ts": "2022-08-30T13:23:18.719209+00:00",
+   "last_ts": "2022-08-30T13:35:00.085142+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:11634070;none:321",
+   "reason": "both",
+   "rate_ratio": 44901019.11,
+   "new_service_pairs": "14000+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "attack_packets": 8418895,
+   "first_ts": "2022-08-30T13:10:09.100902+00:00",
+   "last_ts": "2022-08-30T13:20:00.856059+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:8418495;none:400",
+   "reason": "both",
+   "rate_ratio": 25337942.05,
+   "new_service_pairs": "14000+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 6361949,
+   "first_ts": "2022-08-30T13:38:27.055655+00:00",
+   "last_ts": "2022-08-30T13:45:21.248973+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:6361085;none:864",
+   "reason": "both",
+   "rate_ratio": 17906389.19,
+   "new_service_pairs": "14000+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 165,
+   "first_ts": "2022-08-30T13:12:03.235713+00:00",
+   "last_ts": "2022-08-30T13:45:16.130750+00:00",
+   "distinct_dst_ports": 2,
+   "protocols": "UDP:115;none:50",
+   "reason": "rate",
+   "rate_ratio": 14.61,
+   "new_service_pairs": 0,
+   "attacker_macs": "dc:a6:32:c9:e4:c6;dc:a6:32:c9:e5:02;dc:a6:32:c9:e6:f4"
+  }
+ ],
+ "bcast_mcast": {
+  "broadcast": 4573,
+  "multicast": 49
+ },
+ "cover": [
+  {
+   "pcap": "DDoS-SYN_Flood10",
+   "group": "G1",
+   "n_victims": 1,
+   "attack_packets": 6361949,
+   "window_start": "2022-08-30T13:38:27.055655+00:00",
+   "window_end": "2022-08-30T13:45:21.248973+00:00"
+  },
+  {
+   "pcap": "DDoS-SYN_Flood10",
+   "group": "G2",
+   "n_victims": 2,
+   "attack_packets": 20053286,
+   "window_start": "2022-08-30T13:10:09.100902+00:00",
+   "window_end": "2022-08-30T13:35:00.085142+00:00"
+  },
+  {
+   "pcap": "DDoS-SYN_Flood10",
+   "group": "GEN",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "DDoS-SYN_Flood10",
+   "group": "gateway",
+   "n_victims": 1,
+   "attack_packets": 165,
+   "window_start": "2022-08-30T13:12:03.235713+00:00",
+   "window_end": "2022-08-30T13:45:16.130750+00:00"
+  }
+ ],
+ "spoof": {
+  "distinct_ip_src": 11,
+  "distinct_method": "exact",
+  "flag": true,
+  "collide_with_device_ips": 0,
+  "collide_with_any_lan_host_ip": 0,
+  "packets_from_device_ips": 0,
+  "top_ip_src": [
+   {
+    "ip_src": "192.168.137.224",
+    "packets": 5029239,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.240",
+    "packets": 4093091,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.96",
+    "packets": 3676375,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.17",
+    "packets": 3670310,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.134",
+    "packets": 3577019,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.195",
+    "packets": 3517146,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.58",
+    "packets": 2850472,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.213",
+    "packets": 68,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.242",
+    "packets": 37,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.90",
+    "packets": 33,
+    "is_device_ip": false
+   }
+  ]
+ },
+ "window": {
+  "first_utc": "2022-08-30T13:10:09.100902+00:00",
+  "last_utc": "2022-08-30T13:45:21.248973+00:00",
+  "active_minutes": 32,
+  "pkts_per_min_over_capture": 750516.19,
+  "pkts_per_min_over_active_minutes": 825625.69,
+  "peak_pkts_per_min": 1128595
+ },
+ "xcheck": {
+  "outcomes": {
+   "agree": 26413746,
+   "no_ip_dst (non-IPv4)": 6231,
+   "multicast ip.dst": 25,
+   "external ip.dst via gateway MAC": 19,
+   "limited_broadcast ip.dst": 1
+  },
+  "disagree": 0,
+  "top_disagreements": []
+ },
+ "per_min": {
+  "27697750": 751721,
+  "27697751": 891324,
+  "27697752": 789955,
+  "27697753": 858845,
+  "27697754": 989407,
+  "27697755": 858629,
+  "27697756": 755573,
+  "27697757": 870420,
+  "27697758": 751365,
+  "27697759": 887820,
+  "27697760": 15036,
+  "27697763": 783619,
+  "27697764": 1012887,
+  "27697765": 1027764,
+  "27697766": 1078583,
+  "27697767": 1128595,
+  "27697768": 823261,
+  "27697769": 1013402,
+  "27697770": 1103527,
+  "27697771": 1084537,
+  "27697772": 1044833,
+  "27697773": 854908,
+  "27697774": 679556,
+  "27697775": 1572,
+  "27697778": 519101,
+  "27697779": 909949,
+  "27697780": 856806,
+  "27697781": 972369,
+  "27697782": 980066,
+  "27697783": 960665,
+  "27697784": 857831,
+  "27697785": 306096
+ },
+ "burst_threshold": 346.29,
+ "bursts": [
+  {
+   "start": "2022-08-30T13:10:00.000000+00:00",
+   "end": "2022-08-30T13:46:00.000000+00:00",
+   "minutes": 36,
+   "packets": 26420022,
+   "peak_per_min": 1128595
+  }
+ ],
+ "per_mac": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3517920,
+   "pkt_per_min": 99933.9,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 2,
+   "bursts": "13:10:00-13:35:00 (2,777,598 pkts); 13:38:00-13:46:00 (740,322 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 4093872,
+   "pkt_per_min": 116295.03,
+   "control_pkt_per_min": 0.03,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 2,
+   "bursts": "13:10:00-13:21:00 (1,187,074 pkts); 13:24:00-13:46:00 (2,906,758 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 171,
+   "pkt_per_min": 4.86,
+   "control_pkt_per_min": 0.46,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 5030100,
+   "pkt_per_min": 142890.55,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 2,
+   "bursts": "13:10:00-13:34:00 (4,451,782 pkts); 13:38:00-13:46:00 (578,261 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 105,
+   "pkt_per_min": 2.98,
+   "control_pkt_per_min": 0.27,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3677130,
+   "pkt_per_min": 104456.6,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 2,
+   "bursts": "13:10:00-13:35:00 (2,745,249 pkts); 13:38:00-13:46:00 (931,881 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 2851409,
+   "pkt_per_min": 81000.26,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 1,
+   "bursts": "13:10:00-13:46:00 (2,851,409 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 69,
+   "pkt_per_min": 1.96,
+   "control_pkt_per_min": 0.22,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "device": "Raspberry Pi 4 (8 GB)",
+   "packets": 3671284,
+   "pkt_per_min": 104290.53,
+   "control_pkt_per_min": 33.42,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 3,
+   "bursts": "13:10:00-13:20:00 (1,134,607 pkts); 13:23:00-13:32:00 (1,030,397 pkts); 13:38:00-13:46:00 (1,506,104 pkts)"
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "device": "Raspberry Pi 4 (4 GB)",
+   "packets": 3577962,
+   "pkt_per_min": 101639.52,
+   "control_pkt_per_min": 0.03,
+   "victims": 3,
+   "victims_by_group": "G1 1, G2 2",
+   "burst_windows": 3,
+   "bursts": "13:10:00-13:20:00 (1,205,311 pkts); 13:23:00-13:35:00 (1,591,071 pkts); 13:38:00-13:46:00 (781,500 pkts)"
+  }
+ ],
+ "capture": {
+  "first_utc": "2022-08-30T13:10:09.100902+00:00",
+  "last_utc": "2022-08-30T13:45:21.248973+00:00",
+  "minutes": 35.2
+ },
+ "tcp_flags": {
+  "SYN": 26266966,
+  "RST": 146684
+ },
+ "protocols": {
+  "TCP": 26413650,
+  "none": 6231,
+  "UDP": 139,
+  "IGMP": 2
+ },
+ "background_pct": 0.519,
+ "gateway_ip_macs": [
+  "3c:18:a0:41:c3:a0"
+ ],
+ "caps": {
+  "census_overflow": 0,
+  "xkey_overflow_packets": 0,
+  "pairs_with_dport_cap": 0,
+  "pairs_with_new_service_cap": 21,
+  "lan_xcheck_keys": 41
+ },
+ "stats_version": 2,
+ "sha256": "ea6223afa0458d117e90bb2972145cfa002d2172f7a5a706ca32d5fa4c59f1c9",
+ "params": {
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats_version": 2
+ },
+ "run_utc": "2026-10-10T20:35:38+00:00",
+ "png": "attack_rate_DDoS-SYN_Flood10.png",
+ "peak_rss": {
+  "self_mb": 298.7,
+  "tshark_mb": 426.1
+ }
+}

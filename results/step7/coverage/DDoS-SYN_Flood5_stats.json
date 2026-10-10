@@ -1,0 +1,995 @@
+{
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap",
+ "stem": "DDoS-SYN_Flood5",
+ "S": {
+  "packets": 26720136,
+  "background": 115321,
+  "att_src": 26604267,
+  "att_dst": 548,
+  "t_min": 1661793634.262862,
+  "t_max": 1661795830.785191,
+  "att_first": 1661793634.262862,
+  "att_last": 1661795830.785191,
+  "tshark_seconds": 752.8,
+  "minutes": 36.608705484867095
+ },
+ "census": [
+  {
+   "rank": 1,
+   "eth_src": "dc:a6:32:c9:e4:90",
+   "tag": "attacker",
+   "packets": 4323055,
+   "pct": 16.179
+  },
+  {
+   "rank": 2,
+   "eth_src": "dc:a6:32:c9:e5:a4",
+   "tag": "attacker",
+   "packets": 4289716,
+   "pct": 16.054
+  },
+  {
+   "rank": 3,
+   "eth_src": "dc:a6:32:dc:27:d5",
+   "tag": "attacker",
+   "packets": 4011759,
+   "pct": 15.014
+  },
+  {
+   "rank": 4,
+   "eth_src": "dc:a6:32:c9:e4:d5",
+   "tag": "attacker",
+   "packets": 3973818,
+   "pct": 14.872
+  },
+  {
+   "rank": 5,
+   "eth_src": "dc:a6:32:c9:e4:ab",
+   "tag": "attacker",
+   "packets": 3785269,
+   "pct": 14.166
+  },
+  {
+   "rank": 6,
+   "eth_src": "dc:a6:32:c9:e5:ef",
+   "tag": "attacker",
+   "packets": 3650171,
+   "pct": 13.661
+  },
+  {
+   "rank": 7,
+   "eth_src": "e4:5f:01:55:90:c4",
+   "tag": "attacker",
+   "packets": 2570250,
+   "pct": 9.619
+  },
+  {
+   "rank": 8,
+   "eth_src": "3c:18:a0:41:c3:a0",
+   "tag": "gateway",
+   "packets": 46880,
+   "pct": 0.175
+  },
+  {
+   "rank": 9,
+   "eth_src": "ac:17:02:05:34:27",
+   "tag": "Fibaro Home Center Lite",
+   "packets": 12144,
+   "pct": 0.045
+  },
+  {
+   "rank": 10,
+   "eth_src": "ee:06:3b:b8:d1:df",
+   "tag": "unknown",
+   "packets": 5303,
+   "pct": 0.02
+  },
+  {
+   "rank": 11,
+   "eth_src": "a0:d0:dc:c4:08:ff",
+   "tag": "Amazon Alexa Echo Dot 2",
+   "packets": 3977,
+   "pct": 0.015
+  },
+  {
+   "rank": 12,
+   "eth_src": "1c:12:b0:9b:0c:ec",
+   "tag": "Unidentified Amazon device (1c:12:b0)",
+   "packets": 3525,
+   "pct": 0.013
+  },
+  {
+   "rank": 13,
+   "eth_src": "9c:8e:cd:1d:ab:9f",
+   "tag": "AMCREST WiFi Camera",
+   "packets": 2666,
+   "pct": 0.01
+  },
+  {
+   "rank": 14,
+   "eth_src": "e8:1b:69:f8:d4:e3",
+   "tag": "Unknown",
+   "packets": 2646,
+   "pct": 0.01
+  },
+  {
+   "rank": 15,
+   "eth_src": "40:5d:82:35:14:c8",
+   "tag": "Arlo Q Indoor Camera",
+   "packets": 2095,
+   "pct": 0.008
+  },
+  {
+   "rank": 16,
+   "eth_src": "2c:71:ff:05:f1:15",
+   "tag": "Amazon Echo Show",
+   "packets": 2078,
+   "pct": 0.008
+  },
+  {
+   "rank": 17,
+   "eth_src": "3c:37:86:6f:b9:51",
+   "tag": "Arlo Base Station",
+   "packets": 1843,
+   "pct": 0.007
+  },
+  {
+   "rank": 18,
+   "eth_src": "10:2c:6b:1b:43:be",
+   "tag": "unknown",
+   "packets": 1801,
+   "pct": 0.007
+  },
+  {
+   "rank": 19,
+   "eth_src": "08:7c:39:ce:6e:2a",
+   "tag": "Amazon Alexa Echo Studio",
+   "packets": 1482,
+   "pct": 0.006
+  },
+  {
+   "rank": 20,
+   "eth_src": "7c:78:b2:86:0d:81",
+   "tag": "Wyze Camera",
+   "packets": 1227,
+   "pct": 0.005
+  },
+  {
+   "rank": 21,
+   "eth_src": "00:a3:d1:07:6f:03",
+   "tag": "Unknown",
+   "packets": 1012,
+   "pct": 0.004
+  },
+  {
+   "rank": 22,
+   "eth_src": "44:01:bb:ec:10:4a",
+   "tag": "HeimVision Smart WiFi Camera",
+   "packets": 982,
+   "pct": 0.004
+  },
+  {
+   "rank": 23,
+   "eth_src": "e8:1b:69:f8:d6:e6",
+   "tag": "Unknown",
+   "packets": 965,
+   "pct": 0.004
+  },
+  {
+   "rank": 24,
+   "eth_src": "28:6d:97:9e:f4:d5",
+   "tag": "Aeotec Smart Home Hub",
+   "packets": 949,
+   "pct": 0.004
+  },
+  {
+   "rank": 25,
+   "eth_src": "84:e3:42:42:ed:0b",
+   "tag": "Lumiman Bulb",
+   "packets": 946,
+   "pct": 0.004
+  },
+  {
+   "rank": 26,
+   "eth_src": "b8:f0:09:03:29:79",
+   "tag": "GoSund Smart Plug WP2 (1)",
+   "packets": 933,
+   "pct": 0.003
+  },
+  {
+   "rank": 27,
+   "eth_src": "44:bb:3b:00:39:07",
+   "tag": "Nest Indoor Camera",
+   "packets": 869,
+   "pct": 0.003
+  },
+  {
+   "rank": 28,
+   "eth_src": "50:02:91:10:09:8f",
+   "tag": "Unidentified ESP plug (2)",
+   "packets": 824,
+   "pct": 0.003
+  },
+  {
+   "rank": 29,
+   "eth_src": "28:6d:97:7a:2b:2d",
+   "tag": "SmartThings Hub",
+   "packets": 766,
+   "pct": 0.003
+  },
+  {
+   "rank": 30,
+   "eth_src": "50:02:91:10:ac:d8",
+   "tag": "GoSund Smart Plug WP2 (2)",
+   "packets": 757,
+   "pct": 0.003
+  }
+ ],
+ "pairs": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 2469912,
+   "control_packets": 0,
+   "rate_ratio": 37476126.93,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:2218521;TCP/1427:38;TCP/1428:38;TCP/1429:38;TCP/1430:38;TCP/1431:38;TCP/1432:38;TCP/1433:38",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:24.514600+00:00",
+   "last_ts": "2022-08-29T17:48:00.405290+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 2158529,
+   "control_packets": 0,
+   "rate_ratio": 32751493.49,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1933258;TCP/1427:34;TCP/1428:34;TCP/1429:34;TCP/1430:34;TCP/1431:34;TCP/1432:34;TCP/1433:34",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:24.390173+00:00",
+   "last_ts": "2022-08-29T17:48:00.420271+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 2104627,
+   "control_packets": 0,
+   "rate_ratio": 31933635.12,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1885989;TCP/1427:33;TCP/1428:33;TCP/1429:33;TCP/1430:33;TCP/1431:33;TCP/1432:33;TCP/1433:33",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:25.360695+00:00",
+   "last_ts": "2022-08-29T17:48:00.447156+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 2084813,
+   "control_packets": 0,
+   "rate_ratio": 31632996.08,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1867778;none:94;TCP/1777:35;TCP/1427:33;TCP/1440:33;TCP/1441:33;TCP/1442:33;TCP/1443:33",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:24.137008+00:00",
+   "last_ts": "2022-08-29T17:48:00.429811+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 2024141,
+   "control_packets": 0,
+   "rate_ratio": 30712416.09,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1818680;none:86;TCP/0:31;TCP/1:31;TCP/2:31;TCP/3:31;TCP/4:31;TCP/5:31",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.263512+00:00",
+   "last_ts": "2022-08-29T17:32:00.509837+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 1941951,
+   "control_packets": 0,
+   "rate_ratio": 29465342.15,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1743284;TCP/1427:30;TCP/1428:30;TCP/1429:30;TCP/1430:30;TCP/1431:30;TCP/1432:30;TCP/1433:30",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:24.371359+00:00",
+   "last_ts": "2022-08-29T17:48:00.450008+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 1922804,
+   "control_packets": 0,
+   "rate_ratio": 29174823.54,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1722766;TCP/0:30;TCP/1:30;TCP/2:30;TCP/3:30;TCP/8:30;TCP/9:30;TCP/10:30",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.304533+00:00",
+   "last_ts": "2022-08-29T17:31:39.793367+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 1868116,
+   "control_packets": 0,
+   "rate_ratio": 28345039.15,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1676338;TCP/1427:29;TCP/1428:29;TCP/1429:29;TCP/1430:29;TCP/1431:29;TCP/1432:29;TCP/1433:29",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:24.458595+00:00",
+   "last_ts": "2022-08-29T17:48:00.354476+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 1768402,
+   "control_packets": 0,
+   "rate_ratio": 26832072.49,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1590568;none:107;TCP/0:28;TCP/1:28;TCP/2:28;TCP/3:28;TCP/4:28;TCP/5:28",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.274603+00:00",
+   "last_ts": "2022-08-29T17:31:57.765520+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 1702602,
+   "control_packets": 0,
+   "rate_ratio": 25833685.03,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1531892;TCP/974:26;TCP/975:26;TCP/976:26;TCP/977:26;TCP/978:26;TCP/979:26;TCP/980:26",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.262862+00:00",
+   "last_ts": "2022-08-29T17:31:42.037041+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 1700948,
+   "control_packets": 0,
+   "rate_ratio": 25808588.79,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1522016;none:93;TCP/0:27;TCP/1:27;TCP/2:27;TCP/3:27;TCP/4:27;TCP/5:27",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.292395+00:00",
+   "last_ts": "2022-08-29T17:31:39.697007+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 1683843,
+   "control_packets": 0,
+   "rate_ratio": 25549053.57,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1510434;none:71;TCP/0:26;TCP/1:26;TCP/2:26;TCP/3:26;TCP/4:26;TCP/5:26",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.273711+00:00",
+   "last_ts": "2022-08-29T17:31:39.712743+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 1647288,
+   "control_packets": 0,
+   "rate_ratio": 24994402.3,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:1474633;TCP/0:26;TCP/1:26;TCP/2:26;TCP/3:26;TCP/4:26;TCP/5:26;TCP/6:26",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:20:34.283323+00:00",
+   "last_ts": "2022-08-29T17:31:41.125071+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 646622,
+   "control_packets": 0,
+   "rate_ratio": 9811235.44,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:581034;TCP/1447:11;TCP/1448:11;TCP/1480:11;TCP/1488:11;TCP/1520:11;TCP/1521:11;TCP/1553:11",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:36:24.377398+00:00",
+   "last_ts": "2022-08-29T17:47:59.677359+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 184999,
+   "control_packets": 0,
+   "rate_ratio": 2807001.22,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:166646;TCP/1654:3;TCP/1655:3;TCP/1656:3;TCP/1657:3;TCP/1658:3;TCP/1659:3;TCP/1660:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:22.105898+00:00",
+   "last_ts": "2022-08-29T17:57:10.785191+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 158185,
+   "control_packets": 0,
+   "rate_ratio": 2400150.75,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:138263;none:15;TCP/1654:5;TCP/2211:4;TCP/1655:3;TCP/1656:3;TCP/1657:3;TCP/1658:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:19.808871+00:00",
+   "last_ts": "2022-08-29T17:57:10.759815+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 141979,
+   "control_packets": 0,
+   "rate_ratio": 2154256.11,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:123626;TCP/1654:3;TCP/1655:3;TCP/1656:3;TCP/1657:3;TCP/1658:3;TCP/1659:3;TCP/1660:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:19.915357+00:00",
+   "last_ts": "2022-08-29T17:57:10.776361+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 140074,
+   "control_packets": 0,
+   "rate_ratio": 2125351.43,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:122071;TCP/1654:3;TCP/1655:3;TCP/1656:3;TCP/1657:3;TCP/1658:3;TCP/1659:3;TCP/1660:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:19.940254+00:00",
+   "last_ts": "2022-08-29T17:57:10.777458+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 134404,
+   "control_packets": 0,
+   "rate_ratio": 2039320.17,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:117218;TCP/1654:3;TCP/1655:3;TCP/1656:3;TCP/1657:3;TCP/1658:3;TCP/1659:3;TCP/1660:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:19.945761+00:00",
+   "last_ts": "2022-08-29T17:57:10.698091+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 116900,
+   "control_packets": 0,
+   "rate_ratio": 1773730.9,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6668:105212;TCP/1654:2;TCP/1655:2;TCP/1656:2;TCP/1657:2;TCP/1658:2;TCP/1659:2;TCP/1660:2",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:19.951349+00:00",
+   "last_ts": "2022-08-29T17:57:10.666950+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 515,
+   "control_packets": 0,
+   "rate_ratio": 7814.13,
+   "new_service_pairs": 276,
+   "new_services": "TCP/6668:240;TCP/1654:1;TCP/1686:1;TCP/1694:1;TCP/1726:1;TCP/1727:1;TCP/1759:1;TCP/1767:1",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:56:19.937807+00:00",
+   "last_ts": "2022-08-29T17:57:09.715198+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 58,
+   "control_packets": 60,
+   "rate_ratio": 14.67,
+   "new_service_pairs": 1,
+   "new_services": "ICMP:1",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:21:01.345653+00:00",
+   "last_ts": "2022-08-29T17:56:46.903671+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 43,
+   "control_packets": 59,
+   "rate_ratio": 11.06,
+   "new_service_pairs": 1,
+   "new_services": "ICMP:2",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T17:38:02.368863+00:00",
+   "last_ts": "2022-08-29T17:47:20.835771+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 22,
+   "control_packets": 81,
+   "rate_ratio": 4.12,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2022-08-29T17:37:41.492047+00:00",
+   "last_ts": "2022-08-29T17:44:11.847153+00:00",
+   "distinct_dst_ports": 2
+  }
+ ],
+ "victims": [
+  {
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "attack_packets": 13274570,
+   "first_ts": "2022-08-29T17:36:24.137008+00:00",
+   "last_ts": "2022-08-29T17:48:00.450008+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:13274070;none:500",
+   "reason": "both",
+   "rate_ratio": 37476126.93,
+   "new_service_pairs": "14000+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "attack_packets": 12450028,
+   "first_ts": "2022-08-29T17:20:34.262862+00:00",
+   "last_ts": "2022-08-29T17:32:00.509837+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:12449443;none:585",
+   "reason": "both",
+   "rate_ratio": 30712416.09,
+   "new_service_pairs": "14000+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "attack_packets": 877056,
+   "first_ts": "2022-08-29T17:56:19.808871+00:00",
+   "last_ts": "2022-08-29T17:57:10.785191+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:877023;none:33",
+   "reason": "both",
+   "rate_ratio": 2807001.22,
+   "new_service_pairs": "12276+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 101,
+   "first_ts": "2022-08-29T17:21:01.345653+00:00",
+   "last_ts": "2022-08-29T17:56:46.903671+00:00",
+   "distinct_dst_ports": 2,
+   "protocols": "UDP:56;none:42;ICMP:3",
+   "reason": "both",
+   "rate_ratio": 14.67,
+   "new_service_pairs": 2,
+   "attacker_macs": "dc:a6:32:c9:e5:02;dc:a6:32:c9:e6:f4"
+  }
+ ],
+ "bcast_mcast": {
+  "broadcast": 2470,
+  "multicast": 20
+ },
+ "cover": [
+  {
+   "pcap": "DDoS-SYN_Flood5",
+   "group": "G1",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "DDoS-SYN_Flood5",
+   "group": "G2",
+   "n_victims": 3,
+   "attack_packets": 26601654,
+   "window_start": "2022-08-29T17:20:34.262862+00:00",
+   "window_end": "2022-08-29T17:57:10.785191+00:00"
+  },
+  {
+   "pcap": "DDoS-SYN_Flood5",
+   "group": "GEN",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "DDoS-SYN_Flood5",
+   "group": "gateway",
+   "n_victims": 1,
+   "attack_packets": 101,
+   "window_start": "2022-08-29T17:21:01.345653+00:00",
+   "window_end": "2022-08-29T17:56:46.903671+00:00"
+  }
+ ],
+ "spoof": {
+  "distinct_ip_src": 10,
+  "distinct_method": "exact",
+  "flag": false,
+  "collide_with_device_ips": 0,
+  "collide_with_any_lan_host_ip": 0,
+  "packets_from_device_ips": 0,
+  "top_ip_src": [
+   {
+    "ip_src": "192.168.137.195",
+    "packets": 4322582,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.96",
+    "packets": 4289280,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.17",
+    "packets": 4011184,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.224",
+    "packets": 3973326,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.240",
+    "packets": 3784680,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.58",
+    "packets": 3649637,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.134",
+    "packets": 2569848,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.242",
+    "packets": 37,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.90",
+    "packets": 28,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.213",
+    "packets": 13,
+    "is_device_ip": false
+   }
+  ]
+ },
+ "window": {
+  "first_utc": "2022-08-29T17:20:34.262862+00:00",
+  "last_utc": "2022-08-29T17:57:10.785191+00:00",
+  "active_minutes": 28,
+  "pkts_per_min_over_capture": 726719.69,
+  "pkts_per_min_over_active_minutes": 950152.39,
+  "peak_pkts_per_min": 1280428
+ },
+ "xcheck": {
+  "outcomes": {
+   "agree": 26600568,
+   "no_ip_dst (non-IPv4)": 3652,
+   "external ip.dst via gateway MAC": 37,
+   "multicast ip.dst": 10
+  },
+  "disagree": 0,
+  "top_disagreements": []
+ },
+ "per_min": {
+  "27696560": 461153,
+  "27696561": 1024329,
+  "27696562": 1012903,
+  "27696563": 1066699,
+  "27696564": 1097261,
+  "27696565": 1098123,
+  "27696566": 1153755,
+  "27696567": 1208857,
+  "27696568": 1048798,
+  "27696569": 1180575,
+  "27696570": 975358,
+  "27696571": 1117962,
+  "27696572": 5476,
+  "27696576": 716168,
+  "27696577": 1073229,
+  "27696578": 1090270,
+  "27696579": 1120210,
+  "27696580": 1155367,
+  "27696581": 1118576,
+  "27696582": 1088932,
+  "27696583": 1228906,
+  "27696584": 1249441,
+  "27696585": 1093127,
+  "27696586": 1052786,
+  "27696587": 1280428,
+  "27696588": 8461,
+  "27696596": 700045,
+  "27696597": 177072
+ },
+ "burst_threshold": 346.29,
+ "bursts": [
+  {
+   "start": "2022-08-29T17:20:00.000000+00:00",
+   "end": "2022-08-29T17:33:00.000000+00:00",
+   "minutes": 13,
+   "packets": 12451249,
+   "peak_per_min": 1208857
+  },
+  {
+   "start": "2022-08-29T17:36:00.000000+00:00",
+   "end": "2022-08-29T17:49:00.000000+00:00",
+   "minutes": 13,
+   "packets": 13275901,
+   "peak_per_min": 1280428
+  },
+  {
+   "start": "2022-08-29T17:56:00.000000+00:00",
+   "end": "2022-08-29T17:58:00.000000+00:00",
+   "minutes": 2,
+   "packets": 877117,
+   "peak_per_min": 700045
+  }
+ ],
+ "per_mac": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 4323055,
+   "pkt_per_min": 118088.17,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:33:00 (2,024,280 pkts); 17:36:00-17:49:00 (2,158,691 pkts); 17:56:00-17:58:00 (140,084 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3785269,
+   "pkt_per_min": 103398.06,
+   "control_pkt_per_min": 0.03,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:32:00 (1,701,127 pkts); 17:36:00-17:49:00 (1,942,154 pkts); 17:56:00-17:58:00 (141,987 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 56,
+   "pkt_per_min": 1.53,
+   "control_pkt_per_min": 0.46,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3973818,
+   "pkt_per_min": 108548.44,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:32:00 (1,684,013 pkts); 17:36:00-17:49:00 (2,104,798 pkts); 17:56:00-17:58:00 (185,006 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 86,
+   "pkt_per_min": 2.35,
+   "control_pkt_per_min": 0.27,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 4289716,
+   "pkt_per_min": 117177.48,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:32:00 (1,702,795 pkts); 17:36:00-17:49:00 (2,470,013 pkts); 17:56:00-17:58:00 (116,908 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3650171,
+   "pkt_per_min": 99707.73,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:32:00 (1,647,468 pkts); 17:36:00-17:48:00 (1,868,222 pkts); 17:56:00-17:58:00 (134,412 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 87,
+   "pkt_per_min": 2.38,
+   "control_pkt_per_min": 0.22,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "device": "Raspberry Pi 4 (8 GB)",
+   "packets": 4011759,
+   "pkt_per_min": 109584.84,
+   "control_pkt_per_min": 33.42,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:32:00 (1,768,578 pkts); 17:36:00-17:48:00 (2,084,926 pkts); 17:56:00-17:58:00 (158,194 pkts)"
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "device": "Raspberry Pi 4 (4 GB)",
+   "packets": 2570250,
+   "pkt_per_min": 70208.71,
+   "control_pkt_per_min": 0.03,
+   "victims": 3,
+   "victims_by_group": "G2 3",
+   "burst_windows": 3,
+   "bursts": "17:20:00-17:32:00 (1,922,937 pkts); 17:36:00-17:48:00 (646,792 pkts); 17:56:00-17:57:00 (480 pkts)"
+  }
+ ],
+ "capture": {
+  "first_utc": "2022-08-29T17:20:34.262862+00:00",
+  "last_utc": "2022-08-29T17:57:10.785191+00:00",
+  "minutes": 36.61
+ },
+ "tcp_flags": {
+  "SYN": 26600392,
+  "RST": 144
+ },
+ "protocols": {
+  "TCP": 26600536,
+  "none": 3652,
+  "UDP": 76,
+  "ICMP": 3
+ },
+ "background_pct": 0.432,
+ "gateway_ip_macs": [
+  "3c:18:a0:41:c3:a0"
+ ],
+ "caps": {
+  "census_overflow": 0,
+  "xkey_overflow_packets": 0,
+  "pairs_with_dport_cap": 0,
+  "pairs_with_new_service_cap": 20,
+  "lan_xcheck_keys": 32
+ },
+ "stats_version": 2,
+ "sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad",
+ "params": {
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats_version": 2
+ },
+ "run_utc": "2026-10-10T20:22:46+00:00",
+ "png": "attack_rate_DDoS-SYN_Flood5.png",
+ "peak_rss": {
+  "self_mb": 298.7,
+  "tshark_mb": 426.1
+ }
+}

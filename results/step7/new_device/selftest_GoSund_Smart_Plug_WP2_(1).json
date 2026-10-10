@@ -1,0 +1,318 @@
+{
+  "mode": "self-test",
+  "run_utc": "2026-10-10T18:16:49+00:00",
+  "device": {
+    "mac": "b8:f0:09:03:29:79",
+    "name": "GoSund Smart Plug WP2 (1)",
+    "ips_in_map": [
+      "192.168.137.79"
+    ]
+  },
+  "pcap": {
+    "path": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+    "sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8"
+  },
+  "behaviour_groups": {
+    "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json",
+    "sha256": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532",
+    "version": "1.0"
+  },
+  "flows": {
+    "action": "extracted",
+    "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/BenignTraffic.pcap_Flow__singlepkt.csv",
+    "meta": {
+      "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/selftest/flows/BenignTraffic.pcap_Flow__singlepkt.csv",
+      "input_pcap": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+      "input_pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+      "jar_path": "/home/krithikk/tools/CICFlowMeter-singlepkt/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar",
+      "jar_sha256": "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d",
+      "jar_sha256_expected": "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d",
+      "upstream": "ahlashkari/CICFlowMeter",
+      "commit": "98a5eba",
+      "patch": "extractor/guard_gt0.patch",
+      "build": "singlepkt",
+      "flow_timeout_s": 120,
+      "activity_timeout_s": 5,
+      "timeouts_check": "verified against /home/krithikk/tools/CICFlowMeter-singlepkt/src/main/java/cic/cs/unb/ca/ifm/Cmd.java",
+      "tz": "UTC",
+      "started_utc": "2026-10-10T17:57:17+00:00",
+      "ended_utc": "2026-10-10T18:11:54+00:00",
+      "elapsed_s": 877.816,
+      "row_count": 223108,
+      "cfm_reported_flows": 223109,
+      "packets": {
+        "total": 3664164,
+        "valid": 3607371,
+        "discarded": 56793
+      },
+      "wrapper": "/mnt/d/Projects/Company Project/Paper_Implemetation/extraction/run_cicflowmeter.py",
+      "wrapper_git_commit": "fb5822423f6a95d16f632423b00f98645e29114b-dirty"
+    },
+    "identical_to_existing_benign_csv": true
+  },
+  "check": {
+    "overall": "WARN",
+    "json": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/flow_check/BenignTraffic.pcap_Flow__singlepkt_check.json",
+    "checks": {
+      "1 Structure": "PASS",
+      "2 Packet total": "WARN",
+      "3 Single-packet flows": "PASS",
+      "4 Time span": "PASS",
+      "5 Flow duration": "PASS",
+      "6 NaN / Infinity": "WARN",
+      "7 Protocol mix": "PASS",
+      "8 Duplicates": "PASS",
+      "9 IPs": "PASS"
+    }
+  },
+  "map": {
+    "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv",
+    "rows": 109,
+    "packets": 3664164,
+    "subnets": [
+      "192.168.137.0/24",
+      "10.22.22.0/24"
+    ],
+    "ip_conflicts_overlapping": 1,
+    "ip_conflicts_sequential": 0,
+    "identical_to_config_ip_mac_map": true
+  },
+  "tag": {
+    "conflicts": 1,
+    "ambiguous_before": 10673,
+    "resolved_flows": 10568,
+    "flows": 223108,
+    "ambiguous_after": 105,
+    "tagged_csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/selftest/BenignTraffic_tagged.csv",
+    "identical_to_existing_benign_tagged_csv": true
+  },
+  "normalisation": "05 time-normalises only `log_flows_per_hour` = usable flows / capture hours, where capture hours = first..last Timestamp over ALL flows in the input CSV (every device shares one window); all other features are per-flow distributions or shares, and gap_cv is scale-free. 06c applies exactly this to the pcap's flow CSV.",
+  "counts": {
+    "all_flows_in_capture": 223108,
+    "device_on_either_side": 542,
+    "owned_by_device": 542,
+    "owned_and_exclude_reason_blank": 542,
+    "dropped_other_endpoint_attacker": 0,
+    "usable_for_fingerprint": 542
+  },
+  "fingerprint": {
+    "mac": "b8:f0:09:03:29:79",
+    "device_name": "GoSund Smart Plug WP2 (1)",
+    "category": "Power Outlet",
+    "vendor_family": "",
+    "usable_flows": 542,
+    "confidence": "high",
+    "log_flows_per_hour": 1.774848,
+    "log_median_bytes": 3.163012,
+    "log_p90_bytes": 3.67219,
+    "median_packets": 16.5,
+    "pct_single_packet": 0.369,
+    "log_median_duration_us": 8.078752,
+    "upload_ratio": 0.973331,
+    "pct_tcp": 49.077,
+    "pct_udp": 50.554,
+    "pct_dns": 0.0,
+    "pct_discovery": 0.0,
+    "gap_cv": 0.623783,
+    "pct_internet": 49.077,
+    "pct_device": 0.0,
+    "log_distinct_peers": 0.845098,
+    "capture_hours": 9.2578
+  },
+  "scaled": {
+    "log_flows_per_hour": -0.09219746366130728,
+    "log_median_bytes": 0.8452305007107285,
+    "log_p90_bytes": 0.06657975671713158,
+    "median_packets": 0.7010309278350515,
+    "pct_single_packet": -0.12796502685052755,
+    "log_median_duration_us": 0.1065733530071903,
+    "upload_ratio": 0.2191352861131712,
+    "pct_udp": 0.03676659903809507,
+    "pct_dns": -0.23967764873192698,
+    "pct_discovery": 0.0,
+    "gap_cv": -0.3789186699333097,
+    "pct_internet": -0.16686939457337943,
+    "pct_device": 0.0,
+    "log_distinct_peers": -0.2194641331121499
+  },
+  "placement": {
+    "decision": "G2",
+    "reason": "nearest centroid G2 within its max spread (0.709 <= 4.445)",
+    "nearest": "G2",
+    "distance": {
+      "G1": 3.3835,
+      "G2": 0.709
+    },
+    "ratio_to_max_spread": {
+      "G1": 0.568,
+      "G2": 0.159
+    },
+    "ratio_to_median_spread": {
+      "G1": 1.277,
+      "G2": 0.651
+    }
+  },
+  "context": [
+    {
+      "device": "Amazon Alexa Echo Dot 1",
+      "locked_group": "G1",
+      "usable_flows": 1573,
+      "d_G1": 2.5711,
+      "d_G2": 3.2212,
+      "d_G1/max": 0.432,
+      "d_G2/max": 0.725
+    },
+    {
+      "device": "Amazon Alexa Echo Dot 2",
+      "locked_group": "G1",
+      "usable_flows": 372,
+      "d_G1": 5.9531,
+      "d_G2": 7.1078,
+      "d_G1/max": 1.0,
+      "d_G2/max": 1.599
+    },
+    {
+      "device": "Amazon Alexa Echo Studio",
+      "locked_group": "G1",
+      "usable_flows": 3252,
+      "d_G1": 3.056,
+      "d_G2": 3.9344,
+      "d_G1/max": 0.513,
+      "d_G2/max": 0.885
+    },
+    {
+      "device": "Amazon Echo Show",
+      "locked_group": "G1",
+      "usable_flows": 5247,
+      "d_G1": 2.6493,
+      "d_G2": 4.2375,
+      "d_G1/max": 0.445,
+      "d_G2/max": 0.953
+    },
+    {
+      "device": "Google Nest Mini Speaker",
+      "locked_group": "G1",
+      "usable_flows": 3891,
+      "d_G1": 1.9615,
+      "d_G2": 2.8124,
+      "d_G1/max": 0.329,
+      "d_G2/max": 0.633
+    }
+  ],
+  "capture_segments": [
+    [
+      "2022-10-07 17:15:00+00:00",
+      "2022-10-08 02:30:28+00:00",
+      223108
+    ]
+  ],
+  "validation": {
+    "device": "GoSund Smart Plug WP2 (1)",
+    "usable_flows": "542 vs locked 542",
+    "max_abs_diff_raw_15": "0.00e+00",
+    "max_abs_diff_scaled_14": "4.99e-07",
+    "decision": "G2",
+    "locked_group": "G2",
+    "PASS": true
+  },
+  "feature_table": [
+    {
+      "feature": "log_flows_per_hour",
+      "raw": "1.77485",
+      "scaled": "-0.0921975",
+      "locked_raw": "1.77485",
+      "locked_scaled": "-0.092197"
+    },
+    {
+      "feature": "log_median_bytes",
+      "raw": "3.16301",
+      "scaled": "0.845231",
+      "locked_raw": "3.16301",
+      "locked_scaled": "0.845231"
+    },
+    {
+      "feature": "log_p90_bytes",
+      "raw": "3.67219",
+      "scaled": "0.0665798",
+      "locked_raw": "3.67219",
+      "locked_scaled": "0.06658"
+    },
+    {
+      "feature": "median_packets",
+      "raw": "16.5",
+      "scaled": "0.701031",
+      "locked_raw": "16.5",
+      "locked_scaled": "0.701031"
+    },
+    {
+      "feature": "pct_single_packet",
+      "raw": "0.369",
+      "scaled": "-0.127965",
+      "locked_raw": "0.369",
+      "locked_scaled": "-0.127965"
+    },
+    {
+      "feature": "log_median_duration_us",
+      "raw": "8.07875",
+      "scaled": "0.106573",
+      "locked_raw": "8.07875",
+      "locked_scaled": "0.106573"
+    },
+    {
+      "feature": "upload_ratio",
+      "raw": "0.973331",
+      "scaled": "0.219135",
+      "locked_raw": "0.973331",
+      "locked_scaled": "0.219135"
+    },
+    {
+      "feature": "pct_udp",
+      "raw": "50.554",
+      "scaled": "0.0367666",
+      "locked_raw": "50.554",
+      "locked_scaled": "0.036767"
+    },
+    {
+      "feature": "pct_dns",
+      "raw": "0",
+      "scaled": "-0.239678",
+      "locked_raw": "0",
+      "locked_scaled": "-0.239678"
+    },
+    {
+      "feature": "pct_discovery",
+      "raw": "0",
+      "scaled": "0",
+      "locked_raw": "0",
+      "locked_scaled": "0"
+    },
+    {
+      "feature": "gap_cv",
+      "raw": "0.623783",
+      "scaled": "-0.378919",
+      "locked_raw": "0.623783",
+      "locked_scaled": "-0.378919"
+    },
+    {
+      "feature": "pct_internet",
+      "raw": "49.077",
+      "scaled": "-0.166869",
+      "locked_raw": "49.077",
+      "locked_scaled": "-0.166869"
+    },
+    {
+      "feature": "pct_device",
+      "raw": "0",
+      "scaled": "0",
+      "locked_raw": "0",
+      "locked_scaled": "0"
+    },
+    {
+      "feature": "log_distinct_peers",
+      "raw": "0.845098",
+      "scaled": "-0.219464",
+      "locked_raw": "0.845098",
+      "locked_scaled": "-0.219464"
+    }
+  ]
+}

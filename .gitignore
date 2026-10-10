@@ -1,4 +1,4 @@
-﻿data/
+data/
 *.pcap
 *.pcapng
 *.joblib
@@ -9,3 +9,9 @@ __pycache__/
 .ipynb_checkpoints/
 *Zone.Identifier
 *.jar
+
+# Step 7: bulky intermediates and backups (re-creatable)
+results/**/selftest/
+results/**/flow_check/
+results/**/device_table_backup_*.csv
+results/**/*.log

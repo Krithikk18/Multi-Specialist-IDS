@@ -1,0 +1,1057 @@
+{
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap",
+ "stem": "Mirai-udpplain",
+ "S": {
+  "packets": 3642269,
+  "background": 77581,
+  "att_src": 3563700,
+  "att_dst": 988,
+  "t_min": 1674143460.595065,
+  "t_max": 1674145406.574506,
+  "att_first": 1674143464.794441,
+  "att_last": 1674145406.574506,
+  "tshark_seconds": 83.4,
+  "minutes": 32.432990682125094
+ },
+ "census": [
+  {
+   "rank": 1,
+   "eth_src": "dc:a6:32:c9:e4:d5",
+   "tag": "attacker",
+   "packets": 753722,
+   "pct": 20.694
+  },
+  {
+   "rank": 2,
+   "eth_src": "dc:a6:32:c9:e4:90",
+   "tag": "attacker",
+   "packets": 659130,
+   "pct": 18.097
+  },
+  {
+   "rank": 3,
+   "eth_src": "dc:a6:32:c9:e5:a4",
+   "tag": "attacker",
+   "packets": 644873,
+   "pct": 17.705
+  },
+  {
+   "rank": 4,
+   "eth_src": "dc:a6:32:dc:27:d5",
+   "tag": "attacker",
+   "packets": 442703,
+   "pct": 12.155
+  },
+  {
+   "rank": 5,
+   "eth_src": "dc:a6:32:c9:e4:ab",
+   "tag": "attacker",
+   "packets": 393554,
+   "pct": 10.805
+  },
+  {
+   "rank": 6,
+   "eth_src": "dc:a6:32:c9:e5:ef",
+   "tag": "attacker",
+   "packets": 372460,
+   "pct": 10.226
+  },
+  {
+   "rank": 7,
+   "eth_src": "e4:5f:01:55:90:c4",
+   "tag": "attacker",
+   "packets": 297165,
+   "pct": 8.159
+  },
+  {
+   "rank": 8,
+   "eth_src": "3c:18:a0:41:c3:a0",
+   "tag": "gateway",
+   "packets": 32196,
+   "pct": 0.884
+  },
+  {
+   "rank": 9,
+   "eth_src": "56:4f:8a:e1:f3:2d",
+   "tag": "Randomised MAC (phone/laptop)",
+   "packets": 3988,
+   "pct": 0.109
+  },
+  {
+   "rank": 10,
+   "eth_src": "cc:f4:11:9c:d0:00",
+   "tag": "Google Nest Mini Speaker",
+   "packets": 3736,
+   "pct": 0.103
+  },
+  {
+   "rank": 11,
+   "eth_src": "7c:78:b2:86:0d:81",
+   "tag": "Wyze Camera",
+   "packets": 2364,
+   "pct": 0.065
+  },
+  {
+   "rank": 12,
+   "eth_src": "70:ee:50:68:0e:32",
+   "tag": "Netatmo Camera",
+   "packets": 2155,
+   "pct": 0.059
+  },
+  {
+   "rank": 13,
+   "eth_src": "1c:fe:2b:98:16:dd",
+   "tag": "Amazon Alexa Echo Dot 1",
+   "packets": 1992,
+   "pct": 0.055
+  },
+  {
+   "rank": 14,
+   "eth_src": "9c:8e:cd:1d:ab:9f",
+   "tag": "AMCREST WiFi Camera",
+   "packets": 1528,
+   "pct": 0.042
+  },
+  {
+   "rank": 15,
+   "eth_src": "2c:71:ff:05:f1:15",
+   "tag": "Amazon Echo Show",
+   "packets": 1492,
+   "pct": 0.041
+  },
+  {
+   "rank": 16,
+   "eth_src": "40:5d:82:35:14:c8",
+   "tag": "Arlo Q Indoor Camera",
+   "packets": 1430,
+   "pct": 0.039
+  },
+  {
+   "rank": 17,
+   "eth_src": "6c:5a:b0:44:1d:90",
+   "tag": "TP-Link Tapo Camera",
+   "packets": 1284,
+   "pct": 0.035
+  },
+  {
+   "rank": 18,
+   "eth_src": "00:17:88:60:d6:4f",
+   "tag": "Philips Hue Bridge",
+   "packets": 1223,
+   "pct": 0.034
+  },
+  {
+   "rank": 19,
+   "eth_src": "08:7c:39:ce:6e:2a",
+   "tag": "Amazon Alexa Echo Studio",
+   "packets": 1196,
+   "pct": 0.033
+  },
+  {
+   "rank": 20,
+   "eth_src": "18:69:d8:eb:d4:3e",
+   "tag": "Teckin Light Strip",
+   "packets": 967,
+   "pct": 0.027
+  },
+  {
+   "rank": 21,
+   "eth_src": "00:a3:d1:07:6f:03",
+   "tag": "Unknown",
+   "packets": 962,
+   "pct": 0.026
+  },
+  {
+   "rank": 22,
+   "eth_src": "28:6d:97:7a:2b:2d",
+   "tag": "SmartThings Hub",
+   "packets": 919,
+   "pct": 0.025
+  },
+  {
+   "rank": 23,
+   "eth_src": "84:e3:42:42:ed:0b",
+   "tag": "Lumiman Bulb",
+   "packets": 914,
+   "pct": 0.025
+  },
+  {
+   "rank": 24,
+   "eth_src": "e8:1b:69:f8:d4:e3",
+   "tag": "Unknown",
+   "packets": 891,
+   "pct": 0.024
+  },
+  {
+   "rank": 25,
+   "eth_src": "28:6d:97:9e:f4:d5",
+   "tag": "Aeotec Smart Home Hub",
+   "packets": 883,
+   "pct": 0.024
+  },
+  {
+   "rank": 26,
+   "eth_src": "44:01:bb:ec:10:4a",
+   "tag": "HeimVision Smart WiFi Camera",
+   "packets": 876,
+   "pct": 0.024
+  },
+  {
+   "rank": 27,
+   "eth_src": "d4:a6:51:30:64:b7",
+   "tag": "HeimVision SmartLife Radio/Lamp",
+   "packets": 826,
+   "pct": 0.023
+  },
+  {
+   "rank": 28,
+   "eth_src": "34:75:63:73:f3:36",
+   "tag": "Home Eye Camera",
+   "packets": 778,
+   "pct": 0.021
+  },
+  {
+   "rank": 29,
+   "eth_src": "b8:5f:98:d0:76:e6",
+   "tag": "Amazon Smart Plug",
+   "packets": 739,
+   "pct": 0.02
+  },
+  {
+   "rank": 30,
+   "eth_src": "c4:dd:57:0c:39:94",
+   "tag": "Unidentified ESP plug (3)",
+   "packets": 729,
+   "pct": 0.02
+  }
+ ],
+ "pairs": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 468041,
+   "control_packets": 0,
+   "rate_ratio": 8015940.68,
+   "new_service_pairs": 2,
+   "new_services": "UDP/24683:468015;none:26",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:19.282503+00:00",
+   "last_ts": "2023-01-19T16:01:51.713489+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 383866,
+   "control_packets": 0,
+   "rate_ratio": 6574310.98,
+   "new_service_pairs": 2,
+   "new_services": "UDP/38424:383836;none:30",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:17.825069+00:00",
+   "last_ts": "2023-01-19T16:01:36.715218+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 328017,
+   "control_packets": 0,
+   "rate_ratio": 5617808.72,
+   "new_service_pairs": 2,
+   "new_services": "UDP/7473:327990;none:27",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:17.098022+00:00",
+   "last_ts": "2023-01-19T16:01:14.233525+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 254913,
+   "control_packets": 0,
+   "rate_ratio": 4365787.37,
+   "new_service_pairs": 2,
+   "new_services": "UDP/7473:254892;none:21",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:19.074488+00:00",
+   "last_ts": "2023-01-19T16:13:28.551639+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 229522,
+   "control_packets": 0,
+   "rate_ratio": 3930926.43,
+   "new_service_pairs": 2,
+   "new_services": "UDP/7487:229498;none:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:19.368647+00:00",
+   "last_ts": "2023-01-19T16:01:27.158241+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 224079,
+   "control_packets": 0,
+   "rate_ratio": 3837706.46,
+   "new_service_pairs": 2,
+   "new_services": "UDP/24683:224055;none:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:22.340955+00:00",
+   "last_ts": "2023-01-19T16:13:49.778313+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 214551,
+   "control_packets": 0,
+   "rate_ratio": 3674524.43,
+   "new_service_pairs": 2,
+   "new_services": "UDP/38424:214533;none:18",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:54.348578+00:00",
+   "last_ts": "2023-01-19T16:14:05.321092+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 202663,
+   "control_packets": 0,
+   "rate_ratio": 3470923.67,
+   "new_service_pairs": 2,
+   "new_services": "UDP/43323:202639;none:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:17.150112+00:00",
+   "last_ts": "2023-01-19T16:00:38.488388+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 199686,
+   "control_packets": 0,
+   "rate_ratio": 3419937.85,
+   "new_service_pairs": 2,
+   "new_services": "UDP/16562:199662;none:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:31.852521+00:00",
+   "last_ts": "2023-01-19T16:01:31.716328+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 166419,
+   "control_packets": 0,
+   "rate_ratio": 2850187.98,
+   "new_service_pairs": 2,
+   "new_services": "UDP/7487:166395;none:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:19.400002+00:00",
+   "last_ts": "2023-01-19T16:14:06.510249+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 150260,
+   "control_packets": 0,
+   "rate_ratio": 2573439.61,
+   "new_service_pairs": 2,
+   "new_services": "UDP/43323:150230;none:30",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:19.097112+00:00",
+   "last_ts": "2023-01-19T16:13:57.216159+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 140297,
+   "control_packets": 0,
+   "rate_ratio": 2402807.51,
+   "new_service_pairs": 2,
+   "new_services": "UDP/9947:140282;none:15",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:35.717281+00:00",
+   "last_ts": "2023-01-19T16:01:08.970091+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 137550,
+   "control_packets": 0,
+   "rate_ratio": 2355760.8,
+   "new_service_pairs": 2,
+   "new_services": "UDP/16562:137530;none:20",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:20.282128+00:00",
+   "last_ts": "2023-01-19T16:13:23.646222+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 114534,
+   "control_packets": 0,
+   "rate_ratio": 1961575.48,
+   "new_service_pairs": 2,
+   "new_services": "UDP/9947:114507;none:27",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:08:56.582719+00:00",
+   "last_ts": "2023-01-19T16:13:44.682526+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 75513,
+   "control_packets": 0,
+   "rate_ratio": 1293279.28,
+   "new_service_pairs": 2,
+   "new_services": "UDP/7473:75492;none:21",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:22:10.126619+00:00",
+   "last_ts": "2023-01-19T16:23:26.574506+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 60984,
+   "control_packets": 0,
+   "rate_ratio": 1044447.23,
+   "new_service_pairs": 2,
+   "new_services": "UDP/24683:60969;none:15",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:22:11.204572+00:00",
+   "last_ts": "2023-01-19T16:23:26.541028+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 46068,
+   "control_packets": 13401,
+   "rate_ratio": 58.88,
+   "new_service_pairs": 1,
+   "new_services": "UDP/7487:46048",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:22:09.310846+00:00",
+   "last_ts": "2023-01-19T16:23:25.859447+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 45629,
+   "control_packets": 0,
+   "rate_ratio": 781468.63,
+   "new_service_pairs": 3,
+   "new_services": "UDP/38424:45268;TCP/8009:325;none:36",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:04.794441+00:00",
+   "last_ts": "2023-01-19T16:23:22.955551+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 41624,
+   "control_packets": 0,
+   "rate_ratio": 712876.68,
+   "new_service_pairs": 2,
+   "new_services": "UDP/9947:41609;none:15",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:22:08.945559+00:00",
+   "last_ts": "2023-01-19T16:23:25.620523+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 39972,
+   "control_packets": 0,
+   "rate_ratio": 684583.57,
+   "new_service_pairs": 2,
+   "new_services": "UDP/43323:39946;none:26",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:22:09.268919+00:00",
+   "last_ts": "2023-01-19T16:23:26.408403+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 34577,
+   "control_packets": 0,
+   "rate_ratio": 592185.69,
+   "new_service_pairs": 2,
+   "new_services": "UDP/16562:34571;none:6",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:22:11.177468+00:00",
+   "last_ts": "2023-01-19T16:23:07.589819+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "00:17:88:60:d6:4f",
+   "device": "Philips Hue Bridge",
+   "group": "G1",
+   "attack_packets": 132,
+   "control_packets": 0,
+   "rate_ratio": 2260.71,
+   "new_service_pairs": 3,
+   "new_services": "ICMP:80;TCP/80:30;none:22",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T15:51:42.202196+00:00",
+   "last_ts": "2023-01-19T16:17:46.490983+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 30,
+   "control_packets": 59,
+   "rate_ratio": 8.71,
+   "new_service_pairs": 1,
+   "new_services": "ICMP:1",
+   "victim": true,
+   "reason": "new_service",
+   "first_ts": "2023-01-19T15:53:18.859183+00:00",
+   "last_ts": "2023-01-19T15:55:20.936336+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 8,
+   "control_packets": 0,
+   "rate_ratio": 137.01,
+   "new_service_pairs": 2,
+   "new_services": "none:7;TCP/34542:1",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-01-19T16:01:37.665224+00:00",
+   "last_ts": "2023-01-19T16:22:36.563425+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 2,
+   "control_packets": 60,
+   "rate_ratio": 0.57,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2023-01-19T16:09:20.550628+00:00",
+   "last_ts": "2023-01-19T16:09:25.812049+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 2,
+   "control_packets": 81,
+   "rate_ratio": 0.42,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2023-01-19T16:18:35.010887+00:00",
+   "last_ts": "2023-01-19T16:18:40.273956+00:00",
+   "distinct_dst_ports": 1
+  }
+ ],
+ "victims": [
+  {
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 1952092,
+   "first_ts": "2023-01-19T15:51:17.098022+00:00",
+   "last_ts": "2023-01-19T16:01:51.713489+00:00",
+   "distinct_dst_ports": 7,
+   "protocols": "UDP:1951922;none:170",
+   "reason": "both",
+   "rate_ratio": 8015940.68,
+   "new_service_pairs": 14,
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "attack_packets": 1262306,
+   "first_ts": "2023-01-19T16:08:19.074488+00:00",
+   "last_ts": "2023-01-19T16:14:06.510249+00:00",
+   "distinct_dst_ports": 7,
+   "protocols": "UDP:1262142;none:164",
+   "reason": "both",
+   "rate_ratio": 4365787.37,
+   "new_service_pairs": 14,
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 344367,
+   "first_ts": "2023-01-19T15:51:04.794441+00:00",
+   "last_ts": "2023-01-19T16:23:26.574506+00:00",
+   "distinct_dst_ports": 8,
+   "protocols": "UDP:343903;TCP:325;none:139",
+   "reason": "both",
+   "rate_ratio": 1293279.28,
+   "new_service_pairs": 14,
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "00:17:88:60:d6:4f",
+   "device": "Philips Hue Bridge",
+   "group": "G1",
+   "attack_packets": 132,
+   "first_ts": "2023-01-19T15:51:42.202196+00:00",
+   "last_ts": "2023-01-19T16:17:46.490983+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "ICMP:80;TCP:30;none:22",
+   "reason": "both",
+   "rate_ratio": 2260.71,
+   "new_service_pairs": 3,
+   "attacker_macs": "dc:a6:32:c9:e5:a4"
+  },
+  {
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 30,
+   "first_ts": "2023-01-19T15:53:18.859183+00:00",
+   "last_ts": "2023-01-19T15:55:20.936336+00:00",
+   "distinct_dst_ports": 2,
+   "protocols": "UDP:23;none:6;ICMP:1",
+   "reason": "new_service",
+   "rate_ratio": 8.71,
+   "new_service_pairs": 1,
+   "attacker_macs": "dc:a6:32:c9:e6:f4"
+  },
+  {
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 8,
+   "first_ts": "2023-01-19T16:01:37.665224+00:00",
+   "last_ts": "2023-01-19T16:22:36.563425+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "none:7;TCP:1",
+   "reason": "both",
+   "rate_ratio": 137.01,
+   "new_service_pairs": 2,
+   "attacker_macs": "dc:a6:32:c9:e5:a4"
+  }
+ ],
+ "bcast_mcast": {
+  "broadcast": 4666,
+  "multicast": 95
+ },
+ "cover": [
+  {
+   "pcap": "Mirai-udpplain",
+   "group": "G1",
+   "n_victims": 5,
+   "attack_packets": 3558905,
+   "window_start": "2023-01-19T15:51:04.794441+00:00",
+   "window_end": "2023-01-19T16:23:26.574506+00:00"
+  },
+  {
+   "pcap": "Mirai-udpplain",
+   "group": "G2",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "Mirai-udpplain",
+   "group": "GEN",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "Mirai-udpplain",
+   "group": "gateway",
+   "n_victims": 1,
+   "attack_packets": 30,
+   "window_start": "2023-01-19T15:53:18.859183+00:00",
+   "window_end": "2023-01-19T15:55:20.936336+00:00"
+  }
+ ],
+ "spoof": {
+  "distinct_ip_src": 10,
+  "distinct_method": "exact",
+  "flag": false,
+  "collide_with_device_ips": 0,
+  "collide_with_any_lan_host_ip": 0,
+  "packets_from_device_ips": 0,
+  "top_ip_src": [
+   {
+    "ip_src": "192.168.137.150",
+    "packets": 753040,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.238",
+    "packets": 658375,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.162",
+    "packets": 644118,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.147",
+    "packets": 441943,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.207",
+    "packets": 392816,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.106",
+    "packets": 371764,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.128",
+    "packets": 296399,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.13",
+    "packets": 24,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.11",
+    "packets": 1,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.236",
+    "packets": 1,
+    "is_device_ip": false
+   }
+  ]
+ },
+ "window": {
+  "first_utc": "2023-01-19T15:51:04.794441+00:00",
+  "last_utc": "2023-01-19T16:23:26.574506+00:00",
+  "active_minutes": 26,
+  "pkts_per_min_over_capture": 109878.86,
+  "pkts_per_min_over_active_minutes": 137065.38,
+  "peak_pkts_per_min": 291487
+ },
+ "xcheck": {
+  "outcomes": {
+   "agree": 3558426,
+   "no_ip_dst (non-IPv4)": 5219,
+   "multicast ip.dst": 52,
+   "external ip.dst via gateway MAC": 3
+  },
+  "disagree": 0,
+  "top_disagreements": []
+ },
+ "per_min": {
+  "27902391": 201121,
+  "27902392": 247477,
+  "27902393": 271933,
+  "27902394": 291487,
+  "27902395": 279056,
+  "27902396": 53046,
+  "27902397": 460,
+  "27902398": 432,
+  "27902399": 202789,
+  "27902400": 246184,
+  "27902401": 160546,
+  "27902402": 1,
+  "27902408": 167530,
+  "27902409": 228983,
+  "27902410": 209530,
+  "27902411": 194542,
+  "27902412": 211437,
+  "27902413": 232812,
+  "27902414": 18430,
+  "27902415": 449,
+  "27902416": 427,
+  "27902417": 447,
+  "27902418": 426,
+  "27902419": 3,
+  "27902422": 236665,
+  "27902423": 107487
+ },
+ "burst_threshold": 346.29,
+ "bursts": [
+  {
+   "start": "2023-01-19T15:51:00.000000+00:00",
+   "end": "2023-01-19T16:02:00.000000+00:00",
+   "minutes": 11,
+   "packets": 1954531,
+   "peak_per_min": 291487
+  },
+  {
+   "start": "2023-01-19T16:08:00.000000+00:00",
+   "end": "2023-01-19T16:19:00.000000+00:00",
+   "minutes": 11,
+   "packets": 1265013,
+   "peak_per_min": 232812
+  },
+  {
+   "start": "2023-01-19T16:22:00.000000+00:00",
+   "end": "2023-01-19T16:24:00.000000+00:00",
+   "minutes": 2,
+   "packets": 344152,
+   "peak_per_min": 236665
+  }
+ ],
+ "per_mac": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 659130,
+   "pkt_per_min": 20322.83,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 3",
+   "burst_windows": 4,
+   "bursts": "15:51:00-15:56:00 (263,959 pkts); 15:59:00-16:02:00 (64,209 pkts); 16:08:00-16:14:00 (254,974 pkts); 16:22:00-16:24:00 (75,528 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 393554,
+   "pkt_per_min": 12134.37,
+   "control_pkt_per_min": 0.03,
+   "victims": 3,
+   "victims_by_group": "G1 3",
+   "burst_windows": 3,
+   "bursts": "15:51:00-16:01:00 (202,930 pkts); 16:08:00-16:14:00 (150,304 pkts); 16:22:00-16:24:00 (39,985 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 42,
+   "pkt_per_min": 1.29,
+   "control_pkt_per_min": 0.46,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 753722,
+   "pkt_per_min": 23239.36,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 3",
+   "burst_windows": 3,
+   "bursts": "15:51:00-16:02:00 (468,307 pkts); 16:08:00-16:14:00 (224,138 pkts); 16:22:00-16:24:00 (60,991 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3,
+   "pkt_per_min": 0.09,
+   "control_pkt_per_min": 0.27,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 644873,
+   "pkt_per_min": 19883.24,
+   "control_pkt_per_min": 0.05,
+   "victims": 5,
+   "victims_by_group": "G1 5",
+   "burst_windows": 4,
+   "bursts": "15:51:00-15:56:00 (207,260 pkts); 15:59:00-16:02:00 (176,840 pkts); 16:08:00-16:15:00 (214,832 pkts); 16:22:00-16:24:00 (45,343 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 372460,
+   "pkt_per_min": 11483.99,
+   "control_pkt_per_min": 0.05,
+   "victims": 3,
+   "victims_by_group": "G1 3",
+   "burst_windows": 4,
+   "bursts": "15:51:00-15:56:00 (114,959 pkts); 15:59:00-16:02:00 (84,847 pkts); 16:08:00-16:14:00 (137,601 pkts); 16:22:00-16:24:00 (34,593 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 48,
+   "pkt_per_min": 1.48,
+   "control_pkt_per_min": 0.22,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "device": "Raspberry Pi 4 (8 GB)",
+   "packets": 442703,
+   "pkt_per_min": 13649.77,
+   "control_pkt_per_min": 33.42,
+   "victims": 3,
+   "victims_by_group": "G1 3",
+   "burst_windows": 3,
+   "bursts": "15:51:00-16:02:00 (229,868 pkts); 16:08:00-16:15:00 (166,523 pkts); 16:22:00-16:24:00 (46,077 pkts)"
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "device": "Raspberry Pi 4 (4 GB)",
+   "packets": 297165,
+   "pkt_per_min": 9162.43,
+   "control_pkt_per_min": 0.03,
+   "victims": 3,
+   "victims_by_group": "G1 3",
+   "burst_windows": 4,
+   "bursts": "15:51:00-15:57:00 (117,824 pkts); 16:00:00-16:02:00 (22,668 pkts); 16:08:00-16:14:00 (114,603 pkts); 16:22:00-16:24:00 (41,635 pkts)"
+  }
+ ],
+ "capture": {
+  "first_utc": "2023-01-19T15:51:00.595065+00:00",
+  "last_utc": "2023-01-19T16:23:26.574506+00:00",
+  "minutes": 32.43
+ },
+ "tcp_flags": {
+  "ACK": 130,
+  "PSH+ACK": 100,
+  "SYN": 72,
+  "RST": 26,
+  "FIN+ACK": 17,
+  "FIN+PSH+ACK": 11
+ },
+ "protocols": {
+  "UDP": 3558044,
+  "none": 5219,
+  "TCP": 356,
+  "ICMP": 81
+ },
+ "background_pct": 2.13,
+ "gateway_ip_macs": [
+  "3c:18:a0:41:c3:a0"
+ ],
+ "caps": {
+  "census_overflow": 0,
+  "xkey_overflow_packets": 0,
+  "pairs_with_dport_cap": 0,
+  "pairs_with_new_service_cap": 0,
+  "lan_xcheck_keys": 44
+ },
+ "stats_version": 2,
+ "sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7",
+ "params": {
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats_version": 2
+ },
+ "run_utc": "2026-10-10T20:43:56+00:00",
+ "png": "attack_rate_Mirai-udpplain.png",
+ "peak_rss": {
+  "self_mb": 298.7,
+  "tshark_mb": 426.1
+ }
+}

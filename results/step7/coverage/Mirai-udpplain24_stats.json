@@ -1,0 +1,929 @@
+{
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain24.pcap",
+ "stem": "Mirai-udpplain24",
+ "S": {
+  "packets": 1506334,
+  "background": 47591,
+  "att_src": 1456835,
+  "att_dst": 1908,
+  "t_min": 1675787037.78976,
+  "t_max": 1676396280.630347,
+  "att_first": 1675787037.78976,
+  "att_last": 1676396280.238625,
+  "tshark_seconds": 35.9,
+  "minutes": 10154.047343115011
+ },
+ "census": [
+  {
+   "rank": 1,
+   "eth_src": "dc:a6:32:c9:e4:90",
+   "tag": "attacker",
+   "packets": 389077,
+   "pct": 25.829
+  },
+  {
+   "rank": 2,
+   "eth_src": "dc:a6:32:c9:e5:a4",
+   "tag": "attacker",
+   "packets": 221484,
+   "pct": 14.704
+  },
+  {
+   "rank": 3,
+   "eth_src": "dc:a6:32:dc:27:d5",
+   "tag": "attacker",
+   "packets": 209856,
+   "pct": 13.932
+  },
+  {
+   "rank": 4,
+   "eth_src": "dc:a6:32:c9:e4:d5",
+   "tag": "attacker",
+   "packets": 190777,
+   "pct": 12.665
+  },
+  {
+   "rank": 5,
+   "eth_src": "dc:a6:32:c9:e4:ab",
+   "tag": "attacker",
+   "packets": 167544,
+   "pct": 11.123
+  },
+  {
+   "rank": 6,
+   "eth_src": "e4:5f:01:55:90:c4",
+   "tag": "attacker",
+   "packets": 144824,
+   "pct": 9.614
+  },
+  {
+   "rank": 7,
+   "eth_src": "dc:a6:32:c9:e5:ef",
+   "tag": "attacker",
+   "packets": 132701,
+   "pct": 8.81
+  },
+  {
+   "rank": 8,
+   "eth_src": "3c:18:a0:41:c3:a0",
+   "tag": "gateway",
+   "packets": 19342,
+   "pct": 1.284
+  },
+  {
+   "rank": 9,
+   "eth_src": "cc:f4:11:9c:d0:00",
+   "tag": "Google Nest Mini Speaker",
+   "packets": 2873,
+   "pct": 0.191
+  },
+  {
+   "rank": 10,
+   "eth_src": "2c:71:ff:05:f1:15",
+   "tag": "Amazon Echo Show",
+   "packets": 1990,
+   "pct": 0.132
+  },
+  {
+   "rank": 11,
+   "eth_src": "1c:fe:2b:98:16:dd",
+   "tag": "Amazon Alexa Echo Dot 1",
+   "packets": 1518,
+   "pct": 0.101
+  },
+  {
+   "rank": 12,
+   "eth_src": "6c:5a:b0:44:1d:90",
+   "tag": "TP-Link Tapo Camera",
+   "packets": 1371,
+   "pct": 0.091
+  },
+  {
+   "rank": 13,
+   "eth_src": "7c:78:b2:86:0d:81",
+   "tag": "Wyze Camera",
+   "packets": 1271,
+   "pct": 0.084
+  },
+  {
+   "rank": 14,
+   "eth_src": "b0:c5:54:59:2e:99",
+   "tag": "D-Link DCS8000LHA1 Mini Camera",
+   "packets": 1193,
+   "pct": 0.079
+  },
+  {
+   "rank": 15,
+   "eth_src": "56:4f:8a:e1:f3:2d",
+   "tag": "Randomised MAC (phone/laptop)",
+   "packets": 1135,
+   "pct": 0.075
+  },
+  {
+   "rank": 16,
+   "eth_src": "40:5d:82:35:14:c8",
+   "tag": "Arlo Q Indoor Camera",
+   "packets": 1080,
+   "pct": 0.072
+  },
+  {
+   "rank": 17,
+   "eth_src": "70:ee:50:68:0e:32",
+   "tag": "Netatmo Camera",
+   "packets": 1016,
+   "pct": 0.067
+  },
+  {
+   "rank": 18,
+   "eth_src": "9c:8e:cd:1d:ab:9f",
+   "tag": "AMCREST WiFi Camera",
+   "packets": 1005,
+   "pct": 0.067
+  },
+  {
+   "rank": 19,
+   "eth_src": "00:17:88:60:d6:4f",
+   "tag": "Philips Hue Bridge",
+   "packets": 904,
+   "pct": 0.06
+  },
+  {
+   "rank": 20,
+   "eth_src": "e8:1b:69:f8:d6:e6",
+   "tag": "Unknown",
+   "packets": 868,
+   "pct": 0.058
+  },
+  {
+   "rank": 21,
+   "eth_src": "e8:1b:69:f8:d4:e3",
+   "tag": "Unknown",
+   "packets": 778,
+   "pct": 0.052
+  },
+  {
+   "rank": 22,
+   "eth_src": "84:e3:42:42:ed:0b",
+   "tag": "Lumiman Bulb",
+   "packets": 663,
+   "pct": 0.044
+  },
+  {
+   "rank": 23,
+   "eth_src": "44:01:bb:ec:10:4a",
+   "tag": "HeimVision Smart WiFi Camera",
+   "packets": 657,
+   "pct": 0.044
+  },
+  {
+   "rank": 24,
+   "eth_src": "28:6d:97:7a:2b:2d",
+   "tag": "SmartThings Hub",
+   "packets": 645,
+   "pct": 0.043
+  },
+  {
+   "rank": 25,
+   "eth_src": "00:a3:d1:07:6f:03",
+   "tag": "Unknown",
+   "packets": 617,
+   "pct": 0.041
+  },
+  {
+   "rank": 26,
+   "eth_src": "28:6d:97:9e:f4:d5",
+   "tag": "Aeotec Smart Home Hub",
+   "packets": 613,
+   "pct": 0.041
+  },
+  {
+   "rank": 27,
+   "eth_src": "08:7c:39:ce:6e:2a",
+   "tag": "Amazon Alexa Echo Studio",
+   "packets": 609,
+   "pct": 0.04
+  },
+  {
+   "rank": 28,
+   "eth_src": "44:bb:3b:00:39:07",
+   "tag": "Nest Indoor Camera",
+   "packets": 577,
+   "pct": 0.038
+  },
+  {
+   "rank": 29,
+   "eth_src": "c0:e7:bf:0a:79:d1",
+   "tag": "unknown",
+   "packets": 565,
+   "pct": 0.038
+  },
+  {
+   "rank": 30,
+   "eth_src": "dc:a6:32:c9:e6:f4",
+   "tag": "attacker",
+   "packets": 518,
+   "pct": 0.034
+  }
+ ],
+ "pairs": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 323638,
+   "control_packets": 0,
+   "rate_ratio": 17704.27,
+   "new_service_pairs": 2,
+   "new_services": "UDP/25402:323571;none:67",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:24:21.570919+00:00",
+   "last_ts": "2023-02-07T16:27:45.626909+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 169517,
+   "control_packets": 0,
+   "rate_ratio": 9273.24,
+   "new_service_pairs": 2,
+   "new_services": "UDP/1457:169445;none:72",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:23:57.789760+00:00",
+   "last_ts": "2023-02-07T16:27:59.971753+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 153179,
+   "control_packets": 0,
+   "rate_ratio": 8379.49,
+   "new_service_pairs": 2,
+   "new_services": "UDP/10583:153124;none:55",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:23:57.808917+00:00",
+   "last_ts": "2023-02-07T16:27:59.527703+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 137062,
+   "control_packets": 0,
+   "rate_ratio": 7497.83,
+   "new_service_pairs": 2,
+   "new_services": "UDP/1013:137029;none:33",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:23:57.816036+00:00",
+   "last_ts": "2023-02-07T16:27:57.498062+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 133819,
+   "control_packets": 0,
+   "rate_ratio": 7320.42,
+   "new_service_pairs": 2,
+   "new_services": "UDP/37099:133769;none:50",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:24:17.704489+00:00",
+   "last_ts": "2023-02-07T16:27:59.071027+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 132056,
+   "control_packets": 0,
+   "rate_ratio": 7223.98,
+   "new_service_pairs": 2,
+   "new_services": "UDP/4033:131984;none:72",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:24:06.555871+00:00",
+   "last_ts": "2023-02-07T16:27:59.990097+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 113150,
+   "control_packets": 0,
+   "rate_ratio": 6189.75,
+   "new_service_pairs": 2,
+   "new_services": "UDP/15896:113083;none:67",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-07T16:24:03.232833+00:00",
+   "last_ts": "2023-02-07T16:27:46.343426+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 64832,
+   "control_packets": 0,
+   "rate_ratio": 3546.56,
+   "new_service_pairs": 2,
+   "new_services": "UDP/1179:64829;none:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:27:27.201159+00:00",
+   "last_ts": "2023-02-14T17:38:00.238625+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 56330,
+   "control_packets": 0,
+   "rate_ratio": 3081.47,
+   "new_service_pairs": 2,
+   "new_services": "UDP/29329:56327;none:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:28:46.540949+00:00",
+   "last_ts": "2023-02-14T17:29:34.495253+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 55992,
+   "control_packets": 0,
+   "rate_ratio": 3062.98,
+   "new_service_pairs": 2,
+   "new_services": "UDP/53618:55986;none:6",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:27:26.362755+00:00",
+   "last_ts": "2023-02-14T17:34:28.083788+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 50924,
+   "control_packets": 0,
+   "rate_ratio": 2785.74,
+   "new_service_pairs": 2,
+   "new_services": "UDP/10549:50921;none:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:28:51.571835+00:00",
+   "last_ts": "2023-02-14T17:29:44.156494+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 31061,
+   "control_packets": 0,
+   "rate_ratio": 1699.16,
+   "new_service_pairs": 2,
+   "new_services": "UDP/55922:31058;none:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:27:27.222305+00:00",
+   "last_ts": "2023-02-14T17:28:04.915181+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 29861,
+   "control_packets": 0,
+   "rate_ratio": 1633.51,
+   "new_service_pairs": 2,
+   "new_services": "UDP/24163:29858;none:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:27:51.077604+00:00",
+   "last_ts": "2023-02-14T17:28:19.760344+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 371,
+   "control_packets": 59,
+   "rate_ratio": 0.34,
+   "new_service_pairs": 1,
+   "new_services": "ICMP:181",
+   "victim": true,
+   "reason": "new_service",
+   "first_ts": "2023-02-14T17:27:01.048924+00:00",
+   "last_ts": "2023-02-14T17:37:57.260160+00:00",
+   "distinct_dst_ports": 2
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 219,
+   "control_packets": 0,
+   "rate_ratio": 11.98,
+   "new_service_pairs": 2,
+   "new_services": "TCP/8009:182;none:37",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2023-02-14T17:27:00.821507+00:00",
+   "last_ts": "2023-02-14T17:36:22.269106+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "00:17:88:60:d6:4f",
+   "device": "Philips Hue Bridge",
+   "group": "G1",
+   "attack_packets": 101,
+   "control_packets": 0,
+   "rate_ratio": 5.53,
+   "new_service_pairs": 3,
+   "new_services": "ICMP:52;TCP/80:34;none:15",
+   "victim": true,
+   "reason": "new_service",
+   "first_ts": "2023-02-07T16:23:58.491995+00:00",
+   "last_ts": "2023-02-14T17:37:26.310350+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 60,
+   "control_packets": 0,
+   "rate_ratio": 3.28,
+   "new_service_pairs": 4,
+   "new_services": "none:30;TCP/40680:13;TCP/40684:10;ICMP:7",
+   "victim": true,
+   "reason": "new_service",
+   "first_ts": "2023-02-14T17:27:21.691736+00:00",
+   "last_ts": "2023-02-14T17:37:24.098316+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 12,
+   "control_packets": 60,
+   "rate_ratio": 0.01,
+   "new_service_pairs": 1,
+   "new_services": "ICMP:1",
+   "victim": true,
+   "reason": "new_service",
+   "first_ts": "2023-02-07T16:27:13.305443+00:00",
+   "last_ts": "2023-02-07T16:27:38.425958+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 4,
+   "control_packets": 81,
+   "rate_ratio": 0.0,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2023-02-14T17:34:58.199749+00:00",
+   "last_ts": "2023-02-14T17:35:05.891677+00:00",
+   "distinct_dst_ports": 1
+  }
+ ],
+ "victims": [
+  {
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "attack_packets": 1162421,
+   "first_ts": "2023-02-07T16:23:57.789760+00:00",
+   "last_ts": "2023-02-07T16:27:59.990097+00:00",
+   "distinct_dst_ports": 7,
+   "protocols": "UDP:1162005;none:416",
+   "reason": "both",
+   "rate_ratio": 17704.27,
+   "new_service_pairs": 14,
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "attack_packets": 289000,
+   "first_ts": "2023-02-14T17:27:26.362755+00:00",
+   "last_ts": "2023-02-14T17:38:00.238625+00:00",
+   "distinct_dst_ports": 6,
+   "protocols": "UDP:288979;none:21",
+   "reason": "both",
+   "rate_ratio": 3546.56,
+   "new_service_pairs": 12,
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 383,
+   "first_ts": "2023-02-07T16:27:13.305443+00:00",
+   "last_ts": "2023-02-14T17:37:57.260160+00:00",
+   "distinct_dst_ports": 2,
+   "protocols": "ICMP:182;UDP:165;none:36",
+   "reason": "new_service",
+   "rate_ratio": 0.34,
+   "new_service_pairs": 2,
+   "attacker_macs": "dc:a6:32:c9:e5:02;dc:a6:32:c9:e6:f4"
+  },
+  {
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 219,
+   "first_ts": "2023-02-14T17:27:00.821507+00:00",
+   "last_ts": "2023-02-14T17:36:22.269106+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:182;none:37",
+   "reason": "both",
+   "rate_ratio": 11.98,
+   "new_service_pairs": 2,
+   "attacker_macs": "dc:a6:32:c9:e5:a4"
+  },
+  {
+   "mac": "00:17:88:60:d6:4f",
+   "device": "Philips Hue Bridge",
+   "group": "G1",
+   "attack_packets": 101,
+   "first_ts": "2023-02-07T16:23:58.491995+00:00",
+   "last_ts": "2023-02-14T17:37:26.310350+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "ICMP:52;TCP:34;none:15",
+   "reason": "new_service",
+   "rate_ratio": 5.53,
+   "new_service_pairs": 3,
+   "attacker_macs": "dc:a6:32:c9:e5:a4"
+  },
+  {
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "attack_packets": 60,
+   "first_ts": "2023-02-14T17:27:21.691736+00:00",
+   "last_ts": "2023-02-14T17:37:24.098316+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "none:30;TCP:23;ICMP:7",
+   "reason": "new_service",
+   "rate_ratio": 3.28,
+   "new_service_pairs": 4,
+   "attacker_macs": "dc:a6:32:c9:e5:a4"
+  }
+ ],
+ "bcast_mcast": {
+  "broadcast": 4568,
+  "multicast": 79
+ },
+ "cover": [
+  {
+   "pcap": "Mirai-udpplain24",
+   "group": "G1",
+   "n_victims": 3,
+   "attack_packets": 380,
+   "window_start": "2023-02-07T16:23:58.491995+00:00",
+   "window_end": "2023-02-14T17:37:26.310350+00:00"
+  },
+  {
+   "pcap": "Mirai-udpplain24",
+   "group": "G2",
+   "n_victims": 2,
+   "attack_packets": 1451421,
+   "window_start": "2023-02-07T16:23:57.789760+00:00",
+   "window_end": "2023-02-14T17:38:00.238625+00:00"
+  },
+  {
+   "pcap": "Mirai-udpplain24",
+   "group": "GEN",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "Mirai-udpplain24",
+   "group": "gateway",
+   "n_victims": 1,
+   "attack_packets": 383,
+   "window_start": "2023-02-07T16:27:13.305443+00:00",
+   "window_end": "2023-02-14T17:37:57.260160+00:00"
+  }
+ ],
+ "spoof": {
+  "distinct_ip_src": 10,
+  "distinct_method": "exact",
+  "flag": false,
+  "collide_with_device_ips": 0,
+  "collide_with_any_lan_host_ip": 0,
+  "packets_from_device_ips": 0,
+  "top_ip_src": [
+   {
+    "ip_src": "192.168.137.238",
+    "packets": 388401,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.162",
+    "packets": 220703,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.147",
+    "packets": 209111,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.128",
+    "packets": 190097,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.207",
+    "packets": 166888,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.247",
+    "packets": 144142,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.106",
+    "packets": 131985,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.13",
+    "packets": 336,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.11",
+    "packets": 13,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.236",
+    "packets": 2,
+    "is_device_ip": false
+   }
+  ]
+ },
+ "window": {
+  "first_utc": "2023-02-07T16:23:57.789760+00:00",
+  "last_utc": "2023-02-14T17:38:00.238625+00:00",
+  "active_minutes": 17,
+  "pkts_per_min_over_capture": 143.47,
+  "pkts_per_min_over_active_minutes": 85696.18,
+  "peak_pkts_per_min": 298300
+ },
+ "xcheck": {
+  "outcomes": {
+   "agree": 1451493,
+   "no_ip_dst (non-IPv4)": 5157,
+   "external ip.dst via gateway MAC": 137,
+   "multicast ip.dst": 48
+  },
+  "disagree": 0,
+  "top_disagreements": []
+ },
+ "per_min": {
+  "27929783": 11555,
+  "27929784": 295976,
+  "27929785": 298300,
+  "27929786": 274254,
+  "27929787": 282871,
+  "27939927": 92288,
+  "27939928": 64541,
+  "27939929": 73613,
+  "27939930": 488,
+  "27939931": 491,
+  "27939932": 446,
+  "27939933": 6982,
+  "27939934": 41880,
+  "27939935": 543,
+  "27939936": 462,
+  "27939937": 11854,
+  "27939938": 291
+ },
+ "burst_threshold": 346.29,
+ "bursts": [
+  {
+   "start": "2023-02-07T16:23:00.000000+00:00",
+   "end": "2023-02-07T16:28:00.000000+00:00",
+   "minutes": 5,
+   "packets": 1162956,
+   "peak_per_min": 298300
+  },
+  {
+   "start": "2023-02-14T17:27:00.000000+00:00",
+   "end": "2023-02-14T17:38:00.000000+00:00",
+   "minutes": 11,
+   "packets": 293588,
+   "peak_per_min": 92288
+  }
+ ],
+ "per_mac": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 389077,
+   "pkt_per_min": 38.32,
+   "control_pkt_per_min": 0.05,
+   "victims": 2,
+   "victims_by_group": "G2 2",
+   "burst_windows": 3,
+   "bursts": "16:24:00-16:28:00 (323,685 pkts); 17:27:00-17:29:00 (53,193 pkts); 17:37:00-17:38:00 (11,453 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 167544,
+   "pkt_per_min": 16.5,
+   "control_pkt_per_min": 0.03,
+   "victims": 2,
+   "victims_by_group": "G2 2",
+   "burst_windows": 2,
+   "bursts": "16:23:00-16:28:00 (137,112 pkts); 17:27:00-17:29:00 (29,924 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 8,
+   "pkt_per_min": 0.0,
+   "control_pkt_per_min": 0.46,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 190777,
+   "pkt_per_min": 18.79,
+   "control_pkt_per_min": 0.05,
+   "victims": 2,
+   "victims_by_group": "G2 2",
+   "burst_windows": 2,
+   "bursts": "16:24:00-16:28:00 (133,883 pkts); 17:28:00-17:30:00 (56,401 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 46,
+   "pkt_per_min": 0.0,
+   "control_pkt_per_min": 0.27,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 221484,
+   "pkt_per_min": 21.81,
+   "control_pkt_per_min": 0.05,
+   "victims": 5,
+   "victims_by_group": "G1 3, G2 2",
+   "burst_windows": 2,
+   "bursts": "16:23:00-16:28:00 (169,624 pkts); 17:28:00-17:30:00 (51,036 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 132701,
+   "pkt_per_min": 13.07,
+   "control_pkt_per_min": 0.05,
+   "victims": 1,
+   "victims_by_group": "G2 1",
+   "burst_windows": 1,
+   "bursts": "16:24:00-16:28:00 (132,098 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 518,
+   "pkt_per_min": 0.05,
+   "control_pkt_per_min": 0.22,
+   "victims": 1,
+   "victims_by_group": "gateway 1",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "device": "Raspberry Pi 4 (8 GB)",
+   "packets": 209856,
+   "pkt_per_min": 20.67,
+   "control_pkt_per_min": 33.42,
+   "victims": 2,
+   "victims_by_group": "G2 2",
+   "burst_windows": 3,
+   "bursts": "16:23:00-16:28:00 (153,285 pkts); 17:27:00-17:28:00 (8,082 pkts); 17:33:00-17:35:00 (48,020 pkts)"
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "device": "Raspberry Pi 4 (4 GB)",
+   "packets": 144824,
+   "pkt_per_min": 14.26,
+   "control_pkt_per_min": 0.03,
+   "victims": 2,
+   "victims_by_group": "G2 2",
+   "burst_windows": 2,
+   "bursts": "16:24:00-16:28:00 (113,210 pkts); 17:27:00-17:29:00 (31,116 pkts)"
+  }
+ ],
+ "capture": {
+  "first_utc": "2023-02-07T16:23:57.789760+00:00",
+  "last_utc": "2023-02-14T17:38:00.630347+00:00",
+  "minutes": 10154.05
+ },
+ "tcp_flags": {
+  "SYN": 69,
+  "ACK": 64,
+  "RST": 54,
+  "PSH+ACK": 36,
+  "FIN+ACK": 14,
+  "FIN+PSH+ACK": 2
+ },
+ "protocols": {
+  "UDP": 1451198,
+  "none": 5157,
+  "ICMP": 241,
+  "TCP": 239
+ },
+ "background_pct": 3.159,
+ "gateway_ip_macs": [
+  "3c:18:a0:41:c3:a0"
+ ],
+ "caps": {
+  "census_overflow": 0,
+  "xkey_overflow_packets": 0,
+  "pairs_with_dport_cap": 0,
+  "pairs_with_new_service_cap": 0,
+  "lan_xcheck_keys": 42
+ },
+ "stats_version": 2,
+ "sha256": "adff7dcd1a9f2c19ca01c6df051555bfefdc2acf59277bd9dbe0dab3bd9791f5",
+ "params": {
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats_version": 2
+ },
+ "run_utc": "2026-10-10T20:44:36+00:00",
+ "png": "attack_rate_Mirai-udpplain24.png",
+ "peak_rss": {
+  "self_mb": 298.7,
+  "tshark_mb": 426.1
+ }
+}

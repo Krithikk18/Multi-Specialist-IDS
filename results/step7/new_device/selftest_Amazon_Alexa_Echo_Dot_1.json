@@ -1,0 +1,318 @@
+{
+  "mode": "self-test",
+  "run_utc": "2026-10-10T18:16:49+00:00",
+  "device": {
+    "mac": "1c:fe:2b:98:16:dd",
+    "name": "Amazon Alexa Echo Dot 1",
+    "ips_in_map": [
+      "192.168.137.250"
+    ]
+  },
+  "pcap": {
+    "path": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+    "sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8"
+  },
+  "behaviour_groups": {
+    "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json",
+    "sha256": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532",
+    "version": "1.0"
+  },
+  "flows": {
+    "action": "extracted",
+    "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/BenignTraffic.pcap_Flow__singlepkt.csv",
+    "meta": {
+      "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/selftest/flows/BenignTraffic.pcap_Flow__singlepkt.csv",
+      "input_pcap": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+      "input_pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+      "jar_path": "/home/krithikk/tools/CICFlowMeter-singlepkt/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar",
+      "jar_sha256": "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d",
+      "jar_sha256_expected": "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d",
+      "upstream": "ahlashkari/CICFlowMeter",
+      "commit": "98a5eba",
+      "patch": "extractor/guard_gt0.patch",
+      "build": "singlepkt",
+      "flow_timeout_s": 120,
+      "activity_timeout_s": 5,
+      "timeouts_check": "verified against /home/krithikk/tools/CICFlowMeter-singlepkt/src/main/java/cic/cs/unb/ca/ifm/Cmd.java",
+      "tz": "UTC",
+      "started_utc": "2026-10-10T17:57:17+00:00",
+      "ended_utc": "2026-10-10T18:11:54+00:00",
+      "elapsed_s": 877.816,
+      "row_count": 223108,
+      "cfm_reported_flows": 223109,
+      "packets": {
+        "total": 3664164,
+        "valid": 3607371,
+        "discarded": 56793
+      },
+      "wrapper": "/mnt/d/Projects/Company Project/Paper_Implemetation/extraction/run_cicflowmeter.py",
+      "wrapper_git_commit": "fb5822423f6a95d16f632423b00f98645e29114b-dirty"
+    },
+    "identical_to_existing_benign_csv": true
+  },
+  "check": {
+    "overall": "WARN",
+    "json": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/flow_check/BenignTraffic.pcap_Flow__singlepkt_check.json",
+    "checks": {
+      "1 Structure": "PASS",
+      "2 Packet total": "WARN",
+      "3 Single-packet flows": "PASS",
+      "4 Time span": "PASS",
+      "5 Flow duration": "PASS",
+      "6 NaN / Infinity": "WARN",
+      "7 Protocol mix": "PASS",
+      "8 Duplicates": "PASS",
+      "9 IPs": "PASS"
+    }
+  },
+  "map": {
+    "csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv",
+    "rows": 109,
+    "packets": 3664164,
+    "subnets": [
+      "192.168.137.0/24",
+      "10.22.22.0/24"
+    ],
+    "ip_conflicts_overlapping": 1,
+    "ip_conflicts_sequential": 0,
+    "identical_to_config_ip_mac_map": true
+  },
+  "tag": {
+    "conflicts": 1,
+    "ambiguous_before": 10673,
+    "resolved_flows": 10568,
+    "flows": 223108,
+    "ambiguous_after": 105,
+    "tagged_csv": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/new_device/selftest/BenignTraffic_tagged.csv",
+    "identical_to_existing_benign_tagged_csv": true
+  },
+  "normalisation": "05 time-normalises only `log_flows_per_hour` = usable flows / capture hours, where capture hours = first..last Timestamp over ALL flows in the input CSV (every device shares one window); all other features are per-flow distributions or shares, and gap_cv is scale-free. 06c applies exactly this to the pcap's flow CSV.",
+  "counts": {
+    "all_flows_in_capture": 223108,
+    "device_on_either_side": 1630,
+    "owned_by_device": 1573,
+    "owned_and_exclude_reason_blank": 1573,
+    "dropped_other_endpoint_attacker": 0,
+    "usable_for_fingerprint": 1573
+  },
+  "fingerprint": {
+    "mac": "1c:fe:2b:98:16:dd",
+    "device_name": "Amazon Alexa Echo Dot 1",
+    "category": "Audio",
+    "vendor_family": "",
+    "usable_flows": 1573,
+    "confidence": "high",
+    "log_flows_per_hour": 2.23277,
+    "log_median_bytes": 2.440909,
+    "log_p90_bytes": 3.879096,
+    "median_packets": 14.0,
+    "pct_single_packet": 4.768,
+    "log_median_duration_us": 7.569714,
+    "upload_ratio": 0.388223,
+    "pct_tcp": 75.207,
+    "pct_udp": 17.864,
+    "pct_dns": 15.385,
+    "pct_discovery": 1.017,
+    "gap_cv": 1.199135,
+    "pct_internet": 71.011,
+    "pct_device": 4.704,
+    "log_distinct_peers": 2.037426,
+    "capture_hours": 9.2578
+  },
+  "scaled": {
+    "log_flows_per_hour": 0.64245277002694,
+    "log_median_bytes": -0.2555069033981562,
+    "log_p90_bytes": 0.3110690839567245,
+    "median_packets": 0.4948453608247423,
+    "pct_single_packet": 0.34687103651132034,
+    "log_median_duration_us": -0.0808633078425615,
+    "upload_ratio": -0.8277970972223837,
+    "pct_udp": -1.3099002049454682,
+    "pct_dns": 0.7327486766216322,
+    "pct_discovery": 0.025258420715382056,
+    "gap_cv": 0.2356218081804042,
+    "pct_internet": 0.5445920303605313,
+    "pct_device": 0.3535512965050749,
+    "log_distinct_peers": 2.1780183984316097
+  },
+  "placement": {
+    "decision": "G1",
+    "reason": "nearest centroid G1 within its max spread (2.571 <= 5.953)",
+    "nearest": "G1",
+    "distance": {
+      "G1": 2.5711,
+      "G2": 3.2212
+    },
+    "ratio_to_max_spread": {
+      "G1": 0.432,
+      "G2": 0.725
+    },
+    "ratio_to_median_spread": {
+      "G1": 0.971,
+      "G2": 2.957
+    }
+  },
+  "context": [
+    {
+      "device": "Amazon Alexa Echo Dot 1",
+      "locked_group": "G1",
+      "usable_flows": 1573,
+      "d_G1": 2.5711,
+      "d_G2": 3.2212,
+      "d_G1/max": 0.432,
+      "d_G2/max": 0.725
+    },
+    {
+      "device": "Amazon Alexa Echo Dot 2",
+      "locked_group": "G1",
+      "usable_flows": 372,
+      "d_G1": 5.9531,
+      "d_G2": 7.1078,
+      "d_G1/max": 1.0,
+      "d_G2/max": 1.599
+    },
+    {
+      "device": "Amazon Alexa Echo Studio",
+      "locked_group": "G1",
+      "usable_flows": 3252,
+      "d_G1": 3.056,
+      "d_G2": 3.9344,
+      "d_G1/max": 0.513,
+      "d_G2/max": 0.885
+    },
+    {
+      "device": "Amazon Echo Show",
+      "locked_group": "G1",
+      "usable_flows": 5247,
+      "d_G1": 2.6493,
+      "d_G2": 4.2375,
+      "d_G1/max": 0.445,
+      "d_G2/max": 0.953
+    },
+    {
+      "device": "Google Nest Mini Speaker",
+      "locked_group": "G1",
+      "usable_flows": 3891,
+      "d_G1": 1.9615,
+      "d_G2": 2.8124,
+      "d_G1/max": 0.329,
+      "d_G2/max": 0.633
+    }
+  ],
+  "capture_segments": [
+    [
+      "2022-10-07 17:15:00+00:00",
+      "2022-10-08 02:30:28+00:00",
+      223108
+    ]
+  ],
+  "validation": {
+    "device": "Amazon Alexa Echo Dot 1",
+    "usable_flows": "1573 vs locked 1573",
+    "max_abs_diff_raw_15": "0.00e+00",
+    "max_abs_diff_scaled_14": "4.21e-07",
+    "decision": "G1",
+    "locked_group": "G1",
+    "PASS": true
+  },
+  "feature_table": [
+    {
+      "feature": "log_flows_per_hour",
+      "raw": "2.23277",
+      "scaled": "0.642453",
+      "locked_raw": "2.23277",
+      "locked_scaled": "0.642453"
+    },
+    {
+      "feature": "log_median_bytes",
+      "raw": "2.44091",
+      "scaled": "-0.255507",
+      "locked_raw": "2.44091",
+      "locked_scaled": "-0.255507"
+    },
+    {
+      "feature": "log_p90_bytes",
+      "raw": "3.8791",
+      "scaled": "0.311069",
+      "locked_raw": "3.8791",
+      "locked_scaled": "0.311069"
+    },
+    {
+      "feature": "median_packets",
+      "raw": "14",
+      "scaled": "0.494845",
+      "locked_raw": "14",
+      "locked_scaled": "0.494845"
+    },
+    {
+      "feature": "pct_single_packet",
+      "raw": "4.768",
+      "scaled": "0.346871",
+      "locked_raw": "4.768",
+      "locked_scaled": "0.346871"
+    },
+    {
+      "feature": "log_median_duration_us",
+      "raw": "7.56971",
+      "scaled": "-0.0808633",
+      "locked_raw": "7.56971",
+      "locked_scaled": "-0.080863"
+    },
+    {
+      "feature": "upload_ratio",
+      "raw": "0.388223",
+      "scaled": "-0.827797",
+      "locked_raw": "0.388223",
+      "locked_scaled": "-0.827797"
+    },
+    {
+      "feature": "pct_udp",
+      "raw": "17.864",
+      "scaled": "-1.3099",
+      "locked_raw": "17.864",
+      "locked_scaled": "-1.3099"
+    },
+    {
+      "feature": "pct_dns",
+      "raw": "15.385",
+      "scaled": "0.732749",
+      "locked_raw": "15.385",
+      "locked_scaled": "0.732749"
+    },
+    {
+      "feature": "pct_discovery",
+      "raw": "1.017",
+      "scaled": "0.0252584",
+      "locked_raw": "1.017",
+      "locked_scaled": "0.025258"
+    },
+    {
+      "feature": "gap_cv",
+      "raw": "1.19914",
+      "scaled": "0.235622",
+      "locked_raw": "1.19914",
+      "locked_scaled": "0.235622"
+    },
+    {
+      "feature": "pct_internet",
+      "raw": "71.011",
+      "scaled": "0.544592",
+      "locked_raw": "71.011",
+      "locked_scaled": "0.544592"
+    },
+    {
+      "feature": "pct_device",
+      "raw": "4.704",
+      "scaled": "0.353551",
+      "locked_raw": "4.704",
+      "locked_scaled": "0.353551"
+    },
+    {
+      "feature": "log_distinct_peers",
+      "raw": "2.03743",
+      "scaled": "2.17802",
+      "locked_raw": "2.03743",
+      "locked_scaled": "2.17802"
+    }
+  ]
+}

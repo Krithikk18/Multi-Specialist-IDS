@@ -1,0 +1,7 @@
+mac,device,group,attack_packets,first_ts,last_ts,distinct_dst_ports,protocols,reason,rate_ratio,new_service_pairs,attacker_macs
+48:a6:b8:f9:1b:88,Sonos One Speaker,G1,10365155,2022-12-01T14:32:10.187995+00:00,2022-12-01T14:43:00.883049+00:00,1,TCP:10364186;none:969,both,407514.06,10115,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+a0:d0:dc:c4:08:ff,Amazon Alexa Echo Dot 2,G1,3177190,2022-11-29T19:18:18.222383+00:00,2022-11-29T19:21:22.229153+00:00,1,TCP:3176843;none:347,both,259029.7,14000+,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+3c:18:a0:41:c3:a0,Gateway / router,gateway,425,2022-11-29T19:18:31.145220+00:00,2022-12-01T14:43:00.473846+00:00,3,TCP:309;UDP:89;none:26;ICMP:1,both,90.63,5,dc:a6:32:dc:28:48
+00:02:75:f6:e3:cb,Smart Board,GEN,126,2022-11-29T19:18:20.661873+00:00,2022-11-29T19:28:39.823959+00:00,1,TCP:118;none:8,both,26.87,2,dc:a6:32:dc:27:d5
+00:02:75:f4:97:45,unknown,unknown,106,2022-12-01T14:33:10.550456+00:00,2022-12-01T14:38:32.076727+00:00,2,TCP:102;none:4,both,22.6,3,dc:a6:32:dc:27:d5
+2c:71:ff:05:f1:15,Amazon Echo Show,G1,28,2022-11-29T19:25:17.041036+00:00,2022-11-29T19:27:58.127652+00:00,1,TCP:16;none:12,new_service,0.02,2,dc:a6:32:dc:27:d5

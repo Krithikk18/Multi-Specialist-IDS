@@ -1,0 +1,1159 @@
+{
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap",
+ "stem": "DDoS-SYN_Flood",
+ "S": {
+  "packets": 26597011,
+  "background": 197449,
+  "att_src": 26003644,
+  "att_dst": 395918,
+  "t_min": 1661537880.516492,
+  "t_max": 1661776304.275216,
+  "att_first": 1661537899.212022,
+  "att_last": 1661776304.275216,
+  "tshark_seconds": 741.9,
+  "minutes": 3973.7293120702107
+ },
+ "census": [
+  {
+   "rank": 1,
+   "eth_src": "dc:a6:32:c9:e4:ab",
+   "tag": "attacker",
+   "packets": 7079462,
+   "pct": 26.618
+  },
+  {
+   "rank": 2,
+   "eth_src": "dc:a6:32:dc:27:d5",
+   "tag": "attacker",
+   "packets": 4307275,
+   "pct": 16.195
+  },
+  {
+   "rank": 3,
+   "eth_src": "dc:a6:32:c9:e4:90",
+   "tag": "attacker",
+   "packets": 4163427,
+   "pct": 15.654
+  },
+  {
+   "rank": 4,
+   "eth_src": "e4:5f:01:55:90:c4",
+   "tag": "attacker",
+   "packets": 3827597,
+   "pct": 14.391
+  },
+  {
+   "rank": 5,
+   "eth_src": "dc:a6:32:c9:e5:ef",
+   "tag": "attacker",
+   "packets": 3659456,
+   "pct": 13.759
+  },
+  {
+   "rank": 6,
+   "eth_src": "dc:a6:32:c9:e4:d5",
+   "tag": "attacker",
+   "packets": 2963457,
+   "pct": 11.142
+  },
+  {
+   "rank": 7,
+   "eth_src": "1c:fe:2b:98:16:dd",
+   "tag": "Amazon Alexa Echo Dot 1",
+   "packets": 223059,
+   "pct": 0.839
+  },
+  {
+   "rank": 8,
+   "eth_src": "1c:12:b0:9b:0c:ec",
+   "tag": "Unidentified Amazon device (1c:12:b0)",
+   "packets": 170629,
+   "pct": 0.642
+  },
+  {
+   "rank": 9,
+   "eth_src": "3c:18:a0:41:c3:a0",
+   "tag": "gateway",
+   "packets": 81589,
+   "pct": 0.307
+  },
+  {
+   "rank": 10,
+   "eth_src": "ac:17:02:05:34:27",
+   "tag": "Fibaro Home Center Lite",
+   "packets": 20120,
+   "pct": 0.076
+  },
+  {
+   "rank": 11,
+   "eth_src": "9c:8e:cd:1d:ab:9f",
+   "tag": "AMCREST WiFi Camera",
+   "packets": 14686,
+   "pct": 0.055
+  },
+  {
+   "rank": 12,
+   "eth_src": "a0:d0:dc:c4:08:ff",
+   "tag": "Amazon Alexa Echo Dot 2",
+   "packets": 6847,
+   "pct": 0.026
+  },
+  {
+   "rank": 13,
+   "eth_src": "cc:f4:11:9c:d0:00",
+   "tag": "Google Nest Mini Speaker",
+   "packets": 5618,
+   "pct": 0.021
+  },
+  {
+   "rank": 14,
+   "eth_src": "7c:78:b2:86:0d:81",
+   "tag": "Wyze Camera",
+   "packets": 4660,
+   "pct": 0.018
+  },
+  {
+   "rank": 15,
+   "eth_src": "ee:06:3b:b8:d1:df",
+   "tag": "unknown",
+   "packets": 4158,
+   "pct": 0.016
+  },
+  {
+   "rank": 16,
+   "eth_src": "10:2c:6b:1b:43:be",
+   "tag": "unknown",
+   "packets": 3587,
+   "pct": 0.013
+  },
+  {
+   "rank": 17,
+   "eth_src": "40:5d:82:35:14:c8",
+   "tag": "Arlo Q Indoor Camera",
+   "packets": 3330,
+   "pct": 0.013
+  },
+  {
+   "rank": 18,
+   "eth_src": "08:7c:39:ce:6e:2a",
+   "tag": "Amazon Alexa Echo Studio",
+   "packets": 3286,
+   "pct": 0.012
+  },
+  {
+   "rank": 19,
+   "eth_src": "2c:71:ff:05:f1:15",
+   "tag": "Amazon Echo Show",
+   "packets": 3042,
+   "pct": 0.011
+  },
+  {
+   "rank": 20,
+   "eth_src": "6c:5a:b0:44:1d:90",
+   "tag": "TP-Link Tapo Camera",
+   "packets": 3006,
+   "pct": 0.011
+  },
+  {
+   "rank": 21,
+   "eth_src": "dc:a6:32:c9:e5:a4",
+   "tag": "attacker",
+   "packets": 2936,
+   "pct": 0.011
+  },
+  {
+   "rank": 22,
+   "eth_src": "8c:85:80:6c:b6:47",
+   "tag": "Eufy HomeBase 2",
+   "packets": 1934,
+   "pct": 0.007
+  },
+  {
+   "rank": 23,
+   "eth_src": "70:ee:50:68:0e:32",
+   "tag": "Netatmo Camera",
+   "packets": 1853,
+   "pct": 0.007
+  },
+  {
+   "rank": 24,
+   "eth_src": "e8:1b:69:f8:d4:e3",
+   "tag": "Unknown",
+   "packets": 1702,
+   "pct": 0.006
+  },
+  {
+   "rank": 25,
+   "eth_src": "00:a3:d1:07:6f:03",
+   "tag": "Unknown",
+   "packets": 1675,
+   "pct": 0.006
+  },
+  {
+   "rank": 26,
+   "eth_src": "44:bb:3b:00:39:07",
+   "tag": "Nest Indoor Camera",
+   "packets": 1646,
+   "pct": 0.006
+  },
+  {
+   "rank": 27,
+   "eth_src": "44:01:bb:ec:10:4a",
+   "tag": "HeimVision Smart WiFi Camera",
+   "packets": 1567,
+   "pct": 0.006
+  },
+  {
+   "rank": 28,
+   "eth_src": "34:75:63:73:f3:36",
+   "tag": "Home Eye Camera",
+   "packets": 1466,
+   "pct": 0.006
+  },
+  {
+   "rank": 29,
+   "eth_src": "70:ee:50:6b:a8:1a",
+   "tag": "Netatmo Weather Station",
+   "packets": 1403,
+   "pct": 0.005
+  },
+  {
+   "rank": 30,
+   "eth_src": "00:17:88:60:d6:4f",
+   "tag": "Philips Hue Bridge",
+   "packets": 1317,
+   "pct": 0.005
+  }
+ ],
+ "pairs": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 2794935,
+   "control_packets": 0,
+   "rate_ratio": 390688.86,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/3325:48;TCP/6271:47;TCP/6272:47;TCP/2126:47;TCP/2127:47;TCP/2128:47;TCP/2129:47;TCP/2326:47",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:39:24.474097+00:00",
+   "last_ts": "2022-08-26T18:51:00.820594+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 1689383,
+   "control_packets": 0,
+   "rate_ratio": 236149.72,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/6417:33;TCP/6420:33;TCP/6421:33;TCP/6412:32;TCP/6413:32;TCP/6415:32;TCP/7104:32;TCP/7105:32",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:39:24.139481+00:00",
+   "last_ts": "2022-08-26T18:51:00.596720+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 1631184,
+   "control_packets": 0,
+   "rate_ratio": 228014.4,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8008:1431318;TCP/3082:28;TCP/2554:25;TCP/2555:25;TCP/2556:25;TCP/2557:25;TCP/2558:25;TCP/2559:25",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:57:11.984538+00:00",
+   "last_ts": "2022-08-26T19:09:00.863113+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 1504115,
+   "control_packets": 0,
+   "rate_ratio": 210252.11,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/4070:1413797;none:157;TCP/3788:31;TCP/3789:31;TCP/3790:31;TCP/3791:31;TCP/3125:31;TCP/3126:31",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:18:44.221935+00:00",
+   "last_ts": "2022-08-26T18:30:01.013732+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 1484116,
+   "control_packets": 0,
+   "rate_ratio": 207456.55,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/4070:1394271;none:162;TCP/904:25;TCP/912:25;TCP/281:24;TCP/282:24;TCP/283:24;TCP/578:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:19:02.814854+00:00",
+   "last_ts": "2022-08-26T18:29:52.389627+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 1374658,
+   "control_packets": 0,
+   "rate_ratio": 192156.01,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/4070:1293703;none:153;TCP/3326:25;TCP/3327:25;TCP/187:24;TCP/188:24;TCP/189:24;TCP/190:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:18:39.916397+00:00",
+   "last_ts": "2022-08-26T18:30:01.012762+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 1281917,
+   "control_packets": 0,
+   "rate_ratio": 179192.25,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8008:1127457;TCP/3697:22;TCP/2631:20;TCP/3475:20;TCP/2554:19;TCP/2555:19;TCP/2556:19;TCP/2557:19",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:57:11.948947+00:00",
+   "last_ts": "2022-08-26T19:08:47.826918+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 1233458,
+   "control_packets": 0,
+   "rate_ratio": 172418.43,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/4070:1159237;none:136;TCP/3177:25;TCP/3178:25;TCP/2600:25;TCP/3569:24;TCP/3570:24;TCP/3571:24",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:18:39.796419+00:00",
+   "last_ts": "2022-08-26T18:30:01.003964+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 1201444,
+   "control_packets": 0,
+   "rate_ratio": 167943.36,
+   "new_service_pairs": "2000+",
+   "new_services": "none:141;TCP/7844:24;TCP/7845:23;TCP/3044:23;TCP/3045:23;TCP/3052:23;TCP/3060:23;TCP/3066:23",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:39:31.409857+00:00",
+   "last_ts": "2022-08-26T18:51:00.849038+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 1174714,
+   "control_packets": 0,
+   "rate_ratio": 164206.92,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/4070:1102728;none:150;TCP/3850:22;TCP/3851:22;TCP/3852:22;TCP/3853:22;TCP/3854:22;TCP/3813:21",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:18:48.779240+00:00",
+   "last_ts": "2022-08-26T18:29:59.737309+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 1148764,
+   "control_packets": 0,
+   "rate_ratio": 160579.51,
+   "new_service_pairs": 556,
+   "new_services": "TCP/554:1139249;none:107;TCP/140:21;TCP/139:20;TCP/0:17;TCP/1:17;TCP/2:17;TCP/3:17",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:28:17.025004+00:00",
+   "last_ts": "2022-08-29T12:31:38.435092+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 1106759,
+   "control_packets": 0,
+   "rate_ratio": 154707.86,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/2933:22;TCP/2935:22;TCP/2211:21;TCP/2212:21;TCP/2213:21;TCP/2214:21;TCP/2215:21;TCP/2934:21",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:39:24.472934+00:00",
+   "last_ts": "2022-08-26T18:51:00.849805+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 1055304,
+   "control_packets": 13401,
+   "rate_ratio": 11.01,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8008:918502;TCP/2555:22;TCP/2556:22;TCP/2557:22;TCP/2559:22;TCP/2560:22;TCP/2554:21;TCP/2558:21",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:57:11.805372+00:00",
+   "last_ts": "2022-08-26T19:09:00.908204+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 1040343,
+   "control_packets": 0,
+   "rate_ratio": 145423.93,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8008:912333;TCP/2615:19;TCP/2616:19;TCP/2617:19;TCP/2618:19;TCP/2554:16;TCP/2555:16;TCP/2556:16",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:57:11.944419+00:00",
+   "last_ts": "2022-08-26T19:09:00.569410+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 1009567,
+   "control_packets": 0,
+   "rate_ratio": 141121.91,
+   "new_service_pairs": "2000+",
+   "new_services": "none:118;TCP/19697:20;TCP/19702:20;TCP/19705:20;TCP/19708:20;TCP/19709:20;TCP/19711:20;TCP/16274:20",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:39:34.812875+00:00",
+   "last_ts": "2022-08-26T18:51:00.837424+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 979441,
+   "control_packets": 0,
+   "rate_ratio": 136910.76,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/1818:20;TCP/1650:19;TCP/1651:19;TCP/1652:19;TCP/1653:19;TCP/1654:19;TCP/1655:19;TCP/1656:19",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:39:25.188298+00:00",
+   "last_ts": "2022-08-26T18:51:00.794073+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 890889,
+   "control_packets": 0,
+   "rate_ratio": 124532.56,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8008:784270;TCP/3037:17;TCP/3039:17;TCP/3038:16;TCP/3040:16;TCP/6170:16;TCP/6171:16;TCP/6172:16",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:57:15.224753+00:00",
+   "last_ts": "2022-08-26T19:09:00.907117+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 878801,
+   "control_packets": 0,
+   "rate_ratio": 122842.84,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/4070:822606;none:150;TCP/2612:19;TCP/2613:19;TCP/3524:18;TCP/3525:18;TCP/3177:17;TCP/2614:17",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:18:45.536743+00:00",
+   "last_ts": "2022-08-26T18:29:57.478544+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 797990,
+   "control_packets": 0,
+   "rate_ratio": 111546.71,
+   "new_service_pairs": "2000+",
+   "new_services": "TCP/8008:699500;TCP/3893:16;TCP/3895:16;TCP/3894:15;TCP/2815:13;TCP/2816:13;TCP/2817:13;TCP/2818:13",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:57:12.061920+00:00",
+   "last_ts": "2022-08-26T19:09:00.865984+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 434192,
+   "control_packets": 0,
+   "rate_ratio": 60693.35,
+   "new_service_pairs": 556,
+   "new_services": "TCP/554:430756;none:75;TCP/469:9;TCP/472:9;TCP/473:9;TCP/377:8;TCP/378:8;TCP/379:8",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:28:16.654229+00:00",
+   "last_ts": "2022-08-29T12:31:44.275216+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 359955,
+   "control_packets": 0,
+   "rate_ratio": 50316.16,
+   "new_service_pairs": 556,
+   "new_services": "TCP/554:357083;none:90;TCP/553:9;TCP/226:8;TCP/366:8;TCP/552:8;TCP/0:5;TCP/1:5",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:28:25.069673+00:00",
+   "last_ts": "2022-08-29T12:31:44.272993+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 328352,
+   "control_packets": 0,
+   "rate_ratio": 45898.55,
+   "new_service_pairs": 556,
+   "new_services": "TCP/554:325513;none:69;TCP/0:5;TCP/1:5;TCP/2:5;TCP/3:5;TCP/4:5;TCP/5:5",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:28:23.161561+00:00",
+   "last_ts": "2022-08-29T12:31:39.872189+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 306606,
+   "control_packets": 0,
+   "rate_ratio": 42858.8,
+   "new_service_pairs": 556,
+   "new_services": "TCP/554:304333;none:57;TCP/0:4;TCP/1:4;TCP/2:4;TCP/3:4;TCP/4:4;TCP/5:4",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:28:16.824438+00:00",
+   "last_ts": "2022-08-29T12:31:44.067941+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 290041,
+   "control_packets": 0,
+   "rate_ratio": 40543.26,
+   "new_service_pairs": 556,
+   "new_services": "TCP/554:287758;none:67;TCP/0:4;TCP/1:4;TCP/2:4;TCP/3:4;TCP/4:4;TCP/5:4",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:28:16.835956+00:00",
+   "last_ts": "2022-08-29T12:31:35.315555+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 683,
+   "control_packets": 0,
+   "rate_ratio": 95.47,
+   "new_service_pairs": 642,
+   "new_services": "none:26;TCP/9657:2;TCP/9658:2;TCP/9659:2;TCP/9660:2;TCP/9661:2;TCP/9662:2;TCP/9663:2",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:41:43.426109+00:00",
+   "last_ts": "2022-08-26T18:50:51.627630+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 565,
+   "control_packets": 0,
+   "rate_ratio": 78.98,
+   "new_service_pairs": 2,
+   "new_services": "TCP/8008:562;none:3",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T19:01:34.775540+00:00",
+   "last_ts": "2022-08-26T19:06:12.918933+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 333,
+   "control_packets": 0,
+   "rate_ratio": 46.55,
+   "new_service_pairs": 2,
+   "new_services": "TCP/4070:317;none:16",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-26T18:23:58.203550+00:00",
+   "last_ts": "2022-08-26T18:29:54.184746+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 307,
+   "control_packets": 0,
+   "rate_ratio": 42.91,
+   "new_service_pairs": 2,
+   "new_services": "TCP/554:302;none:5",
+   "victim": true,
+   "reason": "both",
+   "first_ts": "2022-08-29T12:29:30.254468+00:00",
+   "last_ts": "2022-08-29T12:31:18.564193+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "mac": "40:5d:82:35:14:c8",
+   "device": "Arlo Q Indoor Camera",
+   "group": "G1",
+   "attack_packets": 2,
+   "control_packets": 0,
+   "rate_ratio": 0.28,
+   "new_service_pairs": 1,
+   "new_services": "none:2",
+   "victim": true,
+   "reason": "new_service",
+   "first_ts": "2022-08-26T18:18:19.212022+00:00",
+   "last_ts": "2022-08-26T18:18:19.212023+00:00",
+   "distinct_dst_ports": 0
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 8,
+   "control_packets": 81,
+   "rate_ratio": 0.01,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2022-08-26T18:23:05.411902+00:00",
+   "last_ts": "2022-08-26T18:40:16.967851+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 8,
+   "control_packets": 59,
+   "rate_ratio": 0.02,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2022-08-26T18:44:32.977796+00:00",
+   "last_ts": "2022-08-26T19:01:44.659587+00:00",
+   "distinct_dst_ports": 1
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "mac": "3c:18:a0:41:c3:a0",
+   "device": "Gateway / router",
+   "group": "gateway",
+   "attack_packets": 8,
+   "control_packets": 60,
+   "rate_ratio": 0.02,
+   "new_service_pairs": 0,
+   "new_services": "",
+   "victim": false,
+   "reason": "",
+   "first_ts": "2022-08-26T18:45:07.652842+00:00",
+   "last_ts": "2022-08-26T18:46:13.949128+00:00",
+   "distinct_dst_ports": 1
+  }
+ ],
+ "victims": [
+  {
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "attack_packets": 8782212,
+   "first_ts": "2022-08-26T18:39:24.139481+00:00",
+   "last_ts": "2022-08-26T18:51:00.849805+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:8781344;none:868",
+   "reason": "both",
+   "rate_ratio": 390688.86,
+   "new_service_pairs": "12642+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "attack_packets": 7650195,
+   "first_ts": "2022-08-26T18:18:39.796419+00:00",
+   "last_ts": "2022-08-26T18:30:01.013732+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:7649271;none:924",
+   "reason": "both",
+   "rate_ratio": 210252.11,
+   "new_service_pairs": "12002+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "attack_packets": 6698192,
+   "first_ts": "2022-08-26T18:57:11.805372+00:00",
+   "last_ts": "2022-08-26T19:09:00.908204+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:6697572;none:620",
+   "reason": "both",
+   "rate_ratio": 228014.4,
+   "new_service_pairs": "12002+",
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "attack_packets": 2868217,
+   "first_ts": "2022-08-29T12:28:16.654229+00:00",
+   "last_ts": "2022-08-29T12:31:44.275216+00:00",
+   "distinct_dst_ports": 1,
+   "protocols": "TCP:2867747;none:470",
+   "reason": "both",
+   "rate_ratio": 160579.51,
+   "new_service_pairs": 3338,
+   "attacker_macs": "dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4"
+  },
+  {
+   "mac": "40:5d:82:35:14:c8",
+   "device": "Arlo Q Indoor Camera",
+   "group": "G1",
+   "attack_packets": 2,
+   "first_ts": "2022-08-26T18:18:19.212022+00:00",
+   "last_ts": "2022-08-26T18:18:19.212023+00:00",
+   "distinct_dst_ports": 0,
+   "protocols": "none:2",
+   "reason": "new_service",
+   "rate_ratio": 0.28,
+   "new_service_pairs": 1,
+   "attacker_macs": "dc:a6:32:c9:e5:a4"
+  }
+ ],
+ "bcast_mcast": {
+  "broadcast": 4771,
+  "multicast": 31
+ },
+ "cover": [
+  {
+   "pcap": "DDoS-SYN_Flood",
+   "group": "G1",
+   "n_victims": 5,
+   "attack_packets": 25998818,
+   "window_start": "2022-08-26T18:18:19.212022+00:00",
+   "window_end": "2022-08-29T12:31:44.275216+00:00"
+  },
+  {
+   "pcap": "DDoS-SYN_Flood",
+   "group": "G2",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "DDoS-SYN_Flood",
+   "group": "GEN",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  },
+  {
+   "pcap": "DDoS-SYN_Flood",
+   "group": "gateway",
+   "n_victims": 0,
+   "attack_packets": 0,
+   "window_start": "",
+   "window_end": ""
+  }
+ ],
+ "spoof": {
+  "distinct_ip_src": 10,
+  "distinct_method": "exact",
+  "flag": false,
+  "collide_with_device_ips": 0,
+  "collide_with_any_lan_host_ip": 0,
+  "packets_from_device_ips": 0,
+  "top_ip_src": [
+   {
+    "ip_src": "192.168.137.240",
+    "packets": 7078448,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.17",
+    "packets": 4305989,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.195",
+    "packets": 4162388,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.134",
+    "packets": 3826465,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.58",
+    "packets": 3658374,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.224",
+    "packets": 2962444,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.96",
+    "packets": 1840,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.242",
+    "packets": 5,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.213",
+    "packets": 3,
+    "is_device_ip": false
+   },
+   {
+    "ip_src": "192.168.137.90",
+    "packets": 3,
+    "is_device_ip": false
+   }
+  ]
+ },
+ "window": {
+  "first_utc": "2022-08-26T18:18:19.212022+00:00",
+  "last_utc": "2022-08-29T12:31:44.275216+00:00",
+  "active_minutes": 44,
+  "pkts_per_min_over_capture": 6543.89,
+  "pkts_per_min_over_active_minutes": 590991.91,
+  "peak_pkts_per_min": 840847
+ },
+ "xcheck": {
+  "outcomes": {
+   "agree": 25995934,
+   "no_ip_dst (non-IPv4)": 7685,
+   "multicast ip.dst": 16,
+   "external ip.dst via gateway MAC": 9
+  },
+  "disagree": 0,
+  "top_disagreements": []
+ },
+ "per_min": {
+  "27692298": 238944,
+  "27692299": 703384,
+  "27692300": 619820,
+  "27692301": 683353,
+  "27692302": 747451,
+  "27692303": 579527,
+  "27692304": 607900,
+  "27692305": 562464,
+  "27692306": 657486,
+  "27692307": 725660,
+  "27692308": 745685,
+  "27692309": 764640,
+  "27692310": 15333,
+  "27692319": 451325,
+  "27692320": 780128,
+  "27692321": 668769,
+  "27692322": 770195,
+  "27692323": 711959,
+  "27692324": 668819,
+  "27692325": 818877,
+  "27692326": 840847,
+  "27692327": 779394,
+  "27692328": 770678,
+  "27692329": 746474,
+  "27692330": 768234,
+  "27692331": 8209,
+  "27692337": 525242,
+  "27692338": 503526,
+  "27692339": 622761,
+  "27692340": 485356,
+  "27692341": 588242,
+  "27692342": 615863,
+  "27692343": 545597,
+  "27692344": 541311,
+  "27692345": 494796,
+  "27692346": 521189,
+  "27692347": 625321,
+  "27692348": 615798,
+  "27692349": 14481,
+  "27696267": 1,
+  "27696268": 604925,
+  "27696269": 804877,
+  "27696270": 824605,
+  "27696271": 634198
+ },
+ "burst_threshold": 346.29,
+ "bursts": [
+  {
+   "start": "2022-08-26T18:18:00.000000+00:00",
+   "end": "2022-08-26T18:31:00.000000+00:00",
+   "minutes": 13,
+   "packets": 7651647,
+   "peak_per_min": 764640
+  },
+  {
+   "start": "2022-08-26T18:39:00.000000+00:00",
+   "end": "2022-08-26T18:52:00.000000+00:00",
+   "minutes": 13,
+   "packets": 8783908,
+   "peak_per_min": 840847
+  },
+  {
+   "start": "2022-08-26T18:57:00.000000+00:00",
+   "end": "2022-08-26T19:10:00.000000+00:00",
+   "minutes": 13,
+   "packets": 6699483,
+   "peak_per_min": 625321
+  },
+  {
+   "start": "2022-08-29T12:28:00.000000+00:00",
+   "end": "2022-08-29T12:32:00.000000+00:00",
+   "minutes": 4,
+   "packets": 2868605,
+   "peak_per_min": 824605
+  }
+ ],
+ "per_mac": [
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:90",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 4163427,
+   "pkt_per_min": 1047.74,
+   "control_pkt_per_min": 0.05,
+   "victims": 4,
+   "victims_by_group": "G1 4",
+   "burst_windows": 4,
+   "bursts": "18:19:00-18:30:00 (1,484,276 pkts); 18:39:00-18:52:00 (1,106,996 pkts); 18:57:00-19:09:00 (1,282,037 pkts); 12:28:00-12:32:00 (290,097 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:ab",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 7079462,
+   "pkt_per_min": 1781.57,
+   "control_pkt_per_min": 0.03,
+   "victims": 4,
+   "victims_by_group": "G1 4",
+   "burst_windows": 4,
+   "bursts": "18:18:00-18:31:00 (1,504,288 pkts); 18:39:00-18:52:00 (2,795,065 pkts); 18:57:00-19:10:00 (1,631,302 pkts); 12:28:00-12:32:00 (1,148,807 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:c6",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 9,
+   "pkt_per_min": 0.0,
+   "control_pkt_per_min": 0.46,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e4:d5",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 2963457,
+   "pkt_per_min": 745.76,
+   "control_pkt_per_min": 0.05,
+   "victims": 4,
+   "victims_by_group": "G1 4",
+   "burst_windows": 4,
+   "bursts": "18:18:00-18:30:00 (878,967 pkts); 18:39:00-18:52:00 (979,719 pkts); 18:57:00-19:09:00 (797,941 pkts); 12:28:00-12:32:00 (306,655 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:02",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 14,
+   "pkt_per_min": 0.0,
+   "control_pkt_per_min": 0.27,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:a4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 2936,
+   "pkt_per_min": 0.74,
+   "control_pkt_per_min": 0.05,
+   "victims": 5,
+   "victims_by_group": "G1 5",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e5:ef",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 3659456,
+   "pkt_per_min": 920.91,
+   "control_pkt_per_min": 0.05,
+   "victims": 4,
+   "victims_by_group": "G1 4",
+   "burst_windows": 4,
+   "bursts": "18:18:00-18:30:00 (1,174,859 pkts); 18:39:00-18:52:00 (1,009,855 pkts); 18:57:00-19:10:00 (1,040,468 pkts); 12:28:00-12:32:00 (434,272 pkts)"
+  },
+  {
+   "attacker_mac": "dc:a6:32:c9:e6:f4",
+   "device": "Raspberry Pi 4 (2 GB)",
+   "packets": 11,
+   "pkt_per_min": 0.0,
+   "control_pkt_per_min": 0.22,
+   "victims": 0,
+   "victims_by_group": "-",
+   "burst_windows": 0,
+   "bursts": "-"
+  },
+  {
+   "attacker_mac": "dc:a6:32:dc:27:d5",
+   "device": "Raspberry Pi 4 (8 GB)",
+   "packets": 4307275,
+   "pkt_per_min": 1083.94,
+   "control_pkt_per_min": 33.42,
+   "victims": 4,
+   "victims_by_group": "G1 4",
+   "burst_windows": 4,
+   "bursts": "18:18:00-18:31:00 (1,233,731 pkts); 18:39:00-18:52:00 (1,689,602 pkts); 18:57:00-19:10:00 (1,055,527 pkts); 12:28:00-12:32:00 (328,415 pkts)"
+  },
+  {
+   "attacker_mac": "e4:5f:01:55:90:c4",
+   "device": "Raspberry Pi 4 (4 GB)",
+   "packets": 3827597,
+   "pkt_per_min": 963.23,
+   "control_pkt_per_min": 0.03,
+   "victims": 4,
+   "victims_by_group": "G1 4",
+   "burst_windows": 4,
+   "bursts": "18:18:00-18:31:00 (1,374,846 pkts); 18:39:00-18:52:00 (1,201,694 pkts); 18:57:00-19:10:00 (891,054 pkts); 12:28:00-12:32:00 (360,003 pkts)"
+  }
+ ],
+ "capture": {
+  "first_utc": "2022-08-26T18:18:00.516492+00:00",
+  "last_utc": "2022-08-29T12:31:44.275216+00:00",
+  "minutes": 3973.73
+ },
+ "tcp_flags": {
+  "SYN": 25642312,
+  "RST": 353622
+ },
+ "protocols": {
+  "TCP": 25995934,
+  "none": 7685,
+  "UDP": 25
+ },
+ "background_pct": 0.742,
+ "gateway_ip_macs": [
+  "3c:18:a0:41:c3:a0"
+ ],
+ "caps": {
+  "census_overflow": 0,
+  "xkey_overflow_packets": 0,
+  "pairs_with_dport_cap": 0,
+  "pairs_with_new_service_cap": 18,
+  "lan_xcheck_keys": 43
+ },
+ "stats_version": 2,
+ "sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8",
+ "params": {
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats_version": 2
+ },
+ "run_utc": "2026-10-10T20:10:05+00:00",
+ "png": "attack_rate_DDoS-SYN_Flood.png",
+ "peak_rss": {
+  "self_mb": 282.4,
+  "tshark_mb": 426.1
+ }
+}

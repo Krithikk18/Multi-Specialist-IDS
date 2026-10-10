@@ -9,6 +9,11 @@ Nothing is modified: the input CSV is opened read-only and no data is "fixed".
 
 Usage:
     python 03b_check_flows.py [--csv PATH] [--pcap PATH] [--out-dir DIR] [--capinfos EXE]
+                              [--strict] [--json PATH]
+
+Exit status: 0 = no FAIL (WARN allowed), 1 = at least one FAIL (or a WARN with --strict,
+or a FATAL input problem such as a missing required column), 2 = unexpected exception
+(traceback on stderr).
 """
 
 from __future__ import annotations
@@ -24,15 +29,17 @@ import re
 import shutil
 import subprocess
 import sys
+import traceback
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent
-DEFAULT_CSV = ROOT / "data/interim/flows/benign/BenignTraffic.pcap_Flow__singlepkt.csv"
-DEFAULT_PCAP = ROOT / "data/raw/ciciot2023/benign/BenignTraffic.pcap"
-DEFAULT_OUT = ROOT / "results/step4"
+from config.config import DATASET, EXTRACTOR, FLOWS_DIR, RESULTS_DIR
+
+DEFAULT_CSV = FLOWS_DIR / "benign" / f"{DATASET.benign_pcap}_Flow__{EXTRACTOR.build}.csv"
+DEFAULT_PCAP = DATASET.benign_pcap_path
+DEFAULT_OUT = RESULTS_DIR / "step4"
 
 PCAP_TOTAL_PACKETS = 3_664_164      # from capinfos
 FLOW_TIMEOUT_US = 120_000_000       # hard-coded flowTimeout (120 s) in CICFlowMeter 4.0
@@ -449,14 +456,38 @@ def write_reports(out_dir: Path, meta: dict, columns: list[str], mapping: dict,
 
 # --------------------------------------------------------------------------- main
 
-def main() -> None:
+def write_json_summary(path: Path, csv_path: Path, rows, results: list[dict],
+                       overall: str, strict: bool, fatal: str | None = None) -> None:
+    """Machine-readable summary: {check: {status, detail}}, overall, input, row count."""
+    payload = {"input_file": str(csv_path), "row_count": rows, "overall_status": overall,
+               "strict": strict,
+               "checks": {r["check"]: {"status": r["status"], "detail": r["reason"],
+                                       "key_number": r["key_number"]} for r in results}}
+    if fatal:
+        payload["fatal"] = fatal
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(to_jsonable(payload), indent=2) + "\n", encoding="utf-8")
+
+
+def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--csv", type=Path, default=DEFAULT_CSV)
     ap.add_argument("--pcap", type=Path, default=DEFAULT_PCAP)
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--capinfos", default=None, help="path to capinfos (default: search PATH)")
+    ap.add_argument("--strict", action="store_true", help="count WARN as failure (exit 1)")
+    ap.add_argument("--json", type=Path, default=None,
+                    help="also write a machine-readable summary to PATH")
     args = ap.parse_args()
+    try:
+        return run(args)
+    except SystemExit as e:  # FATAL input problems (sys.exit("FATAL: ...")) -> exit 1
+        if args.json and isinstance(e.code, str):
+            write_json_summary(args.json, args.csv, None, [], "FAIL", args.strict, fatal=e.code)
+        raise
 
+
+def run(args) -> int:
     if not args.csv.exists():
         sys.exit(f"FATAL: CSV not found: {args.csv}")
 
@@ -511,6 +542,23 @@ def main() -> None:
     print_summary(results)
     print(f"\nReports written:\n  {md_path}\n  {json_path}")
 
+    statuses = [r["status"] for r in results]
+    overall = "FAIL" if "FAIL" in statuses else "WARN" if "WARN" in statuses else "PASS"
+    failed = overall == "FAIL" or (args.strict and overall == "WARN")
+    if args.json:
+        write_json_summary(args.json, args.csv, len(df), results, overall, args.strict)
+        print(f"  {args.json}")
+    print(f"\nOverall: {overall} ({statuses.count('PASS')} PASS, {statuses.count('WARN')} WARN, "
+          f"{statuses.count('FAIL')} FAIL){' [strict]' if args.strict else ''} -> "
+          f"exit {1 if failed else 0}")
+    return 1 if failed else 0
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except Exception:
+        traceback.print_exc(file=sys.stderr)
+        sys.exit(2)

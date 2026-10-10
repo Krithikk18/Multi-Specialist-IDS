@@ -1,0 +1,7 @@
+mac,device,group,attack_packets,first_ts,last_ts,distinct_dst_ports,protocols,reason,rate_ratio,new_service_pairs,attacker_macs
+b0:c5:54:59:2e:99,D-Link DCS8000LHA1 Mini Camera,G2,1162421,2023-02-07T16:23:57.789760+00:00,2023-02-07T16:27:59.990097+00:00,7,UDP:1162005;none:416,both,17704.27,14,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+d4:a6:51:76:06:64,Teckin Plug 1,G2,289000,2023-02-14T17:27:26.362755+00:00,2023-02-14T17:38:00.238625+00:00,6,UDP:288979;none:21,both,3546.56,12,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+3c:18:a0:41:c3:a0,Gateway / router,gateway,383,2023-02-07T16:27:13.305443+00:00,2023-02-14T17:37:57.260160+00:00,2,ICMP:182;UDP:165;none:36,new_service,0.34,2,dc:a6:32:c9:e5:02;dc:a6:32:c9:e6:f4
+cc:f4:11:9c:d0:00,Google Nest Mini Speaker,G1,219,2023-02-14T17:27:00.821507+00:00,2023-02-14T17:36:22.269106+00:00,1,TCP:182;none:37,both,11.98,2,dc:a6:32:c9:e5:a4
+00:17:88:60:d6:4f,Philips Hue Bridge,G1,101,2023-02-07T16:23:58.491995+00:00,2023-02-14T17:37:26.310350+00:00,1,ICMP:52;TCP:34;none:15,new_service,5.53,3,dc:a6:32:c9:e5:a4
+2c:71:ff:05:f1:15,Amazon Echo Show,G1,60,2023-02-14T17:27:21.691736+00:00,2023-02-14T17:37:24.098316+00:00,1,none:30;TCP:23;ICMP:7,new_service,3.28,4,dc:a6:32:c9:e5:a4

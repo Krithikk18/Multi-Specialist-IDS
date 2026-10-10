@@ -1,0 +1,7 @@
+mac,device,group,attack_packets,first_ts,last_ts,distinct_dst_ports,protocols,reason,rate_ratio,new_service_pairs,attacker_macs
+1c:fe:2b:98:16:dd,Amazon Alexa Echo Dot 1,G1,1952092,2023-01-19T15:51:17.098022+00:00,2023-01-19T16:01:51.713489+00:00,7,UDP:1951922;none:170,both,8015940.68,14,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+08:7c:39:ce:6e:2a,Amazon Alexa Echo Studio,G1,1262306,2023-01-19T16:08:19.074488+00:00,2023-01-19T16:14:06.510249+00:00,7,UDP:1262142;none:164,both,4365787.37,14,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+cc:f4:11:9c:d0:00,Google Nest Mini Speaker,G1,344367,2023-01-19T15:51:04.794441+00:00,2023-01-19T16:23:26.574506+00:00,8,UDP:343903;TCP:325;none:139,both,1293279.28,14,dc:a6:32:c9:e4:90;dc:a6:32:c9:e4:ab;dc:a6:32:c9:e4:d5;dc:a6:32:c9:e5:a4;dc:a6:32:c9:e5:ef;dc:a6:32:dc:27:d5;e4:5f:01:55:90:c4
+00:17:88:60:d6:4f,Philips Hue Bridge,G1,132,2023-01-19T15:51:42.202196+00:00,2023-01-19T16:17:46.490983+00:00,1,ICMP:80;TCP:30;none:22,both,2260.71,3,dc:a6:32:c9:e5:a4
+3c:18:a0:41:c3:a0,Gateway / router,gateway,30,2023-01-19T15:53:18.859183+00:00,2023-01-19T15:55:20.936336+00:00,2,UDP:23;none:6;ICMP:1,new_service,8.71,1,dc:a6:32:c9:e6:f4
+2c:71:ff:05:f1:15,Amazon Echo Show,G1,8,2023-01-19T16:01:37.665224+00:00,2023-01-19T16:22:36.563425+00:00,1,none:7;TCP:1,both,137.01,2,dc:a6:32:c9:e5:a4

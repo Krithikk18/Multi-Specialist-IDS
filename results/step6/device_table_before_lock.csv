@@ -1,0 +1,74 @@
+mac,device_name,paper_category,role,vendor_family,include_in_grouping,behaviour_group,packets,bytes,tx_packets,tx_bytes,rx_packets,rx_bytes,notes
+3c:18:a0:41:c3:a0,Gateway / router,Infrastructure,gateway,,no,n/a,3157540,1914118079,1500837,390504633,1656703,1523613446,In 86% of packets; not an IoT device
+40:5d:82:35:14:c8,Arlo Q Indoor Camera,Camera,iot,Arlo,yes,TBD (Step 6),1262672,1298816090,666068,1253955021,596604,44861069,Dominant talker: ~1.25 GB upload (video)
+ac:17:02:05:34:27,Fibaro Home Center Lite,Hub,iot,Fibaro,yes,TBD (Step 6),428446,50133595,215849,22853817,212597,27279778,Z-Wave hub; hides devices behind it
+44:bb:3b:00:39:07,Nest Indoor Camera,Camera,iot,Google Nest,yes,TBD (Step 6),383522,75468187,194661,62855735,188861,12612452,
+2c:71:ff:05:f1:15,Amazon Echo Show,Audio,iot,Amazon,yes,TBD (Step 6),252844,94547916,135130,21071470,117714,73476446,
+a0:d0:dc:c4:08:ff,Amazon Alexa Echo Dot 2,Audio,iot,Amazon,yes,TBD (Step 6),214968,22648759,103548,9396690,111420,13252069,
+24:05:88:30:6f:89,Unknown,Unknown,unknown,,no,n/a,210039,201190144,112295,69055932,97744,132134212,Not in paper Table 1; heavy downloader (~132 MB rx)
+56:4f:8a:e1:f3:2d,Randomised MAC (phone/laptop),Unknown,excluded,,no,n/a,104830,70340073,48696,31810038,56134,38530035,Locally-administered MAC; not IoT
+cc:f4:11:9c:d0:00,Google Nest Mini Speaker,Audio,iot,Google Nest,yes,TBD (Step 6),79050,11334450,38591,5569735,40459,5764715,
+08:7c:39:ce:6e:2a,Amazon Alexa Echo Studio,Audio,iot,Amazon,yes,TBD (Step 6),72553,22098201,39889,8179355,32664,13918846,
+84:7a:b6:62:3a:6c,Yi Indoor 2 Camera,Camera,iot,Yi,yes,TBD (Step 6),50536,7761002,25287,4420202,25249,3340800,
+b0:f1:ec:d3:e7:98,Harman Kardon speaker (Ampak),Audio,iot,Harman Kardon,yes,TBD (Step 6),50312,6302209,29729,2836091,20583,3466118,
+7c:78:b2:86:0d:81,Wyze Camera,Camera,iot,Wyze,yes,TBD (Step 6),46122,6893695,29657,3150357,16465,3743338,
+34:75:63:73:f3:36,Home Eye Camera,Camera,iot,Home Eye,yes,TBD (Step 6),45962,3854033,25336,2379302,20626,1474731,
+1c:fe:2b:98:16:dd,Amazon Alexa Echo Dot 1,Audio,iot,Amazon,yes,TBD (Step 6),45304,6996868,24806,3205113,20498,3791755,
+70:ee:50:68:0e:32,Netatmo Camera,Camera,iot,Netatmo,yes,TBD (Step 6),41741,26397118,24114,22809489,17627,3587629,
+ac:f1:08:4e:00:82,LG Smart TV,Home Automation,iot,LG,yes,TBD (Step 6),41100,12748642,30327,5585916,10773,7162726,
+00:17:88:60:d6:4f,Philips Hue Bridge,Hub,iot,Philips Hue,yes,TBD (Step 6),38134,10250116,30401,8778336,7733,1471780,Zigbee bridge; Hue bulbs appear as this MAC
+dc:a6:32:dc:27:d5,Raspberry Pi 4 (8 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,35937,7651029,18563,2969805,17374,4681224,Paper lists as attacker; behaves normally here
+28:6d:97:7a:2b:2d,SmartThings Hub,Hub,iot,Samsung,yes,TBD (Step 6),33740,7488090,17821,2404985,15919,5083105,
+28:6d:97:9e:f4:d5,Aeotec Smart Home Hub,Hub,iot,Aeotec,yes,TBD (Step 6),32356,6869355,16842,1900961,15514,4968394,
+00:a3:d1:07:6f:03,Unknown,Unknown,unknown,,no,n/a,27281,1960405,23948,1760425,3333,199980,Not in paper; almost send-only
+10:5a:17:97:a5:c6,Rbcior Camera,Camera,iot,Rbcior,yes,TBD (Step 6),23117,5205612,14566,3064372,8551,2141240,
+44:01:bb:ec:10:4a,HeimVision Smart WiFi Camera,Camera,iot,HeimVision,yes,TBD (Step 6),23076,3762517,16416,3095640,6660,666877,
+8c:85:80:6c:b6:47,Eufy HomeBase 2,Hub,iot,Eufy,yes,TBD (Step 6),22018,1826953,11687,1094522,10331,732431,
+84:7a:b6:64:62:58,Yi Indoor Camera,Camera,iot,Yi,yes,TBD (Step 6),19784,3645411,10634,1383031,9150,2262380,
+70:ee:50:6b:a8:1a,Netatmo Weather Station,Home Automation,iot,Netatmo,yes,TBD (Step 6),18190,1314796,9933,809265,8257,505531,Closest thing to an environmental sensor (vs ESP32+DHT11)
+6c:5a:b0:44:1d:90,TP-Link Tapo Camera,Camera,iot,TP-Link,yes,TBD (Step 6),16680,2701763,10517,1086512,6163,1615251,
+9c:8e:cd:1d:ab:9f,AMCREST WiFi Camera,Camera,iot,Amcrest,yes,TBD (Step 6),14151,1658056,8436,958036,5715,700020,
+3c:37:86:6f:b9:51,Arlo Base Station,Camera,iot,Arlo,yes,TBD (Step 6),12869,2179705,7491,1046285,5378,1133420,
+08:3a:f2:1f:bc:68,Cocoon Smart HVAC Fan,Home Automation,iot,Cocoon,yes,TBD (Step 6),12615,947951,6841,597732,5774,350219,
+f4:cf:a2:34:48:6b,LampUX RGB,Lighting,iot,LampUX,yes,TBD (Step 6),11713,1908300,11122,1835531,591,72769,
+24:a1:60:14:7f:f9,Unidentified ESP plug (1),Unidentified (Espressif),iot,Espressif,yes,TBD (Step 6),11681,1899001,11085,1825617,596,73384,inferred: Espressif OUI + traffic near-clone of GoSund units; not matched in Table 1
+c4:dd:57:0c:39:94,Unidentified ESP plug (3),Unidentified (Espressif),iot,Espressif,yes,TBD (Step 6),11681,1899895,11086,1826272,595,73623,inferred: Espressif OUI + traffic near-clone of GoSund units; not matched in Table 1
+50:02:91:10:09:8f,Unidentified ESP plug (2),Unidentified (Espressif),iot,Espressif,yes,TBD (Step 6),11680,1899238,11084,1825492,596,73746,inferred: Espressif OUI + traffic near-clone of GoSund units; not matched in Table 1
+c4:dd:57:13:07:c6,Unidentified ESP plug (4),Unidentified (Espressif),iot,Espressif,yes,TBD (Step 6),11676,1899028,11081,1825718,595,73310,inferred: Espressif OUI + traffic near-clone of GoSund units; not matched in Table 1
+b8:f0:09:03:29:79,GoSund Smart Plug WP2 (1),Power Outlet,iot,GoSund,yes,TBD (Step 6),11670,1898555,11082,1825903,588,72652,Near-clone of other GoSund units
+50:02:91:1a:ce:e1,GoSund Power Strip (1),Power Outlet,iot,GoSund,yes,TBD (Step 6),11670,1898262,11080,1825364,590,72898,Near-clone of other GoSund units
+b8:f0:09:03:9a:af,GoSund Power Strip (2),Power Outlet,iot,GoSund,yes,TBD (Step 6),11664,1897266,11075,1824554,589,72712,Near-clone of other GoSund units
+50:02:91:10:ac:d8,GoSund Smart Plug WP2 (2),Power Outlet,iot,GoSund,yes,TBD (Step 6),11647,1894820,11068,1823226,579,71594,Near-clone of other GoSund units
+b0:09:da:3e:82:6c,Ring Base Station,Hub,iot,Ring,yes,TBD (Step 6),11631,3337683,5396,2576824,6235,760859,
+2c:d2:6b:66:d2:87,Yi Outdoor Camera,Camera,iot,Yi,yes,TBD (Step 6),11523,1463683,5863,785701,5660,677982,
+d4:a6:51:30:64:b7,HeimVision SmartLife Radio/Lamp,Lighting,iot,Tuya (d4:a6:51),yes,TBD (Step 6),10870,1921636,9288,1737206,1582,184430,Same MAC prefix as Teckin/Yutron plugs; plug-like traffic
+1c:9d:c2:8c:9a:94,Levoit Air Purifier,Home Automation,iot,Levoit,yes,TBD (Step 6),10362,1018252,5528,390163,4834,628089,
+84:e3:42:42:ed:0b,Lumiman Bulb,Lighting,iot,Lumiman,yes,TBD (Step 6),9414,1728546,8275,1592425,1139,136121,
+18:69:d8:eb:d4:3e,Teckin Light Strip,Lighting,iot,Teckin,yes,TBD (Step 6),9010,1691978,8101,1576001,909,115977,
+68:57:2d:56:ac:47,Atomi Coffee Maker,Home Automation,iot,Atomi,yes,TBD (Step 6),8907,1666879,8053,1562485,854,104394,
+48:a6:b8:f9:1b:88,Sonos One Speaker,Audio,iot,Sonos,yes,TBD (Step 6),8750,2488232,6025,1950835,2725,537397,
+d4:a6:51:20:91:d1,Yutron Plug 1,Power Outlet,iot,Tuya (d4:a6:51),yes,TBD (Step 6),8569,1595066,7718,1490383,851,104683,
+d4:a6:51:21:6c:29,Yutron Plug 2,Power Outlet,iot,Tuya (d4:a6:51),yes,TBD (Step 6),8401,1561087,7558,1456979,843,104108,
+d4:a6:51:78:97:4e,Teckin Plug 2,Power Outlet,iot,Tuya (d4:a6:51),yes,TBD (Step 6),8324,1544682,7482,1441027,842,103655,
+d4:a6:51:76:06:64,Teckin Plug 1,Power Outlet,iot,Tuya (d4:a6:51),yes,TBD (Step 6),8184,1519140,7358,1416520,826,102620,
+e8:1b:69:f8:d6:e6,Unknown,Unknown,unknown,,no,n/a,6536,923871,3892,398732,2644,525139,Not in paper Table 1
+5c:26:0a:28:80:77,Unknown,Unknown,unknown,,no,n/a,6502,1248474,6502,1248474,0,0,Not in paper; send-only (0 received)
+d4:81:d7:97:d0:29,Unknown,Unknown,unknown,,no,n/a,6418,1234944,6418,1234944,0,0,Not in paper; send-only (0 received)
+b8:5f:98:d0:76:e6,Amazon Smart Plug,Power Outlet,iot,Amazon,yes,TBD (Step 6),3458,339835,1901,159716,1557,180119,
+50:14:79:37:80:18,iRobot Roomba,Home Automation,iot,iRobot,yes,TBD (Step 6),3131,189780,1568,95040,1563,94740,
+e8:1b:69:f8:d4:e3,Unknown,Unknown,unknown,,no,n/a,2935,272760,1892,182896,1043,89864,Not in paper Table 1
+30:23:03:f3:57:cb,Wemo Smart Plug 2,Power Outlet,iot,Wemo,yes,TBD (Step 6),2898,531498,2359,447219,539,84279,
+d4:ad:fc:29:c8:a2,Govee Smart Humidifier,Home Automation,iot,Govee,yes,TBD (Step 6),1955,196952,1252,113140,703,83812,
+b0:c5:54:59:2e:99,D-Link DCS8000LHA1 Mini Camera,Camera,iot,D-Link,yes,TBD (Step 6),1932,359273,1275,210211,657,149062,Low traffic for a camera
+d0:73:d5:35:fb:c8,LIFX Lightbulb,Lighting,iot,LIFX,yes,TBD (Step 6),1869,273353,1846,271143,23,2210,Almost send-only; unlike Tuya lamp
+00:02:75:f6:e3:cb,Smart Board,Home Automation,iot,,yes,TBD (Step 6),610,127761,337,38882,273,88879,Very low data (610 packets)
+dc:a6:32:c9:e4:c6,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,345,38742,255,26611,90,12131,Attack testbed; verify attacker/victim role per attack file
+dc:a6:32:c9:e5:02,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,217,20337,149,14413,68,5924,Attack testbed; verify role
+dc:a6:32:c9:e6:f4,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,179,20652,121,11759,58,8893,Attack testbed; verify role
+dc:a6:32:c9:e5:ef,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,38,3283,28,2463,10,820,Attack testbed; verify role
+30:23:03:f3:84:2b,Wemo Smart Plug 1,Power Outlet,iot,Wemo,yes,TBD (Step 6),37,4262,37,4262,0,0,Nearly silent (37 packets) - too little data
+dc:a6:32:c9:e5:a4,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,36,3104,25,2202,11,902,Attack testbed; verify role
+dc:a6:32:c9:e4:d5,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,35,3037,28,2463,7,574,Attack testbed; verify role
+dc:a6:32:c9:e4:90,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,35,3037,28,2463,7,574,Attack testbed; verify role
+e4:5f:01:55:90:c4,Raspberry Pi 4 (4 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,27,2336,19,1680,8,656,Attack testbed; verify role
+dc:a6:32:c9:e4:ab,Raspberry Pi 4 (2 GB),NextGen testbed,testbed_pi,Raspberry Pi,no,n/a,23,2028,19,1700,4,328,Attack testbed; verify role

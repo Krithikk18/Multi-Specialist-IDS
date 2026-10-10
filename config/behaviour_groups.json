@@ -1,0 +1,868 @@
+{
+  "version": "1.0",
+  "date": "2026-10-10",
+  "created_utc": "2026-10-10T09:35:10+00:00",
+  "method": {
+    "linkage": "Ward",
+    "metric": "Euclidean",
+    "fit_on": "high-confidence devices only"
+  },
+  "k": 2,
+  "labels": {
+    "G1": "high-activity multi-peer",
+    "G2": "low-activity simple",
+    "GEN": "generalist fallback"
+  },
+  "kept_features": [
+    "log_flows_per_hour",
+    "log_median_bytes",
+    "log_p90_bytes",
+    "median_packets",
+    "pct_single_packet",
+    "log_median_duration_us",
+    "upload_ratio",
+    "pct_udp",
+    "pct_dns",
+    "pct_discovery",
+    "gap_cv",
+    "pct_internet",
+    "pct_device",
+    "log_distinct_peers"
+  ],
+  "scaler": {
+    "log_flows_per_hour": {
+      "median": 1.8323165000000001,
+      "scale": 0.6233197500000001,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "log_median_bytes": {
+      "median": 2.608526,
+      "scale": 0.6560174999999999,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "log_p90_bytes": {
+      "median": 3.615845,
+      "scale": 0.8462782500000001,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "median_packets": {
+      "median": 8.0,
+      "scale": 12.125,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "pct_single_packet": {
+      "median": 1.5545,
+      "scale": 9.26425,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "log_median_duration_us": {
+      "median": 7.7893215,
+      "scale": 2.7157867499999986,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "upload_ratio": {
+      "median": 0.850861,
+      "scale": 0.5588785000000001,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "pct_udp": {
+      "median": 49.661500000000004,
+      "scale": 24.274749999999997,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "pct_dns": {
+      "median": 3.792,
+      "scale": 15.821250000000001,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "pct_discovery": {
+      "median": 0.0,
+      "scale": 40.263799999999996,
+      "scale_type": "p95-p5",
+      "clip": 3.0
+    },
+    "gap_cv": {
+      "median": 0.9785385,
+      "scale": 0.9362312500000001,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "pct_internet": {
+      "median": 54.2215,
+      "scale": 30.829499999999996,
+      "scale_type": "iqr",
+      "clip": 3.0
+    },
+    "pct_device": {
+      "median": 0.0,
+      "scale": 13.30499999999994,
+      "scale_type": "p95-p5",
+      "clip": 3.0
+    },
+    "log_distinct_peers": {
+      "median": 0.954243,
+      "scale": 0.4973249999999999,
+      "scale_type": "iqr",
+      "clip": 3.0
+    }
+  },
+  "scaler_formula": "z = clip((x - median) / scale, -clip, +clip), per feature in kept_features order; x computed with 05_profile_devices.py",
+  "centroids_scaled": {
+    "G1": [
+      1.031033,
+      -0.304373,
+      -0.343505,
+      -0.22433,
+      1.186026,
+      -0.717003,
+      -0.595739,
+      0.244983,
+      1.066602,
+      0.170614,
+      0.751737,
+      0.256385,
+      0.331656,
+      0.974326
+    ],
+    "G2": [
+      -0.174903,
+      0.565007,
+      -0.14019,
+      0.726613,
+      -0.061025,
+      0.068051,
+      0.033872,
+      -0.381301,
+      -0.104925,
+      0.085278,
+      -0.406868,
+      0.196174,
+      0.013139,
+      -0.194447
+    ]
+  },
+  "spread": {
+    "G1": {
+      "median_member_distance": 2.649258,
+      "max_member_distance": 5.953133,
+      "n_members": 25
+    },
+    "G2": {
+      "median_member_distance": 1.089469,
+      "max_member_distance": 4.445154,
+      "n_members": 27
+    }
+  },
+  "known_devices": "Devices already in config/device_table.csv use their behaviour_group from that table (never re-placed). The placement_rule applies to NEW devices only.",
+  "placement_rule": {
+    "applies_to": "NEW devices only",
+    "text": "min_flows gate -> nearest centroid -> max-spread check -> else GEN",
+    "steps": [
+      "1. usable flows < min_flows (100) -> GEN (re-place once the device reaches min_flows)",
+      "2. scale the kept features with `scaler` and find the nearest centroid",
+      "3. distance > spread[nearest].max_member_distance (strictly greater) -> GEN",
+      "4. else -> the nearest group"
+    ],
+    "distance": "Euclidean in scaled space; NaN features skipped and the distance multiplied by sqrt(n_features / n_observed)",
+    "fallback_group": "GEN"
+  },
+  "min_flows": 100,
+  "manual_assignments": {},
+  "source_sha256": {
+    "fingerprints": "96c312af72cfdfc115bec9574737dc1c58b4c888590abc1ec84a4b7168c25c2c",
+    "kept_features": "2c12fe7f62ba3c74a99ce27ec55c9491d4e42de9aaa820608dc841b36027b20e",
+    "cluster_input": "e1c3435536d4525147591a68b523e06d703e629e7fadf8cfd6e1d5ed1c9876dd",
+    "groups_k2": "5e510d56a5512373404081254ad6fb924eedece994bd4a030d5cd241e0378c61",
+    "groups_k4": "80e2a8ce231bea851674fcff3d0693d7645a54d7c8025e781405a5f74aa6db27",
+    "06_form_groups.py": "f06846819a5ef45e11c648aab351aa2ec1d5e0a9c6ff1d5b525d6982e19ac908",
+    "05_profile_devices.py": "be7fe4fc53be6f76a28b403b22cd6aa7c35d3517425f1fa310e4e09db8ea06fa"
+  },
+  "verification": {
+    "checks": {
+      "scaler_reproduces_cluster_input (max abs diff <= 1e-6)": true,
+      "member distances match groups_k2.distance_to_centroid (1e-4)": true,
+      "all 3 low-confidence devices -> GEN by rule (Smart Board: min_flows gate (64 < 100), Wemo Smart Plug 1: min_flows gate (13 < 100), iRobot Roomba: min_flows gate (32 < 100))": true,
+      "high-confidence reproduce groups_k2 50/52; mismatches exactly the Ward boundary cases ['Philips Hue Bridge', 'Yi Indoor 2 Camera']": true,
+      "device_table: only behaviour_group changed + 3 columns added": true,
+      "fingerprints unchanged": true,
+      "kept_features unchanged": true,
+      "cluster_input unchanged": true,
+      "groups_k2 unchanged": true,
+      "groups_k4 unchanged": true,
+      "06_form_groups.py unchanged": true,
+      "05_profile_devices.py unchanged": true
+    },
+    "placement": [
+      {
+        "device": "AMCREST WiFi Camera",
+        "confidence": "high",
+        "usable_flows": 2432,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 1.6922,
+        "d_G2": 3.3774,
+        "d_over_median_spread": 0.64
+      },
+      {
+        "device": "Aeotec Smart Home Hub",
+        "confidence": "high",
+        "usable_flows": 2111,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.0308,
+        "d_G2": 4.1998,
+        "d_over_median_spread": 0.77
+      },
+      {
+        "device": "Amazon Alexa Echo Dot 1",
+        "confidence": "high",
+        "usable_flows": 1573,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.5711,
+        "d_G2": 3.2212,
+        "d_over_median_spread": 0.97
+      },
+      {
+        "device": "Amazon Alexa Echo Dot 2",
+        "confidence": "high",
+        "usable_flows": 372,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 5.9531,
+        "d_G2": 7.1078,
+        "d_over_median_spread": 2.25
+      },
+      {
+        "device": "Amazon Alexa Echo Studio",
+        "confidence": "high",
+        "usable_flows": 3252,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 3.056,
+        "d_G2": 3.9344,
+        "d_over_median_spread": 1.15
+      },
+      {
+        "device": "Amazon Echo Show",
+        "confidence": "high",
+        "usable_flows": 5247,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.6493,
+        "d_G2": 4.2375,
+        "d_over_median_spread": 1.0
+      },
+      {
+        "device": "Arlo Base Station",
+        "confidence": "high",
+        "usable_flows": 1385,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 1.7424,
+        "d_G2": 4.2246,
+        "d_over_median_spread": 0.66
+      },
+      {
+        "device": "Arlo Q Indoor Camera",
+        "confidence": "high",
+        "usable_flows": 3752,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 3.264,
+        "d_G2": 5.4232,
+        "d_over_median_spread": 1.23
+      },
+      {
+        "device": "Eufy HomeBase 2",
+        "confidence": "high",
+        "usable_flows": 3112,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.8851,
+        "d_G2": 4.0377,
+        "d_over_median_spread": 1.09
+      },
+      {
+        "device": "Fibaro Home Center Lite",
+        "confidence": "high",
+        "usable_flows": 101507,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 3.9573,
+        "d_G2": 6.3902,
+        "d_over_median_spread": 1.49
+      },
+      {
+        "device": "Google Nest Mini Speaker",
+        "confidence": "high",
+        "usable_flows": 3891,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 1.9615,
+        "d_G2": 2.8124,
+        "d_over_median_spread": 0.74
+      },
+      {
+        "device": "Harman Kardon speaker (Ampak)",
+        "confidence": "high",
+        "usable_flows": 9619,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 3.0202,
+        "d_G2": 5.0765,
+        "d_over_median_spread": 1.14
+      },
+      {
+        "device": "Home Eye Camera",
+        "confidence": "high",
+        "usable_flows": 21760,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 3.5278,
+        "d_G2": 5.6831,
+        "d_over_median_spread": 1.33
+      },
+      {
+        "device": "LG Smart TV",
+        "confidence": "high",
+        "usable_flows": 4253,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.2639,
+        "d_G2": 3.5153,
+        "d_over_median_spread": 0.85
+      },
+      {
+        "device": "Netatmo Camera",
+        "confidence": "high",
+        "usable_flows": 1488,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.8303,
+        "d_G2": 3.4134,
+        "d_over_median_spread": 1.07
+      },
+      {
+        "device": "Philips Hue Bridge",
+        "confidence": "high",
+        "usable_flows": 2692,
+        "groups_k2": "G1",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.9159,
+        "d_G2": 2.6131,
+        "d_over_median_spread": 2.4
+      },
+      {
+        "device": "Rbcior Camera",
+        "confidence": "high",
+        "usable_flows": 1767,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 1.9003,
+        "d_G2": 3.6474,
+        "d_over_median_spread": 0.72
+      },
+      {
+        "device": "SmartThings Hub",
+        "confidence": "high",
+        "usable_flows": 2159,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 1.9834,
+        "d_G2": 4.0533,
+        "d_over_median_spread": 0.75
+      },
+      {
+        "device": "Sonos One Speaker",
+        "confidence": "high",
+        "usable_flows": 1536,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.1724,
+        "d_G2": 3.8906,
+        "d_over_median_spread": 0.82
+      },
+      {
+        "device": "TP-Link Tapo Camera",
+        "confidence": "high",
+        "usable_flows": 2244,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 1.8694,
+        "d_G2": 3.3154,
+        "d_over_median_spread": 0.71
+      },
+      {
+        "device": "Wemo Smart Plug 2",
+        "confidence": "high",
+        "usable_flows": 471,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.3472,
+        "d_G2": 2.8208,
+        "d_over_median_spread": 0.89
+      },
+      {
+        "device": "Wyze Camera",
+        "confidence": "high",
+        "usable_flows": 9609,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 3.1349,
+        "d_G2": 5.3848,
+        "d_over_median_spread": 1.18
+      },
+      {
+        "device": "Yi Indoor 2 Camera",
+        "confidence": "high",
+        "usable_flows": 911,
+        "groups_k2": "G1",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.0755,
+        "d_G2": 3.0512,
+        "d_over_median_spread": 2.8
+      },
+      {
+        "device": "Yi Indoor Camera",
+        "confidence": "high",
+        "usable_flows": 2807,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.806,
+        "d_G2": 5.0187,
+        "d_over_median_spread": 1.06
+      },
+      {
+        "device": "Yi Outdoor Camera",
+        "confidence": "high",
+        "usable_flows": 1169,
+        "groups_k2": "G1",
+        "rule_result": "G1",
+        "rule_step": "nearest centroid",
+        "nearest": "G1",
+        "d_G1": 2.5188,
+        "d_G2": 3.2742,
+        "d_over_median_spread": 0.95
+      },
+      {
+        "device": "Smart Board",
+        "confidence": "low_confidence",
+        "usable_flows": 64,
+        "groups_k2": "G1",
+        "rule_result": "GEN",
+        "rule_step": "min_flows gate (64 < 100)",
+        "nearest": "G1",
+        "d_G1": 3.8794,
+        "d_G2": 4.2618,
+        "d_over_median_spread": 1.46
+      },
+      {
+        "device": "Wemo Smart Plug 1",
+        "confidence": "low_confidence",
+        "usable_flows": 13,
+        "groups_k2": "G1",
+        "rule_result": "GEN",
+        "rule_step": "min_flows gate (13 < 100)",
+        "nearest": "G1",
+        "d_G1": 6.6065,
+        "d_G2": 7.0135,
+        "d_over_median_spread": 2.49
+      },
+      {
+        "device": "Amazon Smart Plug",
+        "confidence": "high",
+        "usable_flows": 308,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.8554,
+        "d_G2": 3.0772,
+        "d_over_median_spread": 2.82
+      },
+      {
+        "device": "Atomi Coffee Maker",
+        "confidence": "high",
+        "usable_flows": 623,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8857,
+        "d_G2": 1.0872,
+        "d_over_median_spread": 1.0
+      },
+      {
+        "device": "Cocoon Smart HVAC Fan",
+        "confidence": "high",
+        "usable_flows": 290,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 5.2922,
+        "d_G2": 3.1281,
+        "d_over_median_spread": 2.87
+      },
+      {
+        "device": "D-Link DCS8000LHA1 Mini Camera",
+        "confidence": "high",
+        "usable_flows": 225,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.9155,
+        "d_G2": 2.1105,
+        "d_over_median_spread": 1.94
+      },
+      {
+        "device": "GoSund Power Strip (1)",
+        "confidence": "high",
+        "usable_flows": 546,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.411,
+        "d_G2": 0.684,
+        "d_over_median_spread": 0.63
+      },
+      {
+        "device": "GoSund Power Strip (2)",
+        "confidence": "high",
+        "usable_flows": 544,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.5306,
+        "d_G2": 0.7906,
+        "d_over_median_spread": 0.73
+      },
+      {
+        "device": "GoSund Smart Plug WP2 (1)",
+        "confidence": "high",
+        "usable_flows": 542,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.3835,
+        "d_G2": 0.709,
+        "d_over_median_spread": 0.65
+      },
+      {
+        "device": "GoSund Smart Plug WP2 (2)",
+        "confidence": "high",
+        "usable_flows": 538,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.6827,
+        "d_G2": 0.9654,
+        "d_over_median_spread": 0.89
+      },
+      {
+        "device": "Govee Smart Humidifier",
+        "confidence": "high",
+        "usable_flows": 286,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.9507,
+        "d_G2": 2.6993,
+        "d_over_median_spread": 2.48
+      },
+      {
+        "device": "HeimVision Smart WiFi Camera",
+        "confidence": "high",
+        "usable_flows": 910,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.6142,
+        "d_G2": 1.6093,
+        "d_over_median_spread": 1.48
+      },
+      {
+        "device": "HeimVision SmartLife Radio/Lamp",
+        "confidence": "high",
+        "usable_flows": 615,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.118,
+        "d_G2": 0.498,
+        "d_over_median_spread": 0.46
+      },
+      {
+        "device": "LIFX Lightbulb",
+        "confidence": "high",
+        "usable_flows": 339,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 4.1965,
+        "d_G2": 3.7671,
+        "d_over_median_spread": 3.46
+      },
+      {
+        "device": "LampUX RGB",
+        "confidence": "high",
+        "usable_flows": 541,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.9234,
+        "d_G2": 1.3615,
+        "d_over_median_spread": 1.25
+      },
+      {
+        "device": "Levoit Air Purifier",
+        "confidence": "high",
+        "usable_flows": 300,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 4.7846,
+        "d_G2": 2.6791,
+        "d_over_median_spread": 2.46
+      },
+      {
+        "device": "Lumiman Bulb",
+        "confidence": "high",
+        "usable_flows": 617,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8686,
+        "d_G2": 0.9181,
+        "d_over_median_spread": 0.84
+      },
+      {
+        "device": "Nest Indoor Camera",
+        "confidence": "high",
+        "usable_flows": 294,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 6.6438,
+        "d_G2": 4.4452,
+        "d_over_median_spread": 4.08
+      },
+      {
+        "device": "Netatmo Weather Station",
+        "confidence": "high",
+        "usable_flows": 443,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.2968,
+        "d_G2": 1.6011,
+        "d_over_median_spread": 1.47
+      },
+      {
+        "device": "Ring Base Station",
+        "confidence": "high",
+        "usable_flows": 438,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 4.0182,
+        "d_G2": 2.9893,
+        "d_over_median_spread": 2.74
+      },
+      {
+        "device": "Teckin Light Strip",
+        "confidence": "high",
+        "usable_flows": 626,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8065,
+        "d_G2": 1.0675,
+        "d_over_median_spread": 0.98
+      },
+      {
+        "device": "Teckin Plug 1",
+        "confidence": "high",
+        "usable_flows": 607,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8381,
+        "d_G2": 1.1361,
+        "d_over_median_spread": 1.04
+      },
+      {
+        "device": "Teckin Plug 2",
+        "confidence": "high",
+        "usable_flows": 607,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8309,
+        "d_G2": 1.0795,
+        "d_over_median_spread": 0.99
+      },
+      {
+        "device": "Unidentified ESP plug (1)",
+        "confidence": "high",
+        "usable_flows": 538,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.631,
+        "d_G2": 0.9626,
+        "d_over_median_spread": 0.88
+      },
+      {
+        "device": "Unidentified ESP plug (2)",
+        "confidence": "high",
+        "usable_flows": 538,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.649,
+        "d_G2": 1.0096,
+        "d_over_median_spread": 0.93
+      },
+      {
+        "device": "Unidentified ESP plug (3)",
+        "confidence": "high",
+        "usable_flows": 543,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.4787,
+        "d_G2": 0.7215,
+        "d_over_median_spread": 0.66
+      },
+      {
+        "device": "Unidentified ESP plug (4)",
+        "confidence": "high",
+        "usable_flows": 543,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 3.536,
+        "d_G2": 0.7621,
+        "d_over_median_spread": 0.7
+      },
+      {
+        "device": "Yutron Plug 1",
+        "confidence": "high",
+        "usable_flows": 609,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8043,
+        "d_G2": 1.0969,
+        "d_over_median_spread": 1.01
+      },
+      {
+        "device": "Yutron Plug 2",
+        "confidence": "high",
+        "usable_flows": 606,
+        "groups_k2": "G2",
+        "rule_result": "G2",
+        "rule_step": "nearest centroid",
+        "nearest": "G2",
+        "d_G1": 2.8314,
+        "d_G2": 1.0895,
+        "d_over_median_spread": 1.0
+      },
+      {
+        "device": "iRobot Roomba",
+        "confidence": "low_confidence",
+        "usable_flows": 32,
+        "groups_k2": "G2",
+        "rule_result": "GEN",
+        "rule_step": "min_flows gate (32 < 100)",
+        "nearest": "G2",
+        "d_G1": 4.8154,
+        "d_G2": 4.3938,
+        "d_over_median_spread": 4.03
+      }
+    ],
+    "pass": true
+  }
+}

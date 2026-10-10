@@ -1,0 +1,56 @@
+device,mac,category,group,confidence,distance_to_centroid
+AMCREST WiFi Camera,9c:8e:cd:1d:ab:9f,Camera,G1,high,1.6922
+Aeotec Smart Home Hub,28:6d:97:9e:f4:d5,Hub,G1,high,2.0308
+Amazon Alexa Echo Dot 1,1c:fe:2b:98:16:dd,Audio,G1,high,2.5711
+Amazon Alexa Echo Dot 2,a0:d0:dc:c4:08:ff,Audio,G1,high,5.9531
+Amazon Alexa Echo Studio,08:7c:39:ce:6e:2a,Audio,G1,high,3.056
+Amazon Echo Show,2c:71:ff:05:f1:15,Audio,G1,high,2.6493
+Arlo Base Station,3c:37:86:6f:b9:51,Camera,G1,high,1.7424
+Arlo Q Indoor Camera,40:5d:82:35:14:c8,Camera,G1,high,3.264
+Eufy HomeBase 2,8c:85:80:6c:b6:47,Hub,G1,high,2.8851
+Fibaro Home Center Lite,ac:17:02:05:34:27,Hub,G1,high,3.9573
+Google Nest Mini Speaker,cc:f4:11:9c:d0:00,Audio,G1,high,1.9615
+Harman Kardon speaker (Ampak),b0:f1:ec:d3:e7:98,Audio,G1,high,3.0202
+Home Eye Camera,34:75:63:73:f3:36,Camera,G1,high,3.5278
+LG Smart TV,ac:f1:08:4e:00:82,Home Automation,G1,high,2.2639
+Netatmo Camera,70:ee:50:68:0e:32,Camera,G1,high,2.8303
+Philips Hue Bridge,00:17:88:60:d6:4f,Hub,G1,high,2.9159
+Rbcior Camera,10:5a:17:97:a5:c6,Camera,G1,high,1.9003
+SmartThings Hub,28:6d:97:7a:2b:2d,Hub,G1,high,1.9834
+Sonos One Speaker,48:a6:b8:f9:1b:88,Audio,G1,high,2.1724
+TP-Link Tapo Camera,6c:5a:b0:44:1d:90,Camera,G1,high,1.8694
+Wemo Smart Plug 2,30:23:03:f3:57:cb,Power Outlet,G1,high,2.3472
+Wyze Camera,7c:78:b2:86:0d:81,Camera,G1,high,3.1349
+Yi Indoor 2 Camera,84:7a:b6:62:3a:6c,Camera,G1,high,3.0755
+Yi Indoor Camera,84:7a:b6:64:62:58,Camera,G1,high,2.806
+Yi Outdoor Camera,2c:d2:6b:66:d2:87,Camera,G1,high,2.5188
+Smart Board,00:02:75:f6:e3:cb,Home Automation,G1,low_confidence,3.879
+Wemo Smart Plug 1,30:23:03:f3:84:2b,Power Outlet,G1,low_confidence,6.607
+Amazon Smart Plug,b8:5f:98:d0:76:e6,Power Outlet,G2,high,3.0772
+Atomi Coffee Maker,68:57:2d:56:ac:47,Home Automation,G2,high,1.0872
+Cocoon Smart HVAC Fan,08:3a:f2:1f:bc:68,Home Automation,G2,high,3.1281
+D-Link DCS8000LHA1 Mini Camera,b0:c5:54:59:2e:99,Camera,G2,high,2.1105
+GoSund Power Strip (1),50:02:91:1a:ce:e1,Power Outlet,G2,high,0.684
+GoSund Power Strip (2),b8:f0:09:03:9a:af,Power Outlet,G2,high,0.7906
+GoSund Smart Plug WP2 (1),b8:f0:09:03:29:79,Power Outlet,G2,high,0.709
+GoSund Smart Plug WP2 (2),50:02:91:10:ac:d8,Power Outlet,G2,high,0.9654
+Govee Smart Humidifier,d4:ad:fc:29:c8:a2,Home Automation,G2,high,2.6993
+HeimVision Smart WiFi Camera,44:01:bb:ec:10:4a,Camera,G2,high,1.6093
+HeimVision SmartLife Radio/Lamp,d4:a6:51:30:64:b7,Lighting,G2,high,0.498
+LIFX Lightbulb,d0:73:d5:35:fb:c8,Lighting,G2,high,3.7671
+LampUX RGB,f4:cf:a2:34:48:6b,Lighting,G2,high,1.3615
+Levoit Air Purifier,1c:9d:c2:8c:9a:94,Home Automation,G2,high,2.6791
+Lumiman Bulb,84:e3:42:42:ed:0b,Lighting,G2,high,0.9181
+Nest Indoor Camera,44:bb:3b:00:39:07,Camera,G2,high,4.4452
+Netatmo Weather Station,70:ee:50:6b:a8:1a,Home Automation,G2,high,1.6011
+Ring Base Station,b0:09:da:3e:82:6c,Hub,G2,high,2.9893
+Teckin Light Strip,18:69:d8:eb:d4:3e,Lighting,G2,high,1.0675
+Teckin Plug 1,d4:a6:51:76:06:64,Power Outlet,G2,high,1.1361
+Teckin Plug 2,d4:a6:51:78:97:4e,Power Outlet,G2,high,1.0795
+Unidentified ESP plug (1),24:a1:60:14:7f:f9,Unidentified (Espressif),G2,high,0.9626
+Unidentified ESP plug (2),50:02:91:10:09:8f,Unidentified (Espressif),G2,high,1.0096
+Unidentified ESP plug (3),c4:dd:57:0c:39:94,Unidentified (Espressif),G2,high,0.7215
+Unidentified ESP plug (4),c4:dd:57:13:07:c6,Unidentified (Espressif),G2,high,0.7621
+Yutron Plug 1,d4:a6:51:20:91:d1,Power Outlet,G2,high,1.0969
+Yutron Plug 2,d4:a6:51:21:6c:29,Power Outlet,G2,high,1.0895
+iRobot Roomba,50:14:79:37:80:18,Home Automation,G2,low_confidence,4.394

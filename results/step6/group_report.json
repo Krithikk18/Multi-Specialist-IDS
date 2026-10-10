@@ -1,0 +1,2780 @@
+{
+  "run": {
+    "run_timestamp_utc": "2026-10-10T08:09:15+00:00",
+    "fingerprints": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/device_fingerprints.csv",
+    "kept_features": [
+      "log_flows_per_hour",
+      "log_median_bytes",
+      "log_p90_bytes",
+      "median_packets",
+      "pct_single_packet",
+      "log_median_duration_us",
+      "upload_ratio",
+      "pct_udp",
+      "pct_dns",
+      "pct_discovery",
+      "gap_cv",
+      "pct_internet",
+      "pct_device",
+      "log_distinct_peers"
+    ],
+    "flows": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/benign_flows_tagged.csv",
+    "05_profile_devices.py": "/mnt/d/Projects/Company Project/Paper_Implemetation/05_profile_devices.py",
+    "input_sha256": {
+      "fingerprints": "96c312af72cfdfc115bec9574737dc1c58b4c888590abc1ec84a4b7168c25c2c",
+      "kept_features": "2c12fe7f62ba3c74a99ce27ec55c9491d4e42de9aaa820608dc841b36027b20e",
+      "flows": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+      "05_profile_devices.py": "be7fe4fc53be6f76a28b403b22cd6aa7c35d3517425f1fa310e4e09db8ea06fa"
+    },
+    "out_dir": "results/step6",
+    "k_min": 2,
+    "k_max": 12,
+    "min_group_flows": 2000,
+    "n_boot": 100,
+    "seed": 42,
+    "clip": 3.0,
+    "capture_hours": 9.2578,
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.9.1",
+    "runtime_s": 28.0
+  },
+  "integrity": {
+    "recomputed_fingerprints_max_abs_diff": 0.0,
+    "recomputed_fingerprints_match_csv": true,
+    "recomputed_usable_counts_match_csv": true,
+    "high_confidence_devices": 52,
+    "low_confidence_devices_assigned": 3,
+    "every_candidate_has_k_groups": true,
+    "bootstrap_nan_values_imputed_as_0": 0,
+    "all_figures_written": true,
+    "device_table_untouched": true,
+    "fingerprints_sha256_unchanged": true,
+    "kept_features_sha256_unchanged": true,
+    "flows_sha256_unchanged": true,
+    "05_profile_devices.py_sha256_unchanged": true,
+    "pass": true
+  },
+  "scaling": [
+    {
+      "feature": "log_flows_per_hour",
+      "scale_type": "iqr",
+      "scale": 0.62332,
+      "median": 1.832317,
+      "iqr": 0.62332,
+      "p95_minus_p5": 1.504083,
+      "max_abs_z_before_clip": 3.542,
+      "n_clipped": 1,
+      "max_abs_z_all_devices": 3.542,
+      "n_clipped_all_devices": 1
+    },
+    {
+      "feature": "log_median_bytes",
+      "scale_type": "iqr",
+      "scale": 0.656017,
+      "median": 2.608526,
+      "iqr": 0.656017,
+      "p95_minus_p5": 1.507503,
+      "max_abs_z_before_clip": 3.976,
+      "n_clipped": 2,
+      "max_abs_z_all_devices": 3.976,
+      "n_clipped_all_devices": 2
+    },
+    {
+      "feature": "log_p90_bytes",
+      "scale_type": "iqr",
+      "scale": 0.846278,
+      "median": 3.615845,
+      "iqr": 0.846278,
+      "p95_minus_p5": 1.8189,
+      "max_abs_z_before_clip": 1.973,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 1.973,
+      "n_clipped_all_devices": 0
+    },
+    {
+      "feature": "median_packets",
+      "scale_type": "iqr",
+      "scale": 12.125,
+      "median": 8.0,
+      "iqr": 12.125,
+      "p95_minus_p5": 31.9,
+      "max_abs_z_before_clip": 127.381,
+      "n_clipped": 1,
+      "max_abs_z_all_devices": 127.381,
+      "n_clipped_all_devices": 1
+    },
+    {
+      "feature": "pct_single_packet",
+      "scale_type": "iqr",
+      "scale": 9.26425,
+      "median": 1.5545,
+      "iqr": 9.26425,
+      "p95_minus_p5": 27.8992,
+      "max_abs_z_before_clip": 6.216,
+      "n_clipped": 2,
+      "max_abs_z_all_devices": 6.475,
+      "n_clipped_all_devices": 3
+    },
+    {
+      "feature": "log_median_duration_us",
+      "scale_type": "iqr",
+      "scale": 2.715787,
+      "median": 7.789321,
+      "iqr": 2.715787,
+      "p95_minus_p5": 2.968511,
+      "max_abs_z_before_clip": 2.868,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 2.868,
+      "n_clipped_all_devices": 0
+    },
+    {
+      "feature": "upload_ratio",
+      "scale_type": "iqr",
+      "scale": 0.558879,
+      "median": 0.850861,
+      "iqr": 0.558879,
+      "p95_minus_p5": 0.777563,
+      "max_abs_z_before_clip": 1.23,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 1.244,
+      "n_clipped_all_devices": 0
+    },
+    {
+      "feature": "pct_udp",
+      "scale_type": "iqr",
+      "scale": 24.27475,
+      "median": 49.6615,
+      "iqr": 24.27475,
+      "p95_minus_p5": 91.67615,
+      "max_abs_z_before_clip": 2.073,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 2.074,
+      "n_clipped_all_devices": 0
+    },
+    {
+      "feature": "pct_dns",
+      "scale_type": "iqr",
+      "scale": 15.82125,
+      "median": 3.792,
+      "iqr": 15.82125,
+      "p95_minus_p5": 36.2905,
+      "max_abs_z_before_clip": 4.549,
+      "n_clipped": 2,
+      "max_abs_z_all_devices": 4.549,
+      "n_clipped_all_devices": 2
+    },
+    {
+      "feature": "pct_discovery",
+      "scale_type": "p95-p5",
+      "scale": 40.2638,
+      "median": 0.0,
+      "iqr": 2.266,
+      "p95_minus_p5": 40.2638,
+      "max_abs_z_before_clip": 1.194,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 2.293,
+      "n_clipped_all_devices": 0
+    },
+    {
+      "feature": "gap_cv",
+      "scale_type": "iqr",
+      "scale": 0.936231,
+      "median": 0.978538,
+      "iqr": 0.936231,
+      "p95_minus_p5": 1.968097,
+      "max_abs_z_before_clip": 3.466,
+      "n_clipped": 1,
+      "max_abs_z_all_devices": 3.466,
+      "n_clipped_all_devices": 1
+    },
+    {
+      "feature": "pct_internet",
+      "scale_type": "iqr",
+      "scale": 30.8295,
+      "median": 54.2215,
+      "iqr": 30.8295,
+      "p95_minus_p5": 72.89575,
+      "max_abs_z_before_clip": 1.759,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 1.759,
+      "n_clipped_all_devices": 0
+    },
+    {
+      "feature": "pct_device",
+      "scale_type": "p95-p5",
+      "scale": 13.305,
+      "median": 0.0,
+      "iqr": 0.02325,
+      "p95_minus_p5": 13.305,
+      "max_abs_z_before_clip": 6.991,
+      "n_clipped": 1,
+      "max_abs_z_all_devices": 6.991,
+      "n_clipped_all_devices": 1
+    },
+    {
+      "feature": "log_distinct_peers",
+      "scale_type": "iqr",
+      "scale": 0.497325,
+      "median": 0.954243,
+      "iqr": 0.497325,
+      "p95_minus_p5": 1.350303,
+      "max_abs_z_before_clip": 2.621,
+      "n_clipped": 0,
+      "max_abs_z_all_devices": 2.621,
+      "n_clipped_all_devices": 0
+    }
+  ],
+  "scaler_params": {
+    "log_flows_per_hour": {
+      "median": 1.8323165000000001,
+      "iqr": 0.6233197500000001,
+      "p95_minus_p5": 1.5040826499999997,
+      "scale_type": "iqr",
+      "scale": 0.6233197500000001
+    },
+    "log_median_bytes": {
+      "median": 2.608526,
+      "iqr": 0.6560174999999999,
+      "p95_minus_p5": 1.5075025499999994,
+      "scale_type": "iqr",
+      "scale": 0.6560174999999999
+    },
+    "log_p90_bytes": {
+      "median": 3.615845,
+      "iqr": 0.8462782500000001,
+      "p95_minus_p5": 1.8189002499999987,
+      "scale_type": "iqr",
+      "scale": 0.8462782500000001
+    },
+    "median_packets": {
+      "median": 8.0,
+      "iqr": 12.125,
+      "p95_minus_p5": 31.89999999999999,
+      "scale_type": "iqr",
+      "scale": 12.125
+    },
+    "pct_single_packet": {
+      "median": 1.5545,
+      "iqr": 9.26425,
+      "p95_minus_p5": 27.899199999999993,
+      "scale_type": "iqr",
+      "scale": 9.26425
+    },
+    "log_median_duration_us": {
+      "median": 7.7893215,
+      "iqr": 2.7157867499999986,
+      "p95_minus_p5": 2.968510949999999,
+      "scale_type": "iqr",
+      "scale": 2.7157867499999986
+    },
+    "upload_ratio": {
+      "median": 0.850861,
+      "iqr": 0.5588785000000001,
+      "p95_minus_p5": 0.7775635,
+      "scale_type": "iqr",
+      "scale": 0.5588785000000001
+    },
+    "pct_udp": {
+      "median": 49.661500000000004,
+      "iqr": 24.274749999999997,
+      "p95_minus_p5": 91.67614999999998,
+      "scale_type": "iqr",
+      "scale": 24.274749999999997
+    },
+    "pct_dns": {
+      "median": 3.792,
+      "iqr": 15.821250000000001,
+      "p95_minus_p5": 36.29049999999998,
+      "scale_type": "iqr",
+      "scale": 15.821250000000001
+    },
+    "pct_discovery": {
+      "median": 0.0,
+      "iqr": 2.266,
+      "p95_minus_p5": 40.263799999999996,
+      "scale_type": "p95-p5",
+      "scale": 40.263799999999996
+    },
+    "gap_cv": {
+      "median": 0.9785385,
+      "iqr": 0.9362312500000001,
+      "p95_minus_p5": 1.9680974999999985,
+      "scale_type": "iqr",
+      "scale": 0.9362312500000001
+    },
+    "pct_internet": {
+      "median": 54.2215,
+      "iqr": 30.829499999999996,
+      "p95_minus_p5": 72.89574999999999,
+      "scale_type": "iqr",
+      "scale": 30.829499999999996
+    },
+    "pct_device": {
+      "median": 0.0,
+      "iqr": 0.02325,
+      "p95_minus_p5": 13.30499999999994,
+      "scale_type": "p95-p5",
+      "scale": 13.30499999999994
+    },
+    "log_distinct_peers": {
+      "median": 0.954243,
+      "iqr": 0.4973249999999999,
+      "p95_minus_p5": 1.3503026499999997,
+      "scale_type": "iqr",
+      "scale": 0.4973249999999999
+    }
+  },
+  "k_selection": [
+    {
+      "k": 2,
+      "n_groups_found": 2,
+      "silhouette": 0.3073,
+      "calinski_harabasz": 21.81,
+      "davies_bouldin": 1.3568,
+      "merge_height": 16.3597,
+      "merge_gap": 7.4857,
+      "min_group_flows": 13616,
+      "min_group_devices": 25,
+      "smallest_group_flows_devices": 27,
+      "feasible": true,
+      "mean_rank": 5.0,
+      "rank_s": 8,
+      "rank_ch": 1,
+      "rank_db": 10,
+      "rank_gap": 1
+    },
+    {
+      "k": 3,
+      "n_groups_found": 3,
+      "silhouette": 0.2841,
+      "calinski_harabasz": 15.87,
+      "davies_bouldin": 1.1809,
+      "merge_height": 8.8739,
+      "merge_gap": 0.0301,
+      "min_group_flows": 2141,
+      "min_group_devices": 7,
+      "smallest_group_flows_devices": 7,
+      "feasible": true,
+      "mean_rank": 7.75,
+      "rank_s": 11,
+      "rank_ch": 2,
+      "rank_db": 8,
+      "rank_gap": 10
+    },
+    {
+      "k": 4,
+      "n_groups_found": 4,
+      "silhouette": 0.2872,
+      "calinski_harabasz": 14.88,
+      "davies_bouldin": 1.5481,
+      "merge_height": 8.8439,
+      "merge_gap": 0.8799,
+      "min_group_flows": 2141,
+      "min_group_devices": 7,
+      "smallest_group_flows_devices": 7,
+      "feasible": true,
+      "mean_rank": 7.875,
+      "rank_s": 10,
+      "rank_ch": 6,
+      "rank_db": 11,
+      "rank_gap": 4
+    },
+    {
+      "k": 5,
+      "n_groups_found": 5,
+      "silhouette": 0.2953,
+      "calinski_harabasz": 14.58,
+      "davies_bouldin": 1.2817,
+      "merge_height": 7.9639,
+      "merge_gap": 0.2208,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 9.0,
+      "rank_s": 9,
+      "rank_ch": 11,
+      "rank_db": 9,
+      "rank_gap": 7
+    },
+    {
+      "k": 6,
+      "n_groups_found": 6,
+      "silhouette": 0.3144,
+      "calinski_harabasz": 15.13,
+      "davies_bouldin": 1.1675,
+      "merge_height": 7.7431,
+      "merge_gap": 1.5456,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 4.75,
+      "rank_s": 7,
+      "rank_ch": 3,
+      "rank_db": 7,
+      "rank_gap": 2
+    },
+    {
+      "k": 7,
+      "n_groups_found": 7,
+      "silhouette": 0.3286,
+      "calinski_harabasz": 14.92,
+      "davies_bouldin": 1.0664,
+      "merge_height": 6.1975,
+      "merge_gap": 0.2994,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 5.5,
+      "rank_s": 5,
+      "rank_ch": 5,
+      "rank_db": 6,
+      "rank_gap": 6
+    },
+    {
+      "k": 8,
+      "n_groups_found": 8,
+      "silhouette": 0.3371,
+      "calinski_harabasz": 15.01,
+      "davies_bouldin": 1.0464,
+      "merge_height": 5.8981,
+      "merge_gap": 1.0583,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 4.0,
+      "rank_s": 4,
+      "rank_ch": 4,
+      "rank_db": 5,
+      "rank_gap": 3
+    },
+    {
+      "k": 9,
+      "n_groups_found": 9,
+      "silhouette": 0.3399,
+      "calinski_harabasz": 14.64,
+      "davies_bouldin": 0.9911,
+      "merge_height": 4.8398,
+      "merge_gap": 0.0336,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 5.5,
+      "rank_s": 2,
+      "rank_ch": 9,
+      "rank_db": 2,
+      "rank_gap": 9
+    },
+    {
+      "k": 10,
+      "n_groups_found": 10,
+      "silhouette": 0.344,
+      "calinski_harabasz": 14.59,
+      "davies_bouldin": 1.0074,
+      "merge_height": 4.8062,
+      "merge_gap": 0.0898,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 5.75,
+      "rank_s": 1,
+      "rank_ch": 10,
+      "rank_db": 4,
+      "rank_gap": 8
+    },
+    {
+      "k": 11,
+      "n_groups_found": 11,
+      "silhouette": 0.3221,
+      "calinski_harabasz": 14.79,
+      "davies_bouldin": 0.9924,
+      "merge_height": 4.7164,
+      "merge_gap": 0.4509,
+      "min_group_flows": 372,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 5.5,
+      "rank_s": 6,
+      "rank_ch": 8,
+      "rank_db": 3,
+      "rank_gap": 5
+    },
+    {
+      "k": 12,
+      "n_groups_found": 12,
+      "silhouette": 0.3378,
+      "calinski_harabasz": 14.88,
+      "davies_bouldin": 0.9322,
+      "merge_height": 4.2655,
+      "merge_gap": 0.0102,
+      "min_group_flows": 339,
+      "min_group_devices": 1,
+      "smallest_group_flows_devices": 1,
+      "feasible": false,
+      "mean_rank": 5.375,
+      "rank_s": 3,
+      "rank_ch": 6,
+      "rank_db": 1,
+      "rank_gap": 11
+    }
+  ],
+  "feasible_k": [
+    2,
+    3,
+    4
+  ],
+  "candidate_ks": [
+    2,
+    3,
+    4
+  ],
+  "candidates": [
+    {
+      "k": 2,
+      "mean_rank": 5.0,
+      "reasoning": "mean rank 5.00; silhouette 0.307 (rank 8/11), CH 21.8 (rank 1), DB 1.357 (rank 10), merge gap 7.486 (rank 1); smallest group 13,616 flows (27 devices); bootstrap mean ARI 0.888"
+    },
+    {
+      "k": 3,
+      "mean_rank": 7.75,
+      "reasoning": "mean rank 7.75; silhouette 0.284 (rank 11/11), CH 15.9 (rank 2), DB 1.181 (rank 8), merge gap 0.030 (rank 10); smallest group 2,141 flows (7 devices); bootstrap mean ARI 0.761"
+    },
+    {
+      "k": 4,
+      "mean_rank": 7.875,
+      "reasoning": "mean rank 7.88; silhouette 0.287 (rank 10/11), CH 14.9 (rank 6), DB 1.548 (rank 11), merge gap 0.880 (rank 4); smallest group 2,141 flows (7 devices); bootstrap mean ARI 0.697"
+    }
+  ],
+  "recommended_k": 2,
+  "recommendation_reason": "k = 2 has the best mean internal-validity rank among feasible k and no other candidate is \u2265 0.10 more stable under bootstrap (mean ARI 0.888; most stable candidate k = 2 at 0.888). Rule: best mean rank unless another candidate's bootstrap mean ARI is \u2265 0.10 higher.",
+  "status": "PROPOSED -- not locked; config/device_table.csv unchanged",
+  "cross_checks": [
+    {
+      "k": 2,
+      "kmeans": 0.849,
+      "average_correlation": 0.923,
+      "ward_without_median_packets": 0.923
+    },
+    {
+      "k": 3,
+      "kmeans": 0.468,
+      "average_correlation": 0.768,
+      "ward_without_median_packets": 0.474
+    },
+    {
+      "k": 4,
+      "kmeans": 0.631,
+      "average_correlation": 0.666,
+      "ward_without_median_packets": 0.516
+    }
+  ],
+  "bootstrap_note": "Each high-confidence device's usable flows were resampled with replacement (same count), fingerprints recomputed with 05_profile_devices.build_fingerprints, rescaled with the scaler fitted above, and re-clustered with Ward. Caveat: duplicated flows add zero inter-flow gaps (inflating gap_cv) and cannot add new peers (deflating log_distinct_peers), so ARI is a conservative estimate.",
+  "bootstrap_summary": {
+    "2": {
+      "mean": 0.8884032302059153,
+      "median": 0.8491539653395401,
+      "p5": 0.7782986999692906,
+      "min": 0.778226054189109,
+      "max": 1.0
+    },
+    "3": {
+      "mean": 0.7607293097078854,
+      "median": 0.8627900652864977,
+      "p5": 0.4620499193581392,
+      "min": 0.3602404068423486,
+      "max": 1.0
+    },
+    "4": {
+      "mean": 0.6967826755397911,
+      "median": 0.6364094624275375,
+      "p5": 0.5875074617245061,
+      "min": 0.45605718373196663,
+      "max": 1.0
+    }
+  },
+  "bootstrap_ari": {
+    "2": [
+      1.0,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      1.0,
+      0.923,
+      0.8492,
+      1.0,
+      0.923,
+      1.0,
+      0.923,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.7783,
+      0.8492,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.8492,
+      0.923,
+      1.0,
+      0.7783,
+      0.8492,
+      1.0,
+      0.923,
+      0.923,
+      1.0,
+      0.8492,
+      0.8492,
+      0.923,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.9231,
+      0.9231,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.923,
+      1.0,
+      0.923,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.8492,
+      1.0,
+      1.0,
+      0.7783,
+      0.8492,
+      0.9231,
+      0.923,
+      0.8492,
+      0.7783,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.9231,
+      1.0,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      1.0,
+      0.8492,
+      0.7782,
+      0.8492,
+      0.923,
+      1.0,
+      1.0,
+      0.7783,
+      0.8492,
+      0.8492,
+      0.8492,
+      0.8492,
+      1.0,
+      0.923,
+      0.8492,
+      0.8492,
+      0.8492
+    ],
+    "3": [
+      0.5613,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.8628,
+      1.0,
+      0.4914,
+      0.8628,
+      1.0,
+      0.4849,
+      1.0,
+      0.4849,
+      0.8628,
+      0.8628,
+      0.4148,
+      0.8236,
+      0.8628,
+      0.8628,
+      0.799,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.5613,
+      0.8628,
+      0.8628,
+      0.5136,
+      1.0,
+      0.799,
+      0.8628,
+      0.5613,
+      0.5264,
+      0.555,
+      1.0,
+      0.8628,
+      0.8628,
+      0.4849,
+      0.8628,
+      0.8628,
+      0.5613,
+      0.7434,
+      0.9299,
+      0.9299,
+      0.8628,
+      0.8628,
+      0.5366,
+      0.8628,
+      0.5136,
+      0.5613,
+      0.4849,
+      0.4112,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.8628,
+      1.0,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.5366,
+      0.8628,
+      0.8628,
+      1.0,
+      0.5613,
+      0.3602,
+      0.8628,
+      0.9299,
+      0.4849,
+      0.8628,
+      0.799,
+      0.8628,
+      0.8628,
+      0.526,
+      0.8628,
+      0.4665,
+      1.0,
+      0.4148,
+      0.8236,
+      0.8628,
+      0.8236,
+      0.8628,
+      1.0,
+      0.8628,
+      0.4142,
+      0.8628,
+      0.4849,
+      1.0,
+      0.5613,
+      0.799,
+      0.8628,
+      0.8628,
+      0.8628,
+      0.4645,
+      0.526,
+      0.4849,
+      0.8628,
+      0.8628,
+      0.4645
+    ],
+    "4": [
+      0.7104,
+      0.6364,
+      0.6364,
+      0.6364,
+      0.6364,
+      0.637,
+      1.0,
+      0.9351,
+      0.6364,
+      0.7529,
+      0.5996,
+      1.0,
+      0.6516,
+      0.6364,
+      0.6364,
+      0.6503,
+      0.5875,
+      0.6364,
+      0.6308,
+      0.6053,
+      0.6364,
+      0.6364,
+      0.6364,
+      0.9135,
+      0.6364,
+      0.6647,
+      0.8455,
+      1.0,
+      0.6053,
+      0.6364,
+      0.7104,
+      0.6564,
+      0.6703,
+      1.0,
+      0.8759,
+      0.6364,
+      0.6516,
+      0.6364,
+      0.6364,
+      0.7104,
+      0.5147,
+      0.7094,
+      0.7094,
+      0.6364,
+      0.8759,
+      1.0,
+      0.6364,
+      0.8455,
+      0.7104,
+      0.6516,
+      0.6384,
+      0.6364,
+      0.6364,
+      0.637,
+      0.6364,
+      1.0,
+      0.637,
+      0.6364,
+      0.6364,
+      0.6364,
+      0.6364,
+      1.0,
+      0.6364,
+      0.6364,
+      1.0,
+      0.7104,
+      0.6122,
+      0.6364,
+      0.9356,
+      0.464,
+      0.6364,
+      0.6122,
+      0.6364,
+      0.6364,
+      0.713,
+      0.6364,
+      0.6694,
+      1.0,
+      0.6503,
+      0.5875,
+      0.6364,
+      0.6241,
+      0.6364,
+      1.0,
+      0.6364,
+      0.4561,
+      0.6364,
+      0.6516,
+      1.0,
+      0.7104,
+      0.6053,
+      0.6364,
+      0.6364,
+      0.6364,
+      0.5875,
+      0.713,
+      0.6516,
+      0.637,
+      0.6364,
+      0.6364
+    ]
+  },
+  "device_stay": [
+    {
+      "device_name": "AMCREST WiFi Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.76,
+      "k4_group": "G1",
+      "k4_stay": 0.82
+    },
+    {
+      "device_name": "Arlo Base Station",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.8,
+      "k4_group": "G2",
+      "k4_stay": 0.96
+    },
+    {
+      "device_name": "Arlo Q Indoor Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.92,
+      "k4_group": "G2",
+      "k4_stay": 0.8
+    },
+    {
+      "device_name": "D-Link DCS8000LHA1 Mini Camera",
+      "category": "Camera",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G3",
+      "k3_stay": 0.68,
+      "k4_group": "G4",
+      "k4_stay": 0.97
+    },
+    {
+      "device_name": "HeimVision Smart WiFi Camera",
+      "category": "Camera",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Home Eye Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.7,
+      "k4_group": "G2",
+      "k4_stay": 0.36
+    },
+    {
+      "device_name": "Nest Indoor Camera",
+      "category": "Camera",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G3",
+      "k3_stay": 0.69,
+      "k4_group": "G4",
+      "k4_stay": 0.98
+    },
+    {
+      "device_name": "Netatmo Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.96,
+      "k4_group": "G2",
+      "k4_stay": 0.75
+    },
+    {
+      "device_name": "Rbcior Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.98,
+      "k4_group": "G1",
+      "k4_stay": 0.43
+    },
+    {
+      "device_name": "TP-Link Tapo Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.96,
+      "k4_group": "G2",
+      "k4_stay": 0.75
+    },
+    {
+      "device_name": "Wyze Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.76,
+      "k4_group": "G1",
+      "k4_stay": 0.82
+    },
+    {
+      "device_name": "Yi Indoor 2 Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 0.37,
+      "k3_group": "G1",
+      "k3_stay": 0.2,
+      "k4_group": "G1",
+      "k4_stay": 0.27
+    },
+    {
+      "device_name": "Yi Indoor Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.8,
+      "k4_group": "G2",
+      "k4_stay": 0.96
+    },
+    {
+      "device_name": "Yi Outdoor Camera",
+      "category": "Camera",
+      "k2_group": "G1",
+      "k2_stay": 0.37,
+      "k3_group": "G1",
+      "k3_stay": 0.2,
+      "k4_group": "G1",
+      "k4_stay": 0.27
+    },
+    {
+      "device_name": "Amazon Alexa Echo Dot 1",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.4
+    },
+    {
+      "device_name": "Amazon Alexa Echo Dot 2",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.93,
+      "k4_group": "G2",
+      "k4_stay": 0.82
+    },
+    {
+      "device_name": "Amazon Alexa Echo Studio",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.4
+    },
+    {
+      "device_name": "Amazon Echo Show",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.4
+    },
+    {
+      "device_name": "Google Nest Mini Speaker",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.39
+    },
+    {
+      "device_name": "Harman Kardon speaker (Ampak)",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.76,
+      "k4_group": "G1",
+      "k4_stay": 0.82
+    },
+    {
+      "device_name": "Sonos One Speaker",
+      "category": "Audio",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.4
+    },
+    {
+      "device_name": "Aeotec Smart Home Hub",
+      "category": "Hub",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.8,
+      "k4_group": "G2",
+      "k4_stay": 0.96
+    },
+    {
+      "device_name": "Eufy HomeBase 2",
+      "category": "Hub",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.76,
+      "k4_group": "G1",
+      "k4_stay": 0.82
+    },
+    {
+      "device_name": "Fibaro Home Center Lite",
+      "category": "Hub",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.7,
+      "k4_group": "G2",
+      "k4_stay": 0.36
+    },
+    {
+      "device_name": "Philips Hue Bridge",
+      "category": "Hub",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.4
+    },
+    {
+      "device_name": "Ring Base Station",
+      "category": "Hub",
+      "k2_group": "G2",
+      "k2_stay": 0.98,
+      "k3_group": "G3",
+      "k3_stay": 0.69,
+      "k4_group": "G4",
+      "k4_stay": 0.97
+    },
+    {
+      "device_name": "SmartThings Hub",
+      "category": "Hub",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.8,
+      "k4_group": "G2",
+      "k4_stay": 0.96
+    },
+    {
+      "device_name": "Atomi Coffee Maker",
+      "category": "Home Automation",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Cocoon Smart HVAC Fan",
+      "category": "Home Automation",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G3",
+      "k3_stay": 0.69,
+      "k4_group": "G4",
+      "k4_stay": 0.98
+    },
+    {
+      "device_name": "Govee Smart Humidifier",
+      "category": "Home Automation",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G3",
+      "k3_stay": 0.68,
+      "k4_group": "G4",
+      "k4_stay": 0.97
+    },
+    {
+      "device_name": "LG Smart TV",
+      "category": "Home Automation",
+      "k2_group": "G1",
+      "k2_stay": 1.0,
+      "k3_group": "G1",
+      "k3_stay": 0.99,
+      "k4_group": "G1",
+      "k4_stay": 0.4
+    },
+    {
+      "device_name": "Levoit Air Purifier",
+      "category": "Home Automation",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G3",
+      "k3_stay": 0.69,
+      "k4_group": "G4",
+      "k4_stay": 0.98
+    },
+    {
+      "device_name": "Netatmo Weather Station",
+      "category": "Home Automation",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 0.97,
+      "k4_group": "G3",
+      "k4_stay": 0.95
+    },
+    {
+      "device_name": "HeimVision SmartLife Radio/Lamp",
+      "category": "Lighting",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "LIFX Lightbulb",
+      "category": "Lighting",
+      "k2_group": "G2",
+      "k2_stay": 0.89,
+      "k3_group": "G2",
+      "k3_stay": 0.89,
+      "k4_group": "G3",
+      "k4_stay": 0.89
+    },
+    {
+      "device_name": "LampUX RGB",
+      "category": "Lighting",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Lumiman Bulb",
+      "category": "Lighting",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Teckin Light Strip",
+      "category": "Lighting",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Amazon Smart Plug",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G3",
+      "k3_stay": 0.68,
+      "k4_group": "G4",
+      "k4_stay": 0.97
+    },
+    {
+      "device_name": "GoSund Power Strip (1)",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "GoSund Power Strip (2)",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "GoSund Smart Plug WP2 (1)",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "GoSund Smart Plug WP2 (2)",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Teckin Plug 1",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Teckin Plug 2",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Wemo Smart Plug 2",
+      "category": "Power Outlet",
+      "k2_group": "G1",
+      "k2_stay": 0.91,
+      "k3_group": "G1",
+      "k3_stay": 0.91,
+      "k4_group": "G1",
+      "k4_stay": 0.34
+    },
+    {
+      "device_name": "Yutron Plug 1",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Yutron Plug 2",
+      "category": "Power Outlet",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Unidentified ESP plug (1)",
+      "category": "Unidentified (Espressif)",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Unidentified ESP plug (2)",
+      "category": "Unidentified (Espressif)",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Unidentified ESP plug (3)",
+      "category": "Unidentified (Espressif)",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    },
+    {
+      "device_name": "Unidentified ESP plug (4)",
+      "category": "Unidentified (Espressif)",
+      "k2_group": "G2",
+      "k2_stay": 1.0,
+      "k3_group": "G2",
+      "k3_stay": 1.0,
+      "k4_group": "G3",
+      "k4_stay": 1.0
+    }
+  ],
+  "lofo": [
+    {
+      "dropped_feature": "log_flows_per_hour",
+      "k2": 1.0,
+      "k3": 0.579,
+      "k4": 0.72
+    },
+    {
+      "dropped_feature": "log_median_bytes",
+      "k2": 0.849,
+      "k3": 0.863,
+      "k4": 0.876
+    },
+    {
+      "dropped_feature": "log_p90_bytes",
+      "k2": 1.0,
+      "k3": 1.0,
+      "k4": 1.0
+    },
+    {
+      "dropped_feature": "median_packets",
+      "k2": 0.923,
+      "k3": 0.474,
+      "k4": 0.516
+    },
+    {
+      "dropped_feature": "pct_single_packet",
+      "k2": 1.0,
+      "k3": 0.53,
+      "k4": 0.702
+    },
+    {
+      "dropped_feature": "log_median_duration_us",
+      "k2": 0.923,
+      "k3": 0.495,
+      "k4": 0.674
+    },
+    {
+      "dropped_feature": "upload_ratio",
+      "k2": 1.0,
+      "k3": 0.537,
+      "k4": 1.0
+    },
+    {
+      "dropped_feature": "pct_udp",
+      "k2": 0.646,
+      "k3": 0.266,
+      "k4": 0.427
+    },
+    {
+      "dropped_feature": "pct_dns",
+      "k2": 1.0,
+      "k3": 0.547,
+      "k4": 0.955
+    },
+    {
+      "dropped_feature": "pct_discovery",
+      "k2": 1.0,
+      "k3": 1.0,
+      "k4": 1.0
+    },
+    {
+      "dropped_feature": "gap_cv",
+      "k2": 1.0,
+      "k3": 1.0,
+      "k4": 0.753
+    },
+    {
+      "dropped_feature": "pct_internet",
+      "k2": 0.849,
+      "k3": 0.485,
+      "k4": 0.513
+    },
+    {
+      "dropped_feature": "pct_device",
+      "k2": 1.0,
+      "k3": 1.0,
+      "k4": 1.0
+    },
+    {
+      "dropped_feature": "log_distinct_peers",
+      "k2": 0.322,
+      "k3": 0.419,
+      "k4": 0.541
+    }
+  ],
+  "low_confidence": [
+    {
+      "k": 2,
+      "device_name": "Smart Board",
+      "category": "Home Automation",
+      "usable_flows": 64,
+      "group": "G1",
+      "distance": 3.879,
+      "group_median_spread": 2.649,
+      "group_max_spread": 5.953,
+      "ratio_to_median": 1.46,
+      "features_used": "14/14",
+      "flag": "low_confidence",
+      "second_nearest": "G2"
+    },
+    {
+      "k": 2,
+      "device_name": "iRobot Roomba",
+      "category": "Home Automation",
+      "usable_flows": 32,
+      "group": "G2",
+      "distance": 4.394,
+      "group_median_spread": 1.089,
+      "group_max_spread": 4.445,
+      "ratio_to_median": 4.03,
+      "features_used": "14/14",
+      "flag": "low_confidence",
+      "second_nearest": "G1"
+    },
+    {
+      "k": 2,
+      "device_name": "Wemo Smart Plug 1",
+      "category": "Power Outlet",
+      "usable_flows": 13,
+      "group": "G1",
+      "distance": 6.607,
+      "group_median_spread": 2.649,
+      "group_max_spread": 5.953,
+      "ratio_to_median": 2.49,
+      "features_used": "13/14",
+      "flag": "low_confidence",
+      "second_nearest": "G2"
+    },
+    {
+      "k": 3,
+      "device_name": "Smart Board",
+      "category": "Home Automation",
+      "usable_flows": 64,
+      "group": "G1",
+      "distance": 3.879,
+      "group_median_spread": 2.649,
+      "group_max_spread": 5.953,
+      "ratio_to_median": 1.46,
+      "features_used": "14/14",
+      "flag": "low_confidence",
+      "second_nearest": "G3"
+    },
+    {
+      "k": 3,
+      "device_name": "iRobot Roomba",
+      "category": "Home Automation",
+      "usable_flows": 32,
+      "group": "G2",
+      "distance": 4.315,
+      "group_median_spread": 0.8,
+      "group_max_spread": 3.195,
+      "ratio_to_median": 5.39,
+      "features_used": "14/14",
+      "flag": "low_confidence",
+      "second_nearest": "G1"
+    },
+    {
+      "k": 3,
+      "device_name": "Wemo Smart Plug 1",
+      "category": "Power Outlet",
+      "usable_flows": 13,
+      "group": "G1",
+      "distance": 6.607,
+      "group_median_spread": 2.649,
+      "group_max_spread": 5.953,
+      "ratio_to_median": 2.49,
+      "features_used": "13/14",
+      "flag": "low_confidence",
+      "second_nearest": "G2"
+    },
+    {
+      "k": 4,
+      "device_name": "Smart Board",
+      "category": "Home Automation",
+      "usable_flows": 64,
+      "group": "G2",
+      "distance": 3.431,
+      "group_median_spread": 2.499,
+      "group_max_spread": 5.342,
+      "ratio_to_median": 1.37,
+      "features_used": "14/14",
+      "flag": "low_confidence",
+      "second_nearest": "G4"
+    },
+    {
+      "k": 4,
+      "device_name": "iRobot Roomba",
+      "category": "Home Automation",
+      "usable_flows": 32,
+      "group": "G3",
+      "distance": 4.315,
+      "group_median_spread": 0.8,
+      "group_max_spread": 3.195,
+      "ratio_to_median": 5.39,
+      "features_used": "14/14",
+      "flag": "low_confidence",
+      "second_nearest": "G1"
+    },
+    {
+      "k": 4,
+      "device_name": "Wemo Smart Plug 1",
+      "category": "Power Outlet",
+      "usable_flows": 13,
+      "group": "G2",
+      "distance": 6.442,
+      "group_median_spread": 2.499,
+      "group_max_spread": 5.342,
+      "ratio_to_median": 2.58,
+      "features_used": "13/14",
+      "flag": "low_confidence",
+      "second_nearest": "G3"
+    }
+  ],
+  "profiles": {
+    "2": [
+      {
+        "group": 1,
+        "n_devices": 25,
+        "total_usable_flows": 191119,
+        "top_features": [
+          {
+            "feature": "log_flows_per_hour",
+            "median_z": 0.945
+          },
+          {
+            "feature": "log_median_duration_us",
+            "median_z": -0.912
+          },
+          {
+            "feature": "pct_single_packet",
+            "median_z": 0.836
+          },
+          {
+            "feature": "log_distinct_peers",
+            "median_z": 0.781
+          }
+        ],
+        "description": "high flow rate, short flows, many single-packet flows, many peers",
+        "median_spread": 2.649,
+        "devices": [
+          {
+            "device_name": "AMCREST WiFi Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Arlo Base Station",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Arlo Q Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Home Eye Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Netatmo Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Rbcior Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "TP-Link Tapo Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Wyze Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Indoor 2 Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Outdoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Dot 1",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Dot 2",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Studio",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Echo Show",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Google Nest Mini Speaker",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Harman Kardon speaker (Ampak)",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Sonos One Speaker",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Aeotec Smart Home Hub",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Eufy HomeBase 2",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Fibaro Home Center Lite",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Philips Hue Bridge",
+            "category": "Hub"
+          },
+          {
+            "device_name": "SmartThings Hub",
+            "category": "Hub"
+          },
+          {
+            "device_name": "LG Smart TV",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Wemo Smart Plug 2",
+            "category": "Power Outlet"
+          }
+        ],
+        "low_confidence_assigned": [
+          "Smart Board",
+          "Wemo Smart Plug 1"
+        ]
+      },
+      {
+        "group": 2,
+        "n_devices": 27,
+        "total_usable_flows": 13616,
+        "top_features": [
+          {
+            "feature": "median_packets",
+            "median_z": 0.66
+          },
+          {
+            "feature": "log_median_bytes",
+            "median_z": 0.57
+          },
+          {
+            "feature": "gap_cv",
+            "median_z": -0.401
+          },
+          {
+            "feature": "log_distinct_peers",
+            "median_z": -0.219
+          }
+        ],
+        "description": "many packets/flow, large payloads",
+        "median_spread": 1.089,
+        "devices": [
+          {
+            "device_name": "D-Link DCS8000LHA1 Mini Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "HeimVision Smart WiFi Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Nest Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Ring Base Station",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Atomi Coffee Maker",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Cocoon Smart HVAC Fan",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Govee Smart Humidifier",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Levoit Air Purifier",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Netatmo Weather Station",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "HeimVision SmartLife Radio/Lamp",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "LIFX Lightbulb",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "LampUX RGB",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Lumiman Bulb",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Teckin Light Strip",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Amazon Smart Plug",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Power Strip (1)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Power Strip (2)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Smart Plug WP2 (1)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Smart Plug WP2 (2)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Teckin Plug 1",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Teckin Plug 2",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Yutron Plug 1",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Yutron Plug 2",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Unidentified ESP plug (1)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (2)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (3)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (4)",
+            "category": "Unidentified (Espressif)"
+          }
+        ],
+        "low_confidence_assigned": [
+          "iRobot Roomba"
+        ]
+      }
+    ],
+    "3": [
+      {
+        "group": 1,
+        "n_devices": 25,
+        "total_usable_flows": 191119,
+        "top_features": [
+          {
+            "feature": "log_flows_per_hour",
+            "median_z": 0.945
+          },
+          {
+            "feature": "log_median_duration_us",
+            "median_z": -0.912
+          },
+          {
+            "feature": "pct_single_packet",
+            "median_z": 0.836
+          },
+          {
+            "feature": "log_distinct_peers",
+            "median_z": 0.781
+          }
+        ],
+        "description": "high flow rate, short flows, many single-packet flows, many peers",
+        "median_spread": 2.649,
+        "devices": [
+          {
+            "device_name": "AMCREST WiFi Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Arlo Base Station",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Arlo Q Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Home Eye Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Netatmo Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Rbcior Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "TP-Link Tapo Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Wyze Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Indoor 2 Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Outdoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Dot 1",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Dot 2",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Studio",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Echo Show",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Google Nest Mini Speaker",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Harman Kardon speaker (Ampak)",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Sonos One Speaker",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Aeotec Smart Home Hub",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Eufy HomeBase 2",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Fibaro Home Center Lite",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Philips Hue Bridge",
+            "category": "Hub"
+          },
+          {
+            "device_name": "SmartThings Hub",
+            "category": "Hub"
+          },
+          {
+            "device_name": "LG Smart TV",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Wemo Smart Plug 2",
+            "category": "Power Outlet"
+          }
+        ],
+        "low_confidence_assigned": [
+          "Smart Board",
+          "Wemo Smart Plug 1"
+        ]
+      },
+      {
+        "group": 2,
+        "n_devices": 20,
+        "total_usable_flows": 11475,
+        "top_features": [
+          {
+            "feature": "median_packets",
+            "median_z": 0.66
+          },
+          {
+            "feature": "log_median_bytes",
+            "median_z": 0.64
+          },
+          {
+            "feature": "gap_cv",
+            "median_z": -0.389
+          },
+          {
+            "feature": "pct_dns",
+            "median_z": -0.24
+          }
+        ],
+        "description": "many packets/flow, large payloads",
+        "median_spread": 0.8,
+        "devices": [
+          {
+            "device_name": "HeimVision Smart WiFi Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Atomi Coffee Maker",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Netatmo Weather Station",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "HeimVision SmartLife Radio/Lamp",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "LIFX Lightbulb",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "LampUX RGB",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Lumiman Bulb",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Teckin Light Strip",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "GoSund Power Strip (1)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Power Strip (2)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Smart Plug WP2 (1)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Smart Plug WP2 (2)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Teckin Plug 1",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Teckin Plug 2",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Yutron Plug 1",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Yutron Plug 2",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Unidentified ESP plug (1)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (2)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (3)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (4)",
+            "category": "Unidentified (Espressif)"
+          }
+        ],
+        "low_confidence_assigned": [
+          "iRobot Roomba"
+        ]
+      },
+      {
+        "group": 3,
+        "n_devices": 7,
+        "total_usable_flows": 2141,
+        "top_features": [
+          {
+            "feature": "median_packets",
+            "median_z": 2.062
+          },
+          {
+            "feature": "pct_udp",
+            "median_z": -1.787
+          },
+          {
+            "feature": "pct_internet",
+            "median_z": 1.362
+          },
+          {
+            "feature": "gap_cv",
+            "median_z": -0.762
+          }
+        ],
+        "description": "many packets/flow, TCP-heavy, Internet-facing, regular timing",
+        "median_spread": 2.162,
+        "devices": [
+          {
+            "device_name": "D-Link DCS8000LHA1 Mini Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Nest Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Ring Base Station",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Cocoon Smart HVAC Fan",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Govee Smart Humidifier",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Levoit Air Purifier",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Amazon Smart Plug",
+            "category": "Power Outlet"
+          }
+        ],
+        "low_confidence_assigned": []
+      }
+    ],
+    "4": [
+      {
+        "group": 1,
+        "n_devices": 15,
+        "total_usable_flows": 51534,
+        "top_features": [
+          {
+            "feature": "log_distinct_peers",
+            "median_z": 1.08
+          },
+          {
+            "feature": "log_flows_per_hour",
+            "median_z": 1.015
+          },
+          {
+            "feature": "pct_dns",
+            "median_z": 0.706
+          },
+          {
+            "feature": "upload_ratio",
+            "median_z": -0.558
+          }
+        ],
+        "description": "many peers, high flow rate, DNS-heavy, download-heavy",
+        "median_spread": 2.452,
+        "devices": [
+          {
+            "device_name": "AMCREST WiFi Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Rbcior Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Wyze Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Indoor 2 Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Outdoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Dot 1",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Studio",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Amazon Echo Show",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Google Nest Mini Speaker",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Harman Kardon speaker (Ampak)",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Sonos One Speaker",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Eufy HomeBase 2",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Philips Hue Bridge",
+            "category": "Hub"
+          },
+          {
+            "device_name": "LG Smart TV",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Wemo Smart Plug 2",
+            "category": "Power Outlet"
+          }
+        ],
+        "low_confidence_assigned": []
+      },
+      {
+        "group": 2,
+        "n_devices": 10,
+        "total_usable_flows": 139585,
+        "top_features": [
+          {
+            "feature": "pct_single_packet",
+            "median_z": 2.439
+          },
+          {
+            "feature": "pct_dns",
+            "median_z": 1.666
+          },
+          {
+            "feature": "log_median_duration_us",
+            "median_z": -0.944
+          },
+          {
+            "feature": "gap_cv",
+            "median_z": 0.942
+          }
+        ],
+        "description": "many single-packet flows, DNS-heavy, short flows, bursty timing",
+        "median_spread": 2.499,
+        "devices": [
+          {
+            "device_name": "Arlo Base Station",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Arlo Q Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Home Eye Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Netatmo Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "TP-Link Tapo Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Yi Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Amazon Alexa Echo Dot 2",
+            "category": "Audio"
+          },
+          {
+            "device_name": "Aeotec Smart Home Hub",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Fibaro Home Center Lite",
+            "category": "Hub"
+          },
+          {
+            "device_name": "SmartThings Hub",
+            "category": "Hub"
+          }
+        ],
+        "low_confidence_assigned": [
+          "Smart Board",
+          "Wemo Smart Plug 1"
+        ]
+      },
+      {
+        "group": 3,
+        "n_devices": 20,
+        "total_usable_flows": 11475,
+        "top_features": [
+          {
+            "feature": "median_packets",
+            "median_z": 0.66
+          },
+          {
+            "feature": "log_median_bytes",
+            "median_z": 0.64
+          },
+          {
+            "feature": "gap_cv",
+            "median_z": -0.389
+          },
+          {
+            "feature": "pct_dns",
+            "median_z": -0.24
+          }
+        ],
+        "description": "many packets/flow, large payloads",
+        "median_spread": 0.8,
+        "devices": [
+          {
+            "device_name": "HeimVision Smart WiFi Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Atomi Coffee Maker",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Netatmo Weather Station",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "HeimVision SmartLife Radio/Lamp",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "LIFX Lightbulb",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "LampUX RGB",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Lumiman Bulb",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "Teckin Light Strip",
+            "category": "Lighting"
+          },
+          {
+            "device_name": "GoSund Power Strip (1)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Power Strip (2)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Smart Plug WP2 (1)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "GoSund Smart Plug WP2 (2)",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Teckin Plug 1",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Teckin Plug 2",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Yutron Plug 1",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Yutron Plug 2",
+            "category": "Power Outlet"
+          },
+          {
+            "device_name": "Unidentified ESP plug (1)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (2)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (3)",
+            "category": "Unidentified (Espressif)"
+          },
+          {
+            "device_name": "Unidentified ESP plug (4)",
+            "category": "Unidentified (Espressif)"
+          }
+        ],
+        "low_confidence_assigned": [
+          "iRobot Roomba"
+        ]
+      },
+      {
+        "group": 4,
+        "n_devices": 7,
+        "total_usable_flows": 2141,
+        "top_features": [
+          {
+            "feature": "median_packets",
+            "median_z": 2.062
+          },
+          {
+            "feature": "pct_udp",
+            "median_z": -1.787
+          },
+          {
+            "feature": "pct_internet",
+            "median_z": 1.362
+          },
+          {
+            "feature": "gap_cv",
+            "median_z": -0.762
+          }
+        ],
+        "description": "many packets/flow, TCP-heavy, Internet-facing, regular timing",
+        "median_spread": 2.162,
+        "devices": [
+          {
+            "device_name": "D-Link DCS8000LHA1 Mini Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Nest Indoor Camera",
+            "category": "Camera"
+          },
+          {
+            "device_name": "Ring Base Station",
+            "category": "Hub"
+          },
+          {
+            "device_name": "Cocoon Smart HVAC Fan",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Govee Smart Humidifier",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Levoit Air Purifier",
+            "category": "Home Automation"
+          },
+          {
+            "device_name": "Amazon Smart Plug",
+            "category": "Power Outlet"
+          }
+        ],
+        "low_confidence_assigned": []
+      }
+    ]
+  },
+  "known_pairs": [
+    {
+      "set": "GoSund (4)",
+      "k": 2,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "GoSund Power Strip (1)\u2192G2; GoSund Power Strip (2)\u2192G2; GoSund Smart Plug WP2 (1)\u2192G2; GoSund Smart Plug WP2 (2)\u2192G2"
+    },
+    {
+      "set": "ESP plugs (4)",
+      "k": 2,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Unidentified ESP plug (1)\u2192G2; Unidentified ESP plug (2)\u2192G2; Unidentified ESP plug (3)\u2192G2; Unidentified ESP plug (4)\u2192G2"
+    },
+    {
+      "set": "Teckin/Yutron plugs (4)",
+      "k": 2,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Teckin Plug 1\u2192G2; Teckin Plug 2\u2192G2; Yutron Plug 1\u2192G2; Yutron Plug 2\u2192G2"
+    },
+    {
+      "set": "Lighting",
+      "k": 2,
+      "n_members": 5,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 0.89,
+      "placement": "HeimVision SmartLife Radio/Lamp\u2192G2; LIFX Lightbulb\u2192G2; LampUX RGB\u2192G2; Lumiman Bulb\u2192G2; Teckin Light Strip\u2192G2"
+    },
+    {
+      "set": "Echo family",
+      "k": 2,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Amazon Alexa Echo Dot 1\u2192G1; Amazon Alexa Echo Dot 2\u2192G1; Amazon Alexa Echo Studio\u2192G1; Amazon Echo Show\u2192G1"
+    },
+    {
+      "set": "Cameras",
+      "k": 2,
+      "n_members": 14,
+      "n_groups": 2,
+      "together": false,
+      "boot_together": 0.0,
+      "placement": "AMCREST WiFi Camera\u2192G1; Arlo Base Station\u2192G1; Arlo Q Indoor Camera\u2192G1; D-Link DCS8000LHA1 Mini Camera\u2192G2; HeimVision Smart WiFi Camera\u2192G2; Home Eye Camera\u2192G1; Nest Indoor Camera\u2192G2; Netatmo Camera\u2192G1; Rbcior Camera\u2192G1; TP-Link Tapo Camera\u2192G1; Wyze Camera\u2192G1; Yi Indoor 2 Camera\u2192G1; Yi Indoor Camera\u2192G1; Yi Outdoor Camera\u2192G1"
+    },
+    {
+      "set": "GoSund (4)",
+      "k": 3,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "GoSund Power Strip (1)\u2192G2; GoSund Power Strip (2)\u2192G2; GoSund Smart Plug WP2 (1)\u2192G2; GoSund Smart Plug WP2 (2)\u2192G2"
+    },
+    {
+      "set": "ESP plugs (4)",
+      "k": 3,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Unidentified ESP plug (1)\u2192G2; Unidentified ESP plug (2)\u2192G2; Unidentified ESP plug (3)\u2192G2; Unidentified ESP plug (4)\u2192G2"
+    },
+    {
+      "set": "Teckin/Yutron plugs (4)",
+      "k": 3,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Teckin Plug 1\u2192G2; Teckin Plug 2\u2192G2; Yutron Plug 1\u2192G2; Yutron Plug 2\u2192G2"
+    },
+    {
+      "set": "Lighting",
+      "k": 3,
+      "n_members": 5,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 0.89,
+      "placement": "HeimVision SmartLife Radio/Lamp\u2192G2; LIFX Lightbulb\u2192G2; LampUX RGB\u2192G2; Lumiman Bulb\u2192G2; Teckin Light Strip\u2192G2"
+    },
+    {
+      "set": "Echo family",
+      "k": 3,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 0.94,
+      "placement": "Amazon Alexa Echo Dot 1\u2192G1; Amazon Alexa Echo Dot 2\u2192G1; Amazon Alexa Echo Studio\u2192G1; Amazon Echo Show\u2192G1"
+    },
+    {
+      "set": "Cameras",
+      "k": 3,
+      "n_members": 14,
+      "n_groups": 3,
+      "together": false,
+      "boot_together": 0.0,
+      "placement": "AMCREST WiFi Camera\u2192G1; Arlo Base Station\u2192G1; Arlo Q Indoor Camera\u2192G1; D-Link DCS8000LHA1 Mini Camera\u2192G3; HeimVision Smart WiFi Camera\u2192G2; Home Eye Camera\u2192G1; Nest Indoor Camera\u2192G3; Netatmo Camera\u2192G1; Rbcior Camera\u2192G1; TP-Link Tapo Camera\u2192G1; Wyze Camera\u2192G1; Yi Indoor 2 Camera\u2192G1; Yi Indoor Camera\u2192G1; Yi Outdoor Camera\u2192G1"
+    },
+    {
+      "set": "GoSund (4)",
+      "k": 4,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "GoSund Power Strip (1)\u2192G3; GoSund Power Strip (2)\u2192G3; GoSund Smart Plug WP2 (1)\u2192G3; GoSund Smart Plug WP2 (2)\u2192G3"
+    },
+    {
+      "set": "ESP plugs (4)",
+      "k": 4,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Unidentified ESP plug (1)\u2192G3; Unidentified ESP plug (2)\u2192G3; Unidentified ESP plug (3)\u2192G3; Unidentified ESP plug (4)\u2192G3"
+    },
+    {
+      "set": "Teckin/Yutron plugs (4)",
+      "k": 4,
+      "n_members": 4,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 1.0,
+      "placement": "Teckin Plug 1\u2192G3; Teckin Plug 2\u2192G3; Yutron Plug 1\u2192G3; Yutron Plug 2\u2192G3"
+    },
+    {
+      "set": "Lighting",
+      "k": 4,
+      "n_members": 5,
+      "n_groups": 1,
+      "together": true,
+      "boot_together": 0.89,
+      "placement": "HeimVision SmartLife Radio/Lamp\u2192G3; LIFX Lightbulb\u2192G3; LampUX RGB\u2192G3; Lumiman Bulb\u2192G3; Teckin Light Strip\u2192G3"
+    },
+    {
+      "set": "Echo family",
+      "k": 4,
+      "n_members": 4,
+      "n_groups": 2,
+      "together": false,
+      "boot_together": 0.76,
+      "placement": "Amazon Alexa Echo Dot 1\u2192G1; Amazon Alexa Echo Dot 2\u2192G2; Amazon Alexa Echo Studio\u2192G1; Amazon Echo Show\u2192G1"
+    },
+    {
+      "set": "Cameras",
+      "k": 4,
+      "n_members": 14,
+      "n_groups": 4,
+      "together": false,
+      "boot_together": 0.0,
+      "placement": "AMCREST WiFi Camera\u2192G1; Arlo Base Station\u2192G2; Arlo Q Indoor Camera\u2192G2; D-Link DCS8000LHA1 Mini Camera\u2192G4; HeimVision Smart WiFi Camera\u2192G3; Home Eye Camera\u2192G2; Nest Indoor Camera\u2192G4; Netatmo Camera\u2192G2; Rbcior Camera\u2192G1; TP-Link Tapo Camera\u2192G2; Wyze Camera\u2192G1; Yi Indoor 2 Camera\u2192G1; Yi Indoor Camera\u2192G2; Yi Outdoor Camera\u2192G1"
+    }
+  ],
+  "category_colours": {
+    "Camera": "#E69F00",
+    "Audio": "#56B4E9",
+    "Hub": "#009E73",
+    "Home Automation": "#F0E442",
+    "Lighting": "#0072B2",
+    "Power Outlet": "#D55E00",
+    "Unidentified (Espressif)": "#CC79A7"
+  },
+  "group_colours": {
+    "G1": "#332288",
+    "G2": "#88CCEE",
+    "G3": "#117733",
+    "G4": "#DDCC77",
+    "G5": "#CC6677",
+    "G6": "#44AA99",
+    "G7": "#882255",
+    "G8": "#999933",
+    "G9": "#AA4499",
+    "G10": "#6699CC",
+    "G11": "#661100",
+    "G12": "#888888"
+  },
+  "pca_explained_variance_pct": [
+    40.21216525311094,
+    17.453731613951568
+  ],
+  "figures": [
+    {
+      "name": "fig5_dendrogram",
+      "files": [
+        "results/step6/figures/fig5_dendrogram.pdf",
+        "results/step6/figures/fig5_dendrogram.png"
+      ],
+      "caption": "Ward dendrogram of the 52 high-confidence devices over the 14 scaled fingerprint features; leaf labels are coloured by category, branches by group, and the dashed line marks the cut at the recommended k = 2."
+    },
+    {
+      "name": "fig6_k_selection",
+      "files": [
+        "results/step6/figures/fig6_k_selection.pdf",
+        "results/step6/figures/fig6_k_selection.png"
+      ],
+      "caption": "Internal validity of Ward partitions for k = 2\u201312: silhouette, Calinski\u2013Harabasz and Davies\u2013Bouldin. Hollow grey points are infeasible (a group below 2,000 usable flows); circled points are the candidates and the dashed line marks the recommended k = 2."
+    },
+    {
+      "name": "fig7_fingerprints_by_group",
+      "files": [
+        "results/step6/figures/fig7_fingerprints_by_group.pdf",
+        "results/step6/figures/fig7_fingerprints_by_group.png"
+      ],
+      "caption": "Scaled behaviour fingerprints ordered by proposed group (k = 2) and dendrogram order within each group; the left strip shows the group and the second strip the category (companion to Fig. 2). \u2020 hatched rows are low-confidence devices placed at their nearest group centroid."
+    },
+    {
+      "name": "fig8_pca_groups",
+      "files": [
+        "results/step6/figures/fig8_pca_groups.pdf",
+        "results/step6/figures/fig8_pca_groups.png"
+      ],
+      "caption": "First two principal components of the cluster input (PC1 40.2%, PC2 17.5% of variance); colour = proposed group (k = 2), marker = category, hollow = low confidence (projected; an undefined feature is set to the median for display). A visual aid only: clustering used all 14 features."
+    },
+    {
+      "name": "fig9_stability",
+      "files": [
+        "results/step6/figures/fig9_stability.pdf",
+        "results/step6/figures/fig9_stability.png"
+      ],
+      "caption": "Adjusted Rand index between the base Ward partition and 100 flow-level bootstrap re-clusterings for each candidate k (fingerprints recomputed, scaler held fixed)."
+    }
+  ]
+}

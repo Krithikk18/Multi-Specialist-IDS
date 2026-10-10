@@ -1,0 +1,14 @@
+log_flows_per_hour
+log_median_bytes
+log_p90_bytes
+median_packets
+pct_single_packet
+log_median_duration_us
+upload_ratio
+pct_udp
+pct_dns
+pct_discovery
+gap_cv
+pct_internet
+pct_device
+log_distinct_peers

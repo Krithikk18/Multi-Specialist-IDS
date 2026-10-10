@@ -1,0 +1,672 @@
+{
+  "run": {
+    "run_timestamp_utc": "2026-10-10T07:51:32+00:00",
+    "flows": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/benign_flows_tagged.csv",
+    "flows_sha256": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+    "devices": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv",
+    "devices_sha256": "50dcde5b0dd547d580cdb9124e7d12ffdcb40f4a2d2b3c9804ec7af9df67945c",
+    "out_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6",
+    "min_flows": 100,
+    "corr_threshold": 0.9,
+    "timestamp_format": "%d/%m/%Y %I:%M:%S %p (UTC)",
+    "columns_matched": {
+      "src_ip": "Src IP",
+      "dst_ip": "Dst IP",
+      "src_port": "Src Port",
+      "dst_port": "Dst Port",
+      "protocol": "Protocol",
+      "timestamp": "Timestamp",
+      "duration": "Flow Duration",
+      "fwd_pkts": "Total Fwd Packet",
+      "bwd_pkts": "Total Bwd packets",
+      "fwd_bytes": "Total Length of Fwd Packet",
+      "bwd_bytes": "Total Length of Bwd Packet",
+      "src_mac": "src_mac",
+      "dst_mac": "dst_mac",
+      "src_role": "src_role",
+      "dst_role": "dst_role",
+      "owner_mac": "owner_mac",
+      "owner_device": "owner_device",
+      "owner_status": "owner_status",
+      "exclude_reason": "exclude_reason"
+    },
+    "capture_start_utc": "2022-10-07T17:15:00+00:00",
+    "capture_end_utc": "2022-10-08T02:30:28+00:00",
+    "capture_hours": 9.2578,
+    "python": "3.11.17",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.2",
+    "runtime_s": 11.4
+  },
+  "integrity": {
+    "input_rows": 223108,
+    "sum_usable_flows_over_devices": 204844,
+    "usable_flows": 204844,
+    "sum_equals_usable": true,
+    "smart_home_devices_in_table": 55,
+    "devices_in_fingerprints": 55,
+    "every_smart_home_device_present": true,
+    "usable_owners_not_smart_home": [],
+    "owner_on_src_or_dst_side_for_all_usable": true,
+    "kept_features_nonempty": true,
+    "all_figures_written": true,
+    "flows_sha256_unchanged": true,
+    "devices_sha256_unchanged": true,
+    "pass": true
+  },
+  "filter": {
+    "input_rows": 223108,
+    "owned": 209946,
+    "owned_but_excluded": 5102,
+    "owned_excluded_by_reason": {
+      "ip_clash_artifact": 5102
+    },
+    "usable": 204844,
+    "usable_pct_of_input": 91.814,
+    "usable_owner_devices": 55,
+    "owner_is_src": 161072,
+    "owner_is_dst": 43772
+  },
+  "confidence": {
+    "min_flows": 100,
+    "n_high": 52,
+    "n_low": 3,
+    "zero_flow_devices": [],
+    "sensitivity": [
+      {
+        "min_flows": 50,
+        "n_low": 2,
+        "n_high": 53,
+        "low_devices": "iRobot Roomba; Wemo Smart Plug 1"
+      },
+      {
+        "min_flows": 100,
+        "n_low": 3,
+        "n_high": 52,
+        "low_devices": "Smart Board; iRobot Roomba; Wemo Smart Plug 1"
+      },
+      {
+        "min_flows": 200,
+        "n_low": 3,
+        "n_high": 52,
+        "low_devices": "Smart Board; iRobot Roomba; Wemo Smart Plug 1"
+      }
+    ],
+    "low_devices": [
+      {
+        "device_name": "Wemo Smart Plug 1",
+        "category": "Power Outlet",
+        "usable_flows": 13
+      },
+      {
+        "device_name": "iRobot Roomba",
+        "category": "Home Automation",
+        "usable_flows": 32
+      },
+      {
+        "device_name": "Smart Board",
+        "category": "Home Automation",
+        "usable_flows": 64
+      }
+    ]
+  },
+  "pruning": {
+    "threshold": 0.9,
+    "n_devices": 52,
+    "priority": [
+      "upload_ratio",
+      "pct_udp",
+      "pct_tcp",
+      "log_flows_per_hour",
+      "log_median_bytes",
+      "pct_single_packet",
+      "gap_cv",
+      "pct_internet",
+      "pct_device",
+      "pct_dns",
+      "pct_discovery",
+      "log_median_duration_us",
+      "median_packets",
+      "log_p90_bytes",
+      "log_distinct_peers"
+    ],
+    "kept": [
+      "log_flows_per_hour",
+      "log_median_bytes",
+      "log_p90_bytes",
+      "median_packets",
+      "pct_single_packet",
+      "log_median_duration_us",
+      "upload_ratio",
+      "pct_udp",
+      "pct_dns",
+      "pct_discovery",
+      "gap_cv",
+      "pct_internet",
+      "pct_device",
+      "log_distinct_peers"
+    ],
+    "dropped": [
+      "pct_tcp"
+    ],
+    "drops": [
+      {
+        "dropped": "pct_tcp",
+        "partner_kept": "pct_udp",
+        "rho": -0.9657,
+        "abs_rho": 0.9657,
+        "order": 1
+      }
+    ],
+    "pairs_over_threshold": [
+      {
+        "a": "pct_tcp",
+        "b": "pct_udp",
+        "rho": -0.9657
+      }
+    ]
+  },
+  "scaling": {
+    "log_flows_per_hour": {
+      "median": 1.832317,
+      "iqr": 0.62332,
+      "scale_used": 0.6233197500000001,
+      "iqr_zero_fallback": false
+    },
+    "log_median_bytes": {
+      "median": 2.608526,
+      "iqr": 0.656017,
+      "scale_used": 0.6560174999999999,
+      "iqr_zero_fallback": false
+    },
+    "log_p90_bytes": {
+      "median": 3.615845,
+      "iqr": 0.846278,
+      "scale_used": 0.8462782500000001,
+      "iqr_zero_fallback": false
+    },
+    "median_packets": {
+      "median": 8.0,
+      "iqr": 12.125,
+      "scale_used": 12.125,
+      "iqr_zero_fallback": false
+    },
+    "pct_single_packet": {
+      "median": 1.5545,
+      "iqr": 9.26425,
+      "scale_used": 9.26425,
+      "iqr_zero_fallback": false
+    },
+    "log_median_duration_us": {
+      "median": 7.789321,
+      "iqr": 2.715787,
+      "scale_used": 2.7157867499999986,
+      "iqr_zero_fallback": false
+    },
+    "upload_ratio": {
+      "median": 0.850861,
+      "iqr": 0.558879,
+      "scale_used": 0.5588785000000001,
+      "iqr_zero_fallback": false
+    },
+    "pct_udp": {
+      "median": 49.6615,
+      "iqr": 24.27475,
+      "scale_used": 24.274749999999997,
+      "iqr_zero_fallback": false
+    },
+    "pct_dns": {
+      "median": 3.792,
+      "iqr": 15.82125,
+      "scale_used": 15.821250000000001,
+      "iqr_zero_fallback": false
+    },
+    "pct_discovery": {
+      "median": 0.0,
+      "iqr": 2.266,
+      "scale_used": 2.266,
+      "iqr_zero_fallback": false
+    },
+    "gap_cv": {
+      "median": 0.978538,
+      "iqr": 0.936231,
+      "scale_used": 0.9362312500000001,
+      "iqr_zero_fallback": false
+    },
+    "pct_internet": {
+      "median": 54.2215,
+      "iqr": 30.8295,
+      "scale_used": 30.829499999999996,
+      "iqr_zero_fallback": false
+    },
+    "pct_device": {
+      "median": 0.0,
+      "iqr": 0.02325,
+      "scale_used": 0.02325,
+      "iqr_zero_fallback": false
+    },
+    "log_distinct_peers": {
+      "median": 0.954243,
+      "iqr": 0.497325,
+      "scale_used": 0.4973249999999999,
+      "iqr_zero_fallback": false
+    }
+  },
+  "feature_stats": [
+    {
+      "feature": "log_flows_per_hour",
+      "family": "Volume",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.381,
+      "q25": 1.7433,
+      "median": 1.8289,
+      "q75": 2.378,
+      "max": 4.04
+    },
+    {
+      "feature": "log_flows_per_hour",
+      "family": "Volume",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 1.4032,
+      "q25": 1.7717,
+      "median": 1.8323,
+      "q75": 2.395,
+      "max": 4.04
+    },
+    {
+      "feature": "log_median_bytes",
+      "family": "Volume",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 2.4063,
+      "median": 2.6085,
+      "q75": 3.046,
+      "max": 5.1771
+    },
+    {
+      "feature": "log_median_bytes",
+      "family": "Volume",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 2.4365,
+      "median": 2.6085,
+      "q75": 3.0925,
+      "max": 5.1771
+    },
+    {
+      "feature": "log_p90_bytes",
+      "family": "Volume",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 1.9494,
+      "q25": 2.8115,
+      "median": 3.6158,
+      "q75": 3.6722,
+      "max": 5.2854
+    },
+    {
+      "feature": "log_p90_bytes",
+      "family": "Volume",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 1.9494,
+      "q25": 2.8263,
+      "median": 3.6158,
+      "q75": 3.6726,
+      "max": 5.2854
+    },
+    {
+      "feature": "median_packets",
+      "family": "Shape",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 1.0,
+      "q25": 3.0,
+      "median": 8.0,
+      "q75": 16.0,
+      "max": 1552.5
+    },
+    {
+      "feature": "median_packets",
+      "family": "Shape",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 1.0,
+      "q25": 4.0,
+      "median": 8.0,
+      "q75": 16.125,
+      "max": 1552.5
+    },
+    {
+      "feature": "pct_single_packet",
+      "family": "Shape",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.1845,
+      "median": 1.623,
+      "q75": 10.507,
+      "max": 61.538
+    },
+    {
+      "feature": "pct_single_packet",
+      "family": "Shape",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.1847,
+      "median": 1.5545,
+      "q75": 9.449,
+      "max": 59.14
+    },
+    {
+      "feature": "log_median_duration_us",
+      "family": "Shape",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 5.3086,
+      "median": 7.7886,
+      "q75": 8.0434,
+      "max": 8.0789
+    },
+    {
+      "feature": "log_median_duration_us",
+      "family": "Shape",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 5.332,
+      "median": 7.7893,
+      "q75": 8.0478,
+      "max": 8.0789
+    },
+    {
+      "feature": "upload_ratio",
+      "family": "Shape",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.1553,
+      "q25": 0.3936,
+      "median": 0.8391,
+      "q75": 0.956,
+      "max": 1.0
+    },
+    {
+      "feature": "upload_ratio",
+      "family": "Shape",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.1637,
+      "q25": 0.3963,
+      "median": 0.8509,
+      "q75": 0.9552,
+      "max": 0.9971
+    },
+    {
+      "feature": "pct_tcp",
+      "family": "Protocol",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 38.379,
+      "median": 49.355,
+      "q75": 67.422,
+      "max": 96.599
+    },
+    {
+      "feature": "pct_tcp",
+      "family": "Protocol",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 40.4947,
+      "median": 49.355,
+      "q75": 67.1445,
+      "max": 96.599
+    },
+    {
+      "feature": "pct_udp",
+      "family": "Protocol",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 2.759,
+      "q25": 32.3335,
+      "median": 50.366,
+      "q75": 61.318,
+      "max": 100.0
+    },
+    {
+      "feature": "pct_udp",
+      "family": "Protocol",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 2.759,
+      "q25": 32.6783,
+      "median": 49.6615,
+      "q75": 56.953,
+      "max": 99.982
+    },
+    {
+      "feature": "pct_dns",
+      "family": "Services",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 3.789,
+      "q75": 15.2725,
+      "max": 75.762
+    },
+    {
+      "feature": "pct_dns",
+      "family": "Services",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.1695,
+      "median": 3.792,
+      "q75": 15.9908,
+      "max": 75.762
+    },
+    {
+      "feature": "pct_discovery",
+      "family": "Services",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 2.765,
+      "max": 92.308
+    },
+    {
+      "feature": "pct_discovery",
+      "family": "Services",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 2.266,
+      "max": 48.083
+    },
+    {
+      "feature": "gap_cv",
+      "family": "Rhythm",
+      "scope": "all",
+      "n": 54,
+      "nan": 1,
+      "min": 0.2062,
+      "q25": 0.6036,
+      "median": 0.9785,
+      "q75": 1.5405,
+      "max": 4.223
+    },
+    {
+      "feature": "gap_cv",
+      "family": "Rhythm",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.2062,
+      "q25": 0.601,
+      "median": 0.9785,
+      "q75": 1.5373,
+      "max": 4.223
+    },
+    {
+      "feature": "pct_internet",
+      "family": "Peers",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 49.071,
+      "median": 54.472,
+      "q75": 81.336,
+      "max": 100.0
+    },
+    {
+      "feature": "pct_internet",
+      "family": "Peers",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 49.071,
+      "median": 54.2215,
+      "q75": 79.9005,
+      "max": 99.543
+    },
+    {
+      "feature": "pct_device",
+      "family": "Peers",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 0.0,
+      "max": 93.011
+    },
+    {
+      "feature": "pct_device",
+      "family": "Peers",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 0.0232,
+      "max": 93.011
+    },
+    {
+      "feature": "log_distinct_peers",
+      "family": "Peers",
+      "scope": "all",
+      "n": 55,
+      "nan": 0,
+      "min": 0.4771,
+      "q25": 0.8116,
+      "median": 0.9542,
+      "q75": 1.3323,
+      "max": 2.2577
+    },
+    {
+      "feature": "log_distinct_peers",
+      "family": "Peers",
+      "scope": "high",
+      "n": 52,
+      "nan": 0,
+      "min": 0.6021,
+      "q25": 0.8451,
+      "median": 0.9542,
+      "q75": 1.3424,
+      "max": 2.2577
+    }
+  ],
+  "category_colours": {
+    "Camera": "#E69F00",
+    "Audio": "#56B4E9",
+    "Hub": "#009E73",
+    "Home Automation": "#F0E442",
+    "Lighting": "#0072B2",
+    "Power Outlet": "#D55E00",
+    "Unidentified (Espressif)": "#CC79A7"
+  },
+  "fig3_labelled_devices": [
+    "Fibaro Home Center Lite",
+    "Arlo Q Indoor Camera",
+    "HeimVision SmartLife Radio/Lamp",
+    "LIFX Lightbulb",
+    "Amazon Alexa Echo Dot 2",
+    "GoSund Power Strip (1)",
+    "Unidentified ESP plug (1)",
+    "Smart Board"
+  ],
+  "figures": [
+    {
+      "name": "fig1_feature_correlation",
+      "files": [
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig1_feature_correlation.pdf",
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig1_feature_correlation.png"
+      ],
+      "caption": "Spearman rank correlation between the 15 candidate fingerprint features across 52 high-confidence devices; features marked * were removed (|\u03c1| > 0.9)."
+    },
+    {
+      "name": "fig2_device_fingerprints",
+      "files": [
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig2_device_fingerprints.pdf",
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig2_device_fingerprints.png"
+      ],
+      "caption": "Robust-scaled behaviour fingerprints (retained features) of each smart-home device, grouped by category; \u2020 hatched rows have fewer than 100 usable flows."
+    },
+    {
+      "name": "fig3_volume_vs_size",
+      "files": [
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig3_volume_vs_size.pdf",
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig3_volume_vs_size.png"
+      ],
+      "caption": "Flow rate versus median flow size per device; colour shows category and marker area scales with log usable flows."
+    },
+    {
+      "name": "fig4_usable_flows",
+      "files": [
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig4_usable_flows.pdf",
+        "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step6/figures/fig4_usable_flows.png"
+      ],
+      "caption": "Usable benign flows per smart-home device (log scale); the dashed line marks the 100-flow confidence threshold."
+    }
+  ]
+}

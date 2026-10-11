@@ -6,8 +6,8 @@ Pipeline (every step reuses the existing scripts' functions):
   1  flows    extraction/run_cicflowmeter.py (locked jar, singlepkt, TZ=UTC) into
               data/interim/flows/attack/<pcap_stem>/ (skipped when the CSV and its .meta.json
               sidecar match the pcap SHA256 and the locked jar); then 03b_check_flows.py,
-              abort on exit 1 / 2. (03b's packet-total check is calibrated to the benign
-              pcap, so on another pcap it can only WARN, never FAIL.)
+              abort on exit 1 / 2. (03b's packet-total check compares against the given
+              pcap's own capinfos packet count.)
   2  map      02_mac_ip_map.py functions (extract -> infer_subnets -> filter_pairs ->
               time_checks) on THIS pcap -> data/interim/maps/<pcap_stem>_ip_mac_map.csv.
               config/ip_mac_map.csv is never written.

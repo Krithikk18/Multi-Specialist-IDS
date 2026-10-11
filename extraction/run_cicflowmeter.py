@@ -29,6 +29,14 @@ Paper_Implemetation copy (from Implemetation_Demo/extraction/run_cicflowmeter.py
     are checked against the build's Cmd.java source when it is present, and recorded.
   - a sidecar <csv>.meta.json records the provenance of each output CSV.
   - the summary prints the output path for any --out-dir (the old relative_to crash).
+  - the JVM heap cap is locked: EXTRACTOR.java_heap_max is appended last to CFM_OPTS (caller
+    -Xmx flags are stripped) and recorded in the sidecar.
+  - idle sweeper (extractor/idle_sweeper.patch): its end-of-run stats go into the sidecar; a run
+    with any packet beyond the sweeper's slack, or without the stats line, fails (exit 1) and
+    gets no sidecar, so it is never reused.
+  - one extraction per out-dir: an exclusive flock on <out-dir>/.cfm.lock is held for the
+    whole run; a second run on the same out-dir exits 1 instead of deleting the CSV the first
+    is writing (that race made the first cfm crash with an NPE in InsertCsvRow.insert).
 
 Usage (from the repo root):
     python extraction/run_cicflowmeter.py                     # benign pcap (config DATASET)
@@ -41,6 +49,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import fcntl
 import hashlib
 import json
 import os
@@ -58,11 +67,15 @@ if str(REPO_ROOT) not in sys.path:  # `from config.config import ...` from any c
 from config.config import DATASET, EXTRACTOR, FLOWS_DIR, LockError, verify_lock  # noqa: E402
 
 _TZ_FLAG_RE = re.compile(r"(?:^|\s)-Duser\.timezone=\S*")
+_XMX_RE = re.compile(r"(?:^|\s)-Xmx\S*")
 _JVM_OPT_VARS = ("JAVA_OPTS", "CFM_OPTS", "JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS")
 
 # cfm prints one progress line per flow; the useful summary is only at the end.
 _TOTAL_RE = re.compile(r"is done\.\s*total\s+(\d+)\s+flows")
 _PKT_RE = re.compile(r"Packet stats:\s*Total=(\d+),Valid=(\d+),Discarded=(\d+)")
+# end-of-run line of the idle sweeper (extractor/idle_sweeper.patch), printed on stderr
+_SWEEP_RE = re.compile(r"idle sweeper: sweeps=(\d+) swept_flows=(\d+) tombstones_left=(\d+) "
+                       r"successors_from_tombstone=(\d+) late_packets_beyond_slack=(\d+) \(slack (\d+) s")
 
 
 class ExtractionError(RuntimeError):
@@ -142,12 +155,34 @@ def check_compiled_timeouts(cfm_home: Path) -> str:
 
 
 def utc_env() -> dict:
-    """Caller's environment with TZ=UTC forced and any -Duser.timezone JVM flag removed."""
+    """Caller's environment with TZ=UTC forced, any -Duser.timezone / -Xmx JVM flag removed, and
+    the locked heap cap (EXTRACTOR.java_heap_max) appended last to CFM_OPTS (cfm puts CFM_OPTS
+    after JAVA_OPTS on the java command line, and the last -Xmx wins)."""
     env = dict(verify_lock(strict=False)["env"], TZ="UTC")
     for k in _JVM_OPT_VARS:
         if k in env:
-            env[k] = _TZ_FLAG_RE.sub(" ", env[k]).strip()
+            env[k] = _XMX_RE.sub(" ", _TZ_FLAG_RE.sub(" ", env[k])).strip()
+    env["CFM_OPTS"] = f"{env.get('CFM_OPTS', '')} {EXTRACTOR.java_heap_max}".strip()
     return env
+
+
+def parse_sweeper(combined: str) -> dict:
+    """The idle sweeper's end-of-run statistics. Raises unless present with 0 late packets: a
+    packet older than (max time seen - slack) can make a swept flow differ from the flow the
+    unswept code would have produced, so such a CSV is not accepted."""
+    m = _SWEEP_RE.search(combined)
+    if not m:
+        raise ExtractionError("cfm did not print the idle-sweeper statistics line; the jar is "
+                              "not the locked sweeper build")
+    keys = ("sweeps", "swept_flows", "tombstones_left", "successors_from_tombstone",
+            "late_packets_beyond_slack", "slack_s")
+    st = dict(zip(keys, (int(g) for g in m.groups())))
+    if st["late_packets_beyond_slack"] > 0:
+        raise ExtractionError(
+            f"idle sweeper: {st['late_packets_beyond_slack']:,} packets older than (max time seen - "
+            f"{st['slack_s']} s slack); the output may differ from the unswept extractor, so it is "
+            f"rejected (no meta sidecar written). Sweeper stats: {st}")
+    return st
 
 
 def sha256_file(path: Path, chunk: int = 1 << 20) -> str:
@@ -181,6 +216,33 @@ def _count_csv_rows(path: Path) -> int:
     with open(path, "r", encoding="utf-8", errors="replace") as fh:
         n = sum(1 for _ in fh)
     return max(n - 1, 0)
+
+
+LOCK_NAME = ".cfm.lock"
+
+
+def acquire_dir_lock(out_dir: Path, pcap: Path):
+    """Exclusive, non-blocking flock on <out_dir>/.cfm.lock; returns the open handle (keep it
+    alive for the whole run). Two cfm runs on one out-dir race: each start deletes the CSV the
+    other is appending to, and InsertCsvRow.insert then hits a null stream (NPE at line 71).
+    flock is released by the kernel when the process exits, so a crash leaves no stale lock."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / LOCK_NAME
+    fh = open(path, "a+", encoding="utf-8")
+    try:
+        fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        fh.seek(0)
+        holder = fh.read().strip() or "unknown"
+        fh.close()
+        raise ExtractionError(f"another extraction is writing to {out_dir} (lock {path} held by: "
+                              f"{holder}); refusing to start a second one")
+    fh.seek(0)
+    fh.truncate()
+    fh.write(f"pid {os.getpid()} pcap {pcap} since "
+             f"{dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')}\n")
+    fh.flush()
+    return fh
 
 
 def run_cicflowmeter(
@@ -274,6 +336,7 @@ def run_cicflowmeter(
     pkts = (
         tuple(int(g) for g in m_pkt.groups()) if m_pkt else (None, None, None)
     )
+    sweeper = parse_sweeper(combined)
 
     # Identify new/modified output files.
     after = {p: p.stat().st_mtime for p in out_dir.iterdir() if p.is_file()}
@@ -314,6 +377,8 @@ def run_cicflowmeter(
         "started_utc": started_utc,
         "ended_utc": ended_utc,
         "tz": env["TZ"],
+        "cfm_opts": env["CFM_OPTS"],
+        "sweeper": sweeper,
     }
 
 
@@ -361,6 +426,8 @@ def main() -> int:
         out_dir = Path(args.out_dir) if args.out_dir else FLOWS_DIR
         if not out_dir.is_absolute():
             out_dir = REPO_ROOT / out_dir
+        # Held until the CSV is renamed and its sidecar written (released by the OS on exit).
+        lock_fh = acquire_dir_lock(out_dir, pcap)
 
         result = run_cicflowmeter(pcap, out_dir, cfm_home, timeout=args.timeout)
 
@@ -384,6 +451,10 @@ def main() -> int:
             "upstream": EXTRACTOR.upstream,
             "commit": EXTRACTOR.commit,
             "patch": EXTRACTOR.patch,
+            "patch_sweeper": EXTRACTOR.patch_sweeper,
+            "java_heap_max": EXTRACTOR.java_heap_max,
+            "cfm_opts": result["cfm_opts"],
+            "idle_sweeper": result["sweeper"],
             "build": build_name,
             "flow_timeout_s": EXTRACTOR.flow_timeout_s,
             "activity_timeout_s": EXTRACTOR.activity_timeout_s,

@@ -1,0 +1,1390 @@
+{
+ "stem": "Recon-PortScan",
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+ "family": "port_scan",
+ "completion_key": {
+  "pcap_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats07a_sha256": "6aa2271861ba8dbd8c77427de50bbcacf3ec608e6757e1c1f55048a1b351af48",
+  "pad_s": 60.0,
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "attack_family": "port_scan",
+  "label_version": 3,
+  "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+  "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+ },
+ "run_utc": "2026-10-11T13:51:34+00:00",
+ "params": {
+  "pad_s": 60.0,
+  "chunk": 500000,
+  "min_victims": 2,
+  "tolerance_s": 1.0,
+  "07a_params": {
+   "rate_k": 10.0,
+   "min_new_services": 1,
+   "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+   "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+   "stats_version": 2
+  }
+ },
+ "inputs": {
+  "flows_csv": "/home/krithikk/lgids_cache/flows/attack/Recon-PortScan/Recon-PortScan.pcap_Flow__singlepkt.csv",
+  "flows": "extracted",
+  "check_03b": {
+   "overall": "WARN",
+   "json": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/labels/flow_check/Recon-PortScan.pcap_Flow__singlepkt_check.json",
+   "checks": {
+    "1 Structure": "PASS",
+    "2 Packet total": "WARN",
+    "3 Single-packet flows": "PASS",
+    "4 Time span": "PASS",
+    "5 Flow duration": "PASS",
+    "6 NaN / Infinity": "WARN",
+    "7 Protocol mix": "PASS",
+    "8 Duplicates": "PASS",
+    "9 IPs": "PASS"
+   }
+  },
+  "map": {
+   "csv": "/home/krithikk/lgids_cache/maps/Recon-PortScan_ip_mac_map.csv",
+   "rows": 138,
+   "packets": 831856,
+   "subnets": [
+    "192.168.137.0/24",
+    "192.168.1.0/24"
+   ],
+   "ip_conflicts_overlapping": 2,
+   "ip_conflicts_sequential": 0,
+   "action": "reused"
+  },
+  "stats07a": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/coverage/Recon-PortScan_stats.json",
+  "labelled_csv": "/home/krithikk/lgids_cache/flows/attack/Recon-PortScan/Recon-PortScan_labelled.csv.gz"
+ },
+ "conflicts": {
+  "conflicts": 2,
+  "ambiguous_on_conflict_ips": 1,
+  "prescan_seconds": 0.6,
+  "udp_flow_keys": 21663,
+  "packets_extracted": 1,
+  "tshark_seconds": 13.8,
+  "resolved_flows": 0,
+  "both_macs_in_flow": 0,
+  "ip_clash_artifact": 0,
+  "resolved_to": {}
+ },
+ "attacker_ip_set": {
+  "distinct_ips": 21,
+  "lan": 20,
+  "used_for_t1b": 20,
+  "external_or_other": 1,
+  "packets": 147498,
+  "overflow_packets": 0,
+  "tshark_seconds": 15.5,
+  "ips": [
+   {
+    "ip": "192.168.137.178",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:27:d5",
+    "packets": 143354,
+    "first_utc": "2022-09-26T16:31:40.375520+00:00",
+    "last_utc": "2022-09-27T17:14:48.151614+00:00",
+    "map_macs": "dc:a6:32:dc:27:d5 (Raspberry Pi 4 (8 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.98",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:28:48",
+    "packets": 3519,
+    "first_utc": "2022-09-26T16:31:21.582408+00:00",
+    "last_utc": "2022-09-27T17:15:34.253787+00:00",
+    "map_macs": "dc:a6:32:dc:28:48 (unlisted)",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.217",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:02",
+    "packets": 164,
+    "first_utc": "2022-09-26T17:15:35.722941+00:00",
+    "last_utc": "2022-09-27T15:00:51.058719+00:00",
+    "map_macs": "dc:a6:32:c9:e5:02 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.86",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:c6",
+    "packets": 9,
+    "first_utc": "2022-09-26T16:31:03.143732+00:00",
+    "last_utc": "2022-09-27T14:59:31.487245+00:00",
+    "map_macs": "dc:a6:32:c9:e4:c6 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e502",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:02",
+    "packets": 7,
+    "first_utc": "2022-09-26T16:37:26.713617+00:00",
+    "last_utc": "2022-09-27T14:41:08.180753+00:00",
+    "map_macs": "dc:a6:32:c9:e5:02 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e6:f4",
+    "packets": 5,
+    "first_utc": "2022-09-26T17:23:45.833805+00:00",
+    "last_utc": "2022-09-27T15:25:04.388534+00:00",
+    "map_macs": "dc:a6:32:c9:e6:f4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e490",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:90",
+    "packets": 4,
+    "first_utc": "2022-09-26T16:49:53.672048+00:00",
+    "last_utc": "2022-09-27T17:12:44.217479+00:00",
+    "map_macs": "dc:a6:32:c9:e4:90 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e4ab",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:ab",
+    "packets": 4,
+    "first_utc": "2022-09-26T17:27:43.487155+00:00",
+    "last_utc": "2022-09-27T15:27:43.619116+00:00",
+    "map_macs": "dc:a6:32:c9:e4:ab (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e5a4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:a4",
+    "packets": 4,
+    "first_utc": "2022-09-26T16:55:03.492560+00:00",
+    "last_utc": "2022-09-27T16:47:22.975178+00:00",
+    "map_macs": "dc:a6:32:c9:e5:a4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::e65f:1ff:fe55:90c4",
+    "scope": "LAN",
+    "attacker_macs": "e4:5f:01:55:90:c4",
+    "packets": 4,
+    "first_utc": "2022-09-26T16:55:09.711697+00:00",
+    "last_utc": "2022-09-27T15:25:33.280086+00:00",
+    "map_macs": "e4:5f:01:55:90:c4 (Raspberry Pi 4 (4 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.127",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:a4",
+    "packets": 3,
+    "first_utc": "2022-09-26T16:50:27.404365+00:00",
+    "last_utc": "2022-09-27T14:50:27.615440+00:00",
+    "map_macs": "dc:a6:32:c9:e5:a4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e5ef",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:ef",
+    "packets": 3,
+    "first_utc": "2022-09-26T16:37:59.549707+00:00",
+    "last_utc": "2022-09-27T14:49:43.137414+00:00",
+    "map_macs": "dc:a6:32:c9:e5:ef (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.27",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:ab",
+    "packets": 2,
+    "first_utc": "2022-09-27T13:51:51.462421+00:00",
+    "last_utc": "2022-09-27T14:51:51.497234+00:00",
+    "map_macs": "dc:a6:32:c9:e4:ab (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::7751:923:3c0f:1915",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:c6",
+    "packets": 2,
+    "first_utc": "2022-09-26T17:23:41.773556+00:00",
+    "last_utc": "2022-09-27T14:23:41.890544+00:00",
+    "map_macs": "dc:a6:32:c9:e4:c6 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e4d5",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:d5",
+    "packets": 2,
+    "first_utc": "2022-09-26T17:03:20.512946+00:00",
+    "last_utc": "2022-09-26T18:22:22.519784+00:00",
+    "map_macs": "dc:a6:32:c9:e4:d5 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "0.0.0.0",
+    "scope": "unspecified",
+    "attacker_macs": "dc:a6:32:c9:e5:02",
+    "packets": 2,
+    "first_utc": "2022-09-26T17:15:29.900559+00:00",
+    "last_utc": "2022-09-26T18:15:30.080324+00:00",
+    "map_macs": "-",
+    "resolves_to_attacker": "no",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": false
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e6f4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e6:f4",
+    "packets": 2,
+    "first_utc": "2022-09-26T18:39:44.997834+00:00",
+    "last_utc": "2022-09-27T14:38:06.045848+00:00",
+    "map_macs": "dc:a6:32:c9:e6:f4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fedc:27d5",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:27:d5",
+    "packets": 2,
+    "first_utc": "2022-09-26T18:22:21.809128+00:00",
+    "last_utc": "2022-09-26T18:25:04.651959+00:00",
+    "map_macs": "dc:a6:32:dc:27:d5 (Raspberry Pi 4 (8 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::c202:f47b:52fb:af75",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:28:48",
+    "packets": 2,
+    "first_utc": "2022-09-26T17:02:55.552107+00:00",
+    "last_utc": "2022-09-27T14:50:16.292848+00:00",
+    "map_macs": "dc:a6:32:dc:28:48 (unlisted)",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.64",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:d5",
+    "packets": 1,
+    "first_utc": "2022-09-27T13:54:46.045268+00:00",
+    "last_utc": "2022-09-27T13:54:46.045268+00:00",
+    "map_macs": "dc:a6:32:c9:e4:d5 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.151",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:ef",
+    "packets": 1,
+    "first_utc": "2022-09-27T13:53:13.195066+00:00",
+    "last_utc": "2022-09-27T13:53:13.195066+00:00",
+    "map_macs": "dc:a6:32:c9:e5:ef (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   }
+  ]
+ },
+ "t1b": {
+  "flows_via_t1b_only": 0,
+  "after": {},
+  "before_without_t1b": {}
+ },
+ "spoof": {
+  "collision_ips": [],
+  "07a_collide_with_device_ips": 0,
+  "07a_distinct_ip_src": 10,
+  "07a_flag": false
+ },
+ "bursts": {
+  "overall": 22,
+  "per_mac": {
+   "dc:a6:32:dc:27:d5": [
+    [
+     "2022-09-26T16:31:00.000000+00:00",
+     "2022-09-26T16:32:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T16:42:00.000000+00:00",
+     "2022-09-26T16:43:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T16:49:00.000000+00:00",
+     "2022-09-26T16:51:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T16:54:00.000000+00:00",
+     "2022-09-26T16:55:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T17:02:00.000000+00:00",
+     "2022-09-26T17:30:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T18:12:00.000000+00:00",
+     "2022-09-26T18:40:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T18:44:00.000000+00:00",
+     "2022-09-26T18:45:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T18:58:00.000000+00:00",
+     "2022-09-26T18:59:00.000000+00:00"
+    ],
+    [
+     "2022-09-26T19:04:00.000000+00:00",
+     "2022-09-26T19:08:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T13:44:00.000000+00:00",
+     "2022-09-27T13:55:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T13:59:00.000000+00:00",
+     "2022-09-27T14:09:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T14:14:00.000000+00:00",
+     "2022-09-27T14:24:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T14:29:00.000000+00:00",
+     "2022-09-27T14:46:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T14:49:00.000000+00:00",
+     "2022-09-27T14:51:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T14:58:00.000000+00:00",
+     "2022-09-27T14:59:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T15:02:00.000000+00:00",
+     "2022-09-27T15:03:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T15:08:00.000000+00:00",
+     "2022-09-27T15:10:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T15:24:00.000000+00:00",
+     "2022-09-27T15:28:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T16:47:00.000000+00:00",
+     "2022-09-27T16:48:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T17:00:00.000000+00:00",
+     "2022-09-27T17:01:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T17:04:00.000000+00:00",
+     "2022-09-27T17:05:00.000000+00:00"
+    ],
+    [
+     "2022-09-27T17:08:00.000000+00:00",
+     "2022-09-27T17:15:00.000000+00:00"
+    ]
+   ]
+  }
+ },
+ "flows": 207429,
+ "by_label": {
+  "attack": 143138,
+  "benign": 63341,
+  "excluded": 950
+ },
+ "by_exclude_reason": {
+  "attacker_offwindow": 840,
+  "attacker_normal_traffic": 24,
+  "victim_ambiguous": 0,
+  "attack_normal_service_ambiguous": 86,
+  "spoof_collision": 0
+ },
+ "by_family": {
+  "port_scan": 143138
+ },
+ "by_owner_group": {
+  "G1": {
+   "attack": 70026,
+   "benign": 54094,
+   "excluded": 89
+  },
+  "G2": {
+   "attack": 64584,
+   "benign": 2975,
+   "excluded": 17
+  },
+  "GEN": {
+   "attack": 4356,
+   "benign": 1373,
+   "excluded": 0
+  },
+  "ungrouped": {
+   "attack": 0,
+   "benign": 0,
+   "excluded": 0
+  },
+  "unowned": {
+   "attack": 4172,
+   "benign": 4899,
+   "excluded": 844
+  }
+ },
+ "by_04_exclude_reason": [
+  {
+   "exclude_reason": "(blank)",
+   "label": "attack",
+   "flows": 143138
+  },
+  {
+   "exclude_reason": "(blank)",
+   "label": "benign",
+   "flows": 63212
+  },
+  {
+   "exclude_reason": "(blank)",
+   "label": "excluded",
+   "flows": 950
+  },
+  {
+   "exclude_reason": "invalid_parse",
+   "label": "benign",
+   "flows": 128
+  },
+  {
+   "exclude_reason": "ip_conflict_unresolved",
+   "label": "benign",
+   "flows": 1
+  }
+ ],
+ "attack_per_victim": [
+  {
+   "mac": "08:7c:39:ce:6e:2a",
+   "device": "Amazon Alexa Echo Studio",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 7006,
+   "07a_reason": "both",
+   "07a_attack_packets": 7012
+  },
+  {
+   "mac": "34:75:63:73:f3:36",
+   "device": "Home Eye Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 5002,
+   "07a_reason": "both",
+   "07a_attack_packets": 5009
+  },
+  {
+   "mac": "44:bb:3b:00:39:07",
+   "device": "Nest Indoor Camera",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 4363,
+   "07a_reason": "both",
+   "07a_attack_packets": 4365
+  },
+  {
+   "mac": "b8:5f:98:d0:76:e6",
+   "device": "Amazon Smart Plug",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 4282,
+   "07a_reason": "both",
+   "07a_attack_packets": 4282
+  },
+  {
+   "mac": "70:ee:50:68:0e:32",
+   "device": "Netatmo Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 4015,
+   "07a_reason": "both",
+   "07a_attack_packets": 4039
+  },
+  {
+   "mac": "50:02:91:10:09:8f",
+   "device": "Unidentified ESP plug (2)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 3815,
+   "07a_reason": "both",
+   "07a_attack_packets": 3822
+  },
+  {
+   "mac": "b0:f1:ec:d3:e7:98",
+   "device": "Harman Kardon speaker (Ampak)",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3765,
+   "07a_reason": "both",
+   "07a_attack_packets": 3783
+  },
+  {
+   "mac": "68:57:2d:56:ac:47",
+   "device": "Atomi Coffee Maker",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 3465,
+   "07a_reason": "both",
+   "07a_attack_packets": 3469
+  },
+  {
+   "mac": "84:7a:b6:62:3a:6c",
+   "device": "Yi Indoor 2 Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3323,
+   "07a_reason": "both",
+   "07a_attack_packets": 3326
+  },
+  {
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3306,
+   "07a_reason": "both",
+   "07a_attack_packets": 3321
+  },
+  {
+   "mac": "40:5d:82:35:14:c8",
+   "device": "Arlo Q Indoor Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3280,
+   "07a_reason": "both",
+   "07a_attack_packets": 3282
+  },
+  {
+   "mac": "10:5a:17:97:a5:c6",
+   "device": "Rbcior Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3192,
+   "07a_reason": "both",
+   "07a_attack_packets": 3198
+  },
+  {
+   "mac": "44:01:bb:ec:10:4a",
+   "device": "HeimVision Smart WiFi Camera",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 3088,
+   "07a_reason": "both",
+   "07a_attack_packets": 3101
+  },
+  {
+   "mac": "8c:85:80:6c:b6:47",
+   "device": "Eufy HomeBase 2",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3003,
+   "07a_reason": "both",
+   "07a_attack_packets": 3013
+  },
+  {
+   "mac": "48:a6:b8:f9:1b:88",
+   "device": "Sonos One Speaker",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3001,
+   "07a_reason": "both",
+   "07a_attack_packets": 3009
+  },
+  {
+   "mac": "3c:37:86:6f:b9:51",
+   "device": "Arlo Base Station",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 3001,
+   "07a_reason": "both",
+   "07a_attack_packets": 3014
+  },
+  {
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2999,
+   "07a_reason": "new_service",
+   "07a_attack_packets": 3018
+  },
+  {
+   "mac": "1c:9d:c2:8c:9a:94",
+   "device": "Levoit Air Purifier",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2756,
+   "07a_reason": "both",
+   "07a_attack_packets": 2758
+  },
+  {
+   "mac": "2c:d2:6b:66:d2:87",
+   "device": "Yi Outdoor Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2468,
+   "07a_reason": "both",
+   "07a_attack_packets": 2471
+  },
+  {
+   "mac": "28:6d:97:9e:f4:d5",
+   "device": "Aeotec Smart Home Hub",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2458,
+   "07a_reason": "both",
+   "07a_attack_packets": 2465
+  },
+  {
+   "mac": "08:3a:f2:1f:bc:68",
+   "device": "Cocoon Smart HVAC Fan",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2382,
+   "07a_reason": "both",
+   "07a_attack_packets": 2383
+  },
+  {
+   "mac": "d4:a6:51:30:64:b7",
+   "device": "HeimVision SmartLife Radio/Lamp",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2279,
+   "07a_reason": "both",
+   "07a_attack_packets": 2281
+  },
+  {
+   "mac": "c4:dd:57:13:07:c6",
+   "device": "Unidentified ESP plug (4)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2235,
+   "07a_reason": "both",
+   "07a_attack_packets": 2237
+  },
+  {
+   "mac": "50:02:91:10:ac:d8",
+   "device": "GoSund Smart Plug WP2 (2)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2184,
+   "07a_reason": "both",
+   "07a_attack_packets": 2186
+  },
+  {
+   "mac": "b8:f0:09:03:9a:af",
+   "device": "GoSund Power Strip (2)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2178,
+   "07a_reason": "both",
+   "07a_attack_packets": 2180
+  },
+  {
+   "mac": "b8:f0:09:03:29:79",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2177,
+   "07a_reason": "both",
+   "07a_attack_packets": 2180
+  },
+  {
+   "mac": "18:69:d8:eb:d4:3e",
+   "device": "Teckin Light Strip",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2175,
+   "07a_reason": "both",
+   "07a_attack_packets": 2177
+  },
+  {
+   "mac": "24:a1:60:14:7f:f9",
+   "device": "Unidentified ESP plug (1)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2171,
+   "07a_reason": "both",
+   "07a_attack_packets": 2173
+  },
+  {
+   "mac": "d4:a6:51:21:6c:29",
+   "device": "Yutron Plug 2",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2170,
+   "07a_reason": "both",
+   "07a_attack_packets": 2172
+  },
+  {
+   "mac": "50:02:91:b1:68:0c",
+   "device": "unknown",
+   "group": "unknown",
+   "role": "unlisted",
+   "attack_flows": 2169,
+   "07a_reason": "both",
+   "07a_attack_packets": 2171
+  },
+  {
+   "mac": "84:e3:42:42:ed:0b",
+   "device": "Lumiman Bulb",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2138,
+   "07a_reason": "both",
+   "07a_attack_packets": 2140
+  },
+  {
+   "mac": "28:6d:97:7a:2b:2d",
+   "device": "SmartThings Hub",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2132,
+   "07a_reason": "both",
+   "07a_attack_packets": 2135
+  },
+  {
+   "mac": "50:02:91:1a:ce:e1",
+   "device": "GoSund Power Strip (1)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2129,
+   "07a_reason": "both",
+   "07a_attack_packets": 2131
+  },
+  {
+   "mac": "c4:dd:57:0c:39:94",
+   "device": "Unidentified ESP plug (3)",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2128,
+   "07a_reason": "both",
+   "07a_attack_packets": 2130
+  },
+  {
+   "mac": "d4:a6:51:78:97:4e",
+   "device": "Teckin Plug 2",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2118,
+   "07a_reason": "both",
+   "07a_attack_packets": 2120
+  },
+  {
+   "mac": "d4:ad:fc:29:c8:a2",
+   "device": "Govee Smart Humidifier",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2096,
+   "07a_reason": "both",
+   "07a_attack_packets": 2096
+  },
+  {
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2054,
+   "07a_reason": "both",
+   "07a_attack_packets": 2064
+  },
+  {
+   "mac": "d4:a6:51:20:91:d1",
+   "device": "Yutron Plug 1",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2030,
+   "07a_reason": "both",
+   "07a_attack_packets": 2032
+  },
+  {
+   "mac": "ac:17:02:05:34:27",
+   "device": "Fibaro Home Center Lite",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2008,
+   "07a_reason": "both",
+   "07a_attack_packets": 2018
+  },
+  {
+   "mac": "d0:73:d5:35:fb:c8",
+   "device": "LIFX Lightbulb",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2005,
+   "07a_reason": "both",
+   "07a_attack_packets": 2007
+  },
+  {
+   "mac": "c0:e7:bf:0a:79:d1",
+   "device": "unknown",
+   "group": "unknown",
+   "role": "unlisted",
+   "attack_flows": 2003,
+   "07a_reason": "both",
+   "07a_attack_packets": 2006
+  },
+  {
+   "mac": "30:23:03:f3:84:2b",
+   "device": "Wemo Smart Plug 1",
+   "group": "GEN",
+   "role": "iot",
+   "attack_flows": 2002,
+   "07a_reason": "both",
+   "07a_attack_packets": 2003
+  },
+  {
+   "mac": "70:ee:50:6b:a8:1a",
+   "device": "Netatmo Weather Station",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2002,
+   "07a_reason": "both",
+   "07a_attack_packets": 2009
+  },
+  {
+   "mac": "6c:5a:b0:44:1d:90",
+   "device": "TP-Link Tapo Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2001,
+   "07a_reason": "both",
+   "07a_attack_packets": 2010
+  },
+  {
+   "mac": "30:23:03:f3:57:cb",
+   "device": "Wemo Smart Plug 2",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2001,
+   "07a_reason": "both",
+   "07a_attack_packets": 2008
+  },
+  {
+   "mac": "84:7a:b6:64:62:58",
+   "device": "Yi Indoor Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2001,
+   "07a_reason": "both",
+   "07a_attack_packets": 2003
+  },
+  {
+   "mac": "1c:12:b0:9b:0c:ec",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2000,
+   "07a_reason": "both",
+   "07a_attack_packets": 2002
+  },
+  {
+   "mac": "2c:71:ff:05:f1:15",
+   "device": "Amazon Echo Show",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 2000,
+   "07a_reason": "new_service",
+   "07a_attack_packets": 2019
+  },
+  {
+   "mac": "b0:09:da:3e:82:6c",
+   "device": "Ring Base Station",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 2000,
+   "07a_reason": "both",
+   "07a_attack_packets": 2002
+  },
+  {
+   "mac": "ac:f1:08:4e:00:82",
+   "device": "LG Smart TV",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 1998,
+   "07a_reason": "new_service",
+   "07a_attack_packets": 2012
+  },
+  {
+   "mac": "1c:fe:2b:98:16:dd",
+   "device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 1957,
+   "07a_reason": "both",
+   "07a_attack_packets": 1961
+  },
+  {
+   "mac": "50:14:79:37:80:18",
+   "device": "iRobot Roomba",
+   "group": "GEN",
+   "role": "iot",
+   "attack_flows": 1350,
+   "07a_reason": "both",
+   "07a_attack_packets": 1352
+  },
+  {
+   "mac": "f4:cf:a2:34:48:6b",
+   "device": "LampUX RGB",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 1151,
+   "07a_reason": "both",
+   "07a_attack_packets": 1152
+  },
+  {
+   "mac": "00:17:88:60:d6:4f",
+   "device": "Philips Hue Bridge",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 1108,
+   "07a_reason": "new_service",
+   "07a_attack_packets": 1114
+  },
+  {
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 1013,
+   "07a_reason": "both",
+   "07a_attack_packets": 1032
+  },
+  {
+   "mac": "00:02:75:f6:e3:cb",
+   "device": "Smart Board",
+   "group": "GEN",
+   "role": "iot",
+   "attack_flows": 1004,
+   "07a_reason": "both",
+   "07a_attack_packets": 1005
+  },
+  {
+   "mac": "7c:78:b2:86:0d:81",
+   "device": "Wyze Camera",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 1001,
+   "07a_reason": "both",
+   "07a_attack_packets": 1002
+  }
+ ],
+ "attack_per_burst": [
+  {
+   "window": 0,
+   "start": "2022-09-26T16:31:00.000000+00:00",
+   "end": "2022-09-26T16:32:00.000000+00:00",
+   "07a_packets": 1986,
+   "attack_flows": 1957
+  },
+  {
+   "window": 1,
+   "start": "2022-09-26T16:42:00.000000+00:00",
+   "end": "2022-09-26T16:43:00.000000+00:00",
+   "07a_packets": 2030,
+   "attack_flows": 2000
+  },
+  {
+   "window": 2,
+   "start": "2022-09-26T16:49:00.000000+00:00",
+   "end": "2022-09-26T16:51:00.000000+00:00",
+   "07a_packets": 7003,
+   "attack_flows": 7006
+  },
+  {
+   "window": 3,
+   "start": "2022-09-26T16:54:00.000000+00:00",
+   "end": "2022-09-26T16:55:00.000000+00:00",
+   "07a_packets": 3049,
+   "attack_flows": 2999
+  },
+  {
+   "window": 4,
+   "start": "2022-09-26T17:02:00.000000+00:00",
+   "end": "2022-09-26T17:30:00.000000+00:00",
+   "07a_packets": 36090,
+   "attack_flows": 35341
+  },
+  {
+   "window": 5,
+   "start": "2022-09-26T18:12:00.000000+00:00",
+   "end": "2022-09-26T18:40:00.000000+00:00",
+   "07a_packets": 23675,
+   "attack_flows": 23005
+  },
+  {
+   "window": 6,
+   "start": "2022-09-26T18:44:00.000000+00:00",
+   "end": "2022-09-26T18:45:00.000000+00:00",
+   "07a_packets": 2229,
+   "attack_flows": 2414
+  },
+  {
+   "window": 7,
+   "start": "2022-09-26T18:58:00.000000+00:00",
+   "end": "2022-09-26T18:59:00.000000+00:00",
+   "07a_packets": 1150,
+   "attack_flows": 1108
+  },
+  {
+   "window": 8,
+   "start": "2022-09-26T19:04:00.000000+00:00",
+   "end": "2022-09-26T19:08:00.000000+00:00",
+   "07a_packets": 2477,
+   "attack_flows": 2354
+  },
+  {
+   "window": 9,
+   "start": "2022-09-27T13:44:00.000000+00:00",
+   "end": "2022-09-27T13:55:00.000000+00:00",
+   "07a_packets": 7664,
+   "attack_flows": 7331
+  },
+  {
+   "window": 10,
+   "start": "2022-09-27T13:59:00.000000+00:00",
+   "end": "2022-09-27T14:09:00.000000+00:00",
+   "07a_packets": 8453,
+   "attack_flows": 8226
+  },
+  {
+   "window": 11,
+   "start": "2022-09-27T14:14:00.000000+00:00",
+   "end": "2022-09-27T14:24:00.000000+00:00",
+   "07a_packets": 8643,
+   "attack_flows": 8477
+  },
+  {
+   "window": 12,
+   "start": "2022-09-27T14:29:00.000000+00:00",
+   "end": "2022-09-27T14:46:00.000000+00:00",
+   "07a_packets": 13124,
+   "attack_flows": 12555
+  },
+  {
+   "window": 13,
+   "start": "2022-09-27T14:49:00.000000+00:00",
+   "end": "2022-09-27T14:51:00.000000+00:00",
+   "07a_packets": 3863,
+   "attack_flows": 3765
+  },
+  {
+   "window": 14,
+   "start": "2022-09-27T14:58:00.000000+00:00",
+   "end": "2022-09-27T14:59:00.000000+00:00",
+   "07a_packets": 2053,
+   "attack_flows": 1998
+  },
+  {
+   "window": 15,
+   "start": "2022-09-27T15:02:00.000000+00:00",
+   "end": "2022-09-27T15:03:00.000000+00:00",
+   "07a_packets": 2135,
+   "attack_flows": 2096
+  },
+  {
+   "window": 16,
+   "start": "2022-09-27T15:08:00.000000+00:00",
+   "end": "2022-09-27T15:10:00.000000+00:00",
+   "07a_packets": 2425,
+   "attack_flows": 2382
+  },
+  {
+   "window": 17,
+   "start": "2022-09-27T15:24:00.000000+00:00",
+   "end": "2022-09-27T15:28:00.000000+00:00",
+   "07a_packets": 5291,
+   "attack_flows": 5193
+  },
+  {
+   "window": 18,
+   "start": "2022-09-27T16:47:00.000000+00:00",
+   "end": "2022-09-27T16:48:00.000000+00:00",
+   "07a_packets": 2304,
+   "attack_flows": 2279
+  },
+  {
+   "window": 19,
+   "start": "2022-09-27T17:00:00.000000+00:00",
+   "end": "2022-09-27T17:01:00.000000+00:00",
+   "07a_packets": 2101,
+   "attack_flows": 2054
+  },
+  {
+   "window": 20,
+   "start": "2022-09-27T17:04:00.000000+00:00",
+   "end": "2022-09-27T17:05:00.000000+00:00",
+   "07a_packets": 2067,
+   "attack_flows": 2008
+  },
+  {
+   "window": 21,
+   "start": "2022-09-27T17:08:00.000000+00:00",
+   "end": "2022-09-27T17:15:00.000000+00:00",
+   "07a_packets": 6710,
+   "attack_flows": 6590
+  }
+ ],
+ "pad_only": {
+  "attack": 272,
+  "all": 274
+ },
+ "t4_flow_mapping": {
+  "icmp_error_pseudo_flows": 0,
+  "attacker_sent_no_packets": 194
+ },
+ "attack_victim_roles": {
+  "iot": 138966,
+  "unlisted": 4172
+ },
+ "gateway_victim_attack_flows": 0,
+ "non_iot_victim_attack_flows": 4172,
+ "hard_checks": {
+  "attack flows outside 07a burst windows (+pad)": {
+   "value": 0,
+   "PASS": true
+  },
+  "attack flows whose victim is not a 07a victim": {
+   "value": 0,
+   "PASS": true
+  },
+  "flows without exactly one outcome": {
+   "value": 0,
+   "PASS": true
+  },
+  "rows written == flow CSV rows == meta row_count": {
+   "value": "207,429 / 207,429",
+   "PASS": true
+  },
+  "label counts sum to rows": {
+   "value": 207429,
+   "PASS": true
+  }
+ },
+ "hard_pass": true,
+ "soft": {
+  "groups_vs_07a": [
+   {
+    "group": "G1",
+    "victims_with_attack_flows": 25,
+    "07a_victims": 25,
+    "07a_verdict": "PASS",
+    "verdict": "PASS",
+    "match": "ok"
+   },
+   {
+    "group": "G2",
+    "victims_with_attack_flows": 27,
+    "07a_victims": 27,
+    "07a_verdict": "PASS",
+    "verdict": "PASS",
+    "match": "ok"
+   },
+   {
+    "group": "GEN",
+    "victims_with_attack_flows": 3,
+    "07a_victims": 3,
+    "07a_verdict": "PASS",
+    "verdict": "PASS",
+    "match": "ok"
+   }
+  ],
+  "attack_flows_per_07a_attacker_packet": 0.97044,
+  "07a_attacker_packets": 147498,
+  "benign_share_vs_benign_capture": [
+   {
+    "device": "Wemo Smart Plug 2",
+    "group": "G1",
+    "benign_flows_here": 7205,
+    "share_here_pct": 12.33,
+    "share_benign_capture_pct": 0.22,
+    "diff_pp": 12.1
+   },
+   {
+    "device": "Yi Indoor 2 Camera",
+    "group": "G1",
+    "benign_flows_here": 218,
+    "share_here_pct": 0.37,
+    "share_benign_capture_pct": 2.86,
+    "diff_pp": -2.49
+   },
+   {
+    "device": "Smart Board",
+    "group": "GEN",
+    "benign_flows_here": 1298,
+    "share_here_pct": 2.22,
+    "share_benign_capture_pct": 0.03,
+    "diff_pp": 2.19
+   },
+   {
+    "device": "Home Eye Camera",
+    "group": "G1",
+    "benign_flows_here": 4823,
+    "share_here_pct": 8.25,
+    "share_benign_capture_pct": 10.36,
+    "diff_pp": -2.11
+   },
+   {
+    "device": "Wyze Camera",
+    "group": "G1",
+    "benign_flows_here": 1549,
+    "share_here_pct": 2.65,
+    "share_benign_capture_pct": 4.58,
+    "diff_pp": -1.93
+   },
+   {
+    "device": "Unidentified Amazon device (1c:12:b0)",
+    "group": "G1",
+    "benign_flows_here": 1088,
+    "share_here_pct": 1.86,
+    "share_benign_capture_pct": 0.0,
+    "diff_pp": 1.86
+   },
+   {
+    "device": "LG Smart TV",
+    "group": "G1",
+    "benign_flows_here": 333,
+    "share_here_pct": 0.57,
+    "share_benign_capture_pct": 2.03,
+    "diff_pp": -1.46
+   },
+   {
+    "device": "Yi Indoor Camera",
+    "group": "G1",
+    "benign_flows_here": 39,
+    "share_here_pct": 0.07,
+    "share_benign_capture_pct": 1.34,
+    "diff_pp": -1.27
+   },
+   {
+    "device": "Arlo Q Indoor Camera",
+    "group": "G1",
+    "benign_flows_here": 354,
+    "share_here_pct": 0.61,
+    "share_benign_capture_pct": 1.79,
+    "diff_pp": -1.18
+   },
+   {
+    "device": "Fibaro Home Center Lite",
+    "group": "G1",
+    "benign_flows_here": 28842,
+    "share_here_pct": 49.35,
+    "share_benign_capture_pct": 48.35,
+    "diff_pp": 1.0
+   },
+   {
+    "device": "Harman Kardon speaker (Ampak)",
+    "group": "G1",
+    "benign_flows_here": 2147,
+    "share_here_pct": 3.67,
+    "share_benign_capture_pct": 4.58,
+    "diff_pp": -0.91
+   },
+   {
+    "device": "Amazon Echo Show",
+    "group": "G1",
+    "benign_flows_here": 947,
+    "share_here_pct": 1.62,
+    "share_benign_capture_pct": 2.5,
+    "diff_pp": -0.88
+   },
+   {
+    "device": "Rbcior Camera",
+    "group": "G1",
+    "benign_flows_here": 49,
+    "share_here_pct": 0.08,
+    "share_benign_capture_pct": 0.84,
+    "diff_pp": -0.76
+   },
+   {
+    "device": "Amazon Alexa Echo Dot 2",
+    "group": "G1",
+    "benign_flows_here": 431,
+    "share_here_pct": 0.74,
+    "share_benign_capture_pct": 0.18,
+    "diff_pp": 0.56
+   },
+   {
+    "device": "Eufy HomeBase 2",
+    "group": "G1",
+    "benign_flows_here": 573,
+    "share_here_pct": 0.98,
+    "share_benign_capture_pct": 1.48,
+    "diff_pp": -0.5
+   }
+  ],
+  "benign_in_burst_touching_victim_by_other_role": {
+   "external": 33281,
+   "gateway": 10782,
+   "unlisted": 7443,
+   "iot": 5255,
+   "broadcast": 2493,
+   "unknown": 417,
+   "excluded": 272
+  }
+ },
+ "runtime_s": 40.1,
+ "peak_rss": {
+  "self_mb": 734.9,
+  "tshark_mb": 1680.8
+ },
+ "png": "Recon-PortScan_timeline.png"
+}

@@ -1,0 +1,189 @@
+--- CICFlowMeter-singlepkt/src/main/java/cic/cs/unb/ca/jnetpcap/FlowGenerator.java	2026-09-06 09:55:55.614115288 +0000
++++ CICFlowMeter-sweep/src/main/java/cic/cs/unb/ca/jnetpcap/FlowGenerator.java	2026-10-11 12:17:45.565471361 +0000
+@@ -11,6 +11,8 @@
+ import java.io.IOException;
+ import java.util.ArrayList;
+ import java.util.HashMap;
++import java.util.Iterator;
++import java.util.Map;
+ import java.util.Set;
+ 
+ import static cic.cs.unb.ca.jnetpcap.Utils.LINE_SEP;
+@@ -49,6 +51,26 @@
+ 	private long    flowTimeOut;
+ 	private long    flowActivityTimeOut;
+ 	private int     finishedFlowCount;
++
++	// ---- idle sweeper (LG-IDS patch extractor/idle_sweeper.patch) -------------------------
++	// A flow is closed by its own next packet once (packet time - flow start) > flowTimeOut, so
++	// flows that never see another packet (one-off SYNs in a flood) stay in currentFlows until
++	// EOF: millions of them, OutOfMemoryError. Every SWEEP_INTERVAL_US of capture time the sweeper
++	// emits and removes every flow with (max packet time seen - flow start) > flowTimeOut +
++	// SWEEP_SLACK_US. Its next packet would have closed it under the same condition, so the
++	// emitted row is the same; only the row order changes. The slack covers pcap timestamps
++	// that step backwards: if no packet is older than (max time seen - slack), every later packet
++	// of a swept flow is past its timeout, as in the original code (lateBeyondSlack counts the
++	// violations and is printed at the end).
++	// When a timed-out flow is closed by a packet, the original code builds the successor with
++	// the OLD flow's orientation and key (and Flow ID = that key). A swept flow therefore leaves
++	// a tombstone (64-bit hash of its key) so that its next packet builds the identical successor.
++	private static final long SWEEP_INTERVAL_US = 10_000_000L;
++	private static final long SWEEP_SLACK_US = 60_000_000L;
++	private final LongHashSet sweptKeys = new LongHashSet();
++	private long maxTimestamp = Long.MIN_VALUE;
++	private long lastSweep = Long.MIN_VALUE;
++	private long sweeps = 0, sweptFlows = 0, lateBeyondSlack = 0, successorsFromTombstone = 0;
+ 	
+ 	public FlowGenerator(boolean bidirectional, long flowTimeout, long activityTimeout) {
+ 		super();
+@@ -78,6 +100,18 @@
+     	long        currentTimestamp = packet.getTimeStamp();
+ 		    String id;
+ 
++		if (currentTimestamp > maxTimestamp) {
++			maxTimestamp = currentTimestamp;
++		} else if (currentTimestamp < maxTimestamp - SWEEP_SLACK_US) {
++			lateBeyondSlack++;
++		}
++		if (lastSweep == Long.MIN_VALUE) {
++			lastSweep = maxTimestamp;
++		} else if (maxTimestamp - lastSweep >= SWEEP_INTERVAL_US) {
++			sweepIdle(maxTimestamp);
++			lastSweep = maxTimestamp;
++		}
++
+     	if(this.currentFlows.containsKey(packet.fwdFlowId())||this.currentFlows.containsKey(packet.bwdFlowId())){
+ 	
+ 	if(this.currentFlows.containsKey(packet.fwdFlowId())) 
+@@ -222,10 +256,120 @@
+     			}
+     		}
+     	}else{
++			if (sweptKeys.size() > 0) {
++				// successor of a swept flow: exactly what the timeout branch above builds (old
++				// orientation, old key; fwdFlowId()/bwdFlowId() also set the packet's Flow ID)
++				if (sweptKeys.remove(keyHash(packet.fwdFlowId()))) {
++					successorsFromTombstone++;
++					id = packet.fwdFlowId();
++					currentFlows.put(id, new BasicFlow(bidirectional, packet, packet.getSrc(), packet.getDst(),
++							packet.getSrcPort(), packet.getDstPort(), this.flowActivityTimeOut));
++					return;
++				}
++				if (sweptKeys.remove(keyHash(packet.bwdFlowId()))) {
++					successorsFromTombstone++;
++					id = packet.bwdFlowId();
++					currentFlows.put(id, new BasicFlow(bidirectional, packet, packet.getDst(), packet.getSrc(),
++							packet.getDstPort(), packet.getSrcPort(), this.flowActivityTimeOut));
++					return;
++				}
++			}
+ 			currentFlows.put(packet.fwdFlowId(), new BasicFlow(bidirectional,packet, this.flowActivityTimeOut));
+     	}
+     }
+ 
++    /** Emit and remove every flow past flowTimeOut + slack at capture time {@code now}. */
++    private void sweepIdle(long now) {
++		sweeps++;
++		Iterator<Map.Entry<String, BasicFlow>> it = currentFlows.entrySet().iterator();
++		while (it.hasNext()) {
++			Map.Entry<String, BasicFlow> e = it.next();
++			BasicFlow flow = e.getValue();
++			if ((now - flow.getFlowStartTime()) > flowTimeOut + SWEEP_SLACK_US) {
++				if (flow.packetCount() > 0) {
++					if (mListener != null) {
++						mListener.onFlowGenerated(flow);
++					} else {
++						finishedFlows.put(getFlowCount(), flow);
++					}
++				}
++				it.remove();
++				sweptKeys.add(keyHash(e.getKey()));
++				sweptFlows++;
++			}
++		}
++	}
++
++	/** 64-bit FNV-1a over the key's chars, then the SplitMix64 finaliser. */
++	private static long keyHash(String key) {
++		long h = 0xcbf29ce484222325L;
++		for (int i = 0; i < key.length(); i++) {
++			h ^= key.charAt(i);
++			h *= 0x100000001b3L;
++		}
++		h ^= (h >>> 30); h *= 0xbf58476d1ce4e5b9L;
++		h ^= (h >>> 27); h *= 0x94d049bb133111ebL;
++		h ^= (h >>> 31);
++		return h;
++	}
++
++	/** Open-addressing set of longs (linear probing, backward-shift delete); 8 bytes per slot. */
++	private static final class LongHashSet {
++		private static final long EMPTY = 0L;
++		private long[] slots = new long[1 << 16];
++		private int size = 0;
++
++		int size() { return size; }
++
++		private static long norm(long k) { return k == EMPTY ? 1L : k; }
++
++		private int idx(long k) { return (int) (k ^ (k >>> 32)) & (slots.length - 1); }
++
++		void add(long k) {
++			k = norm(k);
++			if ((size + 1) * 2 > slots.length) grow();
++			int i = idx(k);
++			while (slots[i] != EMPTY) {
++				if (slots[i] == k) return;
++				i = (i + 1) & (slots.length - 1);
++			}
++			slots[i] = k;
++			size++;
++		}
++
++		boolean remove(long k) {
++			k = norm(k);
++			int mask = slots.length - 1, i = idx(k);
++			while (slots[i] != EMPTY) {
++				if (slots[i] == k) {
++					// backward-shift deletion keeps every probe chain intact
++					int hole = i, j = i;
++					while (true) {
++						j = (j + 1) & mask;
++						if (slots[j] == EMPTY) break;
++						int home = idx(slots[j]);
++						if (((j - home) & mask) >= ((j - hole) & mask)) {
++							slots[hole] = slots[j];
++							hole = j;
++						}
++					}
++					slots[hole] = EMPTY;
++					size--;
++					return true;
++				}
++				i = (i + 1) & mask;
++			}
++			return false;
++		}
++
++		private void grow() {
++			long[] old = slots;
++			slots = new long[old.length * 2];
++			size = 0;
++			for (long k : old) if (k != EMPTY) add(k);
++		}
++	}
++
+     /*public void dumpFlowBasedFeatures(String path, String filename,String header){
+     	BasicFlow   flow;
+     	try {
+@@ -328,6 +472,10 @@
+ 
+                 }
+             }
++            System.err.println(String.format("idle sweeper: sweeps=%d swept_flows=%d tombstones_left=%d "
++                    + "successors_from_tombstone=%d late_packets_beyond_slack=%d (slack %d s; >0 means the "
++                    + "output may differ from a run without the sweeper)", sweeps, sweptFlows, sweptKeys.size(),
++                    successorsFromTombstone, lateBeyondSlack, SWEEP_SLACK_US / 1_000_000L));
+ 
+         } catch (IOException e) {
+             logger.debug(e.getMessage());

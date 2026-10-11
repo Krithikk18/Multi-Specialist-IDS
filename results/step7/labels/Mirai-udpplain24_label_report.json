@@ -1,0 +1,864 @@
+{
+ "stem": "Mirai-udpplain24",
+ "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain24.pcap",
+ "family": "udp_flood",
+ "completion_key": {
+  "pcap_sha256": "adff7dcd1a9f2c19ca01c6df051555bfefdc2acf59277bd9dbe0dab3bd9791f5",
+  "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "stats07a_sha256": "5311cfd7dd36b9ed5cd383d28e1528ddd6aabc0270819bc43ba928c2c36905a2",
+  "pad_s": 60.0,
+  "rate_k": 10.0,
+  "min_new_services": 1,
+  "attack_family": "udp_flood",
+  "label_version": 3,
+  "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+  "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+ },
+ "run_utc": "2026-10-11T15:14:03+00:00",
+ "params": {
+  "pad_s": 60.0,
+  "chunk": 500000,
+  "min_victims": 2,
+  "tolerance_s": 1.0,
+  "07a_params": {
+   "rate_k": 10.0,
+   "min_new_services": 1,
+   "control_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+   "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+   "stats_version": 2
+  }
+ },
+ "inputs": {
+  "flows_csv": "/home/krithikk/lgids_cache/flows/attack/Mirai-udpplain24/Mirai-udpplain24.pcap_Flow__singlepkt.csv",
+  "flows": "extracted",
+  "check_03b": {
+   "overall": "WARN",
+   "json": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/labels/flow_check/Mirai-udpplain24.pcap_Flow__singlepkt_check.json",
+   "checks": {
+    "1 Structure": "PASS",
+    "2 Packet total": "WARN",
+    "3 Single-packet flows": "PASS",
+    "4 Time span": "PASS",
+    "5 Flow duration": "PASS",
+    "6 NaN / Infinity": "WARN",
+    "7 Protocol mix": "PASS",
+    "8 Duplicates": "WARN",
+    "9 IPs": "PASS"
+   }
+  },
+  "map": {
+   "csv": "/home/krithikk/lgids_cache/maps/Mirai-udpplain24_ip_mac_map.csv",
+   "rows": 115,
+   "packets": 1506334,
+   "subnets": [
+    "192.168.137.0/24"
+   ],
+   "ip_conflicts_overlapping": 0,
+   "ip_conflicts_sequential": 0,
+   "action": "reused"
+  },
+  "stats07a": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step7/coverage/Mirai-udpplain24_stats.json",
+  "labelled_csv": "/home/krithikk/lgids_cache/flows/attack/Mirai-udpplain24/Mirai-udpplain24_labelled.csv.gz"
+ },
+ "conflicts": {
+  "conflicts": 0,
+  "ambiguous_on_conflict_ips": 0,
+  "prescan_seconds": 0.0,
+  "udp_flow_keys": 4129
+ },
+ "attacker_ip_set": {
+  "distinct_ips": 31,
+  "lan": 31,
+  "used_for_t1b": 31,
+  "external_or_other": 0,
+  "packets": 1456835,
+  "overflow_packets": 0,
+  "tshark_seconds": 24.9,
+  "ips": [
+   {
+    "ip": "192.168.137.238",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:90",
+    "packets": 388401,
+    "first_utc": "2023-02-07T16:24:21.570919+00:00",
+    "last_utc": "2023-02-14T17:38:00.238625+00:00",
+    "map_macs": "dc:a6:32:c9:e4:90 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.162",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:a4",
+    "packets": 220703,
+    "first_utc": "2023-02-07T16:23:57.789760+00:00",
+    "last_utc": "2023-02-14T17:37:22.161163+00:00",
+    "map_macs": "dc:a6:32:c9:e5:a4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.147",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:27:d5",
+    "packets": 209111,
+    "first_utc": "2023-02-07T16:23:57.808917+00:00",
+    "last_utc": "2023-02-14T17:34:28.083788+00:00",
+    "map_macs": "dc:a6:32:dc:27:d5 (Raspberry Pi 4 (8 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.128",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:d5",
+    "packets": 190097,
+    "first_utc": "2023-02-07T16:24:17.704489+00:00",
+    "last_utc": "2023-02-14T17:29:34.495253+00:00",
+    "map_macs": "dc:a6:32:c9:e4:d5 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.207",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:ab",
+    "packets": 166888,
+    "first_utc": "2023-02-07T16:23:57.816036+00:00",
+    "last_utc": "2023-02-14T17:28:19.760344+00:00",
+    "map_macs": "dc:a6:32:c9:e4:ab (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.247",
+    "scope": "LAN",
+    "attacker_macs": "e4:5f:01:55:90:c4",
+    "packets": 144142,
+    "first_utc": "2023-02-07T16:24:03.232833+00:00",
+    "last_utc": "2023-02-14T17:28:04.915181+00:00",
+    "map_macs": "e4:5f:01:55:90:c4 (Raspberry Pi 4 (4 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.106",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:ef",
+    "packets": 131985,
+    "first_utc": "2023-02-07T16:24:06.555871+00:00",
+    "last_utc": "2023-02-07T16:27:59.990097+00:00",
+    "map_macs": "dc:a6:32:c9:e5:ef (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.13",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e6:f4",
+    "packets": 336,
+    "first_utc": "2023-02-07T16:26:08.943597+00:00",
+    "last_utc": "2023-02-14T17:37:57.260156+00:00",
+    "map_macs": "dc:a6:32:c9:e6:f4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.11",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:02",
+    "packets": 13,
+    "first_utc": "2023-02-07T16:26:10.172658+00:00",
+    "last_utc": "2023-02-07T16:27:38.425958+00:00",
+    "map_macs": "dc:a6:32:c9:e5:02 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e490",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:90",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:06.792872+00:00",
+    "last_utc": "2023-02-07T16:26:07.207991+00:00",
+    "map_macs": "dc:a6:32:c9:e4:90 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e4ab",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:ab",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:07.403503+00:00",
+    "last_utc": "2023-02-07T16:26:07.746552+00:00",
+    "map_macs": "dc:a6:32:c9:e4:ab (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "192.168.137.236",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:c6",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:06.724106+00:00",
+    "last_utc": "2023-02-14T17:34:58.199749+00:00",
+    "map_macs": "dc:a6:32:c9:e4:c6 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::7751:923:3c0f:1915",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:c6",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:06.500313+00:00",
+    "last_utc": "2023-02-07T16:26:06.724158+00:00",
+    "map_macs": "dc:a6:32:c9:e4:c6 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e4d5",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:d5",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:08.092935+00:00",
+    "last_utc": "2023-02-07T16:26:08.092948+00:00",
+    "map_macs": "dc:a6:32:c9:e4:d5 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e502",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:02",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:09.859745+00:00",
+    "last_utc": "2023-02-07T16:26:10.172711+00:00",
+    "map_macs": "dc:a6:32:c9:e5:02 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e5a4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:a4",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:06.702495+00:00",
+    "last_utc": "2023-02-07T16:26:07.115989+00:00",
+    "map_macs": "dc:a6:32:c9:e5:a4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e5ef",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:ef",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:08.219260+00:00",
+    "last_utc": "2023-02-07T16:26:08.330772+00:00",
+    "map_macs": "dc:a6:32:c9:e5:ef (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fec9:e6f4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e6:f4",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:07.642682+00:00",
+    "last_utc": "2023-02-07T16:26:08.241831+00:00",
+    "map_macs": "dc:a6:32:c9:e6:f4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::dea6:32ff:fedc:27d5",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:27:d5",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:08.283772+00:00",
+    "last_utc": "2023-02-07T16:26:08.783903+00:00",
+    "map_macs": "dc:a6:32:dc:27:d5 (Raspberry Pi 4 (8 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fe80::e65f:1ff:fe55:90c4",
+    "scope": "LAN",
+    "attacker_macs": "e4:5f:01:55:90:c4",
+    "packets": 2,
+    "first_utc": "2023-02-07T16:26:06.755497+00:00",
+    "last_utc": "2023-02-07T16:26:07.462753+00:00",
+    "map_macs": "e4:5f:01:55:90:c4 (Raspberry Pi 4 (4 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e490",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:90",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:06.795766+00:00",
+    "last_utc": "2023-02-07T16:26:06.795766+00:00",
+    "map_macs": "dc:a6:32:c9:e4:90 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e4ab",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:ab",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:07.494767+00:00",
+    "last_utc": "2023-02-07T16:26:07.494767+00:00",
+    "map_macs": "dc:a6:32:c9:e4:ab (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:b792:bd43:8ad5:20d4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:c6",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:06.724103+00:00",
+    "last_utc": "2023-02-07T16:26:06.724103+00:00",
+    "map_macs": "dc:a6:32:c9:e4:c6 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e4d5",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e4:d5",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:08.125144+00:00",
+    "last_utc": "2023-02-07T16:26:08.125144+00:00",
+    "map_macs": "dc:a6:32:c9:e4:d5 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e502",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:02",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:10.172655+00:00",
+    "last_utc": "2023-02-07T16:26:10.172655+00:00",
+    "map_macs": "dc:a6:32:c9:e5:02 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e5a4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:a4",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:06.815254+00:00",
+    "last_utc": "2023-02-07T16:26:06.815254+00:00",
+    "map_macs": "dc:a6:32:c9:e5:a4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e5ef",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e5:ef",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:08.291231+00:00",
+    "last_utc": "2023-02-07T16:26:08.291231+00:00",
+    "map_macs": "dc:a6:32:c9:e5:ef (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fec9:e6f4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e6:f4",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:08.943595+00:00",
+    "last_utc": "2023-02-07T16:26:08.943595+00:00",
+    "map_macs": "dc:a6:32:c9:e6:f4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:dea6:32ff:fedc:27d5",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:dc:27:d5",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:08.309043+00:00",
+    "last_utc": "2023-02-07T16:26:08.309043+00:00",
+    "map_macs": "dc:a6:32:dc:27:d5 (Raspberry Pi 4 (8 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fdcc:d8dd:e1af:26ab:e65f:1ff:fe55:90c4",
+    "scope": "LAN",
+    "attacker_macs": "e4:5f:01:55:90:c4",
+    "packets": 1,
+    "first_utc": "2023-02-07T16:26:06.727499+00:00",
+    "last_utc": "2023-02-07T16:26:06.727499+00:00",
+    "map_macs": "e4:5f:01:55:90:c4 (Raspberry Pi 4 (4 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   },
+   {
+    "ip": "fd5a:7bd:2aea:e111:dea6:32ff:fec9:e6f4",
+    "scope": "LAN",
+    "attacker_macs": "dc:a6:32:c9:e6:f4",
+    "packets": 1,
+    "first_utc": "2023-02-14T17:37:35.863147+00:00",
+    "last_utc": "2023-02-14T17:37:35.863147+00:00",
+    "map_macs": "dc:a6:32:c9:e6:f4 (Raspberry Pi 4 (2 GB))",
+    "resolves_to_attacker": "whole span",
+    "non_attacker_host_overlaps": "-",
+    "used_for_T1b": true
+   }
+  ]
+ },
+ "t1b": {
+  "flows_via_t1b_only": 0,
+  "after": {},
+  "before_without_t1b": {}
+ },
+ "spoof": {
+  "collision_ips": [],
+  "07a_collide_with_device_ips": 0,
+  "07a_distinct_ip_src": 10,
+  "07a_flag": false
+ },
+ "bursts": {
+  "overall": 2,
+  "per_mac": {
+   "dc:a6:32:c9:e4:90": [
+    [
+     "2023-02-07T16:24:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:27:00.000000+00:00",
+     "2023-02-14T17:29:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:37:00.000000+00:00",
+     "2023-02-14T17:38:00.000000+00:00"
+    ]
+   ],
+   "dc:a6:32:c9:e4:ab": [
+    [
+     "2023-02-07T16:23:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:27:00.000000+00:00",
+     "2023-02-14T17:29:00.000000+00:00"
+    ]
+   ],
+   "dc:a6:32:c9:e4:d5": [
+    [
+     "2023-02-07T16:24:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:28:00.000000+00:00",
+     "2023-02-14T17:30:00.000000+00:00"
+    ]
+   ],
+   "dc:a6:32:c9:e5:a4": [
+    [
+     "2023-02-07T16:23:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:28:00.000000+00:00",
+     "2023-02-14T17:30:00.000000+00:00"
+    ]
+   ],
+   "dc:a6:32:c9:e5:ef": [
+    [
+     "2023-02-07T16:24:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ]
+   ],
+   "dc:a6:32:dc:27:d5": [
+    [
+     "2023-02-07T16:23:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:27:00.000000+00:00",
+     "2023-02-14T17:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:33:00.000000+00:00",
+     "2023-02-14T17:35:00.000000+00:00"
+    ]
+   ],
+   "e4:5f:01:55:90:c4": [
+    [
+     "2023-02-07T16:24:00.000000+00:00",
+     "2023-02-07T16:28:00.000000+00:00"
+    ],
+    [
+     "2023-02-14T17:27:00.000000+00:00",
+     "2023-02-14T17:29:00.000000+00:00"
+    ]
+   ]
+  }
+ },
+ "flows": 6251,
+ "by_label": {
+  "attack": 58,
+  "benign": 5928,
+  "excluded": 265
+ },
+ "by_exclude_reason": {
+  "attacker_offwindow": 231,
+  "attacker_normal_traffic": 16,
+  "victim_ambiguous": 0,
+  "attack_normal_service_ambiguous": 18,
+  "spoof_collision": 0
+ },
+ "by_family": {
+  "udp_flood": 58
+ },
+ "by_owner_group": {
+  "G1": {
+   "attack": 35,
+   "benign": 4572,
+   "excluded": 65
+  },
+  "G2": {
+   "attack": 23,
+   "benign": 649,
+   "excluded": 18
+  },
+  "GEN": {
+   "attack": 0,
+   "benign": 57,
+   "excluded": 0
+  },
+  "ungrouped": {
+   "attack": 0,
+   "benign": 0,
+   "excluded": 0
+  },
+  "unowned": {
+   "attack": 0,
+   "benign": 650,
+   "excluded": 182
+  }
+ },
+ "by_04_exclude_reason": [
+  {
+   "exclude_reason": "(blank)",
+   "label": "attack",
+   "flows": 58
+  },
+  {
+   "exclude_reason": "(blank)",
+   "label": "benign",
+   "flows": 5910
+  },
+  {
+   "exclude_reason": "(blank)",
+   "label": "excluded",
+   "flows": 265
+  },
+  {
+   "exclude_reason": "invalid_parse",
+   "label": "benign",
+   "flows": 18
+  }
+ ],
+ "attack_per_victim": [
+  {
+   "mac": "cc:f4:11:9c:d0:00",
+   "device": "Google Nest Mini Speaker",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 25,
+   "07a_reason": "both",
+   "07a_attack_packets": 219
+  },
+  {
+   "mac": "b0:c5:54:59:2e:99",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 15,
+   "07a_reason": "both",
+   "07a_attack_packets": 1162421
+  },
+  {
+   "mac": "00:17:88:60:d6:4f",
+   "device": "Philips Hue Bridge",
+   "group": "G1",
+   "role": "iot",
+   "attack_flows": 10,
+   "07a_reason": "new_service",
+   "07a_attack_packets": 101
+  },
+  {
+   "mac": "d4:a6:51:76:06:64",
+   "device": "Teckin Plug 1",
+   "group": "G2",
+   "role": "iot",
+   "attack_flows": 8,
+   "07a_reason": "both",
+   "07a_attack_packets": 289000
+  }
+ ],
+ "attack_per_burst": [
+  {
+   "window": 0,
+   "start": "2023-02-07T16:23:00.000000+00:00",
+   "end": "2023-02-07T16:28:00.000000+00:00",
+   "07a_packets": 1162956,
+   "attack_flows": 23
+  },
+  {
+   "window": 1,
+   "start": "2023-02-14T17:27:00.000000+00:00",
+   "end": "2023-02-14T17:38:00.000000+00:00",
+   "07a_packets": 293588,
+   "attack_flows": 35
+  }
+ ],
+ "pad_only": {
+  "attack": 14,
+  "all": 17
+ },
+ "t4_flow_mapping": {
+  "icmp_error_pseudo_flows": 41,
+  "attacker_sent_no_packets": 33
+ },
+ "attack_victim_roles": {
+  "iot": 58
+ },
+ "gateway_victim_attack_flows": 0,
+ "non_iot_victim_attack_flows": 0,
+ "hard_checks": {
+  "attack flows outside 07a burst windows (+pad)": {
+   "value": 0,
+   "PASS": true
+  },
+  "attack flows whose victim is not a 07a victim": {
+   "value": 0,
+   "PASS": true
+  },
+  "flows without exactly one outcome": {
+   "value": 0,
+   "PASS": true
+  },
+  "rows written == flow CSV rows == meta row_count": {
+   "value": "6,251 / 6,251",
+   "PASS": true
+  },
+  "label counts sum to rows": {
+   "value": 6251,
+   "PASS": true
+  }
+ },
+ "hard_pass": true,
+ "soft": {
+  "groups_vs_07a": [
+   {
+    "group": "G1",
+    "victims_with_attack_flows": 2,
+    "07a_victims": 3,
+    "07a_verdict": "PASS",
+    "verdict": "PASS",
+    "match": "ok"
+   },
+   {
+    "group": "G2",
+    "victims_with_attack_flows": 2,
+    "07a_victims": 2,
+    "07a_verdict": "PASS",
+    "verdict": "PASS",
+    "match": "ok"
+   },
+   {
+    "group": "GEN",
+    "victims_with_attack_flows": 0,
+    "07a_victims": 0,
+    "07a_verdict": "FAIL",
+    "verdict": "FAIL",
+    "match": "ok"
+   }
+  ],
+  "attack_flows_per_07a_attacker_packet": 4e-05,
+  "07a_attacker_packets": 1456835,
+  "benign_share_vs_benign_capture": [
+   {
+    "device": "Fibaro Home Center Lite",
+    "group": "G1",
+    "benign_flows_here": 0,
+    "share_here_pct": 0.0,
+    "share_benign_capture_pct": 48.35,
+    "diff_pp": -48.35
+   },
+   {
+    "device": "Google Nest Mini Speaker",
+    "group": "G1",
+    "benign_flows_here": 1266,
+    "share_here_pct": 23.99,
+    "share_benign_capture_pct": 1.85,
+    "diff_pp": 22.13
+   },
+   {
+    "device": "TP-Link Tapo Camera",
+    "group": "G1",
+    "benign_flows_here": 746,
+    "share_here_pct": 14.13,
+    "share_benign_capture_pct": 1.07,
+    "diff_pp": 13.07
+   },
+   {
+    "device": "Amazon Alexa Echo Dot 1",
+    "group": "G1",
+    "benign_flows_here": 355,
+    "share_here_pct": 6.73,
+    "share_benign_capture_pct": 0.75,
+    "diff_pp": 5.98
+   },
+   {
+    "device": "Amazon Echo Show",
+    "group": "G1",
+    "benign_flows_here": 380,
+    "share_here_pct": 7.2,
+    "share_benign_capture_pct": 2.5,
+    "diff_pp": 4.7
+   },
+   {
+    "device": "Harman Kardon speaker (Ampak)",
+    "group": "G1",
+    "benign_flows_here": 1,
+    "share_here_pct": 0.02,
+    "share_benign_capture_pct": 4.58,
+    "diff_pp": -4.56
+   },
+   {
+    "device": "Home Eye Camera",
+    "group": "G1",
+    "benign_flows_here": 336,
+    "share_here_pct": 6.37,
+    "share_benign_capture_pct": 10.36,
+    "diff_pp": -4.0
+   },
+   {
+    "device": "AMCREST WiFi Camera",
+    "group": "G1",
+    "benign_flows_here": 267,
+    "share_here_pct": 5.06,
+    "share_benign_capture_pct": 1.16,
+    "diff_pp": 3.9
+   },
+   {
+    "device": "Yi Indoor 2 Camera",
+    "group": "G1",
+    "benign_flows_here": 34,
+    "share_here_pct": 0.64,
+    "share_benign_capture_pct": 2.86,
+    "diff_pp": -2.22
+   },
+   {
+    "device": "Lumiman Bulb",
+    "group": "G2",
+    "benign_flows_here": 126,
+    "share_here_pct": 2.39,
+    "share_benign_capture_pct": 0.29,
+    "diff_pp": 2.09
+   },
+   {
+    "device": "LG Smart TV",
+    "group": "G1",
+    "benign_flows_here": 0,
+    "share_here_pct": 0.0,
+    "share_benign_capture_pct": 2.03,
+    "diff_pp": -2.03
+   },
+   {
+    "device": "Nest Indoor Camera",
+    "group": "G2",
+    "benign_flows_here": 87,
+    "share_here_pct": 1.65,
+    "share_benign_capture_pct": 0.14,
+    "diff_pp": 1.51
+   },
+   {
+    "device": "Aeotec Smart Home Hub",
+    "group": "G1",
+    "benign_flows_here": 122,
+    "share_here_pct": 2.31,
+    "share_benign_capture_pct": 1.01,
+    "diff_pp": 1.31
+   },
+   {
+    "device": "Amazon Alexa Echo Studio",
+    "group": "G1",
+    "benign_flows_here": 141,
+    "share_here_pct": 2.67,
+    "share_benign_capture_pct": 1.55,
+    "diff_pp": 1.12
+   },
+   {
+    "device": "SmartThings Hub",
+    "group": "G1",
+    "benign_flows_here": 111,
+    "share_here_pct": 2.1,
+    "share_benign_capture_pct": 1.03,
+    "diff_pp": 1.07
+   }
+  ],
+  "benign_in_burst_touching_victim_by_other_role": {
+   "iot": 1894,
+   "external": 956,
+   "gateway": 415,
+   "broadcast": 57,
+   "unknown": 53,
+   "excluded": 45,
+   "unlisted": 43
+  }
+ },
+ "runtime_s": 10.0,
+ "peak_rss": {
+  "self_mb": 2133.2,
+  "tshark_mb": 6473.9
+ },
+ "png": "Mirai-udpplain24_timeline.png"
+}

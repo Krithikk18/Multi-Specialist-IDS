@@ -54,6 +54,17 @@ TSHARK_FIELDS = ["frame.time_epoch", "eth.src", "eth.dst", "ip.src", "ip.dst",
                  "ipv6.src", "ipv6.dst", "arp.src.hw_mac", "arp.src.proto_ipv4"]
 EVIDENCE = ("src", "dst", "arp")
 
+# Lean tshark (same flags as 07a_attack_coverage.py): only the dissectors the fields need, no TCP
+# sequence analysis / reassembly, and per-conversation state reset every TSHARK_RESET packets.
+# Without -M, tshark's state grows with every conversation: 5.2 GB RSS on a 3M-packet SYN flood,
+# ~47 GB projected for a 26.7M-packet part. Field output is unchanged on the benign pcap
+# (02's map and 04's tagged flows are byte-identical with and without these flags).
+TSHARK_PROTOCOLS = "frame,eth,ethertype,ip,arp,tcp,udp,icmp,ipv6,vlan"
+TSHARK_RESET = 200_000
+TSHARK_LEAN = ["-M", str(TSHARK_RESET), "--disable-all-protocols", "--enable-protocol",
+               TSHARK_PROTOCOLS, "-o", "tcp.analyze_sequence_numbers:FALSE",
+               "-o", "tcp.desegment_tcp_streams:FALSE"]
+
 LAN_V4 = [ipa.ip_network(n) for n in ("10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16",
                                        "169.254.0.0/16")]
 LAN_V6 = [ipa.ip_network(n) for n in ("fe80::/10", "fc00::/7")]
@@ -191,7 +202,7 @@ def ensure_cached(src: Path, cache_dir: Path, rehash: bool) -> tuple[Path, dict]
 def extract(pcap: Path) -> tuple[dict, dict]:
     """Single streaming tshark pass. Returns
     agg[(mac, ip)] = [first, last, n_src, n_dst, n_arp] and packet-level stats."""
-    cmd = ["tshark", "-n", "-r", str(pcap), "-T", "fields",
+    cmd = ["tshark", "-n", *TSHARK_LEAN, "-r", str(pcap), "-T", "fields",
            "-E", "separator=/t", "-E", "occurrence=f"]
     for f in TSHARK_FIELDS:
         cmd += ["-e", f]
@@ -256,6 +267,7 @@ def extract(pcap: Path) -> tuple[dict, dict]:
         rc = proc.wait()
         errf.seek(0)
         err = errf.read().decode(errors="replace").strip()
+    err = "\n".join(l for l in err.splitlines() if l.strip() != "resetting session.")
     if rc != 0:
         fatal(f"tshark exited with {rc}: {err[-2000:]}")
     stats["tshark_seconds"] = round(time.monotonic() - t0, 1)

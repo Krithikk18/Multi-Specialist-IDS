@@ -15,3 +15,7 @@ results/**/selftest/
 results/**/flow_check/
 results/**/device_table_backup_*.csv
 results/**/*.log
+
+# run locks (07_label_attacks.py, extraction wrapper)
+.07_label.lock
+.cfm.lock

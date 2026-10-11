@@ -38,10 +38,13 @@ DEVICE_TABLE = CONFIG_DIR / "device_table.csv"
 IP_MAC_MAP = CONFIG_DIR / "ip_mac_map.csv"
 BEHAVIOUR_GROUPS = CONFIG_DIR / "behaviour_groups.json"
 CACHE_DIR = Path(os.environ.get("LGIDS_CACHE") or Path.home() / "lgids_cache").expanduser()
+# Attack flow CSVs (tens of millions of rows for the SYN parts) live on the fast cache fs, not /mnt/d.
+ATTACK_FLOWS_DIR = CACHE_DIR / "flows" / "attack"
 
-# Patched singlepkt build (Implemetation_Demo/config/paths.yaml
-# tools.cicflowmeter_builds.singlepkt, used by run_cicflowmeter.py --build singlepkt).
-_DEFAULT_JAR = ("/home/krithikk/tools/CICFlowMeter-singlepkt/build/install/CICFlowMeter/"
+# Patched singlepkt build + idle sweeper (~/tools/CICFlowMeter-sweep = the singlepkt tree with
+# extractor/idle_sweeper.patch applied; run_cicflowmeter.py --build singlepkt). The previous
+# singlepkt-only jar (sha256 a96e7255...) is kept unchanged in ~/tools/CICFlowMeter-singlepkt.
+_DEFAULT_JAR = ("/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/"
                 "lib/CICFlowMeter-4.0.jar")
 
 
@@ -51,16 +54,29 @@ class Extractor:
     upstream: str = "ahlashkari/CICFlowMeter"
     commit: str = "98a5eba"
     patch: str = "extractor/guard_gt0.patch"   # relative to REPO_ROOT
+    patch_sweeper: str = "extractor/idle_sweeper.patch"   # applied after patch
+    note: str = ("idle sweeper: every 10 s of capture time, flows past flow timeout + 60 s slack are "
+                 "emitted and removed (tombstones rebuild the identical successor flow); rows are "
+                 "identical to the singlepkt-only jar a96e7255... after sorting, only the row order "
+                 "changes (regression: BenignTraffic.pcap and the 3M-packet SYN cut)")
     build: str = "singlepkt"
+    # JVM heap cap the wrapper passes to cfm (appended last to CFM_OPTS, so it wins over any
+    # caller -Xmx). The default (1/4 of RAM, 2.45 GB here) runs out on the SYN-flood parts even
+    # with the sweeper: DDoS-SYN_Flood.pcap peaked at 4.22 GB RSS with -Xmx4g; 6g is the margin.
+    java_heap_max: str = "-Xmx6g"
     flow_timeout_s: int = 120
     activity_timeout_s: int = 5
     tz: str = "UTC"
     jar_path: Path = field(default_factory=lambda: Path(os.environ.get("LGIDS_JAR") or _DEFAULT_JAR))
-    jar_sha256: str = "a96e7255f8d2eaf674d90d32b523dbb854fb2ca9fae96c919ebc0d55437f069d"
+    jar_sha256: str = "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
 
     @property
     def patch_path(self) -> Path:
         return REPO_ROOT / self.patch
+
+    @property
+    def patch_sweeper_path(self) -> Path:
+        return REPO_ROOT / self.patch_sweeper
 
 
 @dataclass(frozen=True)
@@ -157,6 +173,8 @@ def verify_lock(strict: bool = True) -> dict:
     else:
         check("extractor jar exists", False, f"not found: {jar} (set LGIDS_JAR)")
     check("extractor patch exists", EXTRACTOR.patch_path.is_file(), str(EXTRACTOR.patch_path))
+    check("extractor sweeper patch exists", EXTRACTOR.patch_sweeper_path.is_file(),
+          str(EXTRACTOR.patch_sweeper_path))
     for p in (DEVICE_TABLE, IP_MAC_MAP, BEHAVIOUR_GROUPS):
         check(f"config file {p.name}", p.is_file(), str(p))
     if BEHAVIOUR_GROUPS.is_file():
@@ -192,7 +210,8 @@ def summary() -> str:
                          "DEVICE_TABLE": DEVICE_TABLE, "IP_MAC_MAP": IP_MAC_MAP,
                          "BEHAVIOUR_GROUPS": BEHAVIOUR_GROUPS,
                          "CACHE_DIR": f"{CACHE_DIR}"
-                                      + ("  (LGIDS_CACHE)" if os.environ.get("LGIDS_CACHE") else "")})
+                                      + ("  (LGIDS_CACHE)" if os.environ.get("LGIDS_CACHE") else ""),
+                         "ATTACK_FLOWS_DIR": ATTACK_FLOWS_DIR})
     L += [""] + block("EXTRACTOR", {**asdict(EXTRACTOR),
                                     "jar_path": f"{EXTRACTOR.jar_path}"
                                                 + ("  (LGIDS_JAR)" if os.environ.get("LGIDS_JAR") else "")})

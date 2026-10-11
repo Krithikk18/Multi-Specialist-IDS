@@ -29,9 +29,9 @@ Endpoint lookup (Src IP and Dst IP separately, first match wins):
 Conflict resolution (default on, --no-resolve-conflicts skips it): IPs flagged
 ip_multi_mac_overlapping in the map are extracted from the pcap in one tshark pass (filter:
 conflict IP and time within the overlap window +/- 2 s, extended to the end of the latest
-ambiguous flow). Packets are matched to ambiguous TCP/UDP flows in time
-(flow start - 1 s .. start + Flow Duration + 1 s). Per flow, the set of matched conflict-side
-MACs decides: exactly one -> that endpoint is resolved; several -> "both_macs_in_flow";
+ambiguous flow; 02's lean tshark flags, so memory stays bounded on floods). Packets are
+matched to ambiguous TCP/UDP flows in time (flow start - 1 s .. start + Flow Duration + 1 s).
+Per flow, the set of matched conflict-side MACs decides: exactly one -> that endpoint is resolved; several -> "both_macs_in_flow";
 none -> "no_packet_match" (includes protocol-0 flows, which have no ports).
 
   --conflict-rule sender_mac (default)
@@ -246,7 +246,7 @@ def verify_cache(pcap_src: Path, cache_dir: Path) -> tuple[Path, dict]:
 def extract_conflict_packets(pcap: Path, conflicts: list[dict]) -> tuple[pd.DataFrame, dict]:
     clauses = [f"(ip.addr == {c['ip']} && frame.time_epoch >= {c['tshark_lo']:.6f} "
                f"&& frame.time_epoch <= {c['tshark_hi']:.6f})" for c in conflicts]
-    cmd = ["tshark", "-n", "-r", str(pcap), "-Y", " || ".join(clauses), "-T", "fields",
+    cmd = ["tshark", "-n", *m02.TSHARK_LEAN, "-r", str(pcap), "-Y", " || ".join(clauses), "-T", "fields",
            "-E", "separator=/t", "-E", "occurrence=f"]
     for fld in PKT_FIELDS:
         cmd += ["-e", fld]
@@ -254,6 +254,7 @@ def extract_conflict_packets(pcap: Path, conflicts: list[dict]) -> tuple[pd.Data
     t0 = time.monotonic()
     r = subprocess.run(cmd, capture_output=True, text=True)
     secs = round(time.monotonic() - t0, 1)
+    r.stderr = "\n".join(l for l in r.stderr.splitlines() if l.strip() != "resetting session.")
     if r.returncode != 0:
         fatal(f"tshark exited with {r.returncode}: {r.stderr[-2000:]}")
     if r.stdout.strip():

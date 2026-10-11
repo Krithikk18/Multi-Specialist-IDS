@@ -1,0 +1,50 @@
+{
+ "version": 1,
+ "base": "CACHE_DIR/ciciot2023/attack",
+ "sha256_source": "results/step7/coverage/sha256.txt",
+ "note": "Locked final attack set for 07_label_attacks.py. DictionaryBruteForce is excluded: it targets the testbed Pis, not smart-home devices.",
+ "pcaps": [
+  {
+   "path": "Recon-PortScan/Recon-PortScan.pcap",
+   "family": "port_scan",
+   "sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1"
+  },
+  {
+   "path": "DDoS-SYN_Flood/DDoS-SYN_Flood.pcap",
+   "family": "syn_flood",
+   "sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8"
+  },
+  {
+   "path": "DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap",
+   "family": "syn_flood",
+   "sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad"
+  },
+  {
+   "path": "DDoS-SYN_Flood/DDoS-SYN_Flood10.pcap",
+   "family": "syn_flood",
+   "sha256": "ea6223afa0458d117e90bb2972145cfa002d2172f7a5a706ca32d5fa4c59f1c9"
+  },
+  {
+   "path": "DDoS-SYN_Flood/DDoS-SYN_Flood15.pcap",
+   "family": "syn_flood",
+   "sha256": "cac4947ac5b84447b7da9e49ff31dfdc394b4f8f60f9af83987d1fb02be355aa"
+  },
+  {
+   "path": "Mirai-udpplain/Mirai-udpplain.pcap",
+   "family": "udp_flood",
+   "sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7"
+  },
+  {
+   "path": "Mirai-udpplain/Mirai-udpplain24.pcap",
+   "family": "udp_flood",
+   "sha256": "adff7dcd1a9f2c19ca01c6df051555bfefdc2acf59277bd9dbe0dab3bd9791f5"
+  }
+ ],
+ "excluded": [
+  {
+   "path": "DictionaryBruteForce/DictionaryBruteForce.pcap",
+   "sha256": "09ad3cfabd139b950da3078fec0f0fd196fe36cd82237d898035437f4c69161b",
+   "reason": "targets testbed Pis; not labelled"
+  }
+ ]
+}

@@ -19,3 +19,7 @@ results/**/*.log
 # run locks (07_label_attacks.py, extraction wrapper)
 .07_label.lock
 .cfm.lock
+
+# Step 8: nohup logs and run lock (datasets live in ~/lgids_cache/datasets, outside the repo)
+logs/
+.08_build.lock

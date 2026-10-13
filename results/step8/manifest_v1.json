@@ -1,0 +1,2163 @@
+{
+ "dataset_version": "v1",
+ "run_utc": "2026-10-13T19:05:20+00:00",
+ "argv": [
+  "08_build_datasets.py"
+ ],
+ "limit_rows": null,
+ "dry_run": false,
+ "plan": {
+  "version": "v1.0",
+  "note": "Tunables for 08_build_datasets.py. Session keys are the real flow-dir stems (ATTACK_FLOWS_DIR/<stem>/<stem>_labelled.csv.gz) plus benign_night (data/interim/flows/benign/benign_flows_tagged.csv). Families are config/attack_set.json's attack_family values.",
+  "seed": 42,
+  "gap_seconds": 120,
+  "gap_on_train_val_cut": true,
+  "time_basis": "active",
+  "time_basis_note": "active: fractions of a session's ACTIVE time (idle gaps between capture segments do not count); range: fractions of the wall-clock span first..last flow start",
+  "active_idle_gap_seconds": 300,
+  "time_fracs": {
+   "train": 0.7,
+   "val": 0.15,
+   "test": 0.15
+  },
+  "val_frac_of_train_sessions": 0.15,
+  "sessions": {
+   "benign_night": "time_split",
+   "DDoS-SYN_Flood": "train",
+   "DDoS-SYN_Flood5": "train",
+   "DDoS-SYN_Flood10": "test",
+   "DDoS-SYN_Flood15": "test",
+   "Recon-PortScan": "time_split",
+   "Mirai-udpplain": "train",
+   "Mirai-udpplain24": "test"
+  },
+  "session_aliases": {
+   "DDoS-SYN_Flood": "SYN first part",
+   "DDoS-SYN_Flood5": "SYN 5",
+   "DDoS-SYN_Flood10": "SYN 10",
+   "DDoS-SYN_Flood15": "SYN 15",
+   "Recon-PortScan": "Recon-PortScan",
+   "Mirai-udpplain": "Mirai first part",
+   "Mirai-udpplain24": "Mirai 24"
+  },
+  "caps": {
+   "train_benign_per_device": 20000,
+   "attack_per_family_per_group": {
+    "train": 200000,
+    "val": 50000,
+    "test": 200000
+   },
+   "never_cap_families": [
+    "udp_flood",
+    "port_scan"
+   ],
+   "never_cap_families_aliases": {
+    "udp_flood": "Mirai",
+    "port_scan": "Recon"
+   }
+  },
+  "min_test_attack_warn": 20
+ },
+ "config": {
+  "split_plan": {
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/split_plan.json",
+   "version": "v1.0",
+   "sha256": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647"
+  },
+  "behaviour_groups": {
+   "version": "1.0",
+   "sha256": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532"
+  },
+  "device_table": {
+   "sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532"
+  },
+  "attack_set": {
+   "version": 1,
+   "sha256": "b975bd3cc6d5b0fdfa554a835f91f76ebc81b8d71a646e3d093c9028fa578534"
+  },
+  "verify_lock": [
+   {
+    "check": "extractor jar sha256",
+    "pass": true,
+    "detail": "/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+   },
+   {
+    "check": "extractor patch exists",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch"
+   },
+   {
+    "check": "extractor sweeper patch exists",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch"
+   },
+   {
+    "check": "config file device_table.csv",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv"
+   },
+   {
+    "check": "config file ip_mac_map.csv",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv"
+   },
+   {
+    "check": "config file behaviour_groups.json",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json"
+   },
+   {
+    "check": "groups version",
+    "pass": true,
+    "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+   },
+   {
+    "check": "groups labels",
+    "pass": true,
+    "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+   },
+   {
+    "check": "groups lock verified",
+    "pass": true,
+    "detail": "behaviour_groups.json verification.pass"
+   },
+   {
+    "check": "extractor TZ",
+    "pass": true,
+    "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+   }
+  ],
+  "code_sha256": "4e5bb34be2011c163453512876ec48194ab851c3f6c4cae70f1cc45ae750e349"
+ },
+ "inputs": [
+  {
+   "session": "benign_night",
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/benign_flows_tagged.csv",
+   "sha256": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+   "label_report": null,
+   "rows": 223108
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood/DDoS-SYN_Flood_labelled.csv.gz",
+   "sha256": "7fa59d2e1a8a5d3ab4df1d7812a7e323ac41f41f605807c3fa57a236c586d6be",
+   "label_report": {
+    "path": "results/step7/labels/DDoS-SYN_Flood_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "b33ab051b9a651fcd6b1fdb0c4387ae11bafc7b5543fcd3711b9d46847f71acd",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "syn_flood",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 6800503,
+    "by_label": {
+     "attack": 6756387,
+     "benign": 28563,
+     "excluded": 15553
+    }
+   },
+   "rows": 6800503
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood5/DDoS-SYN_Flood5_labelled.csv.gz",
+   "sha256": "6861e9a9152a5de1e9ced3bfd27c86c24a09bb9bd20f5152b040952d929f906c",
+   "label_report": {
+    "path": "results/step7/labels/DDoS-SYN_Flood5_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "41c2ab946ef918b4df43dc076596e777e2932f479b57530b2f13895396aaa41f",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "syn_flood",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 5297297,
+    "by_label": {
+     "attack": 5283182,
+     "benign": 14060,
+     "excluded": 55
+    }
+   },
+   "rows": 5297297
+  },
+  {
+   "session": "DDoS-SYN_Flood10",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood10/DDoS-SYN_Flood10_labelled.csv.gz",
+   "sha256": "2586a753d5e10b7cfb23c668a78957b55a5189a5c7a245d3a1db0ebe293d6cde",
+   "label_report": {
+    "path": "results/step7/labels/DDoS-SYN_Flood10_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "ea6223afa0458d117e90bb2972145cfa002d2172f7a5a706ca32d5fa4c59f1c9",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "063b5d3cbf93d9b6405ff4e3d8cb9fd2c387d2b2ab8260f971dca5d09d2c0ba6",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "syn_flood",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 6099055,
+    "by_label": {
+     "attack": 6067638,
+     "benign": 17953,
+     "excluded": 13464
+    }
+   },
+   "rows": 6099055
+  },
+  {
+   "session": "DDoS-SYN_Flood15",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood15/DDoS-SYN_Flood15_labelled.csv.gz",
+   "sha256": "72d028090c31d21e12bc6ae6cbc532af2843dd37f9975029f68467ff0d180f04",
+   "label_report": {
+    "path": "results/step7/labels/DDoS-SYN_Flood15_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "cac4947ac5b84447b7da9e49ff31dfdc394b4f8f60f9af83987d1fb02be355aa",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "013e7038811ff4fb093d33d4d156fd8c76a5c469666dc632a81b9994fb90ad2c",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "syn_flood",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 3104718,
+    "by_label": {
+     "attack": 3095108,
+     "benign": 8812,
+     "excluded": 798
+    }
+   },
+   "rows": 3104718
+  },
+  {
+   "session": "Recon-PortScan",
+   "path": "/home/krithikk/lgids_cache/flows/attack/Recon-PortScan/Recon-PortScan_labelled.csv.gz",
+   "sha256": "b1a085a10adf2c3dfeb74f8179441aab4a061d729252c690760cb9a7ea3e8741",
+   "label_report": {
+    "path": "results/step7/labels/Recon-PortScan_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "6aa2271861ba8dbd8c77427de50bbcacf3ec608e6757e1c1f55048a1b351af48",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "port_scan",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 207429,
+    "by_label": {
+     "attack": 143138,
+     "benign": 63341,
+     "excluded": 950
+    }
+   },
+   "rows": 207429
+  },
+  {
+   "session": "Mirai-udpplain",
+   "path": "/home/krithikk/lgids_cache/flows/attack/Mirai-udpplain/Mirai-udpplain_labelled.csv.gz",
+   "sha256": "036b76645b3603b0fb89fc6217f50b822602acb9697b2b11bfd8f5fb81a009b4",
+   "label_report": {
+    "path": "results/step7/labels/Mirai-udpplain_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "dd8acd01c9454053c74b10b87b85f091f40c0f828562b28540018accc553a946",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "udp_flood",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 8806,
+    "by_label": {
+     "attack": 112,
+     "benign": 8636,
+     "excluded": 58
+    }
+   },
+   "rows": 8806
+  },
+  {
+   "session": "Mirai-udpplain24",
+   "path": "/home/krithikk/lgids_cache/flows/attack/Mirai-udpplain24/Mirai-udpplain24_labelled.csv.gz",
+   "sha256": "b5fa27a8f1efd5e823bc0a5cd41398f9f7af7744f837326259f2d817ff4b71bc",
+   "label_report": {
+    "path": "results/step7/labels/Mirai-udpplain24_label_report.json",
+    "completion_key": {
+     "pcap_sha256": "adff7dcd1a9f2c19ca01c6df051555bfefdc2acf59277bd9dbe0dab3bd9791f5",
+     "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+     "stats07a_sha256": "5311cfd7dd36b9ed5cd383d28e1528ddd6aabc0270819bc43ba928c2c36905a2",
+     "pad_s": 60.0,
+     "rate_k": 10.0,
+     "min_new_services": 1,
+     "attack_family": "udp_flood",
+     "label_version": 3,
+     "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+     "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+    },
+    "flows": 6251,
+    "by_label": {
+     "attack": 58,
+     "benign": 5928,
+     "excluded": 265
+    }
+   },
+   "rows": 6251
+  }
+ ],
+ "sessions": [
+  {
+   "session": "benign_night",
+   "alias": "benign_night",
+   "mode": "time_split",
+   "start_utc": "2022-10-07T17:15:00+00:00",
+   "end_utc": "2022-10-08T02:30:28+00:00",
+   "span_h": 9.26,
+   "active_h": 9.26,
+   "segments": 1,
+   "rows": 223108,
+   "not_owned": 13162,
+   "exclude_reason": 5102,
+   "label_excluded": 0,
+   "ungrouped": 0,
+   "train": 162803,
+   "val": 24686,
+   "test": 16104,
+   "gap_dropped": 1251,
+   "benign_h_train": 6.48,
+   "benign_h_val": 1.36,
+   "benign_h_test": 1.36,
+   "cuts_utc": "gap@train|val@10-07 23:43:50, val@10-07 23:45:50, gap@val|test@10-08 01:07:09, test@10-08 01:09:09"
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "alias": "SYN first part",
+   "mode": "train",
+   "start_utc": "2022-08-26T18:18:00+00:00",
+   "end_utc": "2022-08-29T12:31:44+00:00",
+   "span_h": 66.23,
+   "active_h": 0.68,
+   "segments": 4,
+   "rows": 6800503,
+   "not_owned": 2040,
+   "exclude_reason": 0,
+   "label_excluded": 15529,
+   "ungrouped": 0,
+   "train": 5887481,
+   "val": 791696,
+   "test": 0,
+   "gap_dropped": 103757,
+   "benign_h_train": 0.58,
+   "benign_h_val": 0.08,
+   "benign_h_test": 0.0,
+   "cuts_utc": "gap@train|val@08-26 19:07:38, val@08-26 19:09:38"
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "alias": "SYN 5",
+   "mode": "train",
+   "start_utc": "2022-08-29T17:20:34+00:00",
+   "end_utc": "2022-08-29T17:57:10+00:00",
+   "span_h": 0.61,
+   "active_h": 0.48,
+   "segments": 2,
+   "rows": 5297297,
+   "not_owned": 1223,
+   "exclude_reason": 0,
+   "label_excluded": 3,
+   "ungrouped": 0,
+   "train": 4205647,
+   "val": 713445,
+   "test": 0,
+   "gap_dropped": 376979,
+   "benign_h_train": 0.41,
+   "benign_h_val": 0.04,
+   "benign_h_test": 0.0,
+   "cuts_utc": "gap@train|val@08-29 17:44:54, val@08-29 17:46:54"
+  },
+  {
+   "session": "DDoS-SYN_Flood10",
+   "alias": "SYN 10",
+   "mode": "test",
+   "start_utc": "2022-08-30T13:10:09+00:00",
+   "end_utc": "2022-08-30T13:45:21+00:00",
+   "span_h": 0.59,
+   "active_h": 0.59,
+   "segments": 1,
+   "rows": 6099055,
+   "not_owned": 1765,
+   "exclude_reason": 0,
+   "label_excluded": 13401,
+   "ungrouped": 0,
+   "train": 0,
+   "val": 0,
+   "test": 6083889,
+   "gap_dropped": 0,
+   "benign_h_train": 0.0,
+   "benign_h_val": 0.0,
+   "benign_h_test": 0.59,
+   "cuts_utc": ""
+  },
+  {
+   "session": "DDoS-SYN_Flood15",
+   "alias": "SYN 15",
+   "mode": "test",
+   "start_utc": "2022-11-29T19:18:18+00:00",
+   "end_utc": "2022-12-01T14:43:00+00:00",
+   "span_h": 43.41,
+   "active_h": 0.36,
+   "segments": 2,
+   "rows": 3104718,
+   "not_owned": 1417,
+   "exclude_reason": 86,
+   "label_excluded": 660,
+   "ungrouped": 0,
+   "train": 0,
+   "val": 0,
+   "test": 3102555,
+   "gap_dropped": 0,
+   "benign_h_train": 0.0,
+   "benign_h_val": 0.0,
+   "benign_h_test": 0.36,
+   "cuts_utc": ""
+  },
+  {
+   "session": "Recon-PortScan",
+   "alias": "Recon-PortScan",
+   "mode": "time_split",
+   "start_utc": "2022-09-26T16:31:00+00:00",
+   "end_utc": "2022-09-27T17:16:00+00:00",
+   "span_h": 24.75,
+   "active_h": 3.3,
+   "segments": 10,
+   "rows": 207429,
+   "not_owned": 9915,
+   "exclude_reason": 0,
+   "label_excluded": 106,
+   "ungrouped": 0,
+   "train": 135693,
+   "val": 28528,
+   "test": 30135,
+   "gap_dropped": 3052,
+   "benign_h_train": 2.31,
+   "benign_h_val": 0.46,
+   "benign_h_test": 0.46,
+   "cuts_utc": "gap@train|val@09-27 14:28:38, val@09-27 14:30:38, gap@val|test@09-27 15:04:20, test@09-27 15:06:20"
+  },
+  {
+   "session": "Mirai-udpplain",
+   "alias": "Mirai first part",
+   "mode": "train",
+   "start_utc": "2023-01-19T15:51:00+00:00",
+   "end_utc": "2023-01-19T16:23:25+00:00",
+   "span_h": 0.54,
+   "active_h": 0.44,
+   "segments": 2,
+   "rows": 8806,
+   "not_owned": 1460,
+   "exclude_reason": 0,
+   "label_excluded": 29,
+   "ungrouped": 0,
+   "train": 6720,
+   "val": 597,
+   "test": 0,
+   "gap_dropped": 0,
+   "benign_h_train": 0.37,
+   "benign_h_val": 0.03,
+   "benign_h_test": 0.0,
+   "cuts_utc": "gap@train|val@01-19 16:19:27, val@01-19 16:21:27"
+  },
+  {
+   "session": "Mirai-udpplain24",
+   "alias": "Mirai 24",
+   "mode": "test",
+   "start_utc": "2023-02-07T16:23:57+00:00",
+   "end_utc": "2023-02-14T17:38:00+00:00",
+   "span_h": 169.23,
+   "active_h": 0.25,
+   "segments": 2,
+   "rows": 6251,
+   "not_owned": 832,
+   "exclude_reason": 0,
+   "label_excluded": 83,
+   "ungrouped": 0,
+   "train": 0,
+   "val": 0,
+   "test": 5336,
+   "gap_dropped": 0,
+   "benign_h_train": 0.0,
+   "benign_h_val": 0.0,
+   "benign_h_test": 0.25,
+   "cuts_utc": ""
+  }
+ ],
+ "session_cuts": {
+  "benign_night": {
+   "splits": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1665186230.3,
+    1665186350.3,
+    1665191229.65,
+    1665191349.65
+   ],
+   "boundaries_utc": [
+    "2022-10-07T23:43:50+00:00",
+    "2022-10-07T23:45:50+00:00",
+    "2022-10-08T01:07:09+00:00",
+    "2022-10-08T01:09:09+00:00"
+   ],
+   "active_segments_utc": [
+    [
+     "2022-10-07T17:15:00+00:00",
+     "2022-10-08T02:30:29+00:00"
+    ]
+   ]
+  },
+  "DDoS-SYN_Flood": {
+   "splits": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "boundaries_epoch": [
+    1661540858.65,
+    1661540978.65
+   ],
+   "boundaries_utc": [
+    "2022-08-26T19:07:38+00:00",
+    "2022-08-26T19:09:38+00:00"
+   ],
+   "active_segments_utc": [
+    [
+     "2022-08-26T18:18:00+00:00",
+     "2022-08-26T18:30:02+00:00"
+    ],
+    [
+     "2022-08-26T18:39:00+00:00",
+     "2022-08-26T18:51:01+00:00"
+    ],
+    [
+     "2022-08-26T18:57:00+00:00",
+     "2022-08-26T19:09:01+00:00"
+    ],
+    [
+     "2022-08-29T12:27:00+00:00",
+     "2022-08-29T12:31:45+00:00"
+    ]
+   ]
+  },
+  "DDoS-SYN_Flood5": {
+   "splits": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "boundaries_epoch": [
+    1661795094.3,
+    1661795214.3
+   ],
+   "boundaries_utc": [
+    "2022-08-29T17:44:54+00:00",
+    "2022-08-29T17:46:54+00:00"
+   ],
+   "active_segments_utc": [
+    [
+     "2022-08-29T17:20:34+00:00",
+     "2022-08-29T17:48:01+00:00"
+    ],
+    [
+     "2022-08-29T17:56:00+00:00",
+     "2022-08-29T17:57:11+00:00"
+    ]
+   ]
+  },
+  "DDoS-SYN_Flood10": {
+   "splits": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "active_segments_utc": [
+    [
+     "2022-08-30T13:10:09+00:00",
+     "2022-08-30T13:45:22+00:00"
+    ]
+   ]
+  },
+  "DDoS-SYN_Flood15": {
+   "splits": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "active_segments_utc": [
+    [
+     "2022-11-29T19:18:18+00:00",
+     "2022-11-29T19:29:01+00:00"
+    ],
+    [
+     "2022-12-01T14:32:00+00:00",
+     "2022-12-01T14:43:01+00:00"
+    ]
+   ]
+  },
+  "Recon-PortScan": {
+   "splits": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1664288918.6,
+    1664289038.6,
+    1664291060.8,
+    1664291180.8
+   ],
+   "boundaries_utc": [
+    "2022-09-27T14:28:38+00:00",
+    "2022-09-27T14:30:38+00:00",
+    "2022-09-27T15:04:20+00:00",
+    "2022-09-27T15:06:20+00:00"
+   ],
+   "active_segments_utc": [
+    [
+     "2022-09-26T16:31:00+00:00",
+     "2022-09-26T16:44:00+00:00"
+    ],
+    [
+     "2022-09-26T16:49:00+00:00",
+     "2022-09-26T16:56:01+00:00"
+    ],
+    [
+     "2022-09-26T17:02:00+00:00",
+     "2022-09-26T17:31:01+00:00"
+    ],
+    [
+     "2022-09-26T18:12:00+00:00",
+     "2022-09-26T18:46:00+00:00"
+    ],
+    [
+     "2022-09-26T18:58:00+00:00",
+     "2022-09-26T19:09:01+00:00"
+    ],
+    [
+     "2022-09-27T13:44:00+00:00",
+     "2022-09-27T14:52:01+00:00"
+    ],
+    [
+     "2022-09-27T14:58:00+00:00",
+     "2022-09-27T15:11:01+00:00"
+    ],
+    [
+     "2022-09-27T15:24:00+00:00",
+     "2022-09-27T15:29:01+00:00"
+    ],
+    [
+     "2022-09-27T16:47:00+00:00",
+     "2022-09-27T16:49:01+00:00"
+    ],
+    [
+     "2022-09-27T17:00:00+00:00",
+     "2022-09-27T17:16:01+00:00"
+    ]
+   ]
+  },
+  "Mirai-udpplain": {
+   "splits": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "boundaries_epoch": [
+    1674145167.95,
+    1674145287.95
+   ],
+   "boundaries_utc": [
+    "2023-01-19T16:19:27+00:00",
+    "2023-01-19T16:21:27+00:00"
+   ],
+   "active_segments_utc": [
+    [
+     "2023-01-19T15:51:00+00:00",
+     "2023-01-19T16:02:01+00:00"
+    ],
+    [
+     "2023-01-19T16:08:00+00:00",
+     "2023-01-19T16:23:26+00:00"
+    ]
+   ]
+  },
+  "Mirai-udpplain24": {
+   "splits": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "active_segments_utc": [
+    [
+     "2023-02-07T16:23:57+00:00",
+     "2023-02-07T16:28:01+00:00"
+    ],
+    [
+     "2023-02-14T17:27:00+00:00",
+     "2023-02-14T17:38:01+00:00"
+    ]
+   ]
+  }
+ },
+ "benign_active_hours": {
+  "definition": "active segments (a pause > active_idle_gap_seconds between flow starts ends one) holding >= 1 usable benign flow start, clipped to the split's wall-clock window, gap windows excluded; FP/hour denominator",
+  "per_session": {
+   "benign_night": {
+    "train": 6.480638888875643,
+    "val": 1.3553750000397364,
+    "test": 1.355374999973509
+   },
+   "DDoS-SYN_Flood": {
+    "train": 0.5782361111376021,
+    "val": 0.07916666666666666,
+    "test": 0.0
+   },
+   "DDoS-SYN_Flood5": {
+    "train": 0.4056388888756434,
+    "val": 0.03825000001324547,
+    "test": 0.0
+   },
+   "DDoS-SYN_Flood10": {
+    "train": 0.0,
+    "val": 0.0,
+    "test": 0.5869444444444445
+   },
+   "DDoS-SYN_Flood15": {
+    "train": 0.0,
+    "val": 0.0,
+    "test": 0.3622222222222222
+   },
+   "Recon-PortScan": {
+    "train": 2.3115555555290648,
+    "val": 0.4620000000132455,
+    "test": 0.4620000000132455
+   },
+   "Mirai-udpplain": {
+    "train": 0.3747083333465788,
+    "val": 0.03279166665342119,
+    "test": 0.0
+   },
+   "Mirai-udpplain24": {
+    "train": 0.0,
+    "val": 0.0,
+    "test": 0.2513888888888889
+   }
+  },
+  "per_split": {
+   "train": 10.1508,
+   "val": 1.9676,
+   "test": 3.0179
+  }
+ },
+ "benign_hours_table": [
+  {
+   "session": "benign_night",
+   "train": 6.481,
+   "val": 1.355,
+   "test": 1.355
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "train": 0.578,
+   "val": 0.079,
+   "test": 0.0
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "train": 0.406,
+   "val": 0.038,
+   "test": 0.0
+  },
+  {
+   "session": "DDoS-SYN_Flood10",
+   "train": 0.0,
+   "val": 0.0,
+   "test": 0.587
+  },
+  {
+   "session": "DDoS-SYN_Flood15",
+   "train": 0.0,
+   "val": 0.0,
+   "test": 0.362
+  },
+  {
+   "session": "Recon-PortScan",
+   "train": 2.312,
+   "val": 0.462,
+   "test": 0.462
+  },
+  {
+   "session": "Mirai-udpplain",
+   "train": 0.375,
+   "val": 0.033,
+   "test": 0.0
+  },
+  {
+   "session": "Mirai-udpplain24",
+   "train": 0.0,
+   "val": 0.0,
+   "test": 0.251
+  },
+  {
+   "session": "TOTAL",
+   "train": 10.151,
+   "val": 1.968,
+   "test": 3.018
+  }
+ ],
+ "gap_drops": [
+  {
+   "session": "DDoS-SYN_Flood",
+   "split": "gap@train|val",
+   "label": "attack",
+   "family": "syn_flood",
+   "n": 102920
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "split": "gap@train|val",
+   "label": "benign",
+   "family": "",
+   "n": 837
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "split": "gap@train|val",
+   "label": "attack",
+   "family": "syn_flood",
+   "n": 375770
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "split": "gap@train|val",
+   "label": "benign",
+   "family": "",
+   "n": 1209
+  },
+  {
+   "session": "Recon-PortScan",
+   "split": "gap@train|val",
+   "label": "attack",
+   "family": "port_scan",
+   "n": 2235
+  },
+  {
+   "session": "Recon-PortScan",
+   "split": "gap@train|val",
+   "label": "benign",
+   "family": "",
+   "n": 817
+  },
+  {
+   "session": "benign_night",
+   "split": "gap@train|val",
+   "label": "benign",
+   "family": "",
+   "n": 846
+  },
+  {
+   "session": "benign_night",
+   "split": "gap@val|test",
+   "label": "benign",
+   "family": "",
+   "n": 405
+  }
+ ],
+ "cap_keys": {
+  "attack|test|G1|syn_flood": {
+   "count": 4654900,
+   "cap": 200000,
+   "p": 0.04296547723903843
+  },
+  "attack|test|G2|syn_flood": {
+   "count": 4507838,
+   "cap": 200000,
+   "p": 0.04436716669942443
+  },
+  "attack|test|GEN|syn_flood": {
+   "count": 3,
+   "cap": 200000,
+   "p": 1.0
+  },
+  "attack|train|G1|syn_flood": {
+   "count": 5864210,
+   "cap": 200000,
+   "p": 0.03410519063948938
+  },
+  "attack|train|G2|syn_flood": {
+   "count": 4195098,
+   "cap": 200000,
+   "p": 0.04767469079387418
+  },
+  "attack|val|G1|syn_flood": {
+   "count": 789257,
+   "cap": 50000,
+   "p": 0.06335072099455565
+  },
+  "attack|val|G2|syn_flood": {
+   "count": 712314,
+   "cap": 50000,
+   "p": 0.07019376286300705
+  },
+  "benign|train|G1|AMCREST WiFi Camera": {
+   "count": 5104,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Aeotec Smart Home Hub": {
+   "count": 2223,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Alexa Echo Dot 1": {
+   "count": 2838,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Alexa Echo Dot 2": {
+   "count": 1254,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Alexa Echo Studio": {
+   "count": 3457,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Echo Show": {
+   "count": 5212,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Arlo Base Station": {
+   "count": 1399,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Arlo Q Indoor Camera": {
+   "count": 2449,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Eufy HomeBase 2": {
+   "count": 3344,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Fibaro Home Center Lite": {
+   "count": 123480,
+   "cap": 20000,
+   "p": 0.16196954972465177
+  },
+  "benign|train|G1|Google Nest Mini Speaker": {
+   "count": 6171,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Harman Kardon speaker (Ampak)": {
+   "count": 8360,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Home Eye Camera": {
+   "count": 19702,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|LG Smart TV": {
+   "count": 2409,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Netatmo Camera": {
+   "count": 1516,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Philips Hue Bridge": {
+   "count": 2444,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Rbcior Camera": {
+   "count": 1668,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|SmartThings Hub": {
+   "count": 2240,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Sonos One Speaker": {
+   "count": 1745,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|TP-Link Tapo Camera": {
+   "count": 3836,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Unidentified Amazon device (1c:12:b0)": {
+   "count": 1829,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Wemo Smart Plug 2": {
+   "count": 4890,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Wyze Camera": {
+   "count": 11780,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Yi Indoor 2 Camera": {
+   "count": 935,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Yi Indoor Camera": {
+   "count": 2031,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Yi Outdoor Camera": {
+   "count": 1145,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Amazon Smart Plug": {
+   "count": 692,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Atomi Coffee Maker": {
+   "count": 628,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Cocoon Smart HVAC Fan": {
+   "count": 627,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|D-Link DCS8000LHA1 Mini Camera": {
+   "count": 399,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Power Strip (1)": {
+   "count": 613,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Power Strip (2)": {
+   "count": 590,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Smart Plug WP2 (1)": {
+   "count": 611,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Smart Plug WP2 (2)": {
+   "count": 622,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Govee Smart Humidifier": {
+   "count": 435,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|HeimVision Smart WiFi Camera": {
+   "count": 973,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|HeimVision SmartLife Radio/Lamp": {
+   "count": 657,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|LIFX Lightbulb": {
+   "count": 266,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|LampUX RGB": {
+   "count": 603,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Levoit Air Purifier": {
+   "count": 410,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Lumiman Bulb": {
+   "count": 917,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Nest Indoor Camera": {
+   "count": 462,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Netatmo Weather Station": {
+   "count": 435,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Ring Base Station": {
+   "count": 398,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Teckin Light Strip": {
+   "count": 981,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Teckin Plug 1": {
+   "count": 624,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Teckin Plug 2": {
+   "count": 627,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (1)": {
+   "count": 610,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (2)": {
+   "count": 611,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (3)": {
+   "count": 610,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (4)": {
+   "count": 616,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Yutron Plug 1": {
+   "count": 632,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Yutron Plug 2": {
+   "count": 630,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|GEN|Smart Board": {
+   "count": 868,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|GEN|Wemo Smart Plug 1": {
+   "count": 210,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|GEN|iRobot Roomba": {
+   "count": 77,
+   "cap": 20000,
+   "p": 1.0
+  }
+ },
+ "column_names": {
+  "timestamp": "Timestamp",
+  "owner_device": "owner_device (key owner_mac)",
+  "owner_group": "none in the flow files: device_table.csv behaviour_group via owner_mac",
+  "device_category": "owner_category (= device_table paper_category)"
+ },
+ "totals": [
+  {
+   "split": "train",
+   "benign": 137462,
+   "attack": 498731,
+   "total": 636193
+  },
+  {
+   "split": "val",
+   "benign": 39185,
+   "attack": 118373,
+   "total": 157558
+  },
+  {
+   "split": "test",
+   "benign": 54714,
+   "attack": 419096,
+   "total": 473810
+  }
+ ],
+ "by_split_group_label_family": [
+  {
+   "split": "train",
+   "group": "G1",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 50472,
+   "written": 50472
+  },
+  {
+   "split": "train",
+   "group": "G1",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 5864210,
+   "written": 200605
+  },
+  {
+   "split": "train",
+   "group": "G1",
+   "label": "attack",
+   "family": "udp_flood",
+   "before_caps": 95,
+   "written": 95
+  },
+  {
+   "split": "train",
+   "group": "G1",
+   "label": "benign",
+   "family": "",
+   "before_caps": 223461,
+   "written": 120028
+  },
+  {
+   "split": "train",
+   "group": "G2",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 43218,
+   "written": 43218
+  },
+  {
+   "split": "train",
+   "group": "G2",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 4195098,
+   "written": 199985
+  },
+  {
+   "split": "train",
+   "group": "G2",
+   "label": "benign",
+   "family": "",
+   "before_caps": 16279,
+   "written": 16279
+  },
+  {
+   "split": "train",
+   "group": "GEN",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 4356,
+   "written": 4356
+  },
+  {
+   "split": "train",
+   "group": "GEN",
+   "label": "benign",
+   "family": "",
+   "before_caps": 1155,
+   "written": 1155
+  },
+  {
+   "split": "val",
+   "group": "G1",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 7763,
+   "written": 7763
+  },
+  {
+   "split": "val",
+   "group": "G1",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 789257,
+   "written": 50103
+  },
+  {
+   "split": "val",
+   "group": "G1",
+   "label": "attack",
+   "family": "udp_flood",
+   "before_caps": 17,
+   "written": 17
+  },
+  {
+   "split": "val",
+   "group": "G1",
+   "label": "benign",
+   "family": "",
+   "before_caps": 35833,
+   "written": 35833
+  },
+  {
+   "split": "val",
+   "group": "G2",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 10416,
+   "written": 10416
+  },
+  {
+   "split": "val",
+   "group": "G2",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 712314,
+   "written": 50074
+  },
+  {
+   "split": "val",
+   "group": "G2",
+   "label": "benign",
+   "family": "",
+   "before_caps": 3061,
+   "written": 3061
+  },
+  {
+   "split": "val",
+   "group": "GEN",
+   "label": "benign",
+   "family": "",
+   "before_caps": 291,
+   "written": 291
+  },
+  {
+   "split": "test",
+   "group": "G1",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 11791,
+   "written": 11791
+  },
+  {
+   "split": "test",
+   "group": "G1",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 4654900,
+   "written": 199774
+  },
+  {
+   "split": "test",
+   "group": "G1",
+   "label": "attack",
+   "family": "udp_flood",
+   "before_caps": 35,
+   "written": 35
+  },
+  {
+   "split": "test",
+   "group": "G1",
+   "label": "benign",
+   "family": "",
+   "before_caps": 47720,
+   "written": 47720
+  },
+  {
+   "split": "test",
+   "group": "G2",
+   "label": "attack",
+   "family": "port_scan",
+   "before_caps": 8715,
+   "written": 8715
+  },
+  {
+   "split": "test",
+   "group": "G2",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 4507838,
+   "written": 198755
+  },
+  {
+   "split": "test",
+   "group": "G2",
+   "label": "attack",
+   "family": "udp_flood",
+   "before_caps": 23,
+   "written": 23
+  },
+  {
+   "split": "test",
+   "group": "G2",
+   "label": "benign",
+   "family": "",
+   "before_caps": 6451,
+   "written": 6451
+  },
+  {
+   "split": "test",
+   "group": "GEN",
+   "label": "attack",
+   "family": "syn_flood",
+   "before_caps": 3,
+   "written": 3
+  },
+  {
+   "split": "test",
+   "group": "GEN",
+   "label": "benign",
+   "family": "",
+   "before_caps": 543,
+   "written": 543
+  }
+ ],
+ "train_devices": [
+  {
+   "group": "G1",
+   "device": "Fibaro Home Center Lite",
+   "benign_before": 123480,
+   "benign_after": 20047,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Home Eye Camera",
+   "benign_before": 19702,
+   "benign_after": 19702,
+   "attack_before": 5002,
+   "attack_after": 5002
+  },
+  {
+   "group": "G1",
+   "device": "Wyze Camera",
+   "benign_before": 11780,
+   "benign_after": 11780,
+   "attack_before": 1001,
+   "attack_after": 1001
+  },
+  {
+   "group": "G1",
+   "device": "Harman Kardon speaker (Ampak)",
+   "benign_before": 8360,
+   "benign_after": 8360,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Google Nest Mini Speaker",
+   "benign_before": 6171,
+   "benign_after": 6171,
+   "attack_before": 1735740,
+   "attack_after": 62585
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Echo Show",
+   "benign_before": 5212,
+   "benign_after": 5212,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "AMCREST WiFi Camera",
+   "benign_before": 5104,
+   "benign_after": 5104,
+   "attack_before": 3306,
+   "attack_after": 3306
+  },
+  {
+   "group": "G1",
+   "device": "Wemo Smart Plug 2",
+   "benign_before": 4890,
+   "benign_after": 4890,
+   "attack_before": 2001,
+   "attack_after": 2001
+  },
+  {
+   "group": "G1",
+   "device": "TP-Link Tapo Camera",
+   "benign_before": 3836,
+   "benign_after": 3836,
+   "attack_before": 2001,
+   "attack_after": 2001
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Alexa Echo Studio",
+   "benign_before": 3457,
+   "benign_after": 3457,
+   "attack_before": 7027,
+   "attack_after": 7027
+  },
+  {
+   "group": "G1",
+   "device": "Eufy HomeBase 2",
+   "benign_before": 3344,
+   "benign_after": 3344,
+   "attack_before": 3003,
+   "attack_after": 3003
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Alexa Echo Dot 1",
+   "benign_before": 2838,
+   "benign_after": 2838,
+   "attack_before": 2071833,
+   "attack_after": 72547
+  },
+  {
+   "group": "G1",
+   "device": "Arlo Q Indoor Camera",
+   "benign_before": 2449,
+   "benign_after": 2449,
+   "attack_before": 3280,
+   "attack_after": 3280
+  },
+  {
+   "group": "G1",
+   "device": "Philips Hue Bridge",
+   "benign_before": 2444,
+   "benign_after": 2444,
+   "attack_before": 1124,
+   "attack_after": 1124
+  },
+  {
+   "group": "G1",
+   "device": "LG Smart TV",
+   "benign_before": 2409,
+   "benign_after": 2409,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "SmartThings Hub",
+   "benign_before": 2240,
+   "benign_after": 2240,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Aeotec Smart Home Hub",
+   "benign_before": 2223,
+   "benign_after": 2223,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Yi Indoor Camera",
+   "benign_before": 2031,
+   "benign_after": 2031,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "benign_before": 1829,
+   "benign_after": 1829,
+   "attack_before": 2063651,
+   "attack_after": 72487
+  },
+  {
+   "group": "G1",
+   "device": "Sonos One Speaker",
+   "benign_before": 1745,
+   "benign_after": 1745,
+   "attack_before": 3001,
+   "attack_after": 3001
+  },
+  {
+   "group": "G1",
+   "device": "Rbcior Camera",
+   "benign_before": 1668,
+   "benign_after": 1668,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Netatmo Camera",
+   "benign_before": 1516,
+   "benign_after": 1516,
+   "attack_before": 4015,
+   "attack_after": 4015
+  },
+  {
+   "group": "G1",
+   "device": "Arlo Base Station",
+   "benign_before": 1399,
+   "benign_after": 1399,
+   "attack_before": 3001,
+   "attack_after": 3001
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Alexa Echo Dot 2",
+   "benign_before": 1254,
+   "benign_after": 1254,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G1",
+   "device": "Yi Outdoor Camera",
+   "benign_before": 1145,
+   "benign_after": 1145,
+   "attack_before": 2468,
+   "attack_after": 2468
+  },
+  {
+   "group": "G1",
+   "device": "Yi Indoor 2 Camera",
+   "benign_before": 935,
+   "benign_after": 935,
+   "attack_before": 3323,
+   "attack_after": 3323
+  },
+  {
+   "group": "G2",
+   "device": "Teckin Light Strip",
+   "benign_before": 981,
+   "benign_after": 981,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "HeimVision Smart WiFi Camera",
+   "benign_before": 973,
+   "benign_after": 973,
+   "attack_before": 3088,
+   "attack_after": 3088
+  },
+  {
+   "group": "G2",
+   "device": "Lumiman Bulb",
+   "benign_before": 917,
+   "benign_after": 917,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "Amazon Smart Plug",
+   "benign_before": 692,
+   "benign_after": 692,
+   "attack_before": 4282,
+   "attack_after": 4282
+  },
+  {
+   "group": "G2",
+   "device": "HeimVision SmartLife Radio/Lamp",
+   "benign_before": 657,
+   "benign_after": 657,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "Yutron Plug 1",
+   "benign_before": 632,
+   "benign_after": 632,
+   "attack_before": 2030,
+   "attack_after": 2030
+  },
+  {
+   "group": "G2",
+   "device": "Yutron Plug 2",
+   "benign_before": 630,
+   "benign_after": 630,
+   "attack_before": 2170,
+   "attack_after": 2170
+  },
+  {
+   "group": "G2",
+   "device": "Atomi Coffee Maker",
+   "benign_before": 628,
+   "benign_after": 628,
+   "attack_before": 3465,
+   "attack_after": 3465
+  },
+  {
+   "group": "G2",
+   "device": "Cocoon Smart HVAC Fan",
+   "benign_before": 627,
+   "benign_after": 627,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "Teckin Plug 2",
+   "benign_before": 627,
+   "benign_after": 627,
+   "attack_before": 2118,
+   "attack_after": 2118
+  },
+  {
+   "group": "G2",
+   "device": "Teckin Plug 1",
+   "benign_before": 624,
+   "benign_after": 624,
+   "attack_before": 1013,
+   "attack_after": 1013
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Smart Plug WP2 (2)",
+   "benign_before": 622,
+   "benign_after": 622,
+   "attack_before": 2184,
+   "attack_after": 2184
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (4)",
+   "benign_before": 616,
+   "benign_after": 616,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Power Strip (1)",
+   "benign_before": 613,
+   "benign_after": 613,
+   "attack_before": 2129,
+   "attack_after": 2129
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "benign_before": 611,
+   "benign_after": 611,
+   "attack_before": 2451594,
+   "attack_after": 118620
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (2)",
+   "benign_before": 611,
+   "benign_after": 611,
+   "attack_before": 1749496,
+   "attack_after": 87357
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (1)",
+   "benign_before": 610,
+   "benign_after": 610,
+   "attack_before": 2171,
+   "attack_after": 2171
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (3)",
+   "benign_before": 610,
+   "benign_after": 610,
+   "attack_before": 2128,
+   "attack_after": 2128
+  },
+  {
+   "group": "G2",
+   "device": "LampUX RGB",
+   "benign_before": 603,
+   "benign_after": 603,
+   "attack_before": 1151,
+   "attack_after": 1151
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Power Strip (2)",
+   "benign_before": 590,
+   "benign_after": 590,
+   "attack_before": 2178,
+   "attack_after": 2178
+  },
+  {
+   "group": "G2",
+   "device": "Nest Indoor Camera",
+   "benign_before": 462,
+   "benign_after": 462,
+   "attack_before": 4363,
+   "attack_after": 4363
+  },
+  {
+   "group": "G2",
+   "device": "Govee Smart Humidifier",
+   "benign_before": 435,
+   "benign_after": 435,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "Netatmo Weather Station",
+   "benign_before": 435,
+   "benign_after": 435,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "Levoit Air Purifier",
+   "benign_before": 410,
+   "benign_after": 410,
+   "attack_before": 2756,
+   "attack_after": 2756
+  },
+  {
+   "group": "G2",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "benign_before": 399,
+   "benign_after": 399,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "Ring Base Station",
+   "benign_before": 398,
+   "benign_after": 398,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "G2",
+   "device": "LIFX Lightbulb",
+   "benign_before": 266,
+   "benign_after": 266,
+   "attack_before": 0,
+   "attack_after": 0
+  },
+  {
+   "group": "GEN",
+   "device": "Smart Board",
+   "benign_before": 868,
+   "benign_after": 868,
+   "attack_before": 1004,
+   "attack_after": 1004
+  },
+  {
+   "group": "GEN",
+   "device": "Wemo Smart Plug 1",
+   "benign_before": 210,
+   "benign_after": 210,
+   "attack_before": 2002,
+   "attack_after": 2002
+  },
+  {
+   "group": "GEN",
+   "device": "iRobot Roomba",
+   "benign_before": 77,
+   "benign_after": 77,
+   "attack_before": 1350,
+   "attack_after": 1350
+  }
+ ],
+ "filter_drops": {
+  "benign_night": {
+   "rows": 223108,
+   "not_owned": 13162,
+   "exclude_reason": 5102,
+   "label_excluded": 0,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "DDoS-SYN_Flood": {
+   "rows": 6800503,
+   "not_owned": 2040,
+   "exclude_reason": 0,
+   "label_excluded": 15529,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "DDoS-SYN_Flood5": {
+   "rows": 5297297,
+   "not_owned": 1223,
+   "exclude_reason": 0,
+   "label_excluded": 3,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "DDoS-SYN_Flood10": {
+   "rows": 6099055,
+   "not_owned": 1765,
+   "exclude_reason": 0,
+   "label_excluded": 13401,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "DDoS-SYN_Flood15": {
+   "rows": 3104718,
+   "not_owned": 1417,
+   "exclude_reason": 86,
+   "label_excluded": 660,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "Recon-PortScan": {
+   "rows": 207429,
+   "not_owned": 9915,
+   "exclude_reason": 0,
+   "label_excluded": 106,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "Mirai-udpplain": {
+   "rows": 8806,
+   "not_owned": 1460,
+   "exclude_reason": 0,
+   "label_excluded": 29,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  },
+  "Mirai-udpplain24": {
+   "rows": 6251,
+   "not_owned": 832,
+   "exclude_reason": 0,
+   "label_excluded": 83,
+   "ungrouped": 0,
+   "owner_device_name_mismatch": 0
+  }
+ },
+ "nan_inf": [
+  {
+   "split": "train",
+   "column": "Flow Bytes/s",
+   "nan": 39288,
+   "inf": 8707
+  },
+  {
+   "split": "train",
+   "column": "Flow Packets/s",
+   "nan": 0,
+   "inf": 47995
+  },
+  {
+   "split": "train",
+   "column": "Flow IAT Mean",
+   "nan": 47818,
+   "inf": 0
+  },
+  {
+   "split": "train",
+   "column": "Flow IAT Std",
+   "nan": 47818,
+   "inf": 0
+  },
+  {
+   "split": "train",
+   "column": "Flow IAT Max",
+   "nan": 47818,
+   "inf": 0
+  },
+  {
+   "split": "train",
+   "column": "Flow IAT Min",
+   "nan": 47818,
+   "inf": 0
+  },
+  {
+   "split": "val",
+   "column": "Flow Bytes/s",
+   "nan": 24003,
+   "inf": 1685
+  },
+  {
+   "split": "val",
+   "column": "Flow Packets/s",
+   "nan": 0,
+   "inf": 25688
+  },
+  {
+   "split": "val",
+   "column": "Flow IAT Mean",
+   "nan": 25646,
+   "inf": 0
+  },
+  {
+   "split": "val",
+   "column": "Flow IAT Std",
+   "nan": 25646,
+   "inf": 0
+  },
+  {
+   "split": "val",
+   "column": "Flow IAT Max",
+   "nan": 25646,
+   "inf": 0
+  },
+  {
+   "split": "val",
+   "column": "Flow IAT Min",
+   "nan": 25646,
+   "inf": 0
+  },
+  {
+   "split": "test",
+   "column": "Flow Bytes/s",
+   "nan": 30366,
+   "inf": 3513
+  },
+  {
+   "split": "test",
+   "column": "Flow Packets/s",
+   "nan": 0,
+   "inf": 33879
+  },
+  {
+   "split": "test",
+   "column": "Flow IAT Mean",
+   "nan": 33757,
+   "inf": 0
+  },
+  {
+   "split": "test",
+   "column": "Flow IAT Std",
+   "nan": 33757,
+   "inf": 0
+  },
+  {
+   "split": "test",
+   "column": "Flow IAT Max",
+   "nan": 33757,
+   "inf": 0
+  },
+  {
+   "split": "test",
+   "column": "Flow IAT Min",
+   "nan": 33757,
+   "inf": 0
+  }
+ ],
+ "checks": {
+  "no row in two splits": {
+   "pass": true,
+   "detail": "overlaps {'train&val': 0, 'train&test': 0, 'val&test': 0}, duplicate ids within a split {'train': 0, 'val': 0, 'test': 0}"
+  },
+  "per session max(t) of each split < min(t) of the next": {
+   "pass": true,
+   "detail": "ok"
+  },
+  "no identity column in features": {
+   "pass": true,
+   "detail": "ok"
+  },
+  "y matches label (y == 1 iff attack, attack_family set iff y)": {
+   "pass": true,
+   "detail": "0 mismatches"
+  },
+  "pass-2 pre-sample counts == pass-1 counts": {
+   "pass": true,
+   "detail": "0 keys differ {}"
+  },
+  "train split not empty": {
+   "pass": true,
+   "detail": "636,193 rows"
+  }
+ },
+ "hard_pass": true,
+ "warnings": [
+  "(GEN, port_scan): 4,356 attack rows in train but NONE in test",
+  "(GEN, syn_flood): only 3 attack rows in test (< min_test_attack_warn 20; train 0, val 0)",
+  "(GEN, udp_flood): no attack rows in any split"
+ ],
+ "outputs": {
+  "train": {
+   "path": "/home/krithikk/lgids_cache/datasets/v1/train.parquet",
+   "rows": 636193,
+   "bytes": 53905498
+  },
+  "val": {
+   "path": "/home/krithikk/lgids_cache/datasets/v1/val.parquet",
+   "rows": 157558,
+   "bytes": 14086088
+  },
+  "test": {
+   "path": "/home/krithikk/lgids_cache/datasets/v1/test.parquet",
+   "rows": 473810,
+   "bytes": 40747838
+  }
+ },
+ "features": {
+  "n": 70,
+  "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/features_v1.json",
+  "dropped_identity": [
+   "Flow ID",
+   "Src IP",
+   "Src Port",
+   "Dst IP",
+   "Dst Port",
+   "Timestamp",
+   "Label"
+  ],
+  "dropped_constant": [
+   "Bwd PSH Flags",
+   "Fwd URG Flags",
+   "Bwd URG Flags",
+   "URG Flag Count",
+   "Fwd Bytes/Bulk Avg",
+   "Fwd Packet/Bulk Avg",
+   "Fwd Bulk Rate Avg"
+  ]
+ },
+ "runtime_s": 244.1,
+ "peak_rss_mb": 3033
+}

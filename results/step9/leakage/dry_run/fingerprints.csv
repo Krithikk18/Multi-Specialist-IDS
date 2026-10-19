@@ -1,0 +1,136 @@
+group,feature,selected_as,attack_family,n_family,n_benign,mode_value,family_share,benign_share,flag,low_n
+G2,Flow Duration,top15_gain,port_scan,2161,820,0.0,0.07450254511800093,0.04024390243902439,,
+G2,Flow Duration,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.04024390243902439,,
+G2,Flow Duration,top15_gain,udp_flood,0,820,,,,N/A,
+G1,Total Fwd Packet,top15_gain,port_scan,2522,6000,1.0,0.9988104678826328,0.5551666666666667,,
+G1,Total Fwd Packet,top15_gain,syn_flood,10030,6000,4.0,0.3349950149551346,0.0475,,
+G1,Total Fwd Packet,top15_gain,udp_flood,5,6000,4.0,0.2,0.0475,,LOW_N
+G1,Total Length of Bwd Packet,top15_gain,port_scan,2522,6000,0.0,1.0,0.32466666666666666,,
+G1,Total Length of Bwd Packet,top15_gain,syn_flood,10030,6000,0.0,1.0,0.32466666666666666,,
+G1,Total Length of Bwd Packet,top15_gain,udp_flood,5,6000,0.0,1.0,0.32466666666666666,,LOW_N
+GLOBAL,Total Length of Bwd Packet,top15_gain,port_scan,4901,6882,0.0,1.0,0.35178727114210984,,
+GLOBAL,Total Length of Bwd Packet,top15_gain,syn_flood,20029,6882,0.0,1.0,0.35178727114210984,,
+GLOBAL,Total Length of Bwd Packet,top15_gain,udp_flood,5,6882,0.0,1.0,0.35178727114210984,,LOW_N
+G1,Fwd Packet Length Min,top15_gain,port_scan,2522,6000,0.0,1.0,0.36733333333333335,,
+G1,Fwd Packet Length Min,top15_gain,syn_flood,10030,6000,0.0,1.0,0.36733333333333335,,
+G1,Fwd Packet Length Min,top15_gain,udp_flood,5,6000,512.0,0.6,0.0,,LOW_N
+G2,Flow Packets/s,top15_gain,port_scan,2161,820,0.0,0.07450254511800093,0.04024390243902439,,
+G2,Flow Packets/s,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.04024390243902439,,
+G2,Flow Packets/s,top15_gain,udp_flood,0,820,,,,N/A,
+G2,Flow IAT Mean,top15_gain,port_scan,2161,820,0.0,0.07450254511800093,0.04024390243902439,,
+G2,Flow IAT Mean,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.04024390243902439,,
+G2,Flow IAT Mean,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,Flow IAT Mean,top15_gain,port_scan,4901,6882,0.0,0.17833095286676187,0.13673350770124965,,
+GLOBAL,Flow IAT Mean,top15_gain,syn_flood,20029,6882,0.0,0.02920764890908183,0.13673350770124965,,
+GLOBAL,Flow IAT Mean,top15_gain,udp_flood,5,6882,870.1213063763588,0.2,0.0,,LOW_N
+G2,Fwd IAT Total,top15_gain,port_scan,2161,820,0.0,0.999537251272559,0.07317073170731707,,
+G2,Fwd IAT Total,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.07317073170731707,,
+G2,Fwd IAT Total,top15_gain,udp_flood,0,820,,,,N/A,
+G2,Fwd IAT Mean,top15_gain,port_scan,2161,820,0.0,0.999537251272559,0.07317073170731707,,
+G2,Fwd IAT Mean,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.07317073170731707,,
+G2,Fwd IAT Mean,top15_gain,udp_flood,0,820,,,,N/A,
+G2,Fwd IAT Max,top15_gain,port_scan,2161,820,0.0,0.999537251272559,0.07317073170731707,,
+G2,Fwd IAT Max,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.07317073170731707,,
+G2,Fwd IAT Max,top15_gain,udp_flood,0,820,,,,N/A,
+G1,Fwd IAT Min,top15_gain,port_scan,2522,6000,0.0,0.9988104678826328,0.5776666666666667,,
+G1,Fwd IAT Min,top15_gain,syn_flood,10030,6000,0.0,0.07288135593220339,0.5776666666666667,,
+G1,Fwd IAT Min,top15_gain,udp_flood,5,6000,0.0,0.6,0.5776666666666667,,LOW_N
+GLOBAL,Fwd IAT Min,top15_gain,port_scan,4901,6882,0.0,0.9991838400326464,0.515693112467306,,
+GLOBAL,Fwd IAT Min,top15_gain,syn_flood,20029,6882,0.0,0.04373658195616356,0.515693112467306,,
+GLOBAL,Fwd IAT Min,top15_gain,udp_flood,5,6882,0.0,0.6,0.515693112467306,,LOW_N
+G2,Bwd IAT Total,top15_gain,port_scan,2161,820,0.0,0.999537251272559,0.5158536585365854,,
+G2,Bwd IAT Total,top15_gain,syn_flood,9999,820,0.0,1.0,0.5158536585365854,,
+G2,Bwd IAT Total,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,Bwd IAT Mean,top15_gain,port_scan,4901,6882,0.0,0.9997959600081616,0.6804707933740192,,
+GLOBAL,Bwd IAT Mean,top15_gain,syn_flood,20029,6882,0.0,0.9872684607319386,0.6804707933740192,,
+GLOBAL,Bwd IAT Mean,top15_gain,udp_flood,5,6882,0.0,0.6,0.6804707933740192,,LOW_N
+G1,Fwd Header Length,top15_gain,port_scan,2522,6000,24.0,0.9496431403647898,0.0165,FINGERPRINT,
+G1,Fwd Header Length,top15_gain,syn_flood,10030,6000,80.0,0.3347956131605184,0.009666666666666667,,
+G1,Fwd Header Length,top15_gain,udp_flood,5,6000,128.0,0.2,0.021166666666666667,,LOW_N
+G2,Fwd Header Length,top15_gain,port_scan,2161,820,24.0,0.7343822304488663,0.014634146341463415,,
+G2,Fwd Header Length,top15_gain,syn_flood,9999,820,100.0,0.42204220422042205,0.06341463414634146,,
+G2,Fwd Header Length,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,Fwd Header Length,top15_gain,port_scan,4901,6882,24.0,0.8522750459089982,0.016129032258064516,,
+GLOBAL,Fwd Header Length,top15_gain,syn_flood,20029,6882,100.0,0.2690598631983624,0.00842778262133101,,
+GLOBAL,Fwd Header Length,top15_gain,udp_flood,5,6882,128.0,0.2,0.01903516419645452,,LOW_N
+G2,Bwd Header Length,top15_gain,port_scan,2161,820,20.0,0.6594169366034244,0.02804878048780488,,
+G2,Bwd Header Length,top15_gain,syn_flood,9999,820,0.0,1.0,0.4682926829268293,,
+G2,Bwd Header Length,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,Bwd Header Length,top15_gain,port_scan,4901,6882,20.0,0.6737400530503979,0.00944492879976751,,
+GLOBAL,Bwd Header Length,top15_gain,syn_flood,20029,6882,0.0,0.9623545858505167,0.2968613775065388,,
+GLOBAL,Bwd Header Length,top15_gain,udp_flood,5,6882,0.0,0.6,0.2968613775065388,,LOW_N
+GLOBAL,Fwd Packets/s,top15_gain,port_scan,4901,6882,0.0,0.17833095286676187,0.13673350770124965,,
+GLOBAL,Fwd Packets/s,top15_gain,syn_flood,20029,6882,0.0,0.02920764890908183,0.13673350770124965,,
+GLOBAL,Fwd Packets/s,top15_gain,udp_flood,5,6882,0.05395956575014231,0.2,0.0,,LOW_N
+G2,Bwd Packets/s,top15_gain,port_scan,2161,820,0.0,0.07496529384544193,0.46219512195121953,,
+G2,Bwd Packets/s,top15_gain,syn_flood,9999,820,0.0,1.0,0.46219512195121953,,
+G2,Bwd Packets/s,top15_gain,udp_flood,0,820,,,,N/A,
+G1,Packet Length Min,top15_gain,port_scan,2522,6000,0.0,1.0,0.381,,
+G1,Packet Length Min,top15_gain,syn_flood,10030,6000,0.0,1.0,0.381,,
+G1,Packet Length Min,top15_gain,udp_flood,5,6000,512.0,0.6,0.0,,LOW_N
+G1,Packet Length Max,top15_gain,port_scan,2522,6000,0.0,1.0,0.16866666666666666,,
+G1,Packet Length Max,top15_gain,syn_flood,10030,6000,0.0,1.0,0.16866666666666666,,
+G1,Packet Length Max,top15_gain,udp_flood,5,6000,512.0,0.6,0.0,,LOW_N
+G2,Packet Length Max,top15_gain,port_scan,2161,820,0.0,1.0,0.10975609756097561,,
+G2,Packet Length Max,top15_gain,syn_flood,9999,820,0.0,1.0,0.10975609756097561,,
+G2,Packet Length Max,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,Packet Length Max,top15_gain,port_scan,4901,6882,0.0,1.0,0.16056378959604767,,
+GLOBAL,Packet Length Max,top15_gain,syn_flood,20029,6882,0.0,1.0,0.16056378959604767,,
+GLOBAL,Packet Length Max,top15_gain,udp_flood,5,6882,512.0,0.6,0.0,,LOW_N
+GLOBAL,Packet Length Std,top15_gain,port_scan,4901,6882,0.0,1.0,0.31604184829991283,,
+GLOBAL,Packet Length Std,top15_gain,syn_flood,20029,6882,0.0,1.0,0.31604184829991283,,
+GLOBAL,Packet Length Std,top15_gain,udp_flood,5,6882,0.0,0.8,0.31604184829991283,,LOW_N
+G1,SYN Flag Count,top15_gain,port_scan,2522,6000,1.0,0.9992069785884219,0.0026666666666666666,FINGERPRINT,
+G1,SYN Flag Count,top15_gain,syn_flood,10030,6000,4.0,0.3424725822532403,0.004666666666666667,,
+G1,SYN Flag Count,top15_gain,udp_flood,5,6000,0.0,0.8,0.8373333333333334,,LOW_N
+G2,SYN Flag Count,top15_gain,port_scan,2161,820,1.0,0.999537251272559,0.0012195121951219512,FINGERPRINT,
+G2,SYN Flag Count,top15_gain,syn_flood,9999,820,5.0,0.42204220422042205,0.006097560975609756,,
+G2,SYN Flag Count,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,SYN Flag Count,top15_gain,port_scan,4901,6882,1.0,0.9993878800244848,0.0024702121476315024,FINGERPRINT,
+GLOBAL,SYN Flag Count,top15_gain,syn_flood,20029,6882,5.0,0.2712566778171651,0.0024702121476315024,,
+GLOBAL,SYN Flag Count,top15_gain,udp_flood,5,6882,0.0,0.8,0.8487358326068003,,LOW_N
+G1,ACK Flag Count,top15_gain,port_scan,2522,6000,1.0,0.7442505947660587,0.07333333333333333,,
+G1,ACK Flag Count,top15_gain,syn_flood,10030,6000,0.0,0.9392821535393818,0.6646666666666666,,
+G1,ACK Flag Count,top15_gain,udp_flood,5,6000,0.0,0.6,0.6646666666666666,,LOW_N
+GLOBAL,ACK Flag Count,top15_gain,port_scan,4901,6882,1.0,0.8212609671495613,0.06698634117988957,,
+GLOBAL,ACK Flag Count,top15_gain,syn_flood,20029,6882,0.0,0.9695940885715713,0.6479221156640511,,
+GLOBAL,ACK Flag Count,top15_gain,udp_flood,5,6882,0.0,0.6,0.6479221156640511,,LOW_N
+G1,Down/Up Ratio,top15_gain,port_scan,2522,6000,1.0,0.7434575733544806,0.5466666666666666,,
+G1,Down/Up Ratio,top15_gain,syn_flood,10030,6000,0.0,0.9687936191425723,0.4355,,
+G1,Down/Up Ratio,top15_gain,udp_flood,5,6000,0.0,1.0,0.4355,,LOW_N
+G1,Bwd Bytes/Bulk Avg,top15_gain,port_scan,2522,6000,0.0,1.0,0.8696666666666667,,
+G1,Bwd Bytes/Bulk Avg,top15_gain,syn_flood,10030,6000,0.0,1.0,0.8696666666666667,,
+G1,Bwd Bytes/Bulk Avg,top15_gain,udp_flood,5,6000,0.0,0.4,0.8696666666666667,,LOW_N
+G1,Subflow Fwd Packets,top15_gain,port_scan,2522,6000,0.0,0.9773988897700238,0.7676666666666667,,
+G1,Subflow Fwd Packets,top15_gain,syn_flood,10030,6000,1.0,0.8096709870388834,0.09133333333333334,,
+G1,Subflow Fwd Packets,top15_gain,udp_flood,5,6000,1.0,0.4,0.09133333333333334,,LOW_N
+G1,Subflow Fwd Bytes,top15_gain,port_scan,2522,6000,0.0,1.0,0.8158333333333333,,
+G1,Subflow Fwd Bytes,top15_gain,syn_flood,10030,6000,0.0,1.0,0.8158333333333333,,
+G1,Subflow Fwd Bytes,top15_gain,udp_flood,5,6000,0.0,0.2,0.8158333333333333,,LOW_N
+G1,FWD Init Win Bytes,top15_gain,port_scan,2522,6000,1024.0,0.9504361617763679,0.00016666666666666666,FINGERPRINT,
+G1,FWD Init Win Bytes,top15_gain,syn_flood,10030,6000,512.0,0.9837487537387837,0.0,FINGERPRINT,
+G1,FWD Init Win Bytes,top15_gain,udp_flood,5,6000,0.0,0.6,0.6448333333333334,,LOW_N
+G2,FWD Init Win Bytes,top15_gain,port_scan,2161,820,1024.0,0.7343822304488663,0.0,,
+G2,FWD Init Win Bytes,top15_gain,syn_flood,9999,820,512.0,1.0,0.0,FINGERPRINT,
+G2,FWD Init Win Bytes,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,FWD Init Win Bytes,top15_gain,port_scan,4901,6882,1024.0,0.8526831258926749,0.00014530659691950015,,
+GLOBAL,FWD Init Win Bytes,top15_gain,syn_flood,20029,6882,512.0,0.9918618003894353,0.0,FINGERPRINT,
+GLOBAL,FWD Init Win Bytes,top15_gain,udp_flood,5,6882,0.0,0.6,0.6309212438244697,,LOW_N
+G2,Bwd Init Win Bytes,top15_gain,port_scan,2161,820,1024.0,0.26515502082369274,0.0,,
+G2,Bwd Init Win Bytes,top15_gain,syn_flood,9999,820,0.0,1.0,0.5560975609756098,,
+G2,Bwd Init Win Bytes,top15_gain,udp_flood,0,820,,,,N/A,
+GLOBAL,Bwd Init Win Bytes,top15_gain,port_scan,4901,6882,0.0,0.637624974495001,0.7339436210403952,,
+GLOBAL,Bwd Init Win Bytes,top15_gain,syn_flood,20029,6882,0.0,0.964900893704129,0.7339436210403952,,
+GLOBAL,Bwd Init Win Bytes,top15_gain,udp_flood,5,6882,0.0,0.6,0.7339436210403952,,LOW_N
+G1,Fwd Seg Size Min,top15_gain,port_scan,2522,6000,24.0,0.9496431403647898,0.0,FINGERPRINT,
+G1,Fwd Seg Size Min,top15_gain,syn_flood,10030,6000,20.0,0.9856430707876371,0.04083333333333333,FINGERPRINT,
+G1,Fwd Seg Size Min,top15_gain,udp_flood,5,6000,8.0,0.6,0.6148333333333333,,LOW_N
+GLOBAL,Fwd Seg Size Min,top15_gain,port_scan,4901,6882,24.0,0.8522750459089982,0.0017436791630340018,,
+GLOBAL,Fwd Seg Size Min,top15_gain,syn_flood,20029,6882,20.0,0.9928104248839184,0.08587619877942458,,
+GLOBAL,Fwd Seg Size Min,top15_gain,udp_flood,5,6882,8.0,0.6,0.6025864574251671,,LOW_N
+GLOBAL,Idle Std,top15_gain,port_scan,4901,6882,0.0,1.0,0.8355129322871259,,
+GLOBAL,Idle Std,top15_gain,syn_flood,20029,6882,0.0,0.10874232363073544,0.8355129322871259,,
+GLOBAL,Idle Std,top15_gain,udp_flood,5,6882,0.0,0.4,0.8355129322871259,,LOW_N
+G2,Idle Max,top15_gain,port_scan,2161,820,0.0,1.0,0.22926829268292684,,
+G2,Idle Max,top15_gain,syn_flood,9999,820,0.0,0.014501450145014501,0.22926829268292684,,
+G2,Idle Max,top15_gain,udp_flood,0,820,,,,N/A,

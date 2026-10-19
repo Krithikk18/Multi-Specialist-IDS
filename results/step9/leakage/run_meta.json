@@ -1,0 +1,371 @@
+{
+ "script": "09b_leakage_checks.py",
+ "run_utc": "2026-10-19T14:51:46+00:00",
+ "argv": [
+  "09b_leakage_checks.py"
+ ],
+ "dry_run": false,
+ "code_sha256": "6bc0a4b9088a00d8e21913ae6d4f8477de30bd59aa16a2efa725b89edc08d2cf",
+ "out": "results/step9/leakage",
+ "checks_requested": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6
+ ],
+ "features": {
+  "path": "config/features_v1.json",
+  "n": 70,
+  "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "manifest_sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "sha256_of": "json.dumps(features, separators=(',', ':')) utf-8"
+ },
+ "verify_lock": {
+  "ok": true,
+  "checks": [
+   {
+    "check": "extractor jar sha256",
+    "pass": true,
+    "detail": "~/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+   },
+   {
+    "check": "extractor patch exists",
+    "pass": true,
+    "detail": "extractor/guard_gt0.patch"
+   },
+   {
+    "check": "extractor sweeper patch exists",
+    "pass": true,
+    "detail": "extractor/idle_sweeper.patch"
+   },
+   {
+    "check": "config file device_table.csv",
+    "pass": true,
+    "detail": "config/device_table.csv"
+   },
+   {
+    "check": "config file ip_mac_map.csv",
+    "pass": true,
+    "detail": "config/ip_mac_map.csv"
+   },
+   {
+    "check": "config file behaviour_groups.json",
+    "pass": true,
+    "detail": "config/behaviour_groups.json"
+   },
+   {
+    "check": "groups version",
+    "pass": true,
+    "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+   },
+   {
+    "check": "groups labels",
+    "pass": true,
+    "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+   },
+   {
+    "check": "groups lock verified",
+    "pass": true,
+    "detail": "behaviour_groups.json verification.pass"
+   },
+   {
+    "check": "extractor TZ",
+    "pass": true,
+    "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+   }
+  ]
+ },
+ "inputs": {
+  "train": "~/lgids_cache/datasets/v1/train.parquet",
+  "val": "~/lgids_cache/datasets/v1/val.parquet",
+  "manifest": "results/step8/manifest_v1.json",
+  "split_plan": "config/split_plan.json",
+  "split_plan_sha256": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647",
+  "attack_set": "config/attack_set.json",
+  "test_split": "never opened"
+ },
+ "versions": {
+  "python": "3.11.17",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "pyarrow": "26.0.0",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "xgboost": "3.4.2"
+ },
+ "platform": {
+  "machine": "x86_64",
+  "cpu_count": 12
+ },
+ "config": {
+  "seed": 42,
+  "groups": [
+   "G1",
+   "G2",
+   "GLOBAL"
+  ],
+  "global_group": "GLOBAL",
+  "global_note": "GLOBAL = all train / val rows (G1 + G2 + GEN devices), same splits",
+  "probe": "XGBClassifier(scale_pos_weight=n_benign/n_attack of its training rows, random_state=42, n_jobs=-1), library defaults otherwise -- identical to 09_train_specialists.py bakeoff",
+  "shortcut_auc": 0.99,
+  "top_k_gain": 15,
+  "ablation_top_n": 5,
+  "fingerprint_family_share_min": 0.9,
+  "fingerprint_benign_share_max": 0.05,
+  "default_threshold": 0.5,
+  "same_set_max_fp": 1,
+  "same_set_label": "same-set threshold, optimistic",
+  "threshold_rule": "flag attack iff score >= threshold; same-set = lowest observed score of the evaluated rows with <= same_set_max_fp FP on the evaluated benign rows (inf = only flagging nothing meets it)",
+  "low_n": 50,
+  "syn_family": "syn_flood",
+  "syn_aliases": {
+   "first": "SYN first part",
+   "five": "SYN 5"
+  },
+  "victim_min_syn_rows": 1000,
+  "zero_duration_feature": "Flow Duration",
+  "packet_count_features": [
+   "Total Fwd Packet",
+   "Total Bwd packets"
+  ],
+  "row_hash": "per column pandas.util.hash_array(float64 value + 0.0), combined h = (h ^ hc) * FNV prime (uint64); equal hash = equal row (64-bit: collision chance ~1e-8 at this size)",
+  "dry_run_frac": 0.05,
+  "dry_run_strata": [
+   "group",
+   "session",
+   "device",
+   "y",
+   "attack_family"
+  ],
+  "active_idle_gap_seconds": 300
+ },
+ "seed": 42,
+ "attack_families": [
+  "port_scan",
+  "syn_flood",
+  "udp_flood"
+ ],
+ "syn_sessions": {
+  "first_part": "DDoS-SYN_Flood",
+  "syn5": "DDoS-SYN_Flood5",
+  "aliases": {
+   "DDoS-SYN_Flood": "SYN first part",
+   "DDoS-SYN_Flood5": "SYN 5"
+  }
+ },
+ "victims": {
+  "min_syn_rows_used": 1000,
+  "table": [
+   {
+    "device": "GoSund Smart Plug WP2 (1)",
+    "group": "G2",
+    "train": 116443,
+    "val": 0,
+    "total": 116443
+   },
+   {
+    "device": "Unidentified ESP plug (2)",
+    "group": "G2",
+    "train": 83542,
+    "val": 22411,
+    "total": 105953
+   },
+   {
+    "device": "Amazon Alexa Echo Dot 1",
+    "group": "G1",
+    "train": 70558,
+    "val": 0,
+    "total": 70558
+   },
+   {
+    "device": "Unidentified Amazon device (1c:12:b0)",
+    "group": "G1",
+    "train": 70487,
+    "val": 0,
+    "total": 70487
+   },
+   {
+    "device": "Google Nest Mini Speaker",
+    "group": "G1",
+    "train": 59560,
+    "val": 0,
+    "total": 59560
+   },
+   {
+    "device": "AMCREST WiFi Camera",
+    "group": "G1",
+    "train": 0,
+    "val": 50103,
+    "total": 50103
+   },
+   {
+    "device": "Unidentified ESP plug (3)",
+    "group": "G2",
+    "train": 0,
+    "val": 27663,
+    "total": 27663
+   }
+  ]
+ },
+ "thresholds": {
+  "shortcut_auc": 0.99,
+  "default": 0.5,
+  "same_set_max_fp": 1,
+  "fingerprint": [
+   0.9,
+   0.05
+  ],
+  "low_n": 50,
+  "victim_min_syn_rows": 1000
+ },
+ "row_counts": {
+  "G1": {
+   "train_full": {
+    "rows": 371200,
+    "benign": 120028,
+    "attack_by_family": {
+     "port_scan": 50472,
+     "syn_flood": 200605,
+     "udp_flood": 95
+    }
+   },
+   "val_full": {
+    "rows": 93716,
+    "benign": 35833,
+    "attack_by_family": {
+     "port_scan": 7763,
+     "syn_flood": 50103,
+     "udp_flood": 17
+    }
+   },
+   "train_used": {
+    "rows": 371200,
+    "benign": 120028,
+    "attack_by_family": {
+     "port_scan": 50472,
+     "syn_flood": 200605,
+     "udp_flood": 95
+    }
+   },
+   "val_used": {
+    "rows": 93716,
+    "benign": 35833,
+    "attack_by_family": {
+     "port_scan": 7763,
+     "syn_flood": 50103,
+     "udp_flood": 17
+    }
+   }
+  },
+  "G2": {
+   "train_full": {
+    "rows": 259482,
+    "benign": 16279,
+    "attack_by_family": {
+     "port_scan": 43218,
+     "syn_flood": 199985
+    }
+   },
+   "val_full": {
+    "rows": 63551,
+    "benign": 3061,
+    "attack_by_family": {
+     "port_scan": 10416,
+     "syn_flood": 50074
+    }
+   },
+   "train_used": {
+    "rows": 259482,
+    "benign": 16279,
+    "attack_by_family": {
+     "port_scan": 43218,
+     "syn_flood": 199985
+    }
+   },
+   "val_used": {
+    "rows": 63551,
+    "benign": 3061,
+    "attack_by_family": {
+     "port_scan": 10416,
+     "syn_flood": 50074
+    }
+   }
+  },
+  "GLOBAL": {
+   "train_full": {
+    "rows": 636193,
+    "benign": 137462,
+    "attack_by_family": {
+     "port_scan": 98046,
+     "syn_flood": 400590,
+     "udp_flood": 95
+    }
+   },
+   "val_full": {
+    "rows": 157558,
+    "benign": 39185,
+    "attack_by_family": {
+     "port_scan": 18179,
+     "syn_flood": 100177,
+     "udp_flood": 17
+    }
+   },
+   "train_used": {
+    "rows": 636193,
+    "benign": 137462,
+    "attack_by_family": {
+     "port_scan": 98046,
+     "syn_flood": 400590,
+     "udp_flood": 95
+    }
+   },
+   "val_used": {
+    "rows": 157558,
+    "benign": 39185,
+    "attack_by_family": {
+     "port_scan": 18179,
+     "syn_flood": 100177,
+     "udp_flood": 17
+    }
+   }
+  }
+ },
+ "fph_denominators": [
+  {
+   "evaluation": "check3 GLOBAL val benign",
+   "benign_rows_full": 39185,
+   "benign_rows_used": 39185,
+   "hours_full": 1.9676,
+   "hours_used": 1.967583,
+   "rule": "08 benign_hours on manifest session_cuts"
+  },
+  {
+   "evaluation": "check5/6 val benign",
+   "benign_rows_full": 39185,
+   "benign_rows_used": 39185,
+   "hours_full": 1.9676,
+   "hours_used": 1.967583,
+   "rule": "08 benign_hours on manifest session_cuts"
+  }
+ ],
+ "check_runtime_s": {
+  "1": 60.3,
+  "2": 1.2,
+  "3": 30.3,
+  "4": 3.0,
+  "5": 10.6,
+  "6": 38.8
+ },
+ "runtime_s": 145.7,
+ "finished_utc": "2026-10-19T14:54:08+00:00",
+ "checks_done": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6
+ ]
+}

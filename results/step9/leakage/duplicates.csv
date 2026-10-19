@@ -1,0 +1,51 @@
+item,scope,rows_of,y,attack_family,n_rows,denominator,fraction,n_zero_duration,n_one_packet,zero_duration_rows_in_denominator,one_packet_rows_in_denominator,n_groups,note
+all_rows,train,train,all,all,636193,636193,1.0,47995,47818,47995,47818,,reference counts
+all_rows,train,train,0,(benign),137462,137462,1.0,18178,18001,18178,18001,,reference counts
+all_rows,train,train,1,port_scan,98046,98046,1.0,17575,17575,17575,17575,,reference counts
+all_rows,train,train,1,syn_flood,400590,400590,1.0,12241,12241,12241,12241,,reference counts
+all_rows,train,train,1,udp_flood,95,95,1.0,1,1,1,1,,reference counts
+duplicate_within_split,train,train,all,all,95212,636193,0.14965898713126363,47636,47501,47995,47818,20316,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,train,train,0,(benign),20116,137462,0.14633862449258705,17820,17685,18178,18001,,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,train,train,1,port_scan,53293,98046,0.54355098627175,17575,17575,17575,17575,,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,train,train,1,syn_flood,21802,400590,0.054424723532789133,12241,12241,12241,12241,,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,train,train,1,udp_flood,1,95,0.010526315789473684,0,0,1,1,,row shares its 70 feature values with >= 1 other row of the same split
+label_conflict_within_split,train,train,all,all,598,636193,0.0009399663309718906,518,518,47995,47818,2,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,train,train,0,(benign),593,137462,0.004313919483202631,515,515,18178,18001,,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,train,train,1,port_scan,0,98046,0.0,0,0,17575,17575,,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,train,train,1,syn_flood,4,400590,9.985271724206795e-06,3,3,12241,12241,,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,train,train,1,udp_flood,1,95,0.010526315789473684,0,0,1,1,,identical feature row carries both y = 0 and y = 1 within the split
+all_rows,val,val,all,all,157558,157558,1.0,25688,25646,25688,25646,,reference counts
+all_rows,val,val,0,(benign),39185,39185,1.0,6699,6657,6699,6657,,reference counts
+all_rows,val,val,1,port_scan,18179,18179,1.0,2800,2800,2800,2800,,reference counts
+all_rows,val,val,1,syn_flood,100177,100177,1.0,16188,16188,16188,16188,,reference counts
+all_rows,val,val,1,udp_flood,17,17,1.0,1,1,1,1,,reference counts
+duplicate_within_split,val,val,all,all,41922,157558,0.26607344596910343,25538,25510,25688,25646,7553,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,val,val,0,(benign),7883,39185,0.20117391859129768,6549,6521,6699,6657,,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,val,val,1,port_scan,9679,18179,0.5324275262665713,2800,2800,2800,2800,,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,val,val,1,syn_flood,24359,100177,0.2431596074947343,16188,16188,16188,16188,,row shares its 70 feature values with >= 1 other row of the same split
+duplicate_within_split,val,val,1,udp_flood,1,17,0.058823529411764705,1,1,1,1,,row shares its 70 feature values with >= 1 other row of the same split
+label_conflict_within_split,val,val,all,all,33,157558,0.0002094466799527793,33,33,25688,25646,1,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,val,val,0,(benign),32,39185,0.0008166390200331759,32,32,6699,6657,,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,val,val,1,port_scan,0,18179,0.0,0,0,2800,2800,,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,val,val,1,syn_flood,0,100177,0.0,0,0,16188,16188,,identical feature row carries both y = 0 and y = 1 within the split
+label_conflict_within_split,val,val,1,udp_flood,1,17,0.058823529411764705,1,1,1,1,,identical feature row carries both y = 0 and y = 1 within the split
+val_row_equals_a_train_row,train->val,val,all,all,27126,157558,0.17216517092118458,25519,25485,25688,25646,1289,val row whose 70 values also occur in train
+val_row_equals_a_train_row,train->val,val,0,(benign),7112,39185,0.18149802220237335,6530,6496,6699,6657,,val row whose 70 values also occur in train
+val_row_equals_a_train_row,train->val,val,1,port_scan,3805,18179,0.20930744265361131,2800,2800,2800,2800,,val row whose 70 values also occur in train
+val_row_equals_a_train_row,train->val,val,1,syn_flood,16208,100177,0.16179362528324864,16188,16188,16188,16188,,val row whose 70 values also occur in train
+val_row_equals_a_train_row,train->val,val,1,udp_flood,1,17,0.058823529411764705,1,1,1,1,,val row whose 70 values also occur in train
+train_row_equals_a_val_row,train->val,train,all,all,48515,636193,0.07625830526271116,46438,46364,47995,47818,,train row whose 70 values also occur in val
+train_row_equals_a_val_row,train->val,train,0,(benign),17602,137462,0.12804993379988652,16629,16555,18178,18001,,train row whose 70 values also occur in val
+train_row_equals_a_val_row,train->val,train,1,port_scan,18659,98046,0.19030863064275952,17575,17575,17575,17575,,train row whose 70 values also occur in val
+train_row_equals_a_val_row,train->val,train,1,syn_flood,12253,400590,0.030587383609176465,12234,12234,12241,12241,,train row whose 70 values also occur in val
+train_row_equals_a_val_row,train->val,train,1,udp_flood,1,95,0.010526315789473684,0,0,1,1,,train row whose 70 values also occur in val
+label_conflict_train_plus_val,train+val,train,all,all,686,636193,0.001078289135529627,606,606,47995,47818,3,train rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,train,0,(benign),681,137462,0.004954096404824606,603,603,18178,18001,,train rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,train,1,port_scan,0,98046,0.0,0,0,17575,17575,,train rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,train,1,syn_flood,4,400590,9.985271724206795e-06,3,3,12241,12241,,train rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,train,1,udp_flood,1,95,0.010526315789473684,0,0,1,1,,train rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,val,all,all,131,157558,0.000831439850721639,105,105,25688,25646,3,val rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,val,0,(benign),130,39185,0.0033175960188847773,104,104,6699,6657,,val rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,val,1,port_scan,0,18179,0.0,0,0,2800,2800,,val rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,val,1,syn_flood,0,100177,0.0,0,0,16188,16188,,val rows in a feature-row group that has both labels across train + val
+label_conflict_train_plus_val,train+val,val,1,udp_flood,1,17,0.058823529411764705,1,1,1,1,,val rows in a feature-row group that has both labels across train + val

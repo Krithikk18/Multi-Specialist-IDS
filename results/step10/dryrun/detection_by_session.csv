@@ -1,0 +1,17 @@
+split,system,operating_point,threshold,session,alias,attack_family,expected,n,detected,detection_rate,flag
+val,FINAL,T_house,0.568307638168335,DDoS-SYN_Flood,SYN first part,syn_flood,True,50103,50093,0.9998004111530248,
+val,FINAL,T_house,0.568307638168335,DDoS-SYN_Flood5,SYN 5,syn_flood,True,50074,50074,1.0,
+val,FINAL,T_house,0.568307638168335,Recon-PortScan,Recon-PortScan,port_scan,True,18179,18179,1.0,
+val,FINAL,T_house,0.568307638168335,Mirai-udpplain,Mirai first part,udp_flood,True,17,8,0.47058823529411764,LOW_N
+val,FINAL,0.5,0.5,DDoS-SYN_Flood,SYN first part,syn_flood,True,50103,50093,0.9998004111530248,
+val,FINAL,0.5,0.5,DDoS-SYN_Flood5,SYN 5,syn_flood,True,50074,50074,1.0,
+val,FINAL,0.5,0.5,Recon-PortScan,Recon-PortScan,port_scan,True,18179,18179,1.0,
+val,FINAL,0.5,0.5,Mirai-udpplain,Mirai first part,udp_flood,True,17,8,0.47058823529411764,LOW_N
+val,BASELINE,T_house,0.5927605032920837,DDoS-SYN_Flood,SYN first part,syn_flood,True,50103,50094,0.9998203700377223,
+val,BASELINE,T_house,0.5927605032920837,DDoS-SYN_Flood5,SYN 5,syn_flood,True,50074,50074,1.0,
+val,BASELINE,T_house,0.5927605032920837,Recon-PortScan,Recon-PortScan,port_scan,True,18179,18179,1.0,
+val,BASELINE,T_house,0.5927605032920837,Mirai-udpplain,Mirai first part,udp_flood,True,17,8,0.47058823529411764,LOW_N
+val,BASELINE,0.5,0.5,DDoS-SYN_Flood,SYN first part,syn_flood,True,50103,50094,0.9998203700377223,
+val,BASELINE,0.5,0.5,DDoS-SYN_Flood5,SYN 5,syn_flood,True,50074,50074,1.0,
+val,BASELINE,0.5,0.5,Recon-PortScan,Recon-PortScan,port_scan,True,18179,18179,1.0,
+val,BASELINE,0.5,0.5,Mirai-udpplain,Mirai first part,udp_flood,True,17,8,0.47058823529411764,LOW_N

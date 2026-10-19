@@ -1,0 +1,1002 @@
+{
+ "script": "10_evaluate.py",
+ "mode": "dryrun",
+ "run_utc": "2026-10-19T20:21:15+00:00",
+ "argv": [
+  "10_evaluate.py",
+  "--mode",
+  "dryrun"
+ ],
+ "git_head": "1fb1cfe8a161b18132f2824374615dc886a5353f",
+ "git_dirty_tracked": [],
+ "git_untracked": [
+  "?? 10_evaluate.py",
+  "?? config/step10_prereg.json",
+  "?? results/step10/",
+  "?? results/step8b/coverage/",
+  "?? results/step8b/dry_run/",
+  "?? results/step8b/labels/",
+  "?? results/step9/bakeoff/dry_run/",
+  "?? results/step9/leakage/done.json",
+  "?? results/step9/leakage/dry_run/done.json",
+  "?? results/step9/leakage/dry_run/run_meta.json",
+  "?? results/step9/leakage/dry_run/summary.md",
+  "?? results/step9/robustness/dry_run/run_meta.json",
+  "?? results/step9/robustness/dry_run/summary.md",
+  "?? results/step9/strategies/dry_run/run_meta.json",
+  "?? results/step9/strategies/dry_run/summary.md"
+ ],
+ "code_sha256": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63",
+ "config": {
+  "seed": 42,
+  "model": "XGB",
+  "model_note": "09 build_model / fit_model: XGBoost library defaults + scale_pos_weight = n_benign / n_attack of the model's own training rows, random_state 42, n_jobs -1; 70 features (features_v1.json order, float32); no search",
+  "models": [
+   "G1",
+   "G2",
+   "GLOBAL"
+  ],
+  "training_sets": {
+   "G1": "shared_attack: TRAIN benign rows of group G1 (behaviour_k2) + every TRAIN attack row",
+   "G2": "shared_attack: TRAIN benign rows of group G2 (behaviour_k2) + every TRAIN attack row",
+   "GLOBAL": "every TRAIN row"
+  },
+  "systems": {
+   "FINAL": {
+    "models": [
+     "G1",
+     "G2",
+     "GLOBAL"
+    ],
+    "note": "specialists G1 + G2 (shared_attack) + GLOBAL fallback"
+   },
+   "BASELINE": {
+    "models": [
+     "GLOBAL"
+    ],
+    "note": "GLOBAL scores every row (same model file as FINAL's GLOBAL)"
+   }
+  },
+  "route": {
+   "G1": "G1",
+   "G2": "G2",
+   "GEN": "GLOBAL"
+  },
+  "routing_rule": "by the row's group column: G1 -> G1 model, G2 -> G2 model, GEN -> GLOBAL; unregistered MACs (device 'unregistered:<mac>', device_category 'unregistered_mac') are group GEN -> GLOBAL. BASELINE: GLOBAL for every row.",
+  "groups": [
+   "G1",
+   "G2",
+   "GEN"
+  ],
+  "gen_group": "GEN",
+  "unreg_category": "unregistered_mac",
+  "unreg_device_prefix": "unregistered:",
+  "operating_points": [
+   "T_house",
+   "0.5"
+  ],
+  "default_threshold": 0.5,
+  "max_val_fp": 2,
+  "threshold_rule": "T_house: lowest observed house VAL score with <= 2 FP on the house's VAL benign rows (09 strategies common_threshold_rule, 09 max_fp_threshold); 0.5 fixed. Flag iff score >= thr.",
+  "filter": "owner_status == \"owned\" AND exclude_reason == \"\" AND label != \"excluded\" (applied by 08 / 08b at build time; the parquet files hold no filter column, so 0 rows are dropped at runtime, as in 09)",
+  "low_n": 50,
+  "ci_level": 0.95,
+  "ci_method": "exact (Garwood) Poisson: [chi2.ppf(a/2, 2k) / 2, chi2.ppf(1 - a/2, 2k + 2) / 2], lower 0 at k = 0; FP/hour CI = count CI / hours",
+  "ci_selftest": {
+   "0": [
+    0.0,
+    3.689
+   ],
+   "2": [
+    0.242,
+    7.225
+   ],
+   "tol": 0.0005
+  },
+  "step9_compare": {
+   "BASELINE": [
+    "global",
+    "both"
+   ],
+   "FINAL": [
+    "behaviour_k2",
+    "shared_attack"
+   ]
+  },
+  "step9_tol": 1e-09,
+  "features_sha_prefix": "cf73976f"
+ },
+ "versions": {
+  "python": "3.11.17",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "pyarrow": "26.0.0",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "joblib": "1.6.0",
+  "xgboost": "3.4.2"
+ },
+ "platform": {
+  "machine": "x86_64",
+  "system": "Linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "cpu_count": 12
+ },
+ "split": "val",
+ "split_file": {
+  "path": "~/lgids_cache/datasets/v1_1/val.parquet",
+  "sha256": "f992fc82ed8cd34f2c8a26eab4f780473ae71b53d7577d66fd7724a789bc1a03",
+  "rows": 157558
+ },
+ "datasets": {
+  "train": {
+   "path": "~/lgids_cache/datasets/v1_1/train.parquet",
+   "sha256": "e01c2ae2bae7ce49b64a8e003d5ebe258a1f15e1600751f1ae3e0090738dd2a4",
+   "rows": 636193,
+   "rows_dropped_by_filter": 0,
+   "filter_columns_present": []
+  },
+  "val": {
+   "path": "~/lgids_cache/datasets/v1_1/val.parquet",
+   "sha256": "f992fc82ed8cd34f2c8a26eab4f780473ae71b53d7577d66fd7724a789bc1a03",
+   "rows": 157558,
+   "rows_dropped_by_filter": 0,
+   "filter_columns_present": [],
+   "meta_matches_09_load": true
+  }
+ },
+ "prereg": "config/step10_prereg.json",
+ "prereg_sha256": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+ "all_checks_pass": true,
+ "checks": [
+  {
+   "check": "val FP at T_house <= 2 (both systems)",
+   "pass": true,
+   "detail": "FINAL 2; BASELINE 2"
+  },
+  {
+   "check": "val numbers == Step 9 (global, behaviour_k2 shared_attack)",
+   "pass": true,
+   "detail": "80/80 metrics within 1e-09 (score sha256 exact)"
+  },
+  {
+   "check": "Poisson CI self-test (Garwood 95%)",
+   "pass": true,
+   "detail": "0 FP -> [0.0, 3.6889] (want upper 3.689); 2 FP -> [0.2422, 7.2247] (want [0.242, 7.225])"
+  },
+  {
+   "check": "model reload reproduces in-memory val scores exactly",
+   "pass": true,
+   "detail": "G1 equal; G2 equal; GLOBAL equal"
+  },
+  {
+   "check": "routing coverage: every val row routed to exactly one model",
+   "pass": true,
+   "detail": "by group {'G1': 93716, 'G2': 63551, 'GEN': 291}; by model {'G1': 93716, 'G2': 63551, 'GLOBAL': 291}"
+  }
+ ],
+ "step9_comparison": [
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "n_attack_val",
+   "step9": 118373.0,
+   "step10": 118373.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "n_benign_val",
+   "step9": 39185.0,
+   "step10": 39185.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "val_benign_hours",
+   "step9": 1.967583333386315,
+   "step10": 1.967583333386315,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "pr_auc",
+   "step9": 0.9999994333447274,
+   "step10": 0.9999994333447274,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "roc_auc",
+   "step9": 0.9999982795962288,
+   "step10": 0.9999982795962287,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "thr_05",
+   "step9": 0.5,
+   "step10": 0.5,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "fp_05",
+   "step9": 3.0,
+   "step10": 3.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "fph_05",
+   "step9": 1.5247130574321552,
+   "step10": 1.5247130574321552,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_05",
+   "step9": 0.99984793829674,
+   "step10": 0.99984793829674,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "thr_common",
+   "step9": 0.5927605032920837,
+   "step10": 0.5927605032920837,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "fp_common",
+   "step9": 2.0,
+   "step10": 2.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "fph_common",
+   "step9": 1.0164753716214368,
+   "step10": 1.0164753716214368,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_common",
+   "step9": 0.99984793829674,
+   "step10": 0.99984793829674,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "n_port_scan",
+   "step9": 18179.0,
+   "step10": 18179.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_05_port_scan",
+   "step9": 1.0,
+   "step10": 1.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_common_port_scan",
+   "step9": 1.0,
+   "step10": 1.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "n_syn_flood",
+   "step9": 100177.0,
+   "step10": 100177.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_05_syn_flood",
+   "step9": 0.9999101590185372,
+   "step10": 0.9999101590185372,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_common_syn_flood",
+   "step9": 0.9999101590185372,
+   "step10": 0.9999101590185372,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "n_udp_flood",
+   "step9": 17.0,
+   "step10": 17.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_05_udp_flood",
+   "step9": 0.4705882352941176,
+   "step10": 0.47058823529411764,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "dr_common_udp_flood",
+   "step9": 0.4705882352941176,
+   "step10": 0.47058823529411764,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "score_sha256",
+   "step9": "379f2401e1ceacc797191343dc6581155998ed05165982e5bddd2b7e822bb521",
+   "step10": "379f2401e1ceacc797191343dc6581155998ed05165982e5bddd2b7e822bb521",
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "house",
+   "metric": "T_house == thr_common",
+   "step9": 0.5927605032920837,
+   "step10": 0.5927605032920837,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "n_val",
+   "step9": 157558.0,
+   "step10": 157558.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "n_val_benign",
+   "step9": 39185.0,
+   "step10": 39185.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "fp_05",
+   "step9": 3.0,
+   "step10": 3.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "fp_common",
+   "step9": 2.0,
+   "step10": 2.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "n_train",
+   "step9": 636193.0,
+   "step10": 636193.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "n_train_benign",
+   "step9": 137462.0,
+   "step10": 137462.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "n_train_attack",
+   "step9": 498731.0,
+   "step10": 498731.0,
+   "pass": true
+  },
+  {
+   "system": "BASELINE",
+   "scope": "group GLOBAL",
+   "metric": "size_bytes",
+   "step9": 154316.0,
+   "step10": 154316.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "n_attack_val",
+   "step9": 118373.0,
+   "step10": 118373.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "n_benign_val",
+   "step9": 39185.0,
+   "step10": 39185.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "val_benign_hours",
+   "step9": 1.967583333386315,
+   "step10": 1.967583333386315,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "pr_auc",
+   "step9": 0.9999986964543665,
+   "step10": 0.9999986964543663,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "roc_auc",
+   "step9": 0.9999959802270028,
+   "step10": 0.9999959802270028,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "thr_05",
+   "step9": 0.5,
+   "step10": 0.5,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "fp_05",
+   "step9": 3.0,
+   "step10": 3.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "fph_05",
+   "step9": 1.5247130574321552,
+   "step10": 1.5247130574321552,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_05",
+   "step9": 0.9998394904243366,
+   "step10": 0.9998394904243366,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "thr_common",
+   "step9": 0.568307638168335,
+   "step10": 0.568307638168335,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "fp_common",
+   "step9": 2.0,
+   "step10": 2.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "fph_common",
+   "step9": 1.0164753716214368,
+   "step10": 1.0164753716214368,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_common",
+   "step9": 0.9998394904243366,
+   "step10": 0.9998394904243366,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "n_port_scan",
+   "step9": 18179.0,
+   "step10": 18179.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_05_port_scan",
+   "step9": 1.0,
+   "step10": 1.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_common_port_scan",
+   "step9": 1.0,
+   "step10": 1.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "n_syn_flood",
+   "step9": 100177.0,
+   "step10": 100177.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_05_syn_flood",
+   "step9": 0.9999001766872636,
+   "step10": 0.9999001766872635,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_common_syn_flood",
+   "step9": 0.9999001766872636,
+   "step10": 0.9999001766872635,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "n_udp_flood",
+   "step9": 17.0,
+   "step10": 17.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_05_udp_flood",
+   "step9": 0.4705882352941176,
+   "step10": 0.47058823529411764,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "dr_common_udp_flood",
+   "step9": 0.4705882352941176,
+   "step10": 0.47058823529411764,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "score_sha256",
+   "step9": "7fbaac98d029ebfc6853e3cd50d070b806d9e0eeef79a8b52bd7b2e563de0821",
+   "step10": "7fbaac98d029ebfc6853e3cd50d070b806d9e0eeef79a8b52bd7b2e563de0821",
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "house",
+   "metric": "T_house == thr_common",
+   "step9": 0.568307638168335,
+   "step10": 0.568307638168335,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "n_val",
+   "step9": 93716.0,
+   "step10": 93716.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "n_val_benign",
+   "step9": 35833.0,
+   "step10": 35833.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "fp_05",
+   "step9": 2.0,
+   "step10": 2.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "fp_common",
+   "step9": 2.0,
+   "step10": 2.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "n_train",
+   "step9": 618759.0,
+   "step10": 618759.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "n_train_benign",
+   "step9": 120028.0,
+   "step10": 120028.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "n_train_attack",
+   "step9": 498731.0,
+   "step10": 498731.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G1",
+   "metric": "size_bytes",
+   "step9": 147178.0,
+   "step10": 147178.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "n_val",
+   "step9": 63551.0,
+   "step10": 63551.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "n_val_benign",
+   "step9": 3061.0,
+   "step10": 3061.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "fp_05",
+   "step9": 1.0,
+   "step10": 1.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "fp_common",
+   "step9": 0.0,
+   "step10": 0.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "n_train",
+   "step9": 515010.0,
+   "step10": 515010.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "n_train_benign",
+   "step9": 16279.0,
+   "step10": 16279.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "n_train_attack",
+   "step9": 498731.0,
+   "step10": 498731.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group G2",
+   "metric": "size_bytes",
+   "step9": 103316.0,
+   "step10": 103316.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "n_val",
+   "step9": 291.0,
+   "step10": 291.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "n_val_benign",
+   "step9": 291.0,
+   "step10": 291.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "fp_05",
+   "step9": 0.0,
+   "step10": 0.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "fp_common",
+   "step9": 0.0,
+   "step10": 0.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "n_train",
+   "step9": 636193.0,
+   "step10": 636193.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "n_train_benign",
+   "step9": 137462.0,
+   "step10": 137462.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "n_train_attack",
+   "step9": 498731.0,
+   "step10": 498731.0,
+   "pass": true
+  },
+  {
+   "system": "FINAL",
+   "scope": "group GEN",
+   "metric": "size_bytes",
+   "step9": 154316.0,
+   "step10": 154316.0,
+   "pass": true
+  }
+ ],
+ "thresholds": {
+  "FINAL": {
+   "T_house": 0.568307638168335,
+   "0.5": 0.5
+  },
+  "BASELINE": {
+   "T_house": 0.5927605032920837,
+   "0.5": 0.5
+  }
+ },
+ "hours": {
+  "night": 1.967583333386315,
+  "daytime": 0.0,
+  "combined": 1.967583333386315,
+  "source": "val: 09 group_val_hours GLOBAL (08 rule on manifest_v1 session_cuts; == manifest per_split.val 1.9676); val has no daytime benign"
+ },
+ "routing": {
+  "rows": 157558,
+  "routed_exactly_once": true,
+  "by_group": {
+   "G1": 93716,
+   "G2": 63551,
+   "GEN": 291
+  },
+  "by_routed_model": {
+   "G1": 93716,
+   "G2": 63551,
+   "GLOBAL": 291
+  },
+  "unregistered_mac_rows": 0,
+  "group_to_model": {
+   "G1": "G1",
+   "G2": "G2",
+   "GEN": "GLOBAL"
+  }
+ },
+ "models": {
+  "G1": {
+   "training_set": "shared_attack: TRAIN benign rows of group G1 (behaviour_k2) + every TRAIN attack row",
+   "n_train": 618759,
+   "n_train_benign": 120028,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.24066681236979454,
+   "class_weight_handling": "scale_pos_weight = n_benign / n_attack = 120028 / 498731 = 0.240667",
+   "preprocessing": "70 raw features",
+   "fit_s": 4.718,
+   "fit_warnings": [],
+   "rows_sha256_16": "05ee0e90a6c5ec95",
+   "size_bytes_in_memory": 147178,
+   "path": "~/lgids_cache/models/step10/G1.joblib",
+   "sha256": "94451ede65092a4e3c807d6b4fa44df7fed9c6b242a7260c60b21576e1b3a076",
+   "file_bytes": 147178
+  },
+  "G2": {
+   "training_set": "shared_attack: TRAIN benign rows of group G2 (behaviour_k2) + every TRAIN attack row",
+   "n_train": 515010,
+   "n_train_benign": 16279,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.032640842458158806,
+   "class_weight_handling": "scale_pos_weight = n_benign / n_attack = 16279 / 498731 = 0.0326408",
+   "preprocessing": "70 raw features",
+   "fit_s": 2.386,
+   "fit_warnings": [],
+   "rows_sha256_16": "63f2a4532c44c283",
+   "size_bytes_in_memory": 103316,
+   "path": "~/lgids_cache/models/step10/G2.joblib",
+   "sha256": "9f63a62dfb50675f22c4c6c8644a79061b5bcf6fb280dc4702f028278ea46687",
+   "file_bytes": 103316
+  },
+  "GLOBAL": {
+   "training_set": "every TRAIN row",
+   "n_train": 636193,
+   "n_train_benign": 137462,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.27562353252554983,
+   "class_weight_handling": "scale_pos_weight = n_benign / n_attack = 137462 / 498731 = 0.275624",
+   "preprocessing": "70 raw features",
+   "fit_s": 6.207,
+   "fit_warnings": [],
+   "rows_sha256_16": "7be95f054be87f6f",
+   "size_bytes_in_memory": 154316,
+   "path": "~/lgids_cache/models/step10/GLOBAL.joblib",
+   "sha256": "d7408f5073182cf0bf7346804bf84a38f9376083d0ab996cd98ba3889461f54a",
+   "file_bytes": 154316
+  }
+ },
+ "groupings_check": {
+  "coverage_csv": "results/step9/groupings/coverage.csv",
+  "coverage_sha256": "5e479caf32f0e80f5668c3c8d983ceb13893606e811da6079a79224ee2d2ceea",
+  "counts_checked": 24,
+  "k2_equals_parquet_group": true
+ },
+ "sessions": {
+  "attack_sessions": [
+   "DDoS-SYN_Flood",
+   "DDoS-SYN_Flood5",
+   "Recon-PortScan",
+   "Mirai-udpplain"
+  ],
+  "family_of": {
+   "DDoS-SYN_Flood": "syn_flood",
+   "DDoS-SYN_Flood5": "syn_flood",
+   "Recon-PortScan": "port_scan",
+   "Mirai-udpplain": "udp_flood"
+  },
+  "aliases": {
+   "DDoS-SYN_Flood": "SYN first part",
+   "DDoS-SYN_Flood5": "SYN 5",
+   "DDoS-SYN_Flood10": "SYN 10",
+   "DDoS-SYN_Flood15": "SYN 15",
+   "Recon-PortScan": "Recon-PortScan",
+   "Mirai-udpplain": "Mirai first part",
+   "Mirai-udpplain24": "Mirai 24",
+   "BenignTraffic1": "daytime benign (BenignTraffic1)",
+   "BenignTraffic2": "daytime benign (BenignTraffic2)",
+   "BenignTraffic3": "daytime benign (BenignTraffic3)"
+  },
+  "night_sessions": [
+   "benign_night",
+   "DDoS-SYN_Flood",
+   "DDoS-SYN_Flood5",
+   "DDoS-SYN_Flood10",
+   "DDoS-SYN_Flood15",
+   "Recon-PortScan",
+   "Mirai-udpplain",
+   "Mirai-udpplain24"
+  ],
+  "daytime_sessions": [
+   "BenignTraffic1",
+   "BenignTraffic2",
+   "BenignTraffic3"
+  ]
+ },
+ "row_counts": {
+  "rows": 157558,
+  "benign": 39185,
+  "attack": 118373,
+  "benign_by_period": {
+   "night": 39185,
+   "daytime": 0
+  },
+  "attack_by_family": {
+   "port_scan": 18179,
+   "syn_flood": 100177,
+   "udp_flood": 17
+  },
+  "attack_by_session": {
+   "DDoS-SYN_Flood": 50103,
+   "DDoS-SYN_Flood5": 50074,
+   "Recon-PortScan": 18179,
+   "Mirai-udpplain": 17
+  },
+  "rows_by_group": {
+   "G1": 93716,
+   "G2": 63551,
+   "GEN": 291
+  },
+  "benign_by_device_category": {
+   "Audio": 5905,
+   "Camera": 10131,
+   "Home Automation": 1883,
+   "Hub": 17049,
+   "Lighting": 600,
+   "Power Outlet": 2748,
+   "Unidentified (Amazon)": 381,
+   "Unidentified (Espressif)": 488
+  }
+ },
+ "rows_dropped_by_filter": {
+  "train": 0,
+  "val": 0
+ },
+ "predictions_sha256": "0fb8d63e4f1bce9ca45f7b2d8aa4cbb92a03c1867717e5ef5005bfb5c259b511",
+ "test_split": "never opened",
+ "runtimes_s": {
+  "inputs_s": 1.4,
+  "train_s": 14.3,
+  "val_score_s": 0.6,
+  "report_s": 0.6,
+  "total_s": 22.1
+ },
+ "finished_utc": "2026-10-19T20:21:37+00:00"
+}

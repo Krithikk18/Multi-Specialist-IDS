@@ -1,0 +1,203 @@
+{
+ "step": 10,
+ "created_utc": "2026-10-19T20:21:32+00:00",
+ "created_by": "10_evaluate.py --mode dryrun",
+ "git_head_at_dryrun": "1fb1cfe8a161b18132f2824374615dc886a5353f",
+ "git_dirty_tracked_at_dryrun": [],
+ "script": {
+  "path": "10_evaluate.py",
+  "sha256": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63"
+ },
+ "inputs_sha256": {
+  "09_train_specialists.py": "d792112ee52ad3ceb657321a36251364a3efa5dec8621143fe1414fe2e3cf30e",
+  "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+  "config/groupings/behaviour_k2.json": "9f80565f7ece7f6511a5be576379fc30a12b1a67b9834a6c65781b8944f14442",
+  "config/split_plan_v1_1.json": "56813a35e1cbcf46a7f41ae9cdd1e5d1affb0b94f3ef358427ad778e13182827",
+  "results/step8b/manifest_v1_1.json": "a1e5f38dbc287a4357d87d62f4035bb64193e208a7f384f4fd04005a3a4be3bd",
+  "results/step8/manifest_v1.json": "c2e48e620ad38a1e1650a2e5b9edd6739a9c6ea0433f585c93c72b8037fcf844",
+  "config/attack_set.json": "b975bd3cc6d5b0fdfa554a835f91f76ebc81b8d71a646e3d093c9028fa578534",
+  "config/behaviour_groups.json": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532"
+ },
+ "features": {
+  "path": "config/features_v1.json",
+  "n": 70,
+  "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8"
+ },
+ "xgboost_version": "3.4.2",
+ "datasets": {
+  "train": {
+   "path": "~/lgids_cache/datasets/v1_1/train.parquet",
+   "sha256": "e01c2ae2bae7ce49b64a8e003d5ebe258a1f15e1600751f1ae3e0090738dd2a4",
+   "rows": 636193
+  },
+  "val": {
+   "path": "~/lgids_cache/datasets/v1_1/val.parquet",
+   "sha256": "f992fc82ed8cd34f2c8a26eab4f780473ae71b53d7577d66fd7724a789bc1a03",
+   "rows": 157558
+  },
+  "test": {
+   "path": "~/lgids_cache/datasets/v1_1/test.parquet",
+   "expected_sha256": "0650b0fd0dcc01d84a4b12020fc3d625484b84c42e0844e3c0e1794cc3bf45b5",
+   "expected_rows": 694169,
+   "source": "results/step8b/manifest_v1_1.json outputs (test file not read)"
+  }
+ },
+ "filter": "owner_status == \"owned\" AND exclude_reason == \"\" AND label != \"excluded\" (applied by 08 / 08b at build time; the parquet files hold no filter column, so 0 rows are dropped at runtime, as in 09)",
+ "grouping": {
+  "path": "config/groupings/behaviour_k2.json",
+  "sha256": "9f80565f7ece7f6511a5be576379fc30a12b1a67b9834a6c65781b8944f14442",
+  "groups": [
+   "G1",
+   "G2",
+   "GEN"
+  ]
+ },
+ "routing": {
+  "rule": "by the row's group column: G1 -> G1 model, G2 -> G2 model, GEN -> GLOBAL; unregistered MACs (device 'unregistered:<mac>', device_category 'unregistered_mac') are group GEN -> GLOBAL. BASELINE: GLOBAL for every row.",
+  "group_to_model": {
+   "G1": "G1",
+   "G2": "G2",
+   "GEN": "GLOBAL"
+  }
+ },
+ "models": {
+  "G1": {
+   "path": "~/lgids_cache/models/step10/G1.joblib",
+   "sha256": "94451ede65092a4e3c807d6b4fa44df7fed9c6b242a7260c60b21576e1b3a076",
+   "file_bytes": 147178,
+   "training_set": "shared_attack: TRAIN benign rows of group G1 (behaviour_k2) + every TRAIN attack row",
+   "n_train": 618759,
+   "n_train_benign": 120028,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.24066681236979454,
+   "rows_sha256_16": "05ee0e90a6c5ec95"
+  },
+  "G2": {
+   "path": "~/lgids_cache/models/step10/G2.joblib",
+   "sha256": "9f63a62dfb50675f22c4c6c8644a79061b5bcf6fb280dc4702f028278ea46687",
+   "file_bytes": 103316,
+   "training_set": "shared_attack: TRAIN benign rows of group G2 (behaviour_k2) + every TRAIN attack row",
+   "n_train": 515010,
+   "n_train_benign": 16279,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.032640842458158806,
+   "rows_sha256_16": "63f2a4532c44c283"
+  },
+  "GLOBAL": {
+   "path": "~/lgids_cache/models/step10/GLOBAL.joblib",
+   "sha256": "d7408f5073182cf0bf7346804bf84a38f9376083d0ab996cd98ba3889461f54a",
+   "file_bytes": 154316,
+   "training_set": "every TRAIN row",
+   "n_train": 636193,
+   "n_train_benign": 137462,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.27562353252554983,
+   "rows_sha256_16": "7be95f054be87f6f"
+  }
+ },
+ "model_settings": "09 build_model / fit_model: XGBoost library defaults + scale_pos_weight = n_benign / n_attack of the model's own training rows, random_state 42, n_jobs -1; 70 features (features_v1.json order, float32); no search",
+ "seed": 42,
+ "systems": {
+  "FINAL": {
+   "models": [
+    "G1",
+    "G2",
+    "GLOBAL"
+   ],
+   "note": "specialists G1 + G2 (shared_attack) + GLOBAL fallback",
+   "thresholds": {
+    "T_house": 0.568307638168335,
+    "0.5": 0.5
+   },
+   "thresholds_hex": {
+    "T_house": "0x1.22f9380000000p-1",
+    "0.5": "0x1.0000000000000p-1"
+   },
+   "val_fp_at_T_house": 2
+  },
+  "BASELINE": {
+   "models": [
+    "GLOBAL"
+   ],
+   "note": "GLOBAL scores every row (same model file as FINAL's GLOBAL)",
+   "thresholds": {
+    "T_house": 0.5927605032920837,
+    "0.5": 0.5
+   },
+   "thresholds_hex": {
+    "T_house": "0x1.2f7e4e0000000p-1",
+    "0.5": "0x1.0000000000000p-1"
+   },
+   "val_fp_at_T_house": 2
+  }
+ },
+ "threshold_rule": "T_house: lowest observed house VAL score with <= 2 FP on the house's VAL benign rows (09 strategies common_threshold_rule, 09 max_fp_threshold); 0.5 fixed. Flag iff score >= thr.",
+ "operating_points": [
+  "T_house",
+  "0.5"
+ ],
+ "test_sessions": {
+  "source": "config/split_plan_v1_1.json (names only; no data file read)",
+  "plan_modes": {
+   "benign_night": "time_split",
+   "DDoS-SYN_Flood10": "test",
+   "DDoS-SYN_Flood15": "test",
+   "Recon-PortScan": "time_split",
+   "Mirai-udpplain24": "test",
+   "BenignTraffic1": "test_only",
+   "BenignTraffic2": "test_only",
+   "BenignTraffic3": "test_only"
+  },
+  "attack_sessions": [
+   "DDoS-SYN_Flood10",
+   "DDoS-SYN_Flood15",
+   "Recon-PortScan",
+   "Mirai-udpplain24"
+  ],
+  "family_of": {
+   "DDoS-SYN_Flood10": "syn_flood",
+   "DDoS-SYN_Flood15": "syn_flood",
+   "Recon-PortScan": "port_scan",
+   "Mirai-udpplain24": "udp_flood"
+  },
+  "aliases": {
+   "DDoS-SYN_Flood": "SYN first part",
+   "DDoS-SYN_Flood5": "SYN 5",
+   "DDoS-SYN_Flood10": "SYN 10",
+   "DDoS-SYN_Flood15": "SYN 15",
+   "Recon-PortScan": "Recon-PortScan",
+   "Mirai-udpplain": "Mirai first part",
+   "Mirai-udpplain24": "Mirai 24",
+   "BenignTraffic1": "daytime benign (BenignTraffic1)",
+   "BenignTraffic2": "daytime benign (BenignTraffic2)",
+   "BenignTraffic3": "daytime benign (BenignTraffic3)"
+  },
+  "night_sessions": [
+   "benign_night",
+   "DDoS-SYN_Flood",
+   "DDoS-SYN_Flood5",
+   "DDoS-SYN_Flood10",
+   "DDoS-SYN_Flood15",
+   "Recon-PortScan",
+   "Mirai-udpplain",
+   "Mirai-udpplain24"
+  ],
+  "daytime_sessions": [
+   "BenignTraffic1",
+   "BenignTraffic2",
+   "BenignTraffic3"
+  ]
+ },
+ "test_hours": {
+  "night": 3.0179,
+  "daytime": 18.742222222222225,
+  "combined": 21.760122222222225,
+  "source": "results/step8b/manifest_v1_1.json hours: v1_test (night), added (daytime), v1_1_test (combined)"
+ },
+ "reporting": {
+  "low_n": 50,
+  "ci": "exact (Garwood) Poisson: [chi2.ppf(a/2, 2k) / 2, chi2.ppf(1 - a/2, 2k + 2) / 2], lower 0 at k = 0; FP/hour CI = count CI / hours",
+  "ci_level": 0.95
+ }
+}

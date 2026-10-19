@@ -1,0 +1,101 @@
+{
+ "version": "v1.1",
+ "note": "v1.0 plan (config/split_plan.json, unchanged) + the CICIoT2023 daytime benign captures as test_only sessions, added by 08b_extend_test.py. 08_build_datasets.py does not read this file: v1.1 train / val are byte copies of v1, v1.1 test = v1 test + the test_only sessions.",
+ "seed": 42,
+ "gap_seconds": 120,
+ "gap_on_train_val_cut": true,
+ "time_basis": "active",
+ "time_basis_note": "active: fractions of a session's ACTIVE time (idle gaps between capture segments do not count); range: fractions of the wall-clock span first..last flow start",
+ "active_idle_gap_seconds": 300,
+ "time_fracs": {
+  "train": 0.7,
+  "val": 0.15,
+  "test": 0.15
+ },
+ "val_frac_of_train_sessions": 0.15,
+ "sessions": {
+  "benign_night": "time_split",
+  "DDoS-SYN_Flood": "train",
+  "DDoS-SYN_Flood5": "train",
+  "DDoS-SYN_Flood10": "test",
+  "DDoS-SYN_Flood15": "test",
+  "Recon-PortScan": "time_split",
+  "Mirai-udpplain": "train",
+  "Mirai-udpplain24": "test",
+  "BenignTraffic1": "test_only",
+  "BenignTraffic2": "test_only",
+  "BenignTraffic3": "test_only"
+ },
+ "session_aliases": {
+  "DDoS-SYN_Flood": "SYN first part",
+  "DDoS-SYN_Flood5": "SYN 5",
+  "DDoS-SYN_Flood10": "SYN 10",
+  "DDoS-SYN_Flood15": "SYN 15",
+  "Recon-PortScan": "Recon-PortScan",
+  "Mirai-udpplain": "Mirai first part",
+  "Mirai-udpplain24": "Mirai 24",
+  "BenignTraffic1": "daytime benign (BenignTraffic1)",
+  "BenignTraffic2": "daytime benign (BenignTraffic2)",
+  "BenignTraffic3": "daytime benign (BenignTraffic3)"
+ },
+ "caps": {
+  "train_benign_per_device": 20000,
+  "attack_per_family_per_group": {
+   "train": 200000,
+   "val": 50000,
+   "test": 200000
+  },
+  "never_cap_families": [
+   "udp_flood",
+   "port_scan"
+  ],
+  "never_cap_families_aliases": {
+   "udp_flood": "Mirai",
+   "port_scan": "Recon"
+  }
+ },
+ "min_test_attack_warn": 20,
+ "base_plan": {
+  "path": "config/split_plan.json",
+  "version": "v1.0",
+  "sha256": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647"
+ },
+ "test_only_sessions": {
+  "BenignTraffic1": {
+   "kind": "benign",
+   "split": "test",
+   "source": "07_label_attacks.py --family benign_daytime",
+   "flows": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic1/BenignTraffic1_labelled.csv.gz",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic1.pcap",
+   "pcap_sha256": "7af057c6681e076151cc28e123a44ea6ff0e3b174d39d456ba7ccf1ac22d24c0",
+   "start_utc": "2022-10-08T02:30:28+00:00",
+   "end_utc": "2022-10-08T09:45:20+00:00"
+  },
+  "BenignTraffic2": {
+   "kind": "benign",
+   "split": "test",
+   "source": "07_label_attacks.py --family benign_daytime",
+   "flows": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic2/BenignTraffic2_labelled.csv.gz",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic2.pcap",
+   "pcap_sha256": "ddafc1c1d3432bdde55340423196ceee79bba47b48b14179ae48d561cca341b8",
+   "start_utc": "2022-10-08T09:45:21+00:00",
+   "end_utc": "2022-10-08T17:47:19+00:00"
+  },
+  "BenignTraffic3": {
+   "kind": "benign",
+   "split": "test",
+   "source": "07_label_attacks.py --family benign_daytime",
+   "flows": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic3/BenignTraffic3_labelled.csv.gz",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic3.pcap",
+   "pcap_sha256": "af98016449742052bca87d7ac598cf6e4e4558c33480cdb665f93da7b60b6e11",
+   "start_utc": "2022-10-08T17:47:21+00:00",
+   "end_utc": "2022-10-08T21:15:00+00:00"
+  }
+ },
+ "test_only_rules": {
+  "filter": "08: owned, exclude_reason blank, label != excluded, grouped",
+  "unregistered_mac": "unowned row with an unlisted endpoint -> group GEN, device unregistered:<mac>, device_category unregistered_mac",
+  "subsample": "none",
+  "group": "device_table behaviour_group (v1.0 lock)"
+ }
+}

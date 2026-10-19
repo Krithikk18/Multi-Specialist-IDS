@@ -1,0 +1,942 @@
+{
+ "dataset_version": "v1_1",
+ "run_utc": "2026-10-19T19:35:39+00:00",
+ "argv": [
+  "08b_extend_test.py"
+ ],
+ "log": "/mnt/d/Projects/Company Project/Paper_Implemetation/logs/08b_extend_test_2026-10-19T193539Z.log",
+ "dry_run": false,
+ "limit_rows": null,
+ "code_sha256": "f3fa68a5f1ad4deaf239b53c35545c59b01bdb47d1d16c178e22fe219d1a1ca1",
+ "hard_pass": true,
+ "checks": {
+  "verify_lock": {
+   "pass": true,
+   "detail": "10 checks"
+  },
+  "v1 files match manifest_v1 (rows, bytes)": {
+   "pass": true,
+   "detail": "ok"
+  },
+  "features = v1 (features_v1.json sha256, order, v1 parquet schema)": {
+   "pass": true,
+   "detail": "70 features, sha256 cf73976fd384a466... (json cf73976fd384a466..., manifest_v1 cf73976fd384a466...); parquet columns = features + ['y', 'attack_family', 'group', 'device', 'device_category', 'session', 'split', 'start_ts']: True"
+  },
+  "device_table, behaviour_groups, split_plan.json unchanged since v1": {
+   "pass": true,
+   "detail": "ok (sha256 = manifest_v1)"
+  },
+  "daytime inputs: extractor lock, 07 hard_pass, same pcap / jar / device_table, columns": {
+   "pass": true,
+   "detail": "ok (3 session(s))"
+  },
+  "no daytime row labelled attack (07, all rows)": {
+   "pass": true,
+   "detail": "attack-labelled rows per session {'BenignTraffic1': 0, 'BenignTraffic2': 0, 'BenignTraffic3': 0}"
+  },
+  "daytime time ranges overlap no v1 session and no other daytime session": {
+   "pass": true,
+   "detail": "ok (1 shared boundary second(s))"
+  },
+  "daytime rows written: y 0, attack_family blank, split test, group in G1/G2/GEN": {
+   "pass": true,
+   "detail": "0 rows with a group outside ('G1', 'G2', 'GEN') (y / family / split are set as constants)"
+  },
+  "train / val parquet = byte copies of v1 (sha256)": {
+   "pass": true,
+   "detail": "{'train': True, 'val': True}"
+  },
+  "v1.1 test = v1 test rows unchanged, then the daytime rows": {
+   "pass": true,
+   "detail": "head 473,810 rows = v1 test 473,810 (column sha256 b2ace46c5389a0f8...); tail 220,359 = daytime 220,359; total 694,169"
+  },
+  "v1 parquet, results/step8, split_plan.json unchanged after the run": {
+   "pass": true,
+   "detail": "ok (sha256 before = after)"
+  }
+ },
+ "touching": [
+  "BenignTraffic1 [2022-10-08T02:30:28+00:00, 2022-10-08T09:45:20+00:00] / benign_night [2022-10-07T17:15:00+00:00, 2022-10-08T02:30:28+00:00]: share second 2022-10-08T02:30:28+00:00"
+ ],
+ "config": {
+  "split_plan_v1_0": {
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/split_plan.json",
+   "sha256": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647"
+  },
+  "split_plan_v1_1": {
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/split_plan_v1_1.json",
+   "version": "v1.1",
+   "sha256": "56813a35e1cbcf46a7f41ae9cdd1e5d1affb0b94f3ef358427ad778e13182827"
+  },
+  "device_table": {
+   "sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532"
+  },
+  "behaviour_groups": {
+   "sha256": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532"
+  },
+  "features": {
+   "n": 70,
+   "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c"
+  },
+  "verify_lock": [
+   {
+    "check": "extractor jar sha256",
+    "pass": true,
+    "detail": "/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+   },
+   {
+    "check": "extractor patch exists",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch"
+   },
+   {
+    "check": "extractor sweeper patch exists",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch"
+   },
+   {
+    "check": "config file device_table.csv",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv"
+   },
+   {
+    "check": "config file ip_mac_map.csv",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv"
+   },
+   {
+    "check": "config file behaviour_groups.json",
+    "pass": true,
+    "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json"
+   },
+   {
+    "check": "groups version",
+    "pass": true,
+    "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+   },
+   {
+    "check": "groups labels",
+    "pass": true,
+    "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+   },
+   {
+    "check": "groups lock verified",
+    "pass": true,
+    "detail": "behaviour_groups.json verification.pass"
+   },
+   {
+    "check": "extractor TZ",
+    "pass": true,
+    "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+   }
+  ]
+ },
+ "v1": {
+  "train": {
+   "path": "/home/krithikk/lgids_cache/datasets/v1/train.parquet",
+   "rows": 636193,
+   "bytes": 53905498,
+   "sha256": "e01c2ae2bae7ce49b64a8e003d5ebe258a1f15e1600751f1ae3e0090738dd2a4"
+  },
+  "val": {
+   "path": "/home/krithikk/lgids_cache/datasets/v1/val.parquet",
+   "rows": 157558,
+   "bytes": 14086088,
+   "sha256": "f992fc82ed8cd34f2c8a26eab4f780473ae71b53d7577d66fd7724a789bc1a03"
+  },
+  "test": {
+   "path": "/home/krithikk/lgids_cache/datasets/v1/test.parquet",
+   "rows": 473810,
+   "bytes": 40747838,
+   "sha256": "7ddbe0fa45dd20aff0a5bd7f239f6322bfef6fb67e097e62d202333ff24e1f4f"
+  }
+ },
+ "v1_test_rows_column_sha256": "b2ace46c5389a0f8248a3c8667a8bbab16bb2a2112caf36cdb477cc3e8bce800",
+ "daytime_rows_column_sha256": "a89864e5681839580320ccddee1d2ab86c573ca2881e89f6b3bfa9fff78168b6",
+ "inputs": [
+  {
+   "session": "BenignTraffic1",
+   "path": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic1/BenignTraffic1_labelled.csv.gz",
+   "sha256": "ba56437c91177b85d4ac624bc20c18be899f31fd5577eb6956f680f88586a649",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic1.pcap",
+   "pcap_sha256": "7af057c6681e076151cc28e123a44ea6ff0e3b174d39d456ba7ccf1ac22d24c0",
+   "extractor_rows": 93698,
+   "label_report": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step8b/labels/BenignTraffic1_label_report.json",
+   "label_completion_key": {
+    "pcap_sha256": "7af057c6681e076151cc28e123a44ea6ff0e3b174d39d456ba7ccf1ac22d24c0",
+    "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+    "stats07a_sha256": "53cc59f2f45fc2dfdf5229b1261fb453293591c9d5018268e6ce50a659b68512",
+    "pad_s": 60.0,
+    "rate_k": 10.0,
+    "min_new_services": 1,
+    "attack_family": "benign_daytime",
+    "label_version": 3,
+    "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+    "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+   },
+   "by_label": {
+    "attack": 0,
+    "benign": 91713,
+    "excluded": 1985
+   },
+   "by_exclude_reason": {
+    "attacker_offwindow": 1985,
+    "attacker_normal_traffic": 0,
+    "victim_ambiguous": 0,
+    "attack_normal_service_ambiguous": 0,
+    "spoof_collision": 0
+   }
+  },
+  {
+   "session": "BenignTraffic2",
+   "path": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic2/BenignTraffic2_labelled.csv.gz",
+   "sha256": "c71e641589e525b01f89f0df93470069a473db7f27a5ce4d6a47a1bcba08f16a",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic2.pcap",
+   "pcap_sha256": "ddafc1c1d3432bdde55340423196ceee79bba47b48b14179ae48d561cca341b8",
+   "extractor_rows": 101111,
+   "label_report": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step8b/labels/BenignTraffic2_label_report.json",
+   "label_completion_key": {
+    "pcap_sha256": "ddafc1c1d3432bdde55340423196ceee79bba47b48b14179ae48d561cca341b8",
+    "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+    "stats07a_sha256": "491d8016ae8530d90bd2ae8933f36474573971a7fcf43349ca1ec1eb3798cca0",
+    "pad_s": 60.0,
+    "rate_k": 10.0,
+    "min_new_services": 1,
+    "attack_family": "benign_daytime",
+    "label_version": 3,
+    "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+    "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+   },
+   "by_label": {
+    "attack": 0,
+    "benign": 99166,
+    "excluded": 1945
+   },
+   "by_exclude_reason": {
+    "attacker_offwindow": 1915,
+    "attacker_normal_traffic": 18,
+    "victim_ambiguous": 0,
+    "attack_normal_service_ambiguous": 12,
+    "spoof_collision": 0
+   }
+  },
+  {
+   "session": "BenignTraffic3",
+   "path": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic3/BenignTraffic3_labelled.csv.gz",
+   "sha256": "bccaf5fa1c5bd3831866001100c600893156275bf92278d0d50b7a1b17ceb35d",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic3.pcap",
+   "pcap_sha256": "af98016449742052bca87d7ac598cf6e4e4558c33480cdb665f93da7b60b6e11",
+   "extractor_rows": 43078,
+   "label_report": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/step8b/labels/BenignTraffic3_label_report.json",
+   "label_completion_key": {
+    "pcap_sha256": "af98016449742052bca87d7ac598cf6e4e4558c33480cdb665f93da7b60b6e11",
+    "device_table_sha256": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+    "stats07a_sha256": "eec48c3a5dfdead747ee15008619a92997b93369b7802c0ed1ff2afb06daf9ef",
+    "pad_s": 60.0,
+    "rate_k": 10.0,
+    "min_new_services": 1,
+    "attack_family": "benign_daytime",
+    "label_version": 3,
+    "code_sha256": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+    "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+   },
+   "by_label": {
+    "attack": 0,
+    "benign": 42317,
+    "excluded": 761
+   },
+   "by_exclude_reason": {
+    "attacker_offwindow": 761,
+    "attacker_normal_traffic": 0,
+    "victim_ambiguous": 0,
+    "attack_normal_service_ambiguous": 0,
+    "spoof_collision": 0
+   }
+  }
+ ],
+ "sessions": [
+  {
+   "session": "BenignTraffic1",
+   "start_utc": "2022-10-08T02:30:28+00:00",
+   "end_utc": "2022-10-08T09:45:20+00:00",
+   "span_h": 7.25,
+   "active_h": 7.25,
+   "segments": 1,
+   "rows": 93698,
+   "label_attack": 0,
+   "not_owned": 6812,
+   "exclude_reason": 0,
+   "label_excluded": 1573,
+   "ungrouped": 0,
+   "unregistered_mac_kept": 8,
+   "owner_device_name_mismatch": 0,
+   "added": 85321,
+   "benign_h": 7.248
+  },
+  {
+   "session": "BenignTraffic2",
+   "start_utc": "2022-10-08T09:45:21+00:00",
+   "end_utc": "2022-10-08T17:47:19+00:00",
+   "span_h": 8.03,
+   "active_h": 8.03,
+   "segments": 1,
+   "rows": 101111,
+   "label_attack": 0,
+   "not_owned": 5339,
+   "exclude_reason": 0,
+   "label_excluded": 1488,
+   "ungrouped": 0,
+   "unregistered_mac_kept": 0,
+   "owner_device_name_mismatch": 0,
+   "added": 94284,
+   "benign_h": 8.033
+  },
+  {
+   "session": "BenignTraffic3",
+   "start_utc": "2022-10-08T17:47:21+00:00",
+   "end_utc": "2022-10-08T21:15:00+00:00",
+   "span_h": 3.46,
+   "active_h": 3.46,
+   "segments": 1,
+   "rows": 43078,
+   "label_attack": 0,
+   "not_owned": 1755,
+   "exclude_reason": 0,
+   "label_excluded": 569,
+   "ungrouped": 0,
+   "unregistered_mac_kept": 0,
+   "owner_device_name_mismatch": 0,
+   "added": 40754,
+   "benign_h": 3.461
+  }
+ ],
+ "labels07": [
+  {
+   "session": "BenignTraffic1",
+   "attack": 0,
+   "benign": 91713,
+   "excluded": 1985,
+   "excluded_by_reason": "attacker_offwindow 1,985"
+  },
+  {
+   "session": "BenignTraffic2",
+   "attack": 0,
+   "benign": 99166,
+   "excluded": 1945,
+   "excluded_by_reason": "attacker_offwindow 1,915, attacker_normal_traffic 18, attack_normal_service_ambiguous 12"
+  },
+  {
+   "session": "BenignTraffic3",
+   "attack": 0,
+   "benign": 42317,
+   "excluded": 761,
+   "excluded_by_reason": "attacker_offwindow 761"
+  }
+ ],
+ "session_names": [
+  "BenignTraffic1",
+  "BenignTraffic2",
+  "BenignTraffic3"
+ ],
+ "by_group": [
+  {
+   "group": "G1",
+   "BenignTraffic1": 74713,
+   "BenignTraffic2": 82625,
+   "BenignTraffic3": 35680,
+   "total": 193018
+  },
+  {
+   "group": "G2",
+   "BenignTraffic1": 10460,
+   "BenignTraffic2": 11618,
+   "BenignTraffic3": 5055,
+   "total": 27133
+  },
+  {
+   "group": "GEN",
+   "BenignTraffic1": 148,
+   "BenignTraffic2": 41,
+   "BenignTraffic3": 19,
+   "total": 208
+  }
+ ],
+ "by_device": [
+  {
+   "group": "G1",
+   "device": "Home Eye Camera",
+   "BenignTraffic1": 17026,
+   "BenignTraffic2": 18777,
+   "BenignTraffic3": 8227,
+   "total": 44030
+  },
+  {
+   "group": "G1",
+   "device": "Harman Kardon speaker (Ampak)",
+   "BenignTraffic1": 7360,
+   "BenignTraffic2": 8274,
+   "BenignTraffic3": 3490,
+   "total": 19124
+  },
+  {
+   "group": "G1",
+   "device": "Wyze Camera",
+   "BenignTraffic1": 7372,
+   "BenignTraffic2": 8035,
+   "BenignTraffic3": 3595,
+   "total": 19002
+  },
+  {
+   "group": "G1",
+   "device": "Arlo Q Indoor Camera",
+   "BenignTraffic1": 4461,
+   "BenignTraffic2": 4764,
+   "BenignTraffic3": 2354,
+   "total": 11579
+  },
+  {
+   "group": "G1",
+   "device": "LG Smart TV",
+   "BenignTraffic1": 4088,
+   "BenignTraffic2": 3949,
+   "BenignTraffic3": 1499,
+   "total": 9536
+  },
+  {
+   "group": "G1",
+   "device": "Fibaro Home Center Lite",
+   "BenignTraffic1": 3628,
+   "BenignTraffic2": 4021,
+   "BenignTraffic3": 1735,
+   "total": 9384
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Echo Show",
+   "BenignTraffic1": 3480,
+   "BenignTraffic2": 3833,
+   "BenignTraffic3": 1405,
+   "total": 8718
+  },
+  {
+   "group": "G1",
+   "device": "Yi Indoor Camera",
+   "BenignTraffic1": 2889,
+   "BenignTraffic2": 3186,
+   "BenignTraffic3": 1384,
+   "total": 7459
+  },
+  {
+   "group": "G1",
+   "device": "Google Nest Mini Speaker",
+   "BenignTraffic1": 2612,
+   "BenignTraffic2": 2716,
+   "BenignTraffic3": 1184,
+   "total": 6512
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Alexa Echo Studio",
+   "BenignTraffic1": 2532,
+   "BenignTraffic2": 2871,
+   "BenignTraffic3": 1105,
+   "total": 6508
+  },
+  {
+   "group": "G1",
+   "device": "Eufy HomeBase 2",
+   "BenignTraffic1": 2432,
+   "BenignTraffic2": 2668,
+   "BenignTraffic3": 1161,
+   "total": 6261
+  },
+  {
+   "group": "G1",
+   "device": "TP-Link Tapo Camera",
+   "BenignTraffic1": 1943,
+   "BenignTraffic2": 2589,
+   "BenignTraffic3": 1140,
+   "total": 5672
+  },
+  {
+   "group": "G1",
+   "device": "AMCREST WiFi Camera",
+   "BenignTraffic1": 1854,
+   "BenignTraffic2": 2055,
+   "BenignTraffic3": 832,
+   "total": 4741
+  },
+  {
+   "group": "G1",
+   "device": "Philips Hue Bridge",
+   "BenignTraffic1": 1636,
+   "BenignTraffic2": 1902,
+   "BenignTraffic3": 830,
+   "total": 4368
+  },
+  {
+   "group": "G1",
+   "device": "SmartThings Hub",
+   "BenignTraffic1": 1681,
+   "BenignTraffic2": 1867,
+   "BenignTraffic3": 784,
+   "total": 4332
+  },
+  {
+   "group": "G1",
+   "device": "Aeotec Smart Home Hub",
+   "BenignTraffic1": 1638,
+   "BenignTraffic2": 1853,
+   "BenignTraffic3": 787,
+   "total": 4278
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Alexa Echo Dot 1",
+   "BenignTraffic1": 1241,
+   "BenignTraffic2": 1476,
+   "BenignTraffic3": 602,
+   "total": 3319
+  },
+  {
+   "group": "G1",
+   "device": "Netatmo Camera",
+   "BenignTraffic1": 1219,
+   "BenignTraffic2": 1418,
+   "BenignTraffic3": 543,
+   "total": 3180
+  },
+  {
+   "group": "G1",
+   "device": "Sonos One Speaker",
+   "BenignTraffic1": 1132,
+   "BenignTraffic2": 1364,
+   "BenignTraffic3": 592,
+   "total": 3088
+  },
+  {
+   "group": "G1",
+   "device": "Arlo Base Station",
+   "BenignTraffic1": 1121,
+   "BenignTraffic2": 1191,
+   "BenignTraffic3": 503,
+   "total": 2815
+  },
+  {
+   "group": "G1",
+   "device": "Yi Outdoor Camera",
+   "BenignTraffic1": 1036,
+   "BenignTraffic2": 1137,
+   "BenignTraffic3": 510,
+   "total": 2683
+  },
+  {
+   "group": "G1",
+   "device": "Rbcior Camera",
+   "BenignTraffic1": 1046,
+   "BenignTraffic2": 1155,
+   "BenignTraffic3": 471,
+   "total": 2672
+  },
+  {
+   "group": "G1",
+   "device": "Yi Indoor 2 Camera",
+   "BenignTraffic1": 679,
+   "BenignTraffic2": 785,
+   "BenignTraffic3": 323,
+   "total": 1787
+  },
+  {
+   "group": "G1",
+   "device": "Amazon Alexa Echo Dot 2",
+   "BenignTraffic1": 313,
+   "BenignTraffic2": 393,
+   "BenignTraffic3": 486,
+   "total": 1192
+  },
+  {
+   "group": "G1",
+   "device": "Wemo Smart Plug 2",
+   "BenignTraffic1": 294,
+   "BenignTraffic2": 346,
+   "BenignTraffic3": 138,
+   "total": 778
+  },
+  {
+   "group": "G2",
+   "device": "HeimVision Smart WiFi Camera",
+   "BenignTraffic1": 649,
+   "BenignTraffic2": 707,
+   "BenignTraffic3": 306,
+   "total": 1662
+  },
+  {
+   "group": "G2",
+   "device": "Lumiman Bulb",
+   "BenignTraffic1": 491,
+   "BenignTraffic2": 536,
+   "BenignTraffic3": 229,
+   "total": 1256
+  },
+  {
+   "group": "G2",
+   "device": "Atomi Coffee Maker",
+   "BenignTraffic1": 482,
+   "BenignTraffic2": 537,
+   "BenignTraffic3": 227,
+   "total": 1246
+  },
+  {
+   "group": "G2",
+   "device": "Teckin Light Strip",
+   "BenignTraffic1": 480,
+   "BenignTraffic2": 534,
+   "BenignTraffic3": 228,
+   "total": 1242
+  },
+  {
+   "group": "G2",
+   "device": "HeimVision SmartLife Radio/Lamp",
+   "BenignTraffic1": 472,
+   "BenignTraffic2": 529,
+   "BenignTraffic3": 226,
+   "total": 1227
+  },
+  {
+   "group": "G2",
+   "device": "Yutron Plug 2",
+   "BenignTraffic1": 467,
+   "BenignTraffic2": 525,
+   "BenignTraffic3": 226,
+   "total": 1218
+  },
+  {
+   "group": "G2",
+   "device": "Teckin Plug 2",
+   "BenignTraffic1": 469,
+   "BenignTraffic2": 519,
+   "BenignTraffic3": 226,
+   "total": 1214
+  },
+  {
+   "group": "G2",
+   "device": "Yutron Plug 1",
+   "BenignTraffic1": 470,
+   "BenignTraffic2": 513,
+   "BenignTraffic3": 225,
+   "total": 1208
+  },
+  {
+   "group": "G2",
+   "device": "Teckin Plug 1",
+   "BenignTraffic1": 465,
+   "BenignTraffic2": 517,
+   "BenignTraffic3": 224,
+   "total": 1206
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Power Strip (1)",
+   "BenignTraffic1": 422,
+   "BenignTraffic2": 477,
+   "BenignTraffic3": 203,
+   "total": 1102
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Power Strip (2)",
+   "BenignTraffic1": 420,
+   "BenignTraffic2": 475,
+   "BenignTraffic3": 203,
+   "total": 1098
+  },
+  {
+   "group": "G2",
+   "device": "LampUX RGB",
+   "BenignTraffic1": 419,
+   "BenignTraffic2": 472,
+   "BenignTraffic3": 202,
+   "total": 1093
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (4)",
+   "BenignTraffic1": 420,
+   "BenignTraffic2": 471,
+   "BenignTraffic3": 201,
+   "total": 1092
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (3)",
+   "BenignTraffic1": 420,
+   "BenignTraffic2": 467,
+   "BenignTraffic3": 203,
+   "total": 1090
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (2)",
+   "BenignTraffic1": 417,
+   "BenignTraffic2": 468,
+   "BenignTraffic3": 204,
+   "total": 1089
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Smart Plug WP2 (2)",
+   "BenignTraffic1": 418,
+   "BenignTraffic2": 467,
+   "BenignTraffic3": 202,
+   "total": 1087
+  },
+  {
+   "group": "G2",
+   "device": "Unidentified ESP plug (1)",
+   "BenignTraffic1": 416,
+   "BenignTraffic2": 470,
+   "BenignTraffic3": 201,
+   "total": 1087
+  },
+  {
+   "group": "G2",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "BenignTraffic1": 415,
+   "BenignTraffic2": 466,
+   "BenignTraffic3": 200,
+   "total": 1081
+  },
+  {
+   "group": "G2",
+   "device": "Netatmo Weather Station",
+   "BenignTraffic1": 348,
+   "BenignTraffic2": 393,
+   "BenignTraffic3": 163,
+   "total": 904
+  },
+  {
+   "group": "G2",
+   "device": "LIFX Lightbulb",
+   "BenignTraffic1": 326,
+   "BenignTraffic2": 367,
+   "BenignTraffic3": 160,
+   "total": 853
+  },
+  {
+   "group": "G2",
+   "device": "Ring Base Station",
+   "BenignTraffic1": 273,
+   "BenignTraffic2": 236,
+   "BenignTraffic3": 156,
+   "total": 665
+  },
+  {
+   "group": "G2",
+   "device": "Levoit Air Purifier",
+   "BenignTraffic1": 241,
+   "BenignTraffic2": 261,
+   "BenignTraffic3": 117,
+   "total": 619
+  },
+  {
+   "group": "G2",
+   "device": "Amazon Smart Plug",
+   "BenignTraffic1": 227,
+   "BenignTraffic2": 257,
+   "BenignTraffic3": 119,
+   "total": 603
+  },
+  {
+   "group": "G2",
+   "device": "Cocoon Smart HVAC Fan",
+   "BenignTraffic1": 229,
+   "BenignTraffic2": 251,
+   "BenignTraffic3": 109,
+   "total": 589
+  },
+  {
+   "group": "G2",
+   "device": "Nest Indoor Camera",
+   "BenignTraffic1": 218,
+   "BenignTraffic2": 261,
+   "BenignTraffic3": 104,
+   "total": 583
+  },
+  {
+   "group": "G2",
+   "device": "Govee Smart Humidifier",
+   "BenignTraffic1": 221,
+   "BenignTraffic2": 250,
+   "BenignTraffic3": 107,
+   "total": 578
+  },
+  {
+   "group": "G2",
+   "device": "D-Link DCS8000LHA1 Mini Camera",
+   "BenignTraffic1": 165,
+   "BenignTraffic2": 192,
+   "BenignTraffic3": 84,
+   "total": 441
+  },
+  {
+   "group": "GEN",
+   "device": "Smart Board",
+   "BenignTraffic1": 101,
+   "BenignTraffic2": 0,
+   "BenignTraffic3": 0,
+   "total": 101
+  },
+  {
+   "group": "GEN",
+   "device": "iRobot Roomba",
+   "BenignTraffic1": 25,
+   "BenignTraffic2": 27,
+   "BenignTraffic3": 12,
+   "total": 64
+  },
+  {
+   "group": "GEN",
+   "device": "Wemo Smart Plug 1",
+   "BenignTraffic1": 14,
+   "BenignTraffic2": 14,
+   "BenignTraffic3": 7,
+   "total": 35
+  },
+  {
+   "group": "GEN",
+   "device": "unregistered:f0:b4:d2:f9:60:95",
+   "BenignTraffic1": 8,
+   "BenignTraffic2": 0,
+   "BenignTraffic3": 0,
+   "total": 8
+  }
+ ],
+ "unregistered_macs": [
+  {
+   "session": "BenignTraffic1",
+   "mac": "f0:b4:d2:f9:60:95",
+   "endpoint_flows": 8,
+   "kept_as_gen": 8,
+   "dropped_excluded": 0
+  }
+ ],
+ "unreg_owned_by_registered": 0,
+ "hours": {
+  "v1_test": 3.0179,
+  "added": 18.742222222222225,
+  "per_session": {
+   "BenignTraffic1": 7.248055555555555,
+   "BenignTraffic2": 8.033055555555556,
+   "BenignTraffic3": 3.4611111111111112
+  },
+  "added_registered_only": 18.742222222222225,
+  "v1_1_test": 21.760122222222225,
+  "definition": "active segments (a pause > active_idle_gap_seconds between flow starts ends one) holding >= 1 usable benign flow start, clipped to the split's wall-clock window, gap windows excluded; FP/hour denominator"
+ },
+ "fp_per_hour": [
+  {
+   "test_FPs": 1,
+   "FP_per_h_v1": 0.3314,
+   "FP_per_h_v1_1": 0.046
+  },
+  {
+   "test_FPs": 2,
+   "FP_per_h_v1": 0.6627,
+   "FP_per_h_v1_1": 0.0919
+  },
+  {
+   "test_FPs": 5,
+   "FP_per_h_v1": 1.6568,
+   "FP_per_h_v1_1": 0.2298
+  },
+  {
+   "test_FPs": 10,
+   "FP_per_h_v1": 3.3136,
+   "FP_per_h_v1_1": 0.4596
+  },
+  {
+   "test_FPs": 20,
+   "FP_per_h_v1": 6.6271,
+   "FP_per_h_v1_1": 0.9191
+  },
+  {
+   "test_FPs": 50,
+   "FP_per_h_v1": 16.5678,
+   "FP_per_h_v1_1": 2.2978
+  }
+ ],
+ "test_totals": [
+  {
+   "dataset": "v1",
+   "benign": 54714,
+   "attack": 419096,
+   "total": 473810
+  },
+  {
+   "dataset": "v1_1",
+   "benign": 275073,
+   "attack": 419096,
+   "total": 694169
+  }
+ ],
+ "nan_inf": [
+  {
+   "column": "Flow Bytes/s",
+   "nan": 8573,
+   "inf": 14143
+  },
+  {
+   "column": "Flow Packets/s",
+   "nan": 0,
+   "inf": 22716
+  },
+  {
+   "column": "Flow IAT Mean",
+   "nan": 22620,
+   "inf": 0
+  },
+  {
+   "column": "Flow IAT Std",
+   "nan": 22620,
+   "inf": 0
+  },
+  {
+   "column": "Flow IAT Max",
+   "nan": 22620,
+   "inf": 0
+  },
+  {
+   "column": "Flow IAT Min",
+   "nan": 22620,
+   "inf": 0
+  }
+ ],
+ "outputs": {
+  "train.parquet": {
+   "rows": 636193,
+   "bytes": 53905498,
+   "sha256": "e01c2ae2bae7ce49b64a8e003d5ebe258a1f15e1600751f1ae3e0090738dd2a4",
+   "path": "/home/krithikk/lgids_cache/datasets/v1_1/train.parquet"
+  },
+  "val.parquet": {
+   "rows": 157558,
+   "bytes": 14086088,
+   "sha256": "f992fc82ed8cd34f2c8a26eab4f780473ae71b53d7577d66fd7724a789bc1a03",
+   "path": "/home/krithikk/lgids_cache/datasets/v1_1/val.parquet"
+  },
+  "test.parquet": {
+   "rows": 694169,
+   "bytes": 70144527,
+   "sha256": "0650b0fd0dcc01d84a4b12020fc3d625484b84c42e0844e3c0e1794cc3bf45b5",
+   "path": "/home/krithikk/lgids_cache/datasets/v1_1/test.parquet"
+  },
+  "split_plan_v1_1.json": {
+   "rows": "",
+   "bytes": 3788,
+   "sha256": "56813a35e1cbcf46a7f41ae9cdd1e5d1affb0b94f3ef358427ad778e13182827",
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/split_plan_v1_1.json"
+  }
+ },
+ "runtime_s": 6.9,
+ "peak_rss_mb": 1215
+}

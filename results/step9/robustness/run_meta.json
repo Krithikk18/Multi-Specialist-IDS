@@ -1,0 +1,881 @@
+{
+ "script": "09_train_specialists.py",
+ "stage": "robustness",
+ "run_utc": "2026-10-19T16:20:11+00:00",
+ "argv": [
+  "09_train_specialists.py",
+  "robustness"
+ ],
+ "dry_run": false,
+ "code_sha256": "1ecbd9c1b3767c369e7837ee3928fc9f075d6502a031890a776cd1bd35606298",
+ "out": "results/step9/robustness",
+ "groups": [
+  "G1",
+  "G2",
+  "GLOBAL"
+ ],
+ "models": [
+  "XGB",
+  "CAT",
+  "LGBM",
+  "MLP"
+ ],
+ "feature_sets_run": [
+  "full70",
+  "tool_agnostic67"
+ ],
+ "seeds": [
+  42,
+  7,
+  123
+ ],
+ "n_evaluations": 168,
+ "features": {
+  "path": "config/features_v1.json",
+  "n": 70,
+  "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "manifest_sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "file_bytes_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "duration_column": "Flow Duration"
+ },
+ "feature_sets": {
+  "full70": {
+   "n": 70,
+   "removed": [],
+   "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+   "sha256_of": "json.dumps(features, separators=(',', ':')) utf-8 (as features_v1.json)",
+   "features": [
+    "Protocol",
+    "Flow Duration",
+    "Total Fwd Packet",
+    "Total Bwd packets",
+    "Total Length of Fwd Packet",
+    "Total Length of Bwd Packet",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Std",
+    "Bwd Packet Length Max",
+    "Bwd Packet Length Min",
+    "Bwd Packet Length Mean",
+    "Bwd Packet Length Std",
+    "Flow Bytes/s",
+    "Flow Packets/s",
+    "Flow IAT Mean",
+    "Flow IAT Std",
+    "Flow IAT Max",
+    "Flow IAT Min",
+    "Fwd IAT Total",
+    "Fwd IAT Mean",
+    "Fwd IAT Std",
+    "Fwd IAT Max",
+    "Fwd IAT Min",
+    "Bwd IAT Total",
+    "Bwd IAT Mean",
+    "Bwd IAT Std",
+    "Bwd IAT Max",
+    "Bwd IAT Min",
+    "Fwd PSH Flags",
+    "Fwd Header Length",
+    "Bwd Header Length",
+    "Fwd Packets/s",
+    "Bwd Packets/s",
+    "Packet Length Min",
+    "Packet Length Max",
+    "Packet Length Mean",
+    "Packet Length Std",
+    "Packet Length Variance",
+    "FIN Flag Count",
+    "SYN Flag Count",
+    "RST Flag Count",
+    "PSH Flag Count",
+    "ACK Flag Count",
+    "CWR Flag Count",
+    "ECE Flag Count",
+    "Down/Up Ratio",
+    "Average Packet Size",
+    "Fwd Segment Size Avg",
+    "Bwd Segment Size Avg",
+    "Bwd Bytes/Bulk Avg",
+    "Bwd Packet/Bulk Avg",
+    "Bwd Bulk Rate Avg",
+    "Subflow Fwd Packets",
+    "Subflow Fwd Bytes",
+    "Subflow Bwd Packets",
+    "Subflow Bwd Bytes",
+    "FWD Init Win Bytes",
+    "Bwd Init Win Bytes",
+    "Fwd Act Data Pkts",
+    "Fwd Seg Size Min",
+    "Active Mean",
+    "Active Std",
+    "Active Max",
+    "Active Min",
+    "Idle Mean",
+    "Idle Std",
+    "Idle Max",
+    "Idle Min"
+   ]
+  },
+  "tool_agnostic67": {
+   "n": 67,
+   "removed": [
+    "FWD Init Win Bytes",
+    "Fwd Seg Size Min",
+    "Fwd Header Length"
+   ],
+   "sha256": "cb8989bf0c2183144f6deb9732f35f74757c15603524fd91d254cd67edecc6d6",
+   "sha256_of": "json.dumps(features, separators=(',', ':')) utf-8 (as features_v1.json)",
+   "features": [
+    "Protocol",
+    "Flow Duration",
+    "Total Fwd Packet",
+    "Total Bwd packets",
+    "Total Length of Fwd Packet",
+    "Total Length of Bwd Packet",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Std",
+    "Bwd Packet Length Max",
+    "Bwd Packet Length Min",
+    "Bwd Packet Length Mean",
+    "Bwd Packet Length Std",
+    "Flow Bytes/s",
+    "Flow Packets/s",
+    "Flow IAT Mean",
+    "Flow IAT Std",
+    "Flow IAT Max",
+    "Flow IAT Min",
+    "Fwd IAT Total",
+    "Fwd IAT Mean",
+    "Fwd IAT Std",
+    "Fwd IAT Max",
+    "Fwd IAT Min",
+    "Bwd IAT Total",
+    "Bwd IAT Mean",
+    "Bwd IAT Std",
+    "Bwd IAT Max",
+    "Bwd IAT Min",
+    "Fwd PSH Flags",
+    "Bwd Header Length",
+    "Fwd Packets/s",
+    "Bwd Packets/s",
+    "Packet Length Min",
+    "Packet Length Max",
+    "Packet Length Mean",
+    "Packet Length Std",
+    "Packet Length Variance",
+    "FIN Flag Count",
+    "SYN Flag Count",
+    "RST Flag Count",
+    "PSH Flag Count",
+    "ACK Flag Count",
+    "CWR Flag Count",
+    "ECE Flag Count",
+    "Down/Up Ratio",
+    "Average Packet Size",
+    "Fwd Segment Size Avg",
+    "Bwd Segment Size Avg",
+    "Bwd Bytes/Bulk Avg",
+    "Bwd Packet/Bulk Avg",
+    "Bwd Bulk Rate Avg",
+    "Subflow Fwd Packets",
+    "Subflow Fwd Bytes",
+    "Subflow Bwd Packets",
+    "Subflow Bwd Bytes",
+    "Bwd Init Win Bytes",
+    "Fwd Act Data Pkts",
+    "Active Mean",
+    "Active Std",
+    "Active Max",
+    "Active Min",
+    "Idle Mean",
+    "Idle Std",
+    "Idle Max",
+    "Idle Min"
+   ]
+  }
+ },
+ "verify_lock": {
+  "ok": true,
+  "checks": [
+   {
+    "check": "extractor jar sha256",
+    "pass": true,
+    "detail": "~/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+   },
+   {
+    "check": "extractor patch exists",
+    "pass": true,
+    "detail": "extractor/guard_gt0.patch"
+   },
+   {
+    "check": "extractor sweeper patch exists",
+    "pass": true,
+    "detail": "extractor/idle_sweeper.patch"
+   },
+   {
+    "check": "config file device_table.csv",
+    "pass": true,
+    "detail": "config/device_table.csv"
+   },
+   {
+    "check": "config file ip_mac_map.csv",
+    "pass": true,
+    "detail": "config/ip_mac_map.csv"
+   },
+   {
+    "check": "config file behaviour_groups.json",
+    "pass": true,
+    "detail": "config/behaviour_groups.json"
+   },
+   {
+    "check": "groups version",
+    "pass": true,
+    "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+   },
+   {
+    "check": "groups labels",
+    "pass": true,
+    "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+   },
+   {
+    "check": "groups lock verified",
+    "pass": true,
+    "detail": "behaviour_groups.json verification.pass"
+   },
+   {
+    "check": "extractor TZ",
+    "pass": true,
+    "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+   }
+  ]
+ },
+ "inputs": {
+  "train": "~/lgids_cache/datasets/v1/train.parquet",
+  "val": "~/lgids_cache/datasets/v1/val.parquet",
+  "manifest": "results/step8/manifest_v1.json",
+  "attack_set": "config/attack_set.json",
+  "split_plan": "config/split_plan.json",
+  "split_plan_sha256": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647",
+  "test_split": "never opened"
+ },
+ "versions": {
+  "python": "3.11.17",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "pyarrow": "26.0.0",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "joblib": "1.6.0",
+  "threadpoolctl": "3.7.0",
+  "xgboost": "3.4.2",
+  "lightgbm": "4.6.0",
+  "catboost": "1.2.10"
+ },
+ "platform": {
+  "machine": "x86_64",
+  "system": "Linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "cpu_count": 12
+ },
+ "threadpools": [
+  {
+   "user_api": "blas",
+   "internal_api": "mkl",
+   "num_threads": 6,
+   "version": "2025.0-Product"
+  },
+  {
+   "user_api": "openmp",
+   "internal_api": "openmp",
+   "num_threads": 12,
+   "version": null
+  },
+  {
+   "user_api": "openmp",
+   "internal_api": "openmp",
+   "num_threads": 12,
+   "version": null
+  }
+ ],
+ "robust_config": {
+  "models": [
+   "XGB",
+   "CAT",
+   "LGBM",
+   "MLP"
+  ],
+  "groups": [
+   "G1",
+   "G2",
+   "GLOBAL"
+  ],
+  "hyperparameters": "same constructors / params as bakeoff (library defaults + class weights; MLP keeps zero_duration_flag + StandardScaler); no search",
+  "feature_sets": {
+   "full70": [],
+   "tool_agnostic67": [
+    "FWD Init Win Bytes",
+    "Fwd Seg Size Min",
+    "Fwd Header Length"
+   ]
+  },
+  "feature_set_note": "tool_agnostic67 drops the tool-artefact fingerprints of 09b check 2 (FWD Init Win Bytes 512 for SYN flood / 1024 for port scan; Fwd Seg Size Min / Fwd Header Length = headers without TCP options)",
+  "seeds": [
+   42,
+   7,
+   123
+  ],
+  "seed_use": "random_state / random_seed of the estimator, np.random.seed in the child and the MLP oversampling rng; the dry-run subsample keeps CONFIG seed 42 for every seed",
+  "cost_seed": 42,
+  "max_fp": 1,
+  "max_fp_label": "same-set threshold, optimistic",
+  "syn_family": "syn_flood",
+  "rotations": {
+   "A": {
+    "held_out_alias": "SYN 5",
+    "session": "DDoS-SYN_Flood5",
+    "victim_group": "G2"
+   },
+   "B": {
+    "held_out_alias": "SYN first part",
+    "session": "DDoS-SYN_Flood",
+    "victim_group": "G1"
+   }
+  },
+  "rotation_rule": "GLOBAL runs every capture rotation (evaluation unseen_<R>, variant capture_rotation)",
+  "benign_holdout": {
+   "G1": "DDoS-SYN_Flood",
+   "G2": "DDoS-SYN_Flood5"
+  },
+  "benign_holdout_train_rows": "the group's train rows minus ONLY the held-out session's benign rows (every attack row kept, that session's SYN rows included)",
+  "benign_holdout_syn_dr": "N/A (the held-out session's SYN rows are in training)",
+  "unseen_train_rows": "the group's train rows minus every row of the held-out session (attack and benign)",
+  "unseen_threshold_rule": "lowest observed score of the group's val rows outside the held-out session with <= max_fp FP on those val benign rows (the threshold never sees the held-out session)",
+  "unseen_val_benign": "all of the group's val benign rows (09b check 5 definition); they include the held-out session's own val benign rows, which are also part of held_session_benign",
+  "unseen_held_benign": "the held-out session's benign rows of the group, train + val splits",
+  "unseen_syn_rows": "the held-out session's syn_flood rows of the group, train + val splits",
+  "time_limit_s_per_evaluation": 1800
+ },
+ "config": {
+  "seed": 42,
+  "groups": [
+   "G1",
+   "G2",
+   "GLOBAL"
+  ],
+  "global_group": "GLOBAL",
+  "global_note": "GLOBAL = all train / val rows (G1 + G2 + GEN devices), same splits",
+  "models": [
+   "LR",
+   "DT",
+   "RF",
+   "ET",
+   "XGB",
+   "LGBM",
+   "CAT",
+   "KNN",
+   "MLP"
+  ],
+  "model_names": {
+   "LR": "LogisticRegression",
+   "DT": "DecisionTree",
+   "RF": "RandomForest",
+   "ET": "ExtraTrees",
+   "XGB": "XGBoost",
+   "LGBM": "LightGBM",
+   "CAT": "CatBoost",
+   "KNN": "kNN",
+   "MLP": "MLP (sklearn)"
+  },
+  "excluded_models": {
+   "1D-CNN": "round 1 is per-flow input; windowed input is a separate design axis"
+  },
+  "round": 1,
+  "hyperparameters": "library defaults + class-weight handling only; no search",
+  "deviations": {
+   "LR": {
+    "param": "max_iter",
+    "value": 2000,
+    "library_default": 100,
+    "reason": "convergence fix, not tuning (lbfgs stopped at 100 iterations with a ConvergenceWarning on GLOBAL)"
+   }
+  },
+  "class_weight": {
+   "LR": "class_weight='balanced'",
+   "DT": "class_weight='balanced'",
+   "RF": "class_weight='balanced'",
+   "ET": "class_weight='balanced'",
+   "LGBM": "class_weight='balanced'",
+   "CAT": "auto_class_weights='Balanced'",
+   "XGB": "scale_pos_weight = n_benign / n_attack of the group's train",
+   "KNN": "none (kNN has no class weights)",
+   "MLP": "sample_weight=compute_sample_weight('balanced') if MLPClassifier.fit takes sample_weight, else random oversampling of the minority class in TRAIN"
+  },
+  "non_hyperparameter_settings": {
+   "n_jobs / thread_count": "fit and full-val scoring use all cores (fit_n_jobs); latency and throughput use 1 thread",
+   "CAT allow_writing_files": false,
+   "CAT verbose": false,
+   "LGBM verbosity": -1
+  },
+  "fit_n_jobs": -1,
+  "scaled_models": [
+   "LR",
+   "KNN",
+   "MLP"
+  ],
+  "duration_feature_pattern": "duration",
+  "zero_duration_flag": "zero_duration_flag",
+  "scaler": "StandardScaler fitted on TRAIN only, applied to the 70 features + zero_duration_flag",
+  "default_threshold": 0.5,
+  "fph_budgets": [
+   0.5,
+   1,
+   5
+  ],
+  "threshold_rule": "flag attack iff score >= threshold; budget points pick the lowest observed val score whose val FP/hour <= budget (allowed FP = floor(budget * hours))",
+  "summary_fph": 1,
+  "low_n": 50,
+  "time_limit_s": {
+   "default": 1800
+  },
+  "latency": {
+   "single_calls": 1000,
+   "warmup_calls": 20,
+   "batch_rows": 10000,
+   "threads": 1
+  },
+  "dry_run_frac": 0.05,
+  "dry_run_strata": [
+   "group",
+   "y",
+   "attack_family"
+  ],
+  "active_idle_gap_seconds": 300
+ },
+ "attack_families": [
+  "port_scan",
+  "syn_flood",
+  "udp_flood"
+ ],
+ "attack_pcaps": {
+  "port_scan": [
+   "Recon-PortScan.pcap"
+  ],
+  "syn_flood": [
+   "DDoS-SYN_Flood.pcap",
+   "DDoS-SYN_Flood5.pcap",
+   "DDoS-SYN_Flood10.pcap",
+   "DDoS-SYN_Flood15.pcap"
+  ],
+  "udp_flood": [
+   "Mirai-udpplain.pcap",
+   "Mirai-udpplain24.pcap"
+  ]
+ },
+ "rotations": {
+  "A": {
+   "session": "DDoS-SYN_Flood5",
+   "alias": "SYN 5",
+   "victims": [
+    "GoSund Smart Plug WP2 (1)",
+    "Unidentified ESP plug (2)",
+    "Unidentified ESP plug (3)"
+   ],
+   "victim_groups": [
+    "G2"
+   ],
+   "syn_rows_full": {
+    "train": 199985,
+    "val": 50074
+   }
+  },
+  "B": {
+   "session": "DDoS-SYN_Flood",
+   "alias": "SYN first part",
+   "victims": [
+    "AMCREST WiFi Camera",
+    "Amazon Alexa Echo Dot 1",
+    "Google Nest Mini Speaker",
+    "Unidentified Amazon device (1c:12:b0)"
+   ],
+   "victim_groups": [
+    "G1"
+   ],
+   "syn_rows_full": {
+    "train": 200605,
+    "val": 50103
+   }
+  }
+ },
+ "group_unseen": {
+  "G1": {
+   "benign_holdout": {
+    "variant": "benign_holdout",
+    "rotation": "B",
+    "session": "DDoS-SYN_Flood",
+    "alias": "SYN first part",
+    "removed": "only the session's benign rows",
+    "syn_dr": "N/A"
+   }
+  },
+  "G2": {
+   "benign_holdout": {
+    "variant": "benign_holdout",
+    "rotation": "A",
+    "session": "DDoS-SYN_Flood5",
+    "alias": "SYN 5",
+    "removed": "only the session's benign rows",
+    "syn_dr": "N/A"
+   }
+  },
+  "GLOBAL": {
+   "unseen_A": {
+    "variant": "capture_rotation",
+    "rotation": "A",
+    "session": "DDoS-SYN_Flood5",
+    "alias": "SYN 5",
+    "removed": "every row of the session",
+    "syn_dr": "held-out session's SYN rows (train + val)"
+   },
+   "unseen_B": {
+    "variant": "capture_rotation",
+    "rotation": "B",
+    "session": "DDoS-SYN_Flood",
+    "alias": "SYN first part",
+    "removed": "every row of the session",
+    "syn_dr": "held-out session's SYN rows (train + val)"
+   }
+  }
+ },
+ "row_counts": {
+  "G1": {
+   "train_full": {
+    "rows": 371200,
+    "benign": 120028,
+    "attack": 251172,
+    "attack_by_family": {
+     "port_scan": 50472,
+     "syn_flood": 200605,
+     "udp_flood": 95
+    }
+   },
+   "val_full": {
+    "rows": 93716,
+    "benign": 35833,
+    "attack": 57883,
+    "attack_by_family": {
+     "port_scan": 7763,
+     "syn_flood": 50103,
+     "udp_flood": 17
+    }
+   },
+   "train_used": {
+    "rows": 371200,
+    "benign": 120028,
+    "attack": 251172,
+    "attack_by_family": {
+     "port_scan": 50472,
+     "syn_flood": 200605,
+     "udp_flood": 95
+    }
+   },
+   "val_used": {
+    "rows": 93716,
+    "benign": 35833,
+    "attack": 57883,
+    "attack_by_family": {
+     "port_scan": 7763,
+     "syn_flood": 50103,
+     "udp_flood": 17
+    }
+   }
+  },
+  "G2": {
+   "train_full": {
+    "rows": 259482,
+    "benign": 16279,
+    "attack": 243203,
+    "attack_by_family": {
+     "port_scan": 43218,
+     "syn_flood": 199985
+    }
+   },
+   "val_full": {
+    "rows": 63551,
+    "benign": 3061,
+    "attack": 60490,
+    "attack_by_family": {
+     "port_scan": 10416,
+     "syn_flood": 50074
+    }
+   },
+   "train_used": {
+    "rows": 259482,
+    "benign": 16279,
+    "attack": 243203,
+    "attack_by_family": {
+     "port_scan": 43218,
+     "syn_flood": 199985
+    }
+   },
+   "val_used": {
+    "rows": 63551,
+    "benign": 3061,
+    "attack": 60490,
+    "attack_by_family": {
+     "port_scan": 10416,
+     "syn_flood": 50074
+    }
+   }
+  },
+  "GLOBAL": {
+   "train_full": {
+    "rows": 636193,
+    "benign": 137462,
+    "attack": 498731,
+    "attack_by_family": {
+     "port_scan": 98046,
+     "syn_flood": 400590,
+     "udp_flood": 95
+    }
+   },
+   "val_full": {
+    "rows": 157558,
+    "benign": 39185,
+    "attack": 118373,
+    "attack_by_family": {
+     "port_scan": 18179,
+     "syn_flood": 100177,
+     "udp_flood": 17
+    }
+   },
+   "train_used": {
+    "rows": 636193,
+    "benign": 137462,
+    "attack": 498731,
+    "attack_by_family": {
+     "port_scan": 98046,
+     "syn_flood": 400590,
+     "udp_flood": 95
+    }
+   },
+   "val_used": {
+    "rows": 157558,
+    "benign": 39185,
+    "attack": 118373,
+    "attack_by_family": {
+     "port_scan": 18179,
+     "syn_flood": 100177,
+     "udp_flood": 17
+    }
+   }
+  }
+ },
+ "fph_denominators": {
+  "G1": {
+   "hours_used": 1.967583333386315,
+   "hours_full_val": 1.967583333386315,
+   "per_session": {
+    "benign_night": 1.3553750000397364,
+    "DDoS-SYN_Flood": 0.07916666666666666,
+    "DDoS-SYN_Flood5": 0.03825000001324547,
+    "DDoS-SYN_Flood10": 0.0,
+    "DDoS-SYN_Flood15": 0.0,
+    "Recon-PortScan": 0.4620000000132455,
+    "Mirai-udpplain": 0.03279166665342119,
+    "Mirai-udpplain24": 0.0
+   },
+   "hours_val_only_starts": 1.967583333386315,
+   "source": "computed: 08 benign_hours rule on manifest session_cuts + group benign starts (manifest has no per-group value)"
+  },
+  "G2": {
+   "hours_used": 1.967583333386315,
+   "hours_full_val": 1.967583333386315,
+   "per_session": {
+    "benign_night": 1.3553750000397364,
+    "DDoS-SYN_Flood": 0.07916666666666666,
+    "DDoS-SYN_Flood5": 0.03825000001324547,
+    "DDoS-SYN_Flood10": 0.0,
+    "DDoS-SYN_Flood15": 0.0,
+    "Recon-PortScan": 0.4620000000132455,
+    "Mirai-udpplain": 0.03279166665342119,
+    "Mirai-udpplain24": 0.0
+   },
+   "hours_val_only_starts": 1.967583333386315,
+   "source": "computed: 08 benign_hours rule on manifest session_cuts + group benign starts (manifest has no per-group value)"
+  },
+  "GLOBAL": {
+   "hours_used": 1.967583333386315,
+   "hours_full_val": 1.967583333386315,
+   "per_session": {
+    "benign_night": 1.3553750000397364,
+    "DDoS-SYN_Flood": 0.07916666666666666,
+    "DDoS-SYN_Flood5": 0.03825000001324547,
+    "DDoS-SYN_Flood10": 0.0,
+    "DDoS-SYN_Flood15": 0.0,
+    "Recon-PortScan": 0.4620000000132455,
+    "Mirai-udpplain": 0.03279166665342119,
+    "Mirai-udpplain24": 0.0
+   },
+   "hours_val_only_starts": 1.967583333386315,
+   "source": "computed: 08 benign_hours rule on manifest session_cuts + group benign starts (manifest has no per-group value)"
+  }
+ },
+ "fph_manifest_val_total": 1.9676,
+ "unseen_fph_denominators": {
+  "G1/benign_holdout": {
+   "valben": {
+    "benign_rows_full": 35833,
+    "benign_rows_used": 35833,
+    "hours_full": 1.9675833333863153,
+    "hours_used": 1.9675833333863153,
+    "splits": [
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   },
+   "heldben": {
+    "benign_rows_full": 16799,
+    "benign_rows_used": 16799,
+    "hours_full": 0.6574027778042688,
+    "hours_used": 0.6574027778042688,
+    "splits": [
+     "train",
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   }
+  },
+  "G2/benign_holdout": {
+   "valben": {
+    "benign_rows_full": 3061,
+    "benign_rows_used": 3061,
+    "hours_full": 1.9675833333863153,
+    "hours_used": 1.9675833333863153,
+    "splits": [
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   },
+   "heldben": {
+    "benign_rows_full": 1476,
+    "benign_rows_used": 1476,
+    "hours_full": 0.4438888888888889,
+    "hours_used": 0.4438888888888889,
+    "splits": [
+     "train",
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   }
+  },
+  "GLOBAL/unseen_A": {
+   "valben": {
+    "benign_rows_full": 39185,
+    "benign_rows_used": 39185,
+    "hours_full": 1.9675833333863153,
+    "hours_used": 1.9675833333863153,
+    "splits": [
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   },
+   "heldben": {
+    "benign_rows_full": 7690,
+    "benign_rows_used": 7690,
+    "hours_full": 0.4438888888888889,
+    "hours_used": 0.4438888888888889,
+    "splits": [
+     "train",
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   }
+  },
+  "GLOBAL/unseen_B": {
+   "valben": {
+    "benign_rows_full": 39185,
+    "benign_rows_used": 39185,
+    "hours_full": 1.9675833333863153,
+    "hours_used": 1.9675833333863153,
+    "splits": [
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   },
+   "heldben": {
+    "benign_rows_full": 19238,
+    "benign_rows_used": 19238,
+    "hours_full": 0.6574027778042688,
+    "hours_used": 0.6574027778042688,
+    "splits": [
+     "train",
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   }
+  }
+ },
+ "family_flags": [
+  {
+   "group": "G1",
+   "attack_family": "port_scan",
+   "n_val": 7763,
+   "flag": ""
+  },
+  {
+   "group": "G1",
+   "attack_family": "syn_flood",
+   "n_val": 50103,
+   "flag": ""
+  },
+  {
+   "group": "G1",
+   "attack_family": "udp_flood",
+   "n_val": 17,
+   "flag": "LOW_N"
+  },
+  {
+   "group": "G2",
+   "attack_family": "port_scan",
+   "n_val": 10416,
+   "flag": ""
+  },
+  {
+   "group": "G2",
+   "attack_family": "syn_flood",
+   "n_val": 50074,
+   "flag": ""
+  },
+  {
+   "group": "G2",
+   "attack_family": "udp_flood",
+   "n_val": 0,
+   "flag": "N/A"
+  },
+  {
+   "group": "GLOBAL",
+   "attack_family": "port_scan",
+   "n_val": 18179,
+   "flag": ""
+  },
+  {
+   "group": "GLOBAL",
+   "attack_family": "syn_flood",
+   "n_val": 100177,
+   "flag": ""
+  },
+  {
+   "group": "GLOBAL",
+   "attack_family": "udp_flood",
+   "n_val": 17,
+   "flag": "LOW_N"
+  }
+ ],
+ "warnings": [],
+ "time_limit_s_per_evaluation": 1800.0,
+ "runtime_s": 2587.8,
+ "finished_utc": "2026-10-19T17:02:23+00:00"
+}

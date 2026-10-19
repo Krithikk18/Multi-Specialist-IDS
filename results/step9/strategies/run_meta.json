@@ -1,0 +1,2575 @@
+{
+ "script": "09_train_specialists.py",
+ "stage": "strategies",
+ "run_utc": "2026-10-19T17:49:21+00:00",
+ "argv": [
+  "09_train_specialists.py",
+  "strategies"
+ ],
+ "dry_run": false,
+ "code_sha256": "d792112ee52ad3ceb657321a36251364a3efa5dec8621143fe1414fe2e3cf30e",
+ "out": "results/step9/strategies",
+ "strategies": [
+  "global",
+  "category",
+  "behaviour_k2",
+  "behaviour_k3",
+  "behaviour_k4"
+ ],
+ "modes": [
+  "pure",
+  "shared_attack"
+ ],
+ "evaluations": [
+  "val",
+  "benign_holdout_A",
+  "benign_holdout_B",
+  "rotation_A",
+  "rotation_B"
+ ],
+ "pairs": [
+  [
+   "global",
+   "both"
+  ],
+  [
+   "category",
+   "pure"
+  ],
+  [
+   "category",
+   "shared_attack"
+  ],
+  [
+   "behaviour_k2",
+   "pure"
+  ],
+  [
+   "behaviour_k2",
+   "shared_attack"
+  ],
+  [
+   "behaviour_k3",
+   "pure"
+  ],
+  [
+   "behaviour_k3",
+   "shared_attack"
+  ],
+  [
+   "behaviour_k4",
+   "pure"
+  ],
+  [
+   "behaviour_k4",
+   "shared_attack"
+  ]
+ ],
+ "features": {
+  "path": "config/features_v1.json",
+  "n": 70,
+  "sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "manifest_sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "file_bytes_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "duration_column": "Flow Duration"
+ },
+ "verify_lock": {
+  "ok": true,
+  "checks": [
+   {
+    "check": "extractor jar sha256",
+    "pass": true,
+    "detail": "~/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+   },
+   {
+    "check": "extractor patch exists",
+    "pass": true,
+    "detail": "extractor/guard_gt0.patch"
+   },
+   {
+    "check": "extractor sweeper patch exists",
+    "pass": true,
+    "detail": "extractor/idle_sweeper.patch"
+   },
+   {
+    "check": "config file device_table.csv",
+    "pass": true,
+    "detail": "config/device_table.csv"
+   },
+   {
+    "check": "config file ip_mac_map.csv",
+    "pass": true,
+    "detail": "config/ip_mac_map.csv"
+   },
+   {
+    "check": "config file behaviour_groups.json",
+    "pass": true,
+    "detail": "config/behaviour_groups.json"
+   },
+   {
+    "check": "groups version",
+    "pass": true,
+    "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+   },
+   {
+    "check": "groups labels",
+    "pass": true,
+    "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+   },
+   {
+    "check": "groups lock verified",
+    "pass": true,
+    "detail": "behaviour_groups.json verification.pass"
+   },
+   {
+    "check": "extractor TZ",
+    "pass": true,
+    "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+   }
+  ]
+ },
+ "inputs": {
+  "train": "~/lgids_cache/datasets/v1/train.parquet",
+  "val": "~/lgids_cache/datasets/v1/val.parquet",
+  "manifest": "results/step8/manifest_v1.json",
+  "attack_set": "config/attack_set.json",
+  "split_plan": "config/split_plan.json",
+  "split_plan_sha256": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647",
+  "groupings_sha256": {
+   "global": "74485f1cc113ac615f1d22a44d515c6d8a272107975c7b3ff34f235890c0efba",
+   "category": "15154fd9962b1221f355e650ecbca065127cbb62cbac8cf85f6038194d719fa8",
+   "behaviour_k2": "9f80565f7ece7f6511a5be576379fc30a12b1a67b9834a6c65781b8944f14442",
+   "behaviour_k3": "cd8b4a39ac71e46bac5f034cfe31fe83a7ff38d90d5c16cc33b896ebf3f97b56",
+   "behaviour_k4": "1b2f8b961d00a1c198c1d56c41e794b3937e4f93eebc080b24cd66b1e01bd2b5"
+  },
+  "coverage_csv": "results/step9/groupings/coverage.csv",
+  "coverage_sha256": "5e479caf32f0e80f5668c3c8d983ceb13893606e811da6079a79224ee2d2ceea",
+  "counts_checked": 168,
+  "k2_equals_parquet_group": true,
+  "test_split": "never opened"
+ },
+ "groupings": {
+  "global": {
+   "path": "config/groupings/global.json",
+   "sha256": "74485f1cc113ac615f1d22a44d515c6d8a272107975c7b3ff34f235890c0efba",
+   "version": "alt-1",
+   "k": 1,
+   "inputs_sha256": "9c8a3dc7da16e02f5f6aa4ee8443e06aad6484d42b576c7cf2a25903c9f4c4c8",
+   "groups": [
+    "GLOBAL"
+   ],
+   "n_devices": {
+    "GLOBAL": 56
+   }
+  },
+  "category": {
+   "path": "config/groupings/category.json",
+   "sha256": "15154fd9962b1221f355e650ecbca065127cbb62cbac8cf85f6038194d719fa8",
+   "version": "alt-1",
+   "k": 7,
+   "inputs_sha256": "9c8a3dc7da16e02f5f6aa4ee8443e06aad6484d42b576c7cf2a25903c9f4c4c8",
+   "groups": [
+    "Audio",
+    "Camera",
+    "GEN",
+    "Home Automation",
+    "Hub",
+    "Lighting",
+    "Power Outlet",
+    "Unidentified (Espressif)"
+   ],
+   "n_devices": {
+    "Audio": 8,
+    "Camera": 14,
+    "GEN": 3,
+    "Home Automation": 6,
+    "Hub": 6,
+    "Lighting": 5,
+    "Power Outlet": 10,
+    "Unidentified (Espressif)": 4
+   }
+  },
+  "behaviour_k2": {
+   "path": "config/groupings/behaviour_k2.json",
+   "sha256": "9f80565f7ece7f6511a5be576379fc30a12b1a67b9834a6c65781b8944f14442",
+   "version": "alt-1",
+   "k": 2,
+   "inputs_sha256": "9c8a3dc7da16e02f5f6aa4ee8443e06aad6484d42b576c7cf2a25903c9f4c4c8",
+   "groups": [
+    "G1",
+    "G2",
+    "GEN"
+   ],
+   "n_devices": {
+    "G1": 26,
+    "G2": 27,
+    "GEN": 3
+   }
+  },
+  "behaviour_k3": {
+   "path": "config/groupings/behaviour_k3.json",
+   "sha256": "cd8b4a39ac71e46bac5f034cfe31fe83a7ff38d90d5c16cc33b896ebf3f97b56",
+   "version": "alt-1",
+   "k": 3,
+   "inputs_sha256": "9c8a3dc7da16e02f5f6aa4ee8443e06aad6484d42b576c7cf2a25903c9f4c4c8",
+   "groups": [
+    "G1",
+    "G2",
+    "G3",
+    "GEN"
+   ],
+   "n_devices": {
+    "G1": 26,
+    "G2": 20,
+    "G3": 7,
+    "GEN": 3
+   }
+  },
+  "behaviour_k4": {
+   "path": "config/groupings/behaviour_k4.json",
+   "sha256": "1b2f8b961d00a1c198c1d56c41e794b3937e4f93eebc080b24cd66b1e01bd2b5",
+   "version": "alt-1",
+   "k": 4,
+   "inputs_sha256": "9c8a3dc7da16e02f5f6aa4ee8443e06aad6484d42b576c7cf2a25903c9f4c4c8",
+   "groups": [
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "GEN"
+   ],
+   "n_devices": {
+    "G1": 15,
+    "G2": 11,
+    "G3": 20,
+    "G4": 7,
+    "GEN": 3
+   }
+  }
+ },
+ "versions": {
+  "python": "3.11.17",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "pyarrow": "26.0.0",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "joblib": "1.6.0",
+  "threadpoolctl": "3.7.0",
+  "xgboost": "3.4.2",
+  "lightgbm": "4.6.0",
+  "catboost": "1.2.10"
+ },
+ "platform": {
+  "machine": "x86_64",
+  "system": "Linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "cpu_count": 12
+ },
+ "threadpools": [
+  {
+   "user_api": "blas",
+   "internal_api": "mkl",
+   "num_threads": 6,
+   "version": "2025.0-Product"
+  },
+  {
+   "user_api": "openmp",
+   "internal_api": "openmp",
+   "num_threads": 12,
+   "version": null
+  },
+  {
+   "user_api": "openmp",
+   "internal_api": "openmp",
+   "num_threads": 12,
+   "version": null
+  }
+ ],
+ "strat_config": {
+  "model": "XGB",
+  "model_note": "XGBoost library defaults + scale_pos_weight = n_benign / n_attack of EACH model's own training rows (build_model); features_v1.json (70, float32); no search",
+  "seed": 42,
+  "seed_note": "seed 42 only (XGB scores were identical across seeds 42 / 7 / 123 in round 2); the dry-run subsample is bakeoff's (CONFIG seed, strata = v1.0 group / y / attack_family)",
+  "strategies": [
+   "global",
+   "category",
+   "behaviour_k2",
+   "behaviour_k3",
+   "behaviour_k4"
+  ],
+  "global_strategy": "global",
+  "gen_group": "GEN",
+  "grouping_rule": "config/groupings/<strategy>.json: devices (MAC -> group) and device_info (MAC -> device_name); a row's device name -> MAC -> group",
+  "gen_rule": "GEN devices are scored by the GLOBAL model (every train row) in every strategy",
+  "modes": [
+   "pure",
+   "shared_attack"
+  ],
+  "mode_rules": {
+   "pure": "the group's own train rows (benign + attack)",
+   "shared_attack": "the group's own train BENIGN rows + every train attack row of every device (08's caps as built, no resampling)"
+  },
+  "global_mode": "both",
+  "global_mode_note": "The GLOBAL model trains on every train row, so pure == shared_attack; strategy global runs once (mode 'both')",
+  "evaluations": [
+   "val",
+   "benign_holdout_A",
+   "benign_holdout_B",
+   "rotation_A",
+   "rotation_B"
+  ],
+  "evaluation_aliases": {
+   "benign_holdout": [
+    "benign_holdout_A",
+    "benign_holdout_B"
+   ],
+   "capture_rotation": [
+    "rotation_A",
+    "rotation_B"
+   ]
+  },
+  "sessions": {
+   "A": "DDoS-SYN_Flood5",
+   "B": "DDoS-SYN_Flood"
+  },
+  "max_fp": 2,
+  "max_fp_label": "same-set, optimistic",
+  "common_threshold_rule": "ONE threshold for every model of the strategy: the lowest observed house val score with <= max_fp FP on the whole house's val benign (budget per HOUSE, not per group)",
+  "session_threshold_rule": "the same rule on the house's val rows outside the held-out session (the threshold never sees that session)",
+  "benign_holdout_rule": "every model of the strategy refit on its training rows minus the held-out session's benign rows (every device; every attack row kept)",
+  "rotation_rule": "every model of the strategy refit on its training rows minus every row of the held-out session (attack + benign, every device)",
+  "held_benign": "(i) the held-out session's benign rows, train + val splits, every device",
+  "val_benign": "(ii) every val benign row of the house (includes the held-out session's own val benign rows)",
+  "held_syn": "the held-out session's syn_flood rows, train + val splits, every device",
+  "scoring_rule": "every row is scored exactly once, by the model that owns its device under the strategy",
+  "fit_dedup": "a fit is keyed by its exact training row positions; identical training sets (e.g. behaviour_k2 G1 == behaviour_k3 G1, GLOBAL in every strategy) share one fit (XGB is deterministic here)",
+  "latency": "1 thread: dict lookup MAC -> model, then that model's predict_proba on one flow; CONFIG latency single_calls calls over val rows sampled once (seed 42), the same rows for every strategy; one full pass over every strategy is run and discarded first (warm-up), then the measured pass",
+  "size": "sum of the strategy's models' joblib sizes (the Pi loads every model)",
+  "fit_time": "sum of the strategy's models' fit times (all cores); a shared fit counts in every strategy using it",
+  "time_limit_s_per_fit": 1800
+ },
+ "config": {
+  "seed": 42,
+  "groups": [
+   "G1",
+   "G2",
+   "GLOBAL"
+  ],
+  "global_group": "GLOBAL",
+  "global_note": "GLOBAL = all train / val rows (G1 + G2 + GEN devices), same splits",
+  "models": [
+   "LR",
+   "DT",
+   "RF",
+   "ET",
+   "XGB",
+   "LGBM",
+   "CAT",
+   "KNN",
+   "MLP"
+  ],
+  "model_names": {
+   "LR": "LogisticRegression",
+   "DT": "DecisionTree",
+   "RF": "RandomForest",
+   "ET": "ExtraTrees",
+   "XGB": "XGBoost",
+   "LGBM": "LightGBM",
+   "CAT": "CatBoost",
+   "KNN": "kNN",
+   "MLP": "MLP (sklearn)"
+  },
+  "excluded_models": {
+   "1D-CNN": "round 1 is per-flow input; windowed input is a separate design axis"
+  },
+  "round": 1,
+  "hyperparameters": "library defaults + class-weight handling only; no search",
+  "deviations": {
+   "LR": {
+    "param": "max_iter",
+    "value": 2000,
+    "library_default": 100,
+    "reason": "convergence fix, not tuning (lbfgs stopped at 100 iterations with a ConvergenceWarning on GLOBAL)"
+   }
+  },
+  "class_weight": {
+   "LR": "class_weight='balanced'",
+   "DT": "class_weight='balanced'",
+   "RF": "class_weight='balanced'",
+   "ET": "class_weight='balanced'",
+   "LGBM": "class_weight='balanced'",
+   "CAT": "auto_class_weights='Balanced'",
+   "XGB": "scale_pos_weight = n_benign / n_attack of the group's train",
+   "KNN": "none (kNN has no class weights)",
+   "MLP": "sample_weight=compute_sample_weight('balanced') if MLPClassifier.fit takes sample_weight, else random oversampling of the minority class in TRAIN"
+  },
+  "non_hyperparameter_settings": {
+   "n_jobs / thread_count": "fit and full-val scoring use all cores (fit_n_jobs); latency and throughput use 1 thread",
+   "CAT allow_writing_files": false,
+   "CAT verbose": false,
+   "LGBM verbosity": -1
+  },
+  "fit_n_jobs": -1,
+  "scaled_models": [
+   "LR",
+   "KNN",
+   "MLP"
+  ],
+  "duration_feature_pattern": "duration",
+  "zero_duration_flag": "zero_duration_flag",
+  "scaler": "StandardScaler fitted on TRAIN only, applied to the 70 features + zero_duration_flag",
+  "default_threshold": 0.5,
+  "fph_budgets": [
+   0.5,
+   1,
+   5
+  ],
+  "threshold_rule": "flag attack iff score >= threshold; budget points pick the lowest observed val score whose val FP/hour <= budget (allowed FP = floor(budget * hours))",
+  "summary_fph": 1,
+  "low_n": 50,
+  "time_limit_s": {
+   "default": 1800
+  },
+  "latency": {
+   "single_calls": 1000,
+   "warmup_calls": 20,
+   "batch_rows": 10000,
+   "threads": 1
+  },
+  "dry_run_frac": 0.05,
+  "dry_run_strata": [
+   "group",
+   "y",
+   "attack_family"
+  ],
+  "active_idle_gap_seconds": 300
+ },
+ "attack_families": [
+  "port_scan",
+  "syn_flood",
+  "udp_flood"
+ ],
+ "attack_pcaps": {
+  "port_scan": [
+   "Recon-PortScan.pcap"
+  ],
+  "syn_flood": [
+   "DDoS-SYN_Flood.pcap",
+   "DDoS-SYN_Flood5.pcap",
+   "DDoS-SYN_Flood10.pcap",
+   "DDoS-SYN_Flood15.pcap"
+  ],
+  "udp_flood": [
+   "Mirai-udpplain.pcap",
+   "Mirai-udpplain24.pcap"
+  ]
+ },
+ "row_counts_house": {
+  "GLOBAL": {
+   "train_full": {
+    "rows": 636193,
+    "benign": 137462,
+    "attack": 498731,
+    "attack_by_family": {
+     "port_scan": 98046,
+     "syn_flood": 400590,
+     "udp_flood": 95
+    }
+   },
+   "val_full": {
+    "rows": 157558,
+    "benign": 39185,
+    "attack": 118373,
+    "attack_by_family": {
+     "port_scan": 18179,
+     "syn_flood": 100177,
+     "udp_flood": 17
+    }
+   },
+   "train_used": {
+    "rows": 636193,
+    "benign": 137462,
+    "attack": 498731,
+    "attack_by_family": {
+     "port_scan": 98046,
+     "syn_flood": 400590,
+     "udp_flood": 95
+    }
+   },
+   "val_used": {
+    "rows": 157558,
+    "benign": 39185,
+    "attack": 118373,
+    "attack_by_family": {
+     "port_scan": 18179,
+     "syn_flood": 100177,
+     "udp_flood": 17
+    }
+   }
+  }
+ },
+ "row_counts": {
+  "global": {
+   "GLOBAL": {
+    "train_used": {
+     "rows": 636193,
+     "benign": 137462,
+     "attack": 498731,
+     "attack_by_family": {
+      "port_scan": 98046,
+      "syn_flood": 400590,
+      "udp_flood": 95
+     }
+    },
+    "val_used": {
+     "rows": 157558,
+     "benign": 39185,
+     "attack": 118373,
+     "attack_by_family": {
+      "port_scan": 18179,
+      "syn_flood": 100177,
+      "udp_flood": 17
+     }
+    }
+   }
+  },
+  "category": {
+   "Audio": {
+    "train_used": {
+     "rows": 248513,
+     "benign": 30866,
+     "attack": 217647,
+     "attack_by_family": {
+      "port_scan": 16963,
+      "syn_flood": 200605,
+      "udp_flood": 79
+     }
+    },
+    "val_used": {
+     "rows": 12068,
+     "benign": 6286,
+     "attack": 5782,
+     "attack_by_family": {
+      "port_scan": 5765,
+      "udp_flood": 17
+     }
+    }
+   },
+   "Camera": {
+    "train_used": {
+     "rows": 88247,
+     "benign": 53399,
+     "attack": 34848,
+     "attack_by_family": {
+      "port_scan": 34848
+     }
+    },
+    "val_used": {
+     "rows": 60234,
+     "benign": 10131,
+     "attack": 50103,
+     "attack_by_family": {
+      "syn_flood": 50103
+     }
+    }
+   },
+   "GEN": {
+    "train_used": {
+     "rows": 5511,
+     "benign": 1155,
+     "attack": 4356,
+     "attack_by_family": {
+      "port_scan": 4356
+     }
+    },
+    "val_used": {
+     "rows": 291,
+     "benign": 291,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   },
+   "Home Automation": {
+    "train_used": {
+     "rows": 11165,
+     "benign": 4944,
+     "attack": 6221,
+     "attack_by_family": {
+      "port_scan": 6221
+     }
+    },
+    "val_used": {
+     "rows": 7695,
+     "benign": 1599,
+     "attack": 6096,
+     "attack_by_family": {
+      "port_scan": 6096
+     }
+    }
+   },
+   "Hub": {
+    "train_used": {
+     "rows": 34823,
+     "benign": 30696,
+     "attack": 4127,
+     "attack_by_family": {
+      "port_scan": 4111,
+      "udp_flood": 16
+     }
+    },
+    "val_used": {
+     "rows": 17049,
+     "benign": 17049,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   },
+   "Lighting": {
+    "train_used": {
+     "rows": 4575,
+     "benign": 3424,
+     "attack": 1151,
+     "attack_by_family": {
+      "port_scan": 1151
+     }
+    },
+    "val_used": {
+     "rows": 6918,
+     "benign": 600,
+     "attack": 6318,
+     "attack_by_family": {
+      "port_scan": 6318
+     }
+    }
+   },
+   "Power Outlet": {
+    "train_used": {
+     "rows": 149256,
+     "benign": 10531,
+     "attack": 138725,
+     "attack_by_family": {
+      "port_scan": 22282,
+      "syn_flood": 116443
+     }
+    },
+    "val_used": {
+     "rows": 2741,
+     "benign": 2741,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   },
+   "Unidentified (Espressif)": {
+    "train_used": {
+     "rows": 94103,
+     "benign": 2447,
+     "attack": 91656,
+     "attack_by_family": {
+      "port_scan": 8114,
+      "syn_flood": 83542
+     }
+    },
+    "val_used": {
+     "rows": 50562,
+     "benign": 488,
+     "attack": 50074,
+     "attack_by_family": {
+      "syn_flood": 50074
+     }
+    }
+   }
+  },
+  "behaviour_k2": {
+   "G1": {
+    "train_used": {
+     "rows": 371200,
+     "benign": 120028,
+     "attack": 251172,
+     "attack_by_family": {
+      "port_scan": 50472,
+      "syn_flood": 200605,
+      "udp_flood": 95
+     }
+    },
+    "val_used": {
+     "rows": 93716,
+     "benign": 35833,
+     "attack": 57883,
+     "attack_by_family": {
+      "port_scan": 7763,
+      "syn_flood": 50103,
+      "udp_flood": 17
+     }
+    }
+   },
+   "G2": {
+    "train_used": {
+     "rows": 259482,
+     "benign": 16279,
+     "attack": 243203,
+     "attack_by_family": {
+      "port_scan": 43218,
+      "syn_flood": 199985
+     }
+    },
+    "val_used": {
+     "rows": 63551,
+     "benign": 3061,
+     "attack": 60490,
+     "attack_by_family": {
+      "port_scan": 10416,
+      "syn_flood": 50074
+     }
+    }
+   },
+   "GEN": {
+    "train_used": {
+     "rows": 5511,
+     "benign": 1155,
+     "attack": 4356,
+     "attack_by_family": {
+      "port_scan": 4356
+     }
+    },
+    "val_used": {
+     "rows": 291,
+     "benign": 291,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   }
+  },
+  "behaviour_k3": {
+   "G1": {
+    "train_used": {
+     "rows": 371200,
+     "benign": 120028,
+     "attack": 251172,
+     "attack_by_family": {
+      "port_scan": 50472,
+      "syn_flood": 200605,
+      "udp_flood": 95
+     }
+    },
+    "val_used": {
+     "rows": 93716,
+     "benign": 35833,
+     "attack": 57883,
+     "attack_by_family": {
+      "port_scan": 7763,
+      "syn_flood": 50103,
+      "udp_flood": 17
+     }
+    }
+   },
+   "G2": {
+    "train_used": {
+     "rows": 244658,
+     "benign": 12856,
+     "attack": 231802,
+     "attack_by_family": {
+      "port_scan": 31817,
+      "syn_flood": 199985
+     }
+    },
+    "val_used": {
+     "rows": 60892,
+     "benign": 2498,
+     "attack": 58394,
+     "attack_by_family": {
+      "port_scan": 8320,
+      "syn_flood": 50074
+     }
+    }
+   },
+   "G3": {
+    "train_used": {
+     "rows": 14824,
+     "benign": 3423,
+     "attack": 11401,
+     "attack_by_family": {
+      "port_scan": 11401
+     }
+    },
+    "val_used": {
+     "rows": 2659,
+     "benign": 563,
+     "attack": 2096,
+     "attack_by_family": {
+      "port_scan": 2096
+     }
+    }
+   },
+   "GEN": {
+    "train_used": {
+     "rows": 5511,
+     "benign": 1155,
+     "attack": 4356,
+     "attack_by_family": {
+      "port_scan": 4356
+     }
+    },
+    "val_used": {
+     "rows": 291,
+     "benign": 291,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   }
+  },
+  "behaviour_k4": {
+   "G1": {
+    "train_used": {
+     "rows": 222888,
+     "benign": 61502,
+     "attack": 161386,
+     "attack_by_family": {
+      "port_scan": 31173,
+      "syn_flood": 130118,
+      "udp_flood": 95
+     }
+    },
+    "val_used": {
+     "rows": 70495,
+     "benign": 12612,
+     "attack": 57883,
+     "attack_by_family": {
+      "port_scan": 7763,
+      "syn_flood": 50103,
+      "udp_flood": 17
+     }
+    }
+   },
+   "G2": {
+    "train_used": {
+     "rows": 148312,
+     "benign": 58526,
+     "attack": 89786,
+     "attack_by_family": {
+      "port_scan": 19299,
+      "syn_flood": 70487
+     }
+    },
+    "val_used": {
+     "rows": 23221,
+     "benign": 23221,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   },
+   "G3": {
+    "train_used": {
+     "rows": 244658,
+     "benign": 12856,
+     "attack": 231802,
+     "attack_by_family": {
+      "port_scan": 31817,
+      "syn_flood": 199985
+     }
+    },
+    "val_used": {
+     "rows": 60892,
+     "benign": 2498,
+     "attack": 58394,
+     "attack_by_family": {
+      "port_scan": 8320,
+      "syn_flood": 50074
+     }
+    }
+   },
+   "G4": {
+    "train_used": {
+     "rows": 14824,
+     "benign": 3423,
+     "attack": 11401,
+     "attack_by_family": {
+      "port_scan": 11401
+     }
+    },
+    "val_used": {
+     "rows": 2659,
+     "benign": 563,
+     "attack": 2096,
+     "attack_by_family": {
+      "port_scan": 2096
+     }
+    }
+   },
+   "GEN": {
+    "train_used": {
+     "rows": 5511,
+     "benign": 1155,
+     "attack": 4356,
+     "attack_by_family": {
+      "port_scan": 4356
+     }
+    },
+    "val_used": {
+     "rows": 291,
+     "benign": 291,
+     "attack": 0,
+     "attack_by_family": {}
+    }
+   }
+  }
+ },
+ "fph_denominators": {
+  "GLOBAL": {
+   "hours_used": 1.967583333386315,
+   "hours_full_val": 1.967583333386315,
+   "per_session": {
+    "benign_night": 1.3553750000397364,
+    "DDoS-SYN_Flood": 0.07916666666666666,
+    "DDoS-SYN_Flood5": 0.03825000001324547,
+    "DDoS-SYN_Flood10": 0.0,
+    "DDoS-SYN_Flood15": 0.0,
+    "Recon-PortScan": 0.4620000000132455,
+    "Mirai-udpplain": 0.03279166665342119,
+    "Mirai-udpplain24": 0.0
+   },
+   "hours_val_only_starts": 1.967583333386315,
+   "source": "computed: 08 benign_hours rule on manifest session_cuts + group benign starts (manifest has no per-group value)"
+  }
+ },
+ "fph_manifest_val_total": 1.9676,
+ "session_fph_denominators": {
+  "A": {
+   "valben": {
+    "benign_rows_full": 39185,
+    "benign_rows_used": 39185,
+    "hours_full": 1.9675833333863153,
+    "hours_used": 1.9675833333863153,
+    "splits": [
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   },
+   "heldben": {
+    "benign_rows_full": 7690,
+    "benign_rows_used": 7690,
+    "hours_full": 0.4438888888888889,
+    "hours_used": 0.4438888888888889,
+    "splits": [
+     "train",
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   }
+  },
+  "B": {
+   "valben": {
+    "benign_rows_full": 39185,
+    "benign_rows_used": 39185,
+    "hours_full": 1.9675833333863153,
+    "hours_used": 1.9675833333863153,
+    "splits": [
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   },
+   "heldben": {
+    "benign_rows_full": 19238,
+    "benign_rows_used": 19238,
+    "hours_full": 0.6574027778042688,
+    "hours_used": 0.6574027778042688,
+    "splits": [
+     "train",
+     "val"
+    ],
+    "rule": "08 benign_hours on manifest session_cuts, summed over the rows' splits"
+   }
+  }
+ },
+ "family_flags": [
+  {
+   "group": "GLOBAL",
+   "attack_family": "port_scan",
+   "n_val": 18179,
+   "flag": ""
+  },
+  {
+   "group": "GLOBAL",
+   "attack_family": "syn_flood",
+   "n_val": 100177,
+   "flag": ""
+  },
+  {
+   "group": "GLOBAL",
+   "attack_family": "udp_flood",
+   "n_val": 17,
+   "flag": "LOW_N"
+  }
+ ],
+ "warnings": [],
+ "time_limit_s_per_fit": 1800.0,
+ "fits": {
+  "val": {
+   "7be95f054be87f6f": {
+    "labels": [
+     "global/GLOBAL/both",
+     "category/GLOBAL/pure",
+     "category/GLOBAL/shared_attack",
+     "behaviour_k2/GLOBAL/pure",
+     "behaviour_k2/GLOBAL/shared_attack",
+     "behaviour_k3/GLOBAL/pure",
+     "behaviour_k3/GLOBAL/shared_attack",
+     "behaviour_k4/GLOBAL/pure",
+     "behaviour_k4/GLOBAL/shared_attack"
+    ],
+    "n": 636193,
+    "benign": 137462,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "25db470236cb9bcb": {
+    "labels": [
+     "category/Audio/pure"
+    ],
+    "n": 248513,
+    "benign": 30866,
+    "attack": 217647,
+    "port_scan": 16963,
+    "syn_flood": 200605,
+    "udp_flood": 79
+   },
+   "052a98def2d73895": {
+    "labels": [
+     "category/Camera/pure"
+    ],
+    "n": 88247,
+    "benign": 53399,
+    "attack": 34848,
+    "port_scan": 34848,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "b496820b9746d33c": {
+    "labels": [
+     "category/Home Automation/pure"
+    ],
+    "n": 11165,
+    "benign": 4944,
+    "attack": 6221,
+    "port_scan": 6221,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "d42e6a718b3beaf5": {
+    "labels": [
+     "category/Hub/pure"
+    ],
+    "n": 34823,
+    "benign": 30696,
+    "attack": 4127,
+    "port_scan": 4111,
+    "syn_flood": 0,
+    "udp_flood": 16
+   },
+   "fff53415e2f32eab": {
+    "labels": [
+     "category/Lighting/pure"
+    ],
+    "n": 4575,
+    "benign": 3424,
+    "attack": 1151,
+    "port_scan": 1151,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "87854ac468f9208b": {
+    "labels": [
+     "category/Power Outlet/pure"
+    ],
+    "n": 149256,
+    "benign": 10531,
+    "attack": 138725,
+    "port_scan": 22282,
+    "syn_flood": 116443,
+    "udp_flood": 0
+   },
+   "46c92c7a6b162c05": {
+    "labels": [
+     "category/Unidentified (Espressif)/pure"
+    ],
+    "n": 94103,
+    "benign": 2447,
+    "attack": 91656,
+    "port_scan": 8114,
+    "syn_flood": 83542,
+    "udp_flood": 0
+   },
+   "d8515ecdfd68e630": {
+    "labels": [
+     "category/Audio/shared_attack"
+    ],
+    "n": 529597,
+    "benign": 30866,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "c8c4bc0d62456292": {
+    "labels": [
+     "category/Camera/shared_attack"
+    ],
+    "n": 552130,
+    "benign": 53399,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "f714b0cd1ab7a79c": {
+    "labels": [
+     "category/Home Automation/shared_attack"
+    ],
+    "n": 503675,
+    "benign": 4944,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "710398aa5b609001": {
+    "labels": [
+     "category/Hub/shared_attack"
+    ],
+    "n": 529427,
+    "benign": 30696,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "8d8d2e8f8c4c8388": {
+    "labels": [
+     "category/Lighting/shared_attack"
+    ],
+    "n": 502155,
+    "benign": 3424,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "40253d229d6a0fd7": {
+    "labels": [
+     "category/Power Outlet/shared_attack"
+    ],
+    "n": 509262,
+    "benign": 10531,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "3c3d403d214cce40": {
+    "labels": [
+     "category/Unidentified (Espressif)/shared_attack"
+    ],
+    "n": 501178,
+    "benign": 2447,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "b1278ac7ab88c8bf": {
+    "labels": [
+     "behaviour_k2/G1/pure",
+     "behaviour_k3/G1/pure"
+    ],
+    "n": 371200,
+    "benign": 120028,
+    "attack": 251172,
+    "port_scan": 50472,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "897cf73eddee3eda": {
+    "labels": [
+     "behaviour_k2/G2/pure"
+    ],
+    "n": 259482,
+    "benign": 16279,
+    "attack": 243203,
+    "port_scan": 43218,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "05ee0e90a6c5ec95": {
+    "labels": [
+     "behaviour_k2/G1/shared_attack",
+     "behaviour_k3/G1/shared_attack"
+    ],
+    "n": 618759,
+    "benign": 120028,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "63f2a4532c44c283": {
+    "labels": [
+     "behaviour_k2/G2/shared_attack"
+    ],
+    "n": 515010,
+    "benign": 16279,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "9106092ad8ee8a6a": {
+    "labels": [
+     "behaviour_k3/G2/pure",
+     "behaviour_k4/G3/pure"
+    ],
+    "n": 244658,
+    "benign": 12856,
+    "attack": 231802,
+    "port_scan": 31817,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "879ba0d154dab006": {
+    "labels": [
+     "behaviour_k3/G3/pure",
+     "behaviour_k4/G4/pure"
+    ],
+    "n": 14824,
+    "benign": 3423,
+    "attack": 11401,
+    "port_scan": 11401,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "7fc19f34a50dd733": {
+    "labels": [
+     "behaviour_k3/G2/shared_attack",
+     "behaviour_k4/G3/shared_attack"
+    ],
+    "n": 511587,
+    "benign": 12856,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "c46327e94c6ca704": {
+    "labels": [
+     "behaviour_k3/G3/shared_attack",
+     "behaviour_k4/G4/shared_attack"
+    ],
+    "n": 502154,
+    "benign": 3423,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "8f7465b4e6d5e186": {
+    "labels": [
+     "behaviour_k4/G1/pure"
+    ],
+    "n": 222888,
+    "benign": 61502,
+    "attack": 161386,
+    "port_scan": 31173,
+    "syn_flood": 130118,
+    "udp_flood": 95
+   },
+   "e9f9aec4e626c454": {
+    "labels": [
+     "behaviour_k4/G2/pure"
+    ],
+    "n": 148312,
+    "benign": 58526,
+    "attack": 89786,
+    "port_scan": 19299,
+    "syn_flood": 70487,
+    "udp_flood": 0
+   },
+   "0ab34e3f5ef0e279": {
+    "labels": [
+     "behaviour_k4/G1/shared_attack"
+    ],
+    "n": 560233,
+    "benign": 61502,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "363e66fb4304a04a": {
+    "labels": [
+     "behaviour_k4/G2/shared_attack"
+    ],
+    "n": 557257,
+    "benign": 58526,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   }
+  },
+  "benign_holdout_A": {
+   "8f5adbb7bcbd60c0": {
+    "labels": [
+     "global/GLOBAL/both",
+     "category/GLOBAL/pure",
+     "category/GLOBAL/shared_attack",
+     "behaviour_k2/GLOBAL/pure",
+     "behaviour_k2/GLOBAL/shared_attack",
+     "behaviour_k3/GLOBAL/pure",
+     "behaviour_k3/GLOBAL/shared_attack",
+     "behaviour_k4/GLOBAL/pure",
+     "behaviour_k4/GLOBAL/shared_attack"
+    ],
+    "n": 629634,
+    "benign": 130903,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "ae3d68743b16d861": {
+    "labels": [
+     "category/Audio/pure"
+    ],
+    "n": 247069,
+    "benign": 29422,
+    "attack": 217647,
+    "port_scan": 16963,
+    "syn_flood": 200605,
+    "udp_flood": 79
+   },
+   "13b41b01fe7a0353": {
+    "labels": [
+     "category/Camera/pure"
+    ],
+    "n": 85631,
+    "benign": 50783,
+    "attack": 34848,
+    "port_scan": 34848,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "1212af24a929a8f5": {
+    "labels": [
+     "category/Home Automation/pure"
+    ],
+    "n": 10863,
+    "benign": 4642,
+    "attack": 6221,
+    "port_scan": 6221,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "acd65d10cf8d3bce": {
+    "labels": [
+     "category/Hub/pure"
+    ],
+    "n": 33627,
+    "benign": 29500,
+    "attack": 4127,
+    "port_scan": 4111,
+    "syn_flood": 0,
+    "udp_flood": 16
+   },
+   "ae918fdbd7634c05": {
+    "labels": [
+     "category/Lighting/pure"
+    ],
+    "n": 4262,
+    "benign": 3111,
+    "attack": 1151,
+    "port_scan": 1151,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "e9f350ba7453f47d": {
+    "labels": [
+     "category/Power Outlet/pure"
+    ],
+    "n": 148789,
+    "benign": 10064,
+    "attack": 138725,
+    "port_scan": 22282,
+    "syn_flood": 116443,
+    "udp_flood": 0
+   },
+   "c43ad9f90614694a": {
+    "labels": [
+     "category/Unidentified (Espressif)/pure"
+    ],
+    "n": 93936,
+    "benign": 2280,
+    "attack": 91656,
+    "port_scan": 8114,
+    "syn_flood": 83542,
+    "udp_flood": 0
+   },
+   "3a5097e6ab633ee7": {
+    "labels": [
+     "category/Audio/shared_attack"
+    ],
+    "n": 528153,
+    "benign": 29422,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "ff86b75639eef410": {
+    "labels": [
+     "category/Camera/shared_attack"
+    ],
+    "n": 549514,
+    "benign": 50783,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "67fc5098796af7ae": {
+    "labels": [
+     "category/Home Automation/shared_attack"
+    ],
+    "n": 503373,
+    "benign": 4642,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "60b2a6e6e3cdbb7f": {
+    "labels": [
+     "category/Hub/shared_attack"
+    ],
+    "n": 528231,
+    "benign": 29500,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "bee55705dcc8004d": {
+    "labels": [
+     "category/Lighting/shared_attack"
+    ],
+    "n": 501842,
+    "benign": 3111,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "1db1bba995b9f2c2": {
+    "labels": [
+     "category/Power Outlet/shared_attack"
+    ],
+    "n": 508795,
+    "benign": 10064,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "80603554c4c54b9a": {
+    "labels": [
+     "category/Unidentified (Espressif)/shared_attack"
+    ],
+    "n": 501011,
+    "benign": 2280,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "7acc641b0faab7ad": {
+    "labels": [
+     "behaviour_k2/G1/pure",
+     "behaviour_k3/G1/pure"
+    ],
+    "n": 366083,
+    "benign": 114911,
+    "attack": 251172,
+    "port_scan": 50472,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "d8b149763ead8d15": {
+    "labels": [
+     "behaviour_k2/G2/pure"
+    ],
+    "n": 258094,
+    "benign": 14891,
+    "attack": 243203,
+    "port_scan": 43218,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "3fb13d7577d84f29": {
+    "labels": [
+     "behaviour_k2/G1/shared_attack",
+     "behaviour_k3/G1/shared_attack"
+    ],
+    "n": 613642,
+    "benign": 114911,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "df6148e6a5e3728f": {
+    "labels": [
+     "behaviour_k2/G2/shared_attack"
+    ],
+    "n": 513622,
+    "benign": 14891,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "0c6a6fd715957117": {
+    "labels": [
+     "behaviour_k3/G2/pure",
+     "behaviour_k4/G3/pure"
+    ],
+    "n": 243793,
+    "benign": 11991,
+    "attack": 231802,
+    "port_scan": 31817,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "20ec0f69cf0ee510": {
+    "labels": [
+     "behaviour_k3/G3/pure",
+     "behaviour_k4/G4/pure"
+    ],
+    "n": 14301,
+    "benign": 2900,
+    "attack": 11401,
+    "port_scan": 11401,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "5ade9d3229d83b13": {
+    "labels": [
+     "behaviour_k3/G2/shared_attack",
+     "behaviour_k4/G3/shared_attack"
+    ],
+    "n": 510722,
+    "benign": 11991,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "57092847a9aa5436": {
+    "labels": [
+     "behaviour_k3/G3/shared_attack",
+     "behaviour_k4/G4/shared_attack"
+    ],
+    "n": 501631,
+    "benign": 2900,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "e5bf36c841ec9f75": {
+    "labels": [
+     "behaviour_k4/G1/pure"
+    ],
+    "n": 220043,
+    "benign": 58657,
+    "attack": 161386,
+    "port_scan": 31173,
+    "syn_flood": 130118,
+    "udp_flood": 95
+   },
+   "0798d655d5a8fe73": {
+    "labels": [
+     "behaviour_k4/G2/pure"
+    ],
+    "n": 146040,
+    "benign": 56254,
+    "attack": 89786,
+    "port_scan": 19299,
+    "syn_flood": 70487,
+    "udp_flood": 0
+   },
+   "841e171429dc739a": {
+    "labels": [
+     "behaviour_k4/G1/shared_attack"
+    ],
+    "n": 557388,
+    "benign": 58657,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "972abc89d1fb4ce9": {
+    "labels": [
+     "behaviour_k4/G2/shared_attack"
+    ],
+    "n": 554985,
+    "benign": 56254,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   }
+  },
+  "benign_holdout_B": {
+   "295f96616cbd716e": {
+    "labels": [
+     "global/GLOBAL/both",
+     "category/GLOBAL/pure",
+     "category/GLOBAL/shared_attack",
+     "behaviour_k2/GLOBAL/pure",
+     "behaviour_k2/GLOBAL/shared_attack",
+     "behaviour_k3/GLOBAL/pure",
+     "behaviour_k3/GLOBAL/shared_attack",
+     "behaviour_k4/GLOBAL/pure",
+     "behaviour_k4/GLOBAL/shared_attack"
+    ],
+    "n": 619394,
+    "benign": 120663,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "a9599f693823b8f0": {
+    "labels": [
+     "category/Audio/pure"
+    ],
+    "n": 243490,
+    "benign": 25843,
+    "attack": 217647,
+    "port_scan": 16963,
+    "syn_flood": 200605,
+    "udp_flood": 79
+   },
+   "281803d1119f4f62": {
+    "labels": [
+     "category/Camera/pure"
+    ],
+    "n": 80721,
+    "benign": 45873,
+    "attack": 34848,
+    "port_scan": 34848,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "ede0d482ac54aaad": {
+    "labels": [
+     "category/Home Automation/pure"
+    ],
+    "n": 10666,
+    "benign": 4445,
+    "attack": 6221,
+    "port_scan": 6221,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "f43fe67d14980eb1": {
+    "labels": [
+     "category/Hub/pure"
+    ],
+    "n": 32568,
+    "benign": 28441,
+    "attack": 4127,
+    "port_scan": 4111,
+    "syn_flood": 0,
+    "udp_flood": 16
+   },
+   "e6e867312d3d16e9": {
+    "labels": [
+     "category/Lighting/pure"
+    ],
+    "n": 4105,
+    "benign": 2954,
+    "attack": 1151,
+    "port_scan": 1151,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "963b4f7b8a125d31": {
+    "labels": [
+     "category/Power Outlet/pure"
+    ],
+    "n": 148555,
+    "benign": 9830,
+    "attack": 138725,
+    "port_scan": 22282,
+    "syn_flood": 116443,
+    "udp_flood": 0
+   },
+   "ffef7fa07c85fb1d": {
+    "labels": [
+     "category/Unidentified (Espressif)/pure"
+    ],
+    "n": 93912,
+    "benign": 2256,
+    "attack": 91656,
+    "port_scan": 8114,
+    "syn_flood": 83542,
+    "udp_flood": 0
+   },
+   "cd29983dd1934bf9": {
+    "labels": [
+     "category/Audio/shared_attack"
+    ],
+    "n": 524574,
+    "benign": 25843,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "029b50cb181b1c59": {
+    "labels": [
+     "category/Camera/shared_attack"
+    ],
+    "n": 544604,
+    "benign": 45873,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "5d9016abade9ff34": {
+    "labels": [
+     "category/Home Automation/shared_attack"
+    ],
+    "n": 503176,
+    "benign": 4445,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "2cb2fd7ccf6153f0": {
+    "labels": [
+     "category/Hub/shared_attack"
+    ],
+    "n": 527172,
+    "benign": 28441,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "a6660d6213a13d8a": {
+    "labels": [
+     "category/Lighting/shared_attack"
+    ],
+    "n": 501685,
+    "benign": 2954,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "947d10bb4877858f": {
+    "labels": [
+     "category/Power Outlet/shared_attack"
+    ],
+    "n": 508561,
+    "benign": 9830,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "18884e91146c84b4": {
+    "labels": [
+     "category/Unidentified (Espressif)/shared_attack"
+    ],
+    "n": 500987,
+    "benign": 2256,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "da693873a431b7b3": {
+    "labels": [
+     "behaviour_k2/G1/pure",
+     "behaviour_k3/G1/pure"
+    ],
+    "n": 356576,
+    "benign": 105404,
+    "attack": 251172,
+    "port_scan": 50472,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "6020d36c2644797a": {
+    "labels": [
+     "behaviour_k2/G2/pure"
+    ],
+    "n": 257441,
+    "benign": 14238,
+    "attack": 243203,
+    "port_scan": 43218,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "9395e880e288ef22": {
+    "labels": [
+     "behaviour_k2/G1/shared_attack",
+     "behaviour_k3/G1/shared_attack"
+    ],
+    "n": 604135,
+    "benign": 105404,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "4717205d327427ac": {
+    "labels": [
+     "behaviour_k2/G2/shared_attack"
+    ],
+    "n": 512969,
+    "benign": 14238,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "0e925a49d6ce415d": {
+    "labels": [
+     "behaviour_k3/G2/pure",
+     "behaviour_k4/G3/pure"
+    ],
+    "n": 243410,
+    "benign": 11608,
+    "attack": 231802,
+    "port_scan": 31817,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "5c14be4f9a08c30b": {
+    "labels": [
+     "behaviour_k3/G3/pure",
+     "behaviour_k4/G4/pure"
+    ],
+    "n": 14031,
+    "benign": 2630,
+    "attack": 11401,
+    "port_scan": 11401,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "980dd1b90c469352": {
+    "labels": [
+     "behaviour_k3/G2/shared_attack",
+     "behaviour_k4/G3/shared_attack"
+    ],
+    "n": 510339,
+    "benign": 11608,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "ff9d3d2c06796ac4": {
+    "labels": [
+     "behaviour_k3/G3/shared_attack",
+     "behaviour_k4/G4/shared_attack"
+    ],
+    "n": 501361,
+    "benign": 2630,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "49954bd28349e7dd": {
+    "labels": [
+     "behaviour_k4/G1/pure"
+    ],
+    "n": 213502,
+    "benign": 52116,
+    "attack": 161386,
+    "port_scan": 31173,
+    "syn_flood": 130118,
+    "udp_flood": 95
+   },
+   "2b4aeed8587bb495": {
+    "labels": [
+     "behaviour_k4/G2/pure"
+    ],
+    "n": 143074,
+    "benign": 53288,
+    "attack": 89786,
+    "port_scan": 19299,
+    "syn_flood": 70487,
+    "udp_flood": 0
+   },
+   "d94532e6f5174b17": {
+    "labels": [
+     "behaviour_k4/G1/shared_attack"
+    ],
+    "n": 550847,
+    "benign": 52116,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   },
+   "3cae709318cf6a82": {
+    "labels": [
+     "behaviour_k4/G2/shared_attack"
+    ],
+    "n": 552019,
+    "benign": 53288,
+    "attack": 498731,
+    "port_scan": 98046,
+    "syn_flood": 400590,
+    "udp_flood": 95
+   }
+  },
+  "rotation_A": {
+   "790424ec5c8188d8": {
+    "labels": [
+     "global/GLOBAL/both",
+     "category/GLOBAL/pure",
+     "category/GLOBAL/shared_attack",
+     "behaviour_k2/GLOBAL/pure",
+     "behaviour_k2/GLOBAL/shared_attack",
+     "behaviour_k3/GLOBAL/pure",
+     "behaviour_k3/GLOBAL/shared_attack",
+     "behaviour_k4/GLOBAL/pure",
+     "behaviour_k4/GLOBAL/shared_attack"
+    ],
+    "n": 429649,
+    "benign": 130903,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "ae3d68743b16d861": {
+    "labels": [
+     "category/Audio/pure"
+    ],
+    "n": 247069,
+    "benign": 29422,
+    "attack": 217647,
+    "port_scan": 16963,
+    "syn_flood": 200605,
+    "udp_flood": 79
+   },
+   "13b41b01fe7a0353": {
+    "labels": [
+     "category/Camera/pure"
+    ],
+    "n": 85631,
+    "benign": 50783,
+    "attack": 34848,
+    "port_scan": 34848,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "1212af24a929a8f5": {
+    "labels": [
+     "category/Home Automation/pure"
+    ],
+    "n": 10863,
+    "benign": 4642,
+    "attack": 6221,
+    "port_scan": 6221,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "acd65d10cf8d3bce": {
+    "labels": [
+     "category/Hub/pure"
+    ],
+    "n": 33627,
+    "benign": 29500,
+    "attack": 4127,
+    "port_scan": 4111,
+    "syn_flood": 0,
+    "udp_flood": 16
+   },
+   "ae918fdbd7634c05": {
+    "labels": [
+     "category/Lighting/pure"
+    ],
+    "n": 4262,
+    "benign": 3111,
+    "attack": 1151,
+    "port_scan": 1151,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "fd7da350fe666b84": {
+    "labels": [
+     "category/Power Outlet/pure"
+    ],
+    "n": 32346,
+    "benign": 10064,
+    "attack": 22282,
+    "port_scan": 22282,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "b4060402b8732297": {
+    "labels": [
+     "category/Unidentified (Espressif)/pure"
+    ],
+    "n": 10394,
+    "benign": 2280,
+    "attack": 8114,
+    "port_scan": 8114,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "22d19fd648a8f8e3": {
+    "labels": [
+     "category/Audio/shared_attack"
+    ],
+    "n": 328168,
+    "benign": 29422,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "a1bce8086949c72f": {
+    "labels": [
+     "category/Camera/shared_attack"
+    ],
+    "n": 349529,
+    "benign": 50783,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "6f02186588bde8fd": {
+    "labels": [
+     "category/Home Automation/shared_attack"
+    ],
+    "n": 303388,
+    "benign": 4642,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "ea3147ddfdebbfaf": {
+    "labels": [
+     "category/Hub/shared_attack"
+    ],
+    "n": 328246,
+    "benign": 29500,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "f1874e9211a99d13": {
+    "labels": [
+     "category/Lighting/shared_attack"
+    ],
+    "n": 301857,
+    "benign": 3111,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "30305566ff69d01d": {
+    "labels": [
+     "category/Power Outlet/shared_attack"
+    ],
+    "n": 308810,
+    "benign": 10064,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "63c88075f6e2200a": {
+    "labels": [
+     "category/Unidentified (Espressif)/shared_attack"
+    ],
+    "n": 301026,
+    "benign": 2280,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "7acc641b0faab7ad": {
+    "labels": [
+     "behaviour_k2/G1/pure",
+     "behaviour_k3/G1/pure"
+    ],
+    "n": 366083,
+    "benign": 114911,
+    "attack": 251172,
+    "port_scan": 50472,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "c9aed73c5b8a6a90": {
+    "labels": [
+     "behaviour_k2/G2/pure"
+    ],
+    "n": 58109,
+    "benign": 14891,
+    "attack": 43218,
+    "port_scan": 43218,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "cad2853b9307d108": {
+    "labels": [
+     "behaviour_k2/G1/shared_attack",
+     "behaviour_k3/G1/shared_attack"
+    ],
+    "n": 413657,
+    "benign": 114911,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "86cafbeaed88767c": {
+    "labels": [
+     "behaviour_k2/G2/shared_attack"
+    ],
+    "n": 313637,
+    "benign": 14891,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "395587fb410d8425": {
+    "labels": [
+     "behaviour_k3/G2/pure",
+     "behaviour_k4/G3/pure"
+    ],
+    "n": 43808,
+    "benign": 11991,
+    "attack": 31817,
+    "port_scan": 31817,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "20ec0f69cf0ee510": {
+    "labels": [
+     "behaviour_k3/G3/pure",
+     "behaviour_k4/G4/pure"
+    ],
+    "n": 14301,
+    "benign": 2900,
+    "attack": 11401,
+    "port_scan": 11401,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "a0327f664756b9c0": {
+    "labels": [
+     "behaviour_k3/G2/shared_attack",
+     "behaviour_k4/G3/shared_attack"
+    ],
+    "n": 310737,
+    "benign": 11991,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "d709a83c0fbd0372": {
+    "labels": [
+     "behaviour_k3/G3/shared_attack",
+     "behaviour_k4/G4/shared_attack"
+    ],
+    "n": 301646,
+    "benign": 2900,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "e5bf36c841ec9f75": {
+    "labels": [
+     "behaviour_k4/G1/pure"
+    ],
+    "n": 220043,
+    "benign": 58657,
+    "attack": 161386,
+    "port_scan": 31173,
+    "syn_flood": 130118,
+    "udp_flood": 95
+   },
+   "0798d655d5a8fe73": {
+    "labels": [
+     "behaviour_k4/G2/pure"
+    ],
+    "n": 146040,
+    "benign": 56254,
+    "attack": 89786,
+    "port_scan": 19299,
+    "syn_flood": 70487,
+    "udp_flood": 0
+   },
+   "4d1d584ba32b0c17": {
+    "labels": [
+     "behaviour_k4/G1/shared_attack"
+    ],
+    "n": 357403,
+    "benign": 58657,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   },
+   "45ed81dc6ce81bbb": {
+    "labels": [
+     "behaviour_k4/G2/shared_attack"
+    ],
+    "n": 355000,
+    "benign": 56254,
+    "attack": 298746,
+    "port_scan": 98046,
+    "syn_flood": 200605,
+    "udp_flood": 95
+   }
+  },
+  "rotation_B": {
+   "e42a7a6655db79b9": {
+    "labels": [
+     "global/GLOBAL/both",
+     "category/GLOBAL/pure",
+     "category/GLOBAL/shared_attack",
+     "behaviour_k2/GLOBAL/pure",
+     "behaviour_k2/GLOBAL/shared_attack",
+     "behaviour_k3/GLOBAL/pure",
+     "behaviour_k3/GLOBAL/shared_attack",
+     "behaviour_k4/GLOBAL/pure",
+     "behaviour_k4/GLOBAL/shared_attack"
+    ],
+    "n": 418789,
+    "benign": 120663,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "53f5ef5ee4daa8da": {
+    "labels": [
+     "category/Audio/pure"
+    ],
+    "n": 42885,
+    "benign": 25843,
+    "attack": 17042,
+    "port_scan": 16963,
+    "syn_flood": 0,
+    "udp_flood": 79
+   },
+   "281803d1119f4f62": {
+    "labels": [
+     "category/Camera/pure"
+    ],
+    "n": 80721,
+    "benign": 45873,
+    "attack": 34848,
+    "port_scan": 34848,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "ede0d482ac54aaad": {
+    "labels": [
+     "category/Home Automation/pure"
+    ],
+    "n": 10666,
+    "benign": 4445,
+    "attack": 6221,
+    "port_scan": 6221,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "f43fe67d14980eb1": {
+    "labels": [
+     "category/Hub/pure"
+    ],
+    "n": 32568,
+    "benign": 28441,
+    "attack": 4127,
+    "port_scan": 4111,
+    "syn_flood": 0,
+    "udp_flood": 16
+   },
+   "e6e867312d3d16e9": {
+    "labels": [
+     "category/Lighting/pure"
+    ],
+    "n": 4105,
+    "benign": 2954,
+    "attack": 1151,
+    "port_scan": 1151,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "963b4f7b8a125d31": {
+    "labels": [
+     "category/Power Outlet/pure"
+    ],
+    "n": 148555,
+    "benign": 9830,
+    "attack": 138725,
+    "port_scan": 22282,
+    "syn_flood": 116443,
+    "udp_flood": 0
+   },
+   "ffef7fa07c85fb1d": {
+    "labels": [
+     "category/Unidentified (Espressif)/pure"
+    ],
+    "n": 93912,
+    "benign": 2256,
+    "attack": 91656,
+    "port_scan": 8114,
+    "syn_flood": 83542,
+    "udp_flood": 0
+   },
+   "e63c120a51d085d3": {
+    "labels": [
+     "category/Audio/shared_attack"
+    ],
+    "n": 323969,
+    "benign": 25843,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "f6c986869aa0b681": {
+    "labels": [
+     "category/Camera/shared_attack"
+    ],
+    "n": 343999,
+    "benign": 45873,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "94438286c3ce06ec": {
+    "labels": [
+     "category/Home Automation/shared_attack"
+    ],
+    "n": 302571,
+    "benign": 4445,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "524d0bb4d0a2f3de": {
+    "labels": [
+     "category/Hub/shared_attack"
+    ],
+    "n": 326567,
+    "benign": 28441,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "c2cca2882d6475e6": {
+    "labels": [
+     "category/Lighting/shared_attack"
+    ],
+    "n": 301080,
+    "benign": 2954,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "aa5f3a822e408e30": {
+    "labels": [
+     "category/Power Outlet/shared_attack"
+    ],
+    "n": 307956,
+    "benign": 9830,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "a687f52c1063110b": {
+    "labels": [
+     "category/Unidentified (Espressif)/shared_attack"
+    ],
+    "n": 300382,
+    "benign": 2256,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "3cf0fdc06fad7d76": {
+    "labels": [
+     "behaviour_k2/G1/pure",
+     "behaviour_k3/G1/pure"
+    ],
+    "n": 155971,
+    "benign": 105404,
+    "attack": 50567,
+    "port_scan": 50472,
+    "syn_flood": 0,
+    "udp_flood": 95
+   },
+   "6020d36c2644797a": {
+    "labels": [
+     "behaviour_k2/G2/pure"
+    ],
+    "n": 257441,
+    "benign": 14238,
+    "attack": 243203,
+    "port_scan": 43218,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "cb68690a13084663": {
+    "labels": [
+     "behaviour_k2/G1/shared_attack",
+     "behaviour_k3/G1/shared_attack"
+    ],
+    "n": 403530,
+    "benign": 105404,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "8e3cf5f7c5a9f6f6": {
+    "labels": [
+     "behaviour_k2/G2/shared_attack"
+    ],
+    "n": 312364,
+    "benign": 14238,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "0e925a49d6ce415d": {
+    "labels": [
+     "behaviour_k3/G2/pure",
+     "behaviour_k4/G3/pure"
+    ],
+    "n": 243410,
+    "benign": 11608,
+    "attack": 231802,
+    "port_scan": 31817,
+    "syn_flood": 199985,
+    "udp_flood": 0
+   },
+   "5c14be4f9a08c30b": {
+    "labels": [
+     "behaviour_k3/G3/pure",
+     "behaviour_k4/G4/pure"
+    ],
+    "n": 14031,
+    "benign": 2630,
+    "attack": 11401,
+    "port_scan": 11401,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "7578f28da2ab084b": {
+    "labels": [
+     "behaviour_k3/G2/shared_attack",
+     "behaviour_k4/G3/shared_attack"
+    ],
+    "n": 309734,
+    "benign": 11608,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "42c14339e69141ad": {
+    "labels": [
+     "behaviour_k3/G3/shared_attack",
+     "behaviour_k4/G4/shared_attack"
+    ],
+    "n": 300756,
+    "benign": 2630,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "1cced172551777ec": {
+    "labels": [
+     "behaviour_k4/G1/pure"
+    ],
+    "n": 83384,
+    "benign": 52116,
+    "attack": 31268,
+    "port_scan": 31173,
+    "syn_flood": 0,
+    "udp_flood": 95
+   },
+   "4aa74c8da19ebb26": {
+    "labels": [
+     "behaviour_k4/G2/pure"
+    ],
+    "n": 72587,
+    "benign": 53288,
+    "attack": 19299,
+    "port_scan": 19299,
+    "syn_flood": 0,
+    "udp_flood": 0
+   },
+   "68ad8ed6da336e22": {
+    "labels": [
+     "behaviour_k4/G1/shared_attack"
+    ],
+    "n": 350242,
+    "benign": 52116,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   },
+   "c47571f6b5599d91": {
+    "labels": [
+     "behaviour_k4/G2/shared_attack"
+    ],
+    "n": 351414,
+    "benign": 53288,
+    "attack": 298126,
+    "port_scan": 98046,
+    "syn_flood": 199985,
+    "udp_flood": 95
+   }
+  }
+ },
+ "runtime_s": 269.4,
+ "finished_utc": "2026-10-19T17:53:46+00:00"
+}

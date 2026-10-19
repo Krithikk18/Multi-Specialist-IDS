@@ -4,6 +4,7 @@
 Subcommands
   bakeoff     round 1 model bake-off, train -> val
   robustness  shortlist x feature set x seed, val + unseen-session false alarms (train / val only)
+  strategies  grouping strategy x training mode, house-level metrics (XGB, seed 42; train / val only)
   splits      split-strategy comparison                  (later; NotImplementedError)
   final       final fit + single test evaluation         (later; NotImplementedError)
 
@@ -76,6 +77,26 @@ robustness
   Outputs (--out, default results/step9/robustness; --dry-run results/step9/robustness/dry_run):
   val_metrics.csv, per_family.csv, unseen_session.csv, cost.csv, run_meta.json, summary.md, run.log.
   Lock <out>/.09_robustness.lock. No winner is declared.
+
+strategies
+  For every (strategy, mode) in --strategies x --modes (STRAT block): one XGB per group of
+  config/groupings/<strategy>.json (device MAC -> group; GEN devices -> the GLOBAL model); pure = the group's
+  train rows, shared_attack = the group's train benign rows + every train attack row. Every row is scored once,
+  by the model owning its device; metrics are on the combined (house-level) scores, at 0.5 and at ONE common
+  threshold per strategy (lowest observed house val score with <= 2 house val benign FP; same-set, optimistic).
+    val               PR-AUC, FP, FP/h, DR overall / per family; per-group breakdown; val attack rows scored by
+                      a model with 0 train rows of that family (unseen-family-in-group) and their DR
+    benign_holdout_R  every model refit without the benign rows of session R (A DDoS-SYN_Flood5, B DDoS-SYN_Flood);
+                      FP on that session's benign (train + val) and on all val benign, threshold chosen on the
+                      val rows outside the session
+    rotation_R        every model refit without every row of session R; held-out SYN DR, session benign FP,
+                      held-out SYN rows scored by a model with 0 train SYN rows
+    cost (val fits)   n models, total joblib size, 1-thread latency of MAC lookup + one model, total fit time
+  One spawned child per evaluation loads the matrices once and streams one result per distinct fit (identical
+  training rows -> one fit). Resume per (strategy, mode, evaluation). Outputs (--out, default
+  results/step9/strategies; --dry-run results/step9/strategies/dry_run): val_house.csv, val_per_group.csv,
+  unseen_family.csv, benign_holdout.csv, capture_rotation.csv, cost.csv, run_meta.json (grouping JSON sha256s),
+  summary.md, run.log. Lock <out>/.09_strategies.lock. No winner is declared.
 
 Exit status: 0 ok, 1 bad input / lock / check failed / another run active, 2 unexpected exception.
 """
@@ -211,6 +232,56 @@ ROBUST = {
     "time_limit_s_per_evaluation": CONFIG["time_limit_s"]["default"],
 }
 
+# Grouping-strategy comparison (subcommand "strategies"). Own block so bakeoff / robustness run_meta.json are unchanged.
+STRAT = {
+    "model": "XGB",
+    "model_note": "XGBoost library defaults + scale_pos_weight = n_benign / n_attack of EACH model's own training rows "
+                  "(build_model); features_v1.json (70, float32); no search",
+    "seed": 42,
+    "seed_note": "seed 42 only (XGB scores were identical across seeds 42 / 7 / 123 in round 2); the dry-run subsample "
+                 "is bakeoff's (CONFIG seed, strata = v1.0 group / y / attack_family)",
+    "strategies": ["global", "category", "behaviour_k2", "behaviour_k3", "behaviour_k4"],
+    "global_strategy": "global",
+    "gen_group": "GEN",
+    "grouping_rule": "config/groupings/<strategy>.json: devices (MAC -> group) and device_info (MAC -> device_name); "
+                     "a row's device name -> MAC -> group",
+    "gen_rule": "GEN devices are scored by the GLOBAL model (every train row) in every strategy",
+    "modes": ["pure", "shared_attack"],
+    "mode_rules": {"pure": "the group's own train rows (benign + attack)",
+                   "shared_attack": "the group's own train BENIGN rows + every train attack row of every device (08's "
+                                    "caps as built, no resampling)"},
+    "global_mode": "both",
+    "global_mode_note": "The GLOBAL model trains on every train row, so pure == shared_attack; strategy global runs once "
+                        "(mode 'both')",
+    "evaluations": ["val", "benign_holdout_A", "benign_holdout_B", "rotation_A", "rotation_B"],
+    "evaluation_aliases": {"benign_holdout": ["benign_holdout_A", "benign_holdout_B"],
+                           "capture_rotation": ["rotation_A", "rotation_B"]},
+    # A / B = ROBUST rotations (09b check 5 sessions; checked at start).
+    "sessions": {"A": "DDoS-SYN_Flood5", "B": "DDoS-SYN_Flood"},
+    "max_fp": 2,
+    "max_fp_label": "same-set, optimistic",
+    "common_threshold_rule": "ONE threshold for every model of the strategy: the lowest observed house val score with "
+                             "<= max_fp FP on the whole house's val benign (budget per HOUSE, not per group)",
+    "session_threshold_rule": "the same rule on the house's val rows outside the held-out session (the threshold never "
+                              "sees that session)",
+    "benign_holdout_rule": "every model of the strategy refit on its training rows minus the held-out session's benign "
+                           "rows (every device; every attack row kept)",
+    "rotation_rule": "every model of the strategy refit on its training rows minus every row of the held-out session "
+                     "(attack + benign, every device)",
+    "held_benign": "(i) the held-out session's benign rows, train + val splits, every device",
+    "val_benign": "(ii) every val benign row of the house (includes the held-out session's own val benign rows)",
+    "held_syn": "the held-out session's syn_flood rows, train + val splits, every device",
+    "scoring_rule": "every row is scored exactly once, by the model that owns its device under the strategy",
+    "fit_dedup": "a fit is keyed by its exact training row positions; identical training sets (e.g. behaviour_k2 G1 == "
+                 "behaviour_k3 G1, GLOBAL in every strategy) share one fit (XGB is deterministic here)",
+    "latency": "1 thread: dict lookup MAC -> model, then that model's predict_proba on one flow; CONFIG latency "
+               "single_calls calls over val rows sampled once (seed 42), the same rows for every strategy; one full "
+               "pass over every strategy is run and discarded first (warm-up), then the measured pass",
+    "size": "sum of the strategy's models' joblib sizes (the Pi loads every model)",
+    "fit_time": "sum of the strategy's models' fit times (all cores); a shared fit counts in every strategy using it",
+    "time_limit_s_per_fit": CONFIG["time_limit_s"]["default"],
+}
+
 SCRIPT = "09_train_specialists.py"
 TRAIN_PARQUET = CACHE_DIR / "datasets" / "v1" / "train.parquet"
 VAL_PARQUET = CACHE_DIR / "datasets" / "v1" / "val.parquet"
@@ -221,6 +292,10 @@ MANIFEST = RESULTS_DIR / "step8" / "manifest_v1.json"
 OUT_DEFAULT = RESULTS_DIR / "step9" / "bakeoff"
 ROBUST_OUT = RESULTS_DIR / "step9" / "robustness"
 ROBUST_LOCK = ".09_robustness.lock"
+STRAT_OUT = RESULTS_DIR / "step9" / "strategies"
+STRAT_LOCK = ".09_strategies.lock"
+GROUPINGS_DIR = CONFIG_DIR / "groupings"
+COVERAGE_CSV = RESULTS_DIR / "step9" / "groupings" / "coverage.csv"
 MODELS_DIR = CACHE_DIR / "models" / "bakeoff"
 CODE_SHA256 = hashlib.sha256(Path(__file__).resolve().read_bytes()).hexdigest()
 
@@ -1260,14 +1335,15 @@ def robust_worker(conn, job: dict) -> None:
         conn.close()
 
 
-def run_child_stream(job: dict, limit: float):
-    """Yields (index into job["evals"], result) in order. Spawned, non-daemonic child as run_child; the time
-    limit applies per evaluation. A TIMEOUT / crash ends that child and a fresh one takes the rest."""
+def run_child_stream(job: dict, limit: float, target=None):
+    """Yields (index into job["evals"], result) in order. Spawned, non-daemonic child as run_child (body `target`,
+    default robust_worker); the time limit applies per evaluation. A TIMEOUT / crash ends that child and a fresh
+    one takes the rest."""
     ctx = mp.get_context("spawn")
     evals, i = job["evals"], 0
     while i < len(evals):
         rx, tx = ctx.Pipe(duplex=False)
-        p = ctx.Process(target=robust_worker, args=(tx, {**job, "evals": evals[i:]}), daemon=False)
+        p = ctx.Process(target=target or robust_worker, args=(tx, {**job, "evals": evals[i:]}), daemon=False)
         p.start()
         tx.close()
         try:
@@ -1302,9 +1378,10 @@ def scores_sha(*arrays: np.ndarray) -> str:
 
 
 def robust_val(s: np.ndarray, y: np.ndarray, fam: np.ndarray, families: list[str],
-               hours: float) -> tuple[dict, list[dict]]:
-    """Evaluation A: val_metrics.csv metric part and per_family.csv rows at 0.5 and at <= max_fp val FP."""
-    k = ROBUST["max_fp"]
+               hours: float, k: int | None = None) -> tuple[dict, list[dict]]:
+    """Evaluation A: val_metrics.csv metric part and per_family.csv rows at 0.5 and at <= k (default ROBUST
+    max_fp) val FP."""
+    k = ROBUST["max_fp"] if k is None else k
     n_att, n_ben = int((y == 1).sum()), int((y == 0).sum())
     both_cls = len(np.unique(y)) == 2
     row = {"pr_auc": average_precision_score(y, s, pos_label=1) if both_cls else math.nan,
@@ -1330,9 +1407,11 @@ def robust_val(s: np.ndarray, y: np.ndarray, fam: np.ndarray, families: list[str
     return row, frows
 
 
-def robust_unseen(s_va: np.ndarray, s_tr: np.ndarray, U: dict, y_va: np.ndarray, f_va: np.ndarray) -> dict:
-    """Evaluation B metric part. s_va: every group val row; s_tr: the held-out session's group train rows."""
-    k, syn = ROBUST["max_fp"], ROBUST["syn_family"]
+def robust_unseen(s_va: np.ndarray, s_tr: np.ndarray, U: dict, y_va: np.ndarray, f_va: np.ndarray,
+                  k: int | None = None) -> dict:
+    """Evaluation B metric part. s_va: every group val row; s_tr: the held-out session's group train rows;
+    k: FP budget of the val-chosen threshold (default ROBUST max_fp)."""
+    k, syn = (ROBUST["max_fp"] if k is None else k), ROBUST["syn_family"]
     tm, vh, vb = U["thr_mask"], U["va_held"], y_va == 0
     thr1 = max_fp_threshold(np.unique(s_va[tm]), np.sort(s_va[tm & vb])[::-1], k)
     s_syn = np.r_[s_tr[U["ftr_held"] == syn], s_va[vh & (f_va == syn)]]
@@ -1880,8 +1959,799 @@ def lab_dr(row: dict) -> str:
     return (f"DR@<={ROBUST['max_fp']}FP {row['dr_1fp']:.4f} (thr {row['thr_1fp']:.6g}, FP {row['fp_1fp']})")
 
 
+# --------------------------------------------------------------------------- strategies
+
+S_KEY = ["strategy", "mode", "evaluation"]
+S_CSV = {"house": "val_house.csv", "group": "val_per_group.csv", "unseen": "unseen_family.csv",
+         "holdout": "benign_holdout.csv", "rotation": "capture_rotation.csv", "cost": "cost.csv"}
+S_COMMIT = {"val": "house", "benign_holdout": "holdout", "capture_rotation": "rotation"}
+
+
+def s_cols(families: list[str]) -> dict[str, list[str]]:
+    """Column lists of the strategies CSVs (per-family columns follow attack_set.json)."""
+    sess = ["held_out_session", "held_out_alias", "status", "n_models", "n_models_refit", "thr_05", "thr_common",
+            "note_common", "n_thr_rows", "n_thr_benign"]
+    ben = ["heldben_n", "heldben_hours", "heldben_fp_05", "heldben_fph_05", "heldben_fp_common", "heldben_fph_common",
+           "valben_n", "valben_hours", "valben_fp_05", "valben_fph_05", "valben_fp_common", "valben_fph_common",
+           "valben_n_from_held", "valben_fp_05_from_held", "valben_fp_common_from_held"]
+    tail = ["fit_s_total", "score_sha256", "error", "dry_run", "run_utc"]
+    return {
+        "house": S_KEY + ["status", "n_models", "models", "pr_auc", "roc_auc", "max_fp", "thr_05", "fp_05", "fph_05",
+                          "dr_05", "thr_common", "fp_common", "fph_common", "dr_common", "note_common"]
+                 + [c for f in families for c in (f"n_{f}", f"dr_05_{f}", f"dr_common_{f}", f"flag_{f}")]
+                 + ["n_attack_val", "n_benign_val", "val_benign_hours", "fph_per_fp"] + tail,
+        "group": S_KEY + ["group", "scored_by", "n_devices", "n_val", "n_val_benign", "fp_05", "fp_common"]
+                 + [c for f in families for c in (f"n_val_{f}", f"dr_05_{f}", f"dr_common_{f}", f"n_train_{f}")]
+                 + ["n_train", "n_train_benign", "n_train_attack", "size_bytes", "fit_s", "fit_key", "fit_shared_with",
+                    "dry_run", "run_utc"],
+        "unseen": S_KEY + ["attack_family", "n_val_family", "n_unseen", "unseen_groups", "det_05", "dr_05",
+                           "det_common", "dr_common", "dry_run", "run_utc"],
+        "holdout": S_KEY + sess + ["n_held_benign_train_removed"] + ben + tail,
+        "rotation": S_KEY + sess + ["n_held_train_removed", "syn_n", "syn_dr_05", "syn_dr_common", "syn_n_zero_train_syn",
+                                    "syn_dr_05_zero_train_syn", "syn_dr_common_zero_train_syn", "zero_train_syn_groups",
+                                    "syn_by_group"] + ben + tail,
+        "cost": S_KEY + ["status", "n_models", "models", "total_size_bytes", "sizes_json", "latency_median_us",
+                         "latency_p99_us", "latency_calls", "lookup_median_us", "fit_s_total", "fit_s_json",
+                         "fit_threads", "predict_threads", "proxy_note", "error", "dry_run", "run_utc"],
+    }
+
+
+def eval_spec(e: str) -> tuple[str | None, str]:
+    """evaluation name -> (session letter A / B or None, kind val / benign_holdout / capture_rotation)."""
+    if e == "val":
+        return None, "val"
+    kind, r = e.rsplit("_", 1)
+    return r, ("benign_holdout" if kind == "benign_holdout" else "capture_rotation")
+
+
+def strat_fit(job: dict, ev: dict, Xtr: np.ndarray, Xva: np.ndarray):
+    """Child side, one fit: XGB on the loaded train rows ev["fit_rows"]; scores of every loaded val row and of the
+    train rows ev["score_tr"]. -> (result, (model, attack column))."""
+    seed = job["seed"]
+    np.random.seed(seed)
+    fr = ev["fit_rows"]
+    model, cw, pre, fit_s, fit_warn = fit_model(job["model"], Xtr[fr], job["y_tr"][fr], job["dur_idx"], seed)
+    gc.collect()
+    est = final_estimator(model)
+    classes = [int(c) for c in est.classes_]
+    if classes != [0, 1]:
+        raise AssertionError(f"classes_ {classes} != [0, 1]")
+    pos = classes.index(1)
+    t = time.perf_counter()
+    s_va = model.predict_proba(Xva)[:, pos].astype(np.float64)
+    score_s = time.perf_counter() - t
+    st = ev["score_tr"]
+    s_tr = model.predict_proba(Xtr[st])[:, pos].astype(np.float64) if len(st) else np.zeros(0, dtype=np.float64)
+    res = {"status": "OK", "scores": s_va, "scores_tr": s_tr, "fit_s": fit_s, "score_s": score_s,
+           "fit_warnings": fit_warn, "class_weight_handling": cw, "preprocessing": pre}
+    if ev["cost"]:
+        res.update({"size_bytes": model_size(model), "params": params_of(model)})
+    res["child_peak_rss_mb"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss // 1024
+    return res, (model, pos)
+
+
+def strat_latency(ev: dict, models: dict, Xva: np.ndarray) -> dict:
+    """Child side: per (strategy, mode), 1-thread latency of one flow = dict lookup MAC -> model + that model's
+    predict_proba, over CONFIG latency single_calls calls on the val rows ev["rows"]."""
+    L = CONFIG["latency"]
+    X = np.ascontiguousarray(Xva[ev["rows"]])
+    macs = ev["macs"]
+    out = {}
+    with threadpool_limits(limits=L["threads"]):
+        for name, lut_keys in [*ev["items"].items(), *ev["items"].items()]:   # pass 1 = warm-up, overwritten
+            missing = sorted({k for k in lut_keys.values() if k not in models})
+            if missing:
+                out[name] = {"status": "ERROR", "error": f"fits {missing} not in this child (restarted after a "
+                                                         "TIMEOUT / crash?)"}
+                continue
+            pred = {k: single_thread_predictor(models[k][0], STRAT["model"], models[k][1]) for k in set(lut_keys.values())}
+            lut = {m: pred[k] for m, k in lut_keys.items()}
+            for i in range(min(L["warmup_calls"], len(X))):
+                lut[macs[i]](X[i:i + 1])
+            ns = np.empty(L["single_calls"], dtype=np.int64)
+            lk = np.empty(L["single_calls"], dtype=np.int64)
+            for i in range(L["single_calls"]):
+                j = i % len(X)
+                x, mac = X[j][None, :], macs[j]
+                t0 = time.perf_counter_ns()
+                f = lut[mac]
+                t1 = time.perf_counter_ns()
+                f(x)
+                ns[i] = time.perf_counter_ns() - t0
+                lk[i] = t1 - t0
+            out[name] = {"status": "OK", "latency_median_us": float(np.median(ns)) / 1e3,
+                         "latency_p99_us": float(np.percentile(ns, 99)) / 1e3, "latency_calls": int(len(ns)),
+                         "lookup_median_us": float(np.median(lk)) / 1e3}
+    return {"status": "OK", "latency": out}
+
+
+def strat_worker(conn, job: dict) -> None:
+    """Child process body for one evaluation: load the float32 matrices once, then send one result per job["evals"]
+    entry (fits, then for val the latency pass over the fitted models), in order."""
+    try:
+        try:
+            t = time.perf_counter()
+            Xtr = load_matrix(job["train_path"], job["features"], job["tr_rows"])
+            Xva = load_matrix(job["val_path"], job["features"], job["va_rows"])
+            load_s = time.perf_counter() - t
+        except BaseException:
+            conn.send({"status": "ERROR", "error": traceback.format_exc(limit=6)})
+            return
+        models = {}
+        for ev in job["evals"]:
+            try:
+                if ev["kind"] == "latency":
+                    res = strat_latency(ev, models, Xva)
+                else:
+                    res, m = strat_fit(job, ev, Xtr, Xva)
+                    res["load_s"] = load_s
+                    if ev["keep"]:
+                        models[ev["key"]] = m
+            except BaseException:
+                res = {"status": "ERROR", "error": traceback.format_exc(limit=6)}
+            conn.send(res)
+            del res
+            gc.collect()
+    finally:
+        conn.close()
+
+
+def load_groupings(names: list[str], meta_tr: pd.DataFrame, meta_va: pd.DataFrame) -> tuple[dict, dict]:
+    """Grouping JSONs -> per strategy: device name -> group (via MAC), checked. Returns (G, device name -> MAC)."""
+    G, mac_of = {}, None
+    for s in names:
+        path = GROUPINGS_DIR / f"{s}.json"
+        J = read_json(path)
+        if J.get("strategy") != s:
+            fatal(f"{rel(path)}: strategy {J.get('strategy')!r} != {s!r}; STOP")
+        dev, info = J["devices"], J["device_info"]
+        if set(dev) != set(info):
+            fatal(f"{rel(path)}: devices and device_info hold different MACs; STOP")
+        nm = [info[m]["device_name"] for m in dev]
+        if len(set(nm)) != len(nm):
+            fatal(f"{rel(path)}: duplicate device names {sorted({n for n in nm if nm.count(n) > 1})}; STOP")
+        if sorted(set(dev.values())) != sorted(J["groups"]):
+            fatal(f"{rel(path)}: groups {J['groups']} != the groups devices map to {sorted(set(dev.values()))}; STOP")
+        m_of = {info[m]["device_name"]: m for m in dev}
+        if mac_of is None:
+            mac_of = m_of
+        elif m_of != mac_of:
+            fatal(f"{rel(path)}: device name -> MAC differs from {names[0]}.json; STOP")
+        grp = {n: dev[m] for n, m in m_of.items()}
+        for sp, d in (("train", meta_tr), ("val", meta_va)):
+            unk = sorted(set(d["device"]) - set(grp))
+            if unk:
+                fatal(f"{s}: {sp}.parquet devices not in {rel(path)}: {unk}; STOP")
+        if s == STRAT["global_strategy"] and J["groups"] != [CONFIG["global_group"]]:
+            fatal(f"{rel(path)}: groups {J['groups']} != [{CONFIG['global_group']!r}]; STOP")
+        G[s] = {"path": rel(path), "sha256": hashlib.sha256(guard_read(path).read_bytes()).hexdigest(),
+                "version": J.get("version"), "k": J.get("k"), "inputs_sha256": J.get("inputs_sha256"),
+                "groups": list(J["groups"]), "group_of": grp,
+                "n_devices": {g: sum(v == g for v in dev.values()) for g in J["groups"]}}
+        log(f"grouping {s}: {rel(path)} sha256 {G[s]['sha256'][:16]}...  groups {G[s]['n_devices']}")
+    return G, mac_of
+
+
+def check_groupings(G: dict, meta_tr: pd.DataFrame, meta_va: pd.DataFrame, families: list[str]) -> dict:
+    """behaviour_k2 == the parquet group column (every row); per (strategy, group) train / val counts ==
+    results/step9/groupings/coverage.csv (06d)."""
+    for sp, d in (("train", meta_tr), ("val", meta_va)):
+        if not (d["device"].map(G["behaviour_k2"]["group_of"]) == d["group"]).all():
+            fatal(f"behaviour_k2 mapping != {sp}.parquet group column; STOP")
+    cov = read_csv(COVERAGE_CSV)
+    bad, n = [], 0
+    for s, g in G.items():
+        gt, gv = meta_tr["device"].map(g["group_of"]), meta_va["device"].map(g["group_of"])
+        for grp in g["groups"]:
+            row = cov[(cov["strategy"] == s) & (cov["group"] == grp)]
+            if len(row) != 1:
+                bad.append(f"{s}/{grp}: {len(row)} coverage rows")
+                continue
+            for sp, d, gg in (("train", meta_tr, gt), ("val", meta_va, gv)):
+                m = (gg == grp).to_numpy()
+                want = {f"{sp}_benign": int((m & (d["y"] == 0).to_numpy()).sum()),
+                        **{f"{sp}_{f}": int((m & (d["attack_family"] == f).to_numpy()).sum()) for f in families}}
+                for c, v in want.items():
+                    n += 1
+                    if int(row[c].iloc[0]) != v:
+                        bad.append(f"{s}/{grp} {c}: coverage {row[c].iloc[0]} != {v}")
+    if bad:
+        fatal(f"grouping row counts != {rel(COVERAGE_CSV)}: {bad[:10]}; STOP")
+    log(f"groupings: behaviour_k2 == parquet group column (train + val); {n} counts == {rel(COVERAGE_CSV)}")
+    return {"coverage_csv": rel(COVERAGE_CSV), "coverage_sha256": hashlib.sha256(guard_read(COVERAGE_CSV).read_bytes())
+            .hexdigest(), "counts_checked": n, "k2_equals_parquet_group": True}
+
+
+def strat_resume(out: Path, dry: bool, retry_timeouts: bool, cols: dict) -> set[tuple]:
+    """(strategy, mode, evaluation) keys done (val_house / benign_holdout / capture_rotation rows with a done status);
+    val_per_group / unseen_family / cost rows without a done val key are dropped."""
+    for name, c in cols.items():
+        p = out / S_CSV[name]
+        if p.exists() and p.stat().st_size and list(pd.read_csv(guard_read(p), nrows=0).columns) != c:
+            fatal(f"{rel(p)} has other columns than this version writes (older run?); fix it or use another --out")
+    commit = {n: read_csv(out / S_CSV[n]) for n in ("house", "holdout", "rotation")}
+    if all(d.empty for d in commit.values()):
+        for n in ("group", "unseen", "cost"):
+            (out / S_CSV[n]).unlink(missing_ok=True)
+        return set()
+    flags = set().union(*(set(d["dry_run"].astype(str)) for d in commit.values() if not d.empty))
+    if flags != {str(dry)}:
+        fatal(f"{rel(out)} holds dry_run={sorted(flags)} rows but this run is dry_run={dry}; use another --out")
+    ok = STATUS_DONE - ({"TIMEOUT"} if retry_timeouts else set())
+
+    def keys(df):
+        return list(zip(df["strategy"], df["mode"], df["evaluation"]))
+
+    done = {k for d in commit.values() if not d.empty for k, st in zip(keys(d), d["status"]) if st in ok}
+    for n in S_CSV:
+        k = rewrite_without(out / S_CSV[n], lambda df: pd.Series([x in done for x in keys(df)], index=df.index))
+        if k:
+            log(f"resume: dropped {k} stale / failed rows from {S_CSV[n]}")
+    return done
+
+
+def ren_common(d: dict) -> dict:
+    """robust_val / robust_unseen keys *_1fp -> *_common (the threshold is the strategy's common threshold)."""
+    return {k.replace("_1fp", "_common"): v for k, v in d.items()}
+
+
+def write_strat_summary(out: Path, meta: dict) -> None:
+    D = {n: read_csv(out / f) for n, f in S_CSV.items()}
+    O = {n: (d[d["status"] == "OK"] if not d.empty and "status" in d else d) for n, d in D.items()}
+    families, k = meta["attack_families"], STRAT["max_fp"]
+    pairs = [tuple(p) for p in meta["pairs"]]
+    gg = CONFIG["global_group"]
+
+    def one(name, s, mo, e=None):
+        d = O[name]
+        if d.empty:
+            return None
+        m = (d["strategy"] == s) & (d["mode"] == mo)
+        if e is not None:
+            m &= d["evaluation"] == e
+        return d[m].iloc[0] if m.any() else None
+
+    def g_(r, c, nd=4):
+        return "-" if r is None else fmt(r[c], nd)
+
+    def fp_(r, tag, base):
+        return "-" if r is None else f"{fmt(r[f'{base}fph_{tag}'], 2)} ({r[f'{base}fp_{tag}']})"
+
+    L = [f"# Step 9 grouping strategies (house level){' -- DRY RUN (5 % stratified subsample)' if meta['dry_run'] else ''}",
+         "", f"- run: {meta['run_utc']} | model {STRAT['model']} seed {STRAT['seed']} | features_v1 sha256 "
+             f"{meta['features']['sha256'][:16]}... | verify_lock {'PASS' if meta['verify_lock']['ok'] else 'FAIL'} | "
+             f"strategies {meta['strategies']} | modes {meta['modes']} | evaluations {meta['evaluations']}",
+         f"- {STRAT['model_note']}. **Facts only; no winner is declared.**",
+         f"- Modes: pure = {STRAT['mode_rules']['pure']}; shared_attack = {STRAT['mode_rules']['shared_attack']}. "
+         f"{STRAT['global_mode_note']}. {STRAT['gen_rule']}.",
+         f"- Scoring: {STRAT['scoring_rule']}; every metric is computed on the combined (house-level) scores.",
+         f"- Operating points: t = 0.5 in every model, and the common threshold = {STRAT['common_threshold_rule']} "
+         f"({STRAT['max_fp_label']}). Benign holdout / rotation threshold: {STRAT['session_threshold_rule']}.",
+         f"- Benign holdout: {STRAT['benign_holdout_rule']}. Capture rotation: {STRAT['rotation_rule']}. "
+         f"A = {STRAT['sessions']['A']}, B = {STRAT['sessions']['B']}. {STRAT['held_benign']}; {STRAT['val_benign']}.",
+         f"- FP/hour = FP / active benign hours (08 rule) of exactly the rows evaluated (denominators below). "
+         f"Fits: {STRAT['fit_dedup']}.", ""]
+
+    # 1. main table
+    rows = []
+    for s, mo in pairs:
+        h, c = one("house", s, mo, "val"), one("cost", s, mo, "val")
+        r = {"strategy": s, "mode": mo, "n models": "-" if h is None else h["n_models"],
+             "total size": "-" if c is None else fmt_size(c["total_size_bytes"]), "PR-AUC": g_(h, "pr_auc"),
+             "FP/h@0.5 (FP)": fp_(h, "05", ""), "DR@0.5": g_(h, "dr_05"),
+             f"thr (<= {k} FP)": g_(h, "thr_common", 6), "FP/h@thr (FP)": fp_(h, "common", ""),
+             "DR@thr": g_(h, "dr_common")}
+        for f in families:
+            r[f"DR {f} 0.5 / thr"] = "-" if h is None else (f"{fmt(h[f'dr_05_{f}'])} / {fmt(h[f'dr_common_{f}'])}"
+                                                           + (f" {h[f'flag_{f}']}" if h[f"flag_{f}"] else ""))
+        for R_ in ("A", "B"):
+            b = one("holdout", s, mo, f"benign_holdout_{R_}")
+            r[f"holdout {R_} session-benign FP/h@0.5 (FP)"] = fp_(b, "05", "heldben_")
+        for R_ in ("A", "B"):
+            x = one("rotation", s, mo, f"rotation_{R_}")
+            r[f"rotation {R_} SYN DR@0.5"] = g_(x, "syn_dr_05")
+        r["lat med us"] = "-" if c is None else fmt(c["latency_median_us"], 1)
+        r["fit s"] = "-" if c is None else fmt(c["fit_s_total"], 1)
+        rows.append(r)
+    cols = (["strategy", "mode", "n models", "total size", "PR-AUC", "FP/h@0.5 (FP)", "DR@0.5", f"thr (<= {k} FP)",
+             "FP/h@thr (FP)", "DR@thr"] + [f"DR {f} 0.5 / thr" for f in families]
+            + [f"holdout {R_} session-benign FP/h@0.5 (FP)" for R_ in ("A", "B")]
+            + [f"rotation {R_} SYN DR@0.5" for R_ in ("A", "B")] + ["lat med us", "fit s"])
+    L += ["## 1. Strategy x mode (house level, val unless named)", ""] + md_table(rows, cols) + [""]
+
+    # 2. delta
+    rows = []
+    for s in meta["strategies"]:
+        if s == STRAT["global_strategy"]:
+            continue
+        hp, hs = one("house", s, "pure", "val"), one("house", s, "shared_attack", "val")
+        cp, cs = one("cost", s, "pure", "val"), one("cost", s, "shared_attack", "val")
+
+        def d(a, b, col, nd=4):
+            return "-" if a is None or b is None else fmt_delta([b[col]], [a[col]], nd)
+
+        r = {"strategy": s, "d PR-AUC": d(hp, hs, "pr_auc"), "d FP@0.5": d(hp, hs, "fp_05", 0),
+             "d FP/h@0.5": d(hp, hs, "fph_05", 2), "d DR@0.5": d(hp, hs, "dr_05"), "d DR@thr": d(hp, hs, "dr_common")}
+        for f in families:
+            r[f"d DR {f} 0.5"] = d(hp, hs, f"dr_05_{f}")
+            r[f"d DR {f} thr"] = d(hp, hs, f"dr_common_{f}")
+        for R_ in ("A", "B"):
+            r[f"d holdout {R_} session-benign FP@0.5"] = d(one("holdout", s, "pure", f"benign_holdout_{R_}"),
+                                                           one("holdout", s, "shared_attack", f"benign_holdout_{R_}"),
+                                                           "heldben_fp_05", 0)
+        for R_ in ("A", "B"):
+            r[f"d rotation {R_} SYN DR@0.5"] = d(one("rotation", s, "pure", f"rotation_{R_}"),
+                                                 one("rotation", s, "shared_attack", f"rotation_{R_}"), "syn_dr_05")
+        r["d size"] = ("-" if cp is None or cs is None
+                       else f"{(float(cs['total_size_bytes']) - float(cp['total_size_bytes'])) / 1e3:+.1f} kB")
+        r["d fit s"] = d(cp, cs, "fit_s_total", 1)
+        rows.append(r)
+    cols = (["strategy", "d PR-AUC", "d FP@0.5", "d FP/h@0.5", "d DR@0.5", "d DR@thr"]
+            + [c_ for f in families for c_ in (f"d DR {f} 0.5", f"d DR {f} thr")]
+            + [f"d holdout {R_} session-benign FP@0.5" for R_ in ("A", "B")]
+            + [f"d rotation {R_} SYN DR@0.5" for R_ in ("A", "B")] + ["d size", "d fit s"])
+    L += ["## 2. shared_attack minus pure (per strategy)", ""] + md_table(rows, cols) + [""]
+
+    # 3. unseen family
+    u = O["unseen"]
+    rows = [] if u.empty else [
+        {"strategy": x["strategy"], "mode": x["mode"], "family": x["attack_family"], "val rows of family": x["n_val_family"],
+         "scored by a model with 0 train rows of it": x["n_unseen"], "groups (rows)": x["unseen_groups"] or "-",
+         "DR@0.5 on those": fmt(x["dr_05"]), "DR@thr on those": fmt(x["dr_common"])}
+        for _, x in u.iterrows() if int(x["n_unseen"]) > 0]
+    L += ["## 3. Unseen-family-in-group (val)", "",
+          "Val attack rows whose owning model has 0 training rows of that family; DR on exactly those rows.", ""]
+    L += md_table(rows, ["strategy", "mode", "family", "val rows of family", "scored by a model with 0 train rows of it",
+                         "groups (rows)", "DR@0.5 on those", "DR@thr on those"])
+    n_zero = 0 if u.empty else int((pd.to_numeric(u["n_unseen"]) == 0).sum())
+    L += ["", f"Every other (strategy, mode, family) in unseen_family.csv: 0 such rows ({n_zero} rows).", ""]
+
+    # 4. caveats
+    pc = meta["attack_pcaps"]
+    cav = []
+    full_val = meta["row_counts_house"][gg]["val_full"]["attack_by_family"]
+    for r in meta["family_flags"]:
+        if r["flag"]:
+            cav.append(f"{r['attack_family']} ({', '.join(pc.get(r['attack_family'], []))}): {r['flag']}, n = "
+                       f"{r['n_val']} val attack rows in the whole house"
+                       + (f" (full val: {full_val.get(r['attack_family'], 0)})" if meta["dry_run"] else "")
+                       + f"; its DR rests on < {CONFIG['low_n']} rows (one row = {100 / max(r['n_val'], 1):.0f} "
+                       "percentage points).")
+    hv = meta["fph_denominators"][gg]["hours_used"]
+    cav += [f"Common threshold: chosen on the house's val benign and DR read on the same val ({STRAT['max_fp_label']}); "
+            f"the holdout / rotation thresholds never see the held-out session, but (ii) all val benign includes the "
+            f"val rows the threshold was chosen on (<= {k} FP there by construction).",
+            f"FP/h steps: one val FP = {fmt(1 / hv, 2) if hv > 0 else '-'} FP/h (house val {fmt(hv)} h); held-out "
+            "session benign denominators are smaller, so one FP there is a larger step (table below).",
+            "GEN val holds benign rows only, so GEN contributes FPs but no detections; GEN is scored by GLOBAL in every "
+            "strategy.",
+            "shared_attack trains every group model on the other groups' attack rows too: the victims of an attack "
+            "session are few devices, and 08's attack caps were drawn per (v1.0 group, family, split).",
+            f"Fits shared between strategies are fitted once ({STRAT['fit_dedup']}); fit time totals count a shared fit "
+            "in every strategy that uses it.",
+            "Latency / size are laptop proxies (WSL, 1 thread), not Pi numbers; the latency rows are a house-level val "
+            "sample (mostly syn_flood rows)."]
+    if not O["rotation"].empty:
+        for _, x in O["rotation"].iterrows():
+            if int(x["syn_n_zero_train_syn"]) > 0:
+                cav.append(f"{x['strategy']} {x['mode']} {x['evaluation']}: {x['syn_n_zero_train_syn']} of {x['syn_n']} "
+                           f"held-out SYN rows are scored by a model with 0 train {ROBUST['syn_family']} rows after the "
+                           f"holdout ({x['zero_train_syn_groups']}): an unseen family there, not only an unseen capture.")
+    for n_, d_ in D.items():
+        if not d_.empty and "status" in d_:
+            for _, x in d_[d_["status"] != "OK"].iterrows():
+                cav.append(f"{S_CSV[n_]} {x['strategy']} {x['mode']} {x['evaluation']}: **{x['status']}** -- "
+                           f"{str(x.get('error', ''))[:200]}")
+    for n_ in ("house", "holdout", "rotation"):
+        d_ = O[n_]
+        if not d_.empty:
+            for _, x in d_[d_["note_common"].astype(str) != ""].iterrows():
+                cav.append(f"{x['strategy']} {x['mode']} {x['evaluation']}: {x['note_common']}")
+    cav += [f"{w}" for w in meta.get("warnings", [])]
+    if meta["dry_run"]:
+        cav.append("DRY RUN: 5 % stratified subsample (strata v1.0 group / y / attack_family); FP/hour denominators "
+                   "scaled by the benign sample fraction. Numbers check the plumbing, not the strategies.")
+    L += ["## 4. Caveats", ""] + [f"- {x}" for x in cav] + [""]
+
+    # detail tables
+    pg = O["group"]
+    rows = []
+    for _, x in (pg.iterrows() if not pg.empty else []):
+        r = {"strategy": x["strategy"], "mode": x["mode"], "group": x["group"], "scored by": x["scored_by"],
+             "devices": x["n_devices"], "val n": x["n_val"], "val benign": x["n_val_benign"], "FP@0.5": x["fp_05"],
+             "FP@thr": x["fp_common"]}
+        for f in families:
+            r[f"{f}: n val / DR@0.5 / DR@thr / n train"] = (f"{x[f'n_val_{f}']} / {fmt(x[f'dr_05_{f}'])} / "
+                                                           f"{fmt(x[f'dr_common_{f}'])} / {x[f'n_train_{f}']}")
+        r["n train (benign / attack)"] = f"{x['n_train']} ({x['n_train_benign']} / {x['n_train_attack']})"
+        r["fit shared with"] = x["fit_shared_with"] or "-"
+        rows.append(r)
+    L += ["## Detail: per-group breakdown (val; thr = the strategy's common threshold)", ""]
+    L += md_table(rows, ["strategy", "mode", "group", "scored by", "devices", "val n", "val benign", "FP@0.5", "FP@thr"]
+                  + [f"{f}: n val / DR@0.5 / DR@thr / n train" for f in families]
+                  + ["n train (benign / attack)", "fit shared with"]) + [""]
+
+    rows = []
+    for _, x in (O["holdout"].iterrows() if not O["holdout"].empty else []):
+        rows.append({"strategy": x["strategy"], "mode": x["mode"], "evaluation": x["evaluation"],
+                     "session": x["held_out_session"], "models refit": f"{x['n_models_refit']}/{x['n_models']}",
+                     "train benign removed": x["n_held_benign_train_removed"], "thr": fmt(x["thr_common"], 6),
+                     "(i) n": x["heldben_n"], "(i) FP@0.5": x["heldben_fp_05"], "(i) FP/h@0.5": fmt(x["heldben_fph_05"], 2),
+                     "(i) FP@thr": x["heldben_fp_common"], "(i) FP/h@thr": fmt(x["heldben_fph_common"], 2),
+                     "(ii) n": x["valben_n"], "(ii) FP@0.5": x["valben_fp_05"], "(ii) FP/h@0.5": fmt(x["valben_fph_05"], 2),
+                     "(ii) FP@thr": x["valben_fp_common"], "(ii) FP/h@thr": fmt(x["valben_fph_common"], 2),
+                     "(ii) FP@0.5 / @thr from held session": f"{x['valben_fp_05_from_held']} / "
+                                                             f"{x['valben_fp_common_from_held']}"})
+    L += ["## Detail: benign holdout ((i) held-out session benign, train + val; (ii) all val benign)", ""]
+    L += md_table(rows, ["strategy", "mode", "evaluation", "session", "models refit", "train benign removed", "thr",
+                         "(i) n", "(i) FP@0.5", "(i) FP/h@0.5", "(i) FP@thr", "(i) FP/h@thr", "(ii) n", "(ii) FP@0.5",
+                         "(ii) FP/h@0.5", "(ii) FP@thr", "(ii) FP/h@thr", "(ii) FP@0.5 / @thr from held session"]) + [""]
+
+    rows = []
+    for _, x in (O["rotation"].iterrows() if not O["rotation"].empty else []):
+        rows.append({"strategy": x["strategy"], "mode": x["mode"], "evaluation": x["evaluation"],
+                     "session": x["held_out_session"], "models refit": f"{x['n_models_refit']}/{x['n_models']}",
+                     "thr": fmt(x["thr_common"], 6), "SYN n": x["syn_n"], "SYN DR@0.5": fmt(x["syn_dr_05"]),
+                     "SYN DR@thr": fmt(x["syn_dr_common"]),
+                     "SYN rows by a 0-train-SYN model": x["syn_n_zero_train_syn"],
+                     "their DR@0.5 / @thr": f"{fmt(x['syn_dr_05_zero_train_syn'])} / "
+                                           f"{fmt(x['syn_dr_common_zero_train_syn'])}",
+                     "0-train-SYN groups (rows)": x["zero_train_syn_groups"] or "-",
+                     "(i) FP@0.5 (FP/h)": f"{x['heldben_fp_05']} ({fmt(x['heldben_fph_05'], 2)})",
+                     "(i) FP@thr (FP/h)": f"{x['heldben_fp_common']} ({fmt(x['heldben_fph_common'], 2)})",
+                     "(ii) FP@0.5 / @thr": f"{x['valben_fp_05']} / {x['valben_fp_common']}",
+                     "SYN by group (n, DR@0.5, DR@thr, n train SYN)": x["syn_by_group"]})
+    L += ["## Detail: capture rotation (SYN = held-out session's syn_flood rows, train + val)", ""]
+    L += md_table(rows, ["strategy", "mode", "evaluation", "session", "models refit", "thr", "SYN n", "SYN DR@0.5",
+                         "SYN DR@thr", "SYN rows by a 0-train-SYN model", "their DR@0.5 / @thr",
+                         "0-train-SYN groups (rows)", "(i) FP@0.5 (FP/h)", "(i) FP@thr (FP/h)", "(ii) FP@0.5 / @thr",
+                         "SYN by group (n, DR@0.5, DR@thr, n train SYN)"]) + [""]
+
+    rows = []
+    for _, x in (D["cost"].iterrows() if not D["cost"].empty else []):
+        rows.append({"strategy": x["strategy"], "mode": x["mode"], "status": x["status"], "n models": x["n_models"],
+                     "models": x["models"], "total size": fmt_size(x["total_size_bytes"]),
+                     "lat med us": fmt(x["latency_median_us"], 1), "lat p99 us": fmt(x["latency_p99_us"], 1),
+                     "lookup med us": fmt(x["lookup_median_us"], 2), "fit s total": fmt(x["fit_s_total"], 1)})
+    L += ["## Detail: cost (laptop proxies)", "", f"- Size: {STRAT['size']}. Latency: {STRAT['latency']}. "
+          f"Fit time: {STRAT['fit_time']}.", ""]
+    L += md_table(rows, ["strategy", "mode", "status", "n models", "models", "total size", "lat med us", "lat p99 us",
+                         "lookup med us", "fit s total"]) + [""]
+
+    den = [{"rows": "house val benign (val)", "benign rows": "-", "hours used": fmt(hv),
+            "FP/h per FP": fmt(1 / hv, 2) if hv > 0 else "-", "source": meta["fph_denominators"][gg]["source"]}]
+    for R_, dd in meta["session_fph_denominators"].items():
+        for name, lab_ in (("heldben", f"(i) {STRAT['sessions'][R_]} benign (train + val)"),
+                           ("valben", "(ii) all val benign")):
+            h_ = dd[name]["hours_used"]
+            den.append({"rows": f"{R_}: {lab_}", "benign rows": dd[name]["benign_rows_used"], "hours used": fmt(h_),
+                        "FP/h per FP": fmt(1 / h_, 2) if h_ > 0 else "-", "source": dd[name]["rule"]})
+    L += ["## FP/hour denominators", ""] + md_table(den, ["rows", "benign rows", "hours used", "FP/h per FP", "source"])
+    L += ["", "## Groupings", ""]
+    L += md_table([{"strategy": s, "file": g["path"], "sha256": g["sha256"][:16] + "...", "groups (devices)":
+                    ", ".join(f"{k_} ({v})" for k_, v in g["n_devices"].items())} for s, g in meta["groupings"].items()],
+                  ["strategy", "file", "sha256", "groups (devices)"]) + [""]
+    (out / "summary.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+
+
+def strategies(args) -> int:
+    global _LOG_PATH
+    t_run = time.monotonic()
+    run_utc = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    out = args.out or (STRAT_OUT / "dry_run" if args.dry_run else STRAT_OUT)
+    out = (out if out.is_absolute() else REPO_ROOT / out).resolve()
+    if out.is_relative_to(CONFIG_DIR.resolve()):
+        fatal(f"{out} must not be under config/")
+    lock_fh = run_lock(out, STRAT_LOCK, "strategies")
+    _LOG_PATH = out / "run.log"
+    strats = [s for s in STRAT["strategies"] if s in (args.strategies or STRAT["strategies"])]
+    modes = [m for m in STRAT["modes"] if m in (args.modes or STRAT["modes"])]
+    evals = [e for e in STRAT["evaluations"] if e in {x for a in (args.evaluations or STRAT["evaluations"])
+                                                      for x in STRAT["evaluation_aliases"].get(a, [a])}]
+    limit = float(args.time_limit or STRAT["time_limit_s_per_fit"])
+    log("=" * 100)
+    log(f"{SCRIPT} strategies  {'DRY RUN' if args.dry_run else 'FULL'}  strategies {strats}  modes {modes}  evaluations "
+        f"{evals}  out {rel(out)}  pid {os.getpid()}  argv {' '.join(sys.argv[1:])}")
+
+    ctx = check_inputs()
+    M, feats, families = ctx["M"], ctx["feats"], ctx["families"]
+    plan_sha = resolve_syn_sessions(M, families)
+    if {r: sp["session"] for r, sp in ROBUST["rotations"].items()} != STRAT["sessions"]:
+        fatal(f"STRAT sessions {STRAT['sessions']} != ROBUST rotations; STOP")
+    syn, gg, gen, k = ROBUST["syn_family"], CONFIG["global_group"], STRAT["gen_group"], STRAT["max_fp"]
+    meta_tr = load_meta(TRAIN_PARQUET, LOAD_META + ["device", "split"])
+    meta_va = load_meta(VAL_PARQUET, LOAD_META + ["device", "split"])
+    log(f"train rows {len(meta_tr):,}  val rows {len(meta_va):,}  (y: 0 = benign, 1 = attack; checked)")
+    G, mac_of = load_groupings(STRAT["strategies"], meta_tr, meta_va)
+    gcheck = check_groupings(G, meta_tr, meta_va, families)
+    hours, man_val, warns = group_val_hours(M, meta_tr, meta_va)
+    tr_pos, va_pos, sub_tr, sub_va = select_rows(meta_tr, meta_va, args.dry_run)
+    fph, row_counts_house, fam_flags = group_context([gg], families, hours, meta_tr, meta_va, sub_tr, sub_va,
+                                                     args.dry_run)
+    house_h = fph[gg]["hours_used"]
+    sess_h = {}
+    for r, sess in STRAT["sessions"].items():
+        sess_h[r] = unseen_hours(M, meta_tr, meta_va, sub_tr, sub_va, gg, sess, args.dry_run)
+        log(f"session hours {r} ({sess}): (i) session benign {sess_h[r]['heldben']['benign_rows_used']:,} rows "
+            f"{sess_h[r]['heldben']['hours_used']:.4f} h   (ii) val benign {sess_h[r]['valben']['benign_rows_used']:,} "
+            f"rows {sess_h[r]['valben']['hours_used']:.4f} h")
+
+    y_tr = sub_tr["y"].to_numpy().astype(np.int64)
+    f_tr, ss_tr = sub_tr["attack_family"].to_numpy(dtype=object), sub_tr["session"].to_numpy(dtype=object)
+    y_va = sub_va["y"].to_numpy()
+    f_va, ss_va = sub_va["attack_family"].to_numpy(dtype=object), sub_va["session"].to_numpy(dtype=object)
+    ben_tr, att_tr = y_tr == 0, y_tr == 1
+    own, row_counts = {}, {}
+    for s in strats:
+        gtr = sub_tr["device"].map(G[s]["group_of"]).to_numpy(dtype=object)
+        gva = sub_va["device"].map(G[s]["group_of"]).to_numpy(dtype=object)
+        to_mid = np.vectorize(lambda g: gg if g in (gen, gg) else g, otypes=[object])
+        mids = [g for g in G[s]["groups"] if g not in (gen, gg)]
+        if any(g in (gen, gg) for g in G[s]["groups"]):
+            mids.append(gg)
+        own[s] = {"grp_tr": gtr, "grp_va": gva, "mid_tr": to_mid(gtr), "mid_va": to_mid(gva), "models": mids,
+                  "mac_mid": {mac_of[n]: (gg if g in (gen, gg) else g) for n, g in G[s]["group_of"].items()}}
+        row_counts[s] = {g: {"train_used": counts(sub_tr[gtr == g]), "val_used": counts(sub_va[gva == g])}
+                         for g in G[s]["groups"]}
+    pairs = []
+    for s in strats:
+        pairs += [(s, STRAT["global_mode"])] if s == STRAT["global_strategy"] else [(s, mo) for mo in modes]
+
+    def fit_rows(s: str, mid: str, mo: str, e: str) -> np.ndarray:
+        if mid == gg:
+            m = np.ones(len(y_tr), bool)
+        else:
+            m = own[s]["grp_tr"] == mid
+            if mo == "shared_attack":
+                m = (m & ben_tr) | att_tr
+        r, kind = eval_spec(e)
+        if kind == "benign_holdout":
+            m &= ~((ss_tr == STRAT["sessions"][r]) & ben_tr)
+        elif kind == "capture_rotation":
+            m &= ~(ss_tr == STRAT["sessions"][r])
+        return np.flatnonzero(m).astype(np.int32)
+
+    def fam_counts(rows: np.ndarray) -> dict:
+        return {"n": len(rows), "benign": int(ben_tr[rows].sum()), "attack": int(att_tr[rows].sum()),
+                **{f: int((f_tr[rows] == f).sum()) for f in families}}
+
+    pcaps = {}
+    for p in read_json(ATTACK_SET)["pcaps"]:
+        pcaps.setdefault(p["family"], []).append(Path(p["path"]).name)
+    cols = s_cols(families)
+    meta = {"script": SCRIPT, "stage": "strategies", "run_utc": run_utc, "argv": sys.argv, "dry_run": args.dry_run,
+            "code_sha256": CODE_SHA256, "out": rel(out), "strategies": strats, "modes": modes, "evaluations": evals,
+            "pairs": pairs,
+            "features": {"path": rel(FEATURES_JSON), "n": len(feats), "sha256": ctx["sha"],
+                         "manifest_sha256": M["features"]["sha256"], "file_bytes_sha256": ctx["file_sha"],
+                         "duration_column": ctx["dur"]},
+            "verify_lock": {"ok": ctx["lock"]["ok"],
+                            "checks": [{"check": n, "pass": o, "detail": scrub(d)} for n, o, d in ctx["lock"]["checks"]]},
+            "inputs": {"train": rel(TRAIN_PARQUET), "val": rel(VAL_PARQUET), "manifest": rel(MANIFEST),
+                       "attack_set": rel(ATTACK_SET), "split_plan": rel(SPLIT_PLAN), "split_plan_sha256": plan_sha,
+                       "groupings_sha256": {s: g["sha256"] for s, g in G.items()}, **gcheck,
+                       "test_split": "never opened"},
+            "groupings": {s: {x: g[x] for x in ("path", "sha256", "version", "k", "inputs_sha256", "groups", "n_devices")}
+                          for s, g in G.items()},
+            "versions": lib_versions(), "platform": {"machine": platform.machine(), "system": platform.system(),
+                                                     "release": platform.release(), "cpu_count": os.cpu_count()},
+            "threadpools": [{k_: v_ for k_, v_ in tp.items() if k_ in ("user_api", "internal_api", "num_threads", "version")}
+                            for tp in threadpool_info()],
+            "strat_config": STRAT, "config": CONFIG, "attack_families": families, "attack_pcaps": pcaps,
+            "row_counts_house": row_counts_house, "row_counts": row_counts, "fph_denominators": fph,
+            "fph_manifest_val_total": man_val, "session_fph_denominators": sess_h, "family_flags": fam_flags,
+            "warnings": warns, "time_limit_s_per_fit": limit, "fits": {}}
+    (out / "run_meta.json").write_text(json.dumps(meta, indent=1, default=str), encoding="utf-8")
+
+    done = strat_resume(out, args.dry_run, args.retry_timeouts, cols)
+    plan = [(e, [p for p in pairs if (*p, e) not in done]) for e in evals]
+    plan = [(e, ks) for e, ks in plan if ks]
+    n_keys = len(pairs) * len(evals)
+    log(f"(strategy, mode, evaluation) keys {n_keys}  already done {n_keys - sum(len(x[1]) for x in plan)}  to run "
+        f"{sum(len(x[1]) for x in plan)} in {len(plan)} children  time limit {limit:.0f} s per fit")
+    lat_rows = np.sort(np.random.default_rng(STRAT["seed"]).choice(
+        len(y_va), size=min(CONFIG["latency"]["single_calls"], len(y_va)), replace=False))
+    mac_va = sub_va["device"].map(mac_of).to_numpy(dtype=object)
+
+    def put(name: str, row: dict) -> None:
+        append_rows(out / S_CSV[name], [row], cols[name])
+
+    for bi, (e, keys) in enumerate(plan, 1):
+        r, kind = eval_spec(e)
+        sess = STRAT["sessions"][r] if r else None
+        if kind == "benign_holdout":
+            score_tr = np.flatnonzero((ss_tr == sess) & ben_tr)
+        elif kind == "capture_rotation":
+            score_tr = np.flatnonzero(ss_tr == sess)
+        else:
+            score_tr = np.zeros(0, np.int64)
+        fits, assign = {}, {}
+        for s, mo in keys:
+            assign[(s, mo)] = {}
+            for mid in own[s]["models"]:
+                rows = fit_rows(s, mid, mo, e)
+                fk = hashlib.sha256(rows.astype(np.int64).tobytes()).hexdigest()[:16]
+                fits.setdefault(fk, {"rows": rows, "labels": []})["labels"].append(f"{s}/{mid}/{mo}")
+                assign[(s, mo)][mid] = fk
+        evs = [{"kind": "fit", "key": fk, "fit_rows": f["rows"], "score_tr": score_tr, "cost": kind == "val",
+                "keep": kind == "val"} for fk, f in fits.items()]
+        if kind == "val":
+            evs.append({"kind": "latency", "key": "latency", "rows": lat_rows, "macs": mac_va[lat_rows].tolist(),
+                        "items": {f"{s}|{mo}": {mac: assign[(s, mo)][mid] for mac, mid in own[s]["mac_mid"].items()}
+                                  for s, mo in keys}})
+        meta["fits"][e] = {fk: {"labels": f["labels"], **fam_counts(f["rows"])} for fk, f in fits.items()}
+        log(f"[{bi}/{len(plan)}] {e}{f' (held-out {sess})' if sess else ''}: {len(keys)} (strategy, mode) keys, "
+            f"{sum(len(a) for a in assign.values())} models -> {len(fits)} distinct fits; score {len(y_va):,} val + "
+            f"{len(score_tr):,} held-out train rows per fit")
+        job = {"model": STRAT["model"], "seed": STRAT["seed"], "features": feats, "dur_idx": ctx["dur_idx"],
+               "train_path": TRAIN_PARQUET, "val_path": VAL_PARQUET, "tr_rows": tr_pos, "va_rows": va_pos,
+               "y_tr": y_tr, "evals": evs}
+        R = {}
+        lib = LIBS.get(STRAT["model"])
+        if lib and importlib.util.find_spec(lib) is None:
+            stream = ((i, {"status": "MISSING_LIB", "error": f"python package {lib!r} is not installed in this env"})
+                      for i in range(len(evs)))
+        else:
+            stream = run_child_stream(job, limit, target=strat_worker)
+        try:
+            for i, res in stream:
+                ev = evs[i]
+                R[ev["key"]] = res
+                err = res.get("error", "")
+                if res["status"] != "OK":
+                    log(f"    ({i + 1}/{len(evs)}) {ev['key']}: {res['status']}: {err.strip().splitlines()[-1] if err else ''}")
+                elif ev["kind"] == "latency":
+                    log(f"    ({i + 1}/{len(evs)}) latency: " + "; ".join(
+                        f"{n_} {x['latency_median_us']:.0f}/{x['latency_p99_us']:.0f} us" if x["status"] == "OK"
+                        else f"{n_} {x['status']}" for n_, x in res["latency"].items()))
+                else:
+                    fc = meta["fits"][e][ev["key"]]
+                    log(f"    ({i + 1}/{len(evs)}) fit {ev['key']} [{', '.join(fits[ev['key']]['labels'])}]: train "
+                        f"{fc['n']:,} (benign {fc['benign']:,} / attack {fc['attack']:,}; syn {fc.get(syn, 0):,})  fit "
+                        f"{res['fit_s']:.1f} s" + (f"  size {fmt_size(res['size_bytes'])}" if ev["cost"] else "")
+                        + f"  rss {res['child_peak_rss_mb']} MB"
+                        + (f"  warnings {res['fit_warnings']}" if res["fit_warnings"] else ""))
+        finally:
+            stream.close()
+
+        for s, mo in keys:
+            A, o = assign[(s, mo)], own[s]
+            base = {"strategy": s, "mode": mo, "evaluation": e, "dry_run": args.dry_run, "run_utc": run_utc}
+            sbase = {} if kind == "val" else {"held_out_session": sess,
+                                              "held_out_alias": ROBUST["rotations"][r]["held_out_alias"]}
+            bad = [(mid, R.get(fk, {"status": "ERROR", "error": "no result"})) for mid, fk in A.items()
+                   if R.get(fk, {}).get("status") != "OK"]
+            if bad:
+                sts = {x["status"] for _, x in bad}
+                st = "TIMEOUT" if "TIMEOUT" in sts else (sts.pop() if len(sts) == 1 else "ERROR")
+                err = "; ".join(f"{mid}: {x['status']} {(x.get('error') or '').strip().splitlines()[-1][:200] if x.get('error') else ''}"
+                                for mid, x in bad)
+                put(S_COMMIT[kind], {**base, **sbase, "status": st, "n_models": len(A), "error": err})
+                log(f"    {s} {mo} {e}: {st} ({err[:200]})")
+                continue
+
+            def combine(mid_arr: np.ndarray, field: str) -> np.ndarray:
+                v = np.full(len(mid_arr), np.nan)
+                for mid, fk in A.items():
+                    m = mid_arr == mid
+                    v[m] = R[fk][field][m]
+                if np.isnan(v).any() or not set(mid_arr) <= set(A):
+                    raise AssertionError(f"{s} {mo} {e}: rows not scored exactly once")
+                return v
+
+            s_va = combine(o["mid_va"], "scores")
+            ntr = {mid: fam_counts(fits[fk]["rows"]) for mid, fk in A.items()}
+            fit_s_total = float(sum(R[fk]["fit_s"] for fk in A.values()))
+            models_txt = "; ".join(A)
+            if kind == "val":
+                row, frows = robust_val(s_va, y_va, f_va, families, house_h, k=k)
+                row = ren_common(row)
+                thr_c = row["thr_common"]
+                pf = {}
+                for x in frows:
+                    tag = "05" if x["operating_point"] == "default_0.5" else "common"
+                    f = x["attack_family"]
+                    pf.update({f"n_{f}": x["n"], f"dr_{tag}_{f}": x["detection_rate"], f"flag_{f}": x["flag"]})
+                fl05, flc, vb = s_va >= CONFIG["default_threshold"], s_va >= thr_c, y_va == 0
+                for g in G[s]["groups"]:
+                    m = o["grp_va"] == g
+                    mid = gg if g in (gen, gg) else g
+                    fk = A[mid]
+                    gr = {**base, "group": g, "scored_by": mid, "n_devices": G[s]["n_devices"][g], "n_val": int(m.sum()),
+                          "n_val_benign": int((m & vb).sum()), "fp_05": int((fl05 & m & vb).sum()),
+                          "fp_common": int((flc & m & vb).sum()), "n_train": ntr[mid]["n"],
+                          "n_train_benign": ntr[mid]["benign"], "n_train_attack": ntr[mid]["attack"],
+                          "size_bytes": R[fk]["size_bytes"], "fit_s": R[fk]["fit_s"], "fit_key": fk,
+                          "fit_shared_with": "; ".join(x for x in fits[fk]["labels"] if x != f"{s}/{mid}/{mo}")}
+                    for f in families:
+                        mf = m & (f_va == f)
+                        n = int(mf.sum())
+                        gr.update({f"n_val_{f}": n, f"dr_05_{f}": (fl05 & mf).sum() / n if n else math.nan,
+                                   f"dr_common_{f}": (flc & mf).sum() / n if n else math.nan,
+                                   f"n_train_{f}": ntr[mid][f]})
+                    put("group", gr)
+                for f in families:
+                    mf = (y_va == 1) & (f_va == f)
+                    mu = mf & np.isin(o["mid_va"], [mid for mid in A if ntr[mid][f] == 0])
+                    n = int(mu.sum())
+                    grp_n = [(g, int((mu & (o["grp_va"] == g)).sum())) for g in G[s]["groups"]]
+                    put("unseen", {**base, "attack_family": f, "n_val_family": int(mf.sum()), "n_unseen": n,
+                                   "unseen_groups": "; ".join(f"{g} ({c})" for g, c in grp_n if c),
+                                   "det_05": int((fl05 & mu).sum()), "dr_05": (fl05 & mu).sum() / n if n else math.nan,
+                                   "det_common": int((flc & mu).sum()), "dr_common": (flc & mu).sum() / n if n else math.nan})
+                lat = R.get("latency", {"status": "ERROR", "error": "no latency result"})
+                li = lat["latency"].get(f"{s}|{mo}", {"status": "ERROR"}) if lat["status"] == "OK" else lat
+                put("cost", {**base, "status": li["status"], "n_models": len(A), "models": models_txt,
+                             "total_size_bytes": int(sum(R[fk]["size_bytes"] for fk in A.values())),
+                             "sizes_json": json.dumps({mid: R[fk]["size_bytes"] for mid, fk in A.items()}),
+                             **{x: li.get(x) for x in ("latency_median_us", "latency_p99_us", "latency_calls",
+                                                       "lookup_median_us")},
+                             "fit_s_total": fit_s_total,
+                             "fit_s_json": json.dumps({mid: round(R[fk]["fit_s"], 3) for mid, fk in A.items()}),
+                             "fit_threads": f"n_jobs={CONFIG['fit_n_jobs']} ({os.cpu_count()} cpus)",
+                             "predict_threads": "1 (n_jobs=1 + threadpoolctl limit 1)", "proxy_note": PROXY_NOTE,
+                             "error": li.get("error", "")})
+                put("house", {**base, "status": "OK", "n_models": len(A), "models": models_txt, **row, **pf,
+                              "fph_per_fp": 1 / house_h if house_h > 0 else math.nan, "fit_s_total": fit_s_total,
+                              "score_sha256": scores_sha(s_va), "error": ""})
+                log(f"    {s} {mo} val: PR-AUC {row['pr_auc']:.4f}  @0.5 FP {row['fp_05']} DR {row['dr_05']:.4f}  "
+                    f"@thr {thr_c:.6g} FP {row['fp_common']} DR {row['dr_common']:.4f}  "
+                    + "  ".join(f"{f} {pf[f'dr_05_{f}']:.4f}/{pf[f'dr_common_{f}']:.4f}" for f in families
+                                if pf[f"n_{f}"]))
+                continue
+
+            s_trh = combine(o["mid_tr"][score_tr], "scores_tr")
+            va_held = ss_va == sess
+            U = {"thr_mask": ~va_held, "va_held": va_held, "ftr_held": f_tr[score_tr], "ytr_held": y_tr[score_tr],
+                 "hours": sess_h[r], "variant": kind}
+            m_ = ren_common(robust_unseen(s_va, s_trh, U, y_va, f_va, k=k))
+            n_refit = sum(len(fits[fk]["rows"]) != len(fit_rows(s, mid, mo, "val")) for mid, fk in A.items())
+            common = {**base, **sbase, "status": "OK", "n_models": len(A), "n_models_refit": n_refit, **m_,
+                      "fit_s_total": fit_s_total, "score_sha256": scores_sha(s_va, s_trh), "error": ""}
+            if kind == "benign_holdout":
+                put("holdout", {**common, "n_held_benign_train_removed": len(score_tr)})
+                log(f"    {s} {mo} {e}: thr {m_['thr_common']:.6g}  (i) {sess} benign FP@0.5 {m_['heldben_fp_05']} of "
+                    f"{m_['heldben_n']:,} = {m_['heldben_fph_05']:.2f} FP/h, FP@thr {m_['heldben_fp_common']}  (ii) val "
+                    f"benign FP@0.5 {m_['valben_fp_05']} FP@thr {m_['valben_fp_common']}  models refit {n_refit}/{len(A)}")
+                continue
+            syn_tr, syn_va = f_tr[score_tr] == syn, va_held & (f_va == syn)
+            s_syn = np.r_[s_trh[syn_tr], s_va[syn_va]]
+            mid_syn = np.r_[o["mid_tr"][score_tr][syn_tr], o["mid_va"][syn_va]]
+            grp_syn = np.r_[o["grp_tr"][score_tr][syn_tr], o["grp_va"][syn_va]]
+            z = np.isin(mid_syn, [mid for mid in A if ntr[mid][syn] == 0])
+            thr_c, t05 = m_["thr_common"], CONFIG["default_threshold"]
+            by_g = []
+            for g in G[s]["groups"]:
+                mg = grp_syn == g
+                if mg.any():
+                    mid = gg if g in (gen, gg) else g
+                    by_g.append(f"{g}: {int(mg.sum())}, {fmt((s_syn[mg] >= t05).mean())}, "
+                                f"{fmt((s_syn[mg] >= thr_c).mean())}, {ntr[mid][syn]}")
+            nz = int(z.sum())
+            put("rotation", {**common, "n_held_train_removed": len(score_tr), "syn_n_zero_train_syn": nz,
+                             "syn_dr_05_zero_train_syn": float((s_syn[z] >= t05).mean()) if nz else math.nan,
+                             "syn_dr_common_zero_train_syn": float((s_syn[z] >= thr_c).mean()) if nz else math.nan,
+                             "zero_train_syn_groups": "; ".join(f"{g} ({int((z & (grp_syn == g)).sum())})"
+                                                                for g in G[s]["groups"] if (z & (grp_syn == g)).any()),
+                             "syn_by_group": " | ".join(by_g)})
+            log(f"    {s} {mo} {e}: SYN DR@0.5 {m_['syn_dr_05']:.4f} @thr {m_['syn_dr_common']:.4f} on {m_['syn_n']:,} "
+                f"({nz:,} by a 0-train-SYN model)  (i) {sess} benign FP@0.5 {m_['heldben_fp_05']} FP@thr "
+                f"{m_['heldben_fp_common']}  models refit {n_refit}/{len(A)}")
+        del R
+        gc.collect()
+
+    meta["runtime_s"] = round(time.monotonic() - t_run, 1)
+    meta["finished_utc"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    (out / "run_meta.json").write_text(json.dumps(meta, indent=1, default=str), encoding="utf-8")
+    write_strat_summary(out, meta)
+    log(f"done in {meta['runtime_s']:.0f} s  ->  {rel(out)}/summary.md")
+    lock_fh.close()
+    return 0
+
+
 def not_implemented(args) -> int:
-    raise NotImplementedError(f"{SCRIPT} {args.cmd}: not implemented yet (only 'bakeoff' and 'robustness' exist)")
+    raise NotImplementedError(f"{SCRIPT} {args.cmd}: not implemented yet (only 'bakeoff', 'robustness' and "
+                              "'strategies' exist)")
 
 
 def main() -> int:
@@ -1908,6 +2778,19 @@ def main() -> int:
     r.add_argument("--time-limit", type=float, default=None, help="seconds per (seed, evaluation); overrides ROBUST")
     r.add_argument("--retry-timeouts", action="store_true", help="rerun evaluations recorded as TIMEOUT")
     r.set_defaults(func=robustness)
+    st = sub.add_parser("strategies", help="grouping strategies x training mode, house-level (XGB, seed 42)")
+    st.add_argument("--strategies", nargs="+", choices=STRAT["strategies"], default=None)
+    st.add_argument("--modes", nargs="+", choices=STRAT["modes"], default=None,
+                    help="strategy global always runs once (mode 'both')")
+    st.add_argument("--evaluations", nargs="+", choices=STRAT["evaluations"] + list(STRAT["evaluation_aliases"]),
+                    default=None, help="cost (D) is measured on the val fits, so it needs 'val'")
+    st.add_argument("--dry-run", action="store_true", help="stratified 5%% subsample of train and val")
+    st.add_argument("--out", type=Path, default=None,
+                    help=f"output dir (default {rel(STRAT_OUT)}; {rel(STRAT_OUT / 'dry_run')} with --dry-run)")
+    st.add_argument("--time-limit", type=float, default=None, help="seconds per fit; overrides STRAT")
+    st.add_argument("--retry-timeouts", action="store_true", help="rerun (strategy, mode, evaluation) keys recorded "
+                                                                   "as TIMEOUT")
+    st.set_defaults(func=strategies)
     for name, hlp in (("splits", "split-strategy comparison (later)"), ("final", "final fit + test eval (later)")):
         sub.add_parser(name, help=hlp).set_defaults(func=not_implemented)
     args = ap.parse_args()

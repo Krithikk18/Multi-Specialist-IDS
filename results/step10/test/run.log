@@ -1,0 +1,46 @@
+2026-10-19 20:32:02  GUARD PASS  results/step10/TEST_OPENED.json absent
+2026-10-19 20:32:02  GUARD PASS  run lock: results/step10/test/.10_evaluate.lock
+2026-10-19 20:32:02  ====================================================================================================
+2026-10-19 20:32:02  10_evaluate.py --mode test  pid 17575  code sha256 a44ee0e8d28ec368...
+2026-10-19 20:32:06  GUARD PASS  git: no modified / staged tracked file: HEAD 279a8a742b10c9d6663e12abea7df2ffb6c03850
+2026-10-19 20:32:07  note: 13 untracked path(s) (not used by this script): ?? results/step10/dryrun/predictions.parquet; ?? results/step8b/coverage/; ?? results/step8b/dry_run/; ?? results/step8b/labels/; ?? results/step9/bakeoff/dry_run/; ?? results/step9/leakage/done.json; ?? results/step9/leakage/dry_run/done.json; ?? results/step9/leakage/dry_run/run_meta.json; ?? results/step9/leakage/dry_run/summary.md; ?? results/step9/robustness/dry_run/run_meta.json
+2026-10-19 20:32:07  GUARD PASS  config/step10_prereg.json tracked
+2026-10-19 20:32:07  GUARD PASS  config/step10_prereg.json identical to HEAD
+2026-10-19 20:32:07  GUARD PASS  10_evaluate.py sha256 == prereg: a44ee0e8d28ec368...
+2026-10-19 20:32:07  GUARD PASS  model G1 sha256 == prereg: ~/lgids_cache/models/step10/G1.joblib 94451ede65092a4e...
+2026-10-19 20:32:07  GUARD PASS  model G2 sha256 == prereg: ~/lgids_cache/models/step10/G2.joblib 9f63a62dfb50675f...
+2026-10-19 20:32:07  GUARD PASS  model GLOBAL sha256 == prereg: ~/lgids_cache/models/step10/GLOBAL.joblib d7408f5073182cf0...
+2026-10-19 20:32:07  GUARD PASS  features_v1.json sha256 == prereg: 623d0d2483670f34...
+2026-10-19 20:32:07  GUARD PASS  09_train_specialists.py sha256 == prereg: d792112ee52ad3ce...
+2026-10-19 20:32:07  GUARD PASS  config/config.py sha256 == prereg: c19bf4ffe4ee25a9...
+2026-10-19 20:32:07  GUARD PASS  config/groupings/behaviour_k2.json sha256 == prereg: 9f80565f7ece7f65...
+2026-10-19 20:32:07  GUARD PASS  config/split_plan_v1_1.json sha256 == prereg: 56813a35e1cbcf46...
+2026-10-19 20:32:07  GUARD PASS  results/step8b/manifest_v1_1.json sha256 == prereg: a1e5f38dbc287a43...
+2026-10-19 20:32:07  GUARD PASS  results/step8/manifest_v1.json sha256 == prereg: c2e48e620ad38a1e...
+2026-10-19 20:32:07  GUARD PASS  config/attack_set.json sha256 == prereg: b975bd3cc6d5b0fd...
+2026-10-19 20:32:07  GUARD PASS  config/behaviour_groups.json sha256 == prereg: 5b26490de8a996ca...
+2026-10-19 20:32:07  GUARD PASS  xgboost version == prereg: 3.4.2
+2026-10-19 20:32:08  GUARD PASS  verify_lock(): 10 checks
+2026-10-19 20:32:08    verify_lock PASS  extractor jar sha256: ~/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)
+2026-10-19 20:32:08    verify_lock PASS  extractor patch exists: extractor/guard_gt0.patch
+2026-10-19 20:32:08    verify_lock PASS  extractor sweeper patch exists: extractor/idle_sweeper.patch
+2026-10-19 20:32:08    verify_lock PASS  config file device_table.csv: config/device_table.csv
+2026-10-19 20:32:08    verify_lock PASS  config file ip_mac_map.csv: config/ip_mac_map.csv
+2026-10-19 20:32:08    verify_lock PASS  config file behaviour_groups.json: config/behaviour_groups.json
+2026-10-19 20:32:08    verify_lock PASS  groups version: behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'
+2026-10-19 20:32:08    verify_lock PASS  groups labels: ['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']
+2026-10-19 20:32:08    verify_lock PASS  groups lock verified: behaviour_groups.json verification.pass
+2026-10-19 20:32:08    verify_lock PASS  extractor TZ: subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)
+2026-10-19 20:32:08  features: 70, sha256 cf73976fd384a466... == manifest; duration column 'Flow Duration'; families ['port_scan', 'syn_flood', 'udp_flood']
+2026-10-19 20:32:08  features: 70, sha256 cf73976fd384a466... (== manifest_v1 == manifest_v1_1)
+2026-10-19 20:32:08  GUARD PASS  features list sha256 == prereg
+2026-10-19 20:32:08  GUARD PASS  fitting disabled (XGBClassifier.fit, xgboost.train, 09 fit_model / build_model raise)
+2026-10-19 20:32:08  GUARD PASS  FINAL thresholds from prereg: T_house 0.568307638168335, 0.5 0.5
+2026-10-19 20:32:08  GUARD PASS  BASELINE thresholds from prereg: T_house 0.5927605032920837, 0.5 0.5
+2026-10-19 20:32:08  GUARD PASS  test benign hours == prereg: night 3.0179, daytime 18.7422, combined 21.7601
+2026-10-19 20:32:08  created results/step10/TEST_OPENED.json (2026-10-19T20:32:08+00:00); opening the test split
+2026-10-19 20:32:08  test.parquet sha256 == manifest_v1_1 (0650b0fd0dcc01d8...)
+2026-10-19 20:32:08  test: training filter (owner_status == "owned" AND exclude_reason == "" AND label != "excluded") applied at build time by 08 / 08b; rows 694,169, dropped at runtime 0
+2026-10-19 20:32:09  routing: 694,169 rows, exactly once True; by group {'G1': 452338, 'G2': 241077, 'GEN': 754}; by model {'G1': 452338, 'G2': 241077, 'GLOBAL': 754}; unregistered_mac 8
+2026-10-19 20:32:12  wrote detection_by_family.csv, detection_by_session.csv, detection_by_family_group.csv, false_alarms.csv, predictions.parquet (sha256 af9c2789a3e408c1...) -> results/step10/test
+2026-10-19 20:32:13  done in 11 s -> results/step10/test/summary.md

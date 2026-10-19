@@ -1,0 +1,8 @@
+{
+ "opened_utc": "2026-10-19T20:32:08+00:00",
+ "git_head": "279a8a742b10c9d6663e12abea7df2ffb6c03850",
+ "pid": 17575,
+ "script_sha256": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63",
+ "prereg_sha256": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+ "test_path": "~/lgids_cache/datasets/v1_1/test.parquet"
+}

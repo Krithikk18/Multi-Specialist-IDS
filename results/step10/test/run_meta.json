@@ -1,0 +1,301 @@
+{
+ "script": "10_evaluate.py",
+ "mode": "test",
+ "run_utc": "2026-10-19T20:32:02+00:00",
+ "argv": [
+  "10_evaluate.py",
+  "--mode",
+  "test"
+ ],
+ "git_head": "279a8a742b10c9d6663e12abea7df2ffb6c03850",
+ "git_dirty_tracked": [],
+ "git_untracked": [
+  "?? results/step10/TEST_OPENED.json",
+  "?? results/step10/dryrun/predictions.parquet",
+  "?? results/step10/test/",
+  "?? results/step8b/coverage/",
+  "?? results/step8b/dry_run/",
+  "?? results/step8b/labels/",
+  "?? results/step9/bakeoff/dry_run/",
+  "?? results/step9/leakage/done.json",
+  "?? results/step9/leakage/dry_run/done.json",
+  "?? results/step9/leakage/dry_run/run_meta.json",
+  "?? results/step9/leakage/dry_run/summary.md",
+  "?? results/step9/robustness/dry_run/run_meta.json",
+  "?? results/step9/robustness/dry_run/summary.md",
+  "?? results/step9/strategies/dry_run/run_meta.json",
+  "?? results/step9/strategies/dry_run/summary.md"
+ ],
+ "code_sha256": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63",
+ "config": {
+  "seed": 42,
+  "model": "XGB",
+  "model_note": "09 build_model / fit_model: XGBoost library defaults + scale_pos_weight = n_benign / n_attack of the model's own training rows, random_state 42, n_jobs -1; 70 features (features_v1.json order, float32); no search",
+  "models": [
+   "G1",
+   "G2",
+   "GLOBAL"
+  ],
+  "training_sets": {
+   "G1": "shared_attack: TRAIN benign rows of group G1 (behaviour_k2) + every TRAIN attack row",
+   "G2": "shared_attack: TRAIN benign rows of group G2 (behaviour_k2) + every TRAIN attack row",
+   "GLOBAL": "every TRAIN row"
+  },
+  "systems": {
+   "FINAL": {
+    "models": [
+     "G1",
+     "G2",
+     "GLOBAL"
+    ],
+    "note": "specialists G1 + G2 (shared_attack) + GLOBAL fallback"
+   },
+   "BASELINE": {
+    "models": [
+     "GLOBAL"
+    ],
+    "note": "GLOBAL scores every row (same model file as FINAL's GLOBAL)"
+   }
+  },
+  "route": {
+   "G1": "G1",
+   "G2": "G2",
+   "GEN": "GLOBAL"
+  },
+  "routing_rule": "by the row's group column: G1 -> G1 model, G2 -> G2 model, GEN -> GLOBAL; unregistered MACs (device 'unregistered:<mac>', device_category 'unregistered_mac') are group GEN -> GLOBAL. BASELINE: GLOBAL for every row.",
+  "groups": [
+   "G1",
+   "G2",
+   "GEN"
+  ],
+  "gen_group": "GEN",
+  "unreg_category": "unregistered_mac",
+  "unreg_device_prefix": "unregistered:",
+  "operating_points": [
+   "T_house",
+   "0.5"
+  ],
+  "default_threshold": 0.5,
+  "max_val_fp": 2,
+  "threshold_rule": "T_house: lowest observed house VAL score with <= 2 FP on the house's VAL benign rows (09 strategies common_threshold_rule, 09 max_fp_threshold); 0.5 fixed. Flag iff score >= thr.",
+  "filter": "owner_status == \"owned\" AND exclude_reason == \"\" AND label != \"excluded\" (applied by 08 / 08b at build time; the parquet files hold no filter column, so 0 rows are dropped at runtime, as in 09)",
+  "low_n": 50,
+  "ci_level": 0.95,
+  "ci_method": "exact (Garwood) Poisson: [chi2.ppf(a/2, 2k) / 2, chi2.ppf(1 - a/2, 2k + 2) / 2], lower 0 at k = 0; FP/hour CI = count CI / hours",
+  "ci_selftest": {
+   "0": [
+    0.0,
+    3.689
+   ],
+   "2": [
+    0.242,
+    7.225
+   ],
+   "tol": 0.0005
+  },
+  "step9_compare": {
+   "BASELINE": [
+    "global",
+    "both"
+   ],
+   "FINAL": [
+    "behaviour_k2",
+    "shared_attack"
+   ]
+  },
+  "step9_tol": 1e-09,
+  "features_sha_prefix": "cf73976f"
+ },
+ "versions": {
+  "python": "3.11.17",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "pyarrow": "26.0.0",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "joblib": "1.6.0",
+  "xgboost": "3.4.2"
+ },
+ "platform": {
+  "machine": "x86_64",
+  "system": "Linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "cpu_count": 12
+ },
+ "split": "test",
+ "split_file": {
+  "path": "~/lgids_cache/datasets/v1_1/test.parquet",
+  "sha256": "0650b0fd0dcc01d84a4b12020fc3d625484b84c42e0844e3c0e1794cc3bf45b5",
+  "rows": 694169
+ },
+ "rows_dropped_by_filter": {
+  "test": 0
+ },
+ "prereg": "config/step10_prereg.json",
+ "prereg_sha256": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+ "test_marker": {
+  "opened_utc": "2026-10-19T20:32:08+00:00",
+  "git_head": "279a8a742b10c9d6663e12abea7df2ffb6c03850",
+  "pid": 17575,
+  "script_sha256": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63",
+  "prereg_sha256": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+  "test_path": "~/lgids_cache/datasets/v1_1/test.parquet"
+ },
+ "thresholds": {
+  "FINAL": {
+   "T_house": 0.568307638168335,
+   "0.5": 0.5
+  },
+  "BASELINE": {
+   "T_house": 0.5927605032920837,
+   "0.5": 0.5
+  }
+ },
+ "hours": {
+  "night": 3.0179,
+  "daytime": 18.742222222222225,
+  "combined": 21.760122222222225,
+  "source": "results/step8b/manifest_v1_1.json hours: v1_test (night), added (daytime), v1_1_test (combined)"
+ },
+ "routing": {
+  "rows": 694169,
+  "routed_exactly_once": true,
+  "by_group": {
+   "G1": 452338,
+   "G2": 241077,
+   "GEN": 754
+  },
+  "by_routed_model": {
+   "G1": 452338,
+   "G2": 241077,
+   "GLOBAL": 754
+  },
+  "unregistered_mac_rows": 8,
+  "group_to_model": {
+   "G1": "G1",
+   "G2": "G2",
+   "GEN": "GLOBAL"
+  }
+ },
+ "models": {
+  "G1": {
+   "path": "~/lgids_cache/models/step10/G1.joblib",
+   "sha256": "94451ede65092a4e3c807d6b4fa44df7fed9c6b242a7260c60b21576e1b3a076",
+   "file_bytes": 147178,
+   "training_set": "shared_attack: TRAIN benign rows of group G1 (behaviour_k2) + every TRAIN attack row",
+   "n_train": 618759,
+   "n_train_benign": 120028,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.24066681236979454,
+   "rows_sha256_16": "05ee0e90a6c5ec95"
+  },
+  "G2": {
+   "path": "~/lgids_cache/models/step10/G2.joblib",
+   "sha256": "9f63a62dfb50675f22c4c6c8644a79061b5bcf6fb280dc4702f028278ea46687",
+   "file_bytes": 103316,
+   "training_set": "shared_attack: TRAIN benign rows of group G2 (behaviour_k2) + every TRAIN attack row",
+   "n_train": 515010,
+   "n_train_benign": 16279,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.032640842458158806,
+   "rows_sha256_16": "63f2a4532c44c283"
+  },
+  "GLOBAL": {
+   "path": "~/lgids_cache/models/step10/GLOBAL.joblib",
+   "sha256": "d7408f5073182cf0bf7346804bf84a38f9376083d0ab996cd98ba3889461f54a",
+   "file_bytes": 154316,
+   "training_set": "every TRAIN row",
+   "n_train": 636193,
+   "n_train_benign": 137462,
+   "n_train_attack": 498731,
+   "scale_pos_weight": 0.27562353252554983,
+   "rows_sha256_16": "7be95f054be87f6f"
+  }
+ },
+ "sessions": {
+  "attack_sessions": [
+   "DDoS-SYN_Flood10",
+   "DDoS-SYN_Flood15",
+   "Recon-PortScan",
+   "Mirai-udpplain24"
+  ],
+  "family_of": {
+   "DDoS-SYN_Flood10": "syn_flood",
+   "DDoS-SYN_Flood15": "syn_flood",
+   "Recon-PortScan": "port_scan",
+   "Mirai-udpplain24": "udp_flood"
+  },
+  "aliases": {
+   "DDoS-SYN_Flood": "SYN first part",
+   "DDoS-SYN_Flood5": "SYN 5",
+   "DDoS-SYN_Flood10": "SYN 10",
+   "DDoS-SYN_Flood15": "SYN 15",
+   "Recon-PortScan": "Recon-PortScan",
+   "Mirai-udpplain": "Mirai first part",
+   "Mirai-udpplain24": "Mirai 24",
+   "BenignTraffic1": "daytime benign (BenignTraffic1)",
+   "BenignTraffic2": "daytime benign (BenignTraffic2)",
+   "BenignTraffic3": "daytime benign (BenignTraffic3)"
+  },
+  "night_sessions": [
+   "benign_night",
+   "DDoS-SYN_Flood",
+   "DDoS-SYN_Flood5",
+   "DDoS-SYN_Flood10",
+   "DDoS-SYN_Flood15",
+   "Recon-PortScan",
+   "Mirai-udpplain",
+   "Mirai-udpplain24"
+  ],
+  "daytime_sessions": [
+   "BenignTraffic1",
+   "BenignTraffic2",
+   "BenignTraffic3"
+  ]
+ },
+ "row_counts": {
+  "rows": 694169,
+  "benign": 275073,
+  "attack": 419096,
+  "benign_by_period": {
+   "night": 54714,
+   "daytime": 220359
+  },
+  "attack_by_family": {
+   "port_scan": 20506,
+   "syn_flood": 398532,
+   "udp_flood": 58
+  },
+  "attack_by_session": {
+   "DDoS-SYN_Flood10": 265616,
+   "DDoS-SYN_Flood15": 132916,
+   "Recon-PortScan": 20506,
+   "Mirai-udpplain24": 58
+  },
+  "rows_by_group": {
+   "G1": 452338,
+   "G2": 241077,
+   "GEN": 754
+  },
+  "benign_by_device_category": {
+   "Audio": 60320,
+   "Camera": 125657,
+   "Home Automation": 16148,
+   "Hub": 44593,
+   "Lighting": 7115,
+   "Power Outlet": 14267,
+   "Unidentified (Amazon)": 1718,
+   "Unidentified (Espressif)": 5247,
+   "unregistered_mac": 8
+  }
+ },
+ "predictions_sha256": "af9c2789a3e408c11fd2188c8d78243a6d93227bda80ef464a4859398506d8fe",
+ "fitting_disabled": true,
+ "runtimes_s": {
+  "guards_s": 5.6,
+  "test_score_s": 2.1,
+  "report_s": 2.0,
+  "total_s": 10.8
+ },
+ "finished_utc": "2026-10-19T20:32:13+00:00"
+}

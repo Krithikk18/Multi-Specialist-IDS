@@ -1,0 +1,3 @@
+file,path,variant,part,alias,size_bytes,size_gb,in_attack_set,packets,attacker_packets,first_utc,last_utc,capture_minutes,packets_source,used,session_mode,splits,used_in,listed
+Mirai-udpplain.pcap,~/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap,udpplain,(none),Mirai first part,2048000451,2.048000451,True,3642269,3563700,2023-01-19T15:51:00.595065+00:00,2023-01-19T16:23:26.574506+00:00,32.43,07a stats (S.packets),used,train,train+val,"v1, v1_1",False
+Mirai-udpplain24.pcap,~/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain24.pcap,udpplain,24,Mirai 24,839868044,0.839868044,True,1506334,1456835,2023-02-07T16:23:57.789760+00:00,2023-02-14T17:38:00.630347+00:00,10154.05,07a stats (S.packets),used,test,test,"v1, v1_1",False

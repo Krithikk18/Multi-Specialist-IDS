@@ -1,0 +1,261 @@
+{
+ "script": "12a_mirai_inventory.py",
+ "code_sha256": "4acca548e0f3faa96e192471cffc73dbbc0086322984092265dcd346ea9ba659",
+ "run_utc": "2026-10-20T05:50:02+00:00",
+ "argv": [
+  "12a_mirai_inventory.py"
+ ],
+ "git_head": "6e7043b981cd553ecd448af720606821dc22d0e1",
+ "search_roots": [
+  "~/lgids_cache/ciciot2023",
+  "data/raw"
+ ],
+ "parts_list": null,
+ "parts_listed": [],
+ "checks": [
+  {
+   "check": "Mirai-udpplain: 07 attack flows == sum over victims == usable attack rows",
+   "pass": true,
+   "detail": "07 112, per-victim 112, usable 112"
+  },
+  {
+   "check": "Mirai-udpplain24: 07 attack flows == sum over victims == usable attack rows",
+   "pass": true,
+   "detail": "07 58, per-victim 58, usable 58"
+  },
+  {
+   "check": "Mirai dataset rows per (split, group) == manifest_v1 by_split_group_label_family",
+   "pass": true,
+   "detail": "derived {('test', 'G1'): 35, ('test', 'G2'): 23, ('train', 'G1'): 95, ('val', 'G1'): 17} vs manifest {('test', 'G1'): 35, ('test', 'G2'): 23, ('train', 'G1'): 95, ('val', 'G1'): 17}"
+  }
+ ],
+ "inputs_sha256": {
+  "config/attack_set.json": "b975bd3cc6d5b0fdfa554a835f91f76ebc81b8d71a646e3d093c9028fa578534",
+  "config/split_plan.json": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647",
+  "config/split_plan_v1_1.json": "56813a35e1cbcf46a7f41ae9cdd1e5d1affb0b94f3ef358427ad778e13182827",
+  "results/step8/manifest_v1.json": "c2e48e620ad38a1e1650a2e5b9edd6739a9c6ea0433f585c93c72b8037fcf844",
+  "results/step8b/manifest_v1_1.json": "a1e5f38dbc287a4357d87d62f4035bb64193e208a7f384f4fd04005a3a4be3bd",
+  "config/groupings/behaviour_k2.json": "9f80565f7ece7f6511a5be576379fc30a12b1a67b9834a6c65781b8944f14442",
+  "config/device_table.csv": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532"
+ },
+ "labelled_csv_sha256": {
+  "Mirai-udpplain": "036b76645b3603b0fb89fc6217f50b822602acb9697b2b11bfd8f5fb81a009b4",
+  "Mirai-udpplain24": "b5fa27a8f1efd5e823bc0a5cd41398f9f7af7744f837326259f2d817ff4b71bc"
+ },
+ "rates": [
+  {
+   "scope": "Mirai-udpplain",
+   "group": "G1",
+   "attack_flows": 112,
+   "attack_packets": 3558905,
+   "victims_with_flows": 5,
+   "pcap_gb": 2.048000451,
+   "flows_per_gb": 54.687487957003384,
+   "flows_per_M_attack_packets": 31.470353943137003,
+   "flows_per_victim": 22.4,
+   "dataset_rows": 112
+  },
+  {
+   "scope": "Mirai-udpplain",
+   "group": "G2",
+   "attack_flows": 0,
+   "attack_packets": 0,
+   "victims_with_flows": 0,
+   "pcap_gb": 2.048000451,
+   "flows_per_gb": 0.0,
+   "flows_per_M_attack_packets": NaN,
+   "flows_per_victim": NaN,
+   "dataset_rows": 0
+  },
+  {
+   "scope": "Mirai-udpplain",
+   "group": "ALL",
+   "attack_flows": 112,
+   "attack_packets": 3558935,
+   "victims_with_flows": 5,
+   "pcap_gb": 2.048000451,
+   "flows_per_gb": 54.687487957003384,
+   "flows_per_M_attack_packets": 31.47008866416498,
+   "flows_per_victim": 22.4,
+   "dataset_rows": 112
+  },
+  {
+   "scope": "Mirai-udpplain24",
+   "group": "G1",
+   "attack_flows": 35,
+   "attack_packets": 380,
+   "victims_with_flows": 2,
+   "pcap_gb": 0.839868044,
+   "flows_per_gb": 41.67321313156189,
+   "flows_per_M_attack_packets": 92105.26315789473,
+   "flows_per_victim": 17.5,
+   "dataset_rows": 35
+  },
+  {
+   "scope": "Mirai-udpplain24",
+   "group": "G2",
+   "attack_flows": 23,
+   "attack_packets": 1451421,
+   "victims_with_flows": 2,
+   "pcap_gb": 0.839868044,
+   "flows_per_gb": 27.38525434359781,
+   "flows_per_M_attack_packets": 15.846539356947433,
+   "flows_per_victim": 11.5,
+   "dataset_rows": 23
+  },
+  {
+   "scope": "Mirai-udpplain24",
+   "group": "ALL",
+   "attack_flows": 58,
+   "attack_packets": 1452184,
+   "victims_with_flows": 4,
+   "pcap_gb": 0.839868044,
+   "flows_per_gb": 69.0584674751597,
+   "flows_per_M_attack_packets": 39.939842334029294,
+   "flows_per_victim": 14.5,
+   "dataset_rows": 58
+  },
+  {
+   "scope": "POOLED",
+   "group": "G1",
+   "attack_flows": 147,
+   "attack_packets": 3559285,
+   "victims_with_flows": 7,
+   "pcap_gb": 2.887868495,
+   "flows_per_gb": 50.902594856556995,
+   "flows_per_M_attack_packets": 41.30042972113781,
+   "flows_per_victim": 21.0,
+   "dataset_rows": 147
+  },
+  {
+   "scope": "POOLED",
+   "group": "G2",
+   "attack_flows": 23,
+   "attack_packets": 1451421,
+   "victims_with_flows": 2,
+   "pcap_gb": 2.887868495,
+   "flows_per_gb": 7.964351576195992,
+   "flows_per_M_attack_packets": 15.846539356947433,
+   "flows_per_victim": 11.5,
+   "dataset_rows": 23
+  },
+  {
+   "scope": "POOLED",
+   "group": "ALL",
+   "attack_flows": 170,
+   "attack_packets": 5011119,
+   "victims_with_flows": 9,
+   "pcap_gb": 2.887868495,
+   "flows_per_gb": 58.86694643275299,
+   "flows_per_M_attack_packets": 33.924558566659464,
+   "flows_per_victim": 18.88888888888889,
+   "dataset_rows": 170
+  }
+ ],
+ "test_pkt_distribution": [
+  {
+   "part": "Mirai-udpplain24",
+   "group": "G1",
+   "n_flows": 35,
+   "pkts_min": 1.0,
+   "pkts_p25": 2.0,
+   "pkts_median": 2.0,
+   "pkts_p75": 5.0,
+   "pkts_p90": 10.0,
+   "pkts_max": 30.0,
+   "pkts_mean": 4.914285714285715,
+   "dur_median_s": 0.230349,
+   "pkts_1": 4,
+   "pkts_2-10": 28,
+   "pkts_11-100": 3,
+   "pkts_101-1k": 0,
+   "pkts_1k-10k": 0,
+   "pkts_10k-100k": 0,
+   "pkts_>100k": 0,
+   "by_victim": "Google Nest Mini Speaker 25; Philips Hue Bridge 10"
+  },
+  {
+   "part": "Mirai-udpplain24",
+   "group": "G2",
+   "n_flows": 23,
+   "pkts_min": 1638.0,
+   "pkts_p25": 41631.5,
+   "pkts_median": 60371.0,
+   "pkts_p75": 77389.0,
+   "pkts_p90": 92141.0,
+   "pkts_max": 202690.0,
+   "pkts_mean": 63086.260869565216,
+   "dur_median_s": 87.382709,
+   "pkts_1": 0,
+   "pkts_2-10": 0,
+   "pkts_11-100": 0,
+   "pkts_101-1k": 0,
+   "pkts_1k-10k": 2,
+   "pkts_10k-100k": 19,
+   "pkts_>100k": 2,
+   "by_victim": "D-Link DCS8000LHA1 Mini Camera 15; Teckin Plug 1 8"
+  }
+ ],
+ "cost": [
+  {
+   "source": "Mirai-udpplain",
+   "pcap_gb": 2.048000451,
+   "extract_s": 14.738,
+   "07a_tshark_s": 83.4,
+   "07_label_s": 20.4,
+   "total_s": 118.53800000000001,
+   "s_per_gb": 57.87987006649346,
+   "derived_disk_bytes": 5654410,
+   "derived_disk_per_gb_mb": 2.7609417748121388,
+   "peak_rss_07_mb": 2133.2,
+   "peak_rss_07_tshark_mb": 6473.9,
+   "jar_sha256_ok": true
+  },
+  {
+   "source": "Mirai-udpplain24",
+   "pcap_gb": 0.839868044,
+   "extract_s": 6.878,
+   "07a_tshark_s": 35.9,
+   "07_label_s": 10.0,
+   "total_s": 52.778,
+   "s_per_gb": 62.84082407593067,
+   "derived_disk_bytes": 3783250,
+   "derived_disk_per_gb_mb": 4.504576673713758,
+   "peak_rss_07_mb": 2133.2,
+   "peak_rss_07_tshark_mb": 6473.9,
+   "jar_sha256_ok": true
+  },
+  {
+   "source": "MIRAIcut1M (1M-packet cut; singlepkt jar a96e7255..., before the idle sweeper)",
+   "pcap_gb": 0.583061204,
+   "extract_s": 6.26,
+   "07a_tshark_s": NaN,
+   "07_label_s": NaN,
+   "map_s": 27.51,
+   "03b_s": 0.7,
+   "total_s": 34.470000000000006,
+   "s_per_gb": 59.119008027843336,
+   "derived_disk_bytes": 718521,
+   "derived_disk_per_gb_mb": 1.2323251745626347,
+   "peak_rss_07_mb": NaN,
+   "peak_rss_07_tshark_mb": NaN,
+   "extract_peak_rss_mb": 834.49609375,
+   "packets": 1000000,
+   "flows": 1380,
+   "jar_sha256_ok": false
+  }
+ ],
+ "cost_pooled": {
+  "s_per_gb": 59.322645853373594,
+  "derived_disk_per_gb_mb": 3.2680366215913854
+ },
+ "projection": [],
+ "reserve_candidates": [],
+ "test_parquet": "never opened or stat'ed",
+ "extractor": {
+  "flow_timeout_s": 120,
+  "activity_timeout_s": 5,
+  "jar_sha256": "01acf9411e7ab6a06c6b1c352ac7485f155b053077b58880622049cbfd708995"
+ },
+ "runtime_s": 0.7
+}

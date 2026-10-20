@@ -1,0 +1,59 @@
+# EXPLORATORY / POST-HOC — not part of the pre-registered evaluation.
+device,device_category,group,train_benign_rows,night_benign_rows,daytime_benign_rows,night_fp_final_T_house,daytime_fp_final_T_house,night_fp_final_0.5,daytime_fp_final_0.5,night_fp_baseline_T_house,daytime_fp_baseline_T_house,night_fp_baseline_0.5,daytime_fp_baseline_0.5
+Unidentified Amazon device (1c:12:b0),Unidentified (Amazon),G1,1829,1718,0,7,0,7,0,4,0,7,0
+Amazon Alexa Echo Dot 2,Audio,G1,1254,1037,1192,6,0,6,0,6,0,6,0
+Teckin Light Strip,Lighting,G2,981,380,1242,6,0,6,0,6,0,6,0
+Fibaro Home Center Lite,Hub,G1,20047,12065,9384,0,0,0,0,0,0,0,0
+Home Eye Camera,Camera,G1,19702,5051,44030,0,0,0,0,0,0,0,0
+Google Nest Mini Speaker,Audio,G1,6171,2867,6512,0,0,0,0,0,0,0,0
+Wyze Camera,Camera,G1,11780,2625,19002,0,0,0,0,0,0,0,0
+Harman Kardon speaker (Ampak),Audio,G1,8360,2303,19124,0,0,0,0,0,0,0,0
+TP-Link Tapo Camera,Camera,G1,3836,2206,5672,0,0,0,0,0,0,0,0
+Amazon Echo Show,Audio,G1,5212,2123,8718,0,0,0,0,0,0,0,0
+AMCREST WiFi Camera,Camera,G1,5104,2089,4741,0,0,0,0,0,0,0,0
+Amazon Alexa Echo Studio,Audio,G1,3457,1509,6508,0,0,0,0,0,0,0,0
+Amazon Alexa Echo Dot 1,Audio,G1,2838,1411,3319,0,0,0,0,0,0,0,0
+Wemo Smart Plug 2,Power Outlet,G1,4890,1357,778,0,0,0,0,0,0,0,0
+Arlo Q Indoor Camera,Camera,G1,2449,1247,11579,0,0,0,0,0,0,0,0
+LG Smart TV,Home Automation,G1,2409,1039,9536,0,0,0,0,0,0,2,0
+Eufy HomeBase 2,Hub,G1,3344,978,6261,0,0,0,0,0,0,0,0
+Yi Indoor Camera,Camera,G1,2031,901,7459,0,0,0,0,0,0,0,0
+SmartThings Hub,Hub,G1,2240,771,4332,0,0,0,0,0,0,0,0
+Aeotec Smart Home Hub,Hub,G1,2223,758,4278,0,0,0,0,0,0,0,0
+Philips Hue Bridge,Hub,G1,2444,686,4368,0,0,0,0,0,0,0,0
+Sonos One Speaker,Audio,G1,1745,609,3088,0,0,0,0,0,0,0,0
+Netatmo Camera,Camera,G1,1516,563,3180,0,0,0,0,0,0,0,0
+Lumiman Bulb,Lighting,G2,917,553,1256,0,0,0,0,3,0,3,0
+Rbcior Camera,Camera,G1,1668,522,2672,0,0,0,0,0,0,0,0
+Yi Outdoor Camera,Camera,G1,1145,499,2683,0,0,0,0,0,0,0,0
+Arlo Base Station,Camera,G1,1399,424,2815,0,0,0,0,0,0,0,0
+HeimVision Smart WiFi Camera,Camera,G2,973,391,1662,0,0,0,0,2,0,2,0
+Amazon Smart Plug,Power Outlet,G2,692,366,603,0,0,0,0,0,0,0,0
+Yi Indoor 2 Camera,Camera,G1,935,362,1787,0,0,0,0,0,0,0,0
+Smart Board,Home Automation,GEN,868,339,101,0,0,0,0,0,0,0,0
+Cocoon Smart HVAC Fan,Home Automation,G2,627,288,589,0,0,0,0,0,0,0,0
+Nest Indoor Camera,Camera,G2,462,282,583,0,0,0,0,0,0,0,0
+Yutron Plug 2,Power Outlet,G2,630,254,1218,0,0,0,0,0,0,0,0
+Govee Smart Humidifier,Home Automation,G2,435,244,578,0,0,0,0,0,0,0,0
+Unidentified ESP plug (3),Unidentified (Espressif),G2,610,240,1090,0,0,0,0,0,0,0,0
+GoSund Power Strip (2),Power Outlet,G2,590,231,1098,0,0,0,0,0,0,0,0
+Unidentified ESP plug (1),Unidentified (Espressif),G2,610,229,1087,0,0,0,0,0,0,0,0
+HeimVision SmartLife Radio/Lamp,Lighting,G2,657,226,1227,0,0,0,0,0,0,0,0
+Teckin Plug 2,Power Outlet,G2,627,226,1214,0,0,0,0,0,0,0,0
+Yutron Plug 1,Power Outlet,G2,632,223,1208,0,0,0,0,0,0,0,0
+Unidentified ESP plug (4),Unidentified (Espressif),G2,616,222,1092,0,0,0,0,0,0,0,0
+GoSund Power Strip (1),Power Outlet,G2,613,221,1102,0,0,1,0,1,0,1,0
+GoSund Smart Plug WP2 (1),Power Outlet,G2,611,217,1081,0,0,0,0,0,0,0,0
+GoSund Smart Plug WP2 (2),Power Outlet,G2,622,208,1087,0,0,1,0,1,0,1,0
+Levoit Air Purifier,Home Automation,G2,410,208,619,0,0,0,0,0,0,0,0
+Atomi Coffee Maker,Home Automation,G2,628,206,1246,0,0,0,0,0,0,0,0
+Teckin Plug 1,Power Outlet,G2,624,205,1206,0,0,0,0,0,0,0,0
+Unidentified ESP plug (2),Unidentified (Espressif),G2,611,198,1089,0,0,0,0,0,0,0,0
+LampUX RGB,Lighting,G2,603,194,1093,0,0,0,0,0,0,0,0
+D-Link DCS8000LHA1 Mini Camera,Camera,G2,399,189,441,0,0,0,0,0,0,0,0
+Wemo Smart Plug 1,Power Outlet,GEN,210,129,35,0,0,0,0,0,0,0,0
+Netatmo Weather Station,Home Automation,G2,435,112,904,0,0,0,0,0,0,0,0
+LIFX Lightbulb,Lighting,G2,266,91,853,0,0,0,0,0,0,0,0
+iRobot Roomba,Home Automation,GEN,77,75,64,0,0,0,0,0,0,0,0
+Ring Base Station,Hub,G2,398,47,665,0,0,0,0,0,0,0,0
+unregistered:f0:b4:d2:f9:60:95,unregistered_mac,GEN,0,0,8,0,0,0,0,0,0,0,0

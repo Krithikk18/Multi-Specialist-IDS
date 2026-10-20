@@ -1,0 +1,865 @@
+{
+ "banner": "EXPLORATORY / POST-HOC \u2014 not part of the pre-registered evaluation.",
+ "script": "10b_night_fp_diagnostic.py",
+ "code_sha256": "035ad5086c85f5cd9a0e08a8f6e6d3191c9a4380723d456967b43ecbf482d366",
+ "run_utc": "2026-10-20T04:51:21+00:00",
+ "git_head": "d42fc4e1e9f1887ece0919aa8afa4aba163369c9",
+ "argv": [
+  "10b_night_fp_diagnostic.py"
+ ],
+ "guards": [
+  {
+   "guard": "results/step10/TEST_OPENED.json exists",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "guard": "Step 10 predictions.parquet sha256",
+   "pass": true,
+   "detail": "af9c2789a3e408c1..."
+  },
+  {
+   "guard": "step10_prereg.json sha256 == TEST_OPENED marker",
+   "pass": true,
+   "detail": "17f627f841263e94..."
+  },
+  {
+   "guard": "features_v1.json sha256 == prereg",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "guard": "test.parquet sha256 == manifest_v1_1",
+   "pass": true,
+   "detail": "0650b0fd0dcc01d8..."
+  }
+ ],
+ "inputs_sha256": {
+  "predictions.parquet": "af9c2789a3e408c11fd2188c8d78243a6d93227bda80ef464a4859398506d8fe",
+  "test.parquet": "0650b0fd0dcc01d84a4b12020fc3d625484b84c42e0844e3c0e1794cc3bf45b5",
+  "step10_prereg.json": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+  "results/step10/TEST_OPENED.json": "d1e8a1973314159f06bcec8cc166aacb8876e72136ea2fb617fc498979fea3a2",
+  "results/step10/test/false_alarms.csv": "36214de7793137121b4da9b0f3c488b18239ed7407398a50d2c05273a96fc108",
+  "results/step8/manifest_v1.json": "c2e48e620ad38a1e1650a2e5b9edd6739a9c6ea0433f585c93c72b8037fcf844",
+  "results/step8b/manifest_v1_1.json": "a1e5f38dbc287a4357d87d62f4035bb64193e208a7f384f4fd04005a3a4be3bd",
+  "config/split_plan.json": "38de9358ea0b223ed89b38de3c05351cfd77c2393ca9f708de22daa4b6553647",
+  "config/split_plan_v1_1.json": "56813a35e1cbcf46a7f41ae9cdd1e5d1affb0b94f3ef358427ad778e13182827",
+  "config/attack_set.json": "b975bd3cc6d5b0fdfa554a835f91f76ebc81b8d71a646e3d093c9028fa578534",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "results/step9/leakage/fingerprints.csv": "46be7e7292aecbc8ba4a8fc8f8a848438d6509d2fe2204dbb84a6002518012ad",
+  "~/lgids_cache/datasets/v1_1/train.parquet": "e01c2ae2bae7ce49b64a8e003d5ebe258a1f15e1600751f1ae3e0090738dd2a4",
+  "config/device_table.csv": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "07a_stats": {
+   "DDoS-SYN_Flood10": "063b5d3cbf93d9b6405ff4e3d8cb9fd2c387d2b2ab8260f971dca5d09d2c0ba6",
+   "DDoS-SYN_Flood15": "013e7038811ff4fb093d33d4d156fd8c76a5c469666dc632a81b9994fb90ad2c",
+   "Recon-PortScan": "6aa2271861ba8dbd8c77427de50bbcacf3ec608e6757e1c1f55048a1b351af48",
+   "Mirai-udpplain24": "5311cfd7dd36b9ed5cd383d28e1528ddd6aabc0270819bc43ba928c2c36905a2"
+  },
+  "08_sources": {
+   "benign_night": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+   "DDoS-SYN_Flood10": "2586a753d5e10b7cfb23c668a78957b55a5189a5c7a245d3a1db0ebe293d6cde",
+   "DDoS-SYN_Flood15": "72d028090c31d21e12bc6ae6cbc532af2843dd37f9975029f68467ff0d180f04",
+   "Recon-PortScan": "b1a085a10adf2c3dfeb74f8179441aab4a061d729252c690760cb9a7ea3e8741",
+   "Mirai-udpplain24": "b5fa27a8f1efd5e823bc0a5cd41398f9f7af7744f837326259f2d817ff4b71bc"
+  },
+  "imported": {
+   "08_build_datasets.py": "4e5bb34be2011c163453512876ec48194ab851c3f6c4cae70f1cc45ae750e349",
+   "07_label_attacks.py": "d68272e435d5978d36e281eae0609a641ef671068c0c38c160601214a1dd9e98",
+   "09b_leakage_checks.py": "6bc0a4b9088a00d8e21913ae6d4f8477de30bd59aa16a2efa725b89edc08d2cf",
+   "10_evaluate.py": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63",
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf"
+  }
+ },
+ "thresholds": {
+  "FINAL": {
+   "T_house": 0.568307638168335,
+   "0.5": 0.5
+  },
+  "BASELINE": {
+   "T_house": 0.5927605032920837,
+   "0.5": 0.5
+  }
+ },
+ "link": {
+  "benign_night": {
+   "source": "data/interim/flows/benign/benign_flows_tagged.csv",
+   "source_sha256": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+   "benign_test_rows": 16104,
+   "linked_exactly": true,
+   "seconds": 4.9
+  },
+  "DDoS-SYN_Flood10": {
+   "source": "~/lgids_cache/flows/attack/DDoS-SYN_Flood10/DDoS-SYN_Flood10_labelled.csv.gz",
+   "source_sha256": "2586a753d5e10b7cfb23c668a78957b55a5189a5c7a245d3a1db0ebe293d6cde",
+   "benign_test_rows": 16251,
+   "linked_exactly": true,
+   "seconds": 45.3
+  },
+  "DDoS-SYN_Flood15": {
+   "source": "~/lgids_cache/flows/attack/DDoS-SYN_Flood15/DDoS-SYN_Flood15_labelled.csv.gz",
+   "source_sha256": "72d028090c31d21e12bc6ae6cbc532af2843dd37f9975029f68467ff0d180f04",
+   "benign_test_rows": 7452,
+   "linked_exactly": true,
+   "seconds": 22.9
+  },
+  "Recon-PortScan": {
+   "source": "~/lgids_cache/flows/attack/Recon-PortScan/Recon-PortScan_labelled.csv.gz",
+   "source_sha256": "b1a085a10adf2c3dfeb74f8179441aab4a061d729252c690760cb9a7ea3e8741",
+   "benign_test_rows": 9629,
+   "linked_exactly": true,
+   "seconds": 1.7
+  },
+  "Mirai-udpplain24": {
+   "source": "~/lgids_cache/flows/attack/Mirai-udpplain24/Mirai-udpplain24_labelled.csv.gz",
+   "source_sha256": "b5fa27a8f1efd5e823bc0a5cd41398f9f7af7744f837326259f2d817ff4b71bc",
+   "benign_test_rows": 5278,
+   "linked_exactly": true,
+   "seconds": 0.1
+  }
+ },
+ "attack_windows": {
+  "DDoS-SYN_Flood10": {
+   "n_windows": 1,
+   "pad_s": 60.0,
+   "victims": [
+    "18:69:d8:eb:d4:3e",
+    "2c:71:ff:05:f1:15",
+    "3c:18:a0:41:c3:a0",
+    "c4:dd:57:13:07:c6"
+   ],
+   "windows_utc": [
+    [
+     "2022-08-30T13:10:00+00:00",
+     "2022-08-30T13:46:00+00:00"
+    ]
+   ]
+  },
+  "DDoS-SYN_Flood15": {
+   "n_windows": 2,
+   "pad_s": 60.0,
+   "victims": [
+    "00:02:75:f4:97:45",
+    "00:02:75:f6:e3:cb",
+    "2c:71:ff:05:f1:15",
+    "3c:18:a0:41:c3:a0",
+    "48:a6:b8:f9:1b:88",
+    "a0:d0:dc:c4:08:ff"
+   ],
+   "windows_utc": [
+    [
+     "2022-11-29T19:18:00+00:00",
+     "2022-11-29T19:22:00+00:00"
+    ],
+    [
+     "2022-12-01T14:32:00+00:00",
+     "2022-12-01T14:44:00+00:00"
+    ]
+   ]
+  },
+  "Recon-PortScan": {
+   "n_windows": 22,
+   "pad_s": 60.0,
+   "victims": [
+    "00:02:75:f6:e3:cb",
+    "00:17:88:60:d6:4f",
+    "08:3a:f2:1f:bc:68",
+    "08:7c:39:ce:6e:2a",
+    "10:5a:17:97:a5:c6",
+    "18:69:d8:eb:d4:3e",
+    "1c:12:b0:9b:0c:ec",
+    "1c:9d:c2:8c:9a:94",
+    "1c:fe:2b:98:16:dd",
+    "24:a1:60:14:7f:f9",
+    "28:6d:97:7a:2b:2d",
+    "28:6d:97:9e:f4:d5",
+    "2c:71:ff:05:f1:15",
+    "2c:d2:6b:66:d2:87",
+    "30:23:03:f3:57:cb",
+    "30:23:03:f3:84:2b",
+    "34:75:63:73:f3:36",
+    "3c:18:a0:41:c3:a0",
+    "3c:37:86:6f:b9:51",
+    "40:5d:82:35:14:c8",
+    "44:01:bb:ec:10:4a",
+    "44:bb:3b:00:39:07",
+    "48:a6:b8:f9:1b:88",
+    "50:02:91:10:09:8f",
+    "50:02:91:10:ac:d8",
+    "50:02:91:1a:ce:e1",
+    "50:02:91:b1:68:0c",
+    "50:14:79:37:80:18",
+    "68:57:2d:56:ac:47",
+    "6c:5a:b0:44:1d:90",
+    "70:ee:50:68:0e:32",
+    "70:ee:50:6b:a8:1a",
+    "7c:78:b2:86:0d:81",
+    "84:7a:b6:62:3a:6c",
+    "84:7a:b6:64:62:58",
+    "84:e3:42:42:ed:0b",
+    "8c:85:80:6c:b6:47",
+    "9c:8e:cd:1d:ab:9f",
+    "ac:17:02:05:34:27",
+    "ac:f1:08:4e:00:82",
+    "b0:09:da:3e:82:6c",
+    "b0:c5:54:59:2e:99",
+    "b0:f1:ec:d3:e7:98",
+    "b8:5f:98:d0:76:e6",
+    "b8:f0:09:03:29:79",
+    "b8:f0:09:03:9a:af",
+    "c0:e7:bf:0a:79:d1",
+    "c4:dd:57:0c:39:94",
+    "c4:dd:57:13:07:c6",
+    "cc:f4:11:9c:d0:00",
+    "d0:73:d5:35:fb:c8",
+    "d4:a6:51:20:91:d1",
+    "d4:a6:51:21:6c:29",
+    "d4:a6:51:30:64:b7",
+    "d4:a6:51:76:06:64",
+    "d4:a6:51:78:97:4e",
+    "d4:ad:fc:29:c8:a2",
+    "f4:cf:a2:34:48:6b"
+   ],
+   "windows_utc": [
+    [
+     "2022-09-26T16:31:00+00:00",
+     "2022-09-26T16:32:00+00:00"
+    ],
+    [
+     "2022-09-26T16:42:00+00:00",
+     "2022-09-26T16:43:00+00:00"
+    ],
+    [
+     "2022-09-26T16:49:00+00:00",
+     "2022-09-26T16:51:00+00:00"
+    ],
+    [
+     "2022-09-26T16:54:00+00:00",
+     "2022-09-26T16:55:00+00:00"
+    ],
+    [
+     "2022-09-26T17:02:00+00:00",
+     "2022-09-26T17:30:00+00:00"
+    ],
+    [
+     "2022-09-26T18:12:00+00:00",
+     "2022-09-26T18:40:00+00:00"
+    ],
+    [
+     "2022-09-26T18:44:00+00:00",
+     "2022-09-26T18:45:00+00:00"
+    ],
+    [
+     "2022-09-26T18:58:00+00:00",
+     "2022-09-26T18:59:00+00:00"
+    ],
+    [
+     "2022-09-26T19:04:00+00:00",
+     "2022-09-26T19:08:00+00:00"
+    ],
+    [
+     "2022-09-27T13:44:00+00:00",
+     "2022-09-27T13:55:00+00:00"
+    ],
+    [
+     "2022-09-27T13:59:00+00:00",
+     "2022-09-27T14:09:00+00:00"
+    ],
+    [
+     "2022-09-27T14:14:00+00:00",
+     "2022-09-27T14:24:00+00:00"
+    ],
+    [
+     "2022-09-27T14:29:00+00:00",
+     "2022-09-27T14:46:00+00:00"
+    ],
+    [
+     "2022-09-27T14:49:00+00:00",
+     "2022-09-27T14:51:00+00:00"
+    ],
+    [
+     "2022-09-27T14:58:00+00:00",
+     "2022-09-27T14:59:00+00:00"
+    ],
+    [
+     "2022-09-27T15:02:00+00:00",
+     "2022-09-27T15:03:00+00:00"
+    ],
+    [
+     "2022-09-27T15:08:00+00:00",
+     "2022-09-27T15:10:00+00:00"
+    ],
+    [
+     "2022-09-27T15:24:00+00:00",
+     "2022-09-27T15:28:00+00:00"
+    ],
+    [
+     "2022-09-27T16:47:00+00:00",
+     "2022-09-27T16:48:00+00:00"
+    ],
+    [
+     "2022-09-27T17:00:00+00:00",
+     "2022-09-27T17:01:00+00:00"
+    ],
+    [
+     "2022-09-27T17:04:00+00:00",
+     "2022-09-27T17:05:00+00:00"
+    ],
+    [
+     "2022-09-27T17:08:00+00:00",
+     "2022-09-27T17:15:00+00:00"
+    ]
+   ]
+  },
+  "Mirai-udpplain24": {
+   "n_windows": 2,
+   "pad_s": 60.0,
+   "victims": [
+    "00:17:88:60:d6:4f",
+    "2c:71:ff:05:f1:15",
+    "3c:18:a0:41:c3:a0",
+    "b0:c5:54:59:2e:99",
+    "cc:f4:11:9c:d0:00",
+    "d4:a6:51:76:06:64"
+   ],
+   "windows_utc": [
+    [
+     "2023-02-07T16:23:00+00:00",
+     "2023-02-07T16:28:00+00:00"
+    ],
+    [
+     "2023-02-14T17:27:00+00:00",
+     "2023-02-14T17:38:00+00:00"
+    ]
+   ]
+  }
+ },
+ "overlap": {
+  "T_house": {
+   "both": 15,
+   "BASELINE only": 8,
+   "FINAL only": 4
+  },
+  "0.5": {
+   "both": 20,
+   "BASELINE only": 8,
+   "FINAL only": 1
+  }
+ },
+ "pooled": {
+  "night pure-benign capture": {
+   "sessions": [
+    "benign_night"
+   ],
+   "benign_rows": 16104,
+   "hours": 1.355374999973509,
+   "FINAL@T_house": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "FINAL@0.5": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "BASELINE@T_house": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "BASELINE@0.5": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   }
+  },
+  "night attack-session capture": {
+   "sessions": [
+    "DDoS-SYN_Flood10",
+    "DDoS-SYN_Flood15",
+    "Recon-PortScan",
+    "Mirai-udpplain24"
+   ],
+   "benign_rows": 38610,
+   "hours": 1.6625555555688012,
+   "FINAL@T_house": {
+    "fp": 19,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 11.428189534093272,
+    "fph_ci_low": 6.880516639609729,
+    "fph_ci_high": 17.846533592337284
+   },
+   "FINAL@0.5": {
+    "fp": 21,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 12.631156853471511,
+    "fph_ci_low": 7.818885173812309,
+    "fph_ci_high": 19.308065001148762
+   },
+   "BASELINE@T_house": {
+    "fp": 23,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 13.834124172849751,
+    "fph_ci_low": 8.769648020607947,
+    "fph_ci_high": 20.757978750987284
+   },
+   "BASELINE@0.5": {
+    "fp": 28,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 16.841542471295348,
+    "fph_ci_low": 11.191082663996772,
+    "fph_ci_high": 24.340718003509462
+   }
+  },
+  "daytime (pure benign)": {
+   "sessions": [
+    "BenignTraffic1",
+    "BenignTraffic2",
+    "BenignTraffic3"
+   ],
+   "benign_rows": 220359,
+   "hours": 18.742222222222225,
+   "FINAL@T_house": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "FINAL@0.5": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "BASELINE@T_house": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "BASELINE@0.5": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   }
+  }
+ },
+ "verdicts": {
+  "FINAL@T_house": {
+   "n_night_fp": 19,
+   "H1": "SUPPORTED",
+   "pure": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "attack_sessions": {
+    "fp": 19,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 11.428189534093272,
+    "fph_ci_low": 6.880516639609729,
+    "fph_ci_high": 17.846533592337284
+   },
+   "daytime": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "H2": "INCONCLUSIVE",
+   "top_devices": [
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "device_category": "Unidentified (Amazon)",
+     "night_fp_final_T_house": 7,
+     "night_benign_rows": 1718,
+     "daytime_benign_rows": 0,
+     "daytime_fp_final_T_house": 0,
+     "train_benign_rows": 1829
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "device_category": "Audio",
+     "night_fp_final_T_house": 6,
+     "night_benign_rows": 1037,
+     "daytime_benign_rows": 1192,
+     "daytime_fp_final_T_house": 0,
+     "train_benign_rows": 1254
+    },
+    {
+     "device": "Teckin Light Strip",
+     "device_category": "Lighting",
+     "night_fp_final_T_house": 6,
+     "night_benign_rows": 380,
+     "daytime_benign_rows": 1242,
+     "daytime_fp_final_T_house": 0,
+     "train_benign_rows": 981
+    }
+   ],
+   "top_share": 1.0,
+   "n_devices_with_fp": 3,
+   "max_hour_bin": {
+    "session": "DDoS-SYN_Flood10",
+    "bin_start_utc": "2022-08-30T13:10:09+00:00",
+    "fp": 11,
+    "share": 0.5789473684210527
+   },
+   "H3": "NOT SUPPORTED",
+   "n_pi_fp": 0,
+   "pi_share": 0.0
+  },
+  "FINAL@0.5": {
+   "n_night_fp": 21,
+   "H1": "SUPPORTED",
+   "pure": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "attack_sessions": {
+    "fp": 21,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 12.631156853471511,
+    "fph_ci_low": 7.818885173812309,
+    "fph_ci_high": 19.308065001148762
+   },
+   "daytime": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "H2": "INCONCLUSIVE",
+   "top_devices": [
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "device_category": "Unidentified (Amazon)",
+     "night_fp_final_0.5": 7,
+     "night_benign_rows": 1718,
+     "daytime_benign_rows": 0,
+     "daytime_fp_final_0.5": 0,
+     "train_benign_rows": 1829
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "device_category": "Audio",
+     "night_fp_final_0.5": 6,
+     "night_benign_rows": 1037,
+     "daytime_benign_rows": 1192,
+     "daytime_fp_final_0.5": 0,
+     "train_benign_rows": 1254
+    },
+    {
+     "device": "Teckin Light Strip",
+     "device_category": "Lighting",
+     "night_fp_final_0.5": 6,
+     "night_benign_rows": 380,
+     "daytime_benign_rows": 1242,
+     "daytime_fp_final_0.5": 0,
+     "train_benign_rows": 981
+    }
+   ],
+   "top_share": 0.9047619047619048,
+   "n_devices_with_fp": 5,
+   "max_hour_bin": {
+    "session": "DDoS-SYN_Flood10",
+    "bin_start_utc": "2022-08-30T13:10:09+00:00",
+    "fp": 11,
+    "share": 0.5238095238095238
+   },
+   "H3": "NOT SUPPORTED",
+   "n_pi_fp": 0,
+   "pi_share": 0.0
+  },
+  "BASELINE@T_house": {
+   "n_night_fp": 23,
+   "H1": "SUPPORTED",
+   "pure": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "attack_sessions": {
+    "fp": 23,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 13.834124172849751,
+    "fph_ci_low": 8.769648020607947,
+    "fph_ci_high": 20.757978750987284
+   },
+   "daytime": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "H2": "INCONCLUSIVE",
+   "top_devices": [
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "device_category": "Audio",
+     "night_fp_baseline_T_house": 6,
+     "night_benign_rows": 1037,
+     "daytime_benign_rows": 1192,
+     "daytime_fp_baseline_T_house": 0,
+     "train_benign_rows": 1254
+    },
+    {
+     "device": "Teckin Light Strip",
+     "device_category": "Lighting",
+     "night_fp_baseline_T_house": 6,
+     "night_benign_rows": 380,
+     "daytime_benign_rows": 1242,
+     "daytime_fp_baseline_T_house": 0,
+     "train_benign_rows": 981
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "device_category": "Unidentified (Amazon)",
+     "night_fp_baseline_T_house": 4,
+     "night_benign_rows": 1718,
+     "daytime_benign_rows": 0,
+     "daytime_fp_baseline_T_house": 0,
+     "train_benign_rows": 1829
+    }
+   ],
+   "top_share": 0.6956521739130435,
+   "n_devices_with_fp": 7,
+   "max_hour_bin": {
+    "session": "DDoS-SYN_Flood10",
+    "bin_start_utc": "2022-08-30T13:10:09+00:00",
+    "fp": 13,
+    "share": 0.5652173913043478
+   },
+   "H3": "NOT SUPPORTED",
+   "n_pi_fp": 0,
+   "pi_share": 0.0
+  },
+  "BASELINE@0.5": {
+   "n_night_fp": 28,
+   "H1": "SUPPORTED",
+   "pure": {
+    "fp": 0,
+    "hours": 1.355374999973509,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 2.7216670325083725
+   },
+   "attack_sessions": {
+    "fp": 28,
+    "hours": 1.6625555555688012,
+    "fp_per_hour": 16.841542471295348,
+    "fph_ci_low": 11.191082663996772,
+    "fph_ci_high": 24.340718003509462
+   },
+   "daytime": {
+    "fp": 0,
+    "hours": 18.742222222222225,
+    "fp_per_hour": 0.0,
+    "fph_ci_low": 0.0,
+    "fph_ci_high": 0.1968218821853534
+   },
+   "H2": "INCONCLUSIVE",
+   "top_devices": [
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "device_category": "Unidentified (Amazon)",
+     "night_fp_baseline_0.5": 7,
+     "night_benign_rows": 1718,
+     "daytime_benign_rows": 0,
+     "daytime_fp_baseline_0.5": 0,
+     "train_benign_rows": 1829
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "device_category": "Audio",
+     "night_fp_baseline_0.5": 6,
+     "night_benign_rows": 1037,
+     "daytime_benign_rows": 1192,
+     "daytime_fp_baseline_0.5": 0,
+     "train_benign_rows": 1254
+    },
+    {
+     "device": "Teckin Light Strip",
+     "device_category": "Lighting",
+     "night_fp_baseline_0.5": 6,
+     "night_benign_rows": 380,
+     "daytime_benign_rows": 1242,
+     "daytime_fp_baseline_0.5": 0,
+     "train_benign_rows": 981
+    }
+   ],
+   "top_share": 0.6785714285714286,
+   "n_devices_with_fp": 8,
+   "max_hour_bin": {
+    "session": "DDoS-SYN_Flood10",
+    "bin_start_utc": "2022-08-30T13:10:09+00:00",
+    "fp": 13,
+    "share": 0.4642857142857143
+   },
+   "H3": "NOT SUPPORTED",
+   "n_pi_fp": 0,
+   "pi_share": 0.0
+  }
+ },
+ "verdict_rules": {
+  "basis": [
+   "FINAL",
+   "T_house"
+  ],
+  "h2_top_k": 3,
+  "h2_top_share_supported": 0.8,
+  "h2_top_share_not": 0.5,
+  "h2_min_daytime_rows": 1000,
+  "h3_share_supported": 0.5
+ },
+ "duplicates_fingerprints": {
+  "FINAL@T_house": {
+   "n": 19,
+   "train_equal_attack": 0,
+   "train_equal_benign": 0,
+   "train_equal_both": 0,
+   "fp_syn_tool": 0,
+   "fp_portscan_tool": 0,
+   "any_09b_fingerprint": 19
+  },
+  "FINAL@0.5": {
+   "n": 21,
+   "train_equal_attack": 0,
+   "train_equal_benign": 0,
+   "train_equal_both": 0,
+   "fp_syn_tool": 0,
+   "fp_portscan_tool": 0,
+   "any_09b_fingerprint": 21
+  },
+  "BASELINE@T_house": {
+   "n": 23,
+   "train_equal_attack": 0,
+   "train_equal_benign": 0,
+   "train_equal_both": 0,
+   "fp_syn_tool": 0,
+   "fp_portscan_tool": 0,
+   "any_09b_fingerprint": 23
+  },
+  "BASELINE@0.5": {
+   "n": 28,
+   "train_equal_attack": 0,
+   "train_equal_benign": 0,
+   "train_equal_both": 0,
+   "fp_syn_tool": 0,
+   "fp_portscan_tool": 0,
+   "any_09b_fingerprint": 28
+  }
+ },
+ "fingerprint_context": {
+  "night_benign_rows": 54714,
+  "fp_syn_tool": 3,
+  "fp_portscan_tool": 0,
+  "daytime_benign_rows": 220359,
+  "daytime_fp_syn_tool": 11,
+  "daytime_fp_portscan_tool": 0
+ },
+ "pi_context": {
+  "night_benign_rows": 54714,
+  "night_pi_rows": 290,
+  "by_session": {
+   "benign_night": 290,
+   "DDoS-SYN_Flood10": 0,
+   "DDoS-SYN_Flood15": 0,
+   "Recon-PortScan": 0,
+   "Mirai-udpplain24": 0
+  },
+  "daytime_07_excluded": {
+   "BenignTraffic1": "attacker_offwindow 1,985",
+   "BenignTraffic2": "attacker_offwindow 1,915, attacker_normal_traffic 18, attack_normal_service_ambiguous 12",
+   "BenignTraffic3": "attacker_offwindow 761"
+  }
+ },
+ "pi_rate": {
+  "FINAL@T_house": {
+   "fp_pi": 0,
+   "rows_pi": 290,
+   "fp_non_pi": 19,
+   "rows_non_pi": 54424
+  },
+  "FINAL@0.5": {
+   "fp_pi": 0,
+   "rows_pi": 290,
+   "fp_non_pi": 21,
+   "rows_non_pi": 54424
+  },
+  "BASELINE@T_house": {
+   "fp_pi": 0,
+   "rows_pi": 290,
+   "fp_non_pi": 23,
+   "rows_non_pi": 54424
+  },
+  "BASELINE@0.5": {
+   "fp_pi": 0,
+   "rows_pi": 290,
+   "fp_non_pi": 28,
+   "rows_non_pi": 54424
+  }
+ },
+ "attack_session_fps": {
+  "FINAL": {
+   "n": 19,
+   "in_attack_window": 12,
+   "in_padded_window": 13,
+   "touching_victim": 7,
+   "edge_s_median": 310.0,
+   "edge_s_min": 50.0,
+   "edge_s_max": 1059.0
+  },
+  "BASELINE": {
+   "n": 23,
+   "in_attack_window": 18,
+   "in_padded_window": 21,
+   "touching_victim": 7,
+   "edge_s_median": 250.0,
+   "edge_s_min": 27.0,
+   "edge_s_max": 1059.0
+  }
+ },
+ "versions": {
+  "python": "3.11.17",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "pyarrow": "26.0.0",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "joblib": "1.6.0",
+  "xgboost": "3.4.2"
+ },
+ "platform": {
+  "system": "Linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2"
+ },
+ "runtimes_s": {
+  "load_s": 1.8,
+  "link_s": 75.2,
+  "duplicates_s": 1.7,
+  "total_s": 87.2
+ }
+}

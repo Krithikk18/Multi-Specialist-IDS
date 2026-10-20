@@ -1,0 +1,5 @@
+-rwxrwxrwx 1 krithikk krithikk 2.0G Oct 20 10:06 Mirai-greeth_flood.pcap
+-rwxrwxrwx 1 krithikk krithikk 2.0G Oct 20 12:47 Mirai-greeth_flood18.pcap
+-rwxrwxrwx 1 krithikk krithikk 2.0G Oct 20 13:25 Mirai-greeth_flood27.pcap
+-rwxrwxrwx 1 krithikk krithikk 1.9G Oct 20 15:20 Mirai-greeth_flood28.pcap
+-rwxrwxrwx 1 krithikk krithikk 2.0G Oct 20 10:47 Mirai-greeth_flood9.pcap

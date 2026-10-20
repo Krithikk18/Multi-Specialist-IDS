@@ -114,13 +114,68 @@ def test_tcp_udp_ignored():
     s = g.stats()
     assert s["packets_seen"] == 100 and s["packets_ignored_tcp_udp"] == 100
     assert s["packets_in_scope"] == 0 and s["windows_closed"] == 0 and s["max_active_keys"] == 0
-    # TCP / UDP do not move the window clock: an older GRE packet after them is still in the open window
+    # TCP / UDP are a clock tick: a later TCP packet closes the GRE window, an older GRE packet after it is late
     g = RateGuard(stream_threshold=0)
     g.update(T0, "1.1.1.1", "2.2.2.2", GRE)
-    g.update(T0 + 100, "1.1.1.1", "2.2.2.2", TCP)
-    g.update(T0 + 1, "1.1.1.1", "2.2.2.2", GRE)
-    a = g.flush()
-    assert a[0].packets == 2 and g.stats()["late_packets"] == 0
+    a = g.update(T0 + 100, "1.1.1.1", "2.2.2.2", TCP)
+    assert [(x.window_start, x.packets) for x in a] == [(T0, 1)]
+    assert g.update(T0 + 1, "1.1.1.1", "2.2.2.2", GRE) == []
+    assert g.flush() == [] and g.stats()["late_packets"] == 1
+    # an older TCP / UDP tick is a no-op
+    g = RateGuard(stream_threshold=0)
+    g.update(T0 + 15, "1.1.1.1", "2.2.2.2", GRE)
+    assert g.update(T0 + 2, "1.1.1.1", "2.2.2.2", UDP) == [] and g.active_keys == 2    # stream + victim
+
+
+def _flood(g: RateGuard, n: int = 1000, t0: float = T0, span: float = 5.0) -> None:
+    for i in range(n):
+        assert g.update(t0 + i * span / n, f"203.0.113.{i % 7 + 1}", "192.168.137.10", GRE) == []
+
+
+def test_advance_quiet_line():
+    g = RateGuard(stream_threshold=100, victim_threshold=500, record_counts=True)
+    assert g.advance(T0) == []                             # nothing open: no-op
+    _flood(g)                                              # 1,000 GRE packets in [T0, T0 + 5), then silence
+    assert g.advance(T0 + 9.999) == []                     # window [T0, T0 + 10) not ended yet
+    assert g.active_keys == 8
+    a = g.advance(T0 + 10.0)                               # window_end <= now: closes without flush()
+    assert [(x.level, x.window_start, x.packets) for x in a] == \
+        [(STREAM, T0, n) for n in (143, 143, 143, 143, 143, 143, 142)] + [(VICTIM, T0, 1000)]
+    assert len(g.pop_counts()) == 8
+    assert g.flush() == [] and g.active_keys == 0
+    s = g.stats()
+    assert s["packets_seen"] == 1000 and s["packets_in_scope"] == 1000 and s["windows_closed"] == 1
+    assert s["alerts"] == 8 and s["late_packets"] == 0
+    # far ahead: still exactly one close, empty windows emit nothing
+    g = RateGuard(victim_threshold=0, enable_stream=False)
+    g.update(T0, "1.1.1.1", "2.2.2.2", ICMP)
+    assert len(g.advance(T0 + 3600)) == 1 and g.stats()["windows_closed"] == 1
+
+
+def test_advance_earlier_time_is_noop():
+    g = RateGuard(stream_threshold=0, victim_threshold=0)
+    g.update(T0 + 12, "1.1.1.1", "2.2.2.2", GRE)           # window T0 + 10 open
+    before = g.stats()
+    assert g.advance(T0 + 5) == [] and g.advance(T0 + 11.9) == [] and g.advance(T0 - 1e6) == []
+    assert g.stats() == before and g.active_keys == 2
+    assert len(g.advance(T0 + 25)) == 2                    # clock now in window T0 + 20
+    assert g.advance(T0 + 15) == []                        # earlier than the latest tick: no-op
+    assert g.update(T0 + 18, "1.1.1.1", "2.2.2.2", GRE) == []   # window T0 + 10 is closed: late
+    assert g.stats()["late_packets"] == 1 and g.active_keys == 0
+    g.update(T0 + 21, "1.1.1.1", "2.2.2.2", GRE)           # the clock's own window is accepted
+    assert g.active_keys == 2 and len(g.flush()) == 2
+
+
+def test_tcp_udp_after_flood_closes_window():
+    g = RateGuard(stream_threshold=100, victim_threshold=500)
+    _flood(g)
+    assert g.update(T0 + 8, "192.168.137.30", "52.1.1.1", TCP) == []     # same window: nothing closes
+    a = g.update(T0 + 10.5, "192.168.137.30", "52.1.1.1", UDP)
+    assert [x.level for x in a] == [STREAM] * 7 + [VICTIM] and a[-1].packets == 1000
+    assert g.flush() == [] and g.active_keys == 0
+    s = g.stats()
+    assert s["packets_seen"] == 1002 and s["packets_ignored_tcp_udp"] == 2 and s["packets_in_scope"] == 1000
+    assert s["windows_closed"] == 1 and s["max_active_keys"] == 8
 
 
 def test_per_proto_override():

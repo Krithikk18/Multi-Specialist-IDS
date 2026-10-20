@@ -9,16 +9,23 @@ Core logic only: no I/O, no capture, no calibration. Python standard library onl
 update() call), memory O(active keys of the open window). Meant to run live on a Raspberry Pi later.
 
 Semantics
-  scope      packets with proto in {6, 17} (TCP / UDP) are ignored: counted in stats only, they do not move the
-             window clock. Everything else is in scope. The caller feeds IPv4 only (outer ip.proto); IPv6 is out
-             of scope here (58 = ICMPv6 has a name only for readability).
+  scope      packets with proto in {6, 17} (TCP / UDP) are not counted (packets_ignored_tcp_udp only) but are a
+             clock tick: they close the open window exactly like a newer in-scope packet would. Everything else
+             is in scope. The caller feeds IPv4 only (outer ip.proto); IPv6 is out of scope here (58 = ICMPv6
+             has a name only for readability).
   keys       "stream" = (src_ip, dst_ip, proto), "victim" = (dst_ip, proto); each level can be disabled.
   windows    tumbling, length window_s, window index k = floor(ts / window_s), start k * window_s,
-             end (k + 1) * window_s. One window is open at a time. A packet in a later window closes the open
-             one first (empty windows in between emit nothing). flush() closes the open window at end of input.
-  late       an in-scope packet older than the open window (or, after a close / flush, in a window that was
-             already closed) is counted in late_packets and dropped; closed windows are never reopened.
-             Packets out of order inside the open window are accepted.
+             end (k + 1) * window_s. One window is open at a time. A clock tick in a later window closes the open
+             one first (empty windows in between emit nothing). Clock ticks are: every packet (in scope or
+             TCP / UDP) and advance(now), which closes the open window once window_end <= now (index
+             floor(now / window_s) > open index) without counting a packet -- for a quiet line in live use.
+             The clock is monotonic: a tick older than the latest tick is a no-op. flush() closes the open
+             window at end of input.
+  late       an in-scope packet in a window before the latest clock tick's window (or, after a close / flush,
+             in a window that was already closed) is counted in late_packets and dropped; closed windows are
+             never reopened. Packets out of order inside the open window are accepted. Note for live use:
+             advance(now) with wall-clock time makes packets with older capture timestamps late once a window
+             boundary has passed; pass now minus a grace period if capture timestamps lag.
   alerting   per level a threshold in packets per window (int) or None = no alerts for that level, optionally
              overridden per proto ({proto: int | None}). Alert iff packets > threshold (strictly greater).
   counts     record_counts=True keeps one WindowCount per key and closed window (also below threshold), for
@@ -31,6 +38,8 @@ Usage
   for ts, src, dst, proto, smac, dmac in packets:
       for alert in guard.update(ts, src, dst, proto, smac, dmac):
           ...
+      ...
+  # live, when no packet arrived for a while:  alerts = guard.advance(time.time())
   alerts = guard.flush()
 """
 
@@ -128,7 +137,7 @@ class RateGuard:
 
         # open window: index k (None = no window open) and per-key state [packets, first_ts, last_ts, macs]
         self._win: int | None = None
-        self._next_win: int | None = None     # smallest window index still accepted after a close
+        self._min_win: int | None = None      # smallest window index still accepted (latest tick / after a close)
         self._streams: dict[tuple[str, str, int], list] = {}
         self._victims: dict[tuple[str, int], list] = {}
         self._counts: list[WindowCount] = []
@@ -147,26 +156,19 @@ class RateGuard:
 
     def update(self, ts: float, src_ip: str, dst_ip: str, proto: int,
                src_mac: str | None = None, dst_mac: str | None = None) -> list[Alert]:
-        """Feed one IPv4 packet; returns the alerts of any window this packet closes. dst_mac is accepted for
-        interface stability and not used."""
+        """Feed one IPv4 packet; returns the alerts of any window this packet closes. TCP / UDP packets are only
+        a clock tick. dst_mac is accepted for interface stability and not used."""
         self._packets_seen += 1
+        k = math.floor(ts / self.window_s)
         if proto in TCP_UDP:
             self._packets_ignored_tcp_udp += 1
-            return []
+            return self._tick(k)
         self._packets_in_scope += 1
-
-        k = math.floor(ts / self.window_s)
-        out: list[Alert] = []
-        if self._win is None:
-            if self._next_win is not None and k < self._next_win:
-                self._late_packets += 1
-                return out
-            self._win = k
-        elif k < self._win:
+        if self._min_win is not None and k < self._min_win:
             self._late_packets += 1
-            return out
-        elif k > self._win:
-            out = self._close()
+            return []
+        out = self._tick(k)
+        if self._win is None:
             self._win = k
 
         new_keys = 0
@@ -207,6 +209,11 @@ class RateGuard:
         """Close the open window (end of input); returns its alerts. Later packets in that window count as late."""
         return self._close() if self._win is not None else []
 
+    def advance(self, now: float) -> list[Alert]:
+        """Clock tick without a packet: closes the open window if its window_end <= now and returns its alerts
+        (counts are recorded as on any close). A `now` older than the latest tick is a no-op."""
+        return self._tick(math.floor(now / self.window_s))
+
     def pop_counts(self) -> list[WindowCount]:
         """Return and clear the WindowCount records of the windows closed so far (record_counts=True only)."""
         counts, self._counts = self._counts, []
@@ -227,6 +234,13 @@ class RateGuard:
     def active_keys(self) -> int:
         return len(self._streams) + len(self._victims)
 
+    def _tick(self, k: int) -> list[Alert]:
+        # shared clock rule for in-scope packets, TCP / UDP packets and advance(): monotonic in k
+        out = self._close() if self._win is not None and k > self._win else []
+        if self._min_win is None or k > self._min_win:
+            self._min_win = k
+        return out
+
     def _close(self) -> list[Alert]:
         k = self._win
         start, end = k * self.window_s, (k + 1) * self.window_s
@@ -238,7 +252,7 @@ class RateGuard:
         self._streams = {}
         self._victims = {}
         self._win = None
-        self._next_win = k + 1
+        self._min_win = k + 1
         self._windows_closed += 1
         self._alerts += len(alerts)
         return alerts

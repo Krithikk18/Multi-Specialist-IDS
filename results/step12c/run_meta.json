@@ -1,0 +1,1049 @@
+{
+ "label": "EXPLORATORY -- not part of the pre-registered evaluation",
+ "script": "12c_proto0_analysis.py",
+ "code_sha256": "70c9e3acef57379e0f596562d1d54f54d60b5c995f1044691b4cc375756e9a09",
+ "run_utc": "2026-10-20T16:30:07+00:00",
+ "argv": [
+  "12c_proto0_analysis.py"
+ ],
+ "git_head": "e3718cde3f206bd7e0dce3a9ac958c9f56dd32ca",
+ "test_parquet": "never opened, read or stat'ed by this script",
+ "steps": {
+  "1_inventory_s": 1.3,
+  "2_benign_packets_s": 144.6,
+  "3_auc_s": 55.9,
+  "4_models_s": 0.2
+ },
+ "checks": [
+  {
+   "check": "train.parquet sha256 == prereg",
+   "pass": true,
+   "detail": "e01c2ae2bae7ce49... vs e01c2ae2bae7ce49..."
+  },
+  {
+   "check": "val.parquet sha256 == prereg",
+   "pass": true,
+   "detail": "f992fc82ed8cd34f... vs f992fc82ed8cd34f..."
+  },
+  {
+   "check": "model G1 sha256 == prereg",
+   "pass": true,
+   "detail": "94451ede65092a4e... vs 94451ede65092a4e..."
+  },
+  {
+   "check": "model G2 sha256 == prereg",
+   "pass": true,
+   "detail": "9f63a62dfb50675f... vs 9f63a62dfb50675f..."
+  },
+  {
+   "check": "model GLOBAL sha256 == prereg",
+   "pass": true,
+   "detail": "d7408f5073182cf0... vs d7408f5073182cf0..."
+  },
+  {
+   "check": "features_v1.json file sha256 == prereg",
+   "pass": true,
+   "detail": "623d0d2483670f34"
+  },
+  {
+   "check": "behaviour_k2.json sha256 == prereg",
+   "pass": true,
+   "detail": "9f80565f7ece7f65"
+  },
+  {
+   "check": "xgboost version == prereg",
+   "pass": true,
+   "detail": "3.4.2 vs 3.4.2"
+  },
+  {
+   "check": "pilot pcap sidecar sha256 == config/sha256_greeth.txt (base part)",
+   "pass": true,
+   "detail": "87f8de16e575f23f"
+  },
+  {
+   "check": "12b packets.json keyed to the base part",
+   "pass": true,
+   "detail": "87f8de16e575f23f"
+  },
+  {
+   "check": "pilot flow CSV extracted from the base part with the locked jar",
+   "pass": true,
+   "detail": "01acf9411e7ab6a0"
+  }
+ ],
+ "models": {
+  "G1": {
+   "path": "/home/krithikk/lgids_cache/models/step10/G1.joblib",
+   "sha256": "94451ede65092a4e3c807d6b4fa44df7fed9c6b242a7260c60b21576e1b3a076"
+  },
+  "G2": {
+   "path": "/home/krithikk/lgids_cache/models/step10/G2.joblib",
+   "sha256": "9f63a62dfb50675f22c4c6c8644a79061b5bcf6fb280dc4702f028278ea46687"
+  },
+  "GLOBAL": {
+   "path": "/home/krithikk/lgids_cache/models/step10/GLOBAL.joblib",
+   "sha256": "d7408f5073182cf0bf7346804bf84a38f9376083d0ab996cd98ba3889461f54a"
+  }
+ },
+ "inputs_sha256": {
+  "train.parquet": "e01c2ae2bae7ce49b64a8e003d5ebe258a1f15e1600751f1ae3e0090738dd2a4",
+  "val.parquet": "f992fc82ed8cd34f2c8a26eab4f780473ae71b53d7577d66fd7724a789bc1a03",
+  "config/step10_prereg.json": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/groupings/behaviour_k2.json": "9f80565f7ece7f6511a5be576379fc30a12b1a67b9834a6c65781b8944f14442",
+  "config/device_table.csv": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "results/step8/manifest_v1.json": "c2e48e620ad38a1e1650a2e5b9edd6739a9c6ea0433f585c93c72b8037fcf844",
+  "pilot flow CSV": "df4963a69a3d79adeab8759743b79967fa8e0559c25bdf56290ff7eb1257c833",
+  "pilot packets.json": "b12bd9ac864080e3f3719c6ee8dcc768501e6ac5366d1c1adb04dc944bc61b47",
+  "pilot pcap (base part)": "87f8de16e575f23fca6c159a94360c6dd2970c4d9a1711d46c9468f1cf724c0e"
+ },
+ "benign_proto0_totals": [
+  {
+   "split": "train",
+   "label": "benign",
+   "level": "ALL",
+   "key": "ALL",
+   "proto0_rows": 1979,
+   "benign_rows": 137462,
+   "pct_of_key_benign": 1.4396705998748744,
+   "pct_of_split_proto0_benign": 100.0
+  },
+  {
+   "split": "val",
+   "label": "benign",
+   "level": "ALL",
+   "key": "ALL",
+   "proto0_rows": 489,
+   "benign_rows": 39185,
+   "pct_of_key_benign": 1.247926502488197,
+   "pct_of_split_proto0_benign": 100.0
+  }
+ ],
+ "attack_proto0": [],
+ "benign_packet_census": {
+  "pcap": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+  "pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+  "session": "benign_night",
+  "window_utc": [
+   "pcap start",
+   "2022-10-07T23:43:50+00:00"
+  ],
+  "train_end_epoch": 1665186230.3,
+  "display_filter": "frame.time_epoch < 1665186230.3 && ip && !(ip.proto#1 == 6) && !(ip.proto#1 == 17)",
+  "ipv4_packets": 2395158,
+  "non_tcp_udp_packets": 36287,
+  "by_ip_proto": [
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "packets": 35567,
+    "pct_of_non_tcp_udp": 98.01581833714553
+   },
+   {
+    "ip_proto": "2",
+    "name": "IGMP",
+    "packets": 720,
+    "pct_of_non_tcp_udp": 1.9841816628544657
+   }
+  ],
+  "by_sender": [
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "84:7a:b6:62:3a:6c",
+    "device": "Yi Indoor 2 Camera",
+    "class": "G1",
+    "packets": 19754
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "cc:f4:11:9c:d0:00",
+    "device": "Google Nest Mini Speaker",
+    "class": "G1",
+    "packets": 3960
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "3c:18:a0:41:c3:a0",
+    "device": "Gateway / router",
+    "class": "gateway",
+    "packets": 3156
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "dc:a6:32:dc:27:d5",
+    "device": "attacker (testbed Pi)",
+    "class": "attacker",
+    "packets": 1921
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "7c:78:b2:86:0d:81",
+    "device": "Wyze Camera",
+    "class": "G1",
+    "packets": 1073
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "56:4f:8a:e1:f3:2d",
+    "device": "Randomised MAC (phone/laptop)",
+    "class": "excluded",
+    "packets": 1024
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "2c:71:ff:05:f1:15",
+    "device": "Amazon Echo Show",
+    "class": "G1",
+    "packets": 755
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "08:7c:39:ce:6e:2a",
+    "device": "Amazon Alexa Echo Studio",
+    "class": "G1",
+    "packets": 750
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "1c:fe:2b:98:16:dd",
+    "device": "Amazon Alexa Echo Dot 1",
+    "class": "G1",
+    "packets": 750
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "ac:f1:08:4e:00:82",
+    "device": "LG Smart TV",
+    "class": "G1",
+    "packets": 581
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "24:05:88:30:6f:89",
+    "device": "Unknown",
+    "class": "unknown",
+    "packets": 519
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "e8:1b:69:f8:d4:e3",
+    "device": "Unknown",
+    "class": "unknown",
+    "packets": 492
+   },
+   {
+    "ip_proto": "2",
+    "name": "IGMP",
+    "src_mac": "00:17:88:60:d6:4f",
+    "device": "Philips Hue Bridge",
+    "class": "G1",
+    "packets": 388
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "84:7a:b6:64:62:58",
+    "device": "Yi Indoor Camera",
+    "class": "G1",
+    "packets": 325
+   },
+   {
+    "ip_proto": "2",
+    "name": "IGMP",
+    "src_mac": "56:4f:8a:e1:f3:2d",
+    "device": "Randomised MAC (phone/laptop)",
+    "class": "excluded",
+    "packets": 313
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "9c:8e:cd:1d:ab:9f",
+    "device": "AMCREST WiFi Camera",
+    "class": "G1",
+    "packets": 168
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "3c:37:86:6f:b9:51",
+    "device": "Arlo Base Station",
+    "class": "G1",
+    "packets": 153
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "ac:17:02:05:34:27",
+    "device": "Fibaro Home Center Lite",
+    "class": "G1",
+    "packets": 78
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "2c:d2:6b:66:d2:87",
+    "device": "Yi Outdoor Camera",
+    "class": "G1",
+    "packets": 59
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "10:5a:17:97:a5:c6",
+    "device": "Rbcior Camera",
+    "class": "G1",
+    "packets": 33
+   },
+   {
+    "ip_proto": "2",
+    "name": "IGMP",
+    "src_mac": "28:6d:97:9e:f4:d5",
+    "device": "Aeotec Smart Home Hub",
+    "class": "G1",
+    "packets": 9
+   },
+   {
+    "ip_proto": "2",
+    "name": "IGMP",
+    "src_mac": "ac:f1:08:4e:00:82",
+    "device": "LG Smart TV",
+    "class": "G1",
+    "packets": 6
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "28:6d:97:9e:f4:d5",
+    "device": "Aeotec Smart Home Hub",
+    "class": "G1",
+    "packets": 4
+   },
+   {
+    "ip_proto": "1",
+    "name": "ICMP",
+    "src_mac": "08:3a:f2:1f:bc:68",
+    "device": "Cocoon Smart HVAC Fan",
+    "class": "G2",
+    "packets": 3
+   },
+   {
+    "ip_proto": "2",
+    "name": "IGMP",
+    "src_mac": "70:ee:50:68:0e:32",
+    "device": "Netatmo Camera",
+    "class": "G1",
+    "packets": 2
+   }
+  ],
+  "seconds": 137.7
+ },
+ "pilot_population_counts": {
+  "other": 5604,
+  "non_attacker_proto0": 130,
+  "attacker_tcp_udp_side": 100,
+  "flood": 52
+ },
+ "pilot_owner_map_size": 362,
+ "flood_flows": [
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 50082,
+   "Flow Duration": 119966455,
+   "Flow Packets/s": 417.4666993369105,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 123075,
+   "Flow Duration": 119677414,
+   "Flow Packets/s": 1028.389533884815,
+   "score_FINAL": 0.1161210909485817,
+   "score_BASELINE": 0.3077966868877411
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 83521,
+   "Flow Duration": 119910480,
+   "Flow Packets/s": 696.5279431789448,
+   "score_FINAL": 0.15161234140396118,
+   "score_BASELINE": 0.36853915452957153
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 62009,
+   "Flow Duration": 117918584,
+   "Flow Packets/s": 525.8628275251338,
+   "score_FINAL": 0.15161234140396118,
+   "score_BASELINE": 0.3077966868877411
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 95388,
+   "Flow Duration": 119986320,
+   "Flow Packets/s": 794.9906289316982,
+   "score_FINAL": 0.053470320999622345,
+   "score_BASELINE": 0.25888630747795105
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 76416,
+   "Flow Duration": 102652744,
+   "Flow Packets/s": 744.4126383996125,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 47951,
+   "Flow Duration": 93417687,
+   "Flow Packets/s": 513.2968021355528,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 87835,
+   "Flow Duration": 118668752,
+   "Flow Packets/s": 740.1695772447325,
+   "score_FINAL": 0.053470320999622345,
+   "score_BASELINE": 0.25888630747795105
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 117434,
+   "Flow Duration": 105645825,
+   "Flow Packets/s": 1111.5820241831611,
+   "score_FINAL": 0.07340794801712036,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 48153,
+   "Flow Duration": 94781982,
+   "Flow Packets/s": 508.0395976526424,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.2722442150115967
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 70277,
+   "Flow Duration": 88707477,
+   "Flow Packets/s": 792.2331056715772,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 130969,
+   "Flow Duration": 119824763,
+   "Flow Packets/s": 1093.0044568500418,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 38027,
+   "Flow Duration": 119562103,
+   "Flow Packets/s": 318.0522845102516,
+   "score_FINAL": 0.25248610973358154,
+   "score_BASELINE": 0.375301331281662
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 42634,
+   "Flow Duration": 64949354,
+   "Flow Packets/s": 656.4191539149103,
+   "score_FINAL": 0.06381626427173615,
+   "score_BASELINE": 0.2610837519168854
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 96409,
+   "Flow Duration": 119633677,
+   "Flow Packets/s": 805.8684010857578,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.2722442150115967
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 64620,
+   "Flow Duration": 119679876,
+   "Flow Packets/s": 539.9403990024188,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.2722442150115967
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 56142,
+   "Flow Duration": 119940183,
+   "Flow Packets/s": 468.08332783684347,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.2722442150115967
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 44345,
+   "Flow Duration": 119978197,
+   "Flow Packets/s": 369.6088215094615,
+   "score_FINAL": 0.25248610973358154,
+   "score_BASELINE": 0.375301331281662
+  },
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 44526,
+   "Flow Duration": 119194101,
+   "Flow Packets/s": 373.5587552273245,
+   "score_FINAL": 0.25248610973358154,
+   "score_BASELINE": 0.375301331281662
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 34574,
+   "Flow Duration": 119986503,
+   "Flow Packets/s": 288.1490762340161,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.375301331281662
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 63552,
+   "Flow Duration": 119857658,
+   "Flow Packets/s": 530.2289487418484,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 78173,
+   "Flow Duration": 119999953,
+   "Flow Packets/s": 651.4419218147527,
+   "score_FINAL": 0.15161234140396118,
+   "score_BASELINE": 0.36853915452957153
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 121493,
+   "Flow Duration": 119980500,
+   "Flow Packets/s": 1012.6062151766328,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 108712,
+   "Flow Duration": 103598430,
+   "Flow Packets/s": 1049.3595317998545,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 27879,
+   "Flow Duration": 77329981,
+   "Flow Packets/s": 360.5199385733717,
+   "score_FINAL": 0.16464005410671234,
+   "score_BASELINE": 0.2722442150115967
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 13899,
+   "Flow Duration": 82279780,
+   "Flow Packets/s": 168.9236407778436,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.000939328339882195
+  },
+  {
+   "Src IP": "192.168.137.171",
+   "Dst IP": "192.168.137.11",
+   "gre_stream": false,
+   "owner_device": "Unknown",
+   "group": "GEN",
+   "routed_model": "GLOBAL",
+   "Total Fwd Packet": 9,
+   "Flow Duration": 10027621,
+   "Flow Packets/s": 0.8975209573636659,
+   "score_FINAL": 2.454645073157735e-05,
+   "score_BASELINE": 2.454645073157735e-05
+  },
+  {
+   "Src IP": "192.168.137.11",
+   "Dst IP": "224.0.0.22",
+   "gre_stream": false,
+   "owner_device": "unknown",
+   "group": "GEN",
+   "routed_model": "GLOBAL",
+   "Total Fwd Packet": 2,
+   "Flow Duration": 485457,
+   "Flow Packets/s": 4.119829356668046,
+   "score_FINAL": 7.82662937126588e-06,
+   "score_BASELINE": 7.82662937126588e-06
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 29324,
+   "Flow Duration": 67188363,
+   "Flow Packets/s": 436.44462657915926,
+   "score_FINAL": 0.16464005410671234,
+   "score_BASELINE": 0.2745130658149719
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 50141,
+   "Flow Duration": 119221765,
+   "Flow Packets/s": 420.5691804680127,
+   "score_FINAL": 0.15161234140396118,
+   "score_BASELINE": 0.3236652910709381
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 161740,
+   "Flow Duration": 119843085,
+   "Flow Packets/s": 1349.5981015508737,
+   "score_FINAL": 0.053470320999622345,
+   "score_BASELINE": 0.25888630747795105
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 42409,
+   "Flow Duration": 93337656,
+   "Flow Packets/s": 454.3610994473656,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 76753,
+   "Flow Duration": 118822162,
+   "Flow Packets/s": 645.9485226333451,
+   "score_FINAL": 0.12703171372413635,
+   "score_BASELINE": 0.3857939541339874
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 52655,
+   "Flow Duration": 85136389,
+   "Flow Packets/s": 618.4781926797483,
+   "score_FINAL": 0.14039979875087738,
+   "score_BASELINE": 0.2722442150115967
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 11717,
+   "Flow Duration": 24843932,
+   "Flow Packets/s": 471.6242179378047,
+   "score_FINAL": 0.06381626427173615,
+   "score_BASELINE": 0.2610837519168854
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 1389,
+   "Flow Duration": 1342587,
+   "Flow Packets/s": 1034.5698267598302,
+   "score_FINAL": 0.00016782547754701227,
+   "score_BASELINE": 0.00024695819593034685
+  },
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 64565,
+   "Flow Duration": 88941167,
+   "Flow Packets/s": 725.9293101022613,
+   "score_FINAL": 0.053470320999622345,
+   "score_BASELINE": 0.25888630747795105
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.254",
+   "gre_stream": true,
+   "owner_device": "Amazon Alexa Echo Dot 1",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 119643,
+   "Flow Duration": 102622877,
+   "Flow Packets/s": 1165.8511581194512,
+   "score_FINAL": 0.10720161348581314,
+   "score_BASELINE": 0.25793522596359253
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 100291,
+   "Flow Duration": 119892158,
+   "Flow Packets/s": 836.8604058323815,
+   "score_FINAL": 0.06802301853895187,
+   "score_BASELINE": 0.23828335106372833
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 64232,
+   "Flow Duration": 119967543,
+   "Flow Packets/s": 535.8365970702592,
+   "score_FINAL": 0.16131524741649628,
+   "score_BASELINE": 0.305702805519104
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 153234,
+   "Flow Duration": 117047966,
+   "Flow Packets/s": 1309.4375343523698,
+   "score_FINAL": 0.05731665715575218,
+   "score_BASELINE": 0.20348991453647614
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 87546,
+   "Flow Duration": 117451083,
+   "Flow Packets/s": 745.8764769329543,
+   "score_FINAL": 0.11444570124149323,
+   "score_BASELINE": 0.20268671214580536
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 58389,
+   "Flow Duration": 119999794,
+   "Flow Packets/s": 486.9175025417128,
+   "score_FINAL": 0.05731665715575218,
+   "score_BASELINE": 0.20348991453647614
+  },
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 83319,
+   "Flow Duration": 113242989,
+   "Flow Packets/s": 736.2486696637794,
+   "score_FINAL": 0.05731665715575218,
+   "score_BASELINE": 0.20348991453647614
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 70825,
+   "Flow Duration": 119999976,
+   "Flow Packets/s": 590.7334514800236,
+   "score_FINAL": 0.11444570124149323,
+   "score_BASELINE": 0.20268671214580536
+  },
+  {
+   "Src IP": "192.168.137.207",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 24963,
+   "Flow Duration": 44224977,
+   "Flow Packets/s": 564.7035158435469,
+   "score_FINAL": 0.08094396442174911,
+   "score_BASELINE": 0.24036264419555664
+  },
+  {
+   "Src IP": "192.168.137.162",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 16996,
+   "Flow Duration": 23114454,
+   "Flow Packets/s": 735.6868563713424,
+   "score_FINAL": 0.06835311651229858,
+   "score_BASELINE": 0.2053474634885788
+  },
+  {
+   "Src IP": "192.168.137.238",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 45289,
+   "Flow Duration": 45582264,
+   "Flow Packets/s": 994.399927129552,
+   "score_FINAL": 0.06707154959440231,
+   "score_BASELINE": 0.2053474634885788
+  },
+  {
+   "Src IP": "192.168.137.106",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 31525,
+   "Flow Duration": 43220778,
+   "Flow Packets/s": 730.2043475478391,
+   "score_FINAL": 0.05254252254962921,
+   "score_BASELINE": 0.2053474634885788
+  },
+  {
+   "Src IP": "192.168.137.128",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 32298,
+   "Flow Duration": 47734663,
+   "Flow Packets/s": 677.5160432158074,
+   "score_FINAL": 0.07699327915906906,
+   "score_BASELINE": 0.2053474634885788
+  },
+  {
+   "Src IP": "192.168.137.150",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 29795,
+   "Flow Duration": 47492627,
+   "Flow Packets/s": 627.8869349551879,
+   "score_FINAL": 0.06835311651229858,
+   "score_BASELINE": 0.2053474634885788
+  },
+  {
+   "Src IP": "192.168.137.147",
+   "Dst IP": "192.168.137.242",
+   "gre_stream": true,
+   "owner_device": "AMCREST WiFi Camera",
+   "group": "G1",
+   "routed_model": "G1",
+   "Total Fwd Packet": 17246,
+   "Flow Duration": 44002924,
+   "Flow Packets/s": 392.9057078115991,
+   "score_FINAL": 0.06707154959440231,
+   "score_BASELINE": 0.2053474634885788
+  }
+ ],
+ "non_attacker_proto0_flagged": [],
+ "verdicts": {
+  "Q1": "FINAL @ T_house: flood 0/52 flows (0.0 %), GRE streams 0/50, packets in flagged flows 0.0 %; FINAL @ 0.5: flood 0/52 flows (0.0 %), GRE streams 0/50, packets in flagged flows 0.0 %; BASELINE @ T_house: flood 0/52 flows (0.0 %), GRE streams 0/50, packets in flagged flows 0.0 %; BASELINE @ 0.5: flood 0/52 flows (0.0 %), GRE streams 0/50, packets in flagged flows 0.0 %",
+  "Q2": "benign Protocol-0 rows: train 1,979 (1.44 % of benign), val 489 (1.25 % of benign); Flow Packets/s: benign max 6,535.9, p99.9 3,413.1 vs flood min 0.9 / median 636.9 (GRE-stream min 168.9); Total Fwd Packet: benign max 141.0, p99.9 137.0 vs flood min 2.0 / median 57,265.5 (GRE-stream min 1,389.0)",
+  "Q3": "Flow Packets/s > 6535.95: detects 0/52 flood flows (0.0 %), GRE streams 0 (0.0 %); AUC 0.9846; margin min / benign max: all flood 0.000, GRE streams 0.026; hits on the pilot's non-attacker Protocol-0 flows 0/130 (of which non-IPv4 artefacts 0/16); Total Fwd Packet > 141: detects 50/52 flood flows (96.2 %), GRE streams 50 (100.0 %); AUC 0.9774; margin min / benign max: all flood 0.014, GRE streams 9.851; hits on the pilot's non-attacker Protocol-0 flows 9/130 (of which non-IPv4 artefacts 9/16)"
+ },
+ "peak_rss_mb": {
+  "python_self": 1382.0,
+  "children_max": 1382.0
+ },
+ "runtime_s": 202.6
+}

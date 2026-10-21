@@ -1,0 +1,427 @@
+{
+ "dry_run": false,
+ "label": "PROPOSAL ONLY -- thresholds are proposed here, not decided",
+ "window_s": 10,
+ "alert_rule": "alert iff packets in a window > threshold",
+ "kwargs_note": "rate_guard_kwargs map to RateGuard(...); JSON keys are strings, so convert the *_proto_thresholds keys to int",
+ "threshold_rule": "int(margin x train max), 10 s windows, all destination kinds pooled; DEFAULT = max(int(margin x DEFAULT train max), ICMP threshold of the same level and margin) (thresholds_raw = before the floor)",
+ "default_floor_note": "floor = ICMP threshold; legitimate VPN tunnels (GRE/ESP) are not represented in this benign data -- known limitation",
+ "classes": {
+  "ICMP": "ip.proto 1",
+  "IGMP": "ip.proto 2",
+  "DEFAULT": "every other non-TCP/UDP ip.proto (incl. 47 GRE)"
+ },
+ "basis": {
+  "stream": {
+   "ICMP": {
+    "train_max": 53,
+    "train_p99_9": 19.0,
+    "train_windows": 14848,
+    "train_max_keys": [
+     "192.168.137.109 -> 192.168.137.1 ICMP"
+    ],
+    "val_max": 19,
+    "val_windows": 2409,
+    "val_over_train_max": 0.3584905660377358
+   },
+   "IGMP": {
+    "train_max": 4,
+    "train_p99_9": 4.0,
+    "train_windows": 616,
+    "train_max_keys": [
+     "192.168.137.12 -> 224.0.0.22 IGMP",
+     "192.168.137.99 -> 224.0.0.22 IGMP",
+     "192.168.137.253 -> 224.0.0.22 IGMP"
+    ],
+    "val_max": 5,
+    "val_windows": 165,
+    "val_over_train_max": 1.25
+   },
+   "DEFAULT": {
+    "train_max": 0,
+    "train_p99_9": NaN,
+    "train_windows": 0,
+    "train_max_keys": [],
+    "val_max": 0,
+    "val_windows": 0,
+    "val_over_train_max": NaN,
+    "per_proto_train_max": {}
+   }
+  },
+  "victim": {
+   "ICMP": {
+    "train_max": 107,
+    "train_p99_9": 28.0,
+    "train_windows": 11772,
+    "train_max_keys": [
+     "* -> 192.168.137.1 ICMP"
+    ],
+    "val_max": 56,
+    "val_windows": 1941,
+    "val_over_train_max": 0.5233644859813084
+   },
+   "IGMP": {
+    "train_max": 11,
+    "train_p99_9": 11.0,
+    "train_windows": 579,
+    "train_max_keys": [
+     "* -> 224.0.0.22 IGMP"
+    ],
+    "val_max": 14,
+    "val_windows": 146,
+    "val_over_train_max": 1.2727272727272727
+   },
+   "DEFAULT": {
+    "train_max": 0,
+    "train_p99_9": NaN,
+    "train_windows": 0,
+    "train_max_keys": [],
+    "val_max": 0,
+    "val_windows": 0,
+    "val_over_train_max": NaN,
+    "per_proto_train_max": {}
+   }
+  }
+ },
+ "margins": {
+  "2x": {
+   "margin": 2,
+   "thresholds": {
+    "stream": {
+     "ICMP": 106,
+     "IGMP": 8,
+     "DEFAULT": 106
+    },
+    "victim": {
+     "ICMP": 214,
+     "IGMP": 22,
+     "DEFAULT": 214
+    }
+   },
+   "thresholds_raw": {
+    "stream": {
+     "ICMP": 106,
+     "IGMP": 8,
+     "DEFAULT": 0
+    },
+    "victim": {
+     "ICMP": 214,
+     "IGMP": 22,
+     "DEFAULT": 0
+    }
+   },
+   "default_floored": {
+    "stream": true,
+    "victim": true
+   },
+   "default_floor_note": "floor = ICMP threshold; legitimate VPN tunnels (GRE/ESP) are not represented in this benign data -- known limitation",
+   "rate_guard_kwargs": {
+    "window_s": 10.0,
+    "stream_threshold": 106,
+    "victim_threshold": 214,
+    "stream_proto_thresholds": {
+     "1": 106,
+     "2": 8
+    },
+    "victim_proto_thresholds": {
+     "1": 214,
+     "2": 22
+    }
+   },
+   "val_exceedances": {
+    "stream": {
+     "ICMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "IGMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "DEFAULT": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     }
+    },
+    "victim": {
+     "ICMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "IGMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "DEFAULT": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     }
+    }
+   },
+   "val_exceedance_windows_total": 0,
+   "gre_design_factor": {
+    "stream_min": 27.042452819337864,
+    "stream_median": 59.61403716514775,
+    "victim_min": 184.6790805782135,
+    "victim_median": 205.75403914005454
+   }
+  },
+  "3x": {
+   "margin": 3,
+   "thresholds": {
+    "stream": {
+     "ICMP": 159,
+     "IGMP": 12,
+     "DEFAULT": 159
+    },
+    "victim": {
+     "ICMP": 321,
+     "IGMP": 33,
+     "DEFAULT": 321
+    }
+   },
+   "thresholds_raw": {
+    "stream": {
+     "ICMP": 159,
+     "IGMP": 12,
+     "DEFAULT": 0
+    },
+    "victim": {
+     "ICMP": 321,
+     "IGMP": 33,
+     "DEFAULT": 0
+    }
+   },
+   "default_floored": {
+    "stream": true,
+    "victim": true
+   },
+   "default_floor_note": "floor = ICMP threshold; legitimate VPN tunnels (GRE/ESP) are not represented in this benign data -- known limitation",
+   "rate_guard_kwargs": {
+    "window_s": 10.0,
+    "stream_threshold": 159,
+    "victim_threshold": 321,
+    "stream_proto_thresholds": {
+     "1": 159,
+     "2": 12
+    },
+    "victim_proto_thresholds": {
+     "1": 321,
+     "2": 33
+    }
+   },
+   "val_exceedances": {
+    "stream": {
+     "ICMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "IGMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "DEFAULT": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     }
+    },
+    "victim": {
+     "ICMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "IGMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "DEFAULT": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     }
+    }
+   },
+   "val_exceedance_windows_total": 0,
+   "gre_design_factor": {
+    "stream_min": 18.028301879558576,
+    "stream_median": 39.74269144343184,
+    "victim_min": 123.11938705214233,
+    "victim_median": 137.16935942670304
+   }
+  },
+  "5x": {
+   "margin": 5,
+   "thresholds": {
+    "stream": {
+     "ICMP": 265,
+     "IGMP": 20,
+     "DEFAULT": 265
+    },
+    "victim": {
+     "ICMP": 535,
+     "IGMP": 55,
+     "DEFAULT": 535
+    }
+   },
+   "thresholds_raw": {
+    "stream": {
+     "ICMP": 265,
+     "IGMP": 20,
+     "DEFAULT": 0
+    },
+    "victim": {
+     "ICMP": 535,
+     "IGMP": 55,
+     "DEFAULT": 0
+    }
+   },
+   "default_floored": {
+    "stream": true,
+    "victim": true
+   },
+   "default_floor_note": "floor = ICMP threshold; legitimate VPN tunnels (GRE/ESP) are not represented in this benign data -- known limitation",
+   "rate_guard_kwargs": {
+    "window_s": 10.0,
+    "stream_threshold": 265,
+    "victim_threshold": 535,
+    "stream_proto_thresholds": {
+     "1": 265,
+     "2": 20
+    },
+    "victim_proto_thresholds": {
+     "1": 535,
+     "2": 55
+    }
+   },
+   "val_exceedances": {
+    "stream": {
+     "ICMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "IGMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "DEFAULT": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     }
+    },
+    "victim": {
+     "ICMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "IGMP": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     },
+     "DEFAULT": {
+      "windows": 0,
+      "windows_is_lower_bound": false,
+      "distinct_keys": 0,
+      "by_key": [],
+      "by_sender_devices": [],
+      "top": []
+     }
+    }
+   },
+   "val_exceedance_windows_total": 0,
+   "gre_design_factor": {
+    "stream_min": 10.816981127735145,
+    "stream_median": 23.8456148660591,
+    "victim_min": 73.87163223128539,
+    "victim_median": 82.30161565602182
+   }
+  }
+ },
+ "gre_design": {
+  "source": "results/step12b/run_meta.json",
+  "pcap_sha256": "87f8de16e575f23fca6c159a94360c6dd2970c4d9a1711d46c9468f1cf724c0e",
+  "label": "design data, not used to choose",
+  "method": "per GRE stream (src, dst, 47): packets / (last - first) x 10 s; per GRE victim (dst, 47): the streams' packets / (latest last - earliest first) x 10 s. Averages over the span, not per-window maxima.",
+  "streams": 14,
+  "stream_min_10s": 2866.4999988498134,
+  "stream_median_10s": 6319.087939505662,
+  "stream_max_10s": 11856.575048348099,
+  "victims": {
+   "192.168.137.254": 39521.3,
+   "192.168.137.242": 48541.4
+  },
+  "victim_min_10s": 39521.32324373769,
+  "victim_median_10s": 44031.36437597167
+ },
+ "recommendation": {
+  "rule": "smallest margin in (2, 3, 5) with zero val exceedances over both levels and all classes",
+  "margin": 2,
+  "text": "Proposal: 2x the train max (10 s windows; DEFAULT floored at the ICMP threshold) -- the smallest tested margin with zero val exceedances at both levels and all three classes; the 12b GRE flood (design data, not used to choose) sits 27.0x (slowest stream) / 184.7x (smaller victim) above the DEFAULT thresholds. Note: floor = ICMP threshold; legitimate VPN tunnels (GRE/ESP) are not represented in this benign data -- known limitation."
+ }
+}

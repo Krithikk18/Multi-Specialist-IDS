@@ -1,0 +1,580 @@
+{
+ "label": "PROPOSAL ONLY -- thresholds are proposed here, not decided",
+ "script": "13_rate_guard_calibrate.py",
+ "code_sha256": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+ "rate_guard_sha256": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+ "run_utc": "2026-10-21T15:21:25+00:00",
+ "argv": [
+  "13_rate_guard_calibrate.py"
+ ],
+ "dry_run": false,
+ "git_head": "d5cd50aa0e30f0f14842db7f80cf8de267c4951b",
+ "tshark_version": "TShark (Wireshark) 4.2.2 (Git v4.2.2 packaged as 4.2.2-1.1build3).",
+ "windows_s": [
+  1,
+  10,
+  60
+ ],
+ "design_window_s": 10,
+ "margins": [
+  2,
+  3,
+  5
+ ],
+ "attacker_macs": {
+  "exact": [
+   "e4:5f:01:55:90:c4"
+  ],
+  "prefixes": [
+   "dc:a6:32"
+  ]
+ },
+ "never_opened": "test sessions DDoS-SYN_Flood10 / 15, Mirai-udpplain24; test_only BenignTraffic1-3; greeth parts base / 9 / 18 / 27 / 28; test.parquet",
+ "input_checks": [
+  {
+   "check": "manifest_v1 hard_pass",
+   "pass": true,
+   "detail": "results/step8/manifest_v1.json"
+  },
+  {
+   "check": "manifest split plan == config/split_plan.json",
+   "pass": true,
+   "detail": "38de9358ea0b223e..."
+  },
+  {
+   "check": "split_plan_v1_1 base plan == config/split_plan.json",
+   "pass": true,
+   "detail": "38de9358ea0b223e..."
+  },
+  {
+   "check": "manifest device_table == config/device_table.csv",
+   "pass": true,
+   "detail": "device_table.csv"
+  },
+  {
+   "check": "manifest attack_set == config/attack_set.json",
+   "pass": true,
+   "detail": "attack_set.json"
+  },
+  {
+   "check": "benign_night: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "time_split vs time_split"
+  },
+  {
+   "check": "DDoS-SYN_Flood: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "train vs train"
+  },
+  {
+   "check": "DDoS-SYN_Flood5: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "train vs train"
+  },
+  {
+   "check": "DDoS-SYN_Flood10: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "test vs test"
+  },
+  {
+   "check": "DDoS-SYN_Flood15: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "test vs test"
+  },
+  {
+   "check": "Recon-PortScan: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "time_split vs time_split"
+  },
+  {
+   "check": "Mirai-udpplain: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "train vs train"
+  },
+  {
+   "check": "Mirai-udpplain24: mode manifest == split_plan_v1_1",
+   "pass": true,
+   "detail": "test vs test"
+  },
+  {
+   "check": "benign_night: cut labels",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val', 'gap@val|test', 'test'] / [1665186230.3, 1665186350.3, 1665191229.65, 1665191349.65]"
+  },
+  {
+   "check": "benign_night: time_split has a val -> test cut",
+   "pass": true,
+   "detail": "stop 1665191229.65"
+  },
+  {
+   "check": "DDoS-SYN_Flood: cut labels",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val'] / [1661540858.65, 1661540978.65]"
+  },
+  {
+   "check": "DDoS-SYN_Flood: 07 label report pcap == attack set",
+   "pass": true,
+   "detail": "5e8124a87e12483a..."
+  },
+  {
+   "check": "DDoS-SYN_Flood5: cut labels",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val'] / [1661795094.3, 1661795214.3]"
+  },
+  {
+   "check": "DDoS-SYN_Flood5: 07 label report pcap == attack set",
+   "pass": true,
+   "detail": "298d6249ddb4e721..."
+  },
+  {
+   "check": "Recon-PortScan: cut labels",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val', 'gap@val|test', 'test'] / [1664288918.6, 1664289038.6, 1664291060.8, 1664291180.8]"
+  },
+  {
+   "check": "Recon-PortScan: time_split has a val -> test cut",
+   "pass": true,
+   "detail": "stop 1664291060.8"
+  },
+  {
+   "check": "Recon-PortScan: 07 label report pcap == attack set",
+   "pass": true,
+   "detail": "e13368bdc571a6ec..."
+  },
+  {
+   "check": "Mirai-udpplain: cut labels",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val'] / [1674145167.95, 1674145287.95]"
+  },
+  {
+   "check": "Mirai-udpplain: 07 label report pcap == attack set",
+   "pass": true,
+   "detail": "845a8c833c584120..."
+  }
+ ],
+ "sessions": [
+  "benign_night",
+  "DDoS-SYN_Flood",
+  "DDoS-SYN_Flood5",
+  "Recon-PortScan",
+  "Mirai-udpplain"
+ ],
+ "device_table_attacker_rows": [
+  {
+   "mac": "dc:a6:32:dc:27:d5",
+   "device_name": "Raspberry Pi 4 (8 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:c6",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:02",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e6:f4",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:ef",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:a4",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:d5",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:90",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "e4:5f:01:55:90:c4",
+   "device_name": "Raspberry Pi 4 (4 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:ab",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  }
+ ],
+ "session_meta": [
+  {
+   "session": "benign_night",
+   "mode": "time_split",
+   "kind": "benign",
+   "pcap": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+   "pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+   "sha256_match": true,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1665186230.3,
+    1665186350.3,
+    1665191229.65,
+    1665191349.65
+   ],
+   "boundaries_utc": [
+    "2022-10-07T23:43:50+00:00",
+    "2022-10-07T23:45:50+00:00",
+    "2022-10-08T01:07:09+00:00",
+    "2022-10-08T01:09:09+00:00"
+   ],
+   "tshark_display_filter": "frame.time_epoch < 1665191229.650000",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/BenignTraffic.pcap -Y frame.time_epoch < 1665191229.650000 -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 3118089,
+    "non_ipv4": 110347,
+    "map_overflow_victim": 37925,
+    "map_overflow_stream": 37812,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {
+    "gap@train|val": 15092
+   },
+   "stream_keys": 201,
+   "victim_keys": 88,
+   "tshark_s": 47.6,
+   "runtime_s": 50.3
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "mode": "train",
+   "kind": "attack",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap",
+   "pcap_sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8",
+   "sha256_match": true,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "boundaries_epoch": [
+    1661540858.65,
+    1661540978.65
+   ],
+   "boundaries_utc": [
+    "2022-08-26T19:07:38+00:00",
+    "2022-08-26T19:09:38+00:00"
+   ],
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 26597011,
+    "non_ipv4": 38605,
+    "map_overflow_victim": 5508,
+    "map_overflow_stream": 5425,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {
+    "gap@train|val": 857360
+   },
+   "stream_keys": 139,
+   "victim_keys": 56,
+   "tshark_s": 425.4,
+   "runtime_s": 428.0
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "mode": "train",
+   "kind": "attack",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap",
+   "pcap_sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad",
+   "sha256_match": true,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "boundaries_epoch": [
+    1661795094.3,
+    1661795214.3
+   ],
+   "boundaries_utc": [
+    "2022-08-29T17:44:54+00:00",
+    "2022-08-29T17:46:54+00:00"
+   ],
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 26720136,
+    "non_ipv4": 26667,
+    "map_overflow_victim": 4151,
+    "map_overflow_stream": 4072,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {
+    "gap@train|val": 2162316
+   },
+   "stream_keys": 136,
+   "victim_keys": 57,
+   "tshark_s": 430.1,
+   "runtime_s": 434.5
+  },
+  {
+   "session": "Recon-PortScan",
+   "mode": "time_split",
+   "kind": "attack",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+   "pcap_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+   "sha256_match": true,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1664288918.6,
+    1664289038.6,
+    1664291060.8,
+    1664291180.8
+   ],
+   "boundaries_utc": [
+    "2022-09-27T14:28:38+00:00",
+    "2022-09-27T14:30:38+00:00",
+    "2022-09-27T15:04:20+00:00",
+    "2022-09-27T15:06:20+00:00"
+   ],
+   "tshark_display_filter": "frame.time_epoch < 1664291060.800000",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap -Y frame.time_epoch < 1664291060.800000 -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 663549,
+    "map_overflow_stream": 6182,
+    "map_overflow_victim": 6212,
+    "non_ipv4": 24717,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {
+    "gap@train|val": 10236
+   },
+   "stream_keys": 54,
+   "victim_keys": 24,
+   "tshark_s": 12.8,
+   "runtime_s": 13.3
+  },
+  {
+   "session": "Mirai-udpplain",
+   "mode": "train",
+   "kind": "attack",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap",
+   "pcap_sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7",
+   "sha256_match": true,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "boundaries_epoch": [
+    1674145167.95,
+    1674145287.95
+   ],
+   "boundaries_utc": [
+    "2023-01-19T16:19:27+00:00",
+    "2023-01-19T16:21:27+00:00"
+   ],
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 3642269,
+    "non_ipv4": 19603,
+    "map_overflow_victim": 3765,
+    "map_overflow_stream": 3686,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "stream_keys": 135,
+   "victim_keys": 56,
+   "tshark_s": 58.3,
+   "runtime_s": 62.0
+  }
+ ],
+ "guard_checks": [
+  {
+   "check": "benign_night train 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 2,371,689, in scope 34,362 / 34,362, drained stream 34,362 victim 34,362, late 0"
+  },
+  {
+   "check": "benign_night train 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 2,371,689, in scope 34,362 / 34,362, drained stream 34,362 victim 34,362, late 0"
+  },
+  {
+   "check": "benign_night train 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 2,371,689, in scope 34,362 / 34,362, drained stream 34,362 victim 34,362, late 0"
+  },
+  {
+   "check": "benign_night val 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 592,054, in scope 3,651 / 3,651, drained stream 3,651 victim 3,651, late 0"
+  },
+  {
+   "check": "benign_night val 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 592,054, in scope 3,651 / 3,651, drained stream 3,651 victim 3,651, late 0"
+  },
+  {
+   "check": "benign_night val 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 592,054, in scope 3,651 / 3,651, drained stream 3,651 victim 3,651, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood train 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 145,732, in scope 5,304 / 5,304, drained stream 5,304 victim 5,304, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood train 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 145,732, in scope 5,304 / 5,304, drained stream 5,304 victim 5,304, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood train 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 145,732, in scope 5,304 / 5,304, drained stream 5,304 victim 5,304, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood val 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 17,269, in scope 260 / 260, drained stream 260 victim 260, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood val 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 17,269, in scope 260 / 260, drained stream 260 victim 260, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood val 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 17,269, in scope 260 / 260, drained stream 260 victim 260, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood5 train 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 76,693, in scope 3,942 / 3,942, drained stream 3,942 victim 3,942, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood5 train 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 76,693, in scope 3,942 / 3,942, drained stream 3,942 victim 3,942, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood5 train 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 76,693, in scope 3,942 / 3,942, drained stream 3,942 victim 3,942, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood5 val 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 8,163, in scope 266 / 266, drained stream 266 victim 266, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood5 val 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 8,163, in scope 266 / 266, drained stream 266 victim 266, late 0"
+  },
+  {
+   "check": "DDoS-SYN_Flood5 val 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 8,163, in scope 266 / 266, drained stream 266 victim 266, late 0"
+  },
+  {
+   "check": "Recon-PortScan train 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 298,596, in scope 4,916 / 4,916, drained stream 4,916 victim 4,916, late 0"
+  },
+  {
+   "check": "Recon-PortScan train 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 298,596, in scope 4,916 / 4,916, drained stream 4,916 victim 4,916, late 0"
+  },
+  {
+   "check": "Recon-PortScan train 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 298,596, in scope 4,916 / 4,916, drained stream 4,916 victim 4,916, late 0"
+  },
+  {
+   "check": "Recon-PortScan val 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 102,981, in scope 1,320 / 1,320, drained stream 1,320 victim 1,320, late 0"
+  },
+  {
+   "check": "Recon-PortScan val 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 102,981, in scope 1,320 / 1,320, drained stream 1,320 victim 1,320, late 0"
+  },
+  {
+   "check": "Recon-PortScan val 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 102,981, in scope 1,320 / 1,320, drained stream 1,320 victim 1,320, late 0"
+  },
+  {
+   "check": "Mirai-udpplain train 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 60,157, in scope 3,699 / 3,699, drained stream 3,699 victim 3,699, late 0"
+  },
+  {
+   "check": "Mirai-udpplain train 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 60,157, in scope 3,699 / 3,699, drained stream 3,699 victim 3,699, late 0"
+  },
+  {
+   "check": "Mirai-udpplain train 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 60,157, in scope 3,699 / 3,699, drained stream 3,699 victim 3,699, late 0"
+  },
+  {
+   "check": "Mirai-udpplain val 1 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 3,258, in scope 122 / 122, drained stream 122 victim 122, late 0"
+  },
+  {
+   "check": "Mirai-udpplain val 10 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 3,258, in scope 122 / 122, drained stream 122 victim 122, late 0"
+  },
+  {
+   "check": "Mirai-udpplain val 60 s: guard counts == packets fed, drained == in scope - late",
+   "pass": true,
+   "detail": "seen 3,258, in scope 122 / 122, drained stream 122 victim 122, late 0"
+  }
+ ],
+ "cross_check_12c": {
+  "ipv4_here": 2395158,
+  "ipv4_12c": 2395158,
+  "in_scope_here": 36287,
+  "in_scope_12c": 36287,
+  "match": true,
+  "note": "12c: same capture and cut, 02's lean dissector set, filter ip && not 6/17, no Pi exclusion; counts here are before the exclusion"
+ },
+ "val_heap": {
+  "keep_per_level_proto": 5000,
+  "dropped": {}
+ },
+ "peak_rss": {
+  "python_self_mb": 134.6,
+  "tshark_max_mb": 144.4
+ },
+ "runtime_s": 990.0
+}

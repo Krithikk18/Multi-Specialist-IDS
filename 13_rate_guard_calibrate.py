@@ -21,10 +21,9 @@ Data (nothing else is opened)
             Dissectors frame, eth, ethertype, ip, vlan only (inner headers are never parsed): field output
             md5-identical to 02's lean set on Recon-PortScan (831,856 frames) and 37 % faster; per-conversation
             state reset every 200k packets (-M).
-  exclusion attack-session captures only (benign_night is used as is): a packet whose eth.src or eth.dst is an
-            attacker / testbed-Pi MAC (config ATTACKER_MACS, or device_table role testbed_pi: 07's T1 MAC rule) is
-            dropped before the guard (not counted, not a clock tick) and counted per reason (eth.src checked first)
-            and per MAC.
+  exclusion every capture, benign_night included: a packet whose eth.src or eth.dst is an attacker / testbed-Pi MAC
+            (config ATTACKER_MACS, or device_table role testbed_pi: 07's T1 MAC rule) is dropped before the guard
+            (not counted, not a clock tick) and counted per reason (eth.src checked first), per MAC and per proto.
   guard     per capture x split x window (10 s design; 1 s and 60 s sensitivity) one RateGuard(window_s,
             record_counts=True): every kept IPv4 packet goes to update() (TCP / UDP = clock ticks), flush() at the end
             of the capture, counts drained with pop_counts(). Train and val never share a guard, so no window spans
@@ -40,10 +39,12 @@ Statistics (per split; train and val are never pooled)
             NETWORK subnet); reported separately and pooled ("all").
   phones    packets with a role-"excluded" MAC (randomised phone / laptop MAC) on either side stay IN; per 10 s
             window their packets are also counted on the side, giving their share of each max and the max without
-            them. Testbed-Pi packets in benign_night (kept there) are reported the same way.
+            them.
   proposal  per level x class: threshold = margin x TRAIN max (10 s windows, all destination kinds), margins 2 / 3 / 5;
-            RateGuard alerts iff packets > threshold. Val exceedances at each margin (windows over threshold, by key /
-            device) are the honesty check. For context only, the 12b GRE flood level (results/step12b/run_meta.json
+            DEFAULT is floored: max(margin x DEFAULT train max, the ICMP threshold of the same level and margin); raw
+            and floored values are both reported (DEFAULT_FLOOR_NOTE). RateGuard alerts iff packets > threshold. Val
+            exceedances at each margin (at the proposed, floored thresholds; windows over threshold, by key / device)
+            are the honesty check. For context only, the 12b GRE flood level (results/step12b/run_meta.json
             att_streams: per GRE stream packets / (last - first) x 10; per GRE victim the streams' packets over their
             joint span) vs each DEFAULT threshold -- design data, not used to choose. The stated recommendation rule:
             the smallest margin with zero val exceedances across both levels and all three classes.
@@ -123,6 +124,8 @@ DESIGN_W = 10
 MARGINS = (2, 3, 5)
 LEVELS = (STREAM, VICTIM)
 CLASSES = ("ICMP", "IGMP", "DEFAULT")
+DEFAULT_FLOOR_NOTE = ("floor = ICMP threshold; legitimate VPN tunnels (GRE/ESP) are not represented in this benign data "
+                      "-- known limitation")
 SCOPES = ("all", "unicast", "mcast_bcast")
 MAX_TIES = 3                 # distinct keys listed for a max (all tied windows are counted)
 TOP_KEYS = 10                # calib_top_keys.csv rows per (split, level, class)
@@ -273,6 +276,10 @@ def pclass(proto: int) -> str:
     return "ICMP" if proto == 1 else "IGMP" if proto == 2 else "DEFAULT"
 
 
+def pname(proto: int) -> str:
+    return {6: "TCP", 17: "UDP"}.get(proto) or proto_name(proto)
+
+
 def key_str(level: str, key: tuple) -> str:
     if level == STREAM:
         return f"{key[0]} -> {key[1]} {proto_name(key[2])}"
@@ -280,19 +287,19 @@ def key_str(level: str, key: tuple) -> str:
 
 
 class MacBook:
-    """Per-MAC facts (cached): (exclusion reason in attack captures, phone / laptop, testbed Pi) and a device label."""
+    """Per-MAC facts (cached): (exclusion reason, phone / laptop) and a device label."""
 
     def __init__(self, dev):
         self.dev = dev
-        self._c: dict[str, tuple[str, bool, bool]] = {}
+        self._c: dict[str, tuple[str, bool]] = {}
 
-    def get(self, mac: str) -> tuple[str, bool, bool]:
+    def get(self, mac: str) -> tuple[str, bool]:
         r = self._c.get(mac)
         if r is None:
             role = self.dev.role.get(mac)
             excl = ("ATTACKER_MACS" if mac and ATTACKER_MACS.matches(mac)
                     else "device_table testbed_pi" if role == "testbed_pi" else "")
-            r = self._c[mac] = (excl, role == "excluded", bool(excl))
+            r = self._c[mac] = (excl, role == "excluded")
         return r
 
     def label(self, mac: str) -> str:
@@ -332,14 +339,14 @@ class Agg:
         self.book = book
         self.counts: dict[tuple, array] = {}         # (split, w, level, proto, dkind) -> packets per non-empty window
         self.best: dict[tuple, list] = {}            # same -> [max, [rec of a distinct key, ...], tied windows]
-        self.max_wo: dict[tuple, int] = {}           # (split, level, proto, dkind, "phone" | "pi") -> max without them
+        self.max_wo: dict[tuple, int] = {}           # (split, level, proto, dkind) -> max without phone packets
         self.keys: dict[tuple, list] = {}            # (split, level, session, key) -> [windows, packets, best rec]
         self.val: dict[tuple, list] = defaultdict(list)   # (level, proto) -> min-heap (packets, seq, rec), 10 s val
         self.val_dropped: Counter = Counter()
         self.seq = 0
         self.maps: dict[str, tuple[dict, dict]] = {}  # session -> (stream key -> MACs, victim key -> MACs)
 
-    def add(self, session: str, split: str, w: int, recs: list, side: dict) -> dict:
+    def add(self, session: str, split: str, w: int, recs: list, phone: Counter) -> dict:
         sums = Counter()
         for r in recs:
             key = (r.src_ip, r.dst_ip, r.proto) if r.level == STREAM else (r.dst_ip, r.proto)
@@ -350,11 +357,10 @@ class Agg:
             if a is None:
                 a = self.counts[g] = array("I")
             a.append(r.packets)
-            ph = pi = 0
+            ph = 0
             if w == DESIGN_W:
-                idx = (split, round(r.window_start / w), r.level, key)
-                ph, pi = side["phone"].get(idx, 0), side["pi"].get(idx, 0)
-            rec = (r.packets, session, r.window_start, key, r.first_seen_ts, r.last_seen_ts, ph, pi, r.level)
+                ph = phone.get((split, round(r.window_start / w), r.level, key), 0)
+            rec = (r.packets, session, r.window_start, key, r.first_seen_ts, r.last_seen_ts, ph, r.level)
             b = self.best.get(g)
             if b is None or r.packets > b[0]:
                 self.best[g] = [r.packets, [rec], 1]
@@ -364,10 +370,9 @@ class Agg:
                     b[1].append(rec)
             if w != DESIGN_W:
                 continue
-            for tag, n in (("phone", r.packets - ph), ("pi", r.packets - pi)):
-                k = (split, r.level, r.proto, dk, tag)
-                if n > self.max_wo.get(k, -1):
-                    self.max_wo[k] = n
+            k = (split, r.level, r.proto, dk)
+            if r.packets - ph > self.max_wo.get(k, -1):
+                self.max_wo[k] = r.packets - ph
             kk = (split, r.level, session, key)
             e = self.keys.get(kk)
             if e is None:
@@ -398,7 +403,7 @@ class Agg:
         gs = self.groups(split, w, level, cls, proto, scope)
         if not gs:
             return {"windows": 0, "max": 0, "p99": math.nan, "p99_9": math.nan, "max_rate_pps": 0.0, "recs": [],
-                    "tied": 0, "max_wo_phone": 0, "max_wo_pi": 0}
+                    "tied": 0, "max_wo_phone": 0}
         x = np.concatenate([np.frombuffer(self.counts[g], dtype=np.dtype(f"u{self.counts[g].itemsize}"))
                             for g in gs])
         mx = int(x.max())
@@ -406,10 +411,9 @@ class Agg:
         top = [g for g in gs if self.best[g][0] == mx]
         recs = sorted((r for g in top for r in self.best[g][1]), key=lambda r: (r[2], r[1], str(r[3])))[:MAX_TIES]
         out = {"windows": int(len(x)), "max": mx, "p99": float(p99), "p99_9": float(p999), "max_rate_pps": mx / w,
-               "recs": recs, "tied": sum(self.best[g][2] for g in top), "max_wo_phone": None, "max_wo_pi": None}
+               "recs": recs, "tied": sum(self.best[g][2] for g in top), "max_wo_phone": None}
         if w == DESIGN_W:
-            for tag in ("phone", "pi"):
-                out[f"max_wo_{tag}"] = max(self.max_wo.get((g[0], g[2], g[3], g[4], tag), 0) for g in gs)
+            out["max_wo_phone"] = max(self.max_wo.get((g[0], g[2], g[3], g[4]), 0) for g in gs)
         return out
 
     def describe(self, level: str, session: str, key: tuple) -> dict:
@@ -429,10 +433,10 @@ class Agg:
                 "receivers": fmt(receivers)}
 
     def rec_row(self, rec: tuple) -> dict:
-        packets, session, start, key, first, last, ph, pi, level = rec
+        packets, session, start, key, first, last, ph, level = rec
         d = self.describe(level, session, key)
         return {"session": session, **d, "packets": packets, "window_start_utc": utc(start),
-                "first_seen_utc": utc(first), "last_seen_utc": utc(last), "phone_packets": ph, "pi_packets": pi}
+                "first_seen_utc": utc(first), "last_seen_utc": utc(last), "phone_packets": ph}
 
 
 # --------------------------------------------------------------------------- inputs
@@ -536,6 +540,7 @@ class SplitState:
         self.by_proto = Counter()
         self.excl = Counter()
         self.excl_mac = Counter()
+        self.excl_proto = Counter()
         self.drained = Counter()          # (w, level) -> packets in drained records
         self.t = [math.inf, -math.inf]
 
@@ -548,12 +553,11 @@ def run_session(S: dict, agg: Agg, book: MacBook) -> dict:
     if got != S["sha256_expected"]:
         fatal(f"{pcap} sha256 {got} != expected {S['sha256_expected']}")
     log(f"  sha256 ok ({got[:16]}...) in {time.monotonic() - t0:.0f} s; filter: {S['display_filter'] or 'none'}")
-    attack = S["kind"] == "attack"
     bounds, labels, stop = S["bounds"], S["labels"], S["stop"]
     states = {sp: SplitState() for sp in SPLITS}
     sm, vm = {}, {}
     agg.maps[s] = (sm, vm)
-    side = {"phone": Counter(), "pi": Counter()}
+    phone = Counter()        # (split, 10 s window index, level, key) -> phone / laptop packets
     gap, rc = Counter(), Counter()
     kept = 0
     get = book.get
@@ -563,7 +567,7 @@ def run_session(S: dict, agg: Agg, book: MacBook) -> dict:
             for w, g in st.guards.items():
                 if final:
                     g.flush()
-                for lv, n in agg.add(s, sp, w, g.pop_counts(), side).items():
+                for lv, n in agg.add(s, sp, w, g.pop_counts(), phone).items():
                     st.drained[(w, lv)] += n
 
     t1 = time.monotonic()
@@ -578,10 +582,11 @@ def run_session(S: dict, agg: Agg, book: MacBook) -> dict:
                 continue
             st.c["ipv4"] += 1
             ms, md = get(smac), get(dmac)
-            if attack and (ms[0] or md[0]):
+            if ms[0] or md[0]:
                 reason = f"eth.src {ms[0]}" if ms[0] else f"eth.dst {md[0]}"
                 st.excl[reason] += 1
                 st.excl_mac[smac if ms[0] else dmac] += 1
+                st.excl_proto[proto] += 1
                 if proto not in TCP_UDP:
                     st.excl[f"in_scope {reason}"] += 1
                 continue
@@ -598,14 +603,11 @@ def run_session(S: dict, agg: Agg, book: MacBook) -> dict:
                     rc["map_overflow_stream"] += 1
                 if not remember(vm, vkey, dmac, smac):
                     rc["map_overflow_victim"] += 1
-                phone, pi = ms[1] or md[1], ms[2] or md[2]
-                if phone or pi:
+                if ms[1] or md[1]:
                     k10 = math.floor(ts / DESIGN_W)
-                    for tag, hit in (("phone", phone), ("pi", pi)):
-                        if hit:
-                            st.c[f"{tag}_in_scope"] += 1
-                            side[tag][(lab, k10, STREAM, skey)] += 1
-                            side[tag][(lab, k10, VICTIM, vkey)] += 1
+                    st.c["phone_in_scope"] += 1
+                    phone[(lab, k10, STREAM, skey)] += 1
+                    phone[(lab, k10, VICTIM, vkey)] += 1
             for g in st.guards.values():
                 g.update(ts, src, dst, proto, smac, dmac)
             kept += 1
@@ -640,13 +642,14 @@ def run_session(S: dict, agg: Agg, book: MacBook) -> dict:
             "excluded_in_scope": sum(v for k, v in st.excl.items() if k.startswith("in_scope")),
             "excluded_by_reason": "; ".join(f"{k}: {v:,}" for k, v in sorted(st.excl.items())
                                             if not k.startswith("in_scope")),
+            "excluded_by_proto": "; ".join(f"{pname(p)}: {v:,}" for p, v in st.excl_proto.most_common()),
             "excluded_by_mac": "; ".join(f"{book.label(m)} ({m}): {v:,}" for m, v in st.excl_mac.most_common()),
             "kept_packets": st.c["ipv4"] - excl_n, "tcp_udp_packets": st.c["tcp_udp"],
             "in_scope_packets": sum(st.by_proto.values()),
             "in_scope_ICMP": st.by_proto[1], "in_scope_IGMP": st.by_proto[2],
             "in_scope_DEFAULT": sum(v for p, v in st.by_proto.items() if pclass(p) == "DEFAULT"),
             "in_scope_by_proto": "; ".join(f"{proto_name(p)}: {v:,}" for p, v in st.by_proto.most_common()),
-            "phone_in_scope": st.c["phone_in_scope"], "pi_in_scope": st.c["pi_in_scope"],
+            "phone_in_scope": st.c["phone_in_scope"],
             "windows_1s": st.c["windows_1s"], "windows_10s": st.c["windows_10s"], "windows_60s": st.c["windows_60s"],
             "late_10s": st.c["late_10s"], "first_packet_utc": utc(st.t[0]), "last_packet_utc": utc(st.t[1]),
             "gap_packets_dropped": sum(gap.values()), "non_ipv4_frames": rc["non_ipv4"], "frames_read": rc["frames"],
@@ -697,8 +700,6 @@ def stat_row(agg: Agg, sp: str, w: int, lv: str, cls: str, p: int | None, sc: st
             "max_rate_pps": st["max_rate_pps"], "windows_at_max": st["tied"],
             "max_phone_packets": max((r["phone_packets"] for r in R), default=0) if w == DESIGN_W else None,
             "max_without_phone": st["max_wo_phone"],
-            "max_pi_packets": max((r["pi_packets"] for r in R), default=0) if w == DESIGN_W else None,
-            "max_without_pi": st["max_wo_pi"],
             "max_keys": " | ".join(r["key"] for r in R), "max_dst_kind": " | ".join(r["dst_kind"] for r in R),
             "max_senders": " | ".join(r["senders"] for r in R), "max_receivers": " | ".join(r["receivers"] for r in R),
             "max_session": " | ".join(r["session"] for r in R),
@@ -736,7 +737,7 @@ def top_key_rows(agg: Agg) -> list[dict]:
                                  "max_packets_10s": e[2][0], "max_rate_pps": e[2][0] / DESIGN_W,
                                  "max_window_start_utc": rr["window_start_utc"], "first_seen_utc": rr["first_seen_utc"],
                                  "last_seen_utc": rr["last_seen_utc"], "nonempty_windows": e[0], "packets_total": e[1],
-                                 "phone_packets_in_max": rr["phone_packets"], "pi_packets_in_max": rr["pi_packets"],
+                                 "phone_packets_in_max": rr["phone_packets"],
                                  "senders": rr["senders"], "receivers": rr["receivers"]})
     return rows
 
@@ -752,7 +753,7 @@ def val_exceed(agg: Agg, lv: str, cls: str, thr: int) -> dict:
             "by_key": [{"session": s, "key": k, "windows": n} for (s, k), n in keys.most_common(10)],
             "by_sender_devices": [{"senders": d, "windows": n} for d, n in devs.most_common(10)],
             "top": [{k: r[k] for k in ("session", "key", "packets", "window_start_utc", "senders", "receivers",
-                                       "dst_kind", "phone_packets", "pi_packets")} for r in R[:10]]}
+                                       "dst_kind", "phone_packets")} for r in R[:10]]}
 
 
 def proposal(agg: Agg, gre: dict) -> dict:
@@ -767,15 +768,21 @@ def proposal(agg: Agg, gre: dict) -> dict:
                               "val_max": sv["max"], "val_windows": sv["windows"],
                               "val_over_train_max": sv["max"] / st["max"] if st["max"] else math.inf if sv["max"]
                               else math.nan}
+        protos = sorted({g[3] for g in agg.groups("train", DESIGN_W, lv, "DEFAULT")})
+        basis[lv]["DEFAULT"]["per_proto_train_max"] = {
+            f"{p} ({proto_name(p)})": agg.stats("train", DESIGN_W, lv, None, p)["max"] for p in protos}
     margins = {}
     for m in MARGINS:
-        T = {lv: {cls: int(m * basis[lv][cls]["train_max"]) for cls in CLASSES} for lv in LEVELS}
+        raw = {lv: {cls: int(m * basis[lv][cls]["train_max"]) for cls in CLASSES} for lv in LEVELS}
+        T = {lv: {**raw[lv], "DEFAULT": max(raw[lv]["DEFAULT"], raw[lv]["ICMP"])} for lv in LEVELS}
         exc = {lv: {cls: val_exceed(agg, lv, cls, T[lv][cls]) for cls in CLASSES} for lv in LEVELS}
-        # None = threshold 0 (no benign train evidence): any packet alerts, the factor is undefined
+        # None = threshold 0 (only if the ICMP floor is 0 too): any packet alerts, the factor is undefined
         gre_f = {f"{lv}_{q}": gre[f"{lv}_{q}_10s"] / T[lv]["DEFAULT"] if T[lv]["DEFAULT"] else None
                  for lv in LEVELS for q in ("min", "median")}
         margins[f"{m}x"] = {
-            "margin": m, "thresholds": T,
+            "margin": m, "thresholds": T, "thresholds_raw": raw,
+            "default_floored": {lv: T[lv]["DEFAULT"] > raw[lv]["DEFAULT"] for lv in LEVELS},
+            "default_floor_note": DEFAULT_FLOOR_NOTE,
             "rate_guard_kwargs": {"window_s": float(DESIGN_W), "stream_threshold": T[STREAM]["DEFAULT"],
                                   "victim_threshold": T[VICTIM]["DEFAULT"],
                                   "stream_proto_thresholds": {"1": T[STREAM]["ICMP"], "2": T[STREAM]["IGMP"]},
@@ -785,25 +792,23 @@ def proposal(agg: Agg, gre: dict) -> dict:
             "gre_design_factor": gre_f}
     clean = [m for m in MARGINS if margins[f"{m}x"]["val_exceedance_windows_total"] == 0]
     pick = clean[0] if clean else None
-    zero_default = [lv for lv in LEVELS if basis[lv]["DEFAULT"]["train_max"] == 0]
     if pick is not None:
         f = margins[f"{pick}x"]["gre_design_factor"]
-        gre_txt = ("the DEFAULT thresholds are 0, so any GRE packet in a window alerts" if zero_default else
-                   f"the 12b GRE flood (design data, not used to choose) sits {fnum(f['stream_min'], 1)}x (slowest "
-                   f"stream) / {fnum(f['victim_min'], 1)}x (smaller victim) above the DEFAULT thresholds")
-        text = (f"Proposal: {pick}x the train max (10 s windows) -- the smallest tested margin with zero val "
-                f"exceedances at both levels and all three classes; {gre_txt}.")
+        text = (f"Proposal: {pick}x the train max (10 s windows; DEFAULT floored at the ICMP threshold) -- the smallest "
+                f"tested margin with zero val exceedances at both levels and all three classes; the 12b GRE flood "
+                f"(design data, not used to choose) sits {fnum(f['stream_min'], 1)}x (slowest stream) / "
+                f"{fnum(f['victim_min'], 1)}x (smaller victim) above the DEFAULT thresholds.")
     else:
         text = ("No proposal from the rule: every tested margin (2x / 3x / 5x) has val exceedances -- see the "
                 "exceedance tables; a larger margin or a per-key exception needs your decision.")
-    if zero_default:
-        text += (f" Caveat: DEFAULT has no benign train evidence at level(s) {', '.join(zero_default)} (train max 0), so "
-                 "its threshold is 0 at every margin (any such packet in a window alerts); a floor is a separate "
-                 "decision.")
+    text += f" Note: {DEFAULT_FLOOR_NOTE}."
     return {"label": LABEL, "window_s": DESIGN_W, "alert_rule": "alert iff packets in a window > threshold",
             "kwargs_note": "rate_guard_kwargs map to RateGuard(...); JSON keys are strings, so convert the "
                            "*_proto_thresholds keys to int",
-            "threshold_rule": "int(margin x train max), 10 s windows, all destination kinds pooled",
+            "threshold_rule": "int(margin x train max), 10 s windows, all destination kinds pooled; DEFAULT = "
+                              "max(int(margin x DEFAULT train max), ICMP threshold of the same level and margin) "
+                              "(thresholds_raw = before the floor)",
+            "default_floor_note": DEFAULT_FLOOR_NOTE,
             "classes": {"ICMP": "ip.proto 1", "IGMP": "ip.proto 2",
                         "DEFAULT": "every other non-TCP/UDP ip.proto (incl. 47 GRE)"},
             "basis": basis, "margins": margins, "gre_design": gre,
@@ -832,25 +837,26 @@ def write_summary(out: Path, M: dict, per: list[dict], mx: list[dict], sens: lis
           "- packets: tshark outer-header fields (-E occurrence=f), IPv4 only, no protocol filter; RateGuard per "
           "capture x split x window, TCP / UDP = clock ticks, flush() per capture; percentiles over NON-EMPTY windows "
           "(nearest rank)",
-          "- exclusion: attack-session captures drop packets with an attacker / testbed-Pi MAC on either side "
-          "(ATTACKER_MACS or device_table role testbed_pi); benign_night is used unfiltered (its Pi and phone packets "
-          "are reported as shares)", ""]
+          "- exclusion: EVERY capture (benign_night included) drops packets with an attacker / testbed-Pi MAC on either "
+          "side (ATTACKER_MACS or device_table role testbed_pi); phone / laptop packets stay in and are reported as "
+          "shares", ""]
     if M.get("cross_check_12c"):
         c = M["cross_check_12c"]
-        L += [f"- cross-check vs 12c's benign_night train census: IPv4 {c['ipv4_here']:,} here vs {c['ipv4_12c']:,}; "
-              f"non-TCP/UDP {c['in_scope_here']:,} vs {c['in_scope_12c']:,} -> {'MATCH' if c['match'] else 'DIFFER'}",
-              ""]
+        L += [f"- cross-check vs 12c's benign_night train census (before the Pi exclusion; 12c did not exclude): IPv4 "
+              f"{c['ipv4_here']:,} here vs {c['ipv4_12c']:,}; non-TCP/UDP {c['in_scope_here']:,} vs "
+              f"{c['in_scope_12c']:,} -> {'MATCH' if c['match'] else 'DIFFER'}", ""]
 
     L += ["## 1. Per session", ""]
     for sp in SPLITS:
         L += [f"### {sp}", ""]
         L += md_table([r for r in per if r["split"] == sp],
                       ["session", "mode", "ipv4_packets", "excluded_packets", "excluded_in_scope", "kept_packets",
-                       "in_scope_packets", "in_scope_by_proto", "phone_in_scope", "pi_in_scope", "windows_10s",
+                       "in_scope_packets", "in_scope_by_proto", "phone_in_scope", "windows_10s",
                        "late_10s", "first_packet_utc", "last_packet_utc", "runtime_s"]) + [""]
-    L += ["Excluded packets (attack captures) by reason and MAC:", ""]
+    L += ["Excluded packets (attacker / testbed-Pi MAC, every capture) by reason, protocol mix and MAC:", ""]
     L += md_table([r for r in per if r["excluded_packets"]],
-                  ["session", "split", "excluded_packets", "excluded_by_reason", "excluded_by_mac"]) + [""]
+                  ["session", "split", "excluded_packets", "excluded_by_reason", "excluded_by_proto",
+                   "excluded_by_mac"]) + [""]
     L += ["Per capture: " + "; ".join(f"{s['session']} gap dropped {sum(s['gap_dropped'].values()):,}, non-IPv4 "
                                       f"{s['reader_counts'].get('non_ipv4', 0):,}, tshark+loop {fnum(s['tshark_s'], 0)} s"
                                       for s in M["session_meta"]), ""]
@@ -867,12 +873,11 @@ def write_summary(out: Path, M: dict, per: list[dict], mx: list[dict], sens: lis
             L += [f"### {sp} -- {lv}", ""]
             L += md_table([r for r in mx if r["split"] == sp and r["level"] == lv], cols) + [""]
 
-    L += ["## 3. Phones / laptops (randomised MAC, role excluded) and testbed Pis -- share of each max", "",
+    L += ["## 3. Phones / laptops (randomised MAC, role excluded) -- share of each max", "",
           "Phones stay IN the calibration. max_phone_packets = their packets in the max window(s); max_without_phone = "
-          "the max over all windows after removing their packets. Same for Pi packets (kept only in benign_night).", ""]
+          "the max over all windows after removing their packets.", ""]
     L += md_table([r for r in mx if r["dst_scope"] == "all" and r["proto"] == "all"],
-                  ["split", "level", "proto_class", "max_packets", "max_phone_packets", "max_without_phone",
-                   "max_pi_packets", "max_without_pi"]) + [""]
+                  ["split", "level", "proto_class", "max_packets", "max_phone_packets", "max_without_phone"]) + [""]
 
     L += ["## Sensitivity: 1 s / 10 s / 60 s windows (all destinations)", "",
           "max_rate_vs_10s = max rate at this window / max rate at 10 s (short windows catch bursts; long ones average).",
@@ -886,7 +891,9 @@ def write_summary(out: Path, M: dict, per: list[dict], mx: list[dict], sens: lis
     g = P["gre_design"]
     L += ["## 4. Proposed thresholds (packets per 10 s window; alert iff packets > threshold)", "",
           "threshold = int(margin x TRAIN max), all destination kinds pooled. DEFAULT = every non-TCP/UDP proto other "
-          "than ICMP / IGMP (incl. GRE).", ""]
+          "than ICMP / IGMP (incl. GRE), floored: T = max(raw, ICMP threshold of the same level and margin); raw_ = "
+          "before the floor (equal to T for ICMP / IGMP). Val exceedances are counted at T.", "",
+          f"**Note: {DEFAULT_FLOOR_NOTE}.**", ""]
     rows = []
     for lv in LEVELS:
         for cls in CLASSES:
@@ -895,12 +902,16 @@ def write_summary(out: Path, M: dict, per: list[dict], mx: list[dict], sens: lis
                  "val_max": b["val_max"], "val_over_train_max": b["val_over_train_max"]}
             for m in MARGINS:
                 e = P["margins"][f"{m}x"]["val_exceedances"][lv][cls]
+                r[f"raw_{m}x"] = P["margins"][f"{m}x"]["thresholds_raw"][lv][cls]
                 r[f"T_{m}x"] = P["margins"][f"{m}x"]["thresholds"][lv][cls]
                 r[f"val_exc_{m}x"] = f"{e['windows']}{'+' if e['windows_is_lower_bound'] else ''} windows / " \
                                      f"{e['distinct_keys']} keys"
             rows.append(r)
     L += md_table(rows, ["level", "class", "train_max", "train_p99_9", "val_max", "val_over_train_max",
-                         *[c for m in MARGINS for c in (f"T_{m}x", f"val_exc_{m}x")]]) + [""]
+                         *[c for m in MARGINS for c in (f"raw_{m}x", f"T_{m}x", f"val_exc_{m}x")]]) + [""]
+    per_proto = {lv: P["basis"][lv]["DEFAULT"]["per_proto_train_max"] for lv in LEVELS}
+    L += ["DEFAULT train max per proto: " + "; ".join(
+        f"{lv}: {', '.join(f'{p} {n:,}' for p, n in d.items()) or 'no packets'}" for lv, d in per_proto.items()), ""]
     L += ["### Val exceedances (the honesty check), by key / device", ""]
     any_exc = False
     for m in MARGINS:
@@ -922,14 +933,16 @@ def write_summary(out: Path, M: dict, per: list[dict], mx: list[dict], sens: lis
           f"{len(g['victims'])}: min {fnum(g['victim_min_10s'], 0)} / median {fnum(g['victim_median_10s'], 0)}.", ""]
     rows = []
     for m in MARGINS:
-        T, f = P["margins"][f"{m}x"]["thresholds"], P["margins"][f"{m}x"]["gre_design_factor"]
-        rows.append({"margin": f"{m}x", "T_stream_DEFAULT": T[STREAM]["DEFAULT"], "GRE_stream_min / T": f["stream_min"],
-                     "GRE_stream_median / T": f["stream_median"], "T_victim_DEFAULT": T[VICTIM]["DEFAULT"],
+        mm = P["margins"][f"{m}x"]
+        T, R, f = mm["thresholds"], mm["thresholds_raw"], mm["gre_design_factor"]
+        rows.append({"margin": f"{m}x", "raw_stream_DEFAULT": R[STREAM]["DEFAULT"], "T_stream_DEFAULT": T[STREAM]["DEFAULT"],
+                     "GRE_stream_min / T": f["stream_min"], "GRE_stream_median / T": f["stream_median"],
+                     "raw_victim_DEFAULT": R[VICTIM]["DEFAULT"], "T_victim_DEFAULT": T[VICTIM]["DEFAULT"],
                      "GRE_victim_min / T": f["victim_min"], "GRE_victim_median / T": f["victim_median"]})
-    L += md_table(rows, ["margin", "T_stream_DEFAULT", "GRE_stream_min / T", "GRE_stream_median / T",
-                         "T_victim_DEFAULT", "GRE_victim_min / T", "GRE_victim_median / T"], 1)
-    L += ["", "N/A = threshold 0 (no benign train packets of that class): any packet alerts, the factor is undefined.",
-          ""]
+    L += md_table(rows, ["margin", "raw_stream_DEFAULT", "T_stream_DEFAULT", "GRE_stream_min / T",
+                         "GRE_stream_median / T", "raw_victim_DEFAULT", "T_victim_DEFAULT", "GRE_victim_min / T",
+                         "GRE_victim_median / T"], 1)
+    L += ["", "Factors use the floored T. N/A = T is 0 (only if the ICMP floor is 0 too): any packet alerts.", ""]
 
     L += ["## 5. Recommendation (proposal only -- you decide)", "", P["recommendation"]["text"], "",
           f"Rule: {P['recommendation']['rule']}. All three margins are in rate_guard_thresholds_proposed.json as "
@@ -1010,11 +1023,13 @@ def main() -> int:
         bp = read_json(STEP12C_META).get("benign_packet_census") or {}
         r = next(r for r in per if r["session"] == BENIGN_SESSION and r["split"] == "train")
         if bp:
+            here = r["in_scope_packets"] + r["excluded_in_scope"]      # 12c did not exclude Pi packets
             M["cross_check_12c"] = {"ipv4_here": r["ipv4_packets"], "ipv4_12c": bp["ipv4_packets"],
-                                    "in_scope_here": r["in_scope_packets"], "in_scope_12c": bp["non_tcp_udp_packets"],
+                                    "in_scope_here": here, "in_scope_12c": bp["non_tcp_udp_packets"],
                                     "match": r["ipv4_packets"] == bp["ipv4_packets"]
-                                    and r["in_scope_packets"] == bp["non_tcp_udp_packets"],
-                                    "note": "12c: same capture and cut, 02's lean dissector set, filter ip && not 6/17"}
+                                    and here == bp["non_tcp_udp_packets"],
+                                    "note": "12c: same capture and cut, 02's lean dissector set, filter ip && not 6/17, "
+                                            "no Pi exclusion; counts here are before the exclusion"}
             log(f"cross-check vs 12c benign_night train census: {M['cross_check_12c']}")
 
     log("tables + proposal ...")

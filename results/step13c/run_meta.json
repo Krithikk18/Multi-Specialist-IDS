@@ -1,0 +1,1242 @@
+{
+ "script": "13c_rate_guard_benign_fp.py",
+ "code_sha256": "d52b60047f6d0c3e9fa0d83ac581090346bd96bdd378bfd394d247a81d139911",
+ "run_utc": "2026-10-21T18:36:28+00:00",
+ "argv": [
+  "13c_rate_guard_benign_fp.py"
+ ],
+ "dry_run": false,
+ "git_head": "bb84e3923892853e02a0d03dde2fed470700a97d",
+ "tshark_version": "TShark (Wireshark) 4.2.2 (Git v4.2.2 packaged as 4.2.2-1.1build3).",
+ "criteria": {
+  "C4": "benign-key guard alerts (both levels, all protos; key has no attacker / testbed-Pi MAC packets) over daytime + night test benign combined: exact Garwood 95 % UPPER bound of alerts per hour <= 0.5 / h"
+ },
+ "sessions": [
+  "benign_night",
+  "Recon-PortScan",
+  "DDoS-SYN_Flood10",
+  "DDoS-SYN_Flood15",
+  "Mirai-udpplain24",
+  "BenignTraffic1",
+  "BenignTraffic2",
+  "BenignTraffic3"
+ ],
+ "periods": {
+  "benign_night": "night",
+  "Recon-PortScan": "night",
+  "DDoS-SYN_Flood10": "night",
+  "DDoS-SYN_Flood15": "night",
+  "Mirai-udpplain24": "night",
+  "BenignTraffic1": "daytime",
+  "BenignTraffic2": "daytime",
+  "BenignTraffic3": "daytime"
+ },
+ "attacker_macs": {
+  "exact": [
+   "e4:5f:01:55:90:c4"
+  ],
+  "prefixes": [
+   "dc:a6:32"
+  ]
+ },
+ "reader_sha256": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+ "eval_13b_sha256": "6ccbb65ce1af050a76cc01c3da180de9f91cbd908ff6dec8c744a05d036c6175",
+ "never_opened": "train / val ranges of every session; greeth parts (any); test.parquet",
+ "frozen": {
+  "config": "config/rate_guard_v1.json",
+  "config_sha256": "894f75f1b40ad371fc50555b89b91424244650bcc4301dc3a20a04085a42ca8c",
+  "config_git_blob": "7c3762e10e951c054388da29b7721d466a8333bb",
+  "config_version": "v1",
+  "config_unchanged_vs_head": true,
+  "rate_guard_sha256": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+  "rate_guard_sha256_step13": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+  "rate_guard_match": true,
+  "calibrate_sha256": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+  "calibrate_sha256_step13": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+  "rate_guard_kwargs": {
+   "window_s": 10.0,
+   "stream_threshold": 159,
+   "victim_threshold": 321,
+   "stream_proto_thresholds": {
+    "1": 159,
+    "2": 12
+   },
+   "victim_proto_thresholds": {
+    "1": 321,
+    "2": 33
+   }
+  },
+  "config_blob_id": "7c3762e10e951c054388da29b7721d466a8333bb"
+ },
+ "test_opened": {
+  "opened_utc": "2026-10-19T20:32:08+00:00",
+  "git_head": "279a8a742b10c9d6663e12abea7df2ffb6c03850",
+  "pid": 17575,
+  "script_sha256": "a44ee0e8d28ec368fcfbbf6f4eb012ba045d7c9aa05e26d9f873cf990c4a0a63",
+  "prereg_sha256": "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa",
+  "test_path": "~/lgids_cache/datasets/v1_1/test.parquet"
+ },
+ "input_checks": [
+  {
+   "check": "manifest_v1 hard_pass",
+   "pass": true,
+   "detail": "results/step8/manifest_v1.json"
+  },
+  {
+   "check": "manifest_v1_1 hard_pass",
+   "pass": true,
+   "detail": "results/step8b/manifest_v1_1.json"
+  },
+  {
+   "check": "manifest_v1 attack_set == config/attack_set.json",
+   "pass": true,
+   "detail": "attack_set.json"
+  },
+  {
+   "check": "benign_night: manifest_v1 mode == split_plan_v1_1",
+   "pass": true,
+   "detail": "time_split / time_split"
+  },
+  {
+   "check": "benign_night: time_split cuts end ... gap@val|test, test",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val', 'gap@val|test', 'test'] / [1665186230.3, 1665186350.3, 1665191229.65, 1665191349.65]"
+  },
+  {
+   "check": "benign_night: config sha256 == download record BenignTraffic.pcap.sha256.json",
+   "pass": true,
+   "detail": "549a89337f529412... / 549a89337f529412..."
+  },
+  {
+   "check": "Recon-PortScan: manifest_v1 mode == split_plan_v1_1",
+   "pass": true,
+   "detail": "time_split / time_split"
+  },
+  {
+   "check": "Recon-PortScan: time_split cuts end ... gap@val|test, test",
+   "pass": true,
+   "detail": "['train', 'gap@train|val', 'val', 'gap@val|test', 'test'] / [1664288918.6, 1664289038.6, 1664291060.8, 1664291180.8]"
+  },
+  {
+   "check": "Recon-PortScan: 07 label report pcap (manifest_v1) == attack set",
+   "pass": true,
+   "detail": "e13368bdc571a6ec..."
+  },
+  {
+   "check": "DDoS-SYN_Flood10: manifest_v1 mode == split_plan_v1_1",
+   "pass": true,
+   "detail": "test / test"
+  },
+  {
+   "check": "DDoS-SYN_Flood10: test session is all test",
+   "pass": true,
+   "detail": "test ['test']"
+  },
+  {
+   "check": "DDoS-SYN_Flood10: 07 label report pcap (manifest_v1) == attack set",
+   "pass": true,
+   "detail": "ea6223afa0458d11..."
+  },
+  {
+   "check": "DDoS-SYN_Flood15: manifest_v1 mode == split_plan_v1_1",
+   "pass": true,
+   "detail": "test / test"
+  },
+  {
+   "check": "DDoS-SYN_Flood15: test session is all test",
+   "pass": true,
+   "detail": "test ['test']"
+  },
+  {
+   "check": "DDoS-SYN_Flood15: 07 label report pcap (manifest_v1) == attack set",
+   "pass": true,
+   "detail": "cac4947ac5b84447..."
+  },
+  {
+   "check": "Mirai-udpplain24: manifest_v1 mode == split_plan_v1_1",
+   "pass": true,
+   "detail": "test / test"
+  },
+  {
+   "check": "Mirai-udpplain24: test session is all test",
+   "pass": true,
+   "detail": "test ['test']"
+  },
+  {
+   "check": "Mirai-udpplain24: 07 label report pcap (manifest_v1) == attack set",
+   "pass": true,
+   "detail": "adff7dcd1a9f2c19..."
+  },
+  {
+   "check": "BenignTraffic1: split_plan_v1_1 mode test_only",
+   "pass": true,
+   "detail": "test_only"
+  },
+  {
+   "check": "BenignTraffic1: pcap sha256 split_plan_v1_1 == manifest_v1_1 input == its 07 label key",
+   "pass": true,
+   "detail": "7af057c6681e0761..."
+  },
+  {
+   "check": "BenignTraffic2: split_plan_v1_1 mode test_only",
+   "pass": true,
+   "detail": "test_only"
+  },
+  {
+   "check": "BenignTraffic2: pcap sha256 split_plan_v1_1 == manifest_v1_1 input == its 07 label key",
+   "pass": true,
+   "detail": "ddafc1c1d3432bdd..."
+  },
+  {
+   "check": "BenignTraffic3: split_plan_v1_1 mode test_only",
+   "pass": true,
+   "detail": "test_only"
+  },
+  {
+   "check": "BenignTraffic3: pcap sha256 split_plan_v1_1 == manifest_v1_1 input == its 07 label key",
+   "pass": true,
+   "detail": "af98016449742052..."
+  }
+ ],
+ "active_idle_gap_seconds": 300.0,
+ "device_table_attacker_rows": [
+  {
+   "mac": "dc:a6:32:dc:27:d5",
+   "device_name": "Raspberry Pi 4 (8 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:c6",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:02",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e6:f4",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:ef",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:a4",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:d5",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:90",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "e4:5f:01:55:90:c4",
+   "device_name": "Raspberry Pi 4 (4 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:ab",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  }
+ ],
+ "per_capture": [
+  {
+   "session": "benign_night",
+   "period": "night",
+   "kind": "benign",
+   "mode": "time_split",
+   "pcap": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+   "pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+   "sha256_expected": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8",
+   "sha256_match": true,
+   "size_bytes": 2048000100,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1665186230.3,
+    1665186350.3,
+    1665191229.65,
+    1665191349.65
+   ],
+   "boundaries_utc": [
+    "2022-10-07T23:43:50+00:00",
+    "2022-10-07T23:45:50+00:00",
+    "2022-10-08T01:07:09+00:00",
+    "2022-10-08T01:09:09+00:00"
+   ],
+   "test_start_epoch": 1665191349.65,
+   "tshark_display_filter": "frame.time_epoch >= 1665191349.650000",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/BenignTraffic.pcap -Y frame.time_epoch >= 1665191349.650000 -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 533976,
+    "non_ipv4": 19114,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.dst ATTACKER_MACS": 2597,
+    "eth.src ATTACKER_MACS": 2630,
+    "in_scope eth.src ATTACKER_MACS": 430,
+    "in_scope eth.dst ATTACKER_MACS": 2
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 5147,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 48,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 8,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 8,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 4,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 4,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 3,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 3,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 2
+   },
+   "excluded_by_proto": {
+    "TCP": 2991,
+    "UDP": 1804,
+    "ICMP": 429,
+    "IGMP": 3
+   },
+   "active_segments_utc": [
+    [
+     "2022-10-08T01:09:09.664Z",
+     "2022-10-08T02:30:28.319Z"
+    ]
+   ],
+   "active_hours": 1.3551818741692436,
+   "raw_span_hours": 1.3551818741692436,
+   "flow_active_hours_08": 1.355374999973509,
+   "attacker_ip_set": null,
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 509635,
+    "packets_in_scope": 3359,
+    "packets_ignored_tcp_udp": 506276,
+    "late_packets": 0,
+    "windows_closed": 475,
+    "alerts": 0,
+    "max_active_keys": 18
+   },
+   "checks": [
+    {
+     "check": "benign_night: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "509,635 / 509,635 / 509,635"
+    },
+    {
+     "check": "benign_night: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "3,359 vs 3,359"
+    },
+    {
+     "check": "benign_night: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "3,359 / 3,359 vs 3,359"
+    },
+    {
+     "check": "benign_night: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 49.6,
+   "runtime_s": 49.6,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "Recon-PortScan",
+   "period": "night",
+   "kind": "attack",
+   "mode": "time_split",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+   "pcap_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+   "sha256_expected": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+   "sha256_match": true,
+   "size_bytes": 200950957,
+   "cut_labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1664288918.6,
+    1664289038.6,
+    1664291060.8,
+    1664291180.8
+   ],
+   "boundaries_utc": [
+    "2022-09-27T14:28:38+00:00",
+    "2022-09-27T14:30:38+00:00",
+    "2022-09-27T15:04:20+00:00",
+    "2022-09-27T15:06:20+00:00"
+   ],
+   "test_start_epoch": 1664291180.8,
+   "tshark_display_filter": "frame.time_epoch >= 1664291180.800000",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap -Y frame.time_epoch >= 1664291180.800000 -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 168307,
+    "non_ipv4": 4839,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.src ATTACKER_MACS": 20992,
+    "eth.dst ATTACKER_MACS": 19587
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 39550,
+    "attacker dc:a6:32:dc:28:48 (dc:a6:32:dc:28:48)": 1025,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 2,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 1,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 1
+   },
+   "excluded_by_proto": {
+    "TCP": 40472,
+    "UDP": 107
+   },
+   "active_segments_utc": [
+    [
+     "2022-09-27T15:08:00.455Z",
+     "2022-09-27T15:11:00.655Z"
+    ],
+    [
+     "2022-09-27T15:24:00.560Z",
+     "2022-09-27T15:29:00.788Z"
+    ],
+    [
+     "2022-09-27T16:47:00.133Z",
+     "2022-09-27T16:49:00.415Z"
+    ],
+    [
+     "2022-09-27T17:00:00.196Z",
+     "2022-09-27T17:16:00.794Z"
+    ]
+   ],
+   "active_hours": 0.43369645807478163,
+   "raw_span_hours": 2.1334274605909984,
+   "flow_active_hours_08": 0.4620000000132455,
+   "attacker_ip_set": {
+    "source": "/home/krithikk/lgids_cache/maps/Recon-PortScan_attacker_ips.json",
+    "pairs": 21,
+    "ipv4_unicast_ips": [
+     "192.168.137.127",
+     "192.168.137.151",
+     "192.168.137.178",
+     "192.168.137.217",
+     "192.168.137.27",
+     "192.168.137.4",
+     "192.168.137.64",
+     "192.168.137.86",
+     "192.168.137.98"
+    ]
+   },
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 122889,
+    "packets_in_scope": 1361,
+    "packets_ignored_tcp_udp": 121528,
+    "late_packets": 0,
+    "windows_closed": 116,
+    "alerts": 0,
+    "max_active_keys": 20
+   },
+   "checks": [
+    {
+     "check": "Recon-PortScan: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "122,889 / 122,889 / 122,889"
+    },
+    {
+     "check": "Recon-PortScan: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "1,361 vs 1,361"
+    },
+    {
+     "check": "Recon-PortScan: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "1,361 / 1,361 vs 1,361"
+    },
+    {
+     "check": "Recon-PortScan: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 9.0,
+   "runtime_s": 9.0,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "DDoS-SYN_Flood10",
+   "period": "night",
+   "kind": "attack",
+   "mode": "test",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood10.pcap",
+   "pcap_sha256": "ea6223afa0458d117e90bb2972145cfa002d2172f7a5a706ca32d5fa4c59f1c9",
+   "sha256_expected": "ea6223afa0458d117e90bb2972145cfa002d2172f7a5a706ca32d5fa4c59f1c9",
+   "sha256_match": true,
+   "size_bytes": 2048000072,
+   "cut_labels": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "test_start_epoch": null,
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood10.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 26762773,
+    "non_ipv4": 33439,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.src ATTACKER_MACS": 26413791,
+    "eth.dst ATTACKER_MACS": 203333,
+    "in_scope eth.dst ATTACKER_MACS": 9,
+    "in_scope eth.src ATTACKER_MACS": 2
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 5061736,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:ab)": 4125217,
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 3709105,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 3703660,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 3602289,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 3538254,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 2876600,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 129,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 71,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 63
+   },
+   "excluded_by_proto": {
+    "TCP": 26616859,
+    "UDP": 254,
+    "ICMP": 9,
+    "IGMP": 2
+   },
+   "active_segments_utc": [
+    [
+     "2022-08-30T13:10:09.132Z",
+     "2022-08-30T13:45:21.130Z"
+    ]
+   ],
+   "active_hours": 0.5866660997602675,
+   "raw_span_hours": 0.5866660997602675,
+   "flow_active_hours_08": 0.5869444444444445,
+   "attacker_ip_set": {
+    "source": "/home/krithikk/lgids_cache/maps/DDoS-SYN_Flood10_attacker_ips.json",
+    "pairs": 18,
+    "ipv4_unicast_ips": [
+     "192.168.137.134",
+     "192.168.137.17",
+     "192.168.137.195",
+     "192.168.137.213",
+     "192.168.137.224",
+     "192.168.137.240",
+     "192.168.137.242",
+     "192.168.137.58",
+     "192.168.137.90",
+     "192.168.137.96"
+    ]
+   },
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 112210,
+    "packets_in_scope": 5584,
+    "packets_ignored_tcp_udp": 106626,
+    "late_packets": 0,
+    "windows_closed": 174,
+    "alerts": 0,
+    "max_active_keys": 74
+   },
+   "checks": [
+    {
+     "check": "DDoS-SYN_Flood10: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "112,210 / 112,210 / 112,210"
+    },
+    {
+     "check": "DDoS-SYN_Flood10: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "5,584 vs 5,584"
+    },
+    {
+     "check": "DDoS-SYN_Flood10: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "5,584 / 5,584 vs 5,584"
+    },
+    {
+     "check": "DDoS-SYN_Flood10: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 368.3,
+   "runtime_s": 368.3,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "DDoS-SYN_Flood15",
+   "period": "night",
+   "kind": "attack",
+   "mode": "test",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood15.pcap",
+   "pcap_sha256": "cac4947ac5b84447b7da9e49ff31dfdc394b4f8f60f9af83987d1fb02be355aa",
+   "sha256_expected": "cac4947ac5b84447b7da9e49ff31dfdc394b4f8f60f9af83987d1fb02be355aa",
+   "sha256_match": true,
+   "size_bytes": 1059387506,
+   "cut_labels": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "test_start_epoch": null,
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood15.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 13722634,
+    "non_ipv4": 20586,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.src ATTACKER_MACS": 13542092,
+    "eth.dst ATTACKER_MACS": 81017,
+    "in_scope eth.src ATTACKER_MACS": 19
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:ab)": 3153348,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 2287899,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 2005946,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 1864236,
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 1610303,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 1429339,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 1271155,
+    "attacker dc:a6:32:dc:28:48 (dc:a6:32:dc:28:48)": 861,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 8,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 8,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 6
+   },
+   "excluded_by_proto": {
+    "TCP": 13622712,
+    "UDP": 378,
+    "ICMP": 19
+   },
+   "active_segments_utc": [
+    [
+     "2022-11-29T19:18:18.242Z",
+     "2022-11-29T19:29:00.270Z"
+    ],
+    [
+     "2022-12-01T14:32:00.762Z",
+     "2022-12-01T14:43:00.681Z"
+    ]
+   ],
+   "active_hours": 0.3616518783569336,
+   "raw_span_hours": 43.411788674195606,
+   "flow_active_hours_08": 0.3622222222222222,
+   "attacker_ip_set": {
+    "source": "/home/krithikk/lgids_cache/maps/DDoS-SYN_Flood15_attacker_ips.json",
+    "pairs": 24,
+    "ipv4_unicast_ips": [
+     "192.168.137.105",
+     "192.168.137.153",
+     "192.168.137.166",
+     "192.168.137.200",
+     "192.168.137.201",
+     "192.168.137.238",
+     "192.168.137.243",
+     "192.168.137.34",
+     "192.168.137.36",
+     "192.168.137.60",
+     "192.168.137.68",
+     "192.168.137.7",
+     "192.168.137.76",
+     "192.168.137.87",
+     "192.168.137.99"
+    ]
+   },
+   "attacker_ip_collisions": [
+    {
+     "ip": "192.168.137.68",
+     "eth_src": "Netatmo Camera (70:ee:50:68:0e:32)",
+     "packets": 166
+    },
+    {
+     "ip": "192.168.137.76",
+     "eth_src": "Atomi Coffee Maker (68:57:2d:56:ac:47)",
+     "packets": 49
+    }
+   ],
+   "attack_related_windows": {
+    "stream": 43,
+    "victim": 43
+   },
+   "guard_stats": {
+    "packets_seen": 78939,
+    "packets_in_scope": 4175,
+    "packets_ignored_tcp_udp": 74764,
+    "late_packets": 0,
+    "windows_closed": 132,
+    "alerts": 0,
+    "max_active_keys": 56
+   },
+   "checks": [
+    {
+     "check": "DDoS-SYN_Flood15: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "78,939 / 78,939 / 78,939"
+    },
+    {
+     "check": "DDoS-SYN_Flood15: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "4,175 vs 4,175"
+    },
+    {
+     "check": "DDoS-SYN_Flood15: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "4,175 / 4,175 vs 4,175"
+    },
+    {
+     "check": "DDoS-SYN_Flood15: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 189.0,
+   "runtime_s": 189.0,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "Mirai-udpplain24",
+   "period": "night",
+   "kind": "attack",
+   "mode": "test",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain24.pcap",
+   "pcap_sha256": "adff7dcd1a9f2c19ca01c6df051555bfefdc2acf59277bd9dbe0dab3bd9791f5",
+   "sha256_expected": "adff7dcd1a9f2c19ca01c6df051555bfefdc2acf59277bd9dbe0dab3bd9791f5",
+   "sha256_match": true,
+   "size_bytes": 839868044,
+   "cut_labels": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "test_start_epoch": null,
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain24.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 1506334,
+    "non_ipv4": 15326,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.src ATTACKER_MACS": 1451678,
+    "eth.dst ATTACKER_MACS": 1498,
+    "in_scope eth.dst ATTACKER_MACS": 944,
+    "in_scope eth.src ATTACKER_MACS": 241
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 388571,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 221152,
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 209324,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 190159,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:ab)": 167027,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 144205,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 132061,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 650,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 24,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 3
+   },
+   "excluded_by_proto": {
+    "UDP": 1451596,
+    "ICMP": 1185,
+    "TCP": 395
+   },
+   "active_segments_utc": [
+    [
+     "2023-02-07T16:23:57.830Z",
+     "2023-02-07T16:28:00.354Z"
+    ],
+    [
+     "2023-02-14T17:27:00.155Z",
+     "2023-02-14T17:38:00.593Z"
+    ]
+   ],
+   "active_hours": 0.2508224058151245,
+   "raw_span_hours": 169.23410068054994,
+   "flow_active_hours_08": 0.2513888888888889,
+   "attacker_ip_set": {
+    "source": "/home/krithikk/lgids_cache/maps/Mirai-udpplain24_attacker_ips.json",
+    "pairs": 31,
+    "ipv4_unicast_ips": [
+     "192.168.137.106",
+     "192.168.137.11",
+     "192.168.137.128",
+     "192.168.137.13",
+     "192.168.137.147",
+     "192.168.137.162",
+     "192.168.137.207",
+     "192.168.137.236",
+     "192.168.137.238",
+     "192.168.137.247"
+    ]
+   },
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 37832,
+    "packets_in_scope": 4020,
+    "packets_ignored_tcp_udp": 33812,
+    "late_packets": 0,
+    "windows_closed": 91,
+    "alerts": 0,
+    "max_active_keys": 36
+   },
+   "checks": [
+    {
+     "check": "Mirai-udpplain24: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "37,832 / 37,832 / 37,832"
+    },
+    {
+     "check": "Mirai-udpplain24: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "4,020 vs 4,020"
+    },
+    {
+     "check": "Mirai-udpplain24: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "4,020 / 4,020 vs 4,020"
+    },
+    {
+     "check": "Mirai-udpplain24: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 22.0,
+   "runtime_s": 22.0,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "BenignTraffic1",
+   "period": "daytime",
+   "kind": "benign",
+   "mode": "test_only",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic1.pcap",
+   "pcap_sha256": "7af057c6681e076151cc28e123a44ea6ff0e3b174d39d456ba7ccf1ac22d24c0",
+   "sha256_expected": "7af057c6681e076151cc28e123a44ea6ff0e3b174d39d456ba7ccf1ac22d24c0",
+   "sha256_match": true,
+   "size_bytes": 2048002499,
+   "cut_labels": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "test_start_epoch": null,
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic1.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 2988642,
+    "non_ipv4": 103140,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.dst ATTACKER_MACS": 13912,
+    "eth.src ATTACKER_MACS": 14090,
+    "in_scope eth.src ATTACKER_MACS": 2502,
+    "in_scope eth.dst ATTACKER_MACS": 5
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 27680,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 123,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 85,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 46,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 16,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 15,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 13,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:ab)": 10,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 8,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 6
+   },
+   "excluded_by_proto": {
+    "TCP": 15860,
+    "UDP": 9635,
+    "ICMP": 2499,
+    "IGMP": 8
+   },
+   "active_segments_utc": [
+    [
+     "2022-10-08T02:30:28.319Z",
+     "2022-10-08T09:45:21.025Z"
+    ]
+   ],
+   "active_hours": 7.247973876926634,
+   "raw_span_hours": 7.247973876926634,
+   "flow_active_hours_08": 7.248055555555555,
+   "attacker_ip_set": null,
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 2857500,
+    "packets_in_scope": 18107,
+    "packets_ignored_tcp_udp": 2839393,
+    "late_packets": 0,
+    "windows_closed": 2514,
+    "alerts": 0,
+    "max_active_keys": 21
+   },
+   "checks": [
+    {
+     "check": "BenignTraffic1: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "2,857,500 / 2,857,500 / 2,857,500"
+    },
+    {
+     "check": "BenignTraffic1: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "18,107 vs 18,107"
+    },
+    {
+     "check": "BenignTraffic1: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "18,107 / 18,107 vs 18,107"
+    },
+    {
+     "check": "BenignTraffic1: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 48.2,
+   "runtime_s": 48.2,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "BenignTraffic2",
+   "period": "daytime",
+   "kind": "benign",
+   "mode": "test_only",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic2.pcap",
+   "pcap_sha256": "ddafc1c1d3432bdde55340423196ceee79bba47b48b14179ae48d561cca341b8",
+   "sha256_expected": "ddafc1c1d3432bdde55340423196ceee79bba47b48b14179ae48d561cca341b8",
+   "sha256_match": true,
+   "size_bytes": 2048001991,
+   "cut_labels": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "test_start_epoch": null,
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic2.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 3138002,
+    "non_ipv4": 110765,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.dst ATTACKER_MACS": 27451,
+    "eth.src ATTACKER_MACS": 21768,
+    "in_scope eth.src ATTACKER_MACS": 2968,
+    "in_scope eth.dst ATTACKER_MACS": 6
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 29904,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 6541,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 6361,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 6353,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 16,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 13,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 13,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 7,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:ab)": 7,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 4
+   },
+   "excluded_by_proto": {
+    "TCP": 36772,
+    "UDP": 9473,
+    "ICMP": 2967,
+    "IGMP": 7
+   },
+   "active_segments_utc": [
+    [
+     "2022-10-08T09:45:21.039Z",
+     "2022-10-08T17:47:21.040Z"
+    ]
+   ],
+   "active_hours": 8.033333668311437,
+   "raw_span_hours": 8.033333668311437,
+   "flow_active_hours_08": 8.033055555555556,
+   "attacker_ip_set": null,
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 2978018,
+    "packets_in_scope": 18789,
+    "packets_ignored_tcp_udp": 2959229,
+    "late_packets": 0,
+    "windows_closed": 2763,
+    "alerts": 0,
+    "max_active_keys": 82
+   },
+   "checks": [
+    {
+     "check": "BenignTraffic2: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "2,978,018 / 2,978,018 / 2,978,018"
+    },
+    {
+     "check": "BenignTraffic2: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "18,789 vs 18,789"
+    },
+    {
+     "check": "BenignTraffic2: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "18,789 / 18,789 vs 18,789"
+    },
+    {
+     "check": "BenignTraffic2: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 47.4,
+   "runtime_s": 47.4,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  },
+  {
+   "session": "BenignTraffic3",
+   "period": "daytime",
+   "kind": "benign",
+   "mode": "test_only",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic3.pcap",
+   "pcap_sha256": "af98016449742052bca87d7ac598cf6e4e4558c33480cdb665f93da7b60b6e11",
+   "sha256_expected": "af98016449742052bca87d7ac598cf6e4e4558c33480cdb665f93da7b60b6e11",
+   "sha256_match": true,
+   "size_bytes": 853841091,
+   "cut_labels": [
+    "test"
+   ],
+   "boundaries_epoch": [],
+   "boundaries_utc": [],
+   "test_start_epoch": null,
+   "tshark_display_filter": null,
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/ciciot2023/benign/BenignTraffic3.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 1311897,
+    "non_ipv4": 46439,
+    "stderr_tail": ""
+   },
+   "gap_dropped": {},
+   "excluded_by_reason": {
+    "eth.src ATTACKER_MACS": 6674,
+    "eth.dst ATTACKER_MACS": 5947,
+    "in_scope eth.src ATTACKER_MACS": 1118,
+    "in_scope eth.dst ATTACKER_MACS": 2
+   },
+   "excluded_by_mac": {
+    "Raspberry Pi 4 (8 GB) [testbed_pi] (dc:a6:32:dc:27:d5)": 12482,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:c6)": 80,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e6:f4)": 15,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:02)": 15,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:90)": 7,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:ab)": 6,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e4:d5)": 6,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:ef)": 6,
+    "Raspberry Pi 4 (2 GB) [testbed_pi] (dc:a6:32:c9:e5:a4)": 3,
+    "Raspberry Pi 4 (4 GB) [testbed_pi] (e4:5f:01:55:90:c4)": 1
+   },
+   "excluded_by_proto": {
+    "TCP": 7631,
+    "UDP": 3870,
+    "ICMP": 1117,
+    "IGMP": 3
+   },
+   "active_segments_utc": [
+    [
+     "2022-10-08T17:47:21.040Z",
+     "2022-10-08T21:15:01.072Z"
+    ]
+   ],
+   "active_hours": 3.461119860013326,
+   "raw_span_hours": 3.461119860013326,
+   "flow_active_hours_08": 3.4611111111111112,
+   "attacker_ip_set": null,
+   "attacker_ip_collisions": [],
+   "attack_related_windows": {
+    "stream": 0,
+    "victim": 0
+   },
+   "guard_stats": {
+    "packets_seen": 1252837,
+    "packets_in_scope": 7510,
+    "packets_ignored_tcp_udp": 1245327,
+    "late_packets": 0,
+    "windows_closed": 1192,
+    "alerts": 0,
+    "max_active_keys": 18
+   },
+   "checks": [
+    {
+     "check": "BenignTraffic3: guard packets_seen == kept packets == IPv4 - excluded",
+     "pass": true,
+     "detail": "1,252,837 / 1,252,837 / 1,252,837"
+    },
+    {
+     "check": "BenignTraffic3: guard packets_in_scope == kept non-TCP/UDP",
+     "pass": true,
+     "detail": "7,510 vs 7,510"
+    },
+    {
+     "check": "BenignTraffic3: drained stream == victim == in scope - late",
+     "pass": true,
+     "detail": "7,510 / 7,510 vs 7,510"
+    },
+    {
+     "check": "BenignTraffic3: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "0 vs 0"
+    }
+   ],
+   "tshark_s": 20.3,
+   "runtime_s": 20.3,
+   "peak_rss_after": {
+    "python_self_mb": 176.8,
+    "tshark_max_mb": 176.8
+   }
+  }
+ ],
+ "hours": {
+  "definition": "packet active time: kept IPv4 packets per capture range split at pauses > 300 s; sum of (last - first) per segment, summed over captures",
+  "per_capture": {
+   "benign_night": 1.3551818741692436,
+   "Recon-PortScan": 0.43369645807478163,
+   "DDoS-SYN_Flood10": 0.5866660997602675,
+   "DDoS-SYN_Flood15": 0.3616518783569336,
+   "Mirai-udpplain24": 0.2508224058151245,
+   "BenignTraffic1": 7.247973876926634,
+   "BenignTraffic2": 8.033333668311437,
+   "BenignTraffic3": 3.461119860013326
+  },
+  "daytime": 18.742427405251398,
+  "night": 2.9880187161763505,
+  "total": 21.730446121427747,
+  "raw_span_total": 235.46359219451745,
+  "flow_active_08_total": 21.760152777764535
+ },
+ "rates": [
+  {
+   "scope": "daytime + night (C4)",
+   "benign_key_alerts": 0,
+   "hours": 21.730446121427747,
+   "alerts_per_h": 0.0,
+   "ci95_lower_per_h": 0.0,
+   "ci95_upper_per_h": 0.16975626885434447,
+   "ci95_count": "[0.000, 3.689]"
+  },
+  {
+   "scope": "daytime",
+   "benign_key_alerts": 0,
+   "hours": 18.742427405251398,
+   "alerts_per_h": 0.0,
+   "ci95_lower_per_h": 0.0,
+   "ci95_upper_per_h": 0.19681972747459364,
+   "ci95_count": "[0.000, 3.689]"
+  },
+  {
+   "scope": "night",
+   "benign_key_alerts": 0,
+   "hours": 2.9880187161763505,
+   "alerts_per_h": 0.0,
+   "ci95_lower_per_h": 0.0,
+   "ci95_upper_per_h": 1.2345570106851433,
+   "ci95_count": "[0.000, 3.689]"
+  }
+ ],
+ "C4": {
+  "pass": true,
+  "benign_key_alerts": 0,
+  "hours": 21.730446121427747,
+  "lower_count": 0.0,
+  "upper_count": 3.6888794541139354,
+  "upper_per_h": 0.16975626885434447,
+  "point_per_h": 0.0,
+  "limit_per_h": 0.5,
+  "method": "exact Garwood: upper = chi2.ppf(0.975, 2k + 2) / 2"
+ },
+ "alerts_total": {
+  "benign_key": 0,
+  "attack_related": 0
+ },
+ "peak_rss": {
+  "python_self_mb": 176.8,
+  "tshark_max_mb": 176.8
+ },
+ "runtime_s": 780.6
+}

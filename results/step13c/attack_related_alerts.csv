@@ -1,0 +1,1 @@
+capture,period,capture_kind,key_class,level,key,src_ip,dst_ip,proto,proto_name,dst_kind,packets,threshold,packets_over_threshold,rate_pps,window_start_utc,window_end_utc,first_seen_utc,last_seen_utc,emitted_utc,emitted_by,attacker_ip_packets_in_window,senders,receivers,alert_src_macs

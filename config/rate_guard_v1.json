@@ -1,0 +1,26 @@
+{
+ "version": "v1",
+ "args": {
+  "window_s": 10.0,
+  "stream_threshold": 159,
+  "victim_threshold": 321,
+  "stream_proto_thresholds": {
+   "1": 159,
+   "2": 12
+  },
+  "victim_proto_thresholds": {
+   "1": 321,
+   "2": 33
+  }
+ },
+ "loader_note": "args are RateGuard keyword arguments; JSON object keys are strings, so convert the *_proto_thresholds keys to int before RateGuard(**args)",
+ "provenance": {
+  "source": "results/step13/rate_guard_thresholds_proposed.json",
+  "source_sha256": "b87b0dc6315d2b64128697e5b6466ce64c038d5d92df4269875e69da2824b2e6",
+  "margin": 3,
+  "rule": "train max x3, DEFAULT floored at ICMP threshold",
+  "chosen_by": "user",
+  "date": "2026-10-21",
+  "note": "chosen before any greeth part 9/18 is processed; VPN tunnels (GRE/ESP) not represented in benign data -- known limitation"
+ }
+}

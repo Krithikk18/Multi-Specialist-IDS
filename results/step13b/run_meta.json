@@ -1,0 +1,519 @@
+{
+ "script": "13b_rate_guard_eval.py",
+ "code_sha256": "6ccbb65ce1af050a76cc01c3da180de9f91cbd908ff6dec8c744a05d036c6175",
+ "run_utc": "2026-10-21T16:39:24+00:00",
+ "argv": [
+  "13b_rate_guard_eval.py"
+ ],
+ "dry_run": false,
+ "git_head": "95df416d19503181d3fa7cc24d25d5663a4935cb",
+ "tshark_version": "TShark (Wireshark) 4.2.2 (Git v4.2.2 packaged as 4.2.2-1.1build3).",
+ "criteria": {
+  "C1": "every attacked victim key (dst_ip, 47) raises a victim-level alert, and every GRE attacker stream with >= 1,000 packets raises a stream-level alert",
+  "C2": "first alert for each attacked victim key <= 20 s after that victim's first attacker GRE packet",
+  "C3": "0 alerts on keys with NO attacker-MAC packets (benign keys)"
+ },
+ "captures": {
+  "Mirai-greeth_flood.pcap": "DESIGN DATA",
+  "Mirai-greeth_flood9.pcap": "VALIDATION",
+  "Mirai-greeth_flood18.pcap": "VALIDATION"
+ },
+ "attacker_macs": {
+  "exact": [
+   "e4:5f:01:55:90:c4"
+  ],
+  "prefixes": [
+   "dc:a6:32"
+  ]
+ },
+ "never_opened": "Mirai-greeth_flood27.pcap, Mirai-greeth_flood28.pcap (reserved fresh test); test.parquet",
+ "frozen": {
+  "config": "config/rate_guard_v1.json",
+  "config_sha256": "894f75f1b40ad371fc50555b89b91424244650bcc4301dc3a20a04085a42ca8c",
+  "config_git_blob": "7c3762e10e951c054388da29b7721d466a8333bb",
+  "config_version": "v1",
+  "config_unchanged_vs_head": true,
+  "rate_guard_sha256": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+  "rate_guard_sha256_step13": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+  "rate_guard_match": true,
+  "calibrate_sha256": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+  "calibrate_sha256_step13": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+  "rate_guard_kwargs": {
+   "window_s": 10.0,
+   "stream_threshold": 159,
+   "victim_threshold": 321,
+   "stream_proto_thresholds": {
+    "1": 159,
+    "2": 12
+   },
+   "victim_proto_thresholds": {
+    "1": 321,
+    "2": 33
+   }
+  }
+ },
+ "device_table_attacker_rows": [
+  {
+   "mac": "dc:a6:32:dc:27:d5",
+   "device_name": "Raspberry Pi 4 (8 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:c6",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:02",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e6:f4",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:ef",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e5:a4",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:d5",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:90",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "e4:5f:01:55:90:c4",
+   "device_name": "Raspberry Pi 4 (4 GB)",
+   "role": "testbed_pi"
+  },
+  {
+   "mac": "dc:a6:32:c9:e4:ab",
+   "device_name": "Raspberry Pi 4 (2 GB)",
+   "role": "testbed_pi"
+  }
+ ],
+ "disk": {
+  "home_free_gb": 956.5,
+  "df_h": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sdd       1007G   65G  891G   7% /",
+  "min_free_gb": 10.0
+ },
+ "pcaps": [
+  {
+   "file": "Mirai-greeth_flood.pcap",
+   "role": "DESIGN DATA",
+   "source": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/raw/ciciot2023/Mirai/Mirai-greeth_flood/Mirai-greeth_flood.pcap",
+   "used_path": "/home/krithikk/lgids_cache/pilot_greeth/Mirai-greeth_flood.pcap",
+   "how": "12b cached copy reused",
+   "size_bytes": 2048000288,
+   "sha256": "87f8de16e575f23fca6c159a94360c6dd2970c4d9a1711d46c9468f1cf724c0e",
+   "sha256_expected": "87f8de16e575f23fca6c159a94360c6dd2970c4d9a1711d46c9468f1cf724c0e",
+   "sha256_match": true,
+   "copy_s": 0.0,
+   "sha256_s": 1.3
+  },
+  {
+   "file": "Mirai-greeth_flood9.pcap",
+   "role": "VALIDATION",
+   "source": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/raw/ciciot2023/Mirai/Mirai-greeth_flood/Mirai-greeth_flood9.pcap",
+   "used_path": "/home/krithikk/lgids_cache/greeth_eval/Mirai-greeth_flood9.pcap",
+   "how": "copied to the cache",
+   "size_bytes": 2048000289,
+   "sha256": "ccaa6f7dc7ef5a73edbfde204eb0b80053f36091e1f2cf8214ce8515cd81af24",
+   "sha256_expected": "ccaa6f7dc7ef5a73edbfde204eb0b80053f36091e1f2cf8214ce8515cd81af24",
+   "sha256_match": true,
+   "copy_s": 27.4,
+   "sha256_s": 1.4
+  },
+  {
+   "file": "Mirai-greeth_flood18.pcap",
+   "role": "VALIDATION",
+   "source": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/raw/ciciot2023/Mirai/Mirai-greeth_flood/Mirai-greeth_flood18.pcap",
+   "used_path": "/home/krithikk/lgids_cache/greeth_eval/Mirai-greeth_flood18.pcap",
+   "how": "copied to the cache",
+   "size_bytes": 2048000104,
+   "sha256": "4de6b847ae0b9c4a264d9b9341db40b919cb726ca4558d26cb27d5fe29877cfc",
+   "sha256_expected": "4de6b847ae0b9c4a264d9b9341db40b919cb726ca4558d26cb27d5fe29877cfc",
+   "sha256_match": true,
+   "copy_s": 26.0,
+   "sha256_s": 1.3
+  }
+ ],
+ "cross_check_12b": {
+  "gre_streams_12b": 14,
+  "gre_streams_here": 14,
+  "streams_identical": true,
+  "attacker_ipv4_packets_here": 3254749,
+  "attacker_packets_12b": 3257230,
+  "gre_attacker_here": 3254376,
+  "gre_attacker_12b": 3254376,
+  "match": true,
+  "note": "12b: full-dissection tshark, attacker = outer eth.src in ATTACKER_MACS; here: 13's lean reader (IPv4 only, so 12b's non-IPv4 attacker frames are not counted here)"
+ },
+ "per_capture": [
+  {
+   "capture": "Mirai-greeth_flood.pcap",
+   "role": "DESIGN DATA",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/pilot_greeth/Mirai-greeth_flood.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 3352569,
+    "non_ipv4": 12413,
+    "stderr_tail": ""
+   },
+   "ipv4_packets": 3340156,
+   "attacker_packets": 3254749,
+   "attacker_by_proto": {
+    "47": 3254376,
+    "17": 164,
+    "6": 141,
+    "1": 66,
+    "2": 2
+   },
+   "non_tcp_udp_by_proto": {
+    "47": 3254376,
+    "1": 2619,
+    "2": 86
+   },
+   "first_utc": "2023-01-12T15:19:00.107Z",
+   "last_utc": "2023-01-12T15:37:06.823Z",
+   "duration_s": 1086.716227054596,
+   "stream_keys": 180,
+   "victim_keys": 76,
+   "guard_stats": {
+    "packets_seen": 3340156,
+    "packets_in_scope": 3257081,
+    "packets_ignored_tcp_udp": 83075,
+    "late_packets": 0,
+    "windows_closed": 86,
+    "alerts": 557,
+    "max_active_keys": 116
+   },
+   "checks": [
+    {
+     "check": "Mirai-greeth_flood.pcap: guard packets_seen == IPv4 packets fed",
+     "pass": true,
+     "detail": "3,340,156 vs 3,340,156"
+    },
+    {
+     "check": "Mirai-greeth_flood.pcap: guard packets_in_scope == non-TCP/UDP packets",
+     "pass": true,
+     "detail": "3,257,081 vs 3,257,081"
+    },
+    {
+     "check": "Mirai-greeth_flood.pcap: stream / victim key totals == non-TCP/UDP packets",
+     "pass": true,
+     "detail": "3,257,081 / 3,257,081 vs 3,257,081"
+    },
+    {
+     "check": "Mirai-greeth_flood.pcap: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "557 vs 557"
+    }
+   ],
+   "criteria": {
+    "C1": {
+     "pass": true,
+     "attacked_victim_keys": 2,
+     "victims_alerted": 2,
+     "victims_missed": [],
+     "gre_streams": 14,
+     "gre_streams_ge_1000": 14,
+     "streams_alerted": 14,
+     "streams_missed": [],
+     "gre_streams_lt_1000_alerted": 0,
+     "note": ""
+    },
+    "C2": {
+     "pass": true,
+     "max_latency_s": 5.854927062988281,
+     "latencies_s": {
+      "192.168.137.254": 5.854927062988281,
+      "192.168.137.242": 1.268928050994873
+     }
+    },
+    "C3": {
+     "pass": true,
+     "benign_key_alerts": 0,
+     "benign_keys_alerted": 0
+    }
+   },
+   "other": {
+    "victim_attack_windows": 81,
+    "victim_alerted_windows": 81,
+    "victim_share_alerted": 1.0,
+    "any_level_alerted_windows": 81,
+    "any_level_share_alerted": 1.0,
+    "stream_attack_windows_ge_1000": 478,
+    "stream_alerted_windows_ge_1000": 476,
+    "stream_share_alerted_ge_1000": 0.99581589958159,
+    "benign_alerts_per_hour": 0.0,
+    "capture_hours": 0.30186561862627664,
+    "attacker_non_gre_alerts": 0,
+    "alerts_by_class_level": {
+     "attack stream": 476,
+     "attack victim": 81
+    }
+   },
+   "tshark_s": 46.1,
+   "runtime_s": 46.2,
+   "peak_rss_after": {
+    "python_self_mb": 125.5,
+    "tshark_max_mb": 143.9
+   }
+  },
+  {
+   "capture": "Mirai-greeth_flood9.pcap",
+   "role": "VALIDATION",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/greeth_eval/Mirai-greeth_flood9.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 3462565,
+    "non_ipv4": 33531,
+    "stderr_tail": ""
+   },
+   "ipv4_packets": 3429034,
+   "attacker_packets": 3320459,
+   "attacker_by_proto": {
+    "47": 3319942,
+    "17": 196,
+    "6": 180,
+    "1": 141
+   },
+   "non_tcp_udp_by_proto": {
+    "47": 3319942,
+    "1": 29585,
+    "2": 162
+   },
+   "first_utc": "2023-01-12T18:57:08.520Z",
+   "last_utc": "2023-01-12T19:42:21.599Z",
+   "duration_s": 2713.078598022461,
+   "stream_keys": 229,
+   "victim_keys": 79,
+   "guard_stats": {
+    "packets_seen": 3429034,
+    "packets_in_scope": 3349689,
+    "packets_ignored_tcp_udp": 79345,
+    "late_packets": 0,
+    "windows_closed": 210,
+    "alerts": 1319,
+    "max_active_keys": 68
+   },
+   "checks": [
+    {
+     "check": "Mirai-greeth_flood9.pcap: guard packets_seen == IPv4 packets fed",
+     "pass": true,
+     "detail": "3,429,034 vs 3,429,034"
+    },
+    {
+     "check": "Mirai-greeth_flood9.pcap: guard packets_in_scope == non-TCP/UDP packets",
+     "pass": true,
+     "detail": "3,349,689 vs 3,349,689"
+    },
+    {
+     "check": "Mirai-greeth_flood9.pcap: stream / victim key totals == non-TCP/UDP packets",
+     "pass": true,
+     "detail": "3,349,689 / 3,349,689 vs 3,349,689"
+    },
+    {
+     "check": "Mirai-greeth_flood9.pcap: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "1,319 vs 1,319"
+    }
+   ],
+   "criteria": {
+    "C1": {
+     "pass": true,
+     "attacked_victim_keys": 4,
+     "victims_alerted": 4,
+     "victims_missed": [],
+     "gre_streams": 28,
+     "gre_streams_ge_1000": 28,
+     "streams_alerted": 28,
+     "streams_missed": [],
+     "gre_streams_lt_1000_alerted": 0,
+     "note": ""
+    },
+    "C2": {
+     "pass": true,
+     "max_latency_s": 9.479355096817017,
+     "latencies_s": {
+      "192.168.137.61": 1.4858698844909668,
+      "192.168.137.64": 9.479355096817017,
+      "192.168.137.172": 1.0396769046783447,
+      "192.168.137.44": 4.083935976028442
+     }
+    },
+    "C3": {
+     "pass": true,
+     "benign_key_alerts": 0,
+     "benign_keys_alerted": 0
+    }
+   },
+   "other": {
+    "victim_attack_windows": 202,
+    "victim_alerted_windows": 202,
+    "victim_share_alerted": 1.0,
+    "any_level_alerted_windows": 202,
+    "any_level_share_alerted": 1.0,
+    "stream_attack_windows_ge_1000": 1188,
+    "stream_alerted_windows_ge_1000": 1116,
+    "stream_share_alerted_ge_1000": 0.9393939393939394,
+    "benign_alerts_per_hour": 0.0,
+    "capture_hours": 0.753632943895128,
+    "attacker_non_gre_alerts": 1,
+    "alerts_by_class_level": {
+     "attack stream": 1116,
+     "attack victim": 202,
+     "other stream": 1
+    }
+   },
+   "tshark_s": 50.7,
+   "runtime_s": 50.7,
+   "peak_rss_after": {
+    "python_self_mb": 127.4,
+    "tshark_max_mb": 144.0
+   }
+  },
+  {
+   "capture": "Mirai-greeth_flood18.pcap",
+   "role": "VALIDATION",
+   "tshark_cmd": "tshark -n -M 200000 --disable-all-protocols --enable-protocol frame,eth,ethertype,ip,vlan -r /home/krithikk/lgids_cache/greeth_eval/Mirai-greeth_flood18.pcap -T fields -E separator=/t -E occurrence=f -E quote=n -e frame.time_epoch -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto",
+   "reader_counts": {
+    "frames": 3400972,
+    "non_ipv4": 13101,
+    "stderr_tail": ""
+   },
+   "ipv4_packets": 3387871,
+   "attacker_packets": 3351543,
+   "attacker_by_proto": {
+    "47": 3351233,
+    "6": 169,
+    "1": 91,
+    "17": 50
+   },
+   "non_tcp_udp_by_proto": {
+    "47": 3351233,
+    "1": 5534,
+    "2": 39
+   },
+   "first_utc": "2023-01-16T14:03:24.907Z",
+   "last_utc": "2023-01-16T14:22:37.230Z",
+   "duration_s": 1152.3223340511322,
+   "stream_keys": 150,
+   "victim_keys": 63,
+   "guard_stats": {
+    "packets_seen": 3387871,
+    "packets_in_scope": 3356806,
+    "packets_ignored_tcp_udp": 31065,
+    "late_packets": 0,
+    "windows_closed": 99,
+    "alerts": 632,
+    "max_active_keys": 73
+   },
+   "checks": [
+    {
+     "check": "Mirai-greeth_flood18.pcap: guard packets_seen == IPv4 packets fed",
+     "pass": true,
+     "detail": "3,387,871 vs 3,387,871"
+    },
+    {
+     "check": "Mirai-greeth_flood18.pcap: guard packets_in_scope == non-TCP/UDP packets",
+     "pass": true,
+     "detail": "3,356,806 vs 3,356,806"
+    },
+    {
+     "check": "Mirai-greeth_flood18.pcap: stream / victim key totals == non-TCP/UDP packets",
+     "pass": true,
+     "detail": "3,356,806 / 3,356,806 vs 3,356,806"
+    },
+    {
+     "check": "Mirai-greeth_flood18.pcap: guard alerts == alerts collected",
+     "pass": true,
+     "detail": "632 vs 632"
+    }
+   ],
+   "criteria": {
+    "C1": {
+     "pass": true,
+     "attacked_victim_keys": 2,
+     "victims_alerted": 2,
+     "victims_missed": [],
+     "gre_streams": 14,
+     "gre_streams_ge_1000": 14,
+     "streams_alerted": 14,
+     "streams_missed": [],
+     "gre_streams_lt_1000_alerted": 0,
+     "note": ""
+    },
+    "C2": {
+     "pass": true,
+     "max_latency_s": 5.092443943023682,
+     "latencies_s": {
+      "192.168.137.29": 5.092443943023682,
+      "192.168.137.140": 4.764163017272949
+     }
+    },
+    "C3": {
+     "pass": true,
+     "benign_key_alerts": 0,
+     "benign_keys_alerted": 0
+    }
+   },
+   "other": {
+    "victim_attack_windows": 93,
+    "victim_alerted_windows": 93,
+    "victim_share_alerted": 1.0,
+    "any_level_alerted_windows": 93,
+    "any_level_share_alerted": 1.0,
+    "stream_attack_windows_ge_1000": 555,
+    "stream_alerted_windows_ge_1000": 539,
+    "stream_share_alerted_ge_1000": 0.9711711711711711,
+    "benign_alerts_per_hour": 0.0,
+    "capture_hours": 0.32008953723642564,
+    "attacker_non_gre_alerts": 0,
+    "alerts_by_class_level": {
+     "attack stream": 539,
+     "attack victim": 93
+    }
+   },
+   "tshark_s": 50.6,
+   "runtime_s": 50.6,
+   "peak_rss_after": {
+    "python_self_mb": 128.0,
+    "tshark_max_mb": 144.0
+   }
+  }
+ ],
+ "verdict": {
+  "Mirai-greeth_flood.pcap": {
+   "C1": true,
+   "C2": true,
+   "C3": true
+  },
+  "Mirai-greeth_flood9.pcap": {
+   "C1": true,
+   "C2": true,
+   "C3": true
+  },
+  "Mirai-greeth_flood18.pcap": {
+   "C1": true,
+   "C2": true,
+   "C3": true
+  }
+ },
+ "peak_rss": {
+  "python_self_mb": 135.9,
+  "tshark_max_mb": 144.0
+ },
+ "runtime_s": 205.4
+}

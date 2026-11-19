@@ -26,3 +26,6 @@ logs/
 
 *.lock
 nohup.out
+
+results/**/dry_run/
+aftersemCONTEXT.md

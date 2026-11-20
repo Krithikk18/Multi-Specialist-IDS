@@ -1,0 +1,7533 @@
+{
+ "manifest_version": 1,
+ "run_id": "20261120T133357Z",
+ "created_utc": "2026-11-20T13:33:57+00:00",
+ "status": "PASS",
+ "source": "v1_cicflowmeter",
+ "dry_run": false,
+ "limit_rows": null,
+ "script": "20_ingest_csv.py",
+ "code_sha256": "7e54e072d6e7f9c9ea4790955596c0beef51c0fc8b7cadbc8e71cbbe3be63f2b",
+ "argv": [
+  "20_ingest_csv.py",
+  "--source",
+  "v1_cicflowmeter",
+  "--assume-label",
+  "benign_night=benign"
+ ],
+ "git_head": "99d650878a6b76b7da120c53782d619af21d97cc",
+ "git_branch": "v2",
+ "git_dirty": true,
+ "v1_code": {
+  "08_build_datasets.py": "4e5bb34be2011c163453512876ec48194ab851c3f6c4cae70f1cc45ae750e349",
+  "08b_extend_test.py": "f3fa68a5f1ad4deaf239b53c35545c59b01bdb47d1d16c178e22fe219d1a1ca1",
+  "used": [
+   "08.load_plan",
+   "08.load_sources",
+   "08.load_device_map",
+   "08.read_header",
+   "08.candidate_features",
+   "08.iter_chunks",
+   "08.usable",
+   "08.flow_start",
+   "08b.load_sessions",
+   "08b.usable_day"
+  ]
+ },
+ "timestamp": {
+  "format": "%d/%m/%Y %I:%M:%S %p",
+  "tz": "UTC",
+  "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC"
+ },
+ "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+ "test_rows_policy": "test-session rows are read, schema-validated and counted (incl. NaN / inf counts); no feature-value statistics (means, distributions, correlations, histograms)",
+ "lan_subnets": {
+  "subnets": [
+   "192.168.137.0/24",
+   "10.22.22.0/24"
+  ],
+  "from": "config/config.py NETWORK.subnets (V1 / CICIoT2023 testbed)"
+ },
+ "class_map": {
+  "path": "config/class_map.json",
+  "sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "version": 1,
+  "classes": [
+   "benign",
+   "syn_flood",
+   "udp_flood",
+   "port_scan"
+  ]
+ },
+ "checks": [
+  {
+   "check": "lock: config/config.py sha256 == step10_prereg pin (V1 config untouched)",
+   "pass": true,
+   "detail": "c19bf4ffe4ee25a9..."
+  },
+  {
+   "check": "lock: config/step10_prereg.json sha256",
+   "pass": true,
+   "detail": "17f627f841263e94..."
+  },
+  {
+   "check": "lock: step10_prereg records the same config.py / features pins",
+   "pass": true,
+   "detail": "inputs_sha256 / features"
+  },
+  {
+   "check": "lock: features_v1.json (file sha256, list sha256, 70)",
+   "pass": true,
+   "detail": "ok"
+  },
+  {
+   "check": "lock: class_map.json (sha256, LF, structure)",
+   "pass": true,
+   "detail": "ok"
+  },
+  {
+   "check": "lock: v1: extractor jar sha256",
+   "pass": true,
+   "detail": "/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+  },
+  {
+   "check": "lock: v1: extractor patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch"
+  },
+  {
+   "check": "lock: v1: extractor sweeper patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch"
+  },
+  {
+   "check": "lock: v1: config file device_table.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv"
+  },
+  {
+   "check": "lock: v1: config file ip_mac_map.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv"
+  },
+  {
+   "check": "lock: v1: config file behaviour_groups.json",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json"
+  },
+  {
+   "check": "lock: v1: groups version",
+   "pass": true,
+   "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+  },
+  {
+   "check": "lock: v1: groups labels",
+   "pass": true,
+   "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+  },
+  {
+   "check": "lock: v1: groups lock verified",
+   "pass": true,
+   "detail": "behaviour_groups.json verification.pass"
+  },
+  {
+   "check": "lock: v1: extractor TZ",
+   "pass": true,
+   "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+  },
+  {
+   "check": "V1 frozen: 09_train_specialists.py sha256 == step10_prereg",
+   "pass": true,
+   "detail": "d792112ee52ad3ce... vs d792112ee52ad3ce..."
+  },
+  {
+   "check": "V1 frozen: config/config.py sha256 == step10_prereg",
+   "pass": true,
+   "detail": "c19bf4ffe4ee25a9... vs c19bf4ffe4ee25a9..."
+  },
+  {
+   "check": "V1 frozen: config/groupings/behaviour_k2.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "9f80565f7ece7f65... vs 9f80565f7ece7f65..."
+  },
+  {
+   "check": "V1 frozen: config/split_plan_v1_1.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "56813a35e1cbcf46... vs 56813a35e1cbcf46..."
+  },
+  {
+   "check": "V1 frozen: results/step8b/manifest_v1_1.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "a1e5f38dbc287a43... vs a1e5f38dbc287a43..."
+  },
+  {
+   "check": "V1 frozen: results/step8/manifest_v1.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "c2e48e620ad38a1e... vs c2e48e620ad38a1e..."
+  },
+  {
+   "check": "V1 frozen: config/attack_set.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "b975bd3cc6d5b0fd... vs b975bd3cc6d5b0fd..."
+  },
+  {
+   "check": "V1 frozen: config/behaviour_groups.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "5b26490de8a996ca... vs 5b26490de8a996ca..."
+  },
+  {
+   "check": "V1 frozen: device_table.csv sha256 == manifest_v1",
+   "pass": true,
+   "detail": "506d16bbaa3c0052..."
+  },
+  {
+   "check": "08b: daytime inputs: extractor lock, 07 hard_pass, same pcap / jar / device_table, columns",
+   "pass": true,
+   "detail": "ok (3 session(s))"
+  },
+  {
+   "check": "features_v1 == 08 candidate features minus dropped_constant_in_train",
+   "pass": true,
+   "detail": "77 candidates, 70 features"
+  },
+  {
+   "check": "input sha256 == V1 record: benign_night",
+   "pass": true,
+   "detail": "f9c033abaf072899..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood",
+   "pass": true,
+   "detail": "7fa59d2e1a8a5d3a..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood5",
+   "pass": true,
+   "detail": "6861e9a9152a5de1..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood10",
+   "pass": true,
+   "detail": "2586a753d5e10b7c..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood15",
+   "pass": true,
+   "detail": "72d028090c31d21e..."
+  },
+  {
+   "check": "input sha256 == V1 record: Recon-PortScan",
+   "pass": true,
+   "detail": "b1a085a10adf2c3d..."
+  },
+  {
+   "check": "input sha256 == V1 record: Mirai-udpplain",
+   "pass": true,
+   "detail": "036b76645b3603b0..."
+  },
+  {
+   "check": "input sha256 == V1 record: Mirai-udpplain24",
+   "pass": true,
+   "detail": "b5fa27a8f1efd5e8..."
+  },
+  {
+   "check": "input sha256 == V1 record: BenignTraffic1",
+   "pass": true,
+   "detail": "ba56437c91177b85..."
+  },
+  {
+   "check": "input sha256 == V1 record: BenignTraffic2",
+   "pass": true,
+   "detail": "c71e641589e525b0..."
+  },
+  {
+   "check": "input sha256 == V1 record: BenignTraffic3",
+   "pass": true,
+   "detail": "bccaf5fa1c5bd383..."
+  },
+  {
+   "check": "validation + filter: benign_night",
+   "pass": true,
+   "detail": "in 223,108 kept 204,844"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood",
+   "pass": true,
+   "detail": "in 6,800,503 kept 6,782,934"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood5",
+   "pass": true,
+   "detail": "in 5,297,297 kept 5,296,071"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood10",
+   "pass": true,
+   "detail": "in 6,099,055 kept 6,083,889"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood15",
+   "pass": true,
+   "detail": "in 3,104,718 kept 3,102,555"
+  },
+  {
+   "check": "validation + filter: Recon-PortScan",
+   "pass": true,
+   "detail": "in 207,429 kept 197,408"
+  },
+  {
+   "check": "validation + filter: Mirai-udpplain",
+   "pass": true,
+   "detail": "in 8,806 kept 7,317"
+  },
+  {
+   "check": "validation + filter: Mirai-udpplain24",
+   "pass": true,
+   "detail": "in 6,251 kept 5,336"
+  },
+  {
+   "check": "validation + filter: BenignTraffic1",
+   "pass": true,
+   "detail": "in 93,698 kept 85,321"
+  },
+  {
+   "check": "validation + filter: BenignTraffic2",
+   "pass": true,
+   "detail": "in 101,111 kept 94,284"
+  },
+  {
+   "check": "validation + filter: BenignTraffic3",
+   "pass": true,
+   "detail": "in 43,078 kept 40,754"
+  },
+  {
+   "check": "regression vs V1",
+   "pass": true,
+   "detail": "PASS"
+  }
+ ],
+ "features": {
+  "path": "config/features_v1.json",
+  "file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "list_sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "n": 70
+ },
+ "source_order": [
+  "benign_night",
+  "DDoS-SYN_Flood",
+  "DDoS-SYN_Flood5",
+  "DDoS-SYN_Flood10",
+  "DDoS-SYN_Flood15",
+  "Recon-PortScan",
+  "Mirai-udpplain",
+  "Mirai-udpplain24",
+  "BenignTraffic1",
+  "BenignTraffic2",
+  "BenignTraffic3"
+ ],
+ "declarations": {
+  "benign_night": {
+   "assume_label": "benign",
+   "attack_family": "",
+   "declared_by": "--assume-label benign_night=benign",
+   "reason": "file has no label / attack_family columns (04 tagged capture, no 07 labelling); V1's 08 treats every row of it as benign (src kind 'benign')",
+   "v1_kind": "benign"
+  }
+ },
+ "inputs": [
+  {
+   "session": "benign_night",
+   "kind": "benign",
+   "family": "",
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/data/interim/flows/benign/benign_flows_tagged.csv",
+   "sha256": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+   "sha256_expected": "f9c033abaf07289999f4c1300f09b00a48624aecd2a63ef0a5ec7632abf2c799",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": "benign"
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "kind": "attack",
+   "family": "syn_flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood/DDoS-SYN_Flood_labelled.csv.gz",
+   "sha256": "7fa59d2e1a8a5d3ab4df1d7812a7e323ac41f41f605807c3fa57a236c586d6be",
+   "sha256_expected": "7fa59d2e1a8a5d3ab4df1d7812a7e323ac41f41f605807c3fa57a236c586d6be",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "kind": "attack",
+   "family": "syn_flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood5/DDoS-SYN_Flood5_labelled.csv.gz",
+   "sha256": "6861e9a9152a5de1e9ced3bfd27c86c24a09bb9bd20f5152b040952d929f906c",
+   "sha256_expected": "6861e9a9152a5de1e9ced3bfd27c86c24a09bb9bd20f5152b040952d929f906c",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "DDoS-SYN_Flood10",
+   "kind": "attack",
+   "family": "syn_flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood10/DDoS-SYN_Flood10_labelled.csv.gz",
+   "sha256": "2586a753d5e10b7cfb23c668a78957b55a5189a5c7a245d3a1db0ebe293d6cde",
+   "sha256_expected": "2586a753d5e10b7cfb23c668a78957b55a5189a5c7a245d3a1db0ebe293d6cde",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "DDoS-SYN_Flood15",
+   "kind": "attack",
+   "family": "syn_flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/DDoS-SYN_Flood15/DDoS-SYN_Flood15_labelled.csv.gz",
+   "sha256": "72d028090c31d21e12bc6ae6cbc532af2843dd37f9975029f68467ff0d180f04",
+   "sha256_expected": "72d028090c31d21e12bc6ae6cbc532af2843dd37f9975029f68467ff0d180f04",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "Recon-PortScan",
+   "kind": "attack",
+   "family": "port_scan",
+   "path": "/home/krithikk/lgids_cache/flows/attack/Recon-PortScan/Recon-PortScan_labelled.csv.gz",
+   "sha256": "b1a085a10adf2c3dfeb74f8179441aab4a061d729252c690760cb9a7ea3e8741",
+   "sha256_expected": "b1a085a10adf2c3dfeb74f8179441aab4a061d729252c690760cb9a7ea3e8741",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "Mirai-udpplain",
+   "kind": "attack",
+   "family": "udp_flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/Mirai-udpplain/Mirai-udpplain_labelled.csv.gz",
+   "sha256": "036b76645b3603b0fb89fc6217f50b822602acb9697b2b11bfd8f5fb81a009b4",
+   "sha256_expected": "036b76645b3603b0fb89fc6217f50b822602acb9697b2b11bfd8f5fb81a009b4",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "Mirai-udpplain24",
+   "kind": "attack",
+   "family": "udp_flood",
+   "path": "/home/krithikk/lgids_cache/flows/attack/Mirai-udpplain24/Mirai-udpplain24_labelled.csv.gz",
+   "sha256": "b5fa27a8f1efd5e823bc0a5cd41398f9f7af7744f837326259f2d817ff4b71bc",
+   "sha256_expected": "b5fa27a8f1efd5e823bc0a5cd41398f9f7af7744f837326259f2d817ff4b71bc",
+   "expected_from": "results/step8/manifest_v1.json",
+   "match": true,
+   "filter": "08_build_datasets.usable",
+   "assume_label": null
+  },
+  {
+   "session": "BenignTraffic1",
+   "kind": "daytime",
+   "family": "",
+   "path": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic1/BenignTraffic1_labelled.csv.gz",
+   "sha256": "ba56437c91177b85d4ac624bc20c18be899f31fd5577eb6956f680f88586a649",
+   "sha256_expected": "ba56437c91177b85d4ac624bc20c18be899f31fd5577eb6956f680f88586a649",
+   "expected_from": "results/step8b/manifest_v1_1.json",
+   "match": true,
+   "filter": "08b_extend_test.usable_day",
+   "assume_label": null
+  },
+  {
+   "session": "BenignTraffic2",
+   "kind": "daytime",
+   "family": "",
+   "path": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic2/BenignTraffic2_labelled.csv.gz",
+   "sha256": "c71e641589e525b01f89f0df93470069a473db7f27a5ce4d6a47a1bcba08f16a",
+   "sha256_expected": "c71e641589e525b01f89f0df93470069a473db7f27a5ce4d6a47a1bcba08f16a",
+   "expected_from": "results/step8b/manifest_v1_1.json",
+   "match": true,
+   "filter": "08b_extend_test.usable_day",
+   "assume_label": null
+  },
+  {
+   "session": "BenignTraffic3",
+   "kind": "daytime",
+   "family": "",
+   "path": "/home/krithikk/lgids_cache/flows/benign_day/BenignTraffic3/BenignTraffic3_labelled.csv.gz",
+   "sha256": "bccaf5fa1c5bd3831866001100c600893156275bf92278d0d50b7a1b17ceb35d",
+   "sha256_expected": "bccaf5fa1c5bd3831866001100c600893156275bf92278d0d50b7a1b17ceb35d",
+   "expected_from": "results/step8b/manifest_v1_1.json",
+   "match": true,
+   "filter": "08b_extend_test.usable_day",
+   "assume_label": null
+  }
+ ],
+ "sessions": {
+  "benign_night": {
+   "session": "benign_night",
+   "kind": "benign",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 223108,
+   "rows_out": 204844,
+   "rejected": {
+    "not_owned": 13162,
+    "exclude_reason": 5102,
+    "label_excluded": 0,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 223108,
+    "not_owned": 13162,
+    "exclude_reason": 5102,
+    "label_excluded": 0,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 204844
+   },
+   "group_class": {
+    "G1|benign": 191119,
+    "G2|benign": 13616,
+    "GEN|benign": 109
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 223108,
+    "source": "v1_cicflowmeter",
+    "assume_label": "benign",
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": true,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-10-07T17:15:00+00:00",
+     "max_utc": "2022-10-08T02:30:28+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "benign (declared)": 223108
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'benign (declared)': 223108}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 204844,
+    "source": "v1_cicflowmeter",
+    "assume_label": "benign",
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 32085,
+      "inf": 6682
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 38767
+     },
+     "Flow IAT Mean": {
+      "nan": 38734,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 38734,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 38734,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 38734,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 42672,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 89275,
+      "broadcast": 6226,
+      "multicast": 4111,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 204844
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 42672}, 'dst_mac': {'public': 89275, 'broadcast': 6226, 'multicast': 4111}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 204844}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 42672,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 89275,
+     "broadcast": 6226,
+     "multicast": 4111,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/benign_night.parquet",
+    "rows": 204844,
+    "bytes": 25615237
+   }
+  },
+  "DDoS-SYN_Flood": {
+   "session": "DDoS-SYN_Flood",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 6800503,
+   "rows_out": 6782934,
+   "rejected": {
+    "not_owned": 2040,
+    "exclude_reason": 0,
+    "label_excluded": 15529,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 6800503,
+    "not_owned": 2040,
+    "exclude_reason": 0,
+    "label_excluded": 15529,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 26547,
+    "syn_flood": 6756387
+   },
+   "group_class": {
+    "G1|benign": 24001,
+    "G1|syn_flood": 6756387,
+    "G2|benign": 2386,
+    "GEN|benign": 160
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 6800503,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-08-26T18:18:00+00:00",
+     "max_utc": "2022-08-29T12:31:44+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "attack/syn_flood": 6756387,
+      "benign/": 28563,
+      "excluded/": 15553
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'attack/syn_flood': 6756387, 'benign/': 28563, 'excluded/': 15553}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 6782934,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 422677,
+      "inf": 1376
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 424053
+     },
+     "Flow IAT Mean": {
+      "nan": 423903,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 423903,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 423903,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 423903,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 5880,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 10207,
+      "broadcast": 352,
+      "multicast": 242,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 26547,
+      "syn_flood": 6756387
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 5880}, 'dst_mac': {'public': 10207, 'broadcast': 352, 'multicast': 242}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 26547, 'syn_flood': 6756387}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 5880,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 10207,
+     "broadcast": 352,
+     "multicast": 242,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/DDoS-SYN_Flood.parquet",
+    "rows": 6782934,
+    "bytes": 432244847
+   }
+  },
+  "DDoS-SYN_Flood5": {
+   "session": "DDoS-SYN_Flood5",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 5297297,
+   "rows_out": 5296071,
+   "rejected": {
+    "not_owned": 1223,
+    "exclude_reason": 0,
+    "label_excluded": 3,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 5297297,
+    "not_owned": 1223,
+    "exclude_reason": 0,
+    "label_excluded": 3,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 12889,
+    "syn_flood": 5283182
+   },
+   "group_class": {
+    "G1|benign": 11180,
+    "G2|syn_flood": 5283182,
+    "G2|benign": 1625,
+    "GEN|benign": 84
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 5297297,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-08-29T17:20:34+00:00",
+     "max_utc": "2022-08-29T17:57:10+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "attack/syn_flood": 5283182,
+      "benign/": 14060,
+      "excluded/": 55
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'attack/syn_flood': 5283182, 'benign/': 14060, 'excluded/': 55}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 5296071,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 186799,
+      "inf": 1201
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 188000
+     },
+     "Flow IAT Mean": {
+      "nan": 187934,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 187934,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 187934,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 187934,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 1616,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 5089,
+      "broadcast": 207,
+      "multicast": 124,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 12889,
+      "syn_flood": 5283182
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 1616}, 'dst_mac': {'public': 5089, 'broadcast': 207, 'multicast': 124}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 12889, 'syn_flood': 5283182}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 1616,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 5089,
+     "broadcast": 207,
+     "multicast": 124,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/DDoS-SYN_Flood5.parquet",
+    "rows": 5296071,
+    "bytes": 326902212
+   }
+  },
+  "DDoS-SYN_Flood10": {
+   "session": "DDoS-SYN_Flood10",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 6099055,
+   "rows_out": 6083889,
+   "rejected": {
+    "not_owned": 1765,
+    "exclude_reason": 0,
+    "label_excluded": 13401,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 6099055,
+    "not_owned": 1765,
+    "exclude_reason": 0,
+    "label_excluded": 13401,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 16251,
+    "syn_flood": 6067638
+   },
+   "group_class": {
+    "G1|benign": 14147,
+    "G2|syn_flood": 4507838,
+    "G2|benign": 2012,
+    "GEN|benign": 92,
+    "G1|syn_flood": 1559800
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 6099055,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-08-30T13:10:09+00:00",
+     "max_utc": "2022-08-30T13:45:21+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "attack/syn_flood": 6067638,
+      "benign/": 17953,
+      "excluded/": 13464
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'attack/syn_flood': 6067638, 'benign/': 17953, 'excluded/': 13464}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 6083889,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 411426,
+      "inf": 905
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 412331
+     },
+     "Flow IAT Mean": {
+      "nan": 412235,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 412235,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 412235,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 412235,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 1018,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 8181,
+      "broadcast": 270,
+      "multicast": 210,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 16251,
+      "syn_flood": 6067638
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 1018}, 'dst_mac': {'public': 8181, 'broadcast': 270, 'multicast': 210}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 16251, 'syn_flood': 6067638}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 1018,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 8181,
+     "broadcast": 270,
+     "multicast": 210,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/DDoS-SYN_Flood10.parquet",
+    "rows": 6083889,
+    "bytes": 366586308
+   }
+  },
+  "DDoS-SYN_Flood15": {
+   "session": "DDoS-SYN_Flood15",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 3104718,
+   "rows_out": 3102555,
+   "rejected": {
+    "not_owned": 1417,
+    "exclude_reason": 86,
+    "label_excluded": 660,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 3104718,
+    "not_owned": 1417,
+    "exclude_reason": 86,
+    "label_excluded": 660,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 7452,
+    "syn_flood": 3095103
+   },
+   "group_class": {
+    "G1|benign": 5999,
+    "G1|syn_flood": 3095100,
+    "G2|benign": 1365,
+    "GEN|benign": 88,
+    "GEN|syn_flood": 3
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 3104718,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-11-29T19:18:18+00:00",
+     "max_utc": "2022-12-01T14:43:00+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "attack/syn_flood": 3095108,
+      "benign/": 8812,
+      "excluded/": 798
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'attack/syn_flood': 3095108, 'benign/': 8812, 'excluded/': 798}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 3102555,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 197686,
+      "inf": 435
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 198121
+     },
+     "Flow IAT Mean": {
+      "nan": 198118,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 198118,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 198118,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 198118,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 1649,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 2620,
+      "broadcast": 238,
+      "multicast": 144,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 7452,
+      "syn_flood": 3095103
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 1649}, 'dst_mac': {'public': 2620, 'broadcast': 238, 'multicast': 144}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 7452, 'syn_flood': 3095103}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 1649,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 2620,
+     "broadcast": 238,
+     "multicast": 144,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/DDoS-SYN_Flood15.parquet",
+    "rows": 3102555,
+    "bytes": 204236068
+   }
+  },
+  "Recon-PortScan": {
+   "session": "Recon-PortScan",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 207429,
+   "rows_out": 197408,
+   "rejected": {
+    "not_owned": 9915,
+    "exclude_reason": 0,
+    "label_excluded": 106,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 207429,
+    "not_owned": 9915,
+    "exclude_reason": 0,
+    "label_excluded": 106,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 58442,
+    "port_scan": 138966
+   },
+   "group_class": {
+    "G1|benign": 54094,
+    "G1|port_scan": 70026,
+    "G2|benign": 2975,
+    "GEN|benign": 1373,
+    "G2|port_scan": 64584,
+    "GEN|port_scan": 4356
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 207429,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-09-26T16:31:00+00:00",
+     "max_utc": "2022-09-27T17:16:00+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "attack/port_scan": 143138,
+      "benign/": 63341,
+      "excluded/": 950
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'attack/port_scan': 143138, 'benign/': 63341, 'excluded/': 950}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 197408,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 29390,
+      "inf": 1881
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 31271
+     },
+     "Flow IAT Mean": {
+      "nan": 31243,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 31243,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 31243,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 31243,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 8462,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 24220,
+      "broadcast": 1332,
+      "multicast": 1034,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 58442,
+      "port_scan": 138966
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 8462}, 'dst_mac': {'public': 24220, 'broadcast': 1332, 'multicast': 1034}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 58442, 'port_scan': 138966}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 8462,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 24220,
+     "broadcast": 1332,
+     "multicast": 1034,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/Recon-PortScan.parquet",
+    "rows": 197408,
+    "bytes": 13024483
+   }
+  },
+  "Mirai-udpplain": {
+   "session": "Mirai-udpplain",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 8806,
+   "rows_out": 7317,
+   "rejected": {
+    "not_owned": 1460,
+    "exclude_reason": 0,
+    "label_excluded": 29,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 8806,
+    "not_owned": 1460,
+    "exclude_reason": 0,
+    "label_excluded": 29,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 7205,
+    "udp_flood": 112
+   },
+   "group_class": {
+    "G1|benign": 5590,
+    "G1|udp_flood": 112,
+    "G2|benign": 1549,
+    "GEN|benign": 66
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 8806,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2023-01-19T15:51:00+00:00",
+     "max_utc": "2023-01-19T16:23:25+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "benign/": 8636,
+      "attack/udp_flood": 112,
+      "excluded/": 58
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'benign/': 8636, 'attack/udp_flood': 112, 'excluded/': 58}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 7317,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 234,
+      "inf": 891
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 1125
+     },
+     "Flow IAT Mean": {
+      "nan": 1124,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 1124,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 1124,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 1124,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 334,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 3585,
+      "broadcast": 234,
+      "multicast": 140,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 7205,
+      "udp_flood": 112
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 334}, 'dst_mac': {'public': 3585, 'broadcast': 234, 'multicast': 140}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 7205, 'udp_flood': 112}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 334,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 3585,
+     "broadcast": 234,
+     "multicast": 140,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/Mirai-udpplain.parquet",
+    "rows": 7317,
+    "bytes": 1116413
+   }
+  },
+  "Mirai-udpplain24": {
+   "session": "Mirai-udpplain24",
+   "kind": "attack",
+   "filter": "08_build_datasets.usable",
+   "rows_in": 6251,
+   "rows_out": 5336,
+   "rejected": {
+    "not_owned": 832,
+    "exclude_reason": 0,
+    "label_excluded": 83,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {},
+   "filter_counters": {
+    "rows": 6251,
+    "not_owned": 832,
+    "exclude_reason": 0,
+    "label_excluded": 83,
+    "ungrouped": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 5278,
+    "udp_flood": 58
+   },
+   "group_class": {
+    "G1|benign": 4572,
+    "GEN|benign": 57,
+    "G2|udp_flood": 23,
+    "G2|benign": 649,
+    "G1|udp_flood": 35
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 6251,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2023-02-07T16:23:57+00:00",
+     "max_utc": "2023-02-14T17:38:00+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "benign/": 5928,
+      "excluded/": 265,
+      "attack/udp_flood": 58
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'benign/': 5928, 'excluded/': 265, 'attack/udp_flood': 58}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 5336,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 146,
+      "inf": 826
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 972
+     },
+     "Flow IAT Mean": {
+      "nan": 969,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 969,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 969,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 969,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 169,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 2546,
+      "broadcast": 111,
+      "multicast": 87,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 5278,
+      "udp_flood": 58
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 169}, 'dst_mac': {'public': 2546, 'broadcast': 111, 'multicast': 87}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 5278, 'udp_flood': 58}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 169,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 2546,
+     "broadcast": 111,
+     "multicast": 87,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/Mirai-udpplain24.parquet",
+    "rows": 5336,
+    "bytes": 759670
+   }
+  },
+  "BenignTraffic1": {
+   "session": "BenignTraffic1",
+   "kind": "daytime",
+   "filter": "08b_extend_test.usable_day",
+   "rows_in": 93698,
+   "rows_out": 85321,
+   "rejected": {
+    "not_owned": 6804,
+    "exclude_reason": 0,
+    "label_excluded": 1573,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {
+    "unregistered_mac_kept_as_GEN (08b)": 8
+   },
+   "filter_counters": {
+    "rows": 93698,
+    "label_attack": 0,
+    "not_owned": 6812,
+    "exclude_reason": 0,
+    "label_excluded": 1573,
+    "ungrouped": 0,
+    "unregistered_mac_kept": 8,
+    "unlisted_endpoint_owned_by_registered": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 85321
+   },
+   "group_class": {
+    "G1|benign": 74713,
+    "G2|benign": 10460,
+    "GEN|benign": 148
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 93698,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-10-08T02:30:28+00:00",
+     "max_utc": "2022-10-08T09:45:20+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "benign/": 91713,
+      "excluded/": 1985
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'benign/': 91713, 'excluded/': 1985}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 85321,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 3600,
+      "inf": 5373
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 8973
+     },
+     "Flow IAT Mean": {
+      "nan": 8938,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 8938,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 8938,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 8938,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 6079,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 48482,
+      "broadcast": 5003,
+      "multicast": 3057,
+      "off_lan_private": 1,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 85321
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 6079}, 'dst_mac': {'public': 48482, 'broadcast': 5003, 'multicast': 3057, 'off_lan_private': 1}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 85321}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 6079,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 48482,
+     "broadcast": 5003,
+     "multicast": 3057,
+     "off_lan_private": 1,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/BenignTraffic1.parquet",
+    "rows": 85321,
+    "bytes": 13337464
+   }
+  },
+  "BenignTraffic2": {
+   "session": "BenignTraffic2",
+   "kind": "daytime",
+   "filter": "08b_extend_test.usable_day",
+   "rows_in": 101111,
+   "rows_out": 94284,
+   "rejected": {
+    "not_owned": 5339,
+    "exclude_reason": 0,
+    "label_excluded": 1488,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {
+    "unregistered_mac_kept_as_GEN (08b)": 0
+   },
+   "filter_counters": {
+    "rows": 101111,
+    "label_attack": 0,
+    "not_owned": 5339,
+    "exclude_reason": 0,
+    "label_excluded": 1488,
+    "ungrouped": 0,
+    "unregistered_mac_kept": 0,
+    "unlisted_endpoint_owned_by_registered": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 94284
+   },
+   "group_class": {
+    "G1|benign": 82625,
+    "G2|benign": 11618,
+    "GEN|benign": 41
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 101111,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-10-08T09:45:21+00:00",
+     "max_utc": "2022-10-08T17:47:19+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "benign/": 99166,
+      "excluded/": 1945
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'benign/': 99166, 'excluded/': 1945}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 94284,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 3503,
+      "inf": 6130
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 9633
+     },
+     "Flow IAT Mean": {
+      "nan": 9589,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 9589,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 9589,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 9589,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 6070,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 54232,
+      "broadcast": 5548,
+      "multicast": 3556,
+      "off_lan_private": 1,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 94284
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 6070}, 'dst_mac': {'public': 54232, 'broadcast': 5548, 'multicast': 3556, 'off_lan_private': 1}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 94284}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 6070,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 54232,
+     "broadcast": 5548,
+     "multicast": 3556,
+     "off_lan_private": 1,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/BenignTraffic2.parquet",
+    "rows": 94284,
+    "bytes": 14643685
+   }
+  },
+  "BenignTraffic3": {
+   "session": "BenignTraffic3",
+   "kind": "daytime",
+   "filter": "08b_extend_test.usable_day",
+   "rows_in": 43078,
+   "rows_out": 40754,
+   "rejected": {
+    "not_owned": 1755,
+    "exclude_reason": 0,
+    "label_excluded": 569,
+    "ungrouped": 0
+   },
+   "kept_by_rule": {
+    "unregistered_mac_kept_as_GEN (08b)": 0
+   },
+   "filter_counters": {
+    "rows": 43078,
+    "label_attack": 0,
+    "not_owned": 1755,
+    "exclude_reason": 0,
+    "label_excluded": 569,
+    "ungrouped": 0,
+    "unregistered_mac_kept": 0,
+    "unlisted_endpoint_owned_by_registered": 0,
+    "owner_device_name_mismatch": 0
+   },
+   "failure": null,
+   "binary_mismatch": 0,
+   "timestamp_mismatch": 0,
+   "accounting_ok": true,
+   "class_counts": {
+    "benign": 40754
+   },
+   "group_class": {
+    "G1|benign": 35680,
+    "G2|benign": 5055,
+    "GEN|benign": 19
+   },
+   "schema_validation": {
+    "stage": "schema",
+    "n_rows": 43078,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "columns": {
+     "missing_features": [],
+     "features_in_order": true,
+     "duplicate_columns": [],
+     "extra_columns": [],
+     "missing_meta": [],
+     "label_columns_declared_absent": false,
+     "tolerated_present": [
+      "Bwd PSH Flags",
+      "Fwd URG Flags",
+      "Bwd URG Flags",
+      "URG Flag Count",
+      "Fwd Bytes/Bulk Avg",
+      "Fwd Packet/Bulk Avg",
+      "Fwd Bulk Rate Avg",
+      "Label",
+      "src_device",
+      "src_role",
+      "dst_device",
+      "dst_role",
+      "owner_rule",
+      "owner_resolution",
+      "ambiguous_reason",
+      "label_tests",
+      "label_exclude_reason",
+      "pad_only"
+     ]
+    },
+    "non_numeric": {},
+    "timestamps": {
+     "format": "%d/%m/%Y %I:%M:%S %p",
+     "tz": "UTC",
+     "justification": "extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC",
+     "unparseable": 0,
+     "examples": [],
+     "error": null,
+     "min_utc": "2022-10-08T17:47:21+00:00",
+     "max_utc": "2022-10-08T21:15:00+00:00"
+    },
+    "raw_labels": {
+     "counts": {
+      "benign/": 42317,
+      "excluded/": 761
+     },
+     "problems": []
+    },
+    "checks": [
+     {
+      "check": "feature columns present",
+      "pass": true,
+      "detail": "70/70"
+     },
+     {
+      "check": "feature columns in features_v1 order",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "no extra / duplicate columns",
+      "pass": true,
+      "detail": "extra [], duplicate []"
+     },
+     {
+      "check": "required metadata columns present",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "feature dtypes numeric",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+      "pass": true,
+      "detail": "ok (extractor TZ=UTC lock (config/config.py EXTRACTOR.tz): CICFlowMeter writes naive local-time strings and the JVM is always started with TZ=UTC)"
+     },
+     {
+      "check": "raw label vocabulary (all rows, before the filter)",
+      "pass": true,
+      "detail": "ok {'benign/': 42317, 'excluded/': 761}"
+     }
+    ],
+    "ok": true
+   },
+   "row_validation": {
+    "stage": "rows",
+    "n_rows": 40754,
+    "source": "v1_cicflowmeter",
+    "assume_label": null,
+    "lan_subnets": [
+     "192.168.137.0/24",
+     "10.22.22.0/24"
+    ],
+    "owner_col": "device_mac",
+    "nan_inf_policy": "NaN and +-inf -> 0 before the model (features_v1.json 'clean', V1 08); counted, not a failure",
+    "nan_inf": {
+     "Protocol": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Duration": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Bwd packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Fwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Total Length of Bwd Packet": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Flow Bytes/s": {
+      "nan": 1470,
+      "inf": 2640
+     },
+     "Flow Packets/s": {
+      "nan": 0,
+      "inf": 4110
+     },
+     "Flow IAT Mean": {
+      "nan": 4093,
+      "inf": 0
+     },
+     "Flow IAT Std": {
+      "nan": 4093,
+      "inf": 0
+     },
+     "Flow IAT Max": {
+      "nan": 4093,
+      "inf": 0
+     },
+     "Flow IAT Min": {
+      "nan": 4093,
+      "inf": 0
+     },
+     "Fwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Total": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd IAT Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd PSH Flags": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Header Length": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packets/s": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Packet Length Variance": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FIN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "SYN Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "RST Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "PSH Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ACK Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "CWR Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "ECE Flag Count": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Down/Up Ratio": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Average Packet Size": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Segment Size Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bytes/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Packet/Bulk Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Bulk Rate Avg": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Fwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Packets": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Subflow Bwd Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "FWD Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Bwd Init Win Bytes": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Act Data Pkts": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Fwd Seg Size Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Active Min": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Mean": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Std": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Max": {
+      "nan": 0,
+      "inf": 0
+     },
+     "Idle Min": {
+      "nan": 0,
+      "inf": 0
+     }
+    },
+    "nulls": {
+     "Flow ID": 0,
+     "Src IP": 0,
+     "Src Port": 0,
+     "Dst IP": 0,
+     "Dst Port": 0,
+     "session": 0,
+     "device_mac": 0
+    },
+    "blank_mac": {
+     "src_mac": {
+      "public": 3923,
+      "broadcast": 0,
+      "multicast": 0,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     },
+     "dst_mac": {
+      "public": 22413,
+      "broadcast": 2414,
+      "multicast": 1473,
+      "off_lan_private": 0,
+      "lan_unicast": 0,
+      "invalid_ip": 0
+     }
+    },
+    "blank_mac_examples": {
+     "src_mac": [],
+     "dst_mac": []
+    },
+    "labels": {
+     "counts": {
+      "benign": 40754
+     },
+     "error": null
+    },
+    "checks": [
+     {
+      "check": "identity columns non-null",
+      "pass": true,
+      "detail": "ok"
+     },
+     {
+      "check": "blank MAC only for off-LAN endpoints",
+      "pass": true,
+      "detail": "ok (allowed blanks {'src_mac': {'public': 3923}, 'dst_mac': {'public': 22413, 'broadcast': 2414, 'multicast': 1473}})"
+     },
+     {
+      "check": "labels map through the class map",
+      "pass": true,
+      "detail": "ok {'benign': 40754}"
+     }
+    ],
+    "ok": true
+   },
+   "blank_mac": {
+    "src_mac": {
+     "public": 3923,
+     "broadcast": 0,
+     "multicast": 0,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    },
+    "dst_mac": {
+     "public": 22413,
+     "broadcast": 2414,
+     "multicast": 1473,
+     "off_lan_private": 0,
+     "lan_unicast": 0,
+     "invalid_ip": 0
+    }
+   },
+   "parquet": {
+    "path": "/home/krithikk/lgids_cache/v2/ingest/.20261120T133357Z.partial/flows/BenignTraffic3.parquet",
+    "rows": 40754,
+    "bytes": 6405609
+   }
+  }
+ },
+ "totals": {
+  "rows_in": 21985054,
+  "rows_out": 21900713,
+  "rejected": {
+   "not_owned": 45712,
+   "exclude_reason": 5188,
+   "label_excluded": 33441,
+   "ungrouped": 0
+  },
+  "class_counts": {
+   "benign": 559267,
+   "syn_flood": 21202310,
+   "port_scan": 138966,
+   "udp_flood": 170
+  },
+  "group_class": {
+   "G1|benign": 503720,
+   "G2|benign": 53310,
+   "GEN|benign": 2237,
+   "G1|syn_flood": 11411287,
+   "G2|syn_flood": 9791020,
+   "GEN|syn_flood": 3,
+   "G1|port_scan": 70026,
+   "G2|port_scan": 64584,
+   "GEN|port_scan": 4356,
+   "G1|udp_flood": 147,
+   "G2|udp_flood": 23
+  },
+  "nan_inf": {
+   "Protocol": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Flow Duration": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Total Fwd Packet": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Total Bwd packets": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Total Length of Fwd Packet": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Total Length of Bwd Packet": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Packet Length Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Packet Length Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Packet Length Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Packet Length Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Packet Length Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Packet Length Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Packet Length Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Packet Length Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Flow Bytes/s": {
+    "nan": 1289016,
+    "inf": 28340
+   },
+   "Flow Packets/s": {
+    "nan": 0,
+    "inf": 1317356
+   },
+   "Flow IAT Mean": {
+    "nan": 1316880,
+    "inf": 0
+   },
+   "Flow IAT Std": {
+    "nan": 1316880,
+    "inf": 0
+   },
+   "Flow IAT Max": {
+    "nan": 1316880,
+    "inf": 0
+   },
+   "Flow IAT Min": {
+    "nan": 1316880,
+    "inf": 0
+   },
+   "Fwd IAT Total": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd IAT Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd IAT Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd IAT Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd IAT Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd IAT Total": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd IAT Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd IAT Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd IAT Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd IAT Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd PSH Flags": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Header Length": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Header Length": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Packets/s": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Packets/s": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Packet Length Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Packet Length Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Packet Length Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Packet Length Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Packet Length Variance": {
+    "nan": 0,
+    "inf": 0
+   },
+   "FIN Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "SYN Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "RST Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "PSH Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "ACK Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "CWR Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "ECE Flag Count": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Down/Up Ratio": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Average Packet Size": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Segment Size Avg": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Segment Size Avg": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Bytes/Bulk Avg": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Packet/Bulk Avg": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Bulk Rate Avg": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Subflow Fwd Packets": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Subflow Fwd Bytes": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Subflow Bwd Packets": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Subflow Bwd Bytes": {
+    "nan": 0,
+    "inf": 0
+   },
+   "FWD Init Win Bytes": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Bwd Init Win Bytes": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Act Data Pkts": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Fwd Seg Size Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Active Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Active Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Active Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Active Min": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Idle Mean": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Idle Std": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Idle Max": {
+    "nan": 0,
+    "inf": 0
+   },
+   "Idle Min": {
+    "nan": 0,
+    "inf": 0
+   }
+  },
+  "blank_mac": {
+   "src_mac": {
+    "public": 77872,
+    "broadcast": 0,
+    "multicast": 0,
+    "off_lan_private": 0,
+    "lan_unicast": 0,
+    "invalid_ip": 0
+   },
+   "dst_mac": {
+    "public": 270850,
+    "broadcast": 21935,
+    "multicast": 14178,
+    "off_lan_private": 2,
+    "lan_unicast": 0,
+    "invalid_ip": 0
+   }
+  }
+ },
+ "regression": {
+  "status": "PASS",
+  "rows": [
+   {
+    "session": "benign_night",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "rows: y != V1 binary label",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08 label == attack / 08b y = 0",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "rows: Timestamp != 08.flow_start",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "08.flow_start",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "accounting: rows_in == kept + rejected",
+    "ours": true,
+    "v1": true,
+    "v1_record": "this run",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "rows",
+    "ours": 223108,
+    "v1": 223108,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "not_owned",
+    "ours": 13162,
+    "v1": 13162,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "exclude_reason",
+    "ours": 5102,
+    "v1": 5102,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "label_excluded",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "benign_night",
+    "field": "kept (pre-cap usable)",
+    "ours": 204844,
+    "v1": 204844,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "rows",
+    "ours": 6800503,
+    "v1": 6800503,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "not_owned",
+    "ours": 2040,
+    "v1": 2040,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "label_excluded",
+    "ours": 15529,
+    "v1": 15529,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "field": "kept (pre-cap usable)",
+    "ours": 6782934,
+    "v1": 6782934,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "rows",
+    "ours": 5297297,
+    "v1": 5297297,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "not_owned",
+    "ours": 1223,
+    "v1": 1223,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "label_excluded",
+    "ours": 3,
+    "v1": 3,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "field": "kept (pre-cap usable)",
+    "ours": 5296071,
+    "v1": 5296071,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "rows",
+    "ours": 6099055,
+    "v1": 6099055,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "not_owned",
+    "ours": 1765,
+    "v1": 1765,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "label_excluded",
+    "ours": 13401,
+    "v1": 13401,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "field": "kept (pre-cap usable)",
+    "ours": 6083889,
+    "v1": 6083889,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "rows",
+    "ours": 3104718,
+    "v1": 3104718,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "not_owned",
+    "ours": 1417,
+    "v1": 1417,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "exclude_reason",
+    "ours": 86,
+    "v1": 86,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "label_excluded",
+    "ours": 660,
+    "v1": 660,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "field": "kept (pre-cap usable)",
+    "ours": 3102555,
+    "v1": 3102555,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "rows",
+    "ours": 207429,
+    "v1": 207429,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "not_owned",
+    "ours": 9915,
+    "v1": 9915,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "label_excluded",
+    "ours": 106,
+    "v1": 106,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Recon-PortScan",
+    "field": "kept (pre-cap usable)",
+    "ours": 197408,
+    "v1": 197408,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "rows",
+    "ours": 8806,
+    "v1": 8806,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "not_owned",
+    "ours": 1460,
+    "v1": 1460,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "label_excluded",
+    "ours": 29,
+    "v1": 29,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "field": "kept (pre-cap usable)",
+    "ours": 7317,
+    "v1": 7317,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "rows",
+    "ours": 6251,
+    "v1": 6251,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "not_owned",
+    "ours": 832,
+    "v1": 832,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "label_excluded",
+    "ours": 83,
+    "v1": 83,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8/manifest_v1.json filter_drops",
+    "pass": "PASS"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "field": "kept (pre-cap usable)",
+    "ours": 5336,
+    "v1": 5336,
+    "v1_record": "results/step8/manifest_v1.json sessions train+val+test+gap_dropped",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "rows",
+    "ours": 93698,
+    "v1": 93698,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "label_attack",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "not_owned",
+    "ours": 6812,
+    "v1": 6812,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "label_excluded",
+    "ours": 1573,
+    "v1": 1573,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "unregistered_mac_kept",
+    "ours": 8,
+    "v1": 8,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "kept",
+    "ours": 85321,
+    "v1": 85321,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions added",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "kept group G1",
+    "ours": 74713,
+    "v1": 74713,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "kept group G2",
+    "ours": 10460,
+    "v1": 10460,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic1",
+    "field": "kept group GEN",
+    "ours": 148,
+    "v1": 148,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "rows",
+    "ours": 101111,
+    "v1": 101111,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "label_attack",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "not_owned",
+    "ours": 5339,
+    "v1": 5339,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "label_excluded",
+    "ours": 1488,
+    "v1": 1488,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "unregistered_mac_kept",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "kept",
+    "ours": 94284,
+    "v1": 94284,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions added",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "kept group G1",
+    "ours": 82625,
+    "v1": 82625,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "kept group G2",
+    "ours": 11618,
+    "v1": 11618,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic2",
+    "field": "kept group GEN",
+    "ours": 41,
+    "v1": 41,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "rows",
+    "ours": 43078,
+    "v1": 43078,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "label_attack",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "not_owned",
+    "ours": 1755,
+    "v1": 1755,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "exclude_reason",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "label_excluded",
+    "ours": 569,
+    "v1": 569,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "ungrouped",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "unregistered_mac_kept",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "owner_device_name_mismatch",
+    "ours": 0,
+    "v1": 0,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "kept",
+    "ours": 40754,
+    "v1": 40754,
+    "v1_record": "results/step8b/manifest_v1_1.json sessions added",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "kept group G1",
+    "ours": 35680,
+    "v1": 35680,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "kept group G2",
+    "ours": 5055,
+    "v1": 5055,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   },
+   {
+    "session": "BenignTraffic3",
+    "field": "kept group GEN",
+    "ours": 19,
+    "v1": 19,
+    "v1_record": "results/step8b/manifest_v1_1.json by_group",
+    "pass": "PASS"
+   }
+  ],
+  "aggregate": [
+   {
+    "key": "attack/port_scan",
+    "ours": 138966,
+    "v1_before_caps": 136731,
+    "v1_gap_drops": 2235,
+    "pass": "PASS"
+   },
+   {
+    "key": "attack/syn_flood",
+    "ours": 21202310,
+    "v1_before_caps": 20723620,
+    "v1_gap_drops": 478690,
+    "pass": "PASS"
+   },
+   {
+    "key": "attack/udp_flood",
+    "ours": 170,
+    "v1_before_caps": 170,
+    "v1_gap_drops": 0,
+    "pass": "PASS"
+   },
+   {
+    "key": "benign",
+    "ours": 338908,
+    "v1_before_caps": 334794,
+    "v1_gap_drops": 4114,
+    "pass": "PASS"
+   },
+   {
+    "key": "G1/attack/udp_flood",
+    "ours": 147,
+    "v1_before_caps": 147,
+    "v1_gap_drops": 0,
+    "pass": "PASS"
+   },
+   {
+    "key": "G2/attack/udp_flood",
+    "ours": 23,
+    "v1_before_caps": 23,
+    "v1_gap_drops": 0,
+    "pass": "PASS"
+   }
+  ],
+  "note": ""
+ },
+ "outputs": {
+  "dir": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z",
+  "parquets": [
+   {
+    "session": "benign_night",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/benign_night.parquet",
+    "rows": 204844,
+    "bytes": 25615237,
+    "sha256": "fb050a077aa7a0b2ce022f537957ae943fc0d6eb0f622161dd220a77ef9d37e0"
+   },
+   {
+    "session": "DDoS-SYN_Flood",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/DDoS-SYN_Flood.parquet",
+    "rows": 6782934,
+    "bytes": 432244847,
+    "sha256": "7578ab87d614219df903b5402a8c74e85ece5eb3b0f18e230ead02c5aab3c555"
+   },
+   {
+    "session": "DDoS-SYN_Flood5",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/DDoS-SYN_Flood5.parquet",
+    "rows": 5296071,
+    "bytes": 326902212,
+    "sha256": "3adb9805dc687b1da9325c48d4a45010819b1aa4e487c5431a31b356a7f7cfa6"
+   },
+   {
+    "session": "DDoS-SYN_Flood10",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/DDoS-SYN_Flood10.parquet",
+    "rows": 6083889,
+    "bytes": 366586308,
+    "sha256": "26030a29499a67035408ca5698c58e3bd2bc7bd193ab2067a4e5f397737071c6"
+   },
+   {
+    "session": "DDoS-SYN_Flood15",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/DDoS-SYN_Flood15.parquet",
+    "rows": 3102555,
+    "bytes": 204236068,
+    "sha256": "ba69465696cd8592f964139d22bc186a7b9f71a10f0c75c98711b010fc5c1805"
+   },
+   {
+    "session": "Recon-PortScan",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/Recon-PortScan.parquet",
+    "rows": 197408,
+    "bytes": 13024483,
+    "sha256": "8137430171751813ff43628dc0303c167e15ebde32e2ebdbb2c8d001c271177e"
+   },
+   {
+    "session": "Mirai-udpplain",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/Mirai-udpplain.parquet",
+    "rows": 7317,
+    "bytes": 1116413,
+    "sha256": "7207a1326bcbbf577dafb7f426f0beb9f9d73c9842084cb006d2666255cbce5c"
+   },
+   {
+    "session": "Mirai-udpplain24",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/Mirai-udpplain24.parquet",
+    "rows": 5336,
+    "bytes": 759670,
+    "sha256": "3eed151b003881a4c7439ef2281a63c6a98670163487b530483aff7da23eed5a"
+   },
+   {
+    "session": "BenignTraffic1",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/BenignTraffic1.parquet",
+    "rows": 85321,
+    "bytes": 13337464,
+    "sha256": "829bba5be4ef1091a47eb1270392803cbcbdd32397790074ae3abee6877a6469"
+   },
+   {
+    "session": "BenignTraffic2",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/BenignTraffic2.parquet",
+    "rows": 94284,
+    "bytes": 14643685,
+    "sha256": "a9db72f9d266058c3348155063439b9ba7a60eef8b7421932be4071462671d00"
+   },
+   {
+    "session": "BenignTraffic3",
+    "path": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/flows/BenignTraffic3.parquet",
+    "rows": 40754,
+    "bytes": 6405609,
+    "sha256": "b3aab01e19779b425291d375995315cb0ed8771beb6ba1df097e296a59eaa59d"
+   }
+  ],
+  "columns": [
+   "Protocol",
+   "Flow Duration",
+   "Total Fwd Packet",
+   "Total Bwd packets",
+   "Total Length of Fwd Packet",
+   "Total Length of Bwd Packet",
+   "Fwd Packet Length Max",
+   "Fwd Packet Length Min",
+   "Fwd Packet Length Mean",
+   "Fwd Packet Length Std",
+   "Bwd Packet Length Max",
+   "Bwd Packet Length Min",
+   "Bwd Packet Length Mean",
+   "Bwd Packet Length Std",
+   "Flow Bytes/s",
+   "Flow Packets/s",
+   "Flow IAT Mean",
+   "Flow IAT Std",
+   "Flow IAT Max",
+   "Flow IAT Min",
+   "Fwd IAT Total",
+   "Fwd IAT Mean",
+   "Fwd IAT Std",
+   "Fwd IAT Max",
+   "Fwd IAT Min",
+   "Bwd IAT Total",
+   "Bwd IAT Mean",
+   "Bwd IAT Std",
+   "Bwd IAT Max",
+   "Bwd IAT Min",
+   "Fwd PSH Flags",
+   "Fwd Header Length",
+   "Bwd Header Length",
+   "Fwd Packets/s",
+   "Bwd Packets/s",
+   "Packet Length Min",
+   "Packet Length Max",
+   "Packet Length Mean",
+   "Packet Length Std",
+   "Packet Length Variance",
+   "FIN Flag Count",
+   "SYN Flag Count",
+   "RST Flag Count",
+   "PSH Flag Count",
+   "ACK Flag Count",
+   "CWR Flag Count",
+   "ECE Flag Count",
+   "Down/Up Ratio",
+   "Average Packet Size",
+   "Fwd Segment Size Avg",
+   "Bwd Segment Size Avg",
+   "Bwd Bytes/Bulk Avg",
+   "Bwd Packet/Bulk Avg",
+   "Bwd Bulk Rate Avg",
+   "Subflow Fwd Packets",
+   "Subflow Fwd Bytes",
+   "Subflow Bwd Packets",
+   "Subflow Bwd Bytes",
+   "FWD Init Win Bytes",
+   "Bwd Init Win Bytes",
+   "Fwd Act Data Pkts",
+   "Fwd Seg Size Min",
+   "Active Mean",
+   "Active Std",
+   "Active Max",
+   "Active Min",
+   "Idle Mean",
+   "Idle Std",
+   "Idle Max",
+   "Idle Min",
+   "Flow ID",
+   "Src IP",
+   "Src Port",
+   "Dst IP",
+   "Dst Port",
+   "Timestamp",
+   "start_ts",
+   "src_mac",
+   "dst_mac",
+   "owner_mac",
+   "device_mac",
+   "device",
+   "device_category",
+   "group",
+   "session",
+   "row_in_file",
+   "attack_family",
+   "label_id",
+   "label_name",
+   "y"
+  ]
+ },
+ "runtime_s": 323.2,
+ "peak_rss_mb": 5012,
+ "figures": {
+  "class_counts.png": "results/20/figures/class_counts.png",
+  "group_class_heatmap.png": "results/20/figures/group_class_heatmap.png",
+  "validation_issues.png": "results/20/figures/validation_issues.png"
+ }
+}

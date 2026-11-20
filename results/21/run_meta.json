@@ -1,0 +1,282 @@
+{
+ "script": "21_version_dataset.py",
+ "code_sha256": "93151520863737dc1381646264d047fed341a6dd651bbc6b2a0336ef3bd55ab9",
+ "run_utc": "2026-11-20T13:51:21+00:00",
+ "argv": [
+  "21_version_dataset.py",
+  "--ingest-run",
+  "20261120T133357Z"
+ ],
+ "git_head": "99d650878a6b76b7da120c53782d619af21d97cc",
+ "git_branch": "v2",
+ "git_dirty": true,
+ "dataset_version": "v2_0_v1equiv",
+ "status": "PASS",
+ "dry_run": false,
+ "dataset_dir": "/home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv",
+ "dataset_manifest_sha256": "366a3aeeada1c199329ea8f7b514004229c35545e53fd54fa52a59b1fe1ae921",
+ "ingest_run_id": "20261120T133357Z",
+ "ingest_manifest_sha256": "16c96c346949c514fc841840c674ffda2de5e942daee44437745447e4444eff6",
+ "split_definition_sha256": "67f329c0c34fddb51eb91936b9d49799633b5ce8078b95f470391c18c60ea627",
+ "checks": [
+  {
+   "check": "lock: config/config.py sha256 == step10_prereg pin (V1 config untouched)",
+   "pass": true,
+   "detail": "c19bf4ffe4ee25a9...",
+   "level": "hard"
+  },
+  {
+   "check": "lock: config/step10_prereg.json sha256",
+   "pass": true,
+   "detail": "17f627f841263e94...",
+   "level": "hard"
+  },
+  {
+   "check": "lock: step10_prereg records the same config.py / features pins",
+   "pass": true,
+   "detail": "inputs_sha256 / features",
+   "level": "hard"
+  },
+  {
+   "check": "lock: features_v1.json (file sha256, list sha256, 70)",
+   "pass": true,
+   "detail": "ok",
+   "level": "hard"
+  },
+  {
+   "check": "lock: class_map.json (sha256, LF, structure)",
+   "pass": true,
+   "detail": "ok",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor jar sha256",
+   "pass": true,
+   "detail": "/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor sweeper patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: config file device_table.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: config file ip_mac_map.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: config file behaviour_groups.json",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: groups version",
+   "pass": true,
+   "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: groups labels",
+   "pass": true,
+   "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: groups lock verified",
+   "pass": true,
+   "detail": "behaviour_groups.json verification.pass",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor TZ",
+   "pass": true,
+   "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)",
+   "level": "hard"
+  },
+  {
+   "check": "V1 frozen: results/step8/manifest_v1.json == step10_prereg",
+   "pass": true,
+   "detail": "c2e48e620ad38a1e...",
+   "level": "hard"
+  },
+  {
+   "check": "V1 frozen: results/step8b/manifest_v1_1.json == step10_prereg",
+   "pass": true,
+   "detail": "a1e5f38dbc287a43...",
+   "level": "hard"
+  },
+  {
+   "check": "V1 frozen: config/split_plan_v1_1.json == step10_prereg",
+   "pass": true,
+   "detail": "56813a35e1cbcf46...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest run PASS, full (not dry, no --limit-rows), source v1_cicflowmeter",
+   "pass": true,
+   "detail": "status PASS, dry False, limit None",
+   "level": "hard"
+  },
+  {
+   "check": "ingest_manifest sha256 == results/20 copy == results/20/run_meta.json",
+   "pass": true,
+   "detail": "16c96c346949c514... (run_meta run_id 20261120T133357Z)",
+   "level": "hard"
+  },
+  {
+   "check": "ingest class_map / features pins == current",
+   "pass": true,
+   "detail": "class_map 64063149b74d09f6..., features 623d0d2483670f34...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: benign_night",
+   "pass": true,
+   "detail": "fb050a077aa7a0b2...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood",
+   "pass": true,
+   "detail": "7578ab87d614219d...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood5",
+   "pass": true,
+   "detail": "3adb9805dc687b1d...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood10",
+   "pass": true,
+   "detail": "26030a29499a6703...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood15",
+   "pass": true,
+   "detail": "ba69465696cd8592...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: Recon-PortScan",
+   "pass": true,
+   "detail": "8137430171751813...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: Mirai-udpplain",
+   "pass": true,
+   "detail": "7207a1326bcbbf57...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: Mirai-udpplain24",
+   "pass": true,
+   "detail": "3eed151b003881a4...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: BenignTraffic1",
+   "pass": true,
+   "detail": "829bba5be4ef1091...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: BenignTraffic2",
+   "pass": true,
+   "detail": "a9db72f9d266058c...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: BenignTraffic3",
+   "pass": true,
+   "detail": "b3aab01e19779b42...",
+   "level": "hard"
+  },
+  {
+   "check": "recorded cut labels agree with the session modes (split_plan_v1_1)",
+   "pass": true,
+   "detail": "benign_night:time_split, DDoS-SYN_Flood:train, DDoS-SYN_Flood5:train, DDoS-SYN_Flood10:test, DDoS-SYN_Flood15:test, Recon-PortScan:time_split, Mirai-udpplain:train, Mirai-udpplain24:test, BenignTraffic1:test_only, BenignTraffic2:test_only, BenignTraffic3:test_only",
+   "level": "hard"
+  },
+  {
+   "check": "3-decimal boundary rounding cannot move a whole-second flow start (all boundaries > 0.0005 s from an integer)",
+   "pass": true,
+   "detail": "min distance 0.050 s over 14 boundaries",
+   "level": "hard"
+  },
+  {
+   "check": "cap keys: count, cap, p == manifest_v1 cap_keys (exact)",
+   "pass": true,
+   "detail": "63 keys",
+   "level": "hard"
+  },
+  {
+   "check": "per (split, group, label, family): before caps and written == V1 (manifest_v1 + v1_1 daytime)",
+   "pass": true,
+   "detail": "27 keys",
+   "level": "hard"
+  },
+  {
+   "check": "rows per split == manifest_v1_1 outputs",
+   "pass": true,
+   "detail": "train 636,193/636,193, val 157,558/157,558, test 694,169/694,169",
+   "level": "hard"
+  },
+  {
+   "check": "coverage: each class >= 1 flow in train and val for every group it appears in",
+   "pass": false,
+   "detail": "syn_flood/GEN missing in train+val (train 0, val 0, test 3); udp_flood/G2 missing in train+val (train 0, val 0, test 23); port_scan/GEN missing in val (train 4356, val 0, test 0)",
+   "level": "warn"
+  },
+  {
+   "check": "row identity train: every row == V1 v1_1/train.parquet (70 features + 8 meta, positional)",
+   "pass": true,
+   "detail": "rows 636,193 vs 636,193, mismatching rows 0, V1 file sha256 == prereg",
+   "level": "hard"
+  },
+  {
+   "check": "row identity val: every row == V1 v1_1/val.parquet (70 features + 8 meta, positional)",
+   "pass": true,
+   "detail": "rows 157,558 vs 157,558, mismatching rows 0, V1 file sha256 == prereg",
+   "level": "hard"
+  },
+  {
+   "check": "test keys (session, start_ts, y, group) == V1 v1_1/test.parquet, positional (no V1 feature column read)",
+   "pass": true,
+   "detail": "rows 694,169 vs 694,169, mismatching rows 0; V1 file rows/bytes == manifest_v1_1",
+   "level": "hard"
+  },
+  {
+   "check": "test rows in V1 schema: 08b column sha256 == manifest_v1_1 (V1 part, daytime part)",
+   "pass": true,
+   "detail": "v1 part b2ace46c5389a0f8... == b2ace46c5389a0f8... (473,810 rows); daytime a89864e568183958... == a89864e568183958... (220,359 rows)",
+   "level": "hard"
+  }
+ ],
+ "figures": {
+  "split_class_balance.png": "results/21/figures/split_class_balance.png",
+  "split_group_class_table.png": "results/21/figures/split_group_class_table.png"
+ },
+ "test_policy": "test rows: selected, written, counted and hashed (identity checks) only; V1's test.parquet is read for the key columns session, start_ts, y, group only; no feature-value statistics on any split",
+ "runtime_s": 37.4,
+ "peak_rss_mb": 4402
+}

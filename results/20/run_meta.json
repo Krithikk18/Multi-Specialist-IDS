@@ -1,0 +1,279 @@
+{
+ "script": "20_ingest_csv.py",
+ "code_sha256": "7e54e072d6e7f9c9ea4790955596c0beef51c0fc8b7cadbc8e71cbbe3be63f2b",
+ "run_utc": "2026-11-20T13:33:57+00:00",
+ "argv": [
+  "20_ingest_csv.py",
+  "--source",
+  "v1_cicflowmeter",
+  "--assume-label",
+  "benign_night=benign"
+ ],
+ "git_head": "99d650878a6b76b7da120c53782d619af21d97cc",
+ "git_branch": "v2",
+ "git_dirty": true,
+ "run_id": "20261120T133357Z",
+ "status": "PASS",
+ "dry_run": false,
+ "limit_rows": null,
+ "ingest_dir": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z",
+ "ingest_manifest_sha256": "16c96c346949c514fc841840c674ffda2de5e942daee44437745447e4444eff6",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "checks": [
+  {
+   "check": "lock: config/config.py sha256 == step10_prereg pin (V1 config untouched)",
+   "pass": true,
+   "detail": "c19bf4ffe4ee25a9..."
+  },
+  {
+   "check": "lock: config/step10_prereg.json sha256",
+   "pass": true,
+   "detail": "17f627f841263e94..."
+  },
+  {
+   "check": "lock: step10_prereg records the same config.py / features pins",
+   "pass": true,
+   "detail": "inputs_sha256 / features"
+  },
+  {
+   "check": "lock: features_v1.json (file sha256, list sha256, 70)",
+   "pass": true,
+   "detail": "ok"
+  },
+  {
+   "check": "lock: class_map.json (sha256, LF, structure)",
+   "pass": true,
+   "detail": "ok"
+  },
+  {
+   "check": "lock: v1: extractor jar sha256",
+   "pass": true,
+   "detail": "/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)"
+  },
+  {
+   "check": "lock: v1: extractor patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch"
+  },
+  {
+   "check": "lock: v1: extractor sweeper patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch"
+  },
+  {
+   "check": "lock: v1: config file device_table.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv"
+  },
+  {
+   "check": "lock: v1: config file ip_mac_map.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv"
+  },
+  {
+   "check": "lock: v1: config file behaviour_groups.json",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json"
+  },
+  {
+   "check": "lock: v1: groups version",
+   "pass": true,
+   "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'"
+  },
+  {
+   "check": "lock: v1: groups labels",
+   "pass": true,
+   "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']"
+  },
+  {
+   "check": "lock: v1: groups lock verified",
+   "pass": true,
+   "detail": "behaviour_groups.json verification.pass"
+  },
+  {
+   "check": "lock: v1: extractor TZ",
+   "pass": true,
+   "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)"
+  },
+  {
+   "check": "V1 frozen: 09_train_specialists.py sha256 == step10_prereg",
+   "pass": true,
+   "detail": "d792112ee52ad3ce... vs d792112ee52ad3ce..."
+  },
+  {
+   "check": "V1 frozen: config/config.py sha256 == step10_prereg",
+   "pass": true,
+   "detail": "c19bf4ffe4ee25a9... vs c19bf4ffe4ee25a9..."
+  },
+  {
+   "check": "V1 frozen: config/groupings/behaviour_k2.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "9f80565f7ece7f65... vs 9f80565f7ece7f65..."
+  },
+  {
+   "check": "V1 frozen: config/split_plan_v1_1.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "56813a35e1cbcf46... vs 56813a35e1cbcf46..."
+  },
+  {
+   "check": "V1 frozen: results/step8b/manifest_v1_1.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "a1e5f38dbc287a43... vs a1e5f38dbc287a43..."
+  },
+  {
+   "check": "V1 frozen: results/step8/manifest_v1.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "c2e48e620ad38a1e... vs c2e48e620ad38a1e..."
+  },
+  {
+   "check": "V1 frozen: config/attack_set.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "b975bd3cc6d5b0fd... vs b975bd3cc6d5b0fd..."
+  },
+  {
+   "check": "V1 frozen: config/behaviour_groups.json sha256 == step10_prereg",
+   "pass": true,
+   "detail": "5b26490de8a996ca... vs 5b26490de8a996ca..."
+  },
+  {
+   "check": "V1 frozen: device_table.csv sha256 == manifest_v1",
+   "pass": true,
+   "detail": "506d16bbaa3c0052..."
+  },
+  {
+   "check": "08b: daytime inputs: extractor lock, 07 hard_pass, same pcap / jar / device_table, columns",
+   "pass": true,
+   "detail": "ok (3 session(s))"
+  },
+  {
+   "check": "features_v1 == 08 candidate features minus dropped_constant_in_train",
+   "pass": true,
+   "detail": "77 candidates, 70 features"
+  },
+  {
+   "check": "input sha256 == V1 record: benign_night",
+   "pass": true,
+   "detail": "f9c033abaf072899..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood",
+   "pass": true,
+   "detail": "7fa59d2e1a8a5d3a..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood5",
+   "pass": true,
+   "detail": "6861e9a9152a5de1..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood10",
+   "pass": true,
+   "detail": "2586a753d5e10b7c..."
+  },
+  {
+   "check": "input sha256 == V1 record: DDoS-SYN_Flood15",
+   "pass": true,
+   "detail": "72d028090c31d21e..."
+  },
+  {
+   "check": "input sha256 == V1 record: Recon-PortScan",
+   "pass": true,
+   "detail": "b1a085a10adf2c3d..."
+  },
+  {
+   "check": "input sha256 == V1 record: Mirai-udpplain",
+   "pass": true,
+   "detail": "036b76645b3603b0..."
+  },
+  {
+   "check": "input sha256 == V1 record: Mirai-udpplain24",
+   "pass": true,
+   "detail": "b5fa27a8f1efd5e8..."
+  },
+  {
+   "check": "input sha256 == V1 record: BenignTraffic1",
+   "pass": true,
+   "detail": "ba56437c91177b85..."
+  },
+  {
+   "check": "input sha256 == V1 record: BenignTraffic2",
+   "pass": true,
+   "detail": "c71e641589e525b0..."
+  },
+  {
+   "check": "input sha256 == V1 record: BenignTraffic3",
+   "pass": true,
+   "detail": "bccaf5fa1c5bd383..."
+  },
+  {
+   "check": "validation + filter: benign_night",
+   "pass": true,
+   "detail": "in 223,108 kept 204,844"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood",
+   "pass": true,
+   "detail": "in 6,800,503 kept 6,782,934"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood5",
+   "pass": true,
+   "detail": "in 5,297,297 kept 5,296,071"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood10",
+   "pass": true,
+   "detail": "in 6,099,055 kept 6,083,889"
+  },
+  {
+   "check": "validation + filter: DDoS-SYN_Flood15",
+   "pass": true,
+   "detail": "in 3,104,718 kept 3,102,555"
+  },
+  {
+   "check": "validation + filter: Recon-PortScan",
+   "pass": true,
+   "detail": "in 207,429 kept 197,408"
+  },
+  {
+   "check": "validation + filter: Mirai-udpplain",
+   "pass": true,
+   "detail": "in 8,806 kept 7,317"
+  },
+  {
+   "check": "validation + filter: Mirai-udpplain24",
+   "pass": true,
+   "detail": "in 6,251 kept 5,336"
+  },
+  {
+   "check": "validation + filter: BenignTraffic1",
+   "pass": true,
+   "detail": "in 93,698 kept 85,321"
+  },
+  {
+   "check": "validation + filter: BenignTraffic2",
+   "pass": true,
+   "detail": "in 101,111 kept 94,284"
+  },
+  {
+   "check": "validation + filter: BenignTraffic3",
+   "pass": true,
+   "detail": "in 43,078 kept 40,754"
+  },
+  {
+   "check": "regression vs V1",
+   "pass": true,
+   "detail": "PASS"
+  }
+ ],
+ "regression_status": "PASS",
+ "figures": {
+  "class_counts.png": "results/20/figures/class_counts.png",
+  "group_class_heatmap.png": "results/20/figures/group_class_heatmap.png",
+  "validation_issues.png": "results/20/figures/validation_issues.png"
+ },
+ "test_rows_policy": "test-session rows are read, schema-validated and counted (incl. NaN / inf counts); no feature-value statistics (means, distributions, correlations, histograms)",
+ "runtime_s": 323.2,
+ "peak_rss_mb": 5012
+}

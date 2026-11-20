@@ -1,0 +1,1278 @@
+{
+ "manifest_version": 1,
+ "dataset_version": "v2_0_v1equiv",
+ "created_utc": "2026-11-20T13:51:21+00:00",
+ "status": "PASS",
+ "dry_run": false,
+ "script": "21_version_dataset.py",
+ "code_sha256": "93151520863737dc1381646264d047fed341a6dd651bbc6b2a0336ef3bd55ab9",
+ "argv": [
+  "21_version_dataset.py",
+  "--ingest-run",
+  "20261120T133357Z"
+ ],
+ "git_head": "99d650878a6b76b7da120c53782d619af21d97cc",
+ "git_branch": "v2",
+ "git_dirty": true,
+ "test_policy": "test rows: selected, written, counted and hashed (identity checks) only; V1's test.parquet is read for the key columns session, start_ts, y, group only; no feature-value statistics on any split",
+ "checks": [
+  {
+   "check": "lock: config/config.py sha256 == step10_prereg pin (V1 config untouched)",
+   "pass": true,
+   "detail": "c19bf4ffe4ee25a9...",
+   "level": "hard"
+  },
+  {
+   "check": "lock: config/step10_prereg.json sha256",
+   "pass": true,
+   "detail": "17f627f841263e94...",
+   "level": "hard"
+  },
+  {
+   "check": "lock: step10_prereg records the same config.py / features pins",
+   "pass": true,
+   "detail": "inputs_sha256 / features",
+   "level": "hard"
+  },
+  {
+   "check": "lock: features_v1.json (file sha256, list sha256, 70)",
+   "pass": true,
+   "detail": "ok",
+   "level": "hard"
+  },
+  {
+   "check": "lock: class_map.json (sha256, LF, structure)",
+   "pass": true,
+   "detail": "ok",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor jar sha256",
+   "pass": true,
+   "detail": "/home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor sweeper patch exists",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: config file device_table.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: config file ip_mac_map.csv",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: config file behaviour_groups.json",
+   "pass": true,
+   "detail": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: groups version",
+   "pass": true,
+   "detail": "behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: groups labels",
+   "pass": true,
+   "detail": "['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: groups lock verified",
+   "pass": true,
+   "detail": "behaviour_groups.json verification.pass",
+   "level": "hard"
+  },
+  {
+   "check": "lock: v1: extractor TZ",
+   "pass": true,
+   "detail": "subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)",
+   "level": "hard"
+  },
+  {
+   "check": "V1 frozen: results/step8/manifest_v1.json == step10_prereg",
+   "pass": true,
+   "detail": "c2e48e620ad38a1e...",
+   "level": "hard"
+  },
+  {
+   "check": "V1 frozen: results/step8b/manifest_v1_1.json == step10_prereg",
+   "pass": true,
+   "detail": "a1e5f38dbc287a43...",
+   "level": "hard"
+  },
+  {
+   "check": "V1 frozen: config/split_plan_v1_1.json == step10_prereg",
+   "pass": true,
+   "detail": "56813a35e1cbcf46...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest run PASS, full (not dry, no --limit-rows), source v1_cicflowmeter",
+   "pass": true,
+   "detail": "status PASS, dry False, limit None",
+   "level": "hard"
+  },
+  {
+   "check": "ingest_manifest sha256 == results/20 copy == results/20/run_meta.json",
+   "pass": true,
+   "detail": "16c96c346949c514... (run_meta run_id 20261120T133357Z)",
+   "level": "hard"
+  },
+  {
+   "check": "ingest class_map / features pins == current",
+   "pass": true,
+   "detail": "class_map 64063149b74d09f6..., features 623d0d2483670f34...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: benign_night",
+   "pass": true,
+   "detail": "fb050a077aa7a0b2...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood",
+   "pass": true,
+   "detail": "7578ab87d614219d...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood5",
+   "pass": true,
+   "detail": "3adb9805dc687b1d...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood10",
+   "pass": true,
+   "detail": "26030a29499a6703...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood15",
+   "pass": true,
+   "detail": "ba69465696cd8592...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: Recon-PortScan",
+   "pass": true,
+   "detail": "8137430171751813...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: Mirai-udpplain",
+   "pass": true,
+   "detail": "7207a1326bcbbf57...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: Mirai-udpplain24",
+   "pass": true,
+   "detail": "3eed151b003881a4...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: BenignTraffic1",
+   "pass": true,
+   "detail": "829bba5be4ef1091...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: BenignTraffic2",
+   "pass": true,
+   "detail": "a9db72f9d266058c...",
+   "level": "hard"
+  },
+  {
+   "check": "ingest parquet sha256 + rows == ingest manifest: BenignTraffic3",
+   "pass": true,
+   "detail": "b3aab01e19779b42...",
+   "level": "hard"
+  },
+  {
+   "check": "recorded cut labels agree with the session modes (split_plan_v1_1)",
+   "pass": true,
+   "detail": "benign_night:time_split, DDoS-SYN_Flood:train, DDoS-SYN_Flood5:train, DDoS-SYN_Flood10:test, DDoS-SYN_Flood15:test, Recon-PortScan:time_split, Mirai-udpplain:train, Mirai-udpplain24:test, BenignTraffic1:test_only, BenignTraffic2:test_only, BenignTraffic3:test_only",
+   "level": "hard"
+  },
+  {
+   "check": "3-decimal boundary rounding cannot move a whole-second flow start (all boundaries > 0.0005 s from an integer)",
+   "pass": true,
+   "detail": "min distance 0.050 s over 14 boundaries",
+   "level": "hard"
+  },
+  {
+   "check": "cap keys: count, cap, p == manifest_v1 cap_keys (exact)",
+   "pass": true,
+   "detail": "63 keys",
+   "level": "hard"
+  },
+  {
+   "check": "per (split, group, label, family): before caps and written == V1 (manifest_v1 + v1_1 daytime)",
+   "pass": true,
+   "detail": "27 keys",
+   "level": "hard"
+  },
+  {
+   "check": "rows per split == manifest_v1_1 outputs",
+   "pass": true,
+   "detail": "train 636,193/636,193, val 157,558/157,558, test 694,169/694,169",
+   "level": "hard"
+  },
+  {
+   "check": "coverage: each class >= 1 flow in train and val for every group it appears in",
+   "pass": false,
+   "detail": "syn_flood/GEN missing in train+val (train 0, val 0, test 3); udp_flood/G2 missing in train+val (train 0, val 0, test 23); port_scan/GEN missing in val (train 4356, val 0, test 0)",
+   "level": "warn"
+  },
+  {
+   "check": "row identity train: every row == V1 v1_1/train.parquet (70 features + 8 meta, positional)",
+   "pass": true,
+   "detail": "rows 636,193 vs 636,193, mismatching rows 0, V1 file sha256 == prereg",
+   "level": "hard"
+  },
+  {
+   "check": "row identity val: every row == V1 v1_1/val.parquet (70 features + 8 meta, positional)",
+   "pass": true,
+   "detail": "rows 157,558 vs 157,558, mismatching rows 0, V1 file sha256 == prereg",
+   "level": "hard"
+  },
+  {
+   "check": "test keys (session, start_ts, y, group) == V1 v1_1/test.parquet, positional (no V1 feature column read)",
+   "pass": true,
+   "detail": "rows 694,169 vs 694,169, mismatching rows 0; V1 file rows/bytes == manifest_v1_1",
+   "level": "hard"
+  },
+  {
+   "check": "test rows in V1 schema: 08b column sha256 == manifest_v1_1 (V1 part, daytime part)",
+   "pass": true,
+   "detail": "v1 part b2ace46c5389a0f8... == b2ace46c5389a0f8... (473,810 rows); daytime a89864e568183958... == a89864e568183958... (220,359 rows)",
+   "level": "hard"
+  }
+ ],
+ "v1_code": {
+  "08_build_datasets.py": "4e5bb34be2011c163453512876ec48194ab851c3f6c4cae70f1cc45ae750e349",
+  "08b_extend_test.py": "f3fa68a5f1ad4deaf239b53c35545c59b01bdb47d1d16c178e22fe219d1a1ca1",
+  "used": [
+   "08.assign",
+   "08.cap_keys",
+   "08.cap_of",
+   "08.stable_hash",
+   "08.SPLITS",
+   "08.OUT_META",
+   "08b.ColumnHasher"
+  ]
+ },
+ "ingest": {
+  "run_id": "20261120T133357Z",
+  "dir": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z",
+  "ingest_manifest": "/home/krithikk/lgids_cache/v2/ingest/20261120T133357Z/ingest_manifest.json",
+  "ingest_manifest_sha256": "16c96c346949c514fc841840c674ffda2de5e942daee44437745447e4444eff6",
+  "source_order": [
+   "benign_night",
+   "DDoS-SYN_Flood",
+   "DDoS-SYN_Flood5",
+   "DDoS-SYN_Flood10",
+   "DDoS-SYN_Flood15",
+   "Recon-PortScan",
+   "Mirai-udpplain",
+   "Mirai-udpplain24",
+   "BenignTraffic1",
+   "BenignTraffic2",
+   "BenignTraffic3"
+  ],
+  "parquets": {
+   "benign_night": {
+    "rows": 204844,
+    "sha256": "fb050a077aa7a0b2ce022f537957ae943fc0d6eb0f622161dd220a77ef9d37e0"
+   },
+   "DDoS-SYN_Flood": {
+    "rows": 6782934,
+    "sha256": "7578ab87d614219df903b5402a8c74e85ece5eb3b0f18e230ead02c5aab3c555"
+   },
+   "DDoS-SYN_Flood5": {
+    "rows": 5296071,
+    "sha256": "3adb9805dc687b1da9325c48d4a45010819b1aa4e487c5431a31b356a7f7cfa6"
+   },
+   "DDoS-SYN_Flood10": {
+    "rows": 6083889,
+    "sha256": "26030a29499a67035408ca5698c58e3bd2bc7bd193ab2067a4e5f397737071c6"
+   },
+   "DDoS-SYN_Flood15": {
+    "rows": 3102555,
+    "sha256": "ba69465696cd8592f964139d22bc186a7b9f71a10f0c75c98711b010fc5c1805"
+   },
+   "Recon-PortScan": {
+    "rows": 197408,
+    "sha256": "8137430171751813ff43628dc0303c167e15ebde32e2ebdbb2c8d001c271177e"
+   },
+   "Mirai-udpplain": {
+    "rows": 7317,
+    "sha256": "7207a1326bcbbf577dafb7f426f0beb9f9d73c9842084cb006d2666255cbce5c"
+   },
+   "Mirai-udpplain24": {
+    "rows": 5336,
+    "sha256": "3eed151b003881a4c7439ef2281a63c6a98670163487b530483aff7da23eed5a"
+   },
+   "BenignTraffic1": {
+    "rows": 85321,
+    "sha256": "829bba5be4ef1091a47eb1270392803cbcbdd32397790074ae3abee6877a6469"
+   },
+   "BenignTraffic2": {
+    "rows": 94284,
+    "sha256": "a9db72f9d266058c3348155063439b9ba7a60eef8b7421932be4071462671d00"
+   },
+   "BenignTraffic3": {
+    "rows": 40754,
+    "sha256": "b3aab01e19779b425291d375995315cb0ed8771beb6ba1df097e296a59eaa59d"
+   }
+  }
+ },
+ "class_map": {
+  "sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "version": 1,
+  "classes": [
+   "benign",
+   "syn_flood",
+   "udp_flood",
+   "port_scan"
+  ]
+ },
+ "features": {
+  "file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "list_sha256": "cf73976fd384a46609789d952d803b695cf462557595b02838066d4b3285ce5c",
+  "n": 70
+ },
+ "v2_code_sha256": {
+  "20_ingest_csv.py": "7e54e072d6e7f9c9ea4790955596c0beef51c0fc8b7cadbc8e71cbbe3be63f2b",
+  "21_version_dataset.py": "93151520863737dc1381646264d047fed341a6dd651bbc6b2a0336ef3bd55ab9",
+  "common/schemas.py": "cc48b678796b72dc9e5df8c6786cf7635e08f7b636e654c666160437d8420464",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "tests/test_schemas.py": "b9b3e574671886621380747efdbfdf997468c0958cd166b57bf3bb2e3dea5d25"
+ },
+ "split_definition": {
+  "path": "split_definition.json",
+  "sha256": "67f329c0c34fddb51eb91936b9d49799633b5ce8078b95f470391c18c60ea627",
+  "sources": {
+   "manifest_v1": "c2e48e620ad38a1e1650a2e5b9edd6739a9c6ea0433f585c93c72b8037fcf844",
+   "split_plan_v1_1": "56813a35e1cbcf46a7f41ae9cdd1e5d1affb0b94f3ef358427ad778e13182827"
+  },
+  "sessions": {
+   "benign_night": "time_split",
+   "DDoS-SYN_Flood": "train",
+   "DDoS-SYN_Flood5": "train",
+   "DDoS-SYN_Flood10": "test",
+   "DDoS-SYN_Flood15": "test",
+   "Recon-PortScan": "time_split",
+   "Mirai-udpplain": "train",
+   "Mirai-udpplain24": "test",
+   "BenignTraffic1": "test_only",
+   "BenignTraffic2": "test_only",
+   "BenignTraffic3": "test_only"
+  }
+ },
+ "caps": {
+  "benign|train|G1|Fibaro Home Center Lite": {
+   "count": 123480,
+   "cap": 20000,
+   "p": 0.16196954972465177
+  },
+  "benign|train|G1|Yi Indoor Camera": {
+   "count": 2031,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|SmartThings Hub": {
+   "count": 2240,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Netatmo Camera": {
+   "count": 1516,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Aeotec Smart Home Hub": {
+   "count": 2223,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Arlo Q Indoor Camera": {
+   "count": 2449,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Echo Show": {
+   "count": 5212,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|TP-Link Tapo Camera": {
+   "count": 3836,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Home Eye Camera": {
+   "count": 19702,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Sonos One Speaker": {
+   "count": 1745,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Rbcior Camera": {
+   "count": 1668,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Wyze Camera": {
+   "count": 11780,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Arlo Base Station": {
+   "count": 1399,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Nest Indoor Camera": {
+   "count": 462,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Smart Plug WP2 (1)": {
+   "count": 611,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Power Strip (1)": {
+   "count": 613,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (4)": {
+   "count": 616,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|HeimVision SmartLife Radio/Lamp": {
+   "count": 657,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Lumiman Bulb": {
+   "count": 917,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Google Nest Mini Speaker": {
+   "count": 6171,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Yutron Plug 2": {
+   "count": 630,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Teckin Plug 2": {
+   "count": 627,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (1)": {
+   "count": 610,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Atomi Coffee Maker": {
+   "count": 628,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Yutron Plug 1": {
+   "count": 632,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Smart Plug WP2 (2)": {
+   "count": 622,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Teckin Light Strip": {
+   "count": 981,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (3)": {
+   "count": 610,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|LampUX RGB": {
+   "count": 603,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Harman Kardon speaker (Ampak)": {
+   "count": 8360,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Unidentified ESP plug (2)": {
+   "count": 611,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Alexa Echo Studio": {
+   "count": 3457,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|HeimVision Smart WiFi Camera": {
+   "count": 973,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Teckin Plug 1": {
+   "count": 624,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Eufy HomeBase 2": {
+   "count": 3344,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|GoSund Power Strip (2)": {
+   "count": 590,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Yi Outdoor Camera": {
+   "count": 1145,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Cocoon Smart HVAC Fan": {
+   "count": 627,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Yi Indoor 2 Camera": {
+   "count": 935,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Alexa Echo Dot 1": {
+   "count": 2838,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Levoit Air Purifier": {
+   "count": 410,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|AMCREST WiFi Camera": {
+   "count": 5104,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Philips Hue Bridge": {
+   "count": 2444,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Amazon Alexa Echo Dot 2": {
+   "count": 1254,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Amazon Smart Plug": {
+   "count": 692,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Netatmo Weather Station": {
+   "count": 435,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Ring Base Station": {
+   "count": 398,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|D-Link DCS8000LHA1 Mini Camera": {
+   "count": 399,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|Govee Smart Humidifier": {
+   "count": 435,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G2|LIFX Lightbulb": {
+   "count": 266,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Wemo Smart Plug 2": {
+   "count": 4890,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|GEN|Smart Board": {
+   "count": 868,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|LG Smart TV": {
+   "count": 2409,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|GEN|Wemo Smart Plug 1": {
+   "count": 210,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|GEN|iRobot Roomba": {
+   "count": 77,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "benign|train|G1|Unidentified Amazon device (1c:12:b0)": {
+   "count": 1829,
+   "cap": 20000,
+   "p": 1.0
+  },
+  "attack|train|G1|syn_flood": {
+   "count": 5864210,
+   "cap": 200000,
+   "p": 0.03410519063948938
+  },
+  "attack|val|G1|syn_flood": {
+   "count": 789257,
+   "cap": 50000,
+   "p": 0.06335072099455565
+  },
+  "attack|train|G2|syn_flood": {
+   "count": 4195098,
+   "cap": 200000,
+   "p": 0.04767469079387418
+  },
+  "attack|val|G2|syn_flood": {
+   "count": 712314,
+   "cap": 50000,
+   "p": 0.07019376286300705
+  },
+  "attack|test|G2|syn_flood": {
+   "count": 4507838,
+   "cap": 200000,
+   "p": 0.04436716669942443
+  },
+  "attack|test|G1|syn_flood": {
+   "count": 4654900,
+   "cap": 200000,
+   "p": 0.04296547723903843
+  },
+  "attack|test|GEN|syn_flood": {
+   "count": 3,
+   "cap": 200000,
+   "p": 1.0
+  }
+ },
+ "count_regression": {
+  "rows": [
+   {
+    "split": "test",
+    "group": "G1",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 11791,
+    "pre_v1": 11791,
+    "written_ours": 11791,
+    "written_v1": 11791,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G1",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 4654900,
+    "pre_v1": 4654900,
+    "written_ours": 199774,
+    "written_v1": 199774,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G1",
+    "label": "attack",
+    "family": "udp_flood",
+    "pre_ours": 35,
+    "pre_v1": 35,
+    "written_ours": 35,
+    "written_v1": 35,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G1",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 240738,
+    "pre_v1": 240738,
+    "written_ours": 240738,
+    "written_v1": 240738,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G2",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 8715,
+    "pre_v1": 8715,
+    "written_ours": 8715,
+    "written_v1": 8715,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G2",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 4507838,
+    "pre_v1": 4507838,
+    "written_ours": 198755,
+    "written_v1": 198755,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G2",
+    "label": "attack",
+    "family": "udp_flood",
+    "pre_ours": 23,
+    "pre_v1": 23,
+    "written_ours": 23,
+    "written_v1": 23,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "G2",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 33584,
+    "pre_v1": 33584,
+    "written_ours": 33584,
+    "written_v1": 33584,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "GEN",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 3,
+    "pre_v1": 3,
+    "written_ours": 3,
+    "written_v1": 3,
+    "pass": "PASS"
+   },
+   {
+    "split": "test",
+    "group": "GEN",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 751,
+    "pre_v1": 751,
+    "written_ours": 751,
+    "written_v1": 751,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G1",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 50472,
+    "pre_v1": 50472,
+    "written_ours": 50472,
+    "written_v1": 50472,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G1",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 5864210,
+    "pre_v1": 5864210,
+    "written_ours": 200605,
+    "written_v1": 200605,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G1",
+    "label": "attack",
+    "family": "udp_flood",
+    "pre_ours": 95,
+    "pre_v1": 95,
+    "written_ours": 95,
+    "written_v1": 95,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G1",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 223461,
+    "pre_v1": 223461,
+    "written_ours": 120028,
+    "written_v1": 120028,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G2",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 43218,
+    "pre_v1": 43218,
+    "written_ours": 43218,
+    "written_v1": 43218,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G2",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 4195098,
+    "pre_v1": 4195098,
+    "written_ours": 199985,
+    "written_v1": 199985,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "G2",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 16279,
+    "pre_v1": 16279,
+    "written_ours": 16279,
+    "written_v1": 16279,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "GEN",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 4356,
+    "pre_v1": 4356,
+    "written_ours": 4356,
+    "written_v1": 4356,
+    "pass": "PASS"
+   },
+   {
+    "split": "train",
+    "group": "GEN",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 1155,
+    "pre_v1": 1155,
+    "written_ours": 1155,
+    "written_v1": 1155,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G1",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 7763,
+    "pre_v1": 7763,
+    "written_ours": 7763,
+    "written_v1": 7763,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G1",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 789257,
+    "pre_v1": 789257,
+    "written_ours": 50103,
+    "written_v1": 50103,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G1",
+    "label": "attack",
+    "family": "udp_flood",
+    "pre_ours": 17,
+    "pre_v1": 17,
+    "written_ours": 17,
+    "written_v1": 17,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G1",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 35833,
+    "pre_v1": 35833,
+    "written_ours": 35833,
+    "written_v1": 35833,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G2",
+    "label": "attack",
+    "family": "port_scan",
+    "pre_ours": 10416,
+    "pre_v1": 10416,
+    "written_ours": 10416,
+    "written_v1": 10416,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G2",
+    "label": "attack",
+    "family": "syn_flood",
+    "pre_ours": 712314,
+    "pre_v1": 712314,
+    "written_ours": 50074,
+    "written_v1": 50074,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "G2",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 3061,
+    "pre_v1": 3061,
+    "written_ours": 3061,
+    "written_v1": 3061,
+    "pass": "PASS"
+   },
+   {
+    "split": "val",
+    "group": "GEN",
+    "label": "benign",
+    "family": "",
+    "pre_ours": 291,
+    "pre_v1": 291,
+    "written_ours": 291,
+    "written_v1": 291,
+    "pass": "PASS"
+   }
+  ],
+  "split_totals": {
+   "train": {
+    "ours": 636193,
+    "v1_1": 636193
+   },
+   "val": {
+    "ours": 157558,
+    "v1_1": 157558
+   },
+   "test": {
+    "ours": 694169,
+    "v1_1": 694169
+   }
+  }
+ },
+ "coverage": {
+  "table": {
+   "train": {
+    "G1": {
+     "benign": 120028,
+     "syn_flood": 200605,
+     "udp_flood": 95,
+     "port_scan": 50472
+    },
+    "G2": {
+     "benign": 16279,
+     "syn_flood": 199985,
+     "udp_flood": 0,
+     "port_scan": 43218
+    },
+    "GEN": {
+     "benign": 1155,
+     "syn_flood": 0,
+     "udp_flood": 0,
+     "port_scan": 4356
+    }
+   },
+   "val": {
+    "G1": {
+     "benign": 35833,
+     "syn_flood": 50103,
+     "udp_flood": 17,
+     "port_scan": 7763
+    },
+    "G2": {
+     "benign": 3061,
+     "syn_flood": 50074,
+     "udp_flood": 0,
+     "port_scan": 10416
+    },
+    "GEN": {
+     "benign": 291,
+     "syn_flood": 0,
+     "udp_flood": 0,
+     "port_scan": 0
+    }
+   },
+   "test": {
+    "G1": {
+     "benign": 240738,
+     "syn_flood": 199774,
+     "udp_flood": 35,
+     "port_scan": 11791
+    },
+    "G2": {
+     "benign": 33584,
+     "syn_flood": 198755,
+     "udp_flood": 23,
+     "port_scan": 8715
+    },
+    "GEN": {
+     "benign": 751,
+     "syn_flood": 3,
+     "udp_flood": 0,
+     "port_scan": 0
+    }
+   }
+  },
+  "gaps": [
+   {
+    "class": "syn_flood",
+    "group": "GEN",
+    "missing_in": "train+val",
+    "train": 0,
+    "val": 0,
+    "test": 3
+   },
+   {
+    "class": "udp_flood",
+    "group": "G2",
+    "missing_in": "train+val",
+    "train": 0,
+    "val": 0,
+    "test": 23
+   },
+   {
+    "class": "port_scan",
+    "group": "GEN",
+    "missing_in": "val",
+    "train": 4356,
+    "val": 0,
+    "test": 0
+   }
+  ],
+  "absent_everywhere": [
+   {
+    "class": "udp_flood",
+    "group": "GEN"
+   }
+  ],
+  "udp_flood": {
+   "train": {
+    "G1": 95,
+    "G2": 0,
+    "GEN": 0
+   },
+   "val": {
+    "G1": 17,
+    "G2": 0,
+    "GEN": 0
+   },
+   "test": {
+    "G1": 35,
+    "G2": 23,
+    "GEN": 0
+   }
+  }
+ },
+ "counts": {
+  "train": {
+   "G1": {
+    "benign": 120028,
+    "syn_flood": 200605,
+    "udp_flood": 95,
+    "port_scan": 50472
+   },
+   "G2": {
+    "benign": 16279,
+    "syn_flood": 199985,
+    "udp_flood": 0,
+    "port_scan": 43218
+   },
+   "GEN": {
+    "benign": 1155,
+    "syn_flood": 0,
+    "udp_flood": 0,
+    "port_scan": 4356
+   }
+  },
+  "val": {
+   "G1": {
+    "benign": 35833,
+    "syn_flood": 50103,
+    "udp_flood": 17,
+    "port_scan": 7763
+   },
+   "G2": {
+    "benign": 3061,
+    "syn_flood": 50074,
+    "udp_flood": 0,
+    "port_scan": 10416
+   },
+   "GEN": {
+    "benign": 291,
+    "syn_flood": 0,
+    "udp_flood": 0,
+    "port_scan": 0
+   }
+  },
+  "test": {
+   "G1": {
+    "benign": 240738,
+    "syn_flood": 199774,
+    "udp_flood": 35,
+    "port_scan": 11791
+   },
+   "G2": {
+    "benign": 33584,
+    "syn_flood": 198755,
+    "udp_flood": 23,
+    "port_scan": 8715
+   },
+   "GEN": {
+    "benign": 751,
+    "syn_flood": 3,
+    "udp_flood": 0,
+    "port_scan": 0
+   }
+  }
+ },
+ "row_identity": {
+  "train": {
+   "v1_file": "/home/krithikk/lgids_cache/datasets/v1_1/train.parquet",
+   "v1_sha256_ok": true,
+   "rows_ours": 636193,
+   "rows_v1": 636193,
+   "row_mismatches": 0,
+   "per_column": {}
+  },
+  "val": {
+   "v1_file": "/home/krithikk/lgids_cache/datasets/v1_1/val.parquet",
+   "v1_sha256_ok": true,
+   "rows_ours": 157558,
+   "rows_v1": 157558,
+   "row_mismatches": 0,
+   "per_column": {}
+  },
+  "test": {
+   "v1_file": "/home/krithikk/lgids_cache/datasets/v1_1/test.parquet",
+   "v1_file_rows_bytes_ok": true,
+   "rows_ours": 694169,
+   "rows_v1": 694169,
+   "columns_read_from_v1": [
+    "session",
+    "start_ts",
+    "y",
+    "group"
+   ],
+   "key_mismatches": 0,
+   "per_column": {},
+   "column_hash": {
+    "v1_part": {
+     "ours": "b2ace46c5389a0f8248a3c8667a8bbab16bb2a2112caf36cdb477cc3e8bce800",
+     "v1_record": "b2ace46c5389a0f8248a3c8667a8bbab16bb2a2112caf36cdb477cc3e8bce800",
+     "rows": 473810
+    },
+    "daytime_part": {
+     "ours": "a89864e5681839580320ccddee1d2ab86c573ca2881e89f6b3bfa9fff78168b6",
+     "v1_record": "a89864e5681839580320ccddee1d2ab86c573ca2881e89f6b3bfa9fff78168b6",
+     "rows": 220359
+    }
+   }
+  }
+ },
+ "runtime_s": 37.4,
+ "peak_rss_mb": 4402,
+ "figures": {
+  "split_class_balance.png": "results/21/figures/split_class_balance.png",
+  "split_group_class_table.png": "results/21/figures/split_group_class_table.png"
+ },
+ "files": {
+  "train": {
+   "path": "/home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv/train.parquet",
+   "rows": 636193,
+   "bytes": 71733180,
+   "file_sha256": "d7ac09e07a8828ee4464ce2e678a3194ce133d0667244acd2ef5d8734ad21eaa",
+   "content_sha256": "ad93b8244385c875bbc6f5044599295998be9e7cbb45444590345aad3828c58e"
+  },
+  "val": {
+   "path": "/home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv/val.parquet",
+   "rows": 157558,
+   "bytes": 16484076,
+   "file_sha256": "9eecf620a162073756fcb8f9c2ade1facc0d18f08bd3b3a1cef2e0206de540be",
+   "content_sha256": "8b8005fc4045fe66fb28e66a459eaf68171941d13916662c793bf27ef7a6687f"
+  },
+  "test": {
+   "path": "/home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv/test.parquet",
+   "rows": 694169,
+   "bytes": 89676419,
+   "file_sha256": "6537b20b270610500e7eb72a61cbccea0c8765ea72ff544c250b1318dad1f3fd",
+   "content_sha256": "817d680aa27f4de1d587194ff008d77137493013d91ed3fa78d26378bc752d80"
+  }
+ },
+ "content_sha256_of": "08b ColumnHasher: sha256 per column over the rows (strings NUL-joined, numbers raw), sha256 of the concatenated column digests",
+ "dataset_dir": "/home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv",
+ "index_path": "/home/krithikk/lgids_cache/v2/datasets/index.jsonl"
+}

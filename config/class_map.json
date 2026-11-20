@@ -1,0 +1,27 @@
+{
+ "version": 1,
+ "classes": [
+  {"id": 0, "name": "benign"},
+  {"id": 1, "name": "syn_flood"},
+  {"id": 2, "name": "udp_flood"},
+  {"id": 3, "name": "port_scan"}
+ ],
+ "aliases": {
+  "v1_cicflowmeter": {
+   "benign": "benign",
+   "syn_flood": "syn_flood",
+   "udp_flood": "udp_flood",
+   "port_scan": "port_scan"
+  }
+ },
+ "notes": [
+  "Id rules: benign is always id 0; ids are contiguous from 0, append-only, never reordered or reused. A new class = append to classes + add its aliases, bump version, update CLASS_MAP_SHA256 in common/schemas.py.",
+  "No 'other attack' class: traffic outside these classes is the job of Stage 3 (unknown detection), never a label here.",
+  "Source v1_cicflowmeter = V1's labelled CICFlowMeter flow tables (07_label_attacks.py output, 84 CICFlowMeter + 14 tag + 5 label columns). Alias key per row: attack_family if label == 'attack', else label. Strings taken from results/step7/labels/*_label_report.json, results/step8b/labels/*_label_report.json and results/step8/manifest_v1.json (label in {attack, benign, excluded}; attack_family in {syn_flood, udp_flood, port_scan} on attack rows, '' otherwise).",
+  "Hard errors in that source: label == 'attack' with empty or unknown attack_family; any label outside {attack, benign, excluded}; any alias key not listed here.",
+  "'excluded' is not a class: excluded, not-owned and ungrouped rows are rejected by V1's own 08_build_datasets.py filter before encoding, with the reason counted in ingest_manifest.json.",
+  "benign_night (data/interim/flows/benign/benign_flows_tagged.csv) has no label column; it is ingested only with an explicit per-input declaration (--assume-label benign), recorded in ingest_manifest.json. Never a silent default.",
+  "CICFlowMeter's own 'Label' column (always 'NeedManualLabel') is ignored.",
+  "This file's sha256 is over its exact bytes (LF line endings, as committed)."
+ ]
+}

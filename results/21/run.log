@@ -1,0 +1,72 @@
+13:51:21  21_version_dataset.py  pid 1092  code sha256 93151520863737dc...  version v2_0_v1equiv  -> /home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv
+13:51:23  inputs:
+13:51:23    PASS  lock: config/config.py sha256 == step10_prereg pin (V1 config untouched)  c19bf4ffe4ee25a9...
+13:51:23    PASS  lock: config/step10_prereg.json sha256  17f627f841263e94...
+13:51:23    PASS  lock: step10_prereg records the same config.py / features pins  inputs_sha256 / features
+13:51:23    PASS  lock: features_v1.json (file sha256, list sha256, 70)  ok
+13:51:23    PASS  lock: class_map.json (sha256, LF, structure)  ok
+13:51:23    PASS  lock: v1: extractor jar sha256  /home/krithikk/tools/CICFlowMeter-sweep/build/install/CICFlowMeter/lib/CICFlowMeter-4.0.jar (01acf9411e7ab6a0...)
+13:51:23    PASS  lock: v1: extractor patch exists  /mnt/d/Projects/Company Project/Paper_Implemetation/extractor/guard_gt0.patch
+13:51:23    PASS  lock: v1: extractor sweeper patch exists  /mnt/d/Projects/Company Project/Paper_Implemetation/extractor/idle_sweeper.patch
+13:51:23    PASS  lock: v1: config file device_table.csv  /mnt/d/Projects/Company Project/Paper_Implemetation/config/device_table.csv
+13:51:23    PASS  lock: v1: config file ip_mac_map.csv  /mnt/d/Projects/Company Project/Paper_Implemetation/config/ip_mac_map.csv
+13:51:23    PASS  lock: v1: config file behaviour_groups.json  /mnt/d/Projects/Company Project/Paper_Implemetation/config/behaviour_groups.json
+13:51:23    PASS  lock: v1: groups version  behaviour_groups.json version '1.0' vs GROUPS.version 'v1.0'
+13:51:23    PASS  lock: v1: groups labels  ['G1', 'G2', 'GEN'] vs ['G1', 'G2', 'GEN']
+13:51:23    PASS  lock: v1: groups lock verified  behaviour_groups.json verification.pass
+13:51:23    PASS  lock: v1: extractor TZ  subprocess env TZ=UTC (this shell: TZ=None; not used by the JVM unless passed)
+13:51:23    PASS  V1 frozen: results/step8/manifest_v1.json == step10_prereg  c2e48e620ad38a1e...
+13:51:23    PASS  V1 frozen: results/step8b/manifest_v1_1.json == step10_prereg  a1e5f38dbc287a43...
+13:51:23    PASS  V1 frozen: config/split_plan_v1_1.json == step10_prereg  56813a35e1cbcf46...
+13:51:23    PASS  ingest run PASS, full (not dry, no --limit-rows), source v1_cicflowmeter  status PASS, dry False, limit None
+13:51:23    PASS  ingest_manifest sha256 == results/20 copy == results/20/run_meta.json  16c96c346949c514... (run_meta run_id 20261120T133357Z)
+13:51:23    PASS  ingest class_map / features pins == current  class_map 64063149b74d09f6..., features 623d0d2483670f34...
+13:51:23    PASS  ingest parquet sha256 + rows == ingest manifest: benign_night  fb050a077aa7a0b2...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood  7578ab87d614219d...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood5  3adb9805dc687b1d...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood10  26030a29499a6703...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: DDoS-SYN_Flood15  ba69465696cd8592...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: Recon-PortScan  8137430171751813...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: Mirai-udpplain  7207a1326bcbbf57...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: Mirai-udpplain24  3eed151b003881a4...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: BenignTraffic1  829bba5be4ef1091...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: BenignTraffic2  a9db72f9d266058c...
+13:51:24    PASS  ingest parquet sha256 + rows == ingest manifest: BenignTraffic3  b3aab01e19779b42...
+13:51:25  split definition (V1's recorded cuts):
+13:51:25    PASS  recorded cut labels agree with the session modes (split_plan_v1_1)  benign_night:time_split, DDoS-SYN_Flood:train, DDoS-SYN_Flood5:train, DDoS-SYN_Flood10:test, DDoS-SYN_Flood15:test, Recon-PortScan:time_split, Mirai-udpplain:train, Mirai-udpplain24:test, BenignTraffic1:test_only, BenignTraffic2:test_only, BenignTraffic3:test_only
+13:51:25    PASS  3-decimal boundary rounding cannot move a whole-second flow start (all boundaries > 0.0005 s from an integer)  min distance 0.050 s over 14 boundaries
+13:51:25  selection (08 assign / cap_keys / seeded draws):
+13:51:25    [benign_night]    204,844 rows  gap    1,251  capped-key rows    162,803     3.4 s
+13:51:33    [DDoS-SYN_Flood]  6,782,934 rows  gap  103,757  capped-key rows  6,676,738    11.4 s
+13:51:38    [DDoS-SYN_Flood5]  5,296,071 rows  gap  376,979  capped-key rows  4,917,961    17.0 s
+13:51:44    [DDoS-SYN_Flood10]  6,083,889 rows  gap        0  capped-key rows  6,067,638    22.3 s
+13:51:46    [DDoS-SYN_Flood15]  3,102,555 rows  gap        0  capped-key rows  3,095,103    24.8 s
+13:51:46    [Recon-PortScan]    197,408 rows  gap    3,052  capped-key rows     37,647    24.9 s
+13:51:46    [Mirai-udpplain]      7,317 rows  gap        0  capped-key rows      6,625    24.9 s
+13:51:46    [Mirai-udpplain24]      5,336 rows  gap        0  capped-key rows          0    24.9 s
+13:51:46    [BenignTraffic1]     85,321 rows  gap        0  capped-key rows          0    25.0 s
+13:51:46    [BenignTraffic2]     94,284 rows  gap        0  capped-key rows          0    25.0 s
+13:51:46    [BenignTraffic3]     40,754 rows  gap        0  capped-key rows          0    25.1 s
+13:51:47    PASS  cap keys: count, cap, p == manifest_v1 cap_keys (exact)  63 keys
+13:51:47  write splits:
+13:51:48    [benign_night] written   126,626    26.6 s
+13:51:50    [DDoS-SYN_Flood] written   269,946    28.7 s
+13:51:52    [DDoS-SYN_Flood5] written   257,749    30.4 s
+13:51:54    [DDoS-SYN_Flood10] written   281,867    32.5 s
+13:51:55    [DDoS-SYN_Flood15] written   140,368    33.5 s
+13:51:55    [Recon-PortScan] written   178,352    34.0 s
+13:51:55    [Mirai-udpplain] written     7,317    34.0 s
+13:51:55    [Mirai-udpplain24] written     5,336    34.0 s
+13:51:56    [BenignTraffic1] written    85,321    34.4 s
+13:51:56    [BenignTraffic2] written    94,284    34.8 s
+13:51:56    [BenignTraffic3] written    40,754    34.9 s
+13:51:56  count regression + coverage:
+13:51:56    PASS  per (split, group, label, family): before caps and written == V1 (manifest_v1 + v1_1 daytime)  27 keys
+13:51:56    PASS  rows per split == manifest_v1_1 outputs  train 636,193/636,193, val 157,558/157,558, test 694,169/694,169
+13:51:56    WARN  coverage: each class >= 1 flow in train and val for every group it appears in  syn_flood/GEN missing in train+val (train 0, val 0, test 3); udp_flood/G2 missing in train+val (train 0, val 0, test 23); port_scan/GEN missing in val (train 4356, val 0, test 0)
+13:51:56  row-level identity vs V1:
+13:51:58    PASS  row identity train: every row == V1 v1_1/train.parquet (70 features + 8 meta, positional)  rows 636,193 vs 636,193, mismatching rows 0, V1 file sha256 == prereg
+13:51:58    PASS  row identity val: every row == V1 v1_1/val.parquet (70 features + 8 meta, positional)  rows 157,558 vs 157,558, mismatching rows 0, V1 file sha256 == prereg
+13:51:59    PASS  test keys (session, start_ts, y, group) == V1 v1_1/test.parquet, positional (no V1 feature column read)  rows 694,169 vs 694,169, mismatching rows 0; V1 file rows/bytes == manifest_v1_1
+13:51:59    PASS  test rows in V1 schema: 08b column sha256 == manifest_v1_1 (V1 part, daytime part)  v1 part b2ace46c5389a0f8... == b2ace46c5389a0f8... (473,810 rows); daytime a89864e568183958... == a89864e568183958... (220,359 rows)
+13:52:03  PASS  -> /home/krithikk/lgids_cache/v2/datasets/v2_0_v1equiv  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/21  (37.4 s, peak RSS 4402 MB)

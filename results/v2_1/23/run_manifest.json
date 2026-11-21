@@ -1,0 +1,450 @@
+{
+ "run_id": "20261121T080839Z",
+ "step": "23",
+ "created_utc": "2026-11-21T08:08:39+00:00",
+ "script": "23_evaluate.py",
+ "dry_run": false,
+ "argv": [
+  "23_evaluate.py",
+  "--config",
+  "config/v2_phase2_v2_1.json"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2_v2_1.json",
+  "sha256": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_1_oriented",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "23_evaluate.py": "af67420483a18413061e9903e5e99cac676a363eb9d960c58d9918584130bfbe",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "65730e616928f703ce62385cead230a8da33ca368122b753cca066f37515f576",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "3e8a546eb59c71ad4424a7bfa962cc3db6a014eaee0b43fa23cba1c277b420a9",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f",
+  "common/amendment.py": "02f266f43944895a8813b61b09f4ba1a517ef0d2881b94f162e002cf4cf465ba",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "step 22 run used the same config / prereg / class map / features",
+   "pass": true,
+   "detail": "config e9dc754e9379..",
+   "level": "hard"
+  },
+  {
+   "check": "every step 22 model loaded (sha256 == manifest) and scored on val",
+   "pass": true,
+   "detail": "90 models x 157,558 rows",
+   "level": "hard"
+  },
+  {
+   "check": "Amendment 1 primary selection applied",
+   "pass": true,
+   "detail": "chosen none (ROUTED_A1_none); within tolerance ['sqrt', 'none', 'balanced']; tied on false alarms ['none']",
+   "level": "hard"
+  },
+  {
+   "check": "V1 FINAL reproduces its prereg val false alarms at T_house (artifacts + routing sane)",
+   "pass": true,
+   "detail": "2 vs prereg 2",
+   "level": "hard"
+  }
+ ],
+ "prereg_amendments": {
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f"
+ },
+ "orientation": {
+  "map": "config/orientation_map.json",
+  "rule": "R3",
+  "map_sha256": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "train_run": "20261121T075821Z",
+ "train_run_manifest_sha256": "5f281f3f1c1b1778b2f553a6ff9a374177c5284a6c20f1cacbca81e6d58cabe6",
+ "warnings": [
+  "rare classes on the full val split (< 50 flows): udp_flood (17)",
+  "group G2: classes with 0 val flows (N/A, excluded from its macro-F1): ['udp_flood']",
+  "group GEN: classes with 0 val flows (N/A, excluded from its macro-F1): ['syn_flood', 'udp_flood', 'port_scan']"
+ ],
+ "dataset": {
+  "val_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "train_read": false
+ },
+ "n_val": 157558,
+ "hours_all": 1.9527777777777777,
+ "systems": {
+  "ROUTED": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__sqrt",
+    "G2": "SPEC_G2__sqrt",
+    "GEN": "GLOBAL__sqrt"
+   },
+   "default": "GLOBAL__sqrt",
+   "note": "primary"
+  },
+  "FLAT_GLOBAL": {
+   "kind": "all",
+   "map": {},
+   "default": "GLOBAL__sqrt",
+   "note": "flat multiclass baseline"
+  },
+  "ROUTED_A1_none": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__none",
+    "G2": "SPEC_G2__none",
+    "GEN": "GLOBAL__none"
+   },
+   "default": "GLOBAL__none",
+   "note": "A1 weights none"
+  },
+  "ROUTED_A1_balanced": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__balanced",
+    "G2": "SPEC_G2__balanced",
+    "GEN": "GLOBAL__balanced"
+   },
+   "default": "GLOBAL__balanced",
+   "note": "A1 weights balanced"
+  },
+  "ROUTED_A2": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__sqrt",
+    "G2": "SPEC_G2__sqrt",
+    "GEN": "GENSPEC_GEN__sqrt"
+   },
+   "default": "GLOBAL__sqrt",
+   "note": "A2: GEN -> GENSPEC_GEN__sqrt"
+  },
+  "ROUTED_A3": {
+   "kind": "category",
+   "map": {
+    "Audio": "CAT_Audio__sqrt",
+    "Camera": "CAT_Camera__sqrt",
+    "Home Automation": "CAT_Home_Automation__sqrt",
+    "Hub": "CAT_Hub__sqrt",
+    "Lighting": "CAT_Lighting__sqrt",
+    "Power Outlet": "CAT_Power_Outlet__sqrt",
+    "Unidentified (Amazon)": "CAT_Unidentified_Amazon__sqrt",
+    "Unidentified (Espressif)": "CAT_Unidentified_Espressif__sqrt"
+   },
+   "default": "GLOBAL__sqrt",
+   "note": "A3: device category -> category model, else GLOBAL"
+  },
+  "FLAT_GLOBAL_A1_none": {
+   "kind": "all",
+   "map": {},
+   "default": "GLOBAL__none",
+   "note": "flat baseline, A1 weights none (Amendment 1)"
+  },
+  "FLAT_GLOBAL_A1_balanced": {
+   "kind": "all",
+   "map": {},
+   "default": "GLOBAL__balanced",
+   "note": "flat baseline, A1 weights balanced (Amendment 1)"
+  }
+ },
+ "primary_selection": {
+  "rule": "amendment_1_section_2",
+  "amendment": "docs/V2_PREREG_PHASE2_AMENDMENT_1.md",
+  "tolerance": 0.005,
+  "tie_order": [
+   "none",
+   "sqrt",
+   "balanced"
+  ],
+  "table": [
+   {
+    "mode": "sqrt",
+    "routed_system": "ROUTED",
+    "flat_system": "FLAT_GLOBAL",
+    "macro_f1_nonrare_mean": 0.9971149145441334,
+    "macro_f1_nonrare_ci": [
+     0.9969398431971257,
+     0.997289985891141
+    ],
+    "macro_f1_all_mean": 0.8498403014461496,
+    "fa_count_mean": 17.6,
+    "fa_counts_per_seed": [
+     15,
+     28,
+     14,
+     19,
+     12
+    ],
+    "fa_per_hour_mean": 9.012802275960171,
+    "flat_macro_f1_nonrare_mean": 0.9974567595901979
+   },
+   {
+    "mode": "none",
+    "routed_system": "ROUTED_A1_none",
+    "flat_system": "FLAT_GLOBAL_A1_none",
+    "macro_f1_nonrare_mean": 0.9974171319177015,
+    "macro_f1_nonrare_ci": [
+     0.9973599004280527,
+     0.9974743634073504
+    ],
+    "macro_f1_all_mean": 0.9101660603254143,
+    "fa_count_mean": 3.4,
+    "fa_counts_per_seed": [
+     4,
+     3,
+     3,
+     4,
+     3
+    ],
+    "fa_per_hour_mean": 1.741109530583215,
+    "flat_macro_f1_nonrare_mean": 0.9977897956633208
+   },
+   {
+    "mode": "balanced",
+    "routed_system": "ROUTED_A1_balanced",
+    "flat_system": "FLAT_GLOBAL_A1_balanced",
+    "macro_f1_nonrare_mean": 0.9968869227010252,
+    "macro_f1_nonrare_ci": [
+     0.9967305805644382,
+     0.9970432648376122
+    ],
+    "macro_f1_all_mean": 0.806564632066223,
+    "fa_count_mean": 36.4,
+    "fa_counts_per_seed": [
+     31,
+     34,
+     28,
+     24,
+     65
+    ],
+    "fa_per_hour_mean": 18.640113798008535,
+    "flat_macro_f1_nonrare_mean": 0.9970521743623003
+   }
+  ],
+  "chosen": "none",
+  "best_macro_f1_nonrare_mean": 0.9974171319177015,
+  "within_tolerance": [
+   "sqrt",
+   "none",
+   "balanced"
+  ],
+  "fewest_fa_count_mean": 3.4,
+  "tied_on_fa": [
+   "none"
+  ],
+  "tie_break_used": false,
+  "chosen_config_label": "A1_none",
+  "chosen_routed_system": "ROUTED_A1_none",
+  "chosen_flat_system": "FLAT_GLOBAL_A1_none"
+ },
+ "sizes": {
+  "SPEC_G1__sqrt": 234946,
+  "SPEC_G2__sqrt": 211807,
+  "GLOBAL__sqrt": 198830,
+  "SPEC_G1__none": 366242,
+  "SPEC_G2__none": 366753,
+  "GLOBAL__none": 409678,
+  "SPEC_G1__balanced": 266330,
+  "SPEC_G2__balanced": 101063,
+  "GLOBAL__balanced": 223873,
+  "GENSPEC_GEN__sqrt": 233430,
+  "CAT_Audio__sqrt": 216123,
+  "CAT_Camera__sqrt": 422742,
+  "CAT_Home_Automation__sqrt": 183346,
+  "CAT_Hub__sqrt": 447480,
+  "CAT_Lighting__sqrt": 377554,
+  "CAT_Power_Outlet__sqrt": 196823,
+  "CAT_Unidentified_Amazon__sqrt": 221315,
+  "CAT_Unidentified_Espressif__sqrt": 375523
+ },
+ "a2": {
+  "n_benign": 291,
+  "hours": 1.9527777777777777,
+  "models": {
+   "GLOBAL__sqrt": {
+    "fp_per_seed": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "fa_h_seed0": 0.0,
+    "ci": [
+     0.0,
+     1.8890421102148176
+    ]
+   },
+   "GENSPEC_GEN__sqrt": {
+    "fp_per_seed": [
+     2,
+     2,
+     2,
+     7,
+     4
+    ],
+    "fa_h_seed0": 1.0241820768136558,
+    "ci": [
+     0.12403320096134769,
+     3.6996978099297664
+    ]
+   }
+  }
+ },
+ "v1_compare": {
+  "v1_FINAL": {
+   "pr_auc": 0.99999869659712,
+   "roc_auc": 0.9999959806581816,
+   "dr_at_0.5": 0.9998394904243366,
+   "fp_at_0.5": 3,
+   "fa_per_hour_at_0.5": 1.5362731152204836,
+   "thr_le2fp": 0.6674512624740601,
+   "dr_at_le2fp": 0.9998394904243366,
+   "fp_at_le2fp": 2,
+   "fp_at_T_house": 2,
+   "dr_at_T_house": 0.9998394904243366
+  },
+  "v2_ROUTED_per_seed": {
+   "0": {
+    "pr_auc": 0.9999520732455144,
+    "roc_auc": 0.999936496835431,
+    "dr_at_0.5": 0.9997888031899166,
+    "fp_at_0.5": 15,
+    "fa_per_hour_at_0.5": 7.681365576102419,
+    "thr_le2fp": 0.9992631673812866,
+    "dr_at_le2fp": 0.9961731138012891,
+    "fp_at_le2fp": 2
+   },
+   "1": {
+    "pr_auc": 0.9999485426491371,
+    "roc_auc": 0.9999324612166096,
+    "dr_at_0.5": 0.9998056989347233,
+    "fp_at_0.5": 28,
+    "fa_per_hour_at_0.5": 14.338549075391182,
+    "thr_le2fp": 0.9999219179153442,
+    "dr_at_le2fp": 0.9952016084749056,
+    "fp_at_le2fp": 2
+   },
+   "2": {
+    "pr_auc": 0.9999547161648618,
+    "roc_auc": 0.9999543743745704,
+    "dr_at_0.5": 0.9993917531869598,
+    "fp_at_0.5": 14,
+    "fa_per_hour_at_0.5": 7.169274537695591,
+    "thr_le2fp": 0.9989508390426636,
+    "dr_at_le2fp": 0.9954465967746023,
+    "fp_at_le2fp": 2
+   },
+   "3": {
+    "pr_auc": 0.9999349286623582,
+    "roc_auc": 0.9999308836408456,
+    "dr_at_0.5": 0.9997719074451099,
+    "fp_at_0.5": 19,
+    "fa_per_hour_at_0.5": 9.72972972972973,
+    "thr_le2fp": 0.9922657608985901,
+    "dr_at_le2fp": 0.9980063021128129,
+    "fp_at_le2fp": 2
+   },
+   "4": {
+    "pr_auc": 0.999981074066256,
+    "roc_auc": 0.9999664695892047,
+    "dr_at_0.5": 0.99979725106232,
+    "fp_at_0.5": 12,
+    "fa_per_hour_at_0.5": 6.145092460881934,
+    "thr_le2fp": 0.995134174823761,
+    "dr_at_le2fp": 0.9984371436053829,
+    "fp_at_le2fp": 2
+   }
+  },
+  "v2_ROUTED": {
+   "pr_auc": {
+    "mean": 0.9999542669576256,
+    "lo": 0.9999333939560869,
+    "hi": 0.9999751399591642,
+    "n": 5
+   },
+   "roc_auc": {
+    "mean": 0.9999441371313322,
+    "lo": 0.9999247626372402,
+    "hi": 0.9999635116254243,
+    "n": 5
+   },
+   "dr_at_0.5": {
+    "mean": 0.999711082763806,
+    "lo": 0.9994888902259507,
+    "hi": 0.9999332753016614,
+    "n": 5
+   },
+   "fp_at_0.5": {
+    "mean": 17.6,
+    "lo": 9.717633716786256,
+    "hi": 25.482366283213747,
+    "n": 5
+   },
+   "fa_per_hour_at_0.5": {
+    "mean": 9.012802275960171,
+    "lo": 4.976313140886274,
+    "hi": 13.049291411034067,
+    "n": 5
+   },
+   "thr_le2fp": {
+    "mean": 0.9971071720123291,
+    "lo": 0.9930218239368093,
+    "hi": 1.0011925200878489,
+    "n": 5
+   },
+   "dr_at_le2fp": {
+    "mean": 0.9966529529537986,
+    "lo": 0.9948105528646416,
+    "hi": 0.9984953530429557,
+    "n": 5
+   },
+   "fp_at_le2fp": {
+    "mean": 2.0,
+    "lo": 2.0,
+    "hi": 2.0,
+    "n": 5
+   }
+  },
+  "hours": 1.9527777777777777,
+  "v1_models": {
+   "G1": "94451ede65092a4e3c807d6b4fa44df7fed9c6b242a7260c60b21576e1b3a076",
+   "G2": "9f63a62dfb50675f22c4c6c8644a79061b5bcf6fb280dc4702f028278ea46687",
+   "GLOBAL": "d7408f5073182cf0bf7346804bf84a38f9376083d0ab996cd98ba3889461f54a"
+  },
+  "t_house": 0.568307638168335,
+  "note": "thresholds at <= 2 val FP are chosen and read on val (same-set, optimistic), V1's rule"
+ },
+ "figures": [
+  "figures/confusion_per_group.png",
+  "figures/per_class_prf.png",
+  "figures/binary_collapse_vs_v1.png",
+  "figures/macro_f1_dotplot.png",
+  "figures/false_alarms_per_hour.png",
+  "figures/pr_curves_per_class.png",
+  "figures/macro_f1_vs_latency.png"
+ ],
+ "runtime_s": 55.1,
+ "peak_rss_mb": 1516
+}

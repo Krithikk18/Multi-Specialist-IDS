@@ -1,0 +1,29 @@
+18:35:29  23_evaluate.py  pid 1031  run_id 20261120T183529Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/eval/20261120T183529Z
+18:35:29    PASS  step 22 run used the same config / prereg / class map / features  config ee4bfdea8b1c..
+18:35:45    PASS  every step 22 model loaded (sha256 == manifest) and scored on val  90 models x 157,558 rows
+18:35:47    system ROUTED               macro-F1 all 0.83599
+18:35:49    system FLAT_GLOBAL          macro-F1 all 0.86503
+18:35:51    system ROUTED_A1_none       macro-F1 all 0.89624
+18:35:53    system ROUTED_A1_balanced   macro-F1 all 0.80038
+18:35:54    system ROUTED_A2            macro-F1 all 0.82817
+18:35:56    system ROUTED_A3            macro-F1 all 0.78241
+18:35:58    model  SPEC_G1__sqrt                macro-F1 all 0.84502
+18:36:00    model  SPEC_G2__sqrt                macro-F1 all 0.88171
+18:36:02    model  GLOBAL__sqrt                 macro-F1 all 0.86503
+18:36:04    model  SPEC_G1__none                macro-F1 all 0.89606
+18:36:05    model  SPEC_G2__none                macro-F1 all 0.94215
+18:36:07    model  GLOBAL__none                 macro-F1 all 0.90839
+18:36:08    model  SPEC_G1__balanced            macro-F1 all 0.80343
+18:36:09    model  SPEC_G2__balanced            macro-F1 all 0.86449
+18:36:11    model  GLOBAL__balanced             macro-F1 all 0.78876
+18:36:11    model  GENSPEC_GEN__sqrt            macro-F1 all 0.91920
+18:36:12    model  CAT_Audio__sqrt              macro-F1 all 0.82581
+18:36:14    model  CAT_Camera__sqrt             macro-F1 all 0.82287
+18:36:15    model  CAT_Home_Automation__sqrt    macro-F1 all 0.90474
+18:36:17    model  CAT_Hub__sqrt                macro-F1 all 0.82658
+18:36:18    model  CAT_Lighting__sqrt           macro-F1 all 0.94502
+18:36:19    model  CAT_Power_Outlet__sqrt       macro-F1 all 0.86926
+18:36:20    model  CAT_Unidentified_Amazon__sqrt macro-F1 all 0.88551
+18:36:21    model  CAT_Unidentified_Espressif__sqrt macro-F1 all 0.94815
+18:36:24    PASS  V1 FINAL reproduces its prereg val false alarms at T_house (artifacts + routing sane)  2 vs prereg 2
+18:36:26  PASS  -> /home/krithikk/lgids_cache/v2/eval/20261120T183529Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/23  (56.7 s)

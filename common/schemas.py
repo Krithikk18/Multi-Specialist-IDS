@@ -79,6 +79,14 @@ CONFIG_PY_PATH = CONFIG_DIR / "config.py"
 CONFIG_PY_SHA256 = "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf"
 STEP10_PREREG_PATH = CONFIG_DIR / "step10_prereg.json"
 STEP10_PREREG_SHA256 = "17f627f841263e943ae0df0fa0758bb94e924cce9da0cce414856052976b59aa"
+PREREG_PHASE2_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE2.md"
+PREREG_PHASE2_SHA256 = "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49"   # file bytes (LF)
+# Phase 2 closeout (docs/V2_DECISIONS.md D39+): the orientation normaliser's map (rule R3) -- file bytes (LF)
+ORIENTATION_MAP_PATH = CONFIG_DIR / "orientation_map.json"
+ORIENTATION_MAP_SHA256 = "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+# Phase 2 closeout: Amendment 1 to the Phase 2 pre-registration (v2_1_oriented data + A1 selection rule) -- bytes (LF)
+PREREG_PHASE2_AMENDMENT_1_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE2_AMENDMENT_1.md"
+PREREG_PHASE2_AMENDMENT_1_SHA256 = "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f"
 
 # --------------------------------------------------------------------------- column contract (V1 names)
 TS_FORMAT = "%d/%m/%Y %I:%M:%S %p"          # == 04_tag_flows.TS_FORMAT (asserted in tests)
@@ -571,7 +579,10 @@ def apply_nan_inf_policy(df: pd.DataFrame, features: list[str] | None = None) ->
 
 # --------------------------------------------------------------------------- V2 lock
 def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, prereg: Path = STEP10_PREREG_PATH,
-                   features: Path = FEATURES_PATH, class_map: Path = CLASS_MAP_PATH, v1: bool = True) -> dict:
+                   features: Path = FEATURES_PATH, class_map: Path = CLASS_MAP_PATH,
+                   prereg_phase2: Path = PREREG_PHASE2_PATH, v1: bool = True,
+                   orientation_map: Path = ORIENTATION_MAP_PATH,
+                   prereg_amendment_1: Path = PREREG_PHASE2_AMENDMENT_1_PATH) -> dict:
     """V2 pins + V1's verify_lock(). Returns {"ok", "checks": [(name, ok, detail)], "env"} like V1;
     raises LockError on any failed check when strict. The path arguments exist for tests."""
     checks = []
@@ -588,6 +599,14 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
 
     pin("config/config.py sha256 == step10_prereg pin (V1 config untouched)", config_py, CONFIG_PY_SHA256)
     pin("config/step10_prereg.json sha256", prereg, STEP10_PREREG_SHA256)
+    pin("docs/V2_PREREG_PHASE2.md sha256 (Phase 2 pre-registration)", prereg_phase2, PREREG_PHASE2_SHA256)
+    if Path(prereg_phase2).is_file() and b"\r" in Path(prereg_phase2).read_bytes():
+        check("docs/V2_PREREG_PHASE2.md LF only", False, "CR bytes found (the pin is over LF bytes)")
+    pin("config/orientation_map.json sha256 (orientation normaliser, rule R3)", orientation_map, ORIENTATION_MAP_SHA256)
+    pin("docs/V2_PREREG_PHASE2_AMENDMENT_1.md sha256 (Phase 2 prereg amendment 1)", prereg_amendment_1,
+        PREREG_PHASE2_AMENDMENT_1_SHA256)
+    if Path(prereg_amendment_1).is_file() and b"\r" in Path(prereg_amendment_1).read_bytes():
+        check("docs/V2_PREREG_PHASE2_AMENDMENT_1.md LF only", False, "CR bytes found (the pin is over LF bytes)")
     try:
         P = json.loads(Path(prereg).read_bytes())
         check("step10_prereg records the same config.py / features pins",

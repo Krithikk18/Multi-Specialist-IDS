@@ -1,0 +1,16 @@
+07:50:25  21b_normalise_orientation.py  pid 971  run_id 20261121T075025Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/dataset_runs/20261121T075025Z
+07:50:27    PASS  train: rows, order, columns unchanged (+ orientation_flipped appended)  636,193 rows, 92 columns
+07:50:28    PASS  train: unflipped rows bit-identical to the source  633,269 rows
+07:50:28    PASS  train: every flipped row is TCP and no longer satisfies R3  2,924 flipped
+07:50:30    PASS  train: validate_frame check results identical on source and normalised rows  7/10 pass on both
+07:50:30    PASS  train: validate_frame content checks pass (features present / ordered / numeric, timestamps, NaN-inf policy, blank-MAC rule)  layout checks (V1 raw-CSV meta / label columns) are expected to differ; see summary
+07:50:35    train: 636,193 rows, 2,924 flipped -> train.parquet 77fc070c190a886d..
+07:50:35    PASS  val: rows, order, columns unchanged (+ orientation_flipped appended)  157,558 rows, 92 columns
+07:50:35    PASS  val: unflipped rows bit-identical to the source  153,207 rows
+07:50:35    PASS  val: every flipped row is TCP and no longer satisfies R3  4,351 flipped
+07:50:35    PASS  val: validate_frame check results identical on source and normalised rows  7/10 pass on both
+07:50:35    PASS  val: validate_frame content checks pass (features present / ordered / numeric, timestamps, NaN-inf policy, blank-MAC rule)  layout checks (V1 raw-CSV meta / label columns) are expected to differ; see summary
+07:50:37    val: 157,558 rows, 4,351 flipped -> val.parquet 46c65f945a984e54..
+07:50:37    PASS  flip counts per split x group x class == the R3 gate run  gate run 20261121T074502Z: 7,275 rows
+07:50:37    PASS  config.py / class_map.json unchanged  
+07:50:38  PASS  -> /home/krithikk/lgids_cache/v2/dataset_runs/20261121T075025Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/21b  (12.4 s)

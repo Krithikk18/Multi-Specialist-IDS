@@ -1,0 +1,3 @@
+07:45:02  diagnostics/orient_gate_r3.py  pid 853  run_id 20261121T074502Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/diag/20261121T074502Z
+07:45:03    PASS  config.py / class_map.json unchanged  
+07:45:03  PASS  -> /home/krithikk/lgids_cache/v2/diag/20261121T074502Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/orient_gate/rerun_pct_fix  (1.5 s)

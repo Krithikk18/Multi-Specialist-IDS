@@ -1,0 +1,32 @@
+08:08:39  23_evaluate.py  pid 1052  run_id 20261121T080839Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/eval/20261121T080839Z
+08:08:40    PASS  step 22 run used the same config / prereg / class map / features  config e9dc754e9379..
+08:08:52    PASS  every step 22 model loaded (sha256 == manifest) and scored on val  90 models x 157,558 rows
+08:08:54    system ROUTED               macro-F1 all 0.84984
+08:08:56    system FLAT_GLOBAL          macro-F1 all 0.87828
+08:08:58    system ROUTED_A1_none       macro-F1 all 0.91017
+08:09:00    system ROUTED_A1_balanced   macro-F1 all 0.80656
+08:09:01    system ROUTED_A2            macro-F1 all 0.84345
+08:09:03    system ROUTED_A3            macro-F1 all 0.79633
+08:09:05    system FLAT_GLOBAL_A1_none  macro-F1 all 0.91442
+08:09:07    system FLAT_GLOBAL_A1_balanced macro-F1 all 0.79976
+08:09:07    PASS  Amendment 1 primary selection applied  chosen none (ROUTED_A1_none); within tolerance ['sqrt', 'none', 'balanced']; tied on false alarms ['none']
+08:09:08    model  SPEC_G1__sqrt                macro-F1 all 0.85639
+08:09:09    model  SPEC_G2__sqrt                macro-F1 all 0.87720
+08:09:11    model  GLOBAL__sqrt                 macro-F1 all 0.87828
+08:09:12    model  SPEC_G1__none                macro-F1 all 0.91017
+08:09:13    model  SPEC_G2__none                macro-F1 all 0.94345
+08:09:15    model  GLOBAL__none                 macro-F1 all 0.91442
+08:09:16    model  SPEC_G1__balanced            macro-F1 all 0.81014
+08:09:17    model  SPEC_G2__balanced            macro-F1 all 0.87924
+08:09:19    model  GLOBAL__balanced             macro-F1 all 0.79976
+08:09:20    model  GENSPEC_GEN__sqrt            macro-F1 all 0.93009
+08:09:21    model  CAT_Audio__sqrt              macro-F1 all 0.86514
+08:09:22    model  CAT_Camera__sqrt             macro-F1 all 0.83715
+08:09:23    model  CAT_Home_Automation__sqrt    macro-F1 all 0.89473
+08:09:25    model  CAT_Hub__sqrt                macro-F1 all 0.91918
+08:09:26    model  CAT_Lighting__sqrt           macro-F1 all 0.92545
+08:09:27    model  CAT_Power_Outlet__sqrt       macro-F1 all 0.90308
+08:09:28    model  CAT_Unidentified_Amazon__sqrt macro-F1 all 0.91945
+08:09:29    model  CAT_Unidentified_Espressif__sqrt macro-F1 all 0.92034
+08:09:32    PASS  V1 FINAL reproduces its prereg val false alarms at T_house (artifacts + routing sane)  2 vs prereg 2
+08:09:35  PASS  -> /home/krithikk/lgids_cache/v2/eval/20261121T080839Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/v2_1/23  (55.1 s)

@@ -1,0 +1,54 @@
+{
+ "script": "22_train_multiclass.py",
+ "step": "22",
+ "run_id": "20261121T075821Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-21T07:58:21+00:00",
+ "argv": [
+  "22_train_multiclass.py",
+  "--config",
+  "config/v2_phase2_v2_1.json"
+ ],
+ "cache_dir": "/home/krithikk/lgids_cache/v2/models/20261121T075821Z",
+ "run_manifest_sha256": "5f281f3f1c1b1778b2f553a6ff9a374177c5284a6c20f1cacbca81e6d58cabe6",
+ "config_sha256": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "code_sha256": {
+  "22_train_multiclass.py": "1489c014c864a5deef22fd88c0358f21075b73e89e6aa0443cd7aa8853fce0ac",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "65730e616928f703ce62385cead230a8da33ca368122b753cca066f37515f576",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "3e8a546eb59c71ad4424a7bfa962cc3db6a014eaee0b43fa23cba1c277b420a9",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f",
+  "common/amendment.py": "02f266f43944895a8813b61b09f4ba1a517ef0d2881b94f162e002cf4cf465ba",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "checks": [
+  {
+   "check": "class map / features / dataset pins",
+   "pass": true,
+   "detail": "4 classes, 70 features, 18 specs x 5 seeds",
+   "level": "hard"
+  },
+  {
+   "check": "every spec x seed trained and saved",
+   "pass": true,
+   "detail": "90 models",
+   "level": "hard"
+  }
+ ],
+ "runtime_s": 616.1,
+ "peak_rss_mb": 2237,
+ "n_models": 90
+}

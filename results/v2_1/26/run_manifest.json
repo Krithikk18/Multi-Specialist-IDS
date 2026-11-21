@@ -1,0 +1,194 @@
+{
+ "run_id": "20261121T081057Z",
+ "step": "26",
+ "created_utc": "2026-11-21T08:10:57+00:00",
+ "script": "26_model_registry.py",
+ "dry_run": false,
+ "argv": [
+  "26_model_registry.py",
+  "register",
+  "--config",
+  "config/v2_phase2_v2_1.json"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2_v2_1.json",
+  "sha256": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_1_oriented",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "26_model_registry.py": "c363d0633dff6c3b9995ac8dd53bdb131d75282f3176a062cca7aa4c8d4347d6",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "65730e616928f703ce62385cead230a8da33ca368122b753cca066f37515f576",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "3e8a546eb59c71ad4424a7bfa962cc3db6a014eaee0b43fa23cba1c277b420a9",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f",
+  "common/amendment.py": "02f266f43944895a8813b61b09f4ba1a517ef0d2881b94f162e002cf4cf465ba",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "runs chain: steps 23 and 24 used this step 22 run",
+   "pass": true,
+   "detail": "22 20261121T075821Z; 23 -> 20261121T075821Z; 24 -> 20261121T075821Z",
+   "level": "hard"
+  },
+  {
+   "check": "signing key outside the repository (created if absent, mode 600)",
+   "pass": true,
+   "detail": "fingerprint a4aea1b4253a158c, backend pure-python RFC 8032 (cryptography not installed)",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G1__none__s0: model sha256 == step 22 manifest == calibrator's model_sha256",
+   "pass": true,
+   "detail": "a92031f6f8bbac4d...",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G1__none__s0__20261121T075821Z: registered as candidate; runtime load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/SPEC_G1__none__s0__20261121T075821Z",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G2__none__s0: model sha256 == step 22 manifest == calibrator's model_sha256",
+   "pass": true,
+   "detail": "34a835fd1563b757...",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G2__none__s0__20261121T075821Z: registered as candidate; runtime load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/SPEC_G2__none__s0__20261121T075821Z",
+   "level": "hard"
+  },
+  {
+   "check": "GLOBAL__none__s0: model sha256 == step 22 manifest == calibrator's model_sha256",
+   "pass": true,
+   "detail": "a0b0afc91a469ef3...",
+   "level": "hard"
+  },
+  {
+   "check": "GLOBAL__none__s0__20261121T075821Z: registered as candidate; runtime load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__s0__20261121T075821Z",
+   "level": "hard"
+  }
+ ],
+ "prereg_amendments": {
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f"
+ },
+ "orientation": {
+  "map": "config/orientation_map.json",
+  "rule": "R3",
+  "map_sha256": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "train_run": "20261121T075821Z",
+ "eval_run": "20261121T080839Z",
+ "calib_run": "20261121T080937Z",
+ "registry_root": "/home/krithikk/lgids_cache/v2/registry",
+ "entries": [
+  {
+   "entry_id": "SPEC_G1__none__s0__20261121T075821Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/SPEC_G1__none__s0__20261121T075821Z",
+   "state": "candidate",
+   "model_id": "SPEC_G1__none",
+   "serves_groups": [
+    "G1"
+   ],
+   "model_sha256": "a92031f6f8bbac4d286b3aae8103d04af214bd62f5fcaa2fa523c710872cdba1",
+   "temperature": 1.4554322296076607,
+   "macro_f1_all": {
+    "mean": 0.9101698244154017,
+    "lo": 0.8971201733941367,
+    "hi": 0.9232194754366667
+   },
+   "macro_f1_nonrare": {
+    "mean": 0.9974221507043517,
+    "lo": 0.9973626985619151,
+    "hi": 0.9974816028467883
+   },
+   "fingerprint": "a4aea1b4253a158c"
+  },
+  {
+   "entry_id": "SPEC_G2__none__s0__20261121T075821Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/SPEC_G2__none__s0__20261121T075821Z",
+   "state": "candidate",
+   "model_id": "SPEC_G2__none",
+   "serves_groups": [
+    "G2"
+   ],
+   "model_sha256": "34a835fd1563b757793e804f479decc07b133a1f71eb34763cec39ff0edd9083",
+   "temperature": 1.284788323514054,
+   "macro_f1_all": {
+    "mean": 0.9434511703244315,
+    "lo": 0.9372058778642113,
+    "hi": 0.9496964627846517
+   },
+   "macro_f1_nonrare": {
+    "mean": 0.9990283681927163,
+    "lo": 0.9989590988210129,
+    "hi": 0.9990976375644198
+   },
+   "fingerprint": "a4aea1b4253a158c"
+  },
+  {
+   "entry_id": "GLOBAL__none__s0__20261121T075821Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__s0__20261121T075821Z",
+   "state": "candidate",
+   "model_id": "GLOBAL__none",
+   "serves_groups": [
+    "GEN"
+   ],
+   "model_sha256": "a0b0afc91a469ef322d043a599d9c585245c9251d1b775611e0742864106faff",
+   "temperature": 1.4231229528557798,
+   "macro_f1_all": {
+    "mean": 0.9144207781200396,
+    "lo": 0.8983754330734937,
+    "hi": 0.9304661231665856
+   },
+   "macro_f1_nonrare": {
+    "mean": 0.9977897956633208,
+    "lo": 0.9972231853038996,
+    "hi": 0.998356406022742
+   },
+   "fingerprint": "a4aea1b4253a158c"
+  }
+ ],
+ "warnings": [],
+ "primary": {
+  "weights": "none",
+  "config_label": "A1_none",
+  "routing": {
+   "G1": "SPEC_G1__none",
+   "G2": "SPEC_G2__none",
+   "GEN": "GLOBAL__none"
+  },
+  "default": "GLOBAL__none",
+  "source": "amendment selection in step 23 run 20261121T080839Z"
+ },
+ "runtime_s": 1.3,
+ "peak_rss_mb": 198
+}

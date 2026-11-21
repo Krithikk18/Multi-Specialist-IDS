@@ -1,0 +1,327 @@
+{
+ "run_id": "20261120T183529Z",
+ "step": "23",
+ "created_utc": "2026-11-20T18:35:29+00:00",
+ "script": "23_evaluate.py",
+ "dry_run": false,
+ "argv": [
+  "23_evaluate.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2.json",
+  "sha256": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_0_v1equiv",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "23_evaluate.py": "fd260d9c870b46b9bc40574499c96c3c8eeb8dbd8a48e3b25c6ded6ad32d5262",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "afd4c26ad9fbe87435b2f76306c8d6bd73b86ff8f81bbb3a0154fab4570d5334",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "3ed1baea5458174937d9498283ab8a066a4c3c2dbf0b8b44449624e885dd539a",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "2e7c4ca063a4713bacb2b854bd323ed6d8e808d2c8108927996120b5c72ce23a",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": null,
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "step 22 run used the same config / prereg / class map / features",
+   "pass": true,
+   "detail": "config ee4bfdea8b1c..",
+   "level": "hard"
+  },
+  {
+   "check": "every step 22 model loaded (sha256 == manifest) and scored on val",
+   "pass": true,
+   "detail": "90 models x 157,558 rows",
+   "level": "hard"
+  },
+  {
+   "check": "V1 FINAL reproduces its prereg val false alarms at T_house (artifacts + routing sane)",
+   "pass": true,
+   "detail": "2 vs prereg 2",
+   "level": "hard"
+  }
+ ],
+ "train_run": "20261120T144232Z",
+ "train_run_manifest_sha256": "7455e3bb6c4874d08f852e396010f94adea0764267e3df269548c018fc9caee7",
+ "warnings": [
+  "rare classes on the full val split (< 50 flows): udp_flood (17)",
+  "group G2: classes with 0 val flows (N/A, excluded from its macro-F1): ['udp_flood']",
+  "group GEN: classes with 0 val flows (N/A, excluded from its macro-F1): ['syn_flood', 'udp_flood', 'port_scan']"
+ ],
+ "dataset": {
+  "val_sha256": "9eecf620a162073756fcb8f9c2ade1facc0d18f08bd3b3a1cef2e0206de540be",
+  "train_read": false
+ },
+ "n_val": 157558,
+ "hours_all": 1.9527777777777777,
+ "systems": {
+  "ROUTED": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__sqrt",
+    "G2": "SPEC_G2__sqrt",
+    "GEN": "GLOBAL__sqrt"
+   },
+   "default": "GLOBAL__sqrt",
+   "note": "primary"
+  },
+  "FLAT_GLOBAL": {
+   "kind": "all",
+   "map": {},
+   "default": "GLOBAL__sqrt",
+   "note": "flat multiclass baseline"
+  },
+  "ROUTED_A1_none": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__none",
+    "G2": "SPEC_G2__none",
+    "GEN": "GLOBAL__none"
+   },
+   "default": "GLOBAL__none",
+   "note": "A1 weights none"
+  },
+  "ROUTED_A1_balanced": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__balanced",
+    "G2": "SPEC_G2__balanced",
+    "GEN": "GLOBAL__balanced"
+   },
+   "default": "GLOBAL__balanced",
+   "note": "A1 weights balanced"
+  },
+  "ROUTED_A2": {
+   "kind": "group",
+   "map": {
+    "G1": "SPEC_G1__sqrt",
+    "G2": "SPEC_G2__sqrt",
+    "GEN": "GENSPEC_GEN__sqrt"
+   },
+   "default": "GLOBAL__sqrt",
+   "note": "A2: GEN -> GENSPEC_GEN__sqrt"
+  },
+  "ROUTED_A3": {
+   "kind": "category",
+   "map": {
+    "Audio": "CAT_Audio__sqrt",
+    "Camera": "CAT_Camera__sqrt",
+    "Home Automation": "CAT_Home_Automation__sqrt",
+    "Hub": "CAT_Hub__sqrt",
+    "Lighting": "CAT_Lighting__sqrt",
+    "Power Outlet": "CAT_Power_Outlet__sqrt",
+    "Unidentified (Amazon)": "CAT_Unidentified_Amazon__sqrt",
+    "Unidentified (Espressif)": "CAT_Unidentified_Espressif__sqrt"
+   },
+   "default": "GLOBAL__sqrt",
+   "note": "A3: device category -> category model, else GLOBAL"
+  }
+ },
+ "sizes": {
+  "SPEC_G1__sqrt": 243420,
+  "SPEC_G2__sqrt": 280110,
+  "GLOBAL__sqrt": 213671,
+  "SPEC_G1__none": 395262,
+  "SPEC_G2__none": 401358,
+  "GLOBAL__none": 432595,
+  "SPEC_G1__balanced": 338540,
+  "SPEC_G2__balanced": 101947,
+  "GLOBAL__balanced": 98666,
+  "GENSPEC_GEN__sqrt": 362436,
+  "CAT_Audio__sqrt": 194834,
+  "CAT_Camera__sqrt": 403755,
+  "CAT_Home_Automation__sqrt": 215581,
+  "CAT_Hub__sqrt": 262117,
+  "CAT_Lighting__sqrt": 220198,
+  "CAT_Power_Outlet__sqrt": 189330,
+  "CAT_Unidentified_Amazon__sqrt": 170387,
+  "CAT_Unidentified_Espressif__sqrt": 241786
+ },
+ "a2": {
+  "n_benign": 291,
+  "hours": 1.9527777777777777,
+  "models": {
+   "GLOBAL__sqrt": {
+    "fp_per_seed": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "fa_h_seed0": 0.0,
+    "ci": [
+     0.0,
+     1.8890421102148176
+    ]
+   },
+   "GENSPEC_GEN__sqrt": {
+    "fp_per_seed": [
+     2,
+     2,
+     4,
+     7,
+     2
+    ],
+    "fa_h_seed0": 1.0241820768136558,
+    "ci": [
+     0.12403320096134769,
+     3.6996978099297664
+    ]
+   }
+  }
+ },
+ "v1_compare": {
+  "v1_FINAL": {
+   "pr_auc": 0.9999986964543663,
+   "roc_auc": 0.9999959802270028,
+   "dr_at_0.5": 0.9998394904243366,
+   "fp_at_0.5": 3,
+   "fa_per_hour_at_0.5": 1.5362731152204836,
+   "thr_le2fp": 0.568307638168335,
+   "dr_at_le2fp": 0.9998394904243366,
+   "fp_at_le2fp": 2,
+   "fp_at_T_house": 2,
+   "dr_at_T_house": 0.9998394904243366
+  },
+  "v2_ROUTED_per_seed": {
+   "0": {
+    "pr_auc": 0.9999507800704971,
+    "roc_auc": 0.9999434328868512,
+    "dr_at_0.5": 0.99979725106232,
+    "fp_at_0.5": 10,
+    "fa_per_hour_at_0.5": 5.120910384068279,
+    "thr_le2fp": 0.9983476996421814,
+    "dr_at_le2fp": 0.9679234284845362,
+    "fp_at_le2fp": 2
+   },
+   "1": {
+    "pr_auc": 0.9999602097270142,
+    "roc_auc": 0.9999479039963515,
+    "dr_at_0.5": 0.9998056989347233,
+    "fp_at_0.5": 7,
+    "fa_per_hour_at_0.5": 3.5846372688477954,
+    "thr_le2fp": 0.9948425889015198,
+    "dr_at_le2fp": 0.9699171263717232,
+    "fp_at_le2fp": 2
+   },
+   "2": {
+    "pr_auc": 0.9999886486810667,
+    "roc_auc": 0.9999634106983639,
+    "dr_at_0.5": 0.99984793829674,
+    "fp_at_0.5": 10,
+    "fa_per_hour_at_0.5": 5.120910384068279,
+    "thr_le2fp": 0.9992186427116394,
+    "dr_at_le2fp": 0.9650004646329822,
+    "fp_at_le2fp": 2
+   },
+   "3": {
+    "pr_auc": 0.9999789992954868,
+    "roc_auc": 0.9999453922715222,
+    "dr_at_0.5": 0.9998056989347233,
+    "fp_at_0.5": 14,
+    "fa_per_hour_at_0.5": 7.169274537695591,
+    "thr_le2fp": 0.9981591701507568,
+    "dr_at_le2fp": 0.9680416986981829,
+    "fp_at_le2fp": 2
+   },
+   "4": {
+    "pr_auc": 0.999970519565266,
+    "roc_auc": 0.9999425442271586,
+    "dr_at_0.5": 0.9997803553175133,
+    "fp_at_0.5": 15,
+    "fa_per_hour_at_0.5": 7.681365576102419,
+    "thr_le2fp": 0.9955210089683533,
+    "dr_at_le2fp": 0.9681261774222162,
+    "fp_at_le2fp": 2
+   }
+  },
+  "v2_ROUTED": {
+   "pr_auc": {
+    "mean": 0.9999698314678662,
+    "lo": 0.9999512672031734,
+    "hi": 0.999988395732559,
+    "n": 5
+   },
+   "roc_auc": {
+    "mean": 0.9999485368160494,
+    "lo": 0.9999379011428466,
+    "hi": 0.9999591724892523,
+    "n": 5
+   },
+   "dr_at_0.5": {
+    "mean": 0.9998073885092038,
+    "lo": 0.9997764491680694,
+    "hi": 0.9998383278503382,
+    "n": 5
+   },
+   "fp_at_0.5": {
+    "mean": 11.2,
+    "lo": 7.138410965710794,
+    "hi": 15.261589034289205,
+    "n": 5
+   },
+   "fa_per_hour_at_0.5": {
+    "mean": 5.735419630156472,
+    "lo": 3.6555162840055275,
+    "hi": 7.815322976307417,
+    "n": 5
+   },
+   "thr_le2fp": {
+    "mean": 0.9972178220748902,
+    "lo": 0.9948385730347155,
+    "hi": 0.9995970711150649,
+    "n": 5
+   },
+   "dr_at_le2fp": {
+    "mean": 0.9678017791219281,
+    "lo": 0.965606837174142,
+    "hi": 0.9699967210697142,
+    "n": 5
+   },
+   "fp_at_le2fp": {
+    "mean": 2.0,
+    "lo": 2.0,
+    "hi": 2.0,
+    "n": 5
+   }
+  },
+  "hours": 1.9527777777777777,
+  "v1_models": {
+   "G1": "94451ede65092a4e3c807d6b4fa44df7fed9c6b242a7260c60b21576e1b3a076",
+   "G2": "9f63a62dfb50675f22c4c6c8644a79061b5bcf6fb280dc4702f028278ea46687",
+   "GLOBAL": "d7408f5073182cf0bf7346804bf84a38f9376083d0ab996cd98ba3889461f54a"
+  },
+  "t_house": 0.568307638168335,
+  "note": "thresholds at <= 2 val FP are chosen and read on val (same-set, optimistic), V1's rule"
+ },
+ "figures": [
+  "figures/confusion_per_group.png",
+  "figures/per_class_prf.png",
+  "figures/binary_collapse_vs_v1.png",
+  "figures/macro_f1_dotplot.png",
+  "figures/false_alarms_per_hour.png",
+  "figures/pr_curves_per_class.png",
+  "figures/macro_f1_vs_latency.png"
+ ],
+ "runtime_s": 56.7,
+ "peak_rss_mb": 1533
+}

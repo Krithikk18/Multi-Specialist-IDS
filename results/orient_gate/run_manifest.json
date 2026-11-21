@@ -1,0 +1,108 @@
+{
+ "run_id": "20261121T074211Z",
+ "step": "orient_gate",
+ "created_utc": "2026-11-21T07:42:11+00:00",
+ "script": "diagnostics/orient_gate_r3.py",
+ "dry_run": false,
+ "argv": [
+  "diagnostics/orient_gate_r3.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2.json",
+  "sha256": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_0_v1equiv",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "diagnostics/orient_gate_r3.py": "7d0726acfbef55960832412765b9c04f81f81e07eb2437547ae5529906ae9f1b",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "afd4c26ad9fbe87435b2f76306c8d6bd73b86ff8f81bbb3a0154fab4570d5334",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "3ed1baea5458174937d9498283ab8a066a4c3c2dbf0b8b44449624e885dd539a",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "2e7c4ca063a4713bacb2b854bd323ed6d8e808d2c8108927996120b5c72ce23a",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "config.py / class_map.json unchanged",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  }
+ ],
+ "pins_before": {
+  "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+ },
+ "read_only": true,
+ "class_a": "port_scan",
+ "class_b": "syn_flood",
+ "focus_group": "G1",
+ "rules": {
+  "R1": "FWD Init Win Bytes == 0 AND Bwd Init Win Bytes > 0",
+  "R3": "Protocol == 6 AND R1 AND SYN Flag Count >= 1 AND Total Fwd Packet == 1"
+ },
+ "inputs": {
+  "train": "d7ac09e07a8828ee4464ce2e678a3194ce133d0667244acd2ef5d8734ad21eaa",
+  "val": "9eecf620a162073756fcb8f9c2ade1facc0d18f08bd3b3a1cef2e0206de540be",
+  "test_read": false
+ },
+ "figures": [
+  "figures/flag_rate_r1_vs_r3.png"
+ ],
+ "gate": {
+  "pass": true,
+  "a": true,
+  "b": true,
+  "c": true,
+  "d": true,
+  "c_counts": {
+   "train": 1,
+   "val": 3
+  },
+  "d_counts": {
+   "train": {
+    "R3": 0,
+    "R3_without_protocol_clause": 0
+   },
+   "val": {
+    "R3": 0,
+    "R3_without_protocol_clause": 0
+   }
+  },
+  "b_worst": {
+   "split": "train",
+   "group": "G1",
+   "class": "benign",
+   "class_id": 0,
+   "n": 120028,
+   "flag_R1": 451,
+   "flag_R3": 8,
+   "pct_R1": 0.07089043733583991,
+   "pct_R3": 0.0012574800414339674
+  }
+ },
+ "pins_after": {
+  "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+ },
+ "runtime_s": 1.2,
+ "peak_rss_mb": 1561
+}

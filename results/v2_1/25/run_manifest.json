@@ -1,0 +1,370 @@
+{
+ "run_id": "20261121T081050Z",
+ "step": "25",
+ "created_utc": "2026-11-21T08:10:50+00:00",
+ "script": "25_explain_shap.py",
+ "dry_run": false,
+ "argv": [
+  "25_explain_shap.py",
+  "--config",
+  "config/v2_phase2_v2_1.json"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2_v2_1.json",
+  "sha256": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_1_oriented",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "25_explain_shap.py": "1694443b34ec03ec176c9c26de0680c8a376756d7d94463e6b5f2913a02a565e",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "65730e616928f703ce62385cead230a8da33ca368122b753cca066f37515f576",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "3e8a546eb59c71ad4424a7bfa962cc3db6a014eaee0b43fa23cba1c277b420a9",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f",
+  "common/amendment.py": "02f266f43944895a8813b61b09f4ba1a517ef0d2881b94f162e002cf4cf465ba",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "step 23 run used this step 22 run",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  },
+  {
+   "check": "leakage: no identifier-like / metadata column in the feature set",
+   "pass": true,
+   "detail": "clean (70 features vs identifier pattern + 22 metadata columns)",
+   "level": "hard"
+  },
+  {
+   "check": "TreeSHAP additivity SPEC_G1__none__s0: contributions + bias == margin",
+   "pass": true,
+   "detail": "max |error| 5.72e-06 over 6,017 rows",
+   "level": "hard"
+  },
+  {
+   "check": "TreeSHAP additivity SPEC_G2__none__s0: contributions + bias == margin",
+   "pass": true,
+   "detail": "max |error| 7.63e-06 over 6,017 rows",
+   "level": "hard"
+  },
+  {
+   "check": "TreeSHAP additivity GLOBAL__none__s0: contributions + bias == margin",
+   "pass": true,
+   "detail": "max |error| 4.77e-06 over 6,017 rows",
+   "level": "hard"
+  }
+ ],
+ "prereg_amendments": {
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f"
+ },
+ "orientation": {
+  "map": "config/orientation_map.json",
+  "rule": "R3",
+  "map_sha256": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "train_run": "20261121T075821Z",
+ "train_run_manifest_sha256": "5f281f3f1c1b1778b2f553a6ff9a374177c5284a6c20f1cacbca81e6d58cabe6",
+ "warnings": [
+  "SPEC_G1__none__s0: feature(s) above 50% of total mean |SHAP|: ; per class: port_scan: FWD Init Win Bytes 66.6%",
+  "SPEC_G2__none__s0: feature(s) above 50% of total mean |SHAP|: ; per class: syn_flood: FWD Init Win Bytes 51.5%; port_scan: FWD Init Win Bytes 51.5%",
+  "GLOBAL__none__s0: feature(s) above 50% of total mean |SHAP|: ; per class: port_scan: FWD Init Win Bytes 61.8%"
+ ],
+ "method": "xgboost Booster.predict(pred_contribs=True): exact TreeSHAP (shap library not installed; D01)",
+ "eval_run": "20261121T080839Z",
+ "eval_run_manifest_sha256": "2c1773c0ef8dc7b0e93028b9a4cee7bfbab92f9a2448c578d70ad07e2fb9efec",
+ "primary": {
+  "weights": "none",
+  "config_label": "A1_none",
+  "routing": {
+   "G1": "SPEC_G1__none",
+   "G2": "SPEC_G2__none",
+   "GEN": "GLOBAL__none"
+  },
+  "default": "GLOBAL__none",
+  "source": "amendment selection in step 23 run 20261121T080839Z"
+ },
+ "dataset": {
+  "val_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "train_read": false
+ },
+ "figures": [
+  "figures/beeswarm_GLOBAL.png",
+  "figures/beeswarm_SPEC_G1.png",
+  "figures/beeswarm_SPEC_G2.png",
+  "figures/global_mean_abs_shap.png",
+  "figures/top20_features_by_group_heatmap.png"
+ ],
+ "shap": {
+  "SPEC_G1__none__s0": {
+   "model_id": "SPEC_G1__none",
+   "serves_groups": [
+    "G1"
+   ],
+   "n_rows": 6017,
+   "rows_per_class": [
+    2000,
+    2000,
+    17,
+    2000
+   ],
+   "additivity_max_abs_error": 5.7220458984375e-06,
+   "dominance": {
+    "model": [],
+    "per_class": {
+     "benign": [],
+     "syn_flood": [],
+     "udp_flood": [],
+     "port_scan": [
+      {
+       "feature": "FWD Init Win Bytes",
+       "share": 0.6655534505844116
+      }
+     ]
+    }
+   },
+   "top10_global": [
+    {
+     "feature": "FWD Init Win Bytes",
+     "mean_abs_shap": 1.787847876548767,
+     "share": 0.24795503914356232
+    },
+    {
+     "feature": "SYN Flag Count",
+     "mean_abs_shap": 1.1206305027008057,
+     "share": 0.155419260263443
+    },
+    {
+     "feature": "Flow IAT Min",
+     "mean_abs_shap": 0.8408275842666626,
+     "share": 0.11661363393068314
+    },
+    {
+     "feature": "Fwd Header Length",
+     "mean_abs_shap": 0.45936891436576843,
+     "share": 0.06370946764945984
+    },
+    {
+     "feature": "Packet Length Max",
+     "mean_abs_shap": 0.43171364068984985,
+     "share": 0.05987398326396942
+    },
+    {
+     "feature": "Fwd Seg Size Min",
+     "mean_abs_shap": 0.39764684438705444,
+     "share": 0.05514929071068764
+    },
+    {
+     "feature": "Packet Length Min",
+     "mean_abs_shap": 0.38070958852767944,
+     "share": 0.05280027538537979
+    },
+    {
+     "feature": "Bwd Packets/s",
+     "mean_abs_shap": 0.3513321578502655,
+     "share": 0.04872594773769379
+    },
+    {
+     "feature": "Flow IAT Mean",
+     "mean_abs_shap": 0.16875895857810974,
+     "share": 0.023405030369758606
+    },
+    {
+     "feature": "Flow IAT Max",
+     "mean_abs_shap": 0.12308083474636078,
+     "share": 0.017069973051548004
+    }
+   ]
+  },
+  "SPEC_G2__none__s0": {
+   "model_id": "SPEC_G2__none",
+   "serves_groups": [
+    "G2"
+   ],
+   "n_rows": 6017,
+   "rows_per_class": [
+    2000,
+    2000,
+    17,
+    2000
+   ],
+   "additivity_max_abs_error": 7.62939453125e-06,
+   "dominance": {
+    "model": [],
+    "per_class": {
+     "benign": [],
+     "syn_flood": [
+      {
+       "feature": "FWD Init Win Bytes",
+       "share": 0.5154216289520264
+      }
+     ],
+     "udp_flood": [],
+     "port_scan": [
+      {
+       "feature": "FWD Init Win Bytes",
+       "share": 0.5149680376052856
+      }
+     ]
+    }
+   },
+   "top10_global": [
+    {
+     "feature": "FWD Init Win Bytes",
+     "mean_abs_shap": 2.3468637466430664,
+     "share": 0.3329335153102875
+    },
+    {
+     "feature": "SYN Flag Count",
+     "mean_abs_shap": 1.1369831562042236,
+     "share": 0.1612960249185562
+    },
+    {
+     "feature": "Flow Bytes/s",
+     "mean_abs_shap": 0.3960358500480652,
+     "share": 0.056182894855737686
+    },
+    {
+     "feature": "Flow Duration",
+     "mean_abs_shap": 0.34814518690109253,
+     "share": 0.04938897490501404
+    },
+    {
+     "feature": "Packet Length Max",
+     "mean_abs_shap": 0.3127104341983795,
+     "share": 0.04436209052801132
+    },
+    {
+     "feature": "Flow IAT Min",
+     "mean_abs_shap": 0.3063841462135315,
+     "share": 0.043464623391628265
+    },
+    {
+     "feature": "Fwd Packets/s",
+     "mean_abs_shap": 0.23454691469669342,
+     "share": 0.033273566514253616
+    },
+    {
+     "feature": "Flow IAT Mean",
+     "mean_abs_shap": 0.22392576932907104,
+     "share": 0.03176681697368622
+    },
+    {
+     "feature": "Fwd Header Length",
+     "mean_abs_shap": 0.1953294277191162,
+     "share": 0.027710050344467163
+    },
+    {
+     "feature": "Bwd Packets/s",
+     "mean_abs_shap": 0.16899168491363525,
+     "share": 0.023973694071173668
+    }
+   ]
+  },
+  "GLOBAL__none__s0": {
+   "model_id": "GLOBAL__none",
+   "serves_groups": [
+    "GEN"
+   ],
+   "n_rows": 6017,
+   "rows_per_class": [
+    2000,
+    2000,
+    17,
+    2000
+   ],
+   "additivity_max_abs_error": 4.76837158203125e-06,
+   "dominance": {
+    "model": [],
+    "per_class": {
+     "benign": [],
+     "syn_flood": [],
+     "udp_flood": [],
+     "port_scan": [
+      {
+       "feature": "FWD Init Win Bytes",
+       "share": 0.6181511282920837
+      }
+     ]
+    }
+   },
+   "top10_global": [
+    {
+     "feature": "FWD Init Win Bytes",
+     "mean_abs_shap": 1.9027915000915527,
+     "share": 0.251539021730423
+    },
+    {
+     "feature": "SYN Flag Count",
+     "mean_abs_shap": 1.236794352531433,
+     "share": 0.1634977012872696
+    },
+    {
+     "feature": "Flow IAT Min",
+     "mean_abs_shap": 0.8649782538414001,
+     "share": 0.11434557288885117
+    },
+    {
+     "feature": "Fwd Header Length",
+     "mean_abs_shap": 0.4213825762271881,
+     "share": 0.05570456013083458
+    },
+    {
+     "feature": "Packet Length Max",
+     "mean_abs_shap": 0.4085078239440918,
+     "share": 0.054002583026885986
+    },
+    {
+     "feature": "Fwd Seg Size Min",
+     "mean_abs_shap": 0.40306633710861206,
+     "share": 0.05328324809670448
+    },
+    {
+     "feature": "Packet Length Min",
+     "mean_abs_shap": 0.38339176774024963,
+     "share": 0.050682373344898224
+    },
+    {
+     "feature": "Flow Duration",
+     "mean_abs_shap": 0.332219660282135,
+     "share": 0.043917689472436905
+    },
+    {
+     "feature": "Bwd Packets/s",
+     "mean_abs_shap": 0.24046239256858826,
+     "share": 0.03178786486387253
+    },
+    {
+     "feature": "Flow IAT Mean",
+     "mean_abs_shap": 0.18767979741096497,
+     "share": 0.02481028251349926
+    }
+   ]
+  }
+ },
+ "runtime_s": 6.1,
+ "peak_rss_mb": 850
+}

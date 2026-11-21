@@ -1,0 +1,7 @@
+07:25:36  diagnostics/diag_02_orientation_rule.py  pid 860  run_id 20261121T072536Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/diag/20261121T072536Z
+07:25:37  train 636,193  val 157,558
+07:25:39    PASS  normaliser leaves unflagged val rows bit-identical  152,963 rows
+07:25:39    PASS  normaliser is idempotent on val (flagged rows no longer flagged after the swap)  re-flagged 0
+07:25:41    PASS  original-val seed-0 metrics reproduce step 23 (ROUTED / FLAT_GLOBAL macro-F1 + false alarms, per-model recall + false alarms)  max |diff| 0
+07:25:42    PASS  config.py / class_map.json unchanged by this run  {'config/config.py': 'c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf', 'config/class_map.json': '64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580'}
+07:25:42  PASS  -> /home/krithikk/lgids_cache/v2/diag/20261121T072536Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/diag_02  (6.2 s)

@@ -1,0 +1,10 @@
+08:10:50  25_explain_shap.py  pid 1137  run_id 20261121T081050Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/shap/20261121T081050Z
+08:10:50    PASS  step 23 run used this step 22 run  
+08:10:50    PASS  leakage: no identifier-like / metadata column in the feature set  clean (70 features vs identifier pattern + 22 metadata columns)
+08:10:51    PASS  TreeSHAP additivity SPEC_G1__none__s0: contributions + bias == margin  max |error| 5.72e-06 over 6,017 rows
+08:10:51    SPEC_G1__none__s0        rows  6,017  additivity err 5.7e-06  top FWD Init Win Bytes (24.8%)
+08:10:52    PASS  TreeSHAP additivity SPEC_G2__none__s0: contributions + bias == margin  max |error| 7.63e-06 over 6,017 rows
+08:10:52    SPEC_G2__none__s0        rows  6,017  additivity err 7.6e-06  top FWD Init Win Bytes (33.3%)
+08:10:54    PASS  TreeSHAP additivity GLOBAL__none__s0: contributions + bias == margin  max |error| 4.77e-06 over 6,017 rows
+08:10:54    GLOBAL__none__s0         rows  6,017  additivity err 4.8e-06  top FWD Init Win Bytes (25.2%)
+08:10:56  PASS  -> /home/krithikk/lgids_cache/v2/shap/20261121T081050Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/v2_1/25  (6.1 s)

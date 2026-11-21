@@ -29,3 +29,11 @@ nohup.out
 
 results/**/dry_run/
 aftersemCONTEXT.md
+
+# V2 Phase 2: signing keys and model artifacts live in ~/lgids_cache/v2 (outside the repo); never commit them
+keys/
+*.key
+*.pem
+*_ed25519*
+*.ubj
+*.npz

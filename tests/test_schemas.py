@@ -387,6 +387,41 @@ def test_verify_v2_lock_detects_edited_class_map():
     assert not res["ok"] and not next(c[1] for c in res["checks"] if "class_map" in c[0])
 
 
+def test_verify_v2_lock_checks_phase2_prereg():
+    res = S.verify_v2_lock(strict=False, v1=False)
+    assert any("V2_PREREG_PHASE2" in c[0] and c[1] for c in res["checks"]), res["checks"]
+    edited = _tmp_bytes(S.PREREG_PHASE2_PATH.read_bytes() + b"\nedited after the fact\n", "V2_PREREG_PHASE2.md")
+    res = S.verify_v2_lock(strict=False, v1=False, prereg_phase2=edited)
+    assert not res["ok"] and not next(c[1] for c in res["checks"] if "V2_PREREG_PHASE2" in c[0])
+    assert _raises(lambda: S.verify_v2_lock(strict=True, v1=False, prereg_phase2=edited), exc=LockError)
+    crlf = _tmp_bytes(S.PREREG_PHASE2_PATH.read_bytes().replace(b"\n", b"\r\n"), "V2_PREREG_PHASE2.md")
+    assert not S.verify_v2_lock(strict=False, v1=False, prereg_phase2=crlf)["ok"]
+
+
+def test_verify_v2_lock_checks_orientation_map():
+    res = S.verify_v2_lock(strict=False, v1=False)
+    assert any("orientation_map" in c[0] and c[1] for c in res["checks"]), res["checks"]
+    raw = S.ORIENTATION_MAP_PATH.read_bytes()
+    edited = _tmp_bytes(raw.replace(b'"value": 6', b'"value": 17', 1), "orientation_map.json")
+    res = S.verify_v2_lock(strict=False, v1=False, orientation_map=edited)
+    assert not res["ok"] and not next(c[1] for c in res["checks"] if "orientation_map" in c[0])
+    assert _raises(lambda: S.verify_v2_lock(strict=True, v1=False, orientation_map=edited), exc=LockError)
+    missing = S.ORIENTATION_MAP_PATH.with_name("no_such_orientation_map.json")
+    assert not S.verify_v2_lock(strict=False, v1=False, orientation_map=missing)["ok"]
+
+
+def test_verify_v2_lock_checks_prereg_amendment_1():
+    res = S.verify_v2_lock(strict=False, v1=False)
+    assert any("AMENDMENT_1" in c[0] and c[1] for c in res["checks"]), res["checks"]
+    raw = S.PREREG_PHASE2_AMENDMENT_1_PATH.read_bytes()
+    edited = _tmp_bytes(raw.replace(b"0.005", b"0.050", 1), "V2_PREREG_PHASE2_AMENDMENT_1.md")
+    res = S.verify_v2_lock(strict=False, v1=False, prereg_amendment_1=edited)
+    assert not res["ok"] and not next(c[1] for c in res["checks"] if "AMENDMENT_1" in c[0])
+    assert _raises(lambda: S.verify_v2_lock(strict=True, v1=False, prereg_amendment_1=edited), exc=LockError)
+    crlf = _tmp_bytes(raw.replace(b"\n", b"\r\n"), "V2_PREREG_PHASE2_AMENDMENT_1.md")
+    assert not S.verify_v2_lock(strict=False, v1=False, prereg_amendment_1=crlf)["ok"]
+
+
 def test_verify_v2_lock_with_v1():
     """Full lock incl. V1 verify_lock (needs the extractor jar: runs in WSL)."""
     res = S.verify_v2_lock(strict=False)

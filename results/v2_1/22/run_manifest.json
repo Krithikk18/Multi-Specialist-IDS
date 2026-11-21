@@ -1,0 +1,3973 @@
+{
+ "run_id": "20261121T075821Z",
+ "step": "22",
+ "created_utc": "2026-11-21T07:58:21+00:00",
+ "script": "22_train_multiclass.py",
+ "dry_run": false,
+ "argv": [
+  "22_train_multiclass.py",
+  "--config",
+  "config/v2_phase2_v2_1.json"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2_v2_1.json",
+  "sha256": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_1_oriented",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "22_train_multiclass.py": "1489c014c864a5deef22fd88c0358f21075b73e89e6aa0443cd7aa8853fce0ac",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "65730e616928f703ce62385cead230a8da33ca368122b753cca066f37515f576",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "3e8a546eb59c71ad4424a7bfa962cc3db6a014eaee0b43fa23cba1c277b420a9",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f",
+  "common/amendment.py": "02f266f43944895a8813b61b09f4ba1a517ef0d2881b94f162e002cf4cf465ba",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "class map / features / dataset pins",
+   "pass": true,
+   "detail": "4 classes, 70 features, 18 specs x 5 seeds",
+   "level": "hard"
+  },
+  {
+   "check": "every spec x seed trained and saved",
+   "pass": true,
+   "detail": "90 models",
+   "level": "hard"
+  }
+ ],
+ "prereg_amendments": {
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f"
+ },
+ "orientation": {
+  "map": "config/orientation_map.json",
+  "rule": "R3",
+  "map_sha256": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022"
+ },
+ "warnings": [],
+ "dataset": {
+  "dir": "/home/krithikk/lgids_cache/v2/datasets/v2_1_oriented",
+  "manifest_sha256": "49065567fa88a820ea8cd6b15f20cfc7bdb3a863bcd9b9c7ac8d5dc3d6afb872",
+  "train_sha256": "77fc070c190a886dae8e90dabc8f9fafbb687f3bd376a82e1cbdc1c411100578",
+  "val_read": false
+ },
+ "n_train_rows": 636193,
+ "spec_info": {
+  "specialist_groups": [
+   "G1",
+   "G2"
+  ],
+  "fallback_group": "GEN",
+  "fallback_present": true,
+  "a3": {
+   "category_models": {
+    "Audio": "CAT_Audio__sqrt",
+    "Camera": "CAT_Camera__sqrt",
+    "Home Automation": "CAT_Home_Automation__sqrt",
+    "Hub": "CAT_Hub__sqrt",
+    "Lighting": "CAT_Lighting__sqrt",
+    "Power Outlet": "CAT_Power_Outlet__sqrt",
+    "Unidentified (Amazon)": "CAT_Unidentified_Amazon__sqrt",
+    "Unidentified (Espressif)": "CAT_Unidentified_Espressif__sqrt"
+   },
+   "fallback_to_global": {},
+   "min_benign_train": 100
+  }
+ },
+ "routing": {
+  "primary": {
+   "G1": "SPEC_G1__sqrt",
+   "G2": "SPEC_G2__sqrt",
+   "GEN": "GLOBAL__sqrt"
+  },
+  "default": "GLOBAL__sqrt"
+ },
+ "specs": [
+  {
+   "model_id": "SPEC_G1__sqrt",
+   "kind": "specialist",
+   "key": "G1",
+   "subset": [
+    "group",
+    "G1"
+   ],
+   "weights": "sqrt",
+   "config": "primary"
+  },
+  {
+   "model_id": "SPEC_G2__sqrt",
+   "kind": "specialist",
+   "key": "G2",
+   "subset": [
+    "group",
+    "G2"
+   ],
+   "weights": "sqrt",
+   "config": "primary"
+  },
+  {
+   "model_id": "GLOBAL__sqrt",
+   "kind": "global",
+   "key": "GLOBAL",
+   "subset": [
+    "all",
+    null
+   ],
+   "weights": "sqrt",
+   "config": "primary"
+  },
+  {
+   "model_id": "SPEC_G1__none",
+   "kind": "specialist",
+   "key": "G1",
+   "subset": [
+    "group",
+    "G1"
+   ],
+   "weights": "none",
+   "config": "A1_none"
+  },
+  {
+   "model_id": "SPEC_G2__none",
+   "kind": "specialist",
+   "key": "G2",
+   "subset": [
+    "group",
+    "G2"
+   ],
+   "weights": "none",
+   "config": "A1_none"
+  },
+  {
+   "model_id": "GLOBAL__none",
+   "kind": "global",
+   "key": "GLOBAL",
+   "subset": [
+    "all",
+    null
+   ],
+   "weights": "none",
+   "config": "A1_none"
+  },
+  {
+   "model_id": "SPEC_G1__balanced",
+   "kind": "specialist",
+   "key": "G1",
+   "subset": [
+    "group",
+    "G1"
+   ],
+   "weights": "balanced",
+   "config": "A1_balanced"
+  },
+  {
+   "model_id": "SPEC_G2__balanced",
+   "kind": "specialist",
+   "key": "G2",
+   "subset": [
+    "group",
+    "G2"
+   ],
+   "weights": "balanced",
+   "config": "A1_balanced"
+  },
+  {
+   "model_id": "GLOBAL__balanced",
+   "kind": "global",
+   "key": "GLOBAL",
+   "subset": [
+    "all",
+    null
+   ],
+   "weights": "balanced",
+   "config": "A1_balanced"
+  },
+  {
+   "model_id": "GENSPEC_GEN__sqrt",
+   "kind": "gen_specialist",
+   "key": "GEN",
+   "subset": [
+    "group",
+    "GEN"
+   ],
+   "weights": "sqrt",
+   "config": "A2"
+  },
+  {
+   "model_id": "CAT_Audio__sqrt",
+   "kind": "category",
+   "key": "Audio",
+   "subset": [
+    "category",
+    "Audio"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Camera__sqrt",
+   "kind": "category",
+   "key": "Camera",
+   "subset": [
+    "category",
+    "Camera"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Home_Automation__sqrt",
+   "kind": "category",
+   "key": "Home Automation",
+   "subset": [
+    "category",
+    "Home Automation"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Hub__sqrt",
+   "kind": "category",
+   "key": "Hub",
+   "subset": [
+    "category",
+    "Hub"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Lighting__sqrt",
+   "kind": "category",
+   "key": "Lighting",
+   "subset": [
+    "category",
+    "Lighting"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Power_Outlet__sqrt",
+   "kind": "category",
+   "key": "Power Outlet",
+   "subset": [
+    "category",
+    "Power Outlet"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Unidentified_Amazon__sqrt",
+   "kind": "category",
+   "key": "Unidentified (Amazon)",
+   "subset": [
+    "category",
+    "Unidentified (Amazon)"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  },
+  {
+   "model_id": "CAT_Unidentified_Espressif__sqrt",
+   "kind": "category",
+   "key": "Unidentified (Espressif)",
+   "subset": [
+    "category",
+    "Unidentified (Espressif)"
+   ],
+   "weights": "sqrt",
+   "config": "A3"
+  }
+ ],
+ "models": [
+  {
+   "key": "SPEC_G1__sqrt__s0",
+   "model_id": "SPEC_G1__sqrt",
+   "seed": 0,
+   "file": "SPEC_G1__sqrt__s0.ubj",
+   "sha256": "cd73b1cac83dbedcf9e4a93b7ed889fbe43d9e2025eb65ee85b137158bc86dd6",
+   "bytes": 234946,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    35.54507886584228,
+    1.1064361189416845
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 27,
+   "best_score": 0.01538053594497685,
+   "rounds_run": 38,
+   "fit_seconds": 7.82
+  },
+  {
+   "key": "SPEC_G1__sqrt__s1",
+   "model_id": "SPEC_G1__sqrt",
+   "seed": 1,
+   "file": "SPEC_G1__sqrt__s1.ubj",
+   "sha256": "146c025b6be89610e13ed45a65d8f659a0c1ef983643c88965a394c285723964",
+   "bytes": 225970,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    35.54507886584228,
+    1.1064361189416845
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 27,
+   "best_score": 0.00358183785760035,
+   "rounds_run": 38,
+   "fit_seconds": 6.21
+  },
+  {
+   "key": "SPEC_G1__sqrt__s2",
+   "model_id": "SPEC_G1__sqrt",
+   "seed": 2,
+   "file": "SPEC_G1__sqrt__s2.ubj",
+   "sha256": "f3d973768398ce9e0cc5bdecc0552fdcc2fdfc21535cd16261ca30978a042059",
+   "bytes": 172797,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    35.54507886584228,
+    1.1064361189416845
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 19,
+   "best_score": 0.04316865738274788,
+   "rounds_run": 30,
+   "fit_seconds": 5.03
+  },
+  {
+   "key": "SPEC_G1__sqrt__s3",
+   "model_id": "SPEC_G1__sqrt",
+   "seed": 3,
+   "file": "SPEC_G1__sqrt__s3.ubj",
+   "sha256": "210e5242662979a441b0d64ba43b32d92d4dad09ae5ac292ab7611d3db76867b",
+   "bytes": 194071,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    35.54507886584228,
+    1.1064361189416845
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 22,
+   "best_score": 0.00862617448550702,
+   "rounds_run": 33,
+   "fit_seconds": 6.08
+  },
+  {
+   "key": "SPEC_G1__sqrt__s4",
+   "model_id": "SPEC_G1__sqrt",
+   "seed": 4,
+   "file": "SPEC_G1__sqrt__s4.ubj",
+   "sha256": "4f5120529621a8d7a49acb950b9425fbffa1554d3da41fc59346f0d9085dea4a",
+   "bytes": 243980,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    35.54507886584228,
+    1.1064361189416845
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 30,
+   "best_score": 0.01800335213172258,
+   "rounds_run": 41,
+   "fit_seconds": 7.12
+  },
+  {
+   "key": "SPEC_G2__sqrt__s0",
+   "model_id": "SPEC_G2__sqrt",
+   "seed": 0,
+   "file": "SPEC_G2__sqrt__s0.ubj",
+   "sha256": "5a5e46ce29830b4e7fb03743886981a60153f3809c461d2b405851908740e471",
+   "bytes": 211807,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    13.090374125167015,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 33,
+   "best_score": 0.00393659782904571,
+   "rounds_run": 44,
+   "fit_seconds": 4.78
+  },
+  {
+   "key": "SPEC_G2__sqrt__s1",
+   "model_id": "SPEC_G2__sqrt",
+   "seed": 1,
+   "file": "SPEC_G2__sqrt__s1.ubj",
+   "sha256": "1ed3c4cb7b0838a6f9d1610adfdbdb02a1ba5746783fc6883156b611e05945b7",
+   "bytes": 301477,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    13.090374125167015,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 55,
+   "best_score": 0.00020751851594549,
+   "rounds_run": 66,
+   "fit_seconds": 6.86
+  },
+  {
+   "key": "SPEC_G2__sqrt__s2",
+   "model_id": "SPEC_G2__sqrt",
+   "seed": 2,
+   "file": "SPEC_G2__sqrt__s2.ubj",
+   "sha256": "3b908bbd2a7c06bba941d811a950b3d5cc5d3ebbfa8c852222c472b42f1365f4",
+   "bytes": 233076,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    13.090374125167015,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 37,
+   "best_score": 5.837735356234e-05,
+   "rounds_run": 48,
+   "fit_seconds": 4.9
+  },
+  {
+   "key": "SPEC_G2__sqrt__s3",
+   "model_id": "SPEC_G2__sqrt",
+   "seed": 3,
+   "file": "SPEC_G2__sqrt__s3.ubj",
+   "sha256": "2743aa469c6f05459cbc2ab8547384245a3af078318b41f3ef86901c0e8cbd6e",
+   "bytes": 243749,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    13.090374125167015,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 40,
+   "best_score": 0.00165254058557605,
+   "rounds_run": 51,
+   "fit_seconds": 5.26
+  },
+  {
+   "key": "SPEC_G2__sqrt__s4",
+   "model_id": "SPEC_G2__sqrt",
+   "seed": 4,
+   "file": "SPEC_G2__sqrt__s4.ubj",
+   "sha256": "51fb1d17e0ba98a66986c828301d96791345bf400cdb82a92c29fdab517889d0",
+   "bytes": 196783,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    13.090374125167015,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 30,
+   "best_score": 0.00507793987640832,
+   "rounds_run": 41,
+   "fit_seconds": 5.08
+  },
+  {
+   "key": "GLOBAL__sqrt__s0",
+   "model_id": "GLOBAL__sqrt",
+   "seed": 0,
+   "file": "GLOBAL__sqrt__s0.ubj",
+   "sha256": "4f04b4aca43d19924c4c944c5289c56405a374a497bf106a0a7deafbd313602d",
+   "bytes": 198830,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    38.03903811944555,
+    1.1840673040565164
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 22,
+   "best_score": 0.01512436317039578,
+   "rounds_run": 33,
+   "fit_seconds": 6.38
+  },
+  {
+   "key": "GLOBAL__sqrt__s1",
+   "model_id": "GLOBAL__sqrt",
+   "seed": 1,
+   "file": "GLOBAL__sqrt__s1.ubj",
+   "sha256": "edc789917162539f4fc4a2a42f94bdb230035c19edab8b9df95584f55212df06",
+   "bytes": 266374,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    38.03903811944555,
+    1.1840673040565164
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 32,
+   "best_score": 0.00700734450094331,
+   "rounds_run": 43,
+   "fit_seconds": 8.56
+  },
+  {
+   "key": "GLOBAL__sqrt__s2",
+   "model_id": "GLOBAL__sqrt",
+   "seed": 2,
+   "file": "GLOBAL__sqrt__s2.ubj",
+   "sha256": "61aaf037767c10234f6412e29a3ee6f58dd31624f78128380bd8e4290cb27e5d",
+   "bytes": 191104,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    38.03903811944555,
+    1.1840673040565164
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 21,
+   "best_score": 0.00878794556972681,
+   "rounds_run": 32,
+   "fit_seconds": 6.28
+  },
+  {
+   "key": "GLOBAL__sqrt__s3",
+   "model_id": "GLOBAL__sqrt",
+   "seed": 3,
+   "file": "GLOBAL__sqrt__s3.ubj",
+   "sha256": "abd80961411d5f5269b3fee32b369c013600c797306ea087309b97ed65c6c600",
+   "bytes": 234579,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    38.03903811944555,
+    1.1840673040565164
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 28,
+   "best_score": 0.00792132843788488,
+   "rounds_run": 39,
+   "fit_seconds": 7.46
+  },
+  {
+   "key": "GLOBAL__sqrt__s4",
+   "model_id": "GLOBAL__sqrt",
+   "seed": 4,
+   "file": "GLOBAL__sqrt__s4.ubj",
+   "sha256": "7a646cf260f5744627cc76d5e0c447cef53a66c467ae086ef0334cb65eaf0fed",
+   "bytes": 205944,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    38.03903811944555,
+    1.1840673040565164
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 23,
+   "best_score": 0.01469511374541962,
+   "rounds_run": 34,
+   "fit_seconds": 7.56
+  },
+  {
+   "key": "SPEC_G1__none__s0",
+   "model_id": "SPEC_G1__none",
+   "seed": 0,
+   "file": "SPEC_G1__none__s0.ubj",
+   "sha256": "a92031f6f8bbac4d286b3aae8103d04af214bd62f5fcaa2fa523c710872cdba1",
+   "bytes": 366242,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 58,
+   "best_score": 0.0001770341144842,
+   "rounds_run": 69,
+   "fit_seconds": 13.14
+  },
+  {
+   "key": "SPEC_G1__none__s1",
+   "model_id": "SPEC_G1__none",
+   "seed": 1,
+   "file": "SPEC_G1__none__s1.ubj",
+   "sha256": "413e5f4f06737f273b531bcc508eaaf7f6bf3ffbb9f915d58d51e035d34305ed",
+   "bytes": 430896,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 74,
+   "best_score": 0.00019435687247016,
+   "rounds_run": 85,
+   "fit_seconds": 16.2
+  },
+  {
+   "key": "SPEC_G1__none__s2",
+   "model_id": "SPEC_G1__none",
+   "seed": 2,
+   "file": "SPEC_G1__none__s2.ubj",
+   "sha256": "a3cef2ba202f60f13cf78a802a6071a3dccdb79ccdd6b7101c83260605a3a78f",
+   "bytes": 340103,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 53,
+   "best_score": 0.00045400215811669,
+   "rounds_run": 64,
+   "fit_seconds": 11.5
+  },
+  {
+   "key": "SPEC_G1__none__s3",
+   "model_id": "SPEC_G1__none",
+   "seed": 3,
+   "file": "SPEC_G1__none__s3.ubj",
+   "sha256": "d88ed628fff4e8272b5ad58e3d79157591cd0032c8f8a75ed1ce3c098649f07d",
+   "bytes": 269101,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 38,
+   "best_score": 0.00050172966899643,
+   "rounds_run": 49,
+   "fit_seconds": 9.62
+  },
+  {
+   "key": "SPEC_G1__none__s4",
+   "model_id": "SPEC_G1__none",
+   "seed": 4,
+   "file": "SPEC_G1__none__s4.ubj",
+   "sha256": "973d7488dccf6e712f64741ecbe2dcef5ba3e07e98b5eaaf50ec1c848bde31d5",
+   "bytes": 275130,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 39,
+   "best_score": 0.00068707020905237,
+   "rounds_run": 50,
+   "fit_seconds": 8.58
+  },
+  {
+   "key": "SPEC_G2__none__s0",
+   "model_id": "SPEC_G2__none",
+   "seed": 0,
+   "file": "SPEC_G2__none__s0.ubj",
+   "sha256": "34a835fd1563b757793e804f479decc07b133a1f71eb34763cec39ff0edd9083",
+   "bytes": 366753,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 68,
+   "best_score": 0.00045592946937195,
+   "rounds_run": 79,
+   "fit_seconds": 7.86
+  },
+  {
+   "key": "SPEC_G2__none__s1",
+   "model_id": "SPEC_G2__none",
+   "seed": 1,
+   "file": "SPEC_G2__none__s1.ubj",
+   "sha256": "b483f76a563931c2a925d8029165f3bfaeb2f0d9b15e8c1e1e64319b39726153",
+   "bytes": 295448,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 49,
+   "best_score": 0.00010671969872186,
+   "rounds_run": 60,
+   "fit_seconds": 5.95
+  },
+  {
+   "key": "SPEC_G2__none__s2",
+   "model_id": "SPEC_G2__none",
+   "seed": 2,
+   "file": "SPEC_G2__none__s2.ubj",
+   "sha256": "1ce63da9bf6d2fd720fc1cc7e83508169d0e8ef15982785e67761da21f32d4f5",
+   "bytes": 409444,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 78,
+   "best_score": 0.00011881411264675,
+   "rounds_run": 89,
+   "fit_seconds": 9.07
+  },
+  {
+   "key": "SPEC_G2__none__s3",
+   "model_id": "SPEC_G2__none",
+   "seed": 3,
+   "file": "SPEC_G2__none__s3.ubj",
+   "sha256": "c1a98e988a5f31c232be7ec70765f7909e064b022043aa917176c0323d14ba8d",
+   "bytes": 375385,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 71,
+   "best_score": 0.00025575687476213,
+   "rounds_run": 82,
+   "fit_seconds": 8.92
+  },
+  {
+   "key": "SPEC_G2__none__s4",
+   "model_id": "SPEC_G2__none",
+   "seed": 4,
+   "file": "SPEC_G2__none__s4.ubj",
+   "sha256": "d092cc5b5b048a400f3db513a8a4759bab0e2abe16e8ccacacbd65e796c397aa",
+   "bytes": 215236,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 32,
+   "best_score": 0.00047202891869424,
+   "rounds_run": 43,
+   "fit_seconds": 5.56
+  },
+  {
+   "key": "GLOBAL__none__s0",
+   "model_id": "GLOBAL__none",
+   "seed": 0,
+   "file": "GLOBAL__none__s0.ubj",
+   "sha256": "a0b0afc91a469ef322d043a599d9c585245c9251d1b775611e0742864106faff",
+   "bytes": 409678,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 68,
+   "best_score": 0.00029084125038561,
+   "rounds_run": 79,
+   "fit_seconds": 18.12
+  },
+  {
+   "key": "GLOBAL__none__s1",
+   "model_id": "GLOBAL__none",
+   "seed": 1,
+   "file": "GLOBAL__none__s1.ubj",
+   "sha256": "3431a40e14de2afc353ce1d0d3ed4cb8afd1d64fa2e1fce13aa11ebf5163b305",
+   "bytes": 359963,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 56,
+   "best_score": 0.0003367261705038,
+   "rounds_run": 67,
+   "fit_seconds": 12.74
+  },
+  {
+   "key": "GLOBAL__none__s2",
+   "model_id": "GLOBAL__none",
+   "seed": 2,
+   "file": "GLOBAL__none__s2.ubj",
+   "sha256": "63f3604bbb5cd20de3428e3dae3cc7a40d1913d243177279c8e2eac3e4a14519",
+   "bytes": 267150,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 37,
+   "best_score": 0.0005666420923564,
+   "rounds_run": 48,
+   "fit_seconds": 9.5
+  },
+  {
+   "key": "GLOBAL__none__s3",
+   "model_id": "GLOBAL__none",
+   "seed": 3,
+   "file": "GLOBAL__none__s3.ubj",
+   "sha256": "06440ea715621179c520a997e49f75804b8775420506ded5cdb01d958e271f6b",
+   "bytes": 397098,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 65,
+   "best_score": 0.00027580413741198,
+   "rounds_run": 76,
+   "fit_seconds": 14.16
+  },
+  {
+   "key": "GLOBAL__none__s4",
+   "model_id": "GLOBAL__none",
+   "seed": 4,
+   "file": "GLOBAL__none__s4.ubj",
+   "sha256": "2d8f89ca17e8474143abf628334448ad0dca46e5b17a63ddc8b0b34aa117319d",
+   "bytes": 382127,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 62,
+   "best_score": 0.00053230662368377,
+   "rounds_run": 73,
+   "fit_seconds": 13.57
+  },
+  {
+   "key": "SPEC_G1__balanced__s0",
+   "model_id": "SPEC_G1__balanced",
+   "seed": 0,
+   "file": "SPEC_G1__balanced__s0.ubj",
+   "sha256": "3c3f47b23d89606020fb1d3770a0d5e52e98b1f01e2b34b6060391cb6e70ce8d",
+   "bytes": 266330,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.2887805345419403,
+    0.38615479667490454,
+    1628.3131578947368,
+    1.577726271342023
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 31,
+   "best_score": 0.15443945332495276,
+   "rounds_run": 42,
+   "fit_seconds": 6.83
+  },
+  {
+   "key": "SPEC_G1__balanced__s1",
+   "model_id": "SPEC_G1__balanced",
+   "seed": 1,
+   "file": "SPEC_G1__balanced__s1.ubj",
+   "sha256": "2f88b4e79df5d921a91dafdecd3fe6ded4e59a8df69342d73c2126668290d812",
+   "bytes": 153906,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.2887805345419403,
+    0.38615479667490454,
+    1628.3131578947368,
+    1.577726271342023
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 16,
+   "best_score": 0.06231903308776957,
+   "rounds_run": 27,
+   "fit_seconds": 4.11
+  },
+  {
+   "key": "SPEC_G1__balanced__s2",
+   "model_id": "SPEC_G1__balanced",
+   "seed": 2,
+   "file": "SPEC_G1__balanced__s2.ubj",
+   "sha256": "8d2d730d78781d7f7c5b96974aebb62986b5fa5733ed41f81d1542690527be55",
+   "bytes": 95540,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.2887805345419403,
+    0.38615479667490454,
+    1628.3131578947368,
+    1.577726271342023
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 9,
+   "best_score": 0.24906739763529037,
+   "rounds_run": 20,
+   "fit_seconds": 3.11
+  },
+  {
+   "key": "SPEC_G1__balanced__s3",
+   "model_id": "SPEC_G1__balanced",
+   "seed": 3,
+   "file": "SPEC_G1__balanced__s3.ubj",
+   "sha256": "bdd69cd0caff65d4ce016d596a82797590855a63357c3ff21cb7199e76a72a05",
+   "bytes": 83258,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.2887805345419403,
+    0.38615479667490454,
+    1628.3131578947368,
+    1.577726271342023
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 8,
+   "best_score": 0.3106872859846028,
+   "rounds_run": 19,
+   "fit_seconds": 2.7
+  },
+  {
+   "key": "SPEC_G1__balanced__s4",
+   "model_id": "SPEC_G1__balanced",
+   "seed": 4,
+   "file": "SPEC_G1__balanced__s4.ubj",
+   "sha256": "b3c2616b6a34fdb951eb85b835c59c87234aaf154332545ed50feb4bbdad33ef",
+   "bytes": 74988,
+   "kind": "specialist",
+   "subset_key": "G1",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.2887805345419403,
+    0.38615479667490454,
+    1628.3131578947368,
+    1.577726271342023
+   ],
+   "zero_row_classes": [],
+   "n_fit": 556882,
+   "n_inner": 61877,
+   "inner_counts": [
+    12003,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 7,
+   "best_score": 0.3305170786783127,
+   "rounds_run": 18,
+   "fit_seconds": 2.65
+  },
+  {
+   "key": "SPEC_G2__balanced__s0",
+   "model_id": "SPEC_G2__balanced",
+   "seed": 0,
+   "file": "SPEC_G2__balanced__s0.ubj",
+   "sha256": "4d5b2b68895e5ce1e1ba7fc385fc8c411875cbebe01904c8aeb5f697c2b95565",
+   "bytes": 101063,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    7.9091160390687385,
+    0.32140717441773387,
+    1355.2894736842106,
+    1.3131846276237684
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 11,
+   "best_score": 0.15165531553848802,
+   "rounds_run": 22,
+   "fit_seconds": 2.61
+  },
+  {
+   "key": "SPEC_G2__balanced__s1",
+   "model_id": "SPEC_G2__balanced",
+   "seed": 1,
+   "file": "SPEC_G2__balanced__s1.ubj",
+   "sha256": "d6fffc4fe3726c17e7ca7a10b3e704bca8ca2bbe76e2d795b5ab05028ec8a90d",
+   "bytes": 302929,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    7.9091160390687385,
+    0.32140717441773387,
+    1355.2894736842106,
+    1.3131846276237684
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 43,
+   "best_score": 0.00223032746193656,
+   "rounds_run": 54,
+   "fit_seconds": 5.6
+  },
+  {
+   "key": "SPEC_G2__balanced__s2",
+   "model_id": "SPEC_G2__balanced",
+   "seed": 2,
+   "file": "SPEC_G2__balanced__s2.ubj",
+   "sha256": "c53c1468ce46a5144f70d84496827971297ecf7b7ea2a7c628a07285d050e4b4",
+   "bytes": 491354,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    7.9091160390687385,
+    0.32140717441773387,
+    1355.2894736842106,
+    1.3131846276237684
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 94,
+   "best_score": 0.0023971610892162,
+   "rounds_run": 100,
+   "fit_seconds": 9.02
+  },
+  {
+   "key": "SPEC_G2__balanced__s3",
+   "model_id": "SPEC_G2__balanced",
+   "seed": 3,
+   "file": "SPEC_G2__balanced__s3.ubj",
+   "sha256": "63255703ce1f0cac84e846cd331c0c2ed07bfcf6b1313d2cba8af141e804a75b",
+   "bytes": 134075,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    7.9091160390687385,
+    0.32140717441773387,
+    1355.2894736842106,
+    1.3131846276237684
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 15,
+   "best_score": 0.0721925347300322,
+   "rounds_run": 26,
+   "fit_seconds": 2.96
+  },
+  {
+   "key": "SPEC_G2__balanced__s4",
+   "model_id": "SPEC_G2__balanced",
+   "seed": 4,
+   "file": "SPEC_G2__balanced__s4.ubj",
+   "sha256": "a376bbf9d3c8f3aa8dba21cdff6cf4f7e9db7600646115846cae616cb8d7735f",
+   "bytes": 93337,
+   "kind": "specialist",
+   "subset_key": "G2",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    7.9091160390687385,
+    0.32140717441773387,
+    1355.2894736842106,
+    1.3131846276237684
+   ],
+   "zero_row_classes": [],
+   "n_fit": 463508,
+   "n_inner": 51502,
+   "inner_counts": [
+    1628,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 10,
+   "best_score": 0.22147919396306698,
+   "rounds_run": 21,
+   "fit_seconds": 2.46
+  },
+  {
+   "key": "GLOBAL__balanced__s0",
+   "model_id": "GLOBAL__balanced",
+   "seed": 0,
+   "file": "GLOBAL__balanced__s0.ubj",
+   "sha256": "b9d65029a5dfe1ac38d607c4b94ae4c1d34044547c7d725258a32ae6245300bc",
+   "bytes": 223873,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.1570343076632088,
+    0.39703499837739337,
+    1674.1921052631578,
+    1.6221798951512556
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 24,
+   "best_score": 0.09369423521897344,
+   "rounds_run": 35,
+   "fit_seconds": 6.3
+  },
+  {
+   "key": "GLOBAL__balanced__s1",
+   "model_id": "GLOBAL__balanced",
+   "seed": 1,
+   "file": "GLOBAL__balanced__s1.ubj",
+   "sha256": "1f501ceaeb325d9d853f3fe3d3f3fe7f2c544f901f0ce55281dfd0cf1314516d",
+   "bytes": 403599,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.1570343076632088,
+    0.39703499837739337,
+    1674.1921052631578,
+    1.6221798951512556
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 54,
+   "best_score": 0.15239228453286274,
+   "rounds_run": 65,
+   "fit_seconds": 11.21
+  },
+  {
+   "key": "GLOBAL__balanced__s2",
+   "model_id": "GLOBAL__balanced",
+   "seed": 2,
+   "file": "GLOBAL__balanced__s2.ubj",
+   "sha256": "ff844a181a489745f7c4ccfa476f72d10272ba1fd63696ceab3082db89c7199a",
+   "bytes": 95606,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.1570343076632088,
+    0.39703499837739337,
+    1674.1921052631578,
+    1.6221798951512556
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 9,
+   "best_score": 0.2093070541950697,
+   "rounds_run": 20,
+   "fit_seconds": 3.63
+  },
+  {
+   "key": "GLOBAL__balanced__s3",
+   "model_id": "GLOBAL__balanced",
+   "seed": 3,
+   "file": "GLOBAL__balanced__s3.ubj",
+   "sha256": "6fc8b6f82a60ebd8fc71ac4d925db65dee247399dfb8074256b092135790c05e",
+   "bytes": 151958,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.1570343076632088,
+    0.39703499837739337,
+    1674.1921052631578,
+    1.6221798951512556
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 15,
+   "best_score": 0.07297571649839077,
+   "rounds_run": 26,
+   "fit_seconds": 4.87
+  },
+  {
+   "key": "GLOBAL__balanced__s4",
+   "model_id": "GLOBAL__balanced",
+   "seed": 4,
+   "file": "GLOBAL__balanced__s4.ubj",
+   "sha256": "8b835756bb76e18d9c63e219889ebd5cd90e56ff22e8118e7c46b4153f2bedd4",
+   "bytes": 115818,
+   "kind": "global",
+   "subset_key": "GLOBAL",
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.1570343076632088,
+    0.39703499837739337,
+    1674.1921052631578,
+    1.6221798951512556
+   ],
+   "zero_row_classes": [],
+   "n_fit": 572573,
+   "n_inner": 63620,
+   "inner_counts": [
+    13746,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 11,
+   "best_score": 0.2101637770156609,
+   "rounds_run": 22,
+   "fit_seconds": 3.83
+  },
+  {
+   "key": "GENSPEC_GEN__sqrt__s0",
+   "model_id": "GENSPEC_GEN__sqrt",
+   "seed": 0,
+   "file": "GENSPEC_GEN__sqrt__s0.ubj",
+   "sha256": "2591bd8fc21046c3bd876bb41bece284a0b5ba771b4a61441d04aa30d2f45524",
+   "bytes": 233430,
+   "kind": "gen_specialist",
+   "subset_key": "GEN",
+   "config": "A2",
+   "weights": "sqrt",
+   "counts": [
+    1155,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    3.4868172789582914,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 449896,
+   "n_inner": 49990,
+   "inner_counts": [
+    116,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 52,
+   "best_score": 0.00168054124176482,
+   "rounds_run": 63,
+   "fit_seconds": 5.04
+  },
+  {
+   "key": "GENSPEC_GEN__sqrt__s1",
+   "model_id": "GENSPEC_GEN__sqrt",
+   "seed": 1,
+   "file": "GENSPEC_GEN__sqrt__s1.ubj",
+   "sha256": "c8098e3ae00c3e02a9c11260b4f1752c018860f20616a2a086b4acfa7eb40172",
+   "bytes": 127135,
+   "kind": "gen_specialist",
+   "subset_key": "GEN",
+   "config": "A2",
+   "weights": "sqrt",
+   "counts": [
+    1155,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    3.4868172789582914,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 449896,
+   "n_inner": 49990,
+   "inner_counts": [
+    116,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 25,
+   "best_score": 0.00366637044262812,
+   "rounds_run": 36,
+   "fit_seconds": 2.94
+  },
+  {
+   "key": "GENSPEC_GEN__sqrt__s2",
+   "model_id": "GENSPEC_GEN__sqrt",
+   "seed": 2,
+   "file": "GENSPEC_GEN__sqrt__s2.ubj",
+   "sha256": "70267c8a5294e8bd76364cb46b4ae92486bf925b593ef53948ce3e7cf2aa16f8",
+   "bytes": 318239,
+   "kind": "gen_specialist",
+   "subset_key": "GEN",
+   "config": "A2",
+   "weights": "sqrt",
+   "counts": [
+    1155,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    3.4868172789582914,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 449896,
+   "n_inner": 49990,
+   "inner_counts": [
+    116,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 76,
+   "best_score": 0.0011843745896937,
+   "rounds_run": 87,
+   "fit_seconds": 6.76
+  },
+  {
+   "key": "GENSPEC_GEN__sqrt__s3",
+   "model_id": "GENSPEC_GEN__sqrt",
+   "seed": 3,
+   "file": "GENSPEC_GEN__sqrt__s3.ubj",
+   "sha256": "2d7cb508382a36cccd43173a56cd3bbf7c72ae24c1666bff470f0eec42d63ba3",
+   "bytes": 173352,
+   "kind": "gen_specialist",
+   "subset_key": "GEN",
+   "config": "A2",
+   "weights": "sqrt",
+   "counts": [
+    1155,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    3.4868172789582914,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 449896,
+   "n_inner": 49990,
+   "inner_counts": [
+    116,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 34,
+   "best_score": 9.398099120071e-05,
+   "rounds_run": 45,
+   "fit_seconds": 4.05
+  },
+  {
+   "key": "GENSPEC_GEN__sqrt__s4",
+   "model_id": "GENSPEC_GEN__sqrt",
+   "seed": 4,
+   "file": "GENSPEC_GEN__sqrt__s4.ubj",
+   "sha256": "55f9695490dc0663e8864fcc6258a0513adbd921d0878b45b7e60f8213637a68",
+   "bytes": 239927,
+   "kind": "gen_specialist",
+   "subset_key": "GEN",
+   "config": "A2",
+   "weights": "sqrt",
+   "counts": [
+    1155,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    3.4868172789582914,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 449896,
+   "n_inner": 49990,
+   "inner_counts": [
+    116,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 53,
+   "best_score": 0.00011015639913671,
+   "rounds_run": 64,
+   "fit_seconds": 5.4
+  },
+  {
+   "key": "CAT_Audio__sqrt__s0",
+   "model_id": "CAT_Audio__sqrt",
+   "seed": 0,
+   "file": "CAT_Audio__sqrt__s0.ubj",
+   "sha256": "a159c87b2b426aaa308e9f8fab09c1108a1a4be119b2a3e3180c2da1e665ca37",
+   "bytes": 216123,
+   "kind": "category",
+   "subset_key": "Audio",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    29037,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.482923999690307,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 474990,
+   "n_inner": 52778,
+   "inner_counts": [
+    2904,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 29,
+   "best_score": 0.00603156088393843,
+   "rounds_run": 40,
+   "fit_seconds": 4.35
+  },
+  {
+   "key": "CAT_Audio__sqrt__s1",
+   "model_id": "CAT_Audio__sqrt",
+   "seed": 1,
+   "file": "CAT_Audio__sqrt__s1.ubj",
+   "sha256": "e74dd6dd19cf70cef18c73ca6f7d3fb10f063941a00475a5abd69d56c3aaf407",
+   "bytes": 193856,
+   "kind": "category",
+   "subset_key": "Audio",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    29037,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.482923999690307,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 474990,
+   "n_inner": 52778,
+   "inner_counts": [
+    2904,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 25,
+   "best_score": 0.00327992088381393,
+   "rounds_run": 36,
+   "fit_seconds": 3.68
+  },
+  {
+   "key": "CAT_Audio__sqrt__s2",
+   "model_id": "CAT_Audio__sqrt",
+   "seed": 2,
+   "file": "CAT_Audio__sqrt__s2.ubj",
+   "sha256": "a059a728a6af6157f135ddde744800ae83c7cc13825a1121c4daf525633152e3",
+   "bytes": 263745,
+   "kind": "category",
+   "subset_key": "Audio",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    29037,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.482923999690307,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 474990,
+   "n_inner": 52778,
+   "inner_counts": [
+    2904,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 37,
+   "best_score": 0.00764546104476823,
+   "rounds_run": 48,
+   "fit_seconds": 4.89
+  },
+  {
+   "key": "CAT_Audio__sqrt__s3",
+   "model_id": "CAT_Audio__sqrt",
+   "seed": 3,
+   "file": "CAT_Audio__sqrt__s3.ubj",
+   "sha256": "6a539c3b97fec4073909231c751e826a1da3e93547baf748292c0721a81150d8",
+   "bytes": 208777,
+   "kind": "category",
+   "subset_key": "Audio",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    29037,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.482923999690307,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 474990,
+   "n_inner": 52778,
+   "inner_counts": [
+    2904,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 29,
+   "best_score": 0.01478784501026944,
+   "rounds_run": 40,
+   "fit_seconds": 4.29
+  },
+  {
+   "key": "CAT_Audio__sqrt__s4",
+   "model_id": "CAT_Audio__sqrt",
+   "seed": 4,
+   "file": "CAT_Audio__sqrt__s4.ubj",
+   "sha256": "27ed51d19a88c09c3f42dfd5514a096842ba0b245d03055bb55aebba1f20f8e2",
+   "bytes": 184251,
+   "kind": "category",
+   "subset_key": "Audio",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    29037,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.482923999690307,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 474990,
+   "n_inner": 52778,
+   "inner_counts": [
+    2904,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 23,
+   "best_score": 0.00569132178473925,
+   "rounds_run": 34,
+   "fit_seconds": 3.64
+  },
+  {
+   "key": "CAT_Camera__sqrt__s0",
+   "model_id": "CAT_Camera__sqrt",
+   "seed": 0,
+   "file": "CAT_Camera__sqrt__s0.ubj",
+   "sha256": "bb64724db5233d4b810a561555b96dfbd28fd804ccb02613b649fbc7fad7f6e0",
+   "bytes": 422742,
+   "kind": "category",
+   "subset_key": "Camera",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    53399,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    23.708537214305426,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 496916,
+   "n_inner": 55214,
+   "inner_counts": [
+    5340,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 80,
+   "best_score": 0.00147420067919097,
+   "rounds_run": 91,
+   "fit_seconds": 9.9
+  },
+  {
+   "key": "CAT_Camera__sqrt__s1",
+   "model_id": "CAT_Camera__sqrt",
+   "seed": 1,
+   "file": "CAT_Camera__sqrt__s1.ubj",
+   "sha256": "ee96d68154599b459c2875c4debf4bcd5c7c7376442650b24251d94ee57f062c",
+   "bytes": 211052,
+   "kind": "category",
+   "subset_key": "Camera",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    53399,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    23.708537214305426,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 496916,
+   "n_inner": 55214,
+   "inner_counts": [
+    5340,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 28,
+   "best_score": 0.00113652075905669,
+   "rounds_run": 39,
+   "fit_seconds": 4.05
+  },
+  {
+   "key": "CAT_Camera__sqrt__s2",
+   "model_id": "CAT_Camera__sqrt",
+   "seed": 2,
+   "file": "CAT_Camera__sqrt__s2.ubj",
+   "sha256": "3f1a845c927459cd1a7e604a07efe62299747e69f634c00d6bcf0730b4239ae6",
+   "bytes": 276780,
+   "kind": "category",
+   "subset_key": "Camera",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    53399,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    23.708537214305426,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 496916,
+   "n_inner": 55214,
+   "inner_counts": [
+    5340,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 41,
+   "best_score": 0.00591259088761058,
+   "rounds_run": 52,
+   "fit_seconds": 5.83
+  },
+  {
+   "key": "CAT_Camera__sqrt__s3",
+   "model_id": "CAT_Camera__sqrt",
+   "seed": 3,
+   "file": "CAT_Camera__sqrt__s3.ubj",
+   "sha256": "19aa227d829cf647713b8f59e2008819f1d797f1a82187a0a8f6fb9f4a0c629a",
+   "bytes": 480676,
+   "kind": "category",
+   "subset_key": "Camera",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    53399,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    23.708537214305426,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 496916,
+   "n_inner": 55214,
+   "inner_counts": [
+    5340,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 97,
+   "best_score": 0.00490928637834349,
+   "rounds_run": 100,
+   "fit_seconds": 10.13
+  },
+  {
+   "key": "CAT_Camera__sqrt__s4",
+   "model_id": "CAT_Camera__sqrt",
+   "seed": 4,
+   "file": "CAT_Camera__sqrt__s4.ubj",
+   "sha256": "ec8bddd72ab3d7016bddc29701691ad24be3df6860d4d4ced38795462e9a9a85",
+   "bytes": 172175,
+   "kind": "category",
+   "subset_key": "Camera",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    53399,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    23.708537214305426,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 496916,
+   "n_inner": 55214,
+   "inner_counts": [
+    5340,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 22,
+   "best_score": 0.0123510266625262,
+   "rounds_run": 33,
+   "fit_seconds": 3.43
+  },
+  {
+   "key": "CAT_Home_Automation__sqrt__s0",
+   "model_id": "CAT_Home_Automation__sqrt",
+   "seed": 0,
+   "file": "CAT_Home_Automation__sqrt__s0.ubj",
+   "sha256": "0378b2bec2947b5ddf3764fd664912c51623ad3a9cd583d43a157e7586835734",
+   "bytes": 183346,
+   "kind": "category",
+   "subset_key": "Home Automation",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    5889,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    7.873339423917308,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 454157,
+   "n_inner": 50463,
+   "inner_counts": [
+    589,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 29,
+   "best_score": 0.00354743127717355,
+   "rounds_run": 40,
+   "fit_seconds": 3.87
+  },
+  {
+   "key": "CAT_Home_Automation__sqrt__s1",
+   "model_id": "CAT_Home_Automation__sqrt",
+   "seed": 1,
+   "file": "CAT_Home_Automation__sqrt__s1.ubj",
+   "sha256": "6dd7e5dcbc2773bb91f7805f0dd7e612476330285f9c95272ec5bc20769df5cd",
+   "bytes": 347954,
+   "kind": "category",
+   "subset_key": "Home Automation",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    5889,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    7.873339423917308,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 454157,
+   "n_inner": 50463,
+   "inner_counts": [
+    589,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 71,
+   "best_score": 0.00513040831575328,
+   "rounds_run": 82,
+   "fit_seconds": 7.47
+  },
+  {
+   "key": "CAT_Home_Automation__sqrt__s2",
+   "model_id": "CAT_Home_Automation__sqrt",
+   "seed": 2,
+   "file": "CAT_Home_Automation__sqrt__s2.ubj",
+   "sha256": "3ba2feba06f7cc840152426c291f1bdb05274a7e1c16ce35d91ca186cc7e1bee",
+   "bytes": 318079,
+   "kind": "category",
+   "subset_key": "Home Automation",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    5889,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    7.873339423917308,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 454157,
+   "n_inner": 50463,
+   "inner_counts": [
+    589,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 63,
+   "best_score": 7.090502001322e-05,
+   "rounds_run": 74,
+   "fit_seconds": 6.83
+  },
+  {
+   "key": "CAT_Home_Automation__sqrt__s3",
+   "model_id": "CAT_Home_Automation__sqrt",
+   "seed": 3,
+   "file": "CAT_Home_Automation__sqrt__s3.ubj",
+   "sha256": "d1970e85a7eadf7a7e676068c7efe863e450040a10694ced640bf88bee565189",
+   "bytes": 170357,
+   "kind": "category",
+   "subset_key": "Home Automation",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    5889,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    7.873339423917308,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 454157,
+   "n_inner": 50463,
+   "inner_counts": [
+    589,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 29,
+   "best_score": 0.00248490761282507,
+   "rounds_run": 40,
+   "fit_seconds": 3.42
+  },
+  {
+   "key": "CAT_Home_Automation__sqrt__s4",
+   "model_id": "CAT_Home_Automation__sqrt",
+   "seed": 4,
+   "file": "CAT_Home_Automation__sqrt__s4.ubj",
+   "sha256": "3ec817f8383b3d887e84dcc7fcebfa1b0484c05c10fa1c0f068b5e4d4f229ad8",
+   "bytes": 247582,
+   "kind": "category",
+   "subset_key": "Home Automation",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    5889,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    7.873339423917308,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 454157,
+   "n_inner": 50463,
+   "inner_counts": [
+    589,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 45,
+   "best_score": 0.00283350177990567,
+   "rounds_run": 56,
+   "fit_seconds": 5.29
+  },
+  {
+   "key": "CAT_Hub__sqrt__s0",
+   "model_id": "CAT_Hub__sqrt",
+   "seed": 0,
+   "file": "CAT_Hub__sqrt__s0.ubj",
+   "sha256": "bb9f8d80bed11676045a03b51123f44f85fcc60fee03e9c4149790938120ba10",
+   "bytes": 447480,
+   "kind": "category",
+   "subset_key": "Hub",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    30696,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.975421816293608,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 476483,
+   "n_inner": 52944,
+   "inner_counts": [
+    3070,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 96,
+   "best_score": 0.00248903396981103,
+   "rounds_run": 100,
+   "fit_seconds": 9.73
+  },
+  {
+   "key": "CAT_Hub__sqrt__s1",
+   "model_id": "CAT_Hub__sqrt",
+   "seed": 1,
+   "file": "CAT_Hub__sqrt__s1.ubj",
+   "sha256": "49f5a944434e95371acb810dd44bcf8f0a8052639cc737a1bf4749ebed9d6fb4",
+   "bytes": 135830,
+   "kind": "category",
+   "subset_key": "Hub",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    30696,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.975421816293608,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 476483,
+   "n_inner": 52944,
+   "inner_counts": [
+    3070,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 18,
+   "best_score": 0.01020484325394385,
+   "rounds_run": 29,
+   "fit_seconds": 2.83
+  },
+  {
+   "key": "CAT_Hub__sqrt__s2",
+   "model_id": "CAT_Hub__sqrt",
+   "seed": 2,
+   "file": "CAT_Hub__sqrt__s2.ubj",
+   "sha256": "078deea67974d37bd41f4a7d362c7f81505e0ab3991adf91276c7b687135583e",
+   "bytes": 166163,
+   "kind": "category",
+   "subset_key": "Hub",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    30696,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.975421816293608,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 476483,
+   "n_inner": 52944,
+   "inner_counts": [
+    3070,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 23,
+   "best_score": 0.00503451167652606,
+   "rounds_run": 34,
+   "fit_seconds": 3.52
+  },
+  {
+   "key": "CAT_Hub__sqrt__s3",
+   "model_id": "CAT_Hub__sqrt",
+   "seed": 3,
+   "file": "CAT_Hub__sqrt__s3.ubj",
+   "sha256": "c5a7a109b457fd87b76cefc6babe11a2b602e37c6a94b3f0697967a47aaf2c27",
+   "bytes": 155378,
+   "kind": "category",
+   "subset_key": "Hub",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    30696,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.975421816293608,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 476483,
+   "n_inner": 52944,
+   "inner_counts": [
+    3070,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 22,
+   "best_score": 0.00521223424485558,
+   "rounds_run": 33,
+   "fit_seconds": 3.31
+  },
+  {
+   "key": "CAT_Hub__sqrt__s4",
+   "model_id": "CAT_Hub__sqrt",
+   "seed": 4,
+   "file": "CAT_Hub__sqrt__s4.ubj",
+   "sha256": "3e1dd0e10052c7d63a10a7498bda7aff36f44b347ac36eca9b3792e61911871b",
+   "bytes": 364862,
+   "kind": "category",
+   "subset_key": "Hub",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    30696,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.975421816293608,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 476483,
+   "n_inner": 52944,
+   "inner_counts": [
+    3070,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 71,
+   "best_score": 0.00025632966707679,
+   "rounds_run": 82,
+   "fit_seconds": 7.89
+  },
+  {
+   "key": "CAT_Lighting__sqrt__s0",
+   "model_id": "CAT_Lighting__sqrt",
+   "seed": 0,
+   "file": "CAT_Lighting__sqrt__s0.ubj",
+   "sha256": "a3b6f26fda3ac8b2a9049cba0a56df32ad74bb35d035917635ced7aa0ddbb34b",
+   "bytes": 377554,
+   "kind": "category",
+   "subset_key": "Lighting",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    3424,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    6.003507746572656,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451939,
+   "n_inner": 50216,
+   "inner_counts": [
+    342,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 99,
+   "best_score": 0.00057894465984081,
+   "rounds_run": 100,
+   "fit_seconds": 8.07
+  },
+  {
+   "key": "CAT_Lighting__sqrt__s1",
+   "model_id": "CAT_Lighting__sqrt",
+   "seed": 1,
+   "file": "CAT_Lighting__sqrt__s1.ubj",
+   "sha256": "58fe0adc91385bb8cae45066b055b005a914c6dd3e37d3a790865f21143d47ea",
+   "bytes": 334865,
+   "kind": "category",
+   "subset_key": "Lighting",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    3424,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    6.003507746572656,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451939,
+   "n_inner": 50216,
+   "inner_counts": [
+    342,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 85,
+   "best_score": 0.00013027059298471,
+   "rounds_run": 96,
+   "fit_seconds": 9.48
+  },
+  {
+   "key": "CAT_Lighting__sqrt__s2",
+   "model_id": "CAT_Lighting__sqrt",
+   "seed": 2,
+   "file": "CAT_Lighting__sqrt__s2.ubj",
+   "sha256": "8f2d4680dd495dcb8c736aac68a1ad11aa429df6e19b94659cffcb79226148e6",
+   "bytes": 312425,
+   "kind": "category",
+   "subset_key": "Lighting",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    3424,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    6.003507746572656,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451939,
+   "n_inner": 50216,
+   "inner_counts": [
+    342,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 77,
+   "best_score": 2.551518007052e-05,
+   "rounds_run": 88,
+   "fit_seconds": 9.33
+  },
+  {
+   "key": "CAT_Lighting__sqrt__s3",
+   "model_id": "CAT_Lighting__sqrt",
+   "seed": 3,
+   "file": "CAT_Lighting__sqrt__s3.ubj",
+   "sha256": "107b6dcb6dfa7bffa53290b532b0af7b51783106abafc42304cf2fc4a33a8193",
+   "bytes": 144228,
+   "kind": "category",
+   "subset_key": "Lighting",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    3424,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    6.003507746572656,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451939,
+   "n_inner": 50216,
+   "inner_counts": [
+    342,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 29,
+   "best_score": 0.00056706175566418,
+   "rounds_run": 40,
+   "fit_seconds": 3.79
+  },
+  {
+   "key": "CAT_Lighting__sqrt__s4",
+   "model_id": "CAT_Lighting__sqrt",
+   "seed": 4,
+   "file": "CAT_Lighting__sqrt__s4.ubj",
+   "sha256": "b0a85f571e4f6a9666082769756fe9e3202d21cb05296f5ca153cb7a63f1da64",
+   "bytes": 157606,
+   "kind": "category",
+   "subset_key": "Lighting",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    3424,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    6.003507746572656,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451939,
+   "n_inner": 50216,
+   "inner_counts": [
+    342,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 32,
+   "best_score": 0.0003349904884785,
+   "rounds_run": 43,
+   "fit_seconds": 4.22
+  },
+  {
+   "key": "CAT_Power_Outlet__sqrt__s0",
+   "model_id": "CAT_Power_Outlet__sqrt",
+   "seed": 0,
+   "file": "CAT_Power_Outlet__sqrt__s0.ubj",
+   "sha256": "acbcf1a44acc20690e1071c8d3fdded25e5caf9f617e3cfc6e230d9066d82ae0",
+   "bytes": 196823,
+   "kind": "category",
+   "subset_key": "Power Outlet",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    10741,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    10.633116095234588,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 458524,
+   "n_inner": 50948,
+   "inner_counts": [
+    1074,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 34,
+   "best_score": 0.00129649718901275,
+   "rounds_run": 45,
+   "fit_seconds": 4.45
+  },
+  {
+   "key": "CAT_Power_Outlet__sqrt__s1",
+   "model_id": "CAT_Power_Outlet__sqrt",
+   "seed": 1,
+   "file": "CAT_Power_Outlet__sqrt__s1.ubj",
+   "sha256": "13db0b4c0f0471b2014d032bfd96b1ff746fc7ccf7585dbcd2e8d8e6e966e532",
+   "bytes": 152562,
+   "kind": "category",
+   "subset_key": "Power Outlet",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    10741,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    10.633116095234588,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 458524,
+   "n_inner": 50948,
+   "inner_counts": [
+    1074,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 23,
+   "best_score": 0.00473727013671073,
+   "rounds_run": 34,
+   "fit_seconds": 2.83
+  },
+  {
+   "key": "CAT_Power_Outlet__sqrt__s2",
+   "model_id": "CAT_Power_Outlet__sqrt",
+   "seed": 2,
+   "file": "CAT_Power_Outlet__sqrt__s2.ubj",
+   "sha256": "ab96b997ad68869cccf3844eae8c39c709c0e220cbb74df04f988f2e43da5b5a",
+   "bytes": 420579,
+   "kind": "category",
+   "subset_key": "Power Outlet",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    10741,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    10.633116095234588,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 458524,
+   "n_inner": 50948,
+   "inner_counts": [
+    1074,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 96,
+   "best_score": 0.00150968385197909,
+   "rounds_run": 100,
+   "fit_seconds": 9.71
+  },
+  {
+   "key": "CAT_Power_Outlet__sqrt__s3",
+   "model_id": "CAT_Power_Outlet__sqrt",
+   "seed": 3,
+   "file": "CAT_Power_Outlet__sqrt__s3.ubj",
+   "sha256": "9619a1addd02482798fa97bea2c7cea439f2f3121bb5cac093b3e777197a390e",
+   "bytes": 265026,
+   "kind": "category",
+   "subset_key": "Power Outlet",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    10741,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    10.633116095234588,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 458524,
+   "n_inner": 50948,
+   "inner_counts": [
+    1074,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 51,
+   "best_score": 0.00041730533444681,
+   "rounds_run": 62,
+   "fit_seconds": 5.33
+  },
+  {
+   "key": "CAT_Power_Outlet__sqrt__s4",
+   "model_id": "CAT_Power_Outlet__sqrt",
+   "seed": 4,
+   "file": "CAT_Power_Outlet__sqrt__s4.ubj",
+   "sha256": "9a7e605627e46e337bbad57b6e2e5600c1050c6ff49e8ebeaa2e93f64ac5d974",
+   "bytes": 224219,
+   "kind": "category",
+   "subset_key": "Power Outlet",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    10741,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    10.633116095234588,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 458524,
+   "n_inner": 50948,
+   "inner_counts": [
+    1074,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 40,
+   "best_score": 0.0001286649076384,
+   "rounds_run": 51,
+   "fit_seconds": 4.83
+  },
+  {
+   "key": "CAT_Unidentified_Amazon__sqrt__s0",
+   "model_id": "CAT_Unidentified_Amazon__sqrt",
+   "seed": 0,
+   "file": "CAT_Unidentified_Amazon__sqrt__s0.ubj",
+   "sha256": "17cddd5a708511af4000eed84e2a83546c3fcbe398377226a6bfcde8d195ce6d",
+   "bytes": 221315,
+   "kind": "category",
+   "subset_key": "Unidentified (Amazon)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    1829,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    4.3877820797012435,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 450503,
+   "n_inner": 50057,
+   "inner_counts": [
+    183,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 45,
+   "best_score": 0.00191566859123615,
+   "rounds_run": 56,
+   "fit_seconds": 5.1
+  },
+  {
+   "key": "CAT_Unidentified_Amazon__sqrt__s1",
+   "model_id": "CAT_Unidentified_Amazon__sqrt",
+   "seed": 1,
+   "file": "CAT_Unidentified_Amazon__sqrt__s1.ubj",
+   "sha256": "3e45f213e01e556b189b796ad754b312d7feaebfe96f5dc5c75b8d774d03c27a",
+   "bytes": 415937,
+   "kind": "category",
+   "subset_key": "Unidentified (Amazon)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    1829,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    4.3877820797012435,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 450503,
+   "n_inner": 50057,
+   "inner_counts": [
+    183,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 99,
+   "best_score": 0.00080262203059041,
+   "rounds_run": 100,
+   "fit_seconds": 8.34
+  },
+  {
+   "key": "CAT_Unidentified_Amazon__sqrt__s2",
+   "model_id": "CAT_Unidentified_Amazon__sqrt",
+   "seed": 2,
+   "file": "CAT_Unidentified_Amazon__sqrt__s2.ubj",
+   "sha256": "25b0bbbccfcdfb63d0fb3d2bc29a52e5825891b8e3a952bcbc487eef6434f894",
+   "bytes": 147210,
+   "kind": "category",
+   "subset_key": "Unidentified (Amazon)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    1829,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    4.3877820797012435,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 450503,
+   "n_inner": 50057,
+   "inner_counts": [
+    183,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 27,
+   "best_score": 0.00126450672743725,
+   "rounds_run": 38,
+   "fit_seconds": 3.16
+  },
+  {
+   "key": "CAT_Unidentified_Amazon__sqrt__s3",
+   "model_id": "CAT_Unidentified_Amazon__sqrt",
+   "seed": 3,
+   "file": "CAT_Unidentified_Amazon__sqrt__s3.ubj",
+   "sha256": "dd593b5773b24167c8d9873fae034bac37c45130b848d9d70977baa67951ea60",
+   "bytes": 172050,
+   "kind": "category",
+   "subset_key": "Unidentified (Amazon)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    1829,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    4.3877820797012435,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 450503,
+   "n_inner": 50057,
+   "inner_counts": [
+    183,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 34,
+   "best_score": 0.00495092116728152,
+   "rounds_run": 45,
+   "fit_seconds": 3.79
+  },
+  {
+   "key": "CAT_Unidentified_Amazon__sqrt__s4",
+   "model_id": "CAT_Unidentified_Amazon__sqrt",
+   "seed": 4,
+   "file": "CAT_Unidentified_Amazon__sqrt__s4.ubj",
+   "sha256": "c983a84c56f21d1fb72ff9d2a74b04f98ce31fc3b0f31823c1b12872562ab30b",
+   "bytes": 207221,
+   "kind": "category",
+   "subset_key": "Unidentified (Amazon)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    1829,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    4.3877820797012435,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 450503,
+   "n_inner": 50057,
+   "inner_counts": [
+    183,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 40,
+   "best_score": 0.0034773102314218,
+   "rounds_run": 51,
+   "fit_seconds": 4.44
+  },
+  {
+   "key": "CAT_Unidentified_Espressif__sqrt__s0",
+   "model_id": "CAT_Unidentified_Espressif__sqrt",
+   "seed": 0,
+   "file": "CAT_Unidentified_Espressif__sqrt__s0.ubj",
+   "sha256": "75995bf40969300d8002f2fc2aa5a17b7d2ebd1605f13d9b7647b9e9846ed658",
+   "bytes": 375523,
+   "kind": "category",
+   "subset_key": "Unidentified (Espressif)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    2447,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    5.075223614466864,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451059,
+   "n_inner": 50119,
+   "inner_counts": [
+    245,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 99,
+   "best_score": 0.00113721144574025,
+   "rounds_run": 100,
+   "fit_seconds": 7.53
+  },
+  {
+   "key": "CAT_Unidentified_Espressif__sqrt__s1",
+   "model_id": "CAT_Unidentified_Espressif__sqrt",
+   "seed": 1,
+   "file": "CAT_Unidentified_Espressif__sqrt__s1.ubj",
+   "sha256": "f3d01f12320c35c6980640b135a47ff359cfc3260dba003248cb630cc0708e8e",
+   "bytes": 195382,
+   "kind": "category",
+   "subset_key": "Unidentified (Espressif)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    2447,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    5.075223614466864,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451059,
+   "n_inner": 50119,
+   "inner_counts": [
+    245,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 42,
+   "best_score": 0.00011576037054676,
+   "rounds_run": 53,
+   "fit_seconds": 6.1
+  },
+  {
+   "key": "CAT_Unidentified_Espressif__sqrt__s2",
+   "model_id": "CAT_Unidentified_Espressif__sqrt",
+   "seed": 2,
+   "file": "CAT_Unidentified_Espressif__sqrt__s2.ubj",
+   "sha256": "1e0c1a6faa852a821f72cf061aa3c9ea9a78cdf68e1e46d061c714fd27c8f8be",
+   "bytes": 287669,
+   "kind": "category",
+   "subset_key": "Unidentified (Espressif)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    2447,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    5.075223614466864,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451059,
+   "n_inner": 50119,
+   "inner_counts": [
+    245,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 69,
+   "best_score": 0.00466749076877484,
+   "rounds_run": 80,
+   "fit_seconds": 6.35
+  },
+  {
+   "key": "CAT_Unidentified_Espressif__sqrt__s3",
+   "model_id": "CAT_Unidentified_Espressif__sqrt",
+   "seed": 3,
+   "file": "CAT_Unidentified_Espressif__sqrt__s3.ubj",
+   "sha256": "299b1c33465ae05b6a5847751cd9120a1c9974f5243aa04faf5f62ac2112e0af",
+   "bytes": 244380,
+   "kind": "category",
+   "subset_key": "Unidentified (Espressif)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    2447,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    5.075223614466864,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451059,
+   "n_inner": 50119,
+   "inner_counts": [
+    245,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 45,
+   "best_score": 0.00418663689199685,
+   "rounds_run": 56,
+   "fit_seconds": 4.71
+  },
+  {
+   "key": "CAT_Unidentified_Espressif__sqrt__s4",
+   "model_id": "CAT_Unidentified_Espressif__sqrt",
+   "seed": 4,
+   "file": "CAT_Unidentified_Espressif__sqrt__s4.ubj",
+   "sha256": "9b76275194b209fdfdf5065cad3990c6d7891c36d1036804a5eb5cfbd7120808",
+   "bytes": 196067,
+   "kind": "category",
+   "subset_key": "Unidentified (Espressif)",
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    2447,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    5.075223614466864,
+    1.0
+   ],
+   "zero_row_classes": [],
+   "n_fit": 451059,
+   "n_inner": 50119,
+   "inner_counts": [
+    245,
+    40059,
+    10,
+    9805
+   ],
+   "best_iteration": 40,
+   "best_score": 0.00193154755798771,
+   "rounds_run": 51,
+   "fit_seconds": 4.31
+  }
+ ],
+ "models_summary": {
+  "SPEC_G1__sqrt": {
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    35.54507886584228,
+    1.1064361189416845
+   ],
+   "best_iter_mean": 25.0,
+   "fit_s_mean": 6.5
+  },
+  "SPEC_G2__sqrt": {
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    13.090374125167015,
+    1.0
+   ],
+   "best_iter_mean": 39.0,
+   "fit_s_mean": 5.4
+  },
+  "GLOBAL__sqrt": {
+   "config": "primary",
+   "weights": "sqrt",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    38.03903811944555,
+    1.1840673040565164
+   ],
+   "best_iter_mean": 25.2,
+   "fit_s_mean": 7.2
+  },
+  "SPEC_G1__none": {
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "best_iter_mean": 52.4,
+   "fit_s_mean": 11.8
+  },
+  "SPEC_G2__none": {
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "best_iter_mean": 59.6,
+   "fit_s_mean": 7.5
+  },
+  "GLOBAL__none": {
+   "config": "A1_none",
+   "weights": "none",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "best_iter_mean": 57.6,
+   "fit_s_mean": 13.6
+  },
+  "SPEC_G1__balanced": {
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    120028,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.2887805345419403,
+    0.38615479667490454,
+    1628.3131578947368,
+    1.577726271342023
+   ],
+   "best_iter_mean": 14.2,
+   "fit_s_mean": 3.9
+  },
+  "SPEC_G2__balanced": {
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    16279,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    7.9091160390687385,
+    0.32140717441773387,
+    1355.2894736842106,
+    1.3131846276237684
+   ],
+   "best_iter_mean": 34.6,
+   "fit_s_mean": 4.5
+  },
+  "GLOBAL__balanced": {
+   "config": "A1_balanced",
+   "weights": "balanced",
+   "counts": [
+    137462,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.1570343076632088,
+    0.39703499837739337,
+    1674.1921052631578,
+    1.6221798951512556
+   ],
+   "best_iter_mean": 22.6,
+   "fit_s_mean": 6.0
+  },
+  "GENSPEC_GEN__sqrt": {
+   "config": "A2",
+   "weights": "sqrt",
+   "counts": [
+    1155,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    3.4868172789582914,
+    1.0
+   ],
+   "best_iter_mean": 48.0,
+   "fit_s_mean": 4.8
+  },
+  "CAT_Audio__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    29037,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.482923999690307,
+    1.0
+   ],
+   "best_iter_mean": 28.6,
+   "fit_s_mean": 4.2
+  },
+  "CAT_Camera__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    53399,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    23.708537214305426,
+    1.0
+   ],
+   "best_iter_mean": 53.6,
+   "fit_s_mean": 6.7
+  },
+  "CAT_Home_Automation__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    5889,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    7.873339423917308,
+    1.0
+   ],
+   "best_iter_mean": 47.4,
+   "fit_s_mean": 5.4
+  },
+  "CAT_Hub__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    30696,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    17.975421816293608,
+    1.0
+   ],
+   "best_iter_mean": 46.0,
+   "fit_s_mean": 5.5
+  },
+  "CAT_Lighting__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    3424,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    6.003507746572656,
+    1.0
+   ],
+   "best_iter_mean": 64.4,
+   "fit_s_mean": 7.0
+  },
+  "CAT_Power_Outlet__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    10741,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    10.633116095234588,
+    1.0
+   ],
+   "best_iter_mean": 48.8,
+   "fit_s_mean": 5.4
+  },
+  "CAT_Unidentified_Amazon__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    1829,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    4.3877820797012435,
+    1.0
+   ],
+   "best_iter_mean": 49.0,
+   "fit_s_mean": 5.0
+  },
+  "CAT_Unidentified_Espressif__sqrt": {
+   "config": "A3",
+   "weights": "sqrt",
+   "counts": [
+    2447,
+    400590,
+    95,
+    98046
+   ],
+   "class_weights": [
+    1.0,
+    1.0,
+    5.075223614466864,
+    1.0
+   ],
+   "best_iter_mean": 59.0,
+   "fit_s_mean": 5.8
+  }
+ },
+ "figures": [
+  "figures/class_counts_per_training_set.png",
+  "figures/mlogloss_curves_seed0.png"
+ ],
+ "runtime_s": 616.1,
+ "peak_rss_mb": 2237
+}

@@ -1,0 +1,17 @@
+08:12:16  diagnostics/phase2_v2_1_compare.py  pid 855  run_id 20261121T081216Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/diag/20261121T081216Z
+08:12:16    PASS  per-seed recomputation == step 23 aggregates (v2_1 chosen ROUTED / FLAT_GLOBAL)  max |diff| 0
+08:12:17    SHAP v2_0_v1equiv GLOBAL__sqrt: FWD Init Win Bytes share of port_scan output 60.6%
+08:12:17    SHAP v2_0_v1equiv SPEC_G1__sqrt: FWD Init Win Bytes share of port_scan output 64.4%
+08:12:17    SHAP v2_0_v1equiv SPEC_G2__sqrt: FWD Init Win Bytes share of port_scan output 36.1%
+08:12:18    SHAP v2_0_v1equiv GLOBAL__none: FWD Init Win Bytes share of port_scan output 47.3%
+08:12:18    SHAP v2_0_v1equiv SPEC_G1__none: FWD Init Win Bytes share of port_scan output 57.2%
+08:12:18    SHAP v2_0_v1equiv SPEC_G2__none: FWD Init Win Bytes share of port_scan output 33.9%
+08:12:19    SHAP v2_1_oriented GLOBAL__sqrt: FWD Init Win Bytes share of port_scan output 65.6%
+08:12:19    SHAP v2_1_oriented SPEC_G1__sqrt: FWD Init Win Bytes share of port_scan output 69.0%
+08:12:19    SHAP v2_1_oriented SPEC_G2__sqrt: FWD Init Win Bytes share of port_scan output 68.0%
+08:12:19    SHAP v2_1_oriented GLOBAL__none: FWD Init Win Bytes share of port_scan output 61.8%
+08:12:19    SHAP v2_1_oriented SPEC_G1__none: FWD Init Win Bytes share of port_scan output 66.6%
+08:12:19    SHAP v2_1_oriented SPEC_G2__none: FWD Init Win Bytes share of port_scan output 51.5%
+08:12:19    PASS  SHAP shares reproduce the step 25 runs for the models they covered  6 models, max |diff| 5.7e-08
+08:12:21    PASS  config.py / class_map.json unchanged  
+08:12:21  PASS  -> /home/krithikk/lgids_cache/v2/diag/20261121T081216Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/phase2_v2_1_compare/rerun_fig_fix  (4.9 s)

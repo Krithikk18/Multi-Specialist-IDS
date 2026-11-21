@@ -1,0 +1,489 @@
+{
+ "status": "PROPOSED -- for review; NOT in config/ and not used by any pipeline step",
+ "created_by": "diagnostics/diag_02_orientation_rule.py",
+ "run_id": "20261121T072536Z",
+ "cicflowmeter_source_reviewed": {
+  "path": "~/tools/CICFlowMeter-sweep/src/main/java/cic/cs/unb/ca/jnetpcap/BasicFlow.java",
+  "sha256": "408feaefe77ef323c4279e68fbec30763cd9fc630aa75310ed1cf63e0cac0752"
+ },
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "rule": {
+  "R1_proposed": "FWD Init Win Bytes == 0 AND Bwd Init Win Bytes > 0",
+  "R2_variant": "R1 AND SYN Flag Count >= 1",
+  "recommended_guards": [
+   "Protocol == 6 (TCP only; a no-op on this data, defensive)",
+   "NaN / negative window -> not reversed"
+  ],
+  "rationale": "the first packet of a flow is always written as forward; a TCP opener (SYN) never carries window 0, so a window-0 first packet (RST / RST-ACK) is not the initiator's; non-TCP flows have both windows 0"
+ },
+ "features": {
+  "Protocol": {
+   "class": "direction_free",
+   "source": "flow protocol",
+   "exact_when": "always"
+  },
+  "Flow Duration": {
+   "class": "direction_free",
+   "source": "flowLastSeen - flowStartTime: same packet set",
+   "exact_when": "always"
+  },
+  "Total Fwd Packet": {
+   "class": "pair",
+   "partner": "Total Bwd packets",
+   "source": "fwdPktStats.getN() / bwdPktStats.getN()",
+   "exact_when": "always"
+  },
+  "Total Bwd packets": {
+   "class": "pair",
+   "partner": "Total Fwd Packet",
+   "source": "fwdPktStats.getN() / bwdPktStats.getN()",
+   "exact_when": "always"
+  },
+  "Total Length of Fwd Packet": {
+   "class": "pair",
+   "partner": "Total Length of Bwd Packet",
+   "source": "fwdPktStats / bwdPktStats .getSum() (payload bytes)",
+   "exact_when": "always"
+  },
+  "Total Length of Bwd Packet": {
+   "class": "pair",
+   "partner": "Total Length of Fwd Packet",
+   "source": "fwdPktStats / bwdPktStats .getSum() (payload bytes)",
+   "exact_when": "always"
+  },
+  "Fwd Packet Length Max": {
+   "class": "pair",
+   "partner": "Bwd Packet Length Max",
+   "source": "fwd/bwdPktStats.getMax(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Fwd Packet Length Min": {
+   "class": "pair",
+   "partner": "Bwd Packet Length Min",
+   "source": "fwd/bwdPktStats.getMin(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Fwd Packet Length Mean": {
+   "class": "pair",
+   "partner": "Bwd Packet Length Mean",
+   "source": "fwd/bwdPktStats.getMean(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Fwd Packet Length Std": {
+   "class": "pair",
+   "partner": "Bwd Packet Length Std",
+   "source": "fwd/bwdPktStats.getStandardDeviation(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Bwd Packet Length Max": {
+   "class": "pair",
+   "partner": "Fwd Packet Length Max",
+   "source": "fwd/bwdPktStats.getMax(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Bwd Packet Length Min": {
+   "class": "pair",
+   "partner": "Fwd Packet Length Min",
+   "source": "fwd/bwdPktStats.getMin(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Bwd Packet Length Mean": {
+   "class": "pair",
+   "partner": "Fwd Packet Length Mean",
+   "source": "fwd/bwdPktStats.getMean(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Bwd Packet Length Std": {
+   "class": "pair",
+   "partner": "Fwd Packet Length Std",
+   "source": "fwd/bwdPktStats.getStandardDeviation(), 0 if no packets",
+   "exact_when": "always"
+  },
+  "Flow Bytes/s": {
+   "class": "direction_free",
+   "source": "(forwardBytes + backwardBytes) / duration",
+   "exact_when": "always"
+  },
+  "Flow Packets/s": {
+   "class": "direction_free",
+   "source": "packetCount() / duration",
+   "exact_when": "always"
+  },
+  "Flow IAT Mean": {
+   "class": "direction_free",
+   "source": "flowIAT: gaps between consecutive packets of either direction",
+   "exact_when": "always"
+  },
+  "Flow IAT Std": {
+   "class": "direction_free",
+   "source": "flowIAT",
+   "exact_when": "always"
+  },
+  "Flow IAT Max": {
+   "class": "direction_free",
+   "source": "flowIAT",
+   "exact_when": "always"
+  },
+  "Flow IAT Min": {
+   "class": "direction_free",
+   "source": "flowIAT",
+   "exact_when": "always"
+  },
+  "Fwd IAT Total": {
+   "class": "pair",
+   "partner": "Bwd IAT Total",
+   "source": "forwardIAT / backwardIAT over same-direction gaps; 0 if <= 1 packet",
+   "exact_when": "always"
+  },
+  "Fwd IAT Mean": {
+   "class": "pair",
+   "partner": "Bwd IAT Mean",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Fwd IAT Std": {
+   "class": "pair",
+   "partner": "Bwd IAT Std",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Fwd IAT Max": {
+   "class": "pair",
+   "partner": "Bwd IAT Max",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Fwd IAT Min": {
+   "class": "pair",
+   "partner": "Bwd IAT Min",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Bwd IAT Total": {
+   "class": "pair",
+   "partner": "Fwd IAT Total",
+   "source": "forwardIAT / backwardIAT over same-direction gaps; 0 if <= 1 packet",
+   "exact_when": "always"
+  },
+  "Bwd IAT Mean": {
+   "class": "pair",
+   "partner": "Fwd IAT Mean",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Bwd IAT Std": {
+   "class": "pair",
+   "partner": "Fwd IAT Std",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Bwd IAT Max": {
+   "class": "pair",
+   "partner": "Fwd IAT Max",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Bwd IAT Min": {
+   "class": "pair",
+   "partner": "Fwd IAT Min",
+   "source": "as Fwd/Bwd IAT Total",
+   "exact_when": "always"
+  },
+  "Fwd PSH Flags": {
+   "class": "unpaired",
+   "source": "fPSH_cnt is incremented only in firstPacket(): 1 iff the FIRST forward packet has PSH (Bwd PSH Flags is structurally 0 and was dropped as constant)",
+   "how": "rest = PSH Flag Count - Fwd PSH Flags (PSH among the other packets). rest == 0 -> 0 (exact); old Total Fwd Packet == 1 and rest >= old Total Bwd packets -> 1 (every backward packet has PSH; exact); otherwise 0",
+   "exact_when": "rest == 0, or (old Total Fwd Packet == 1 and rest >= old Total Bwd packets)",
+   "default": "0",
+   "status": "RESOLVED_WITH_DEFAULT"
+  },
+  "Fwd Header Length": {
+   "class": "pair",
+   "partner": "Bwd Header Length",
+   "source": "fHeaderBytes / bHeaderBytes: sum of TCP/UDP header bytes",
+   "exact_when": "always"
+  },
+  "Bwd Header Length": {
+   "class": "pair",
+   "partner": "Fwd Header Length",
+   "source": "fHeaderBytes / bHeaderBytes: sum of TCP/UDP header bytes",
+   "exact_when": "always"
+  },
+  "Fwd Packets/s": {
+   "class": "pair",
+   "partner": "Bwd Packets/s",
+   "source": "forward.size() / backward.size() over the same flow duration",
+   "exact_when": "always"
+  },
+  "Bwd Packets/s": {
+   "class": "pair",
+   "partner": "Fwd Packets/s",
+   "source": "forward.size() / backward.size() over the same flow duration",
+   "exact_when": "always"
+  },
+  "Packet Length Min": {
+   "class": "direction_free",
+   "source": "flowLengthStats over all packets (the time-first packet is added twice -- same packet whichever endpoint is called source)",
+   "exact_when": "always"
+  },
+  "Packet Length Max": {
+   "class": "direction_free",
+   "source": "flowLengthStats",
+   "exact_when": "always"
+  },
+  "Packet Length Mean": {
+   "class": "direction_free",
+   "source": "flowLengthStats",
+   "exact_when": "always"
+  },
+  "Packet Length Std": {
+   "class": "direction_free",
+   "source": "flowLengthStats",
+   "exact_when": "always"
+  },
+  "Packet Length Variance": {
+   "class": "direction_free",
+   "source": "flowLengthStats",
+   "exact_when": "always"
+  },
+  "FIN Flag Count": {
+   "class": "direction_free",
+   "source": "checkFlags() on every packet: total over both directions",
+   "exact_when": "always"
+  },
+  "SYN Flag Count": {
+   "class": "direction_free",
+   "source": "total over both directions",
+   "exact_when": "always"
+  },
+  "RST Flag Count": {
+   "class": "direction_free",
+   "source": "total over both directions",
+   "exact_when": "always"
+  },
+  "PSH Flag Count": {
+   "class": "direction_free",
+   "source": "total over both directions",
+   "exact_when": "always"
+  },
+  "ACK Flag Count": {
+   "class": "direction_free",
+   "source": "total over both directions",
+   "exact_when": "always"
+  },
+  "CWR Flag Count": {
+   "class": "direction_free",
+   "source": "total over both directions",
+   "exact_when": "always"
+  },
+  "ECE Flag Count": {
+   "class": "direction_free",
+   "source": "total over both directions",
+   "exact_when": "always"
+  },
+  "Down/Up Ratio": {
+   "class": "derived",
+   "how": "recompute floor(new_bwd / new_fwd) = floor(old Total Fwd Packet / old Total Bwd packets) (Java integer division `backward.size()/forward.size()`; 0 if no forward packet)",
+   "exact_when": "always"
+  },
+  "Average Packet Size": {
+   "class": "direction_free",
+   "source": "flowLengthStats.getSum() / packetCount()",
+   "exact_when": "always"
+  },
+  "Fwd Segment Size Avg": {
+   "class": "pair",
+   "partner": "Bwd Segment Size Avg",
+   "source": "fwd/bwd payload sum / packet count",
+   "exact_when": "always"
+  },
+  "Bwd Segment Size Avg": {
+   "class": "pair",
+   "partner": "Fwd Segment Size Avg",
+   "source": "fwd/bwd payload sum / packet count",
+   "exact_when": "always"
+  },
+  "Bwd Bytes/Bulk Avg": {
+   "class": "direction_free",
+   "source": "NAME IS MISLEADING: updateFlowBulk() tests `this.src == packet.getSrc()` by reference and getSrc() returns a copy, so EVERY packet goes to the 'backward' bulk counters (the Fwd bulk features are constant 0 and were dropped). Computed over all packets in time order: direction-free.",
+   "exact_when": "always"
+  },
+  "Bwd Packet/Bulk Avg": {
+   "class": "direction_free",
+   "source": "see Bwd Bytes/Bulk Avg: all packets, direction-free",
+   "exact_when": "always"
+  },
+  "Bwd Bulk Rate Avg": {
+   "class": "direction_free",
+   "source": "see Bwd Bytes/Bulk Avg: all packets, direction-free",
+   "exact_when": "always"
+  },
+  "Subflow Fwd Packets": {
+   "class": "pair",
+   "partner": "Subflow Bwd Packets",
+   "source": "forward/backward.size() / sfCount (integer); sfCount is direction-free",
+   "exact_when": "always"
+  },
+  "Subflow Fwd Bytes": {
+   "class": "pair",
+   "partner": "Subflow Bwd Bytes",
+   "source": "forwardBytes/backwardBytes / sfCount (integer)",
+   "exact_when": "always"
+  },
+  "Subflow Bwd Packets": {
+   "class": "pair",
+   "partner": "Subflow Fwd Packets",
+   "source": "forward/backward.size() / sfCount (integer); sfCount is direction-free",
+   "exact_when": "always"
+  },
+  "Subflow Bwd Bytes": {
+   "class": "pair",
+   "partner": "Subflow Fwd Bytes",
+   "source": "forwardBytes/backwardBytes / sfCount (integer)",
+   "exact_when": "always"
+  },
+  "FWD Init Win Bytes": {
+   "class": "pair_asymmetric",
+   "partner": "Bwd Init Win Bytes",
+   "source": "Init_Win_bytes_forward = window of the FIRST forward packet (firstPacket); Init_Win_bytes_backward is overwritten by EVERY backward packet in addPacket = window of the LAST backward packet. Swapped as a pair: new FWD = old Bwd is exact iff old Total Bwd packets == 1; new Bwd = old FWD is exact iff old Total Fwd Packet == 1.",
+   "exact_when": "old Total Bwd packets == 1"
+  },
+  "Bwd Init Win Bytes": {
+   "class": "pair_asymmetric",
+   "partner": "FWD Init Win Bytes",
+   "source": "Init_Win_bytes_forward = window of the FIRST forward packet (firstPacket); Init_Win_bytes_backward is overwritten by EVERY backward packet in addPacket = window of the LAST backward packet. Swapped as a pair: new FWD = old Bwd is exact iff old Total Bwd packets == 1; new Bwd = old FWD is exact iff old Total Fwd Packet == 1.",
+   "exact_when": "old Total Fwd Packet == 1"
+  },
+  "Fwd Act Data Pkts": {
+   "class": "unpaired",
+   "source": "Act_data_pkt_forward = forward packets with payload >= 1, counted in addPacket only (the first forward packet is never counted); no backward counterpart is written",
+   "how": "old Total Bwd packets <= 1 -> 0; old Bwd Packet Length Max == 0 -> 0; old Bwd Packet Length Min >= 1 -> old Total Bwd packets - 1 (all exact); otherwise the lower bound max(0, ceil(old Total Length of Bwd Packet / old Bwd Packet Length Max) - 1)",
+   "exact_when": "old Total Bwd packets <= 1, or backward payloads all 0, or all >= 1",
+   "default": "lower bound",
+   "status": "RESOLVED_WITH_DEFAULT"
+  },
+  "Fwd Seg Size Min": {
+   "class": "unpaired",
+   "source": "min_seg_size_forward = min header bytes over FORWARD packets; no backward counterpart is written",
+   "how": "old Total Bwd packets == 1: old Bwd Header Length (exact); > 1: floor(old Bwd Header Length / old Total Bwd packets) (mean header >= true minimum: approximate); 0 backward packets: 0",
+   "exact_when": "old Total Bwd packets == 1",
+   "default": "floor(mean backward header bytes)",
+   "status": "RESOLVED_WITH_DEFAULT"
+  },
+  "Active Mean": {
+   "class": "direction_free",
+   "source": "updateActiveIdleTime() on every packet's timestamp (both directions)",
+   "exact_when": "always"
+  },
+  "Active Std": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  },
+  "Active Max": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  },
+  "Active Min": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  },
+  "Idle Mean": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  },
+  "Idle Std": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  },
+  "Idle Max": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  },
+  "Idle Min": {
+   "class": "direction_free",
+   "source": "as Active Mean",
+   "exact_when": "always"
+  }
+ },
+ "identity": {
+  "pairs": [
+   [
+    "Src IP",
+    "Dst IP"
+   ],
+   [
+    "Src Port",
+    "Dst Port"
+   ],
+   [
+    "src_mac",
+    "dst_mac"
+   ]
+  ],
+  "rebuild": {
+   "Flow ID": "rebuild '<Src IP>-<Dst IP>-<Src Port>-<Dst Port>-<Protocol>' from the swapped fields (BasicPacketInfo.fwdFlowId format; verified on the data)"
+  },
+  "direction_free": {
+   "Timestamp": "flow start time: same packets",
+   "start_ts": "flow start time",
+   "device / device_mac / owner_mac / device_category / group": "dataset attribution of the flow to a device -- independent of orientation, must NOT be swapped",
+   "session / label_id / label_name / attack_family / y / split / row_in_file": "dataset bookkeeping"
+  },
+  "flow_id_format_match": {
+   "train": 1.0,
+   "val": 1.0
+  }
+ },
+ "dropped_features_notes": {
+  "Bwd PSH Flags": "structurally 0 (incremented only in firstPacket's backward branch, never reached)",
+  "Fwd URG Flags / Bwd URG Flags / URG Flag Count": "constant 0 in train",
+  "Fwd Bytes/Bulk Avg / Fwd Packet/Bulk Avg / Fwd Bulk Rate Avg": "structurally 0 (reference-equality bug)"
+ },
+ "counts": {
+  "pair": 32,
+  "pair_asymmetric": 2,
+  "direction_free": 32,
+  "derived": 1,
+  "unpaired": 3
+ },
+ "unresolved": [],
+ "limits": [
+  "a swap re-labels orientation; it cannot change which packet came first in time (time-first-packet fields keep the time-first packet)",
+  "CICFlowMeter's timeout / sweep successor inherits the OLD flow's orientation while its first packet is always written forward: such mixed rows are not fixable by a swap",
+  "R1 does not catch reversals whose first packet has a non-zero window (e.g. SYN/ACK first)"
+ ],
+ "review_verdict_run": {
+  "pass": true,
+  "a": true,
+  "b": true,
+  "c": true,
+  "d": true,
+  "a_value": 100.0,
+  "b_worst": {
+   "split": "val",
+   "group": "G1",
+   "class": "benign",
+   "class_id": 0,
+   "n": 35833,
+   "flag_R1": 181,
+   "pct_R1": 0.5051209778695616,
+   "flag_R2": 0,
+   "pct_R2": 0.0
+  },
+  "c_values": {
+   "train": 0,
+   "val": 0
+  },
+  "d_unresolved": [],
+  "report_spec_A_recall_focus_flipped": 0.9981965734896303,
+  "report_spec_A_recall_focus_original": 0.5662759242560865,
+  "report_routed_ge_flat_all": false,
+  "report_routed_ge_flat_nonrare": false
+ }
+}

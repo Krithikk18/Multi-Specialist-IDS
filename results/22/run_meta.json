@@ -1,0 +1,47 @@
+{
+ "script": "22_train_multiclass.py",
+ "step": "22",
+ "run_id": "20261120T144232Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-20T14:42:32+00:00",
+ "argv": [
+  "22_train_multiclass.py"
+ ],
+ "cache_dir": "/home/krithikk/lgids_cache/v2/models/20261120T144232Z",
+ "run_manifest_sha256": "7455e3bb6c4874d08f852e396010f94adea0764267e3df269548c018fc9caee7",
+ "config_sha256": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "code_sha256": {
+  "22_train_multiclass.py": "87665ce05b1065f3f523500a83ca33b51ab92e0a57cfa72a1ef1cc64bb9a1699",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "afd4c26ad9fbe87435b2f76306c8d6bd73b86ff8f81bbb3a0154fab4570d5334",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "3ed1baea5458174937d9498283ab8a066a4c3c2dbf0b8b44449624e885dd539a",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "2e7c4ca063a4713bacb2b854bd323ed6d8e808d2c8108927996120b5c72ce23a",
+  "common/phase2_metrics.py": null,
+  "common/registry.py": null,
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49"
+ },
+ "checks": [
+  {
+   "check": "class map / features / dataset pins",
+   "pass": true,
+   "detail": "4 classes, 70 features, 18 specs x 5 seeds",
+   "level": "hard"
+  },
+  {
+   "check": "every spec x seed trained and saved",
+   "pass": true,
+   "detail": "90 models",
+   "level": "hard"
+  }
+ ],
+ "runtime_s": 1228.0,
+ "peak_rss_mb": 2336,
+ "n_models": 90
+}

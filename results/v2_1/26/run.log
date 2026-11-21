@@ -1,0 +1,13 @@
+08:10:57  26_model_registry.py  pid 1169  run_id 20261121T081057Z  dry_run=False  -> /home/krithikk/lgids_cache/v2/registry_runs/20261121T081057Z
+08:10:57    PASS  runs chain: steps 23 and 24 used this step 22 run  22 20261121T075821Z; 23 -> 20261121T075821Z; 24 -> 20261121T075821Z
+08:10:57    PASS  signing key outside the repository (created if absent, mode 600)  fingerprint a4aea1b4253a158c, backend pure-python RFC 8032 (cryptography not installed)
+08:10:57    PASS  SPEC_G1__none__s0: model sha256 == step 22 manifest == calibrator's model_sha256  a92031f6f8bbac4d...
+08:10:58    PASS  SPEC_G1__none__s0__20261121T075821Z: registered as candidate; runtime load refused, offline load allowed  /home/krithikk/lgids_cache/v2/registry/SPEC_G1__none__s0__20261121T075821Z
+08:10:58    registered SPEC_G1__none__s0__20261121T075821Z (candidate)
+08:10:58    PASS  SPEC_G2__none__s0: model sha256 == step 22 manifest == calibrator's model_sha256  34a835fd1563b757...
+08:10:58    PASS  SPEC_G2__none__s0__20261121T075821Z: registered as candidate; runtime load refused, offline load allowed  /home/krithikk/lgids_cache/v2/registry/SPEC_G2__none__s0__20261121T075821Z
+08:10:58    registered SPEC_G2__none__s0__20261121T075821Z (candidate)
+08:10:58    PASS  GLOBAL__none__s0: model sha256 == step 22 manifest == calibrator's model_sha256  a0b0afc91a469ef3...
+08:10:58    PASS  GLOBAL__none__s0__20261121T075821Z: registered as candidate; runtime load refused, offline load allowed  /home/krithikk/lgids_cache/v2/registry/GLOBAL__none__s0__20261121T075821Z
+08:10:58    registered GLOBAL__none__s0__20261121T075821Z (candidate)
+08:10:58  PASS  -> /home/krithikk/lgids_cache/v2/registry_runs/20261121T081057Z  |  /mnt/d/Projects/Company Project/Paper_Implemetation/results/v2_1/26  (1.3 s)

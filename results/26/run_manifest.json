@@ -1,0 +1,168 @@
+{
+ "run_id": "20261120T184412Z",
+ "step": "26",
+ "created_utc": "2026-11-20T18:44:12+00:00",
+ "script": "26_model_registry.py",
+ "dry_run": false,
+ "argv": [
+  "26_model_registry.py",
+  "register"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase2.json",
+  "sha256": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3"
+ },
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "class_map_sha256": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+ "features_file_sha256": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+ "dataset_version": "v2_0_v1equiv",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "code_sha256": {
+  "26_model_registry.py": "24e685826864df587cc809982842252519cad44a5f45f15e403928c20f94d7e1",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "afd4c26ad9fbe87435b2f76306c8d6bd73b86ff8f81bbb3a0154fab4570d5334",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "3ed1baea5458174937d9498283ab8a066a4c3c2dbf0b8b44449624e885dd539a",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "2e7c4ca063a4713bacb2b854bd323ed6d8e808d2c8108927996120b5c72ce23a",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49"
+ },
+ "git": "not recorded (Phase 2 guard: no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "runs chain: steps 23 and 24 used this step 22 run",
+   "pass": true,
+   "detail": "22 20261120T144232Z; 23 -> 20261120T144232Z; 24 -> 20261120T144232Z",
+   "level": "hard"
+  },
+  {
+   "check": "signing key outside the repository (created if absent, mode 600)",
+   "pass": true,
+   "detail": "fingerprint a4aea1b4253a158c, backend pure-python RFC 8032 (cryptography not installed)",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G1__sqrt__s0: model sha256 == step 22 manifest == calibrator's model_sha256",
+   "pass": true,
+   "detail": "af227804372d7cb1...",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G1__sqrt__s0__20261120T144232Z: registered as candidate; runtime load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/SPEC_G1__sqrt__s0__20261120T144232Z",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G2__sqrt__s0: model sha256 == step 22 manifest == calibrator's model_sha256",
+   "pass": true,
+   "detail": "666e19f59cef3014...",
+   "level": "hard"
+  },
+  {
+   "check": "SPEC_G2__sqrt__s0__20261120T144232Z: registered as candidate; runtime load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/SPEC_G2__sqrt__s0__20261120T144232Z",
+   "level": "hard"
+  },
+  {
+   "check": "GLOBAL__sqrt__s0: model sha256 == step 22 manifest == calibrator's model_sha256",
+   "pass": true,
+   "detail": "05405b7a4b3ebcf3...",
+   "level": "hard"
+  },
+  {
+   "check": "GLOBAL__sqrt__s0__20261120T144232Z: registered as candidate; runtime load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__sqrt__s0__20261120T144232Z",
+   "level": "hard"
+  }
+ ],
+ "train_run": "20261120T144232Z",
+ "eval_run": "20261120T183529Z",
+ "calib_run": "20261120T183628Z",
+ "registry_root": "/home/krithikk/lgids_cache/v2/registry",
+ "entries": [
+  {
+   "entry_id": "SPEC_G1__sqrt__s0__20261120T144232Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/SPEC_G1__sqrt__s0__20261120T144232Z",
+   "state": "candidate",
+   "model_id": "SPEC_G1__sqrt",
+   "serves_groups": [
+    "G1"
+   ],
+   "model_sha256": "af227804372d7cb1520b6a8b471edc29acab646893d0cdc67be85273de5f02d4",
+   "temperature": 1.3896531338648896,
+   "macro_f1_all": {
+    "mean": 0.8450202197021855,
+    "lo": 0.8021947022405743,
+    "hi": 0.8878457371637968
+   },
+   "macro_f1_nonrare": {
+    "mean": 0.9579055342413731,
+    "lo": 0.9577988468481857,
+    "hi": 0.9580122216345606
+   },
+   "fingerprint": "a4aea1b4253a158c"
+  },
+  {
+   "entry_id": "SPEC_G2__sqrt__s0__20261120T144232Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/SPEC_G2__sqrt__s0__20261120T144232Z",
+   "state": "candidate",
+   "model_id": "SPEC_G2__sqrt",
+   "serves_groups": [
+    "G2"
+   ],
+   "model_sha256": "666e19f59cef3014327d271ab098d5936bc30654b81dcd35f11a3141cd6d38e5",
+   "temperature": 0.704852393779005,
+   "macro_f1_all": {
+    "mean": 0.8817050418094396,
+    "lo": 0.8469984289915257,
+    "hi": 0.9164116546273536
+   },
+   "macro_f1_nonrare": {
+    "mean": 0.9893349217445007,
+    "lo": 0.9668418684367822,
+    "hi": 1.011827975052219
+   },
+   "fingerprint": "a4aea1b4253a158c"
+  },
+  {
+   "entry_id": "GLOBAL__sqrt__s0__20261120T144232Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__sqrt__s0__20261120T144232Z",
+   "state": "candidate",
+   "model_id": "GLOBAL__sqrt",
+   "serves_groups": [
+    "GEN"
+   ],
+   "model_sha256": "05405b7a4b3ebcf337b432909b1ebed5afe60045078dbd2f04af56b9ffc23ba8",
+   "temperature": 1.1511280744553452,
+   "macro_f1_all": {
+    "mean": 0.8650270950995662,
+    "lo": 0.8326523723652647,
+    "hi": 0.8974018178338677
+   },
+   "macro_f1_nonrare": {
+    "mean": 0.9852799695856372,
+    "lo": 0.9638181979371374,
+    "hi": 1.006741741234137
+   },
+   "fingerprint": "a4aea1b4253a158c"
+  }
+ ],
+ "warnings": [],
+ "runtime_s": 1.3,
+ "peak_rss_mb": 197
+}

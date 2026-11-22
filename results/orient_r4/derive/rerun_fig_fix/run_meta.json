@@ -1,0 +1,59 @@
+{
+ "script": "diagnostics/orient_r4_derive.py",
+ "step": "rerun_fig_fix",
+ "run_id": "20261122T063906Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-22T06:39:06+00:00",
+ "argv": [
+  "diagnostics/orient_r4_derive.py",
+  "--rerun-tag",
+  "rerun_fig_fix"
+ ],
+ "cache_dir": "/home/krithikk/lgids_cache/v2/diag/20261122T063906Z",
+ "run_manifest_sha256": "6d0ce7e929ed3ecf61a14d6909b8446aad0627a5ffd3330940d26e8bce18f126",
+ "config_sha256": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+ "prereg_phase2_sha256": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+ "code_sha256": {
+  "diagnostics/orient_r4_derive.py": "5f328c512fee2087127f0ede944602022ef48aa9aa18d6965f56a9754320e462",
+  "common/__init__.py": "ff23c495cd27f4575c8a6ca4fb5780681574af522c786b8b878ed58f10444dc8",
+  "common/schemas.py": "90bd2c8f8423d853bae852da18fc8d906c62dfa0082272763d9a94d54992d15a",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_run.py": "3e8a546eb59c71ad4424a7bfa962cc3db6a014eaee0b43fa23cba1c277b420a9",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "docs/V2_PREREG_PHASE2.md": "ba6993e98b96a575f31091b215362d6c99702a51ba3042496a6e11440e4d3e49",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_1.md": "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f",
+  "common/amendment.py": "02f266f43944895a8813b61b09f4ba1a517ef0d2881b94f162e002cf4cf465ba",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "diagnostics/orient_r4_common.py": "2a9c88d35107e6c0128606f74b996dbb68872a3f4fc0b1d453d582672fd5542b",
+  "diagnostics/diag_03_common.py": "42c8d4dd3c118802203f3673d761c1fe8a6b40171462e3dcc08bc3525caf4556",
+  "13_rate_guard_calibrate.py": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+  "07a_attack_coverage.py": "7effc404fbb2fd138be585d7cb9995c60d60f40da70e1c3d18e963ca84227cb7",
+  "config/device_table.csv": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "config/v2_phase3.json": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692"
+ },
+ "checks": [
+  {
+   "check": "R3 recomputed from the pinned map on v2_0 == v2_1 orientation_flipped (train, val)",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  },
+  {
+   "check": "config.py / class_map.json unchanged",
+   "pass": true,
+   "detail": "{'config/config.py': 'c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf', 'config/class_map.json': '64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580'}",
+   "level": "hard"
+  }
+ ],
+ "runtime_s": 12.4,
+ "peak_rss_mb": 1484
+}

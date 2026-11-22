@@ -1,0 +1,586 @@
+{
+ "script": "diagnostics/diag_03_part_b.py",
+ "run28": "20261122T050150Z",
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "val_sha256": {
+  "v2_1_oriented": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "v2_0_v1equiv": "9eecf620a162073756fcb8f9c2ade1facc0d18f08bd3b3a1cef2e0206de540be"
+ },
+ "hosts": {
+  "rule": "13_rate_guard_calibrate.MacBook.get(mac)[0] != '' (ATTACKER_MACS.matches(mac) or device_table role == testbed_pi)",
+  "ATTACKER_MACS.exact": [
+   "e4:5f:01:55:90:c4"
+  ],
+  "ATTACKER_MACS.prefixes": [
+   "dc:a6:32"
+  ],
+  "device_table_testbed_pi": [
+   "dc:a6:32:c9:e4:90",
+   "dc:a6:32:c9:e4:ab",
+   "dc:a6:32:c9:e4:c6",
+   "dc:a6:32:c9:e4:d5",
+   "dc:a6:32:c9:e5:02",
+   "dc:a6:32:c9:e5:a4",
+   "dc:a6:32:c9:e5:ef",
+   "dc:a6:32:c9:e6:f4",
+   "dc:a6:32:dc:27:d5",
+   "e4:5f:01:55:90:c4"
+  ]
+ },
+ "pooled": {
+  "H1": 1962,
+  "H2": 0,
+  "H3": 0,
+  "H4": 22
+ },
+ "share": {
+  "H1": 0.9889112903225806,
+  "H2": 0.0,
+  "H3": 0.0,
+  "H4": 0.011088709677419355
+ },
+ "explains": [
+  "H1"
+ ],
+ "per_run": {
+  "GLOBAL_s0": {
+   "H1": 187,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "GLOBAL_s1": {
+   "H1": 69,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "GLOBAL_s2": {
+   "H1": 218,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "GLOBAL_s3": {
+   "H1": 196,
+   "H2": 0,
+   "H3": 0,
+   "H4": 3
+  },
+  "GLOBAL_s4": {
+   "H1": 200,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "ROUTED_s0": {
+   "H1": 215,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "ROUTED_s1": {
+   "H1": 221,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "ROUTED_s2": {
+   "H1": 216,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  },
+  "ROUTED_s3": {
+   "H1": 220,
+   "H2": 0,
+   "H3": 0,
+   "H4": 3
+  },
+  "ROUTED_s4": {
+   "H1": 220,
+   "H2": 0,
+   "H3": 0,
+   "H4": 2
+  }
+ },
+ "stability": {
+  "GLOBAL": {
+   "port_scan@9c:8e:cd:1d:ab:9f@ep001": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "syn_flood@2c:71:ff:05:f1:15@ep006": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "syn_flood@ac:f1:08:4e:00:82@ep009": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "udp_flood@9c:8e:cd:1d:ab:9f@ep001": [
+    1,
+    3
+   ]
+  },
+  "ROUTED": {
+   "port_scan@9c:8e:cd:1d:ab:9f@ep001": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "syn_flood@2c:71:ff:05:f1:15@ep006": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "syn_flood@ac:f1:08:4e:00:82@ep009": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "udp_flood@9c:8e:cd:1d:ab:9f@ep001": [
+    3
+   ]
+  }
+ },
+ "global_vs_routed": {
+  "GLOBAL_only": [],
+  "ROUTED_only": [],
+  "both": [
+   "port_scan@9c:8e:cd:1d:ab:9f@ep001",
+   "syn_flood@2c:71:ff:05:f1:15@ep006",
+   "syn_flood@ac:f1:08:4e:00:82@ep009",
+   "udp_flood@9c:8e:cd:1d:ab:9f@ep001"
+  ]
+ },
+ "incident_majority_hypothesis": {
+  "H1": 30,
+  "H4": 3
+ },
+ "sensitivity_H4_to_H3_with_slack": 0,
+ "h1_base_rate": [
+  {
+   "episode_id": "ep001",
+   "class": "syn_flood",
+   "device": "9c:8e:cd:1d:ab:9f",
+   "labelled_flows": 50103,
+   "h1_predicate_flows": 363,
+   "h1_predicate_share": 0.007245075145200886,
+   "GLOBAL_s0_h1_n": 363,
+   "GLOBAL_s0_h1_pred_own_class": 0.4628099173553719,
+   "GLOBAL_s0_h1_pred_counts": "{'port_scan': 178, 'syn_flood': 168, 'benign': 17}",
+   "GLOBAL_s0_not_h1_n": 49740,
+   "GLOBAL_s0_not_h1_pred_own_class": 0.9997386409328508,
+   "GLOBAL_s0_not_h1_pred_counts": "{'syn_flood': 49727, 'benign': 11, 'port_scan': 2}",
+   "ROUTED_s0_h1_n": 363,
+   "ROUTED_s0_h1_pred_own_class": 0.4297520661157025,
+   "ROUTED_s0_h1_pred_counts": "{'port_scan': 204, 'syn_flood': 156, 'benign': 3}",
+   "ROUTED_s0_not_h1_n": 49740,
+   "ROUTED_s0_not_h1_pred_own_class": 0.9996180136710897,
+   "ROUTED_s0_not_h1_pred_counts": "{'syn_flood': 49721, 'udp_flood': 1, 'benign': 16, 'port_scan': 2}"
+  },
+  {
+   "episode_id": "ep006",
+   "class": "port_scan",
+   "device": "2c:71:ff:05:f1:15",
+   "labelled_flows": 2000,
+   "h1_predicate_flows": 5,
+   "h1_predicate_share": 0.0025,
+   "GLOBAL_s0_h1_n": 5,
+   "GLOBAL_s0_h1_pred_own_class": 0.0,
+   "GLOBAL_s0_h1_pred_counts": "{'syn_flood': 5}",
+   "GLOBAL_s0_not_h1_n": 1995,
+   "GLOBAL_s0_not_h1_pred_own_class": 1.0,
+   "GLOBAL_s0_not_h1_pred_counts": "{'port_scan': 1995}",
+   "ROUTED_s0_h1_n": 5,
+   "ROUTED_s0_h1_pred_own_class": 0.0,
+   "ROUTED_s0_h1_pred_counts": "{'syn_flood': 5}",
+   "ROUTED_s0_not_h1_n": 1995,
+   "ROUTED_s0_not_h1_pred_own_class": 1.0,
+   "ROUTED_s0_not_h1_pred_counts": "{'port_scan': 1995}"
+  },
+  {
+   "episode_id": "ep009",
+   "class": "port_scan",
+   "device": "ac:f1:08:4e:00:82",
+   "labelled_flows": 1998,
+   "h1_predicate_flows": 9,
+   "h1_predicate_share": 0.0045045045045045045,
+   "GLOBAL_s0_h1_n": 9,
+   "GLOBAL_s0_h1_pred_own_class": 0.0,
+   "GLOBAL_s0_h1_pred_counts": "{'syn_flood': 9}",
+   "GLOBAL_s0_not_h1_n": 1989,
+   "GLOBAL_s0_not_h1_pred_own_class": 1.0,
+   "GLOBAL_s0_not_h1_pred_counts": "{'port_scan': 1989}",
+   "ROUTED_s0_h1_n": 9,
+   "ROUTED_s0_h1_pred_own_class": 0.0,
+   "ROUTED_s0_h1_pred_counts": "{'syn_flood': 9}",
+   "ROUTED_s0_not_h1_n": 1989,
+   "ROUTED_s0_not_h1_pred_own_class": 1.0,
+   "ROUTED_s0_not_h1_pred_counts": "{'port_scan': 1989}"
+  }
+ ],
+ "confusion": {
+  "syn_flood->port_scan": 10,
+  "port_scan->syn_flood": 20,
+  "syn_flood->udp_flood": 3
+ },
+ "checks": [
+  {
+   "check": "GLOBAL_s0: incident outcomes == step 29 ({'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "GLOBAL_s1: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "GLOBAL_s2: incident outcomes == step 29 ({'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "GLOBAL_s3: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "GLOBAL_s4: incident outcomes == step 29 ({'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "ROUTED_s0: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "ROUTED_s1: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "ROUTED_s2: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "ROUTED_s3: incident outcomes == step 29 ({'n': 18, 'correct': 12, 'misclassified': 4, 'false': 2})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "ROUTED_s4: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})",
+   "pass": true,
+   "level": "hard",
+   "detail": ""
+  },
+  {
+   "check": "GLOBAL_s0 inc000003: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "175 vs 175"
+  },
+  {
+   "check": "GLOBAL_s0 inc000011: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "GLOBAL_s0 inc000016: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "GLOBAL_s1 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "56 vs 56"
+  },
+  {
+   "check": "GLOBAL_s1 inc000003: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "1 vs 1"
+  },
+  {
+   "check": "GLOBAL_s1 inc000009: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "GLOBAL_s1 inc000014: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "GLOBAL_s2 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "206 vs 206"
+  },
+  {
+   "check": "GLOBAL_s2 inc000008: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "GLOBAL_s2 inc000013: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "GLOBAL_s3 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "184 vs 184"
+  },
+  {
+   "check": "GLOBAL_s3 inc000003: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "1 vs 1"
+  },
+  {
+   "check": "GLOBAL_s3 inc000009: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "GLOBAL_s3 inc000014: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "GLOBAL_s4 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "188 vs 188"
+  },
+  {
+   "check": "GLOBAL_s4 inc000008: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "GLOBAL_s4 inc000013: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "ROUTED_s0 inc000003: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "203 vs 203"
+  },
+  {
+   "check": "ROUTED_s0 inc000012: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "ROUTED_s0 inc000017: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "ROUTED_s1 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "209 vs 209"
+  },
+  {
+   "check": "ROUTED_s1 inc000009: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "ROUTED_s1 inc000014: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "ROUTED_s2 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "204 vs 204"
+  },
+  {
+   "check": "ROUTED_s2 inc000009: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "ROUTED_s2 inc000014: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "ROUTED_s3 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "208 vs 208"
+  },
+  {
+   "check": "ROUTED_s3 inc000003: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "1 vs 1"
+  },
+  {
+   "check": "ROUTED_s3 inc000010: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "ROUTED_s3 inc000015: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "ROUTED_s4 inc000002: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "208 vs 208"
+  },
+  {
+   "check": "ROUTED_s4 inc000009: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "5 vs 5"
+  },
+  {
+   "check": "ROUTED_s4 inc000014: contributing flows == incident n_alerts",
+   "pass": true,
+   "level": "warn",
+   "detail": "9 vs 9"
+  },
+  {
+   "check": "every contributing alert flow has the runtime's top-3 SHAP in alerts.jsonl",
+   "pass": true,
+   "level": "hard",
+   "detail": "1984 / 1984"
+  },
+  {
+   "check": "misclassified incidents pooled == sum of step 29 per-run counts",
+   "pass": true,
+   "level": "hard",
+   "detail": "33"
+  },
+  {
+   "check": "config.py / class_map.json sha256 unchanged start -> end",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'config/config.py': 'c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf', 'config/class_map.json': '64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580'}"
+  }
+ ],
+ "log": [
+  "[start] verify_v2_lock OK; config.py c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf; class_map.json 64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "step 28 run 20261122T050150Z (rerun_full), step 29 run 20261122T053310Z (rerun_fig_fix); manifest sha256 re-checked",
+  "13 episodes, identical to step 29 metrics.json; benign val hours 1.952778",
+  "10 runs loaded; alerts / health / outbox chains verify (['GLOBAL_s0', 'GLOBAL_s1', 'GLOBAL_s2', 'GLOBAL_s3', 'GLOBAL_s4', 'ROUTED_s0', 'ROUTED_s1', 'ROUTED_s2', 'ROUTED_s3', 'ROUTED_s4'])",
+  "val flows: v2_1_oriented 157,558 rows, v2_0_v1equiv 157,558 rows (sha256 == dataset manifests)",
+  "  PASS  GLOBAL_s0: incident outcomes == step 29 ({'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1})  ",
+  "  PASS  GLOBAL_s1: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1})  ",
+  "  PASS  GLOBAL_s2: incident outcomes == step 29 ({'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1})  ",
+  "  PASS  GLOBAL_s3: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1})  ",
+  "  PASS  GLOBAL_s4: incident outcomes == step 29 ({'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1})  ",
+  "  PASS  ROUTED_s0: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})  ",
+  "  PASS  ROUTED_s1: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})  ",
+  "  PASS  ROUTED_s2: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})  ",
+  "  PASS  ROUTED_s3: incident outcomes == step 29 ({'n': 18, 'correct': 12, 'misclassified': 4, 'false': 2})  ",
+  "  PASS  ROUTED_s4: incident outcomes == step 29 ({'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2})  ",
+  "  PASS  GLOBAL_s0 inc000003: contributing flows == incident n_alerts  175 vs 175",
+  "  PASS  GLOBAL_s0 inc000011: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  GLOBAL_s0 inc000016: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  GLOBAL_s1 inc000002: contributing flows == incident n_alerts  56 vs 56",
+  "  PASS  GLOBAL_s1 inc000003: contributing flows == incident n_alerts  1 vs 1",
+  "  PASS  GLOBAL_s1 inc000009: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  GLOBAL_s1 inc000014: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  GLOBAL_s2 inc000002: contributing flows == incident n_alerts  206 vs 206",
+  "  PASS  GLOBAL_s2 inc000008: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  GLOBAL_s2 inc000013: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  GLOBAL_s3 inc000002: contributing flows == incident n_alerts  184 vs 184",
+  "  PASS  GLOBAL_s3 inc000003: contributing flows == incident n_alerts  1 vs 1",
+  "  PASS  GLOBAL_s3 inc000009: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  GLOBAL_s3 inc000014: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  GLOBAL_s4 inc000002: contributing flows == incident n_alerts  188 vs 188",
+  "  PASS  GLOBAL_s4 inc000008: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  GLOBAL_s4 inc000013: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  ROUTED_s0 inc000003: contributing flows == incident n_alerts  203 vs 203",
+  "  PASS  ROUTED_s0 inc000012: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  ROUTED_s0 inc000017: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  ROUTED_s1 inc000002: contributing flows == incident n_alerts  209 vs 209",
+  "  PASS  ROUTED_s1 inc000009: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  ROUTED_s1 inc000014: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  ROUTED_s2 inc000002: contributing flows == incident n_alerts  204 vs 204",
+  "  PASS  ROUTED_s2 inc000009: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  ROUTED_s2 inc000014: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  ROUTED_s3 inc000002: contributing flows == incident n_alerts  208 vs 208",
+  "  PASS  ROUTED_s3 inc000003: contributing flows == incident n_alerts  1 vs 1",
+  "  PASS  ROUTED_s3 inc000010: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  ROUTED_s3 inc000015: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  ROUTED_s4 inc000002: contributing flows == incident n_alerts  208 vs 208",
+  "  PASS  ROUTED_s4 inc000009: contributing flows == incident n_alerts  5 vs 5",
+  "  PASS  ROUTED_s4 inc000014: contributing flows == incident n_alerts  9 vs 9",
+  "  PASS  every contributing alert flow has the runtime's top-3 SHAP in alerts.jsonl  1984 / 1984",
+  "  PASS  misclassified incidents pooled == sum of step 29 per-run counts  33",
+  "pooled alert flows 1984: {'H1': 1962, 'H2': 0, 'H3': 0, 'H4': 22}; explains: ['H1']",
+  "[end] verify_v2_lock OK; config.py c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf; class_map.json 64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "  PASS  config.py / class_map.json sha256 unchanged start -> end  {'config/config.py': 'c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf', 'config/class_map.json': '64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580'}"
+ ]
+}

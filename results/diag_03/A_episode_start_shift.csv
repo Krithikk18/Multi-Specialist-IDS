@@ -1,0 +1,14 @@
+episode_id,class,device,session,labelled_start,attacker_first_packet,attacker_packets_in_lookback,shift_s,found,at_lookback_edge,lookback_clipped_by_val_start,session_val_window_start,session_first_val_flow_start,device_first_val_flow_start,device_val_flows_before_labelled_start
+ep000,syn_flood,50:02:91:10:09:8f,DDoS-SYN_Flood5,1661795223.0,1661795214.300565,146288,8.699434995651245,True,False,True,1661795214.3,1661795215.0,1661795220.0,1
+ep001,syn_flood,9c:8e:cd:1d:ab:9f,DDoS-SYN_Flood,1661776096.0,,0,0.0,False,False,False,1661540978.65,1661776020.0,1661776026.0,9
+ep002,syn_flood,c4:dd:57:0c:39:94,DDoS-SYN_Flood5,1661795779.0,,0,0.0,False,False,False,1661795214.3,1661795215.0,1661795239.0,1
+ep003,udp_flood,2c:71:ff:05:f1:15,Mirai-udpplain,1674145349.0,,0,0.0,False,False,False,1674145287.95,1674145320.0,1674145320.0,7
+ep004,udp_flood,cc:f4:11:9c:d0:00,Mirai-udpplain,1674145324.0,,0,0.0,False,False,True,1674145287.95,1674145320.0,1674145321.0,2
+ep005,port_scan,18:69:d8:eb:d4:3e,Recon-PortScan,1664289305.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664289125.0,3
+ep006,port_scan,2c:71:ff:05:f1:15,Recon-PortScan,1664289493.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664289049.0,34
+ep007,port_scan,70:ee:50:6b:a8:1a,Recon-PortScan,1664289667.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664289124.0,7
+ep008,port_scan,84:e3:42:42:ed:0b,Recon-PortScan,1664289129.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664289121.0,1
+ep009,port_scan,ac:f1:08:4e:00:82,Recon-PortScan,1664290695.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664290278.0,133
+ep010,port_scan,b0:f1:ec:d3:e7:98,Recon-PortScan,1664290158.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664289046.0,223
+ep011,port_scan,d0:73:d5:35:fb:c8,Recon-PortScan,1664289912.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664289220.0,3
+ep012,port_scan,d4:ad:fc:29:c8:a2,Recon-PortScan,1664290937.0,,0,0.0,False,False,False,1664289038.6,1664289039.0,1664290235.0,8

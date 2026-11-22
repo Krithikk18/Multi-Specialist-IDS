@@ -1,0 +1,393 @@
+{
+ "script": "diagnostics/diag_03_part_a.py",
+ "run28": "20261122T050150Z",
+ "run28_tag": "rerun_full",
+ "run29_tag": "rerun_fig_fix",
+ "hours": 1.9527777777777777,
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "val_sha256": {
+  "v2_1_oriented": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "v2_0_v1equiv": "9eecf620a162073756fcb8f9c2ade1facc0d18f08bd3b3a1cef2e0206de540be"
+ },
+ "hosts": {
+  "rule": "13_rate_guard_calibrate.MacBook.get(mac)[0] != '' (ATTACKER_MACS.matches(mac) or device_table role == testbed_pi)",
+  "ATTACKER_MACS.exact": [
+   "e4:5f:01:55:90:c4"
+  ],
+  "ATTACKER_MACS.prefixes": [
+   "dc:a6:32"
+  ],
+  "device_table_testbed_pi": [
+   "dc:a6:32:c9:e4:90",
+   "dc:a6:32:c9:e4:ab",
+   "dc:a6:32:c9:e4:c6",
+   "dc:a6:32:c9:e4:d5",
+   "dc:a6:32:c9:e5:02",
+   "dc:a6:32:c9:e5:a4",
+   "dc:a6:32:c9:e5:ef",
+   "dc:a6:32:c9:e6:f4",
+   "dc:a6:32:dc:27:d5",
+   "e4:5f:01:55:90:c4"
+  ]
+ },
+ "sessions_read": {
+  "DDoS-SYN_Flood": {
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap",
+   "mode": "train",
+   "val_start": 1661540978.65,
+   "stop": null
+  },
+  "DDoS-SYN_Flood5": {
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap",
+   "mode": "train",
+   "val_start": 1661795214.3,
+   "stop": null
+  },
+  "Mirai-udpplain": {
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap",
+   "mode": "train",
+   "val_start": 1674145287.95,
+   "stop": null
+  },
+  "Recon-PortScan": {
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+   "mode": "time_split",
+   "val_start": 1664289038.6,
+   "stop": 1664291060.8
+  }
+ },
+ "packet_reader_counts": {
+  "DDoS-SYN_Flood": {
+   "frames": 26597011,
+   "skipped_before_start": 23695421,
+   "kept": 2895782,
+   "non_ipv4": 5808
+  },
+  "DDoS-SYN_Flood5": {
+   "frames": 26720136,
+   "skipped_before_start": 24444244,
+   "kept": 2273559,
+   "non_ipv4": 2333
+  },
+  "Mirai-udpplain": {
+   "frames": 3642269,
+   "skipped_before_start": 3293671,
+   "kept": 347514,
+   "non_ipv4": 1084
+  },
+  "Recon-PortScan": {
+   "frames": 663549,
+   "skipped_before_start": 520334,
+   "kept": 137970,
+   "non_ipv4": 5245,
+   "stopped_at_cut": 1
+  }
+ },
+ "rate_guard_per_run": {
+  "GLOBAL_s0": {
+   "rg_alerts": 397,
+   "off_episode_alerts": 6,
+   "same_6_as_GLOBAL_s0": true,
+   "packet_path_ran": true
+  },
+  "ROUTED_s0": {
+   "rg_alerts": 397,
+   "off_episode_alerts": 6,
+   "same_6_as_GLOBAL_s0": true,
+   "packet_path_ran": true
+  },
+  "GLOBAL_s1": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "GLOBAL_s2": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "GLOBAL_s3": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "GLOBAL_s4": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "ROUTED_s1": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "ROUTED_s2": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "ROUTED_s3": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  },
+  "ROUTED_s4": {
+   "rg_alerts": 0,
+   "off_episode_alerts": 0,
+   "same_6_as_GLOBAL_s0": false,
+   "packet_path_ran": false
+  }
+ },
+ "checks": [
+  {
+   "check": "GLOBAL_s0: rate-guard alerts identical to GLOBAL_s0",
+   "pass": true,
+   "level": "hard",
+   "detail": "397 alerts"
+  },
+  {
+   "check": "ROUTED_s0: rate-guard alerts identical to GLOBAL_s0",
+   "pass": true,
+   "level": "hard",
+   "detail": "397 alerts"
+  },
+  {
+   "check": "off-episode alerts (prereg rule, step 29's window [start, end + 120 s]) == step 29's count",
+   "pass": true,
+   "level": "hard",
+   "detail": "6 vs 6"
+  },
+  {
+   "check": "no packet of a test window read (every scanned session's reader stopped at / before its cut or ended)",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'DDoS-SYN_Flood': 'train', 'DDoS-SYN_Flood5': 'train', 'Mirai-udpplain': 'train', 'Recon-PortScan': 'time_split'}"
+  },
+  {
+   "check": "rgA1: recounted packets of its last window == the runtime's count",
+   "pass": true,
+   "level": "warn",
+   "detail": "17468 vs 17468"
+  },
+  {
+   "check": "rgA2: recounted packets of its last window == the runtime's count",
+   "pass": true,
+   "level": "warn",
+   "detail": "17573 vs 17573"
+  },
+  {
+   "check": "rgA3: recounted packets of its last window == the runtime's count",
+   "pass": true,
+   "level": "warn",
+   "detail": "17370 vs 17370"
+  },
+  {
+   "check": "rgA4: recounted packets of its last window == the runtime's count",
+   "pass": true,
+   "level": "warn",
+   "detail": "18430 vs 18430"
+  },
+  {
+   "check": "rgA5: recounted packets of its last window == the runtime's count",
+   "pass": true,
+   "level": "warn",
+   "detail": "14918 vs 14918"
+  },
+  {
+   "check": "rgA6: recounted packets of its last window == the runtime's count",
+   "pass": true,
+   "level": "warn",
+   "detail": "15308 vs 15308"
+  },
+  {
+   "check": "prereg reproduction GLOBAL_s0: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1}"
+  },
+  {
+   "check": "prereg reproduction ROUTED_s0: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}"
+  },
+  {
+   "check": "prereg reproduction GLOBAL_s1: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1}"
+  },
+  {
+   "check": "prereg reproduction GLOBAL_s2: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1}"
+  },
+  {
+   "check": "prereg reproduction GLOBAL_s3: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1}"
+  },
+  {
+   "check": "prereg reproduction GLOBAL_s4: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1}"
+  },
+  {
+   "check": "prereg reproduction ROUTED_s1: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}"
+  },
+  {
+   "check": "prereg reproduction ROUTED_s2: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}"
+  },
+  {
+   "check": "prereg reproduction ROUTED_s3: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 18, 'correct': 12, 'misclassified': 4, 'false': 2}"
+  },
+  {
+   "check": "prereg reproduction ROUTED_s4: flow incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}"
+  },
+  {
+   "check": "prereg reproduction: rate-guard off-episode alerts and false incidents == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'alerts_on_no_episode': 6, 'alerts_on_no_episode_per_h': 3.072546230440967, 'incidents': 4, 'false_incidents': 0, 'false_incidents_per_h': 0.0}"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD syn_flood / flow == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "4.200000047683716 vs 4.200000047683716"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD syn_flood / rate_guard == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "3.0 vs 3.0"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD syn_flood / either == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "2.200000047683716 vs 2.200000047683716"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD udp_flood / flow == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "19.48074507713318 vs 19.48074507713318"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD udp_flood / rate_guard == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "8.0 vs 8.0"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD udp_flood / either == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "8.0 vs 8.0"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD port_scan / flow == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "0.04241299629211426 vs 0.04241299629211426"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD port_scan / rate_guard == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "None vs nan"
+  },
+  {
+   "check": "prereg reproduction: GLOBAL s0 median TTD port_scan / either == step 29",
+   "pass": true,
+   "level": "hard",
+   "detail": "0.04241299629211426 vs 0.04241299629211426"
+  },
+  {
+   "check": "config.py / class_map.json sha256 unchanged start -> end",
+   "pass": true,
+   "level": "hard",
+   "detail": "{'config/config.py': 'c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf', 'config/class_map.json': '64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580'}"
+  }
+ ],
+ "log": [
+  "[start] verify_v2_lock OK; config.py c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf; class_map.json 64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "step 28 run 20261122T050150Z (rerun_full), step 29 run 20261122T053310Z (rerun_fig_fix); manifest sha256 re-checked",
+  "13 episodes, identical to step 29 metrics.json; benign val hours 1.952778",
+  "10 runs loaded; alerts / health / outbox chains verify (['GLOBAL_s0', 'GLOBAL_s1', 'GLOBAL_s2', 'GLOBAL_s3', 'GLOBAL_s4', 'ROUTED_s0', 'ROUTED_s1', 'ROUTED_s2', 'ROUTED_s3', 'ROUTED_s4'])",
+  "val flows: v2_1_oriented 157,558 rows, v2_0_v1equiv 157,558 rows (sha256 == dataset manifests)",
+  "  PASS  GLOBAL_s0: rate-guard alerts identical to GLOBAL_s0  397 alerts",
+  "  PASS  ROUTED_s0: rate-guard alerts identical to GLOBAL_s0  397 alerts",
+  "  PASS  off-episode alerts (prereg rule, step 29's window [start, end + 120 s]) == step 29's count  6 vs 6",
+  "reading VAL packets of DDoS-SYN_Flood (val start 1661540978.65, stop None) ...",
+  "  DDoS-SYN_Flood: {'frames': 26597011, 'skipped_before_start': 23695421, 'kept': 2895782, 'non_ipv4': 5808}",
+  "reading VAL packets of DDoS-SYN_Flood5 (val start 1661795214.3, stop None) ...",
+  "  DDoS-SYN_Flood5: {'frames': 26720136, 'skipped_before_start': 24444244, 'kept': 2273559, 'non_ipv4': 2333}",
+  "reading VAL packets of Mirai-udpplain (val start 1674145287.95, stop None) ...",
+  "  Mirai-udpplain: {'frames': 3642269, 'skipped_before_start': 3293671, 'kept': 347514, 'non_ipv4': 1084}",
+  "reading VAL packets of Recon-PortScan (val start 1664289038.6, stop 1664291060.8) ...",
+  "  Recon-PortScan: {'frames': 663549, 'skipped_before_start': 520334, 'kept': 137970, 'non_ipv4': 5245, 'stopped_at_cut': 1}",
+  "  PASS  no packet of a test window read (every scanned session's reader stopped at / before its cut or ended)  {'DDoS-SYN_Flood': 'train', 'DDoS-SYN_Flood5': 'train', 'Mirai-udpplain': 'train', 'Recon-PortScan': 'time_split'}",
+  "  PASS  rgA1: recounted packets of its last window == the runtime's count  17468 vs 17468",
+  "  PASS  rgA2: recounted packets of its last window == the runtime's count  17573 vs 17573",
+  "  PASS  rgA3: recounted packets of its last window == the runtime's count  17370 vs 17370",
+  "  PASS  rgA4: recounted packets of its last window == the runtime's count  18430 vs 18430",
+  "  PASS  rgA5: recounted packets of its last window == the runtime's count  14918 vs 14918",
+  "  PASS  rgA6: recounted packets of its last window == the runtime's count  15308 vs 15308",
+  "verdicts: PRECURSOR 6, FALSE_ALARM 0 -> 0.000 / h (prereg 3.073 / h)",
+  "  PASS  prereg reproduction GLOBAL_s0: flow incidents == step 29  {'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1}",
+  "  PASS  prereg reproduction ROUTED_s0: flow incidents == step 29  {'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}",
+  "  PASS  prereg reproduction GLOBAL_s1: flow incidents == step 29  {'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1}",
+  "  PASS  prereg reproduction GLOBAL_s2: flow incidents == step 29  {'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1}",
+  "  PASS  prereg reproduction GLOBAL_s3: flow incidents == step 29  {'n': 17, 'correct': 12, 'misclassified': 4, 'false': 1}",
+  "  PASS  prereg reproduction GLOBAL_s4: flow incidents == step 29  {'n': 16, 'correct': 12, 'misclassified': 3, 'false': 1}",
+  "  PASS  prereg reproduction ROUTED_s1: flow incidents == step 29  {'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}",
+  "  PASS  prereg reproduction ROUTED_s2: flow incidents == step 29  {'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}",
+  "  PASS  prereg reproduction ROUTED_s3: flow incidents == step 29  {'n': 18, 'correct': 12, 'misclassified': 4, 'false': 2}",
+  "  PASS  prereg reproduction ROUTED_s4: flow incidents == step 29  {'n': 17, 'correct': 12, 'misclassified': 3, 'false': 2}",
+  "  PASS  prereg reproduction: rate-guard off-episode alerts and false incidents == step 29  {'alerts_on_no_episode': 6, 'alerts_on_no_episode_per_h': 3.072546230440967, 'incidents': 4, 'false_incidents': 0, 'false_incidents_per_h': 0.0}",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD syn_flood / flow == step 29  4.200000047683716 vs 4.200000047683716",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD syn_flood / rate_guard == step 29  3.0 vs 3.0",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD syn_flood / either == step 29  2.200000047683716 vs 2.200000047683716",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD udp_flood / flow == step 29  19.48074507713318 vs 19.48074507713318",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD udp_flood / rate_guard == step 29  8.0 vs 8.0",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD udp_flood / either == step 29  8.0 vs 8.0",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD port_scan / flow == step 29  0.04241299629211426 vs 0.04241299629211426",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD port_scan / rate_guard == step 29  None vs nan",
+  "  PASS  prereg reproduction: GLOBAL s0 median TTD port_scan / either == step 29  0.04241299629211426 vs 0.04241299629211426",
+  "[end] verify_v2_lock OK; config.py c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf; class_map.json 64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "  PASS  config.py / class_map.json sha256 unchanged start -> end  {'config/config.py': 'c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf', 'config/class_map.json': '64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580'}"
+ ]
+}

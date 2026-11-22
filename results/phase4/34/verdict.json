@@ -1,0 +1,469 @@
+{
+ "amendment_2_section_4": {
+  "verdict": "DOES_NOT_WIN",
+  "wins": false,
+  "forgetting_diff_pg_minus_global": {
+   "mean": -5.821866693438427e-05,
+   "lo": -0.00016232559267315974,
+   "hi": 4.58882588043912e-05,
+   "n": 5,
+   "diffs": [
+    -0.00010881027265874366,
+    -0.00018228306201317768,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "forgetting_lower": false,
+  "forgetting_equal_within_tol": true,
+  "time_mean_s": {
+   "per_group": 14.4994,
+   "global": 13.849
+  },
+  "time_ratio_global_over_per_group": 0.9551429714333007,
+  "time_cheaper": false,
+  "affected_group_diff_pg_minus_global": {
+   "mean": -4.8313955594836425e-05,
+   "lo": -7.662682331167979e-05,
+   "hi": -2.000108787799307e-05,
+   "n": 5,
+   "diffs": [
+    -7.339886089252623e-05,
+    -3.544335771110685e-05,
+    -5.1887317475962647e-05,
+    -6.437310924367612e-05,
+    -1.6467132650910266e-05
+   ]
+  },
+  "affected_group_ok": true,
+  "rule": "WINS iff [forgetting lower (CI excludes 0) OR (equal within 0.002 AND >= 2x lower retrain time)] AND affected-group macro-F1 not worse by more than 0.005",
+  "label_group": "G1",
+  "other_groups": [
+   "G2",
+   "GEN"
+  ],
+  "forgetting_S2_SPEC": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "n": 5,
+   "diffs": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "forgetting_S2_GLOBAL": {
+   "mean": 5.821866693438427e-05,
+   "lo": -4.58882588043912e-05,
+   "hi": 0.00016232559267315974,
+   "n": 5,
+   "diffs": [
+    0.00010881027265874366,
+    0.00018228306201317768,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "affected_group_macro_f1": {
+   "S2_SPEC": {
+    "mean": 0.9995855101353772,
+    "lo": 0.9995585569565242,
+    "hi": 0.9996124633142303,
+    "values": [
+     0.9995661394238405,
+     0.9995890899501303,
+     0.9996040949291268,
+     0.9995601601985977,
+     0.9996080661751905
+    ]
+   },
+   "S2_GLOBAL": {
+    "mean": 0.999633824090972,
+    "lo": 0.9996164564134458,
+    "hi": 0.9996511917684983,
+    "values": [
+     0.9996395382847331,
+     0.9996245333078414,
+     0.9996559822466028,
+     0.9996245333078414,
+     0.9996245333078414
+    ]
+   },
+   "before_FLAT_GLOBAL": {
+    "mean": 0.9951674585712172,
+    "lo": 0.9937952541232403,
+    "hi": 0.9965396630191942,
+    "values": [
+     0.9949603218737465,
+     0.9971033054550255,
+     0.9943464581358917,
+     0.9947801657055502,
+     0.9946470416858726
+    ]
+   },
+   "before_ROUTED": {
+    "mean": 0.9942668351476144,
+    "lo": 0.994123490382928,
+    "hi": 0.9944101799123007,
+    "values": [
+     0.9943470715010762,
+     0.9941195985846578,
+     0.9943975864200296,
+     0.9942900339428498,
+     0.9941798852894582
+    ]
+   }
+  },
+  "per_group_forgetting": {
+   "G2": {
+    "S2_GLOBAL": {
+     "mean": 6.20129711921491e-05,
+     "lo": -4.8245795328690855e-05,
+     "hi": 0.00017227173771298905,
+     "n": 5,
+     "diffs": [
+      0.00011829603330315575,
+      0.00019176882265758977,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "S2_SPEC": {
+     "mean": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n": 5,
+     "diffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "GEN": {
+    "S2_GLOBAL": {
+     "mean": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n": 5,
+     "diffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "S2_SPEC": {
+     "mean": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n": 5,
+     "diffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "zero_by_construction_proof": true,
+  "note": "In the per-group arm, the other groups' specialists are unchanged, so their forgetting is zero by construction. The real question of Amendment 2 \u00a74 is whether retraining GLOBAL causes forgetting on the other groups. If it doesn't, per-group can win only on cost.",
+  "kill_rule_section_5": "Phase 4 test does NOT favour per-group (Amendment 2 section 5: no Stage 3 routing claim)"
+ },
+ "poisoning": {
+  "P1": {
+   "batch_id": "20261122T132232Z__P1",
+   "validator": "QUARANTINED",
+   "fired": [
+    "c_confident_disagreement"
+   ],
+   "poison": {
+    "target_class": "syn_flood",
+    "flipped_to": "benign",
+    "flip_frac": 0.1,
+    "n_flipped": 4686,
+    "n_target": 46863
+   },
+   "gate_if_used": {
+    "0": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {0: 0.44694, 3: 0.10637}; (ii) non-rare macro-F1 drop 0.15553 > 0.002; (iii) FA/h rise 7217.256 > 0.5"
+    },
+    "1": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {0: 0.29513, 1: 0.06807, 3: 0.09492}; (ii) non-rare macro-F1 drop 0.13995 > 0.002; (iii) FA/h rise 4765.848 > 0.5"
+    },
+    "2": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {0: 0.3137, 3: 0.71498}; (ii) non-rare macro-F1 drop 0.30826 > 0.002; (iii) FA/h rise 5065.668 > 0.5"
+    },
+    "3": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {0: 0.40266, 3: 0.09543}; (ii) non-rare macro-F1 drop 0.12846 > 0.002; (iii) FA/h rise 6502.217 > 0.5"
+    },
+    "4": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {0: 0.32585, 3: 0.09505}; (ii) non-rare macro-F1 drop 0.11122 > 0.002; (iii) FA/h rise 5261.953 > 0.5"
+    }
+   },
+   "gate_pass_count": 0,
+   "verdict": "CAUGHT_BY_VALIDATOR",
+   "target_recall_val_B": {
+    "mean": 0.9834849991556748,
+    "lo": 0.9466313543625426,
+    "hi": 1.020338643948807,
+    "values": [
+     0.9963224946995141,
+     0.9304463665872376,
+     0.9954031183743925,
+     0.9990243353284425,
+     0.9962286807887873
+    ]
+   }
+  },
+  "P2": {
+   "batch_id": "20261122T132232Z__P2",
+   "validator": "QUARANTINED",
+   "fired": [
+    "c_confident_disagreement"
+   ],
+   "poison": {
+    "target_class": "port_scan",
+    "flipped_to": "benign",
+    "flip_frac": 1.0,
+    "n_flipped": 10320,
+    "n_target": 10320
+   },
+   "gate_if_used": {
+    "0": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {0: 0.19709, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.44116 > 0.002; (iii) FA/h rise 3182.624 > 0.5"
+    },
+    "1": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {1: 0.16369, 3: 0.99809}; (ii) non-rare macro-F1 drop 0.48002 > 0.002"
+    },
+    "2": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {3: 0.99885}; (ii) non-rare macro-F1 drop 0.40088 > 0.002"
+    },
+    "3": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {3: 0.99873}; (ii) non-rare macro-F1 drop 0.40112 > 0.002"
+    },
+    "4": {
+     "status": "FAIL",
+     "reason": "(i) recall drop > 0.01 on class(es) {1: 0.16243, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.47882 > 0.002"
+    }
+   },
+   "gate_pass_count": 0,
+   "verdict": "CAUGHT_BY_VALIDATOR",
+   "target_recall_val_B": {
+    "mean": 0.00015269118208423465,
+    "lo": -0.00018982865534265182,
+    "hi": 0.0004952110195111211,
+    "values": [
+     0.0,
+     0.000636213258684311,
+     0.0,
+     0.0001272426517368622,
+     0.0
+    ]
+   }
+  }
+ },
+ "feedback_bias": {
+  "val_A_missed_attack_flows": 24,
+  "missed_by_class": {
+   "syn_flood": 18,
+   "udp_flood": 6
+  },
+  "labelled_with_random": 1,
+  "labelled_without_random": 0,
+  "labelled_with_random_by_class": {
+   "syn_flood": 1,
+   "udp_flood": 0
+  },
+  "miss_classes": [
+   "syn_flood",
+   "udp_flood"
+  ],
+  "recall_val_B": {
+   "syn_flood": {
+    "R0": {
+     "mean": 0.9974595192975213,
+     "lo": 0.9967070202947712,
+     "hi": 0.9982120183002714,
+     "values": [
+      0.9973544477175076,
+      0.9985177402105184,
+      0.9969979548567461,
+      0.9972606338067809,
+      0.9971668198960542
+     ]
+    },
+    "R2_with_random": {
+     "mean": 0.9997673415013978,
+     "lo": 0.9997002232905328,
+     "hi": 0.9998344597122628,
+     "values": [
+      0.9997560838321107,
+      0.9998123721785467,
+      0.9996810327035293,
+      0.999774846614256,
+      0.9998123721785467
+     ]
+    },
+    "R2_without_random": {
+     "mean": 0.9997710940578269,
+     "lo": 0.9997064473091328,
+     "hi": 0.999835740806521,
+     "values": [
+      0.9997936093964013,
+      0.9997936093964013,
+      0.999774846614256,
+      0.9996810327035293,
+      0.9998123721785467
+     ]
+    },
+    "with_minus_without": {
+     "mean": -3.75255642903749e-06,
+     "lo": -8.998319626570106e-05,
+     "hi": 8.247808340762608e-05,
+     "n": 5,
+     "diffs": [
+      -3.752556429059695e-05,
+      1.8762782145409496e-05,
+      -9.381391072671441e-05,
+      9.381391072671441e-05,
+      0.0
+     ]
+    },
+    "R0_missed_val_B_flows": [
+     17,
+     14,
+     11,
+     13,
+     20
+    ],
+    "recall_on_R0_misses_with_random": {
+     "mean": 0.30383146265499206,
+     "lo": 0.10639718594099404,
+     "hi": 0.5012657393689901,
+     "values": [
+      0.4117647058823529,
+      0.2857142857142857,
+      0.09090909090909091,
+      0.23076923076923078,
+      0.5
+     ]
+    },
+    "recall_on_R0_misses_without_random": {
+     "mean": 0.28592583886701534,
+     "lo": 0.05318683586577683,
+     "hi": 0.5186648418682538,
+     "values": [
+      0.47058823529411764,
+      0.21428571428571427,
+      0.09090909090909091,
+      0.15384615384615385,
+      0.5
+     ]
+    }
+   },
+   "udp_flood": {
+    "R0": {
+     "mean": 0.6,
+     "lo": 0.3223554894802206,
+     "hi": 0.8776445105197794,
+     "values": [
+      1.0,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ]
+    },
+    "R2_with_random": {
+     "mean": 0.5,
+     "lo": 0.5,
+     "hi": 0.5,
+     "values": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ]
+    },
+    "R2_without_random": {
+     "mean": 0.4,
+     "lo": 0.12235548948022074,
+     "hi": 0.6776445105197793,
+     "values": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.0
+     ]
+    },
+    "with_minus_without": {
+     "mean": 0.1,
+     "lo": -0.17764451051977934,
+     "hi": 0.3776445105197793,
+     "n": 5,
+     "diffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5
+     ]
+    },
+    "R0_missed_val_B_flows": [
+     0,
+     1,
+     1,
+     1,
+     1
+    ],
+    "recall_on_R0_misses_with_random": {
+     "mean": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "values": [
+      NaN,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "recall_on_R0_misses_without_random": {
+     "mean": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "values": [
+      NaN,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   }
+  }
+ }
+}

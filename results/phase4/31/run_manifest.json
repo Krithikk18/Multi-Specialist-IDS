@@ -1,0 +1,348 @@
+{
+ "run_id": "20261122T132156Z",
+ "step": "31",
+ "script": "31_build_review_queue.py",
+ "created_utc": "2026-11-22T13:21:56+00:00",
+ "dry_run": false,
+ "rerun_tag": null,
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/31",
+ "cache_root": "/home/krithikk/lgids_cache/v2/cl",
+ "argv": [
+  "31_build_review_queue.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase4.json",
+  "sha256": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "pinned": true
+ },
+ "pins": {
+  "prereg_phase4": "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac",
+  "phase4_config": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "amendment_2": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "code_sha256": {
+  "31_build_review_queue.py": "f11d341f07b2c094136f598f05c2eb1f61305813aed4958653a02b8116860b8f",
+  "common/schemas.py": "39e1b94322b375eb5d60bb76b81b4ea3fd85b9bc7614af962d7038d90a92a71e",
+  "common/cl_config.py": "227f9312914f1c801825ea02c75feefd45706ea489ea2abdbeeccf1029471708",
+  "common/cl_run.py": "4ea81d737b7c6e6b0e53444cab499d07e6a36c21ff87d088eb3e19607ef32a1a",
+  "common/cl_split.py": "001fef2c6fdf77eab126c43517673b0e022f1650d756221cf2d5333c42a537b6",
+  "common/review_queue.py": "e61637c1153956457ebb624070d6624edbcb4e1dfaba2c3bed323f3738878631",
+  "common/operator_sim.py": "7331f177383ba6e025237f370b3394dc8ab4fb5e379f19bc7c0eb2d14750b518",
+  "common/label_store.py": "02f187bd4f409246fbe61ef5c3f20c28f351a408c124b5522d8cdaad32b28adb",
+  "common/cl_validator.py": "909c78b39c184c8f93436edb995e9ff45773194a6af2a2ae6a4ec7abe96b74d6",
+  "common/replay_buffer.py": "5a705705c4897bd83b0bf04fe210bcc5324d07947e10d56e2f3251ca7cb093f2",
+  "common/cl_retrain.py": "7cad1437a9c1b63bd5e91a6381c6a7c0d592040082268a1edbb938880be9d114",
+  "common/cl_gate.py": "e9687af4b581f4d752a00f1f2dd21644e1f62f7e42b5cdf4ab613c64ac192e9b",
+  "common/registry.py": "2195389c15c0d053863534a1fac3d19d519966bb9f491d439179937f5d5cfe76",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "config/v2_phase4.json": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "docs/V2_PREREG_PHASE4.md": "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_2.md": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46",
+  "common/runtime.py": "999fa94fa87656b77b5149ed13db320c0b2f85e9f97a4fcf80ea060c913e43b7",
+  "common/flow_source.py": "59880526c60d64696e187bab8193fc4ae5e2765112e1308373cd2c4e545e0591",
+  "common/model_loader.py": "8edcb1df7869d244d48018cfb851aa7f5d5b90c5da9b1a2456b6864f047a072a",
+  "common/routing.py": "b0e211f1e16b9724f7cff3d65dfb0994c70ab2b47ff3caa482d305060d518fd0",
+  "common/inference.py": "e4c8ee19c1909604b1cc98da339017c1fc0326255c4965a399a3efda4c46013c",
+  "common/policy.py": "95214d681cf3580a7a6edcefd357c6b66cc49182e248cbf2cee1a2a06ee48a48",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "common/predictions_io.py": "def3e231457026562d250ed8b44f7bc6be176988a0384904d3f8614dfbbcc426",
+  "common/alert_log.py": "c19cd3855a62126c7141143f71332fd4fd9207240918f012708055f2f8feaf86",
+  "common/phase3_config.py": "3f8366e548fa43168666b3c3df87695f01087ca5ef698d0284d0bfa645feb6d5",
+  "config/v2_phase3_1.json": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "config/v2_phase2.json": "ee4bfdea8b1cf27029a526a83df7740e73f3282d8933d7628007acf26131aff3",
+  "28_run_stream.py": "4728cf339c230c882a7db03537c2164039e26adbb74007b28b010eccd0d14d7f"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "Phase 3 config pinned (the latest pinned runtime config)",
+   "pass": true,
+   "detail": "config/v2_phase3_1.json sha256 14e45250569f3dee...",
+   "level": "hard"
+  },
+  {
+   "check": "replay / reference datasets as the Phase 3 config says",
+   "pass": true,
+   "detail": "replay v2_0_v1equiv, reference v2_1_oriented",
+   "level": "hard"
+  },
+  {
+   "check": "replay rows == reference rows (same uids, order, labels, groups)",
+   "pass": true,
+   "detail": "157,558 vs 157,558",
+   "level": "hard"
+  },
+  {
+   "check": "runtime model = the promoted deployed entry (deployment load, promoted only)",
+   "pass": true,
+   "detail": "['GLOBAL__none__s0__20261121T075821Z']",
+   "level": "hard"
+  },
+  {
+   "check": "parity val-A GLOBAL s0: every val flow processed and matched 1:1 (0 quarantined, 0 dropped)",
+   "pass": true,
+   "detail": "runtime 81,427 / offline 81,427; quarantined 0, dropped 0",
+   "level": "hard"
+  },
+  {
+   "check": "parity val-A GLOBAL s0: runtime-normalised features == v2_1_oriented (exact float32, all 70)",
+   "pass": true,
+   "detail": "81,427 / 81,427 rows identical",
+   "level": "hard"
+  },
+  {
+   "check": "parity val-A GLOBAL s0: predicted class == offline step 23 path (100 %)",
+   "pass": true,
+   "detail": "81,427 / 81,427",
+   "level": "hard"
+  },
+  {
+   "check": "parity val-A GLOBAL s0: calibrated probabilities within 1e-06 of softmax(margin / T)",
+   "pass": true,
+   "detail": "max |dp| 0.000e+00",
+   "level": "hard"
+  },
+  {
+   "check": "parity val-A GLOBAL s0: routing group == dataset group (100 %)",
+   "pass": true,
+   "detail": "81,427 / 81,427",
+   "level": "hard"
+  },
+  {
+   "check": "parity val-A GLOBAL s0: protected device == dataset device_mac (100 %)",
+   "pass": true,
+   "detail": "81,427 / 81,427",
+   "level": "hard"
+  },
+  {
+   "check": "val-A predictions == Phase 3 full-val runtime run for the same flows (report-only)",
+   "pass": true,
+   "detail": "pred equal True, max |dp| 0.00e+00",
+   "level": "warn"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "split": {
+  "split_definition_sha256": "6a48765357f2cbf3d42e727168a7ae99bbb97809c0059e33d47d7adbee31b0bc",
+  "split_definition_own_sha256": "67f329c0c34fddb51eb91936b9d49799633b5ce8078b95f470391c18c60ea627",
+  "windows": {
+   "DDoS-SYN_Flood": {
+    "manifest_lo": 1661540978.65,
+    "manifest_hi": null,
+    "first_start": 1661776020.0,
+    "last_start": 1661776304.0,
+    "lo": 1661776020.0,
+    "hi": 1661776304.0,
+    "mid": 1661776162.0,
+    "n": 52542
+   },
+   "DDoS-SYN_Flood5": {
+    "manifest_lo": 1661795214.3,
+    "manifest_hi": null,
+    "first_start": 1661795215.0,
+    "last_start": 1661795830.0,
+    "lo": 1661795215.0,
+    "hi": 1661795830.0,
+    "mid": 1661795522.5,
+    "n": 51205
+   },
+   "Mirai-udpplain": {
+    "manifest_lo": 1674145287.95,
+    "manifest_hi": null,
+    "first_start": 1674145320.0,
+    "last_start": 1674145405.0,
+    "lo": 1674145320.0,
+    "hi": 1674145405.0,
+    "mid": 1674145362.5,
+    "n": 597
+   },
+   "Recon-PortScan": {
+    "manifest_lo": 1664289038.6,
+    "manifest_hi": 1664291060.8,
+    "first_start": 1664289039.0,
+    "last_start": 1664291040.0,
+    "lo": 1664289039.0,
+    "hi": 1664291040.0,
+    "mid": 1664290039.5,
+    "n": 28528
+   },
+   "benign_night": {
+    "manifest_lo": 1665186350.3,
+    "manifest_hi": 1665191229.65,
+    "first_start": 1665186351.0,
+    "last_start": 1665191229.0,
+    "lo": 1665186351.0,
+    "hi": 1665191229.0,
+    "mid": 1665188790.0,
+    "n": 24686
+   }
+  },
+  "n": {
+   "val_A": 81427,
+   "val_B": 76131
+  },
+  "val_B_support": {
+   "benign": 14973,
+   "syn_flood": 53297,
+   "udp_flood": 2,
+   "port_scan": 7859
+  },
+  "rare_for_gate": [
+   "udp_flood"
+  ],
+  "absent_in_val_B": [],
+  "min_val_flows": 50,
+  "val_file_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "split_parquet_sha256": "a25c73ad238a3336f75c0c94350393b50e64f10f6ce8e2771ad736414c3afd83",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/split/20261122T132156Z"
+ },
+ "parity": {
+  "n_runtime": 81427,
+  "n_offline": 81427,
+  "features_equal_rows": 81427,
+  "class_agree": 81427,
+  "max_abs_dp": 0.0,
+  "group_agree": 81427,
+  "device_agree": 81427,
+  "vs_phase3_full_run": {
+   "pred_equal": true,
+   "max_abs_dp": 0.0,
+   "rows": 81427
+  }
+ },
+ "runtime": {
+  "dir": "/home/krithikk/lgids_cache/v2/cl/runtime/20261122T132156Z_GLOBAL_s0_valA",
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 81427,
+   "flows_in": 81427,
+   "flow_alerts": 57193,
+   "batches": 8179,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 25.864634445000007,
+  "flows_per_s": 3148.198369984733,
+  "incidents": 11,
+  "predictions": {
+   "layout": "parts",
+   "version": 1,
+   "chunk_rows": 10000,
+   "chunk_seconds": 60.0,
+   "time_column": "event_time",
+   "complete": true,
+   "rows": 81427,
+   "n_parts": 67
+  }
+ },
+ "queues": {
+  "20261122T132156Z": {
+   "queue_id": "20261122T132156Z",
+   "runtime_run_dir": "/home/krithikk/lgids_cache/v2/cl/runtime/20261122T132156Z_GLOBAL_s0_valA",
+   "runtime_run_id": "20261122T132156Z",
+   "rows_scored": 81427,
+   "n": 58405,
+   "n_alert": 57193,
+   "n_random": 1212,
+   "n_non_alerted": 24234,
+   "random_review_rate": 0.05,
+   "seed": 0,
+   "by_reason_pred": {
+    "alert": {
+     "benign": 0,
+     "syn_flood": 46813,
+     "udp_flood": 11,
+     "port_scan": 10369
+    },
+    "random": {
+     "benign": 1211,
+     "syn_flood": 0,
+     "udp_flood": 0,
+     "port_scan": 1
+    }
+   },
+   "by_group_reason": {
+    "G1": {
+     "alert": 26463,
+     "random": 1131
+    },
+    "G2": {
+     "alert": 30730,
+     "random": 77
+    },
+    "GEN": {
+     "alert": 0,
+     "random": 4
+    }
+   },
+   "queue_parquet_sha256": "6b9b0a450f099f7001823ed324707677439416aacffb1c35a4fac8cd123cbbb0",
+   "dir": "/home/krithikk/lgids_cache/v2/cl/queue/20261122T132156Z",
+   "policy_threshold": 0.5,
+   "split_run": "20261122T132156Z",
+   "manifest_note": "the queue is what the operator sees: no ground-truth labels in it"
+  },
+  "20261122T132156Z__no_random": {
+   "queue_id": "20261122T132156Z__no_random",
+   "runtime_run_dir": "/home/krithikk/lgids_cache/v2/cl/runtime/20261122T132156Z_GLOBAL_s0_valA",
+   "runtime_run_id": "20261122T132156Z",
+   "rows_scored": 81427,
+   "n": 57193,
+   "n_alert": 57193,
+   "n_random": 0,
+   "n_non_alerted": 24234,
+   "random_review_rate": 0.0,
+   "seed": 0,
+   "by_reason_pred": {
+    "alert": {
+     "benign": 0,
+     "syn_flood": 46813,
+     "udp_flood": 11,
+     "port_scan": 10369
+    },
+    "random": {
+     "benign": 0,
+     "syn_flood": 0,
+     "udp_flood": 0,
+     "port_scan": 0
+    }
+   },
+   "by_group_reason": {
+    "G1": {
+     "alert": 26463,
+     "random": 0
+    },
+    "G2": {
+     "alert": 30730,
+     "random": 0
+    }
+   },
+   "queue_parquet_sha256": "45564dc16e28ebe6f6f7e52e01ca791d402722c4a4087786e9138337b91a2deb",
+   "dir": "/home/krithikk/lgids_cache/v2/cl/queue/20261122T132156Z__no_random",
+   "policy_threshold": 0.5,
+   "split_run": "20261122T132156Z",
+   "manifest_note": "the queue is what the operator sees: no ground-truth labels in it"
+  }
+ },
+ "runtime_s": 30.1,
+ "peak_rss_mb": 1411
+}

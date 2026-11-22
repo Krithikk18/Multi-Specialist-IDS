@@ -1,0 +1,358 @@
+{
+ "run_id": "20261122T132747Z",
+ "step": "34",
+ "script": "34_cl_eval.py",
+ "created_utc": "2026-11-22T13:27:47+00:00",
+ "dry_run": false,
+ "rerun_tag": null,
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/34",
+ "cache_root": "/home/krithikk/lgids_cache/v2/cl",
+ "argv": [
+  "34_cl_eval.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase4.json",
+  "sha256": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "pinned": true
+ },
+ "pins": {
+  "prereg_phase4": "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac",
+  "phase4_config": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "amendment_2": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "code_sha256": {
+  "34_cl_eval.py": "26387586aa1a6c96aec0650f2179bbb5f1e641d1ae48e43dfd524f2b69c58b0b",
+  "common/schemas.py": "39e1b94322b375eb5d60bb76b81b4ea3fd85b9bc7614af962d7038d90a92a71e",
+  "common/cl_config.py": "227f9312914f1c801825ea02c75feefd45706ea489ea2abdbeeccf1029471708",
+  "common/cl_run.py": "4ea81d737b7c6e6b0e53444cab499d07e6a36c21ff87d088eb3e19607ef32a1a",
+  "common/cl_split.py": "001fef2c6fdf77eab126c43517673b0e022f1650d756221cf2d5333c42a537b6",
+  "common/review_queue.py": "e61637c1153956457ebb624070d6624edbcb4e1dfaba2c3bed323f3738878631",
+  "common/operator_sim.py": "7331f177383ba6e025237f370b3394dc8ab4fb5e379f19bc7c0eb2d14750b518",
+  "common/label_store.py": "02f187bd4f409246fbe61ef5c3f20c28f351a408c124b5522d8cdaad32b28adb",
+  "common/cl_validator.py": "909c78b39c184c8f93436edb995e9ff45773194a6af2a2ae6a4ec7abe96b74d6",
+  "common/replay_buffer.py": "5a705705c4897bd83b0bf04fe210bcc5324d07947e10d56e2f3251ca7cb093f2",
+  "common/cl_retrain.py": "7cad1437a9c1b63bd5e91a6381c6a7c0d592040082268a1edbb938880be9d114",
+  "common/cl_gate.py": "e9687af4b581f4d752a00f1f2dd21644e1f62f7e42b5cdf4ab613c64ac192e9b",
+  "common/registry.py": "2195389c15c0d053863534a1fac3d19d519966bb9f491d439179937f5d5cfe76",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "config/v2_phase4.json": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "docs/V2_PREREG_PHASE4.md": "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_2.md": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46",
+  "common/predictions_io.py": "def3e231457026562d250ed8b44f7bc6be176988a0384904d3f8614dfbbcc426"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "split parquet sha256 == step 31 manifest",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  },
+  {
+   "check": "every val row has a split part",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "hard"
+  },
+  {
+   "check": "step 22 run dir is the run 33 used",
+   "pass": true,
+   "detail": "20261121T075821Z",
+   "level": "hard"
+  },
+  {
+   "check": "S2_SPEC predictions on the other groups' val-B rows == v2_1 ROUTED (zero forgetting by construction)",
+   "pass": true,
+   "detail": "31,381 rows x 5 seeds",
+   "level": "hard"
+  },
+  {
+   "check": "GLOBAL__none__P4_R2__s0__20261122T132243Z: registered CANDIDATE; deployment load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__P4_R2__s0__20261122T132243Z",
+   "level": "hard"
+  },
+  {
+   "check": "GLOBAL__none__P4_R3__s0__20261122T132243Z: registered CANDIDATE; deployment load refused, offline load allowed",
+   "pass": true,
+   "detail": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__P4_R3__s0__20261122T132243Z",
+   "level": "hard"
+  },
+  {
+   "check": "promoted entry unchanged (files + state log sha256, state promoted)",
+   "pass": true,
+   "detail": "GLOBAL__none__s0__20261121T075821Z: state promoted",
+   "level": "hard"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "retrain_run": "20261122T132243Z",
+ "labels_run": "20261122T132232Z",
+ "queue_run": "20261122T132156Z",
+ "val_B": {
+  "n": 76131,
+  "support": {
+   "benign": 14973,
+   "syn_flood": 53297,
+   "udp_flood": 2,
+   "port_scan": 7859
+  },
+  "nonrare": [
+   "benign",
+   "syn_flood",
+   "port_scan"
+  ],
+  "groups": [
+   "G1",
+   "G2",
+   "GEN"
+  ]
+ },
+ "verdict": {
+  "verdict": "DOES_NOT_WIN",
+  "wins": false,
+  "forgetting_lower": false,
+  "forgetting_equal_within_tol": true,
+  "time_ratio_global_over_per_group": 0.9551429714333007,
+  "affected_group_ok": true
+ },
+ "poisoning": {
+  "P1": "CAUGHT_BY_VALIDATOR",
+  "P2": "CAUGHT_BY_VALIDATOR"
+ },
+ "registered": [
+  {
+   "entry_id": "GLOBAL__none__P4_R2__s0__20261122T132243Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__P4_R2__s0__20261122T132243Z",
+   "arm": "R2",
+   "state": "candidate",
+   "model_sha256": "8a0493da86e407421fa51278443f0484c2d14d5a72ee786ce9313fd06af1df10",
+   "kind": "global",
+   "serves_groups": [
+    "GEN"
+   ],
+   "fingerprint": "a4aea1b4253a158c"
+  },
+  {
+   "entry_id": "GLOBAL__none__P4_R3__s0__20261122T132243Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__P4_R3__s0__20261122T132243Z",
+   "arm": "R3",
+   "state": "candidate",
+   "model_sha256": "06b1ac8629518ffb12e0c5070fe4a2c53d0161b71568967365e413100bf33f66",
+   "kind": "global",
+   "serves_groups": [
+    "GEN"
+   ],
+   "fingerprint": "a4aea1b4253a158c"
+  }
+ ],
+ "rejected": [
+  [
+   "R1",
+   0,
+   "(iii) FA/h rise 2.157 > 0.5"
+  ],
+  [
+   "R1",
+   1,
+   "(iii) FA/h rise 2.157 > 0.5"
+  ],
+  [
+   "R1",
+   2,
+   "(iii) FA/h rise 2.157 > 0.5"
+  ],
+  [
+   "R1",
+   3,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R1",
+   4,
+   "(iii) FA/h rise 2.157 > 0.5"
+  ],
+  [
+   "R2",
+   2,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R2",
+   4,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R3",
+   1,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R3",
+   2,
+   "(iii) FA/h rise 3.235 > 0.5"
+  ],
+  [
+   "R3",
+   3,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R3",
+   4,
+   "(iii) FA/h rise 2.157 > 0.5"
+  ],
+  [
+   "S2_GLOBAL",
+   0,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "S2_GLOBAL",
+   1,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "S2_SPEC",
+   0,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "S2_SPEC",
+   1,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "S2_SPEC",
+   2,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "S2_SPEC",
+   3,
+   "(iii) FA/h rise 2.157 > 0.5"
+  ],
+  [
+   "S2_SPEC",
+   4,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R2__P1",
+   0,
+   "(i) recall drop > 0.01 on class(es) {0: 0.44694, 3: 0.10637}; (ii) non-rare macro-F1 drop 0.15553 > 0.002; (iii) FA/h rise 7217.256 > 0.5"
+  ],
+  [
+   "R2__P1",
+   1,
+   "(i) recall drop > 0.01 on class(es) {0: 0.29513, 1: 0.06807, 3: 0.09492}; (ii) non-rare macro-F1 drop 0.13995 > 0.002; (iii) FA/h rise 4765.848 > 0.5"
+  ],
+  [
+   "R2__P1",
+   2,
+   "(i) recall drop > 0.01 on class(es) {0: 0.3137, 3: 0.71498}; (ii) non-rare macro-F1 drop 0.30826 > 0.002; (iii) FA/h rise 5065.668 > 0.5"
+  ],
+  [
+   "R2__P1",
+   3,
+   "(i) recall drop > 0.01 on class(es) {0: 0.40266, 3: 0.09543}; (ii) non-rare macro-F1 drop 0.12846 > 0.002; (iii) FA/h rise 6502.217 > 0.5"
+  ],
+  [
+   "R2__P1",
+   4,
+   "(i) recall drop > 0.01 on class(es) {0: 0.32585, 3: 0.09505}; (ii) non-rare macro-F1 drop 0.11122 > 0.002; (iii) FA/h rise 5261.953 > 0.5"
+  ],
+  [
+   "R2__P2",
+   0,
+   "(i) recall drop > 0.01 on class(es) {0: 0.19709, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.44116 > 0.002; (iii) FA/h rise 3182.624 > 0.5"
+  ],
+  [
+   "R2__P2",
+   1,
+   "(i) recall drop > 0.01 on class(es) {1: 0.16369, 3: 0.99809}; (ii) non-rare macro-F1 drop 0.48002 > 0.002"
+  ],
+  [
+   "R2__P2",
+   2,
+   "(i) recall drop > 0.01 on class(es) {3: 0.99885}; (ii) non-rare macro-F1 drop 0.40088 > 0.002"
+  ],
+  [
+   "R2__P2",
+   3,
+   "(i) recall drop > 0.01 on class(es) {3: 0.99873}; (ii) non-rare macro-F1 drop 0.40112 > 0.002"
+  ],
+  [
+   "R2__P2",
+   4,
+   "(i) recall drop > 0.01 on class(es) {1: 0.16243, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.47882 > 0.002"
+  ],
+  [
+   "R2__budget_1000",
+   3,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R2__no_random",
+   2,
+   "(iii) FA/h rise 1.078 > 0.5"
+  ],
+  [
+   "R2__noise_0.02",
+   0,
+   "(i) recall drop > 0.01 on class(es) {0: 0.3682, 3: 0.09518}; (ii) non-rare macro-F1 drop 0.11303 > 0.002; (iii) FA/h rise 5945.716 > 0.5"
+  ],
+  [
+   "R2__noise_0.02",
+   1,
+   "(i) recall drop > 0.01 on class(es) {0: 0.2769, 1: 0.16575, 3: 0.02036}; (ii) non-rare macro-F1 drop 0.21950 > 0.002; (iii) FA/h rise 4471.420 > 0.5"
+  ],
+  [
+   "R2__noise_0.02",
+   2,
+   "(i) recall drop > 0.01 on class(es) {0: 0.76571}; (ii) non-rare macro-F1 drop 0.25653 > 0.002; (iii) FA/h rise 12364.889 > 0.5"
+  ],
+  [
+   "R2__noise_0.02",
+   3,
+   "(i) recall drop > 0.01 on class(es) {0: 0.06766, 3: 0.10663}; (ii) non-rare macro-F1 drop 0.04053 > 0.002; (iii) FA/h rise 1092.510 > 0.5"
+  ],
+  [
+   "R2__noise_0.02",
+   4,
+   "(i) recall drop > 0.01 on class(es) {0: 0.45696, 3: 0.12483}; (ii) non-rare macro-F1 drop 0.14457 > 0.002; (iii) FA/h rise 7379.029 > 0.5"
+  ]
+ ],
+ "gate_pass_counts": {
+  "ROUTED_v21": 0,
+  "R1": 0,
+  "R2": 3,
+  "R3": 1,
+  "S2_GLOBAL": 3,
+  "S2_SPEC": 0,
+  "R2__P1": 0,
+  "R2__P2": 0,
+  "R2__budget_1000": 4,
+  "R2__budget_10000": 5,
+  "R2__no_random": 4,
+  "R2__noise_0.02": 0
+ },
+ "runtime_s": 12.8,
+ "peak_rss_mb": 789
+}

@@ -1,0 +1,128 @@
+{
+ "split_definition_sha256": "6a48765357f2cbf3d42e727168a7ae99bbb97809c0059e33d47d7adbee31b0bc",
+ "split_definition_own_sha256": "67f329c0c34fddb51eb91936b9d49799633b5ce8078b95f470391c18c60ea627",
+ "windows": {
+  "DDoS-SYN_Flood": {
+   "manifest_lo": 1661540978.65,
+   "manifest_hi": null,
+   "first_start": 1661776020.0,
+   "last_start": 1661776304.0,
+   "lo": 1661776020.0,
+   "hi": 1661776304.0,
+   "mid": 1661776162.0,
+   "n": 52542
+  },
+  "DDoS-SYN_Flood5": {
+   "manifest_lo": 1661795214.3,
+   "manifest_hi": null,
+   "first_start": 1661795215.0,
+   "last_start": 1661795830.0,
+   "lo": 1661795215.0,
+   "hi": 1661795830.0,
+   "mid": 1661795522.5,
+   "n": 51205
+  },
+  "Mirai-udpplain": {
+   "manifest_lo": 1674145287.95,
+   "manifest_hi": null,
+   "first_start": 1674145320.0,
+   "last_start": 1674145405.0,
+   "lo": 1674145320.0,
+   "hi": 1674145405.0,
+   "mid": 1674145362.5,
+   "n": 597
+  },
+  "Recon-PortScan": {
+   "manifest_lo": 1664289038.6,
+   "manifest_hi": 1664291060.8,
+   "first_start": 1664289039.0,
+   "last_start": 1664291040.0,
+   "lo": 1664289039.0,
+   "hi": 1664291040.0,
+   "mid": 1664290039.5,
+   "n": 28528
+  },
+  "benign_night": {
+   "manifest_lo": 1665186350.3,
+   "manifest_hi": 1665191229.65,
+   "first_start": 1665186351.0,
+   "last_start": 1665191229.0,
+   "lo": 1665186351.0,
+   "hi": 1665191229.0,
+   "mid": 1665188790.0,
+   "n": 24686
+  }
+ },
+ "counts": {
+  "val_A": {
+   "G1": {
+    "benign": 22482,
+    "syn_flood": 24469,
+    "udp_flood": 15,
+    "port_scan": 2000
+   },
+   "G2": {
+    "benign": 1576,
+    "syn_flood": 22411,
+    "udp_flood": 0,
+    "port_scan": 8320
+   },
+   "GEN": {
+    "benign": 154,
+    "syn_flood": 0,
+    "udp_flood": 0,
+    "port_scan": 0
+   },
+   "_all": {
+    "benign": 24212,
+    "syn_flood": 46880,
+    "udp_flood": 15,
+    "port_scan": 10320
+   }
+  },
+  "val_B": {
+   "G1": {
+    "benign": 13351,
+    "syn_flood": 25634,
+    "udp_flood": 2,
+    "port_scan": 5763
+   },
+   "G2": {
+    "benign": 1485,
+    "syn_flood": 27663,
+    "udp_flood": 0,
+    "port_scan": 2096
+   },
+   "GEN": {
+    "benign": 137,
+    "syn_flood": 0,
+    "udp_flood": 0,
+    "port_scan": 0
+   },
+   "_all": {
+    "benign": 14973,
+    "syn_flood": 53297,
+    "udp_flood": 2,
+    "port_scan": 7859
+   }
+  }
+ },
+ "n": {
+  "val_A": 81427,
+  "val_B": 76131
+ },
+ "val_B_support": {
+  "benign": 14973,
+  "syn_flood": 53297,
+  "udp_flood": 2,
+  "port_scan": 7859
+ },
+ "rare_for_gate": [
+  "udp_flood"
+ ],
+ "absent_in_val_B": [],
+ "min_val_flows": 50,
+ "val_file_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+ "split_parquet_sha256": "a25c73ad238a3336f75c0c94350393b50e64f10f6ce8e2771ad736414c3afd83",
+ "dir": "/home/krithikk/lgids_cache/v2/cl/split/20261122T132156Z"
+}

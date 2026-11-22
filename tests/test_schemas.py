@@ -451,6 +451,24 @@ def test_verify_v2_lock_checks_phase3_prereg_and_config():
         assert not S.verify_v2_lock(strict=False, v1=False, **{kw: crlf})["ok"]
 
 
+def test_verify_v2_lock_checks_phase4_prereg_and_config():
+    res = S.verify_v2_lock(strict=False, v1=False)
+    for tag in ("V2_PREREG_PHASE4", "v2_phase4.json"):
+        assert any(tag in c[0] and c[1] for c in res["checks"]), (tag, res["checks"])
+    for kw, path, a, b in (("prereg_phase4", S.PREREG_PHASE4_PATH, b"0.99", b"0.98"),
+                           ("phase4_config", S.V2_PHASE4_CONFIG_PATH, b"\"random_review_rate\": 0.05",
+                            b"\"random_review_rate\": 0.5")):
+        raw = path.read_bytes()
+        assert a in raw
+        edited = _tmp_bytes(raw.replace(a, b, 1), path.name)
+        assert not S.verify_v2_lock(strict=False, v1=False, **{kw: edited})["ok"]
+        assert _raises(lambda: S.verify_v2_lock(strict=True, v1=False, **{kw: edited}), exc=LockError)
+        crlf = _tmp_bytes(raw.replace(b"\n", b"\r\n"), path.name)
+        assert not S.verify_v2_lock(strict=False, v1=False, **{kw: crlf})["ok"]
+        missing = Path(tempfile.mkdtemp(prefix="p4pin_")) / path.name
+        assert not S.verify_v2_lock(strict=False, v1=False, **{kw: missing})["ok"]
+
+
 def test_verify_v2_lock_with_v1():
     """Full lock incl. V1 verify_lock (needs the extractor jar: runs in WSL)."""
     res = S.verify_v2_lock(strict=False)

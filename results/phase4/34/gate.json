@@ -1,0 +1,1966 @@
+{
+ "ROUTED_v21|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": 0.00033773007861603865,
+     "3": -0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": 0.000452226947804224,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "ROUTED_v21|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": 0.0016323620466442978,
+     "3": -0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.002092046288426519,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(ii) non-rare macro-F1 drop 0.00209 > 0.002; (iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "ROUTED_v21|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -3.752556429070797e-05,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": 9.103888884753886e-06,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "ROUTED_v21|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": 0.0002814417321800322,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": 0.00037212807189335173,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "ROUTED_v21|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": 0.00022515338574402577,
+     "3": -0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": 0.00034696728137673105,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R1|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00013357376611233818,
+     "1": -0.0024766872431843945,
+     "3": -0.0006362132586842373
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0031935426487756935,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 2.156980227681246,
+    "max": 0.5,
+    "cand": 2.156980227681246,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 2.157 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R1|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00013357376611233818,
+     "1": -0.0012571064037375512,
+     "3": -0.0007634559104211514
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0016651289041843542,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 2.156980227681246,
+    "max": 0.5,
+    "cand": 2.156980227681246,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 2.157 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R1|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00013357376611233818,
+     "1": -0.002814417321800544,
+     "3": -0.0005089706069474342
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0035817883461173317,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 2.156980227681246,
+    "max": 0.5,
+    "cand": 2.156980227681246,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 2.157 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R1|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002495450025329804,
+     "3": -0.0006362132586843483
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003279873427784241,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R1|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00013357376611233818,
+     "1": -0.002645552282492525,
+     "3": -0.0008906985621579544
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003421713702472795,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 2.156980227681246,
+    "max": 0.5,
+    "cand": 2.156980227681246,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 2.157 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2|0": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0024016361146030896,
+     "3": -0.0008906985621579544
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0032773591687912385,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2|1": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0012946319680282592,
+     "3": -0.0011451838656316715
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.001842447378350598,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.0026830778467831218,
+     "3": -0.0005089706069474342
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.00349422564140478,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2|3": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0025142128074751025,
+     "3": -0.0007634559104211514
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003375134575948735,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002645552282492525,
+     "3": -0.0010179412138948685
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0034964686377823018,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R3|0": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0025142128074751025,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0031367904363949206,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R3|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.0013509203144642656,
+     "3": -0.0006362132586842373
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0017332484353764777,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R3|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00020036064916850727,
+     "1": -0.0026267895003471153,
+     "3": -0.0008906985621580654
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0033529696911374085,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 3.2354703415218697,
+    "max": 0.5,
+    "cand": 3.2354703415218697,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 3.235 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R3|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.0026267895003471153,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0032488349953093687,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R3|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00013357376611233818,
+     "1": -0.0026830778467831218,
+     "3": -0.0010179412138948685
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0034794282124206433,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 2.156980227681246,
+    "max": 0.5,
+    "cand": 2.156980227681246,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 2.157 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_GLOBAL|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002457924461039096,
+     "3": -0.0007634559104211514
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003215810873348768,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_GLOBAL|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.0012758691858828497,
+     "3": -0.0007634559104211514
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0017005920283200693,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_GLOBAL|2": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.002814417321800544,
+     "3": -0.0006362132586843483
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0036496040039287747,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_GLOBAL|3": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.002532975589620401,
+     "3": -0.0006362132586843483
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0033316744366709283,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_GLOBAL|4": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0026267895003471153,
+     "3": -0.0007634559104211514
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0034366706076920384,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_SPEC|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002420398896748388,
+     "3": -0.0006362132586842373
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003144887059857826,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_SPEC|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.0012758691858828497,
+     "3": -0.0006362132586842373
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0016762459060165602,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_SPEC|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002814417321800544,
+     "3": -0.0005089706069474342
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0035828408936321443,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_SPEC|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.00013357376611233818,
+     "1": -0.002532975589620401,
+     "3": -0.0005089706069474342
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003253777581683215,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 2.156980227681246,
+    "max": 0.5,
+    "cand": 2.156980227681246,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 2.157 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "S2_SPEC|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002645552282492525,
+     "3": -0.0006362132586842373
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0033942368174586512,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P1|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.44693782141187466,
+     "1": 0.0010319530179935255,
+     "3": 0.10637485685201686
+    },
+    "failing": {
+     "0": 0.44693782141187466,
+     "3": 0.10637485685201686
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.15553251558160608,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 7217.25584182145,
+    "max": 0.5,
+    "cand": 7217.25584182145,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.44694, 3: 0.10637}; (ii) non-rare macro-F1 drop 0.15553 > 0.002; (iii) FA/h rise 7217.256 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P1|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.2951312362252053,
+     "1": 0.06807137362328086,
+     "3": 0.09492301819569926
+    },
+    "failing": {
+     "0": 0.2951312362252053,
+     "1": 0.06807137362328086,
+     "3": 0.09492301819569926
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.1399456206065759,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 4765.847813061714,
+    "max": 0.5,
+    "cand": 4765.847813061714,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.29513, 1: 0.06807, 3: 0.09492}; (ii) non-rare macro-F1 drop 0.13995 > 0.002; (iii) FA/h rise 4765.848 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P1|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.31369798971482,
+     "1": 0.0015948364823535899,
+     "3": 0.7149764601094286
+    },
+    "failing": {
+     "0": 0.31369798971482,
+     "3": 0.7149764601094286
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.3082588597550904,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 5065.668064709407,
+    "max": 0.5,
+    "cand": 5065.668064709407,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.3137, 3: 0.71498}; (ii) non-rare macro-F1 drop 0.30826 > 0.002; (iii) FA/h rise 5065.668 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P1|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.40265811794563544,
+     "1": -0.0017637015216616092,
+     "3": 0.09543198880264658
+    },
+    "failing": {
+     "0": 0.40265811794563544,
+     "3": 0.09543198880264658
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.12846276017934077,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 6502.216896345117,
+    "max": 0.5,
+    "cand": 6502.216896345117,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.40266, 3: 0.09543}; (ii) non-rare macro-F1 drop 0.12846 > 0.002; (iii) FA/h rise 6502.217 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P1|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.32585320243104254,
+     "1": 0.000938139107266811,
+     "3": 0.09505026084743606
+    },
+    "failing": {
+     "0": 0.32585320243104254,
+     "3": 0.09505026084743606
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.11121916291499545,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 5261.9532654284,
+    "max": 0.5,
+    "cand": 5261.9532654284,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.32585, 3: 0.09505}; (ii) non-rare macro-F1 drop 0.11122 > 0.002; (iii) FA/h rise 5261.953 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P2|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.1970880918987511,
+     "1": 0.0009006135429762141,
+     "3": 0.9987275734826314
+    },
+    "failing": {
+     "0": 0.1970880918987511,
+     "3": 0.9987275734826314
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.44115576052484406,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 3182.624325943679,
+    "max": 0.5,
+    "cand": 3182.624325943679,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.19709, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.44116 > 0.002; (iii) FA/h rise 3182.624 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P2|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.0,
+     "1": 0.16368651143591573,
+     "3": 0.9980913602239471
+    },
+    "failing": {
+     "1": 0.16368651143591573,
+     "3": 0.9980913602239471
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.4800233679687643,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {1: 0.16369, 3: 0.99809}; (ii) non-rare macro-F1 drop 0.48002 > 0.002",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P2|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.0,
+     "1": 0.0011070041465748304,
+     "3": 0.9988548161343682
+    },
+    "failing": {
+     "3": 0.9988548161343682
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.4008766701917559,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {3: 0.99885}; (ii) non-rare macro-F1 drop 0.40088 > 0.002",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P2|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.0,
+     "1": 0.0013696830966095641,
+     "3": 0.9987275734826313
+    },
+    "failing": {
+     "3": 0.9987275734826313
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.4011171441294772,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {3: 0.99873}; (ii) non-rare macro-F1 drop 0.40112 > 0.002",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__P2|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.0,
+     "1": 0.16242940503217818,
+     "3": 0.9987275734826314
+    },
+    "failing": {
+     "1": 0.16242940503217818,
+     "3": 0.9987275734826314
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.4788217328286879,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {1: 0.16243, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.47882 > 0.002",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_1000|0": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -1.8762782145298473e-05,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -2.5372429400816188e-05,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_1000|1": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0003752556429067466,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0004838646081927189,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_1000|2": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.00043154398934275306,
+     "3": 0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0005593500800181728,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_1000|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": 1.8762782145298473e-05,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": 3.512108770609146e-05,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_1000|4": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": 5.628834643600644e-05,
+     "3": -0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": 1.0405321993145478e-05,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_10000|0": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.00206390603598694,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.002657086732114511,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_10000|1": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0009569018894121095,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0012592416916473725,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_10000|2": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.002420398896748388,
+     "3": 0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0031199895961366853,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_10000|3": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0021577199467136543,
+     "3": 0.00012724265173680305
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0028073517452780195,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__budget_10000|4": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0023265849860217847,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.002914704730829998,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__no_random|0": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0024391616788936865,
+     "3": -0.0012724265173685856
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003356629435995351,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__no_random|1": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.0012758691858828497,
+     "3": -0.0010179412138948685
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0018038580872019594,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__no_random|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 6.678688305616909e-05,
+     "1": -0.002776891757509836,
+     "3": -0.0011451838656317825
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.003719492600086971,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1.078490113840623,
+    "max": 0.5,
+    "cand": 1.078490113840623,
+    "ref": 0.0
+   }
+  },
+  "reason": "(iii) FA/h rise 1.078 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__no_random|3": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.002420398896748388,
+     "3": -0.0007634559104211514
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.0032847628862113787,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__no_random|4": {
+  "status": "PASS",
+  "pass": true,
+  "conditions": {
+   "i_recall": {
+    "pass": true,
+    "drops": {
+     "0": 0.0,
+     "1": -0.002645552282492525,
+     "3": 0.0
+    },
+    "failing": {},
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": true,
+    "drop": -0.00329680854244363,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": true,
+    "rise": 0.0,
+    "max": 0.5,
+    "cand": 0.0,
+    "ref": 0.0
+   }
+  },
+  "reason": "all three hold",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__noise_0.02|0": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.36819608628865286,
+     "1": -0.001444734225190869,
+     "3": 0.09517750349917298
+    },
+    "failing": {
+     "0": 0.36819608628865286,
+     "3": 0.09517750349917298
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.11303322614503686,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 5945.715997603355,
+    "max": 0.5,
+    "cand": 5945.715997603355,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.3682, 3: 0.09518}; (ii) non-rare macro-F1 drop 0.11303 > 0.002; (iii) FA/h rise 5945.716 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__noise_0.02|1": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.2768984171508716,
+     "1": 0.16575041747190278,
+     "3": 0.020358824277898036
+    },
+    "failing": {
+     "0": 0.2768984171508716,
+     "1": 0.16575041747190278,
+     "3": 0.020358824277898036
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.21949877288598352,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 4471.420011983224,
+    "max": 0.5,
+    "cand": 4471.420011983224,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.2769, 1: 0.16575, 3: 0.02036}; (ii) non-rare macro-F1 drop 0.21950 > 0.002; (iii) FA/h rise 4471.420 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__noise_0.02|2": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.7657116142389635,
+     "1": 0.0011632924930108368,
+     "3": -0.0002544853034737171
+    },
+    "failing": {
+     "0": 0.7657116142389635
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.25653353290765746,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 12364.889155182746,
+    "max": 0.5,
+    "cand": 12364.889155182746,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.76571}; (ii) non-rare macro-F1 drop 0.25653 > 0.002; (iii) FA/h rise 12364.889 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__noise_0.02|3": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.06765511253589795,
+     "1": 0.002608026718201817,
+     "3": 0.10662934215549047
+    },
+    "failing": {
+     "0": 0.06765511253589795,
+     "3": 0.10662934215549047
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.040527034088192804,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 1092.5104853205512,
+    "max": 0.5,
+    "cand": 1092.5104853205512,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.06766, 3: 0.10663}; (ii) non-rare macro-F1 drop 0.04053 > 0.002; (iii) FA/h rise 1092.510 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ },
+ "R2__noise_0.02|4": {
+  "status": "FAIL",
+  "pass": false,
+  "conditions": {
+   "i_recall": {
+    "pass": false,
+    "drops": {
+     "0": 0.4569558538702999,
+     "1": 0.0007317485036680837,
+     "3": 0.12482504135386185
+    },
+    "failing": {
+     "0": 0.4569558538702999,
+     "3": 0.12482504135386185
+    },
+    "max": 0.01
+   },
+   "ii_macro_f1_nonrare": {
+    "pass": false,
+    "drop": 0.1445664535805984,
+    "max": 0.002
+   },
+   "iii_fa_per_hour": {
+    "pass": false,
+    "rise": 7379.029358897544,
+    "max": 0.5,
+    "cand": 7379.029358897544,
+    "ref": 0.0
+   }
+  },
+  "reason": "(i) recall drop > 0.01 on class(es) {0: 0.45696, 3: 0.12483}; (ii) non-rare macro-F1 drop 0.14457 > 0.002; (iii) FA/h rise 7379.029 > 0.5",
+  "rare_not_gated": [
+   2
+  ]
+ }
+}

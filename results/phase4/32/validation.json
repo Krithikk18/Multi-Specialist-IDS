@@ -1,0 +1,216 @@
+{
+ "primary": {
+  "batch_id": "20261122T132232Z__primary",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": false,
+    "n_confident": 58299,
+    "n_disagree": 2,
+    "rate": 3.4305905761676875e-05,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 58405,
+  "fired": [],
+  "status": "VALID",
+  "manifest_sha256": "42adf8eb8f82acafd96f48b736b7ec2f41f081a06d18dc8e832f1056c5b4a678"
+ },
+ "noise_0.02": {
+  "batch_id": "20261122T132232Z__noise_0.02",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": false,
+    "n_confident": 58299,
+    "n_disagree": 1126,
+    "rate": 0.01931422494382408,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 58405,
+  "fired": [],
+  "status": "VALID",
+  "manifest_sha256": "1ff530811750ae7f25f77b85657f01441d57e9929963ea23854c98bc6d49de50"
+ },
+ "budget_1000": {
+  "batch_id": "20261122T132232Z__budget_1000",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": false,
+    "n_confident": 999,
+    "n_disagree": 0,
+    "rate": 0.0,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 1000,
+  "fired": [],
+  "status": "VALID",
+  "manifest_sha256": "60e0e49d039753566e41ae7417e80d7a1fe138ba3bf8b7d274dc2fb0bbf89965"
+ },
+ "budget_10000": {
+  "batch_id": "20261122T132232Z__budget_10000",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": false,
+    "n_confident": 9977,
+    "n_disagree": 0,
+    "rate": 0.0,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 10000,
+  "fired": [],
+  "status": "VALID",
+  "manifest_sha256": "665dcafa555dbac8db3e02dca6594a253d7e28f4f42c31c089e8469495c306b5"
+ },
+ "no_random": {
+  "batch_id": "20261122T132232Z__no_random",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": false,
+    "n_confident": 57091,
+    "n_disagree": 2,
+    "rate": 3.5031791350650716e-05,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 57193,
+  "fired": [],
+  "status": "VALID",
+  "manifest_sha256": "313cd4abedbe1bed9a9c9fefabb6862fd324eebf88dd27657f0587b5997d6cdd"
+ },
+ "P1": {
+  "batch_id": "20261122T132232Z__P1",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_poison_test",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": true,
+    "n_confident": 58299,
+    "n_disagree": 4681,
+    "rate": 0.08029297243520472,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 58405,
+  "fired": [
+   "c_confident_disagreement"
+  ],
+  "status": "QUARANTINED",
+  "manifest_sha256": "4e930473beec67665a5f1adeb643c7fc39a91cde6882ecbdb86b04a0e9380a5d"
+ },
+ "P2": {
+  "batch_id": "20261122T132232Z__P2",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_poison_test",
+  "checks": {
+   "a_signature_hash": {
+    "fired": false,
+    "detail": "signature, index, file and content hashes OK"
+   },
+   "b_label_in_class_map": {
+    "fired": false,
+    "n_bad": 0,
+    "unknown_names": 0,
+    "id_mismatch": 0,
+    "bad_values": {}
+   },
+   "c_confident_disagreement": {
+    "fired": true,
+    "n_confident": 58299,
+    "n_disagree": 10317,
+    "rate": 0.17696701487161015,
+    "threshold_pmax": 0.99,
+    "max_rate": 0.05,
+    "n_labels_not_in_queue": 0
+   }
+  },
+  "n": 58405,
+  "fired": [
+   "c_confident_disagreement"
+  ],
+  "status": "QUARANTINED",
+  "manifest_sha256": "d563760884616ba9b2107b434e14ee38e8559a91623c9509d9294926453954aa"
+ }
+}

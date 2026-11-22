@@ -1,0 +1,88 @@
+{
+ "20261122T132156Z": {
+  "queue_id": "20261122T132156Z",
+  "runtime_run_dir": "/home/krithikk/lgids_cache/v2/cl/runtime/20261122T132156Z_GLOBAL_s0_valA",
+  "runtime_run_id": "20261122T132156Z",
+  "rows_scored": 81427,
+  "n": 58405,
+  "n_alert": 57193,
+  "n_random": 1212,
+  "n_non_alerted": 24234,
+  "random_review_rate": 0.05,
+  "seed": 0,
+  "by_reason_pred": {
+   "alert": {
+    "benign": 0,
+    "syn_flood": 46813,
+    "udp_flood": 11,
+    "port_scan": 10369
+   },
+   "random": {
+    "benign": 1211,
+    "syn_flood": 0,
+    "udp_flood": 0,
+    "port_scan": 1
+   }
+  },
+  "by_group_reason": {
+   "G1": {
+    "alert": 26463,
+    "random": 1131
+   },
+   "G2": {
+    "alert": 30730,
+    "random": 77
+   },
+   "GEN": {
+    "alert": 0,
+    "random": 4
+   }
+  },
+  "queue_parquet_sha256": "6b9b0a450f099f7001823ed324707677439416aacffb1c35a4fac8cd123cbbb0",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/queue/20261122T132156Z",
+  "policy_threshold": 0.5,
+  "split_run": "20261122T132156Z",
+  "manifest_note": "the queue is what the operator sees: no ground-truth labels in it"
+ },
+ "20261122T132156Z__no_random": {
+  "queue_id": "20261122T132156Z__no_random",
+  "runtime_run_dir": "/home/krithikk/lgids_cache/v2/cl/runtime/20261122T132156Z_GLOBAL_s0_valA",
+  "runtime_run_id": "20261122T132156Z",
+  "rows_scored": 81427,
+  "n": 57193,
+  "n_alert": 57193,
+  "n_random": 0,
+  "n_non_alerted": 24234,
+  "random_review_rate": 0.0,
+  "seed": 0,
+  "by_reason_pred": {
+   "alert": {
+    "benign": 0,
+    "syn_flood": 46813,
+    "udp_flood": 11,
+    "port_scan": 10369
+   },
+   "random": {
+    "benign": 0,
+    "syn_flood": 0,
+    "udp_flood": 0,
+    "port_scan": 0
+   }
+  },
+  "by_group_reason": {
+   "G1": {
+    "alert": 26463,
+    "random": 0
+   },
+   "G2": {
+    "alert": 30730,
+    "random": 0
+   }
+  },
+  "queue_parquet_sha256": "45564dc16e28ebe6f6f7e52e01ca791d402722c4a4087786e9138337b91a2deb",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/queue/20261122T132156Z__no_random",
+  "policy_threshold": 0.5,
+  "split_run": "20261122T132156Z",
+  "manifest_note": "the queue is what the operator sees: no ground-truth labels in it"
+ }
+}

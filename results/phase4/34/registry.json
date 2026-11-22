@@ -1,0 +1,30 @@
+{
+ "registered": [
+  {
+   "entry_id": "GLOBAL__none__P4_R2__s0__20261122T132243Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__P4_R2__s0__20261122T132243Z",
+   "arm": "R2",
+   "state": "candidate",
+   "model_sha256": "8a0493da86e407421fa51278443f0484c2d14d5a72ee786ce9313fd06af1df10",
+   "kind": "global",
+   "serves_groups": [
+    "GEN"
+   ],
+   "fingerprint": "a4aea1b4253a158c"
+  },
+  {
+   "entry_id": "GLOBAL__none__P4_R3__s0__20261122T132243Z",
+   "dir": "/home/krithikk/lgids_cache/v2/registry/GLOBAL__none__P4_R3__s0__20261122T132243Z",
+   "arm": "R3",
+   "state": "candidate",
+   "model_sha256": "06b1ac8629518ffb12e0c5070fe4a2c53d0161b71568967365e413100bf33f66",
+   "kind": "global",
+   "serves_groups": [
+    "GEN"
+   ],
+   "fingerprint": "a4aea1b4253a158c"
+  }
+ ],
+ "registry_root": "/home/krithikk/lgids_cache/v2/registry",
+ "promoted_entry_unchanged": true
+}

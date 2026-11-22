@@ -1,0 +1,50 @@
+{
+ "version": 1,
+ "note": "Phase 4 (continual learning loop, offline, train + val only) parameters, pre-registered in docs/V2_PREREG_PHASE4.md. Validated by common/cl_config.py; its sha256 is pinned in common/schemas.py (V2_PHASE4_CONFIG_SHA256). The Pi never trains: this file drives offline scripts 31-35 only. Group / class names appear only where a rule needs a value (s2.label_group, chosen because Phase 3.1 D found only that group has enough data); logic reads classes from the class map and groups from the data.",
+ "phase2_config": "config/v2_phase2_v2_1.json",
+ "phase3_config": "config/v2_phase3_1.json",
+ "deployed": {
+  "entry": "GLOBAL__none__s0__20261121T075821Z",
+  "model_id": "GLOBAL__none",
+  "weights": "none",
+  "train_run": "20261121T075821Z",
+  "calib_run": "20261121T080937Z"
+ },
+ "split": {
+  "rule": "per val session window, cut at the time midpoint of [max(window start, first val start_ts), min(window end, last val start_ts)]; start_ts < midpoint -> val_A, else val_B",
+  "time_column": "start_ts",
+  "parts": ["val_A", "val_B"]
+ },
+ "queue": {"random_review_rate": 0.05, "seed": 0},
+ "operator": {
+  "operator_id": "sim-operator-01",
+  "seed": 0,
+  "primary": {"noise": 0.0, "budget": null},
+  "sweeps": [
+   {"name": "noise_0.02", "noise": 0.02, "budget": null},
+   {"name": "budget_1000", "noise": 0.0, "budget": 1000},
+   {"name": "budget_10000", "noise": 0.0, "budget": 10000}
+  ]
+ },
+ "validator": {"confident_pmax": 0.99, "max_confident_disagreement": 0.05},
+ "replay": {"frac": 0.25, "min_class_rows": 1000, "seed": 0},
+ "retrain": {
+  "seeds": [0, 1, 2, 3, 4],
+  "weights": "none",
+  "warm_start_rounds": 100,
+  "nthread": 4,
+  "temperature_bounds": [0.05, 20.0]
+ },
+ "s2": {"label_group": "G1"},
+ "gate": {"min_val_flows": 50, "max_recall_drop": 0.01, "max_macro_f1_drop": 0.002, "max_fa_per_h_rise": 0.5},
+ "verdict": {"forgetting_equal_tol": 0.002, "time_ratio": 2.0, "affected_group_tol": 0.005},
+ "poisoning": {"p1_flip_frac": 0.10, "p2_flip_frac": 1.0, "seed": 0},
+ "eval": {"ci_level": 0.95, "benign_hours_idle_gap_s": 300},
+ "paths": {
+  "cache_root": "~/lgids_cache/v2/cl",
+  "operator_keys_dir": "~/lgids_cache/keys/operator",
+  "registry_root": "~/lgids_cache/v2/registry",
+  "registry_keys_dir": "~/lgids_cache/v2/keys",
+  "results": "results/phase4"
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "n_runtime": 81427,
+ "n_offline": 81427,
+ "features_equal_rows": 81427,
+ "class_agree": 81427,
+ "max_abs_dp": 0.0,
+ "group_agree": 81427,
+ "device_agree": 81427,
+ "vs_phase3_full_run": {
+  "pred_equal": true,
+  "max_abs_dp": 0.0,
+  "rows": 81427
+ }
+}

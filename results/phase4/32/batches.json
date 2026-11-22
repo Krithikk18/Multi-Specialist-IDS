@@ -1,0 +1,204 @@
+{
+ "primary": {
+  "batch_id": "20261122T132232Z__primary",
+  "store": "primary",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels/20261122T132232Z__primary",
+  "manifest_sha256": "42adf8eb8f82acafd96f48b736b7ec2f41f081a06d18dc8e832f1056c5b4a678",
+  "parquet_sha256": "cfe1de2b49865883dc7e7acb64d9287b86092b972a8b43787012017fbecc8929",
+  "rows_sha256": "5c6f7d0e7c0d76383d5d5b6b630bd0064b64bd3ffc895aeb469841cbe0fe1fda",
+  "n": 58405,
+  "n_alert": 57193,
+  "n_random": 1212,
+  "noise": 0.0,
+  "budget": null,
+  "label_accuracy_vs_truth": 1.0,
+  "n_flipped_by_noise": 0,
+  "counts_per_class": {
+   "benign": 1213,
+   "syn_flood": 46863,
+   "udp_flood": 9,
+   "port_scan": 10320
+  },
+  "counts_per_reason": {
+   "alert": 57193,
+   "random": 1212
+  },
+  "queue_id": "20261122T132156Z"
+ },
+ "noise_0.02": {
+  "batch_id": "20261122T132232Z__noise_0.02",
+  "store": "experiments",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels_experiments/20261122T132232Z__noise_0.02",
+  "manifest_sha256": "1ff530811750ae7f25f77b85657f01441d57e9929963ea23854c98bc6d49de50",
+  "parquet_sha256": "3fec859f24f9fe74d5550895a39bf03d0b875b03663afd940a661c9fa02a8844",
+  "rows_sha256": "e374172a348f757393ad3566f23d6d43121ec420391e34cc8305c53b11be4b9e",
+  "n": 58405,
+  "n_alert": 57193,
+  "n_random": 1212,
+  "noise": 0.02,
+  "budget": null,
+  "label_accuracy_vs_truth": 0.9807379505179351,
+  "n_flipped_by_noise": 1125,
+  "counts_per_class": {
+   "benign": 1560,
+   "syn_flood": 46011,
+   "udp_flood": 382,
+   "port_scan": 10452
+  },
+  "counts_per_reason": {
+   "alert": 57193,
+   "random": 1212
+  },
+  "queue_id": "20261122T132156Z"
+ },
+ "budget_1000": {
+  "batch_id": "20261122T132232Z__budget_1000",
+  "store": "experiments",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels_experiments/20261122T132232Z__budget_1000",
+  "manifest_sha256": "60e0e49d039753566e41ae7417e80d7a1fe138ba3bf8b7d274dc2fb0bbf89965",
+  "parquet_sha256": "29e460f77933f2d6f9bffc5feeeb2dc3623ab4f4fa57d0bf3fdb3d8e5b436c80",
+  "rows_sha256": "24b8d44aea7c651dc9d27453e0be183df995102a8d57a633c4d7bb30526b002b",
+  "n": 1000,
+  "n_alert": 979,
+  "n_random": 21,
+  "noise": 0.0,
+  "budget": 1000,
+  "label_accuracy_vs_truth": 1.0,
+  "n_flipped_by_noise": 0,
+  "counts_per_class": {
+   "benign": 21,
+   "syn_flood": 795,
+   "udp_flood": 0,
+   "port_scan": 184
+  },
+  "counts_per_reason": {
+   "alert": 979,
+   "random": 21
+  },
+  "queue_id": "20261122T132156Z"
+ },
+ "budget_10000": {
+  "batch_id": "20261122T132232Z__budget_10000",
+  "store": "experiments",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels_experiments/20261122T132232Z__budget_10000",
+  "manifest_sha256": "665dcafa555dbac8db3e02dca6594a253d7e28f4f42c31c089e8469495c306b5",
+  "parquet_sha256": "f2ea5826cfc5dc74fdf9e2e77b6d20d2b95867477177adbb03d969f7954eef51",
+  "rows_sha256": "11834af5cdd0ee1e42a0b15aa755a476b97fa26a51effd6f2a098f7bfe0fb413",
+  "n": 10000,
+  "n_alert": 9792,
+  "n_random": 208,
+  "noise": 0.0,
+  "budget": 10000,
+  "label_accuracy_vs_truth": 1.0,
+  "n_flipped_by_noise": 0,
+  "counts_per_class": {
+   "benign": 208,
+   "syn_flood": 8005,
+   "udp_flood": 1,
+   "port_scan": 1786
+  },
+  "counts_per_reason": {
+   "alert": 9792,
+   "random": 208
+  },
+  "queue_id": "20261122T132156Z"
+ },
+ "no_random": {
+  "batch_id": "20261122T132232Z__no_random",
+  "store": "experiments",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_experiments",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels_experiments/20261122T132232Z__no_random",
+  "manifest_sha256": "313cd4abedbe1bed9a9c9fefabb6862fd324eebf88dd27657f0587b5997d6cdd",
+  "parquet_sha256": "741f49e33f692a066310e553fdd2a8438444f472b0a855d8fbe4090d0b0fdd9f",
+  "rows_sha256": "8bf12f2990ba17c5f6e55203b7470764ca1077394748121c8754fedea4e5d632",
+  "n": 57193,
+  "n_alert": 57193,
+  "n_random": 0,
+  "noise": 0.0,
+  "budget": null,
+  "label_accuracy_vs_truth": 1.0,
+  "n_flipped_by_noise": 0,
+  "counts_per_class": {
+   "benign": 2,
+   "syn_flood": 46862,
+   "udp_flood": 9,
+   "port_scan": 10320
+  },
+  "counts_per_reason": {
+   "alert": 57193
+  },
+  "queue_id": "20261122T132156Z__no_random"
+ },
+ "P1": {
+  "batch_id": "20261122T132232Z__P1",
+  "store": "poison",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_poison_test",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels_poison_test/20261122T132232Z__P1",
+  "manifest_sha256": "4e930473beec67665a5f1adeb643c7fc39a91cde6882ecbdb86b04a0e9380a5d",
+  "parquet_sha256": "d6ae85a5c9bdaeef710ff8cef80dfec1a334136f2bc1351e5db007815bb0fb1a",
+  "rows_sha256": "e7454499277b032708ccc8a86442567d051d4a815d89db4f87446927a95ea167",
+  "n": 58405,
+  "n_alert": 57193,
+  "n_random": 1212,
+  "noise": 0.0,
+  "budget": null,
+  "label_accuracy_vs_truth": 0.9197671432240391,
+  "n_flipped_by_noise": 0,
+  "counts_per_class": {
+   "benign": 5899,
+   "syn_flood": 42177,
+   "udp_flood": 9,
+   "port_scan": 10320
+  },
+  "counts_per_reason": {
+   "alert": 57193,
+   "random": 1212
+  },
+  "queue_id": "20261122T132156Z",
+  "poison": {
+   "target_class": "syn_flood",
+   "flipped_to": "benign",
+   "flip_frac": 0.1,
+   "n_flipped": 4686,
+   "n_target": 46863
+  }
+ },
+ "P2": {
+  "batch_id": "20261122T132232Z__P2",
+  "store": "poison",
+  "root": "/home/krithikk/lgids_cache/v2/cl/labels_poison_test",
+  "dir": "/home/krithikk/lgids_cache/v2/cl/labels_poison_test/20261122T132232Z__P2",
+  "manifest_sha256": "d563760884616ba9b2107b434e14ee38e8559a91623c9509d9294926453954aa",
+  "parquet_sha256": "7c00ba7431f7e744c17dfedca400c4e70d022693fb29c654dee798b4eb67cbf0",
+  "rows_sha256": "254477c88256fefee46d1dc51121b4362cf135da528459851a5e21f8e324280e",
+  "n": 58405,
+  "n_alert": 57193,
+  "n_random": 1212,
+  "noise": 0.0,
+  "budget": null,
+  "label_accuracy_vs_truth": 0.8233027994178581,
+  "n_flipped_by_noise": 0,
+  "counts_per_class": {
+   "benign": 11533,
+   "syn_flood": 46863,
+   "udp_flood": 9,
+   "port_scan": 0
+  },
+  "counts_per_reason": {
+   "alert": 57193,
+   "random": 1212
+  },
+  "queue_id": "20261122T132156Z",
+  "poison": {
+   "target_class": "port_scan",
+   "flipped_to": "benign",
+   "flip_frac": 1.0,
+   "n_flipped": 10320,
+   "n_target": 10320
+  }
+ }
+}

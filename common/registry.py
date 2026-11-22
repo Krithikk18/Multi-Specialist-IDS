@@ -216,8 +216,9 @@ def _now() -> str:
 
 
 def register(root: Path, entry_id: str, model_file: Path, calibrator_file: Path, manifest_fields: dict,
-             secret: bytes) -> Path:
-    """Create <root>/<entry_id>/ (refused if it exists): copy the files, write + sign the manifest, state candidate."""
+             secret: bytes, by: str = "26_model_registry.py (automatic registration)") -> Path:
+    """Create <root>/<entry_id>/ (refused if it exists): copy the files, write + sign the manifest, state candidate.
+    `by` (optional, Phase 4) names the registering script in the signed candidate record; the default is step 26's."""
     d = Path(root) / entry_id
     if d.exists():
         raise RegistryRefused(f"registry entry {d} already exists (entries are immutable)")
@@ -231,7 +232,7 @@ def register(root: Path, entry_id: str, model_file: Path, calibrator_file: Path,
                        "public_key": pub.hex(), "fingerprint": fingerprint(pub), "backend": BACKEND}}
     (d / "manifest.json").write_bytes(canon(M))
     (d / "manifest.sig").write_text(sign(secret, canon(M)).hex() + "\n", encoding="ascii")
-    _append_state(d, "candidate", secret, by="26_model_registry.py (automatic registration)")
+    _append_state(d, "candidate", secret, by=by)
     return d
 
 

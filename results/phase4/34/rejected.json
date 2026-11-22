@@ -1,0 +1,1870 @@
+{
+ "rejected": [
+  {
+   "arm": "R1",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R1__s0.ubj",
+   "model_sha256": "c1912f0f82783a598c3fe63ea20772956beeda9ccd13572f4ead4e02fff57dc5",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 2.157 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00013357376611233818,
+      "1": -0.0024766872431843945,
+      "3": -0.0006362132586842373
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0031935426487756935,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 2.156980227681246,
+     "max": 0.5,
+     "cand": 2.156980227681246,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R1",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R1__s1.ubj",
+   "model_sha256": "99a976d94ed72d843dc867ff8e0acdae2a6f3d3d81bbe0a412b460f9e2354103",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 2.157 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00013357376611233818,
+      "1": -0.0012571064037375512,
+      "3": -0.0007634559104211514
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0016651289041843542,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 2.156980227681246,
+     "max": 0.5,
+     "cand": 2.156980227681246,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R1",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R1__s2.ubj",
+   "model_sha256": "85a870270199de5dbacccbb541db838059066c606014833b963ddc5f0c87d426",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 2.157 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00013357376611233818,
+      "1": -0.002814417321800544,
+      "3": -0.0005089706069474342
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0035817883461173317,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 2.156980227681246,
+     "max": 0.5,
+     "cand": 2.156980227681246,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R1",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R1__s3.ubj",
+   "model_sha256": "927b1de3cd224f8f7a388e420afbed4ba0f1e6404dff767f6eebb624fcb6aed2",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002495450025329804,
+      "3": -0.0006362132586843483
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003279873427784241,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R1",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R1__s4.ubj",
+   "model_sha256": "c2e40a0b2f89f0a6d93b0e1368f0ab355e679202e93c6d1dd4b7d1f4e0bda74f",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 2.157 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00013357376611233818,
+      "1": -0.002645552282492525,
+      "3": -0.0008906985621579544
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003421713702472795,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 2.156980227681246,
+     "max": 0.5,
+     "cand": 2.156980227681246,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__s2.ubj",
+   "model_sha256": "f40e2ec14eaa791c23083f6641c6628d789da5489d702971188289266f9a202a",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.0026830778467831218,
+      "3": -0.0005089706069474342
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.00349422564140478,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__s4.ubj",
+   "model_sha256": "3e07599aa2dab659177f219212e79e6f128047050f3197b5ac68f929ddb6c0a2",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002645552282492525,
+      "3": -0.0010179412138948685
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0034964686377823018,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R3",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R3__s1.ubj",
+   "model_sha256": "2ccf8a631725aab29926972df0f019ee96a77742a73fb5b3918e584b37a97a97",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.0013509203144642656,
+      "3": -0.0006362132586842373
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0017332484353764777,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R3",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R3__s2.ubj",
+   "model_sha256": "b8357231da757c73fad87eb67b36a96fabd400924c19a0c50a68303a497999c8",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 3.235 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00020036064916850727,
+      "1": -0.0026267895003471153,
+      "3": -0.0008906985621580654
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0033529696911374085,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 3.2354703415218697,
+     "max": 0.5,
+     "cand": 3.2354703415218697,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R3",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R3__s3.ubj",
+   "model_sha256": "9c58b7ad45be586b270107e8a02de55a02ddeea052c79f7a07fbb83c3087f240",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.0026267895003471153,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0032488349953093687,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R3",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R3__s4.ubj",
+   "model_sha256": "4fb48790571bb8b3a8ccff2e8348ae26692b7fea0c18b32b306ac4dfc5d3e6b0",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 2.157 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00013357376611233818,
+      "1": -0.0026830778467831218,
+      "3": -0.0010179412138948685
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0034794282124206433,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 2.156980227681246,
+     "max": 0.5,
+     "cand": 2.156980227681246,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_GLOBAL",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_GLOBAL__s0.ubj",
+   "model_sha256": "810c09687fe0db15d468e76d5e0151bbaf69c554170df2a6837100a8e6087750",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002457924461039096,
+      "3": -0.0007634559104211514
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003215810873348768,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_GLOBAL",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_GLOBAL__s1.ubj",
+   "model_sha256": "7cbd3cc4b7fd60395d57248c42863ccaad4c201f1c828701221b323b2952373e",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.0012758691858828497,
+      "3": -0.0007634559104211514
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0017005920283200693,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_SPEC",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_SPEC__s0.ubj",
+   "model_sha256": "ca38e630d241837c2a93d44e3262f84679388c69504163a66947cfb83a87ae60",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002420398896748388,
+      "3": -0.0006362132586842373
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003144887059857826,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_SPEC",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_SPEC__s1.ubj",
+   "model_sha256": "1b5015ae686dcb14f3040658e26a6266ef7a7b41225d579819ba2fbbdcbe9b33",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.0012758691858828497,
+      "3": -0.0006362132586842373
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0016762459060165602,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_SPEC",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_SPEC__s2.ubj",
+   "model_sha256": "0dcea80592849ce3e2159fe44efdaa4a779c2f83bac2cd8459e98071e7d2b360",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002814417321800544,
+      "3": -0.0005089706069474342
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0035828408936321443,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_SPEC",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_SPEC__s3.ubj",
+   "model_sha256": "9523f021f4bc7cfdc8beea109ce7a727361f70d28716a887cfa4b4f8cd70e98f",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 2.157 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.00013357376611233818,
+      "1": -0.002532975589620401,
+      "3": -0.0005089706069474342
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003253777581683215,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 2.156980227681246,
+     "max": 0.5,
+     "cand": 2.156980227681246,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "S2_SPEC",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_SPEC__s4.ubj",
+   "model_sha256": "d2c545300f68dd2d2eb5187e9e7b669f588cfa0a97ad2d1d7ef5a464716bad41",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002645552282492525,
+      "3": -0.0006362132586842373
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0033942368174586512,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P1",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P1__s0.ubj",
+   "model_sha256": "3ea6c1bbef10ec70f13a1941b2a75b4c57e0620c71327d270682ce38ce13c9e2",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.44694, 3: 0.10637}; (ii) non-rare macro-F1 drop 0.15553 > 0.002; (iii) FA/h rise 7217.256 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.44693782141187466,
+      "1": 0.0010319530179935255,
+      "3": 0.10637485685201686
+     },
+     "failing": {
+      "0": 0.44693782141187466,
+      "3": 0.10637485685201686
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.15553251558160608,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 7217.25584182145,
+     "max": 0.5,
+     "cand": 7217.25584182145,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P1",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P1__s1.ubj",
+   "model_sha256": "b753b0375f054ffe6fba994d14dcfe4bbb71fd0ef7c7f901fd84b17874c428af",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.29513, 1: 0.06807, 3: 0.09492}; (ii) non-rare macro-F1 drop 0.13995 > 0.002; (iii) FA/h rise 4765.848 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.2951312362252053,
+      "1": 0.06807137362328086,
+      "3": 0.09492301819569926
+     },
+     "failing": {
+      "0": 0.2951312362252053,
+      "1": 0.06807137362328086,
+      "3": 0.09492301819569926
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.1399456206065759,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 4765.847813061714,
+     "max": 0.5,
+     "cand": 4765.847813061714,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P1",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P1__s2.ubj",
+   "model_sha256": "b9b3b16d637eee076c2e28857f1258db4a547a129f2865ce777ee3fa03dcbb87",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.3137, 3: 0.71498}; (ii) non-rare macro-F1 drop 0.30826 > 0.002; (iii) FA/h rise 5065.668 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.31369798971482,
+      "1": 0.0015948364823535899,
+      "3": 0.7149764601094286
+     },
+     "failing": {
+      "0": 0.31369798971482,
+      "3": 0.7149764601094286
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.3082588597550904,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 5065.668064709407,
+     "max": 0.5,
+     "cand": 5065.668064709407,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P1",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P1__s3.ubj",
+   "model_sha256": "eeb32649b51914a2b7eeea242ce7a4f6a4724d2ac7400942c7260d20154b63f7",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.40266, 3: 0.09543}; (ii) non-rare macro-F1 drop 0.12846 > 0.002; (iii) FA/h rise 6502.217 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.40265811794563544,
+      "1": -0.0017637015216616092,
+      "3": 0.09543198880264658
+     },
+     "failing": {
+      "0": 0.40265811794563544,
+      "3": 0.09543198880264658
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.12846276017934077,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 6502.216896345117,
+     "max": 0.5,
+     "cand": 6502.216896345117,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P1",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P1__s4.ubj",
+   "model_sha256": "16fbee3b8323e35a626d44d360f674254df311a2c4db064e94c35c1b293cd884",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.32585, 3: 0.09505}; (ii) non-rare macro-F1 drop 0.11122 > 0.002; (iii) FA/h rise 5261.953 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.32585320243104254,
+      "1": 0.000938139107266811,
+      "3": 0.09505026084743606
+     },
+     "failing": {
+      "0": 0.32585320243104254,
+      "3": 0.09505026084743606
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.11121916291499545,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 5261.9532654284,
+     "max": 0.5,
+     "cand": 5261.9532654284,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P2",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P2__s0.ubj",
+   "model_sha256": "c412e7fd464e469df569011a0b592eb59841cb06e657eeaff58248f4445ecb5e",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.19709, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.44116 > 0.002; (iii) FA/h rise 3182.624 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.1970880918987511,
+      "1": 0.0009006135429762141,
+      "3": 0.9987275734826314
+     },
+     "failing": {
+      "0": 0.1970880918987511,
+      "3": 0.9987275734826314
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.44115576052484406,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 3182.624325943679,
+     "max": 0.5,
+     "cand": 3182.624325943679,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P2",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P2__s1.ubj",
+   "model_sha256": "5918414c9a8a6dfcc60012608fda474c8607497222fa0e829717c06dbb914cce",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {1: 0.16369, 3: 0.99809}; (ii) non-rare macro-F1 drop 0.48002 > 0.002",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.0,
+      "1": 0.16368651143591573,
+      "3": 0.9980913602239471
+     },
+     "failing": {
+      "1": 0.16368651143591573,
+      "3": 0.9980913602239471
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.4800233679687643,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P2",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P2__s2.ubj",
+   "model_sha256": "0b5bd49dbb9ec7918cf14bb030d947a57f632602d092d9a5fff774c715dcef0a",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {3: 0.99885}; (ii) non-rare macro-F1 drop 0.40088 > 0.002",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.0,
+      "1": 0.0011070041465748304,
+      "3": 0.9988548161343682
+     },
+     "failing": {
+      "3": 0.9988548161343682
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.4008766701917559,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P2",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P2__s3.ubj",
+   "model_sha256": "6815329c82a1cab569ce4c67317ba8eb05199b469f43d031fbe85635e8c7613a",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {3: 0.99873}; (ii) non-rare macro-F1 drop 0.40112 > 0.002",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.0,
+      "1": 0.0013696830966095641,
+      "3": 0.9987275734826313
+     },
+     "failing": {
+      "3": 0.9987275734826313
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.4011171441294772,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__P2",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__P2__s4.ubj",
+   "model_sha256": "58c6c0a62e2002bedb09b8df36448e6fd9f4ee7053de268efaae1dffc47c0b51",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {1: 0.16243, 3: 0.99873}; (ii) non-rare macro-F1 drop 0.47882 > 0.002",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.0,
+      "1": 0.16242940503217818,
+      "3": 0.9987275734826314
+     },
+     "failing": {
+      "1": 0.16242940503217818,
+      "3": 0.9987275734826314
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.4788217328286879,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__budget_1000",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_1000__s3.ubj",
+   "model_sha256": "f898d17b5ab1fc412cdecc9a166504078b8b669785dc7bea052da31af30126f4",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": 1.8762782145298473e-05,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": 3.512108770609146e-05,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__no_random",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__no_random__s2.ubj",
+   "model_sha256": "6f6c4d81f9864a78f714fcf0f0be28c8cdaff9b84e0d2cb0d97e823ae1a2a83c",
+   "gate": "FAIL",
+   "reason": "(iii) FA/h rise 1.078 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 6.678688305616909e-05,
+      "1": -0.002776891757509836,
+      "3": -0.0011451838656317825
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003719492600086971,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1.078490113840623,
+     "max": 0.5,
+     "cand": 1.078490113840623,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__noise_0.02",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__noise_0.02__s0.ubj",
+   "model_sha256": "e37297f5f13dc6dc59c7351f651d30fd08e04fe080f9394a7bb662967b790fde",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.3682, 3: 0.09518}; (ii) non-rare macro-F1 drop 0.11303 > 0.002; (iii) FA/h rise 5945.716 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.36819608628865286,
+      "1": -0.001444734225190869,
+      "3": 0.09517750349917298
+     },
+     "failing": {
+      "0": 0.36819608628865286,
+      "3": 0.09517750349917298
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.11303322614503686,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 5945.715997603355,
+     "max": 0.5,
+     "cand": 5945.715997603355,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__noise_0.02",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__noise_0.02__s1.ubj",
+   "model_sha256": "860e69be898772639b6258af98af6e07e291809142f3397719535b72f73f7384",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.2769, 1: 0.16575, 3: 0.02036}; (ii) non-rare macro-F1 drop 0.21950 > 0.002; (iii) FA/h rise 4471.420 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.2768984171508716,
+      "1": 0.16575041747190278,
+      "3": 0.020358824277898036
+     },
+     "failing": {
+      "0": 0.2768984171508716,
+      "1": 0.16575041747190278,
+      "3": 0.020358824277898036
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.21949877288598352,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 4471.420011983224,
+     "max": 0.5,
+     "cand": 4471.420011983224,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__noise_0.02",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__noise_0.02__s2.ubj",
+   "model_sha256": "995367dd0fd52bf120f9de5635bb03731b788fa8e10f4a0c25d8b50bc62a148c",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.76571}; (ii) non-rare macro-F1 drop 0.25653 > 0.002; (iii) FA/h rise 12364.889 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.7657116142389635,
+      "1": 0.0011632924930108368,
+      "3": -0.0002544853034737171
+     },
+     "failing": {
+      "0": 0.7657116142389635
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.25653353290765746,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 12364.889155182746,
+     "max": 0.5,
+     "cand": 12364.889155182746,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__noise_0.02",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__noise_0.02__s3.ubj",
+   "model_sha256": "c2309e355c5f6e49bc400ab7000605641c2d465b4be1bb03da157f224f703aee",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.06766, 3: 0.10663}; (ii) non-rare macro-F1 drop 0.04053 > 0.002; (iii) FA/h rise 1092.510 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.06765511253589795,
+      "1": 0.002608026718201817,
+      "3": 0.10662934215549047
+     },
+     "failing": {
+      "0": 0.06765511253589795,
+      "3": 0.10662934215549047
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.040527034088192804,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 1092.5104853205512,
+     "max": 0.5,
+     "cand": 1092.5104853205512,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  },
+  {
+   "arm": "R2__noise_0.02",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__noise_0.02__s4.ubj",
+   "model_sha256": "f9c7465b76c7b805456afc39775143e699f8e4c0957dd110530b668e68b13c4e",
+   "gate": "FAIL",
+   "reason": "(i) recall drop > 0.01 on class(es) {0: 0.45696, 3: 0.12483}; (ii) non-rare macro-F1 drop 0.14457 > 0.002; (iii) FA/h rise 7379.029 > 0.5",
+   "conditions": {
+    "i_recall": {
+     "pass": false,
+     "drops": {
+      "0": 0.4569558538702999,
+      "1": 0.0007317485036680837,
+      "3": 0.12482504135386185
+     },
+     "failing": {
+      "0": 0.4569558538702999,
+      "3": 0.12482504135386185
+     },
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": false,
+     "drop": 0.1445664535805984,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": false,
+     "rise": 7379.029358897544,
+     "max": 0.5,
+     "cand": 7379.029358897544,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "REJECTED"
+  }
+ ],
+ "passed_not_registered": [
+  {
+   "arm": "R2",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__s1.ubj",
+   "model_sha256": "6c7da07cb0189ffc87d4c266b5d37e25975065e720e56ce2ef5cdb26502d9d77",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0012946319680282592,
+      "3": -0.0011451838656316715
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.001842447378350598,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "only seed 0 is registered"
+  },
+  {
+   "arm": "R2",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__s3.ubj",
+   "model_sha256": "cd9b6cb065906c51f8e30fd8e663a1b2c1ca10e34e885b6028b043fe9f666aef",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0025142128074751025,
+      "3": -0.0007634559104211514
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003375134575948735,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "only seed 0 is registered"
+  },
+  {
+   "arm": "S2_GLOBAL",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_GLOBAL__s2.ubj",
+   "model_sha256": "11db8dc9c2361d0a0882090b4f6cbac21aff64db006ac9048047eefedacb1190",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.002814417321800544,
+      "3": -0.0006362132586843483
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0036496040039287747,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "only seed 0 is registered"
+  },
+  {
+   "arm": "S2_GLOBAL",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_GLOBAL__s3.ubj",
+   "model_sha256": "6130fe40f2538f2e563d9f51abd9db59fdf7cd91d34e3ab590b52d43c0d7018c",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.002532975589620401,
+      "3": -0.0006362132586843483
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0033316744366709283,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "only seed 0 is registered"
+  },
+  {
+   "arm": "S2_GLOBAL",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/S2_GLOBAL__s4.ubj",
+   "model_sha256": "c6c8f291ef7d230f0f3c2955e95e049e8ccb68e2310c29a22c8409550f7f0bca",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0026267895003471153,
+      "3": -0.0007634559104211514
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0034366706076920384,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": false,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "only seed 0 is registered"
+  },
+  {
+   "arm": "R2__budget_1000",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_1000__s0.ubj",
+   "model_sha256": "14ca54a99b09602575eaacc74e5e3245bdaf5ebb57bfa065f4c580487cf3ca7f",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -1.8762782145298473e-05,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -2.5372429400816188e-05,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_1000",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_1000__s1.ubj",
+   "model_sha256": "1372a691c731731f6756be23419cd4d4e16abb63cb741527bf2f50afa74d7a3d",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0003752556429067466,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0004838646081927189,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_1000",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_1000__s2.ubj",
+   "model_sha256": "49daf8a124a19c634efe9cfab929cf3518b68a389f5963e4e798a0cd43510c78",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.00043154398934275306,
+      "3": 0.00012724265173680305
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0005593500800181728,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_1000",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_1000__s4.ubj",
+   "model_sha256": "a95ae5c1d65809d4b042cd3130b1837c55a94f3d01bbb080fa1a5c7756e81c8f",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": 5.628834643600644e-05,
+      "3": -0.00012724265173680305
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": 1.0405321993145478e-05,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_10000",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_10000__s0.ubj",
+   "model_sha256": "28ebc25e8a11cc70ec7f511b97de2c722d8a6fb6962417adada7df9c47a15b8a",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.00206390603598694,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.002657086732114511,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_10000",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_10000__s1.ubj",
+   "model_sha256": "db46e079d6b56e4acd3ebc8cdfde04d86b3c1179858c9e518940fcf174b1ad58",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0009569018894121095,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0012592416916473725,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_10000",
+   "seed": 2,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_10000__s2.ubj",
+   "model_sha256": "fce5137692fc7a24bc11705ebe649cf9da33860f31bb09e54c1c22a0ed18035c",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.002420398896748388,
+      "3": 0.00012724265173680305
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0031199895961366853,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_10000",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_10000__s3.ubj",
+   "model_sha256": "78be7ddd21f14c00092b4747c7c6a27ab782e80b272c74ad73fa19502743c9e9",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0021577199467136543,
+      "3": 0.00012724265173680305
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0028073517452780195,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__budget_10000",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__budget_10000__s4.ubj",
+   "model_sha256": "b56c7e7b71d7de3e637acd42d76b6b1e3d53ed31fb925e5f4107c78138b425c8",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0023265849860217847,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.002914704730829998,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__no_random",
+   "seed": 0,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__no_random__s0.ubj",
+   "model_sha256": "52448ef02f1d83cbef5e2571dc4fd6d213fe0e718d029a9c2e048f2223447e23",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0024391616788936865,
+      "3": -0.0012724265173685856
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.003356629435995351,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__no_random",
+   "seed": 1,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__no_random__s1.ubj",
+   "model_sha256": "ae5c3c822b6c721f67854fd7d71cf8382ae2e2a326dc5bc40029ba74af40e708",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.0012758691858828497,
+      "3": -0.0010179412138948685
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0018038580872019594,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__no_random",
+   "seed": 3,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__no_random__s3.ubj",
+   "model_sha256": "0b06cfeb743c1d33c41f01147f2678bdfccd5ba66f11f143d4d896ec405cf465",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.002420398896748388,
+      "3": -0.0007634559104211514
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.0032847628862113787,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  },
+  {
+   "arm": "R2__no_random",
+   "seed": 4,
+   "model_file": "/home/krithikk/lgids_cache/v2/cl/models/20261122T132243Z/R2__no_random__s4.ubj",
+   "model_sha256": "34341a2bb316f898dc720364e0e12db4283a8fe69d88b2d6ac5a472bd9489e81",
+   "gate": "PASS",
+   "reason": "all three hold",
+   "conditions": {
+    "i_recall": {
+     "pass": true,
+     "drops": {
+      "0": 0.0,
+      "1": -0.002645552282492525,
+      "3": 0.0
+     },
+     "failing": {},
+     "max": 0.01
+    },
+    "ii_macro_f1_nonrare": {
+     "pass": true,
+     "drop": -0.00329680854244363,
+     "max": 0.002
+    },
+    "iii_fa_per_hour": {
+     "pass": true,
+     "rise": 0.0,
+     "max": 0.5,
+     "cand": 0.0,
+     "ref": 0.0
+    }
+   },
+   "experiment": true,
+   "state": "PASS_NOT_REGISTERED",
+   "why": "experiment arm"
+  }
+ ]
+}

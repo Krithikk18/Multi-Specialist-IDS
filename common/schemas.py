@@ -97,6 +97,11 @@ V2_PHASE3_CONFIG_PATH = CONFIG_DIR / "v2_phase3.json"
 V2_PHASE3_CONFIG_SHA256 = "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692"
 V2_PHASE3_1_CONFIG_PATH = CONFIG_DIR / "v2_phase3_1.json"
 V2_PHASE3_1_CONFIG_SHA256 = "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4"   # Phase 3.1 runtime config
+# Phase 4 step A: continual-learning pre-registration + its parameter file, pinned before any val-A run / label / retrain
+PREREG_PHASE4_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE4.md"
+PREREG_PHASE4_SHA256 = "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac"
+V2_PHASE4_CONFIG_PATH = CONFIG_DIR / "v2_phase4.json"
+V2_PHASE4_CONFIG_SHA256 = "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555"
 
 # --------------------------------------------------------------------------- column contract (V1 names)
 TS_FORMAT = "%d/%m/%Y %I:%M:%S %p"          # == 04_tag_flows.TS_FORMAT (asserted in tests)
@@ -596,7 +601,9 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
                    prereg_amendment_2: Path = PREREG_PHASE2_AMENDMENT_2_PATH,
                    prereg_phase3: Path = PREREG_PHASE3_PATH,
                    phase3_config: Path = V2_PHASE3_CONFIG_PATH,
-                   phase3_1_config: Path = V2_PHASE3_1_CONFIG_PATH) -> dict:
+                   phase3_1_config: Path = V2_PHASE3_1_CONFIG_PATH,
+                   prereg_phase4: Path = PREREG_PHASE4_PATH,
+                   phase4_config: Path = V2_PHASE4_CONFIG_PATH) -> dict:
     """V2 pins + V1's verify_lock(). Returns {"ok", "checks": [(name, ok, detail)], "env"} like V1;
     raises LockError on any failed check when strict. The path arguments exist for tests."""
     checks = []
@@ -628,8 +635,11 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
     pin("docs/V2_PREREG_PHASE3.md sha256 (Phase 3 pre-registration)", prereg_phase3, PREREG_PHASE3_SHA256)
     pin("config/v2_phase3.json sha256 (Phase 3 runtime policy config)", phase3_config, V2_PHASE3_CONFIG_SHA256)
     pin("config/v2_phase3_1.json sha256 (Phase 3.1 runtime config)", phase3_1_config, V2_PHASE3_1_CONFIG_SHA256)
+    pin("docs/V2_PREREG_PHASE4.md sha256 (Phase 4 pre-registration)", prereg_phase4, PREREG_PHASE4_SHA256)
+    pin("config/v2_phase4.json sha256 (Phase 4 continual-learning config)", phase4_config, V2_PHASE4_CONFIG_SHA256)
     for name, p in (("docs/V2_PREREG_PHASE3.md", prereg_phase3), ("config/v2_phase3.json", phase3_config),
-                    ("config/v2_phase3_1.json", phase3_1_config)):
+                    ("config/v2_phase3_1.json", phase3_1_config), ("docs/V2_PREREG_PHASE4.md", prereg_phase4),
+                    ("config/v2_phase4.json", phase4_config)):
         if Path(p).is_file() and b"\r" in Path(p).read_bytes():
             check(f"{name} LF only", False, "CR bytes found (the pin is over LF bytes)")
     try:

@@ -1,0 +1,4 @@
+# Step 35 -- Phase 4 figures + summary -- PASS
+
+- summary: `/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/summary.md`
+- figures: ['/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/split_composition.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/recall_per_arm.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/forgetting.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/time_vs_macro_f1.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/gate_outcomes.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/poisoning.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/feedback_bias.png', '/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/figures/loop_diagram.png']

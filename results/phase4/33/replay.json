@@ -1,0 +1,89 @@
+{
+ "n": 159119,
+ "of_train_rows": 636193,
+ "strata": [
+  {
+   "class_id": 0,
+   "group": "G1",
+   "n": 120028,
+   "kept": 30007,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "benign"
+  },
+  {
+   "class_id": 0,
+   "group": "G2",
+   "n": 16279,
+   "kept": 4070,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "benign"
+  },
+  {
+   "class_id": 0,
+   "group": "GEN",
+   "n": 1155,
+   "kept": 289,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "benign"
+  },
+  {
+   "class_id": 1,
+   "group": "G1",
+   "n": 200605,
+   "kept": 50151,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "syn_flood"
+  },
+  {
+   "class_id": 1,
+   "group": "G2",
+   "n": 199985,
+   "kept": 49996,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "syn_flood"
+  },
+  {
+   "class_id": 2,
+   "group": "G1",
+   "n": 95,
+   "kept": 95,
+   "rule": "all (class < min_class_rows)",
+   "class": "udp_flood"
+  },
+  {
+   "class_id": 3,
+   "group": "G1",
+   "n": 50472,
+   "kept": 12618,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "port_scan"
+  },
+  {
+   "class_id": 3,
+   "group": "G2",
+   "n": 43218,
+   "kept": 10804,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "port_scan"
+  },
+  {
+   "class_id": 3,
+   "group": "GEN",
+   "n": 4356,
+   "kept": 1089,
+   "rule": "max(1, round(0.25 x n))",
+   "class": "port_scan"
+  }
+ ],
+ "frac": 0.25,
+ "min_class_rows": 1000,
+ "seed": 0,
+ "positions_sha256": "972af0ab9f27e1f2d8ede7e942b864f3952ef6fb9274cc45e6aba648e3adbea3",
+ "positions_file_sha256": "14373ef2b1b6aa58206c7dc52011ad0a03dbca2dbb5343b20d76564f8bf047fa",
+ "uids_sha256": "03690145e2af5140678dd37eae1f27bfb8f9f976cd9c572c115779a25776453e",
+ "train_file_sha256": "77fc070c190a886dae8e90dabc8f9fafbb687f3bd376a82e1cbdc1c411100578",
+ "dataset": "v2_1_oriented",
+ "dir": "/home/krithikk/lgids_cache/v2/cl/replay/20261122T132243Z",
+ "rule": "strata = class x group of the ORIGINAL training data (the train split the deployed model was trained on). A class with fewer than min_class_rows train rows in total keeps ALL its rows; otherwise each of its (class, group) strata keeps max(1, round(frac x n)) rows drawn uniformly without replacement (numpy default_rng(seed), one permutation per stratum in sorted stratum order). One buffer, written once with a manifest; every arm that replays uses that same buffer (a model's replay rows = the buffer rows that belong to its own training set). ",
+ "manifest_sha256": "9aee48722f6350204c1d113f77dea9e42ae3b0dfb2c197250c6f5faf954fae41"
+}

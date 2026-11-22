@@ -1,0 +1,84 @@
+{
+ "run_id": "20261122T132954Z",
+ "step": "35",
+ "script": "35_cl_report.py",
+ "created_utc": "2026-11-22T13:29:54+00:00",
+ "dry_run": false,
+ "rerun_tag": "rerun_fig_fix",
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/35/rerun_fig_fix",
+ "cache_root": "/home/krithikk/lgids_cache/v2/cl",
+ "argv": [
+  "35_cl_report.py",
+  "--rerun-tag",
+  "rerun_fig_fix"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase4.json",
+  "sha256": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "pinned": true
+ },
+ "pins": {
+  "prereg_phase4": "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac",
+  "phase4_config": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "amendment_2": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "code_sha256": {
+  "35_cl_report.py": "684d35967587d29f228d5f4aa41ea3d467abdab31fc1aa30ec5ffa0b5250557d",
+  "common/schemas.py": "39e1b94322b375eb5d60bb76b81b4ea3fd85b9bc7614af962d7038d90a92a71e",
+  "common/cl_config.py": "227f9312914f1c801825ea02c75feefd45706ea489ea2abdbeeccf1029471708",
+  "common/cl_run.py": "4ea81d737b7c6e6b0e53444cab499d07e6a36c21ff87d088eb3e19607ef32a1a",
+  "common/cl_split.py": "001fef2c6fdf77eab126c43517673b0e022f1650d756221cf2d5333c42a537b6",
+  "common/review_queue.py": "e61637c1153956457ebb624070d6624edbcb4e1dfaba2c3bed323f3738878631",
+  "common/operator_sim.py": "7331f177383ba6e025237f370b3394dc8ab4fb5e379f19bc7c0eb2d14750b518",
+  "common/label_store.py": "02f187bd4f409246fbe61ef5c3f20c28f351a408c124b5522d8cdaad32b28adb",
+  "common/cl_validator.py": "909c78b39c184c8f93436edb995e9ff45773194a6af2a2ae6a4ec7abe96b74d6",
+  "common/replay_buffer.py": "5a705705c4897bd83b0bf04fe210bcc5324d07947e10d56e2f3251ca7cb093f2",
+  "common/cl_retrain.py": "7cad1437a9c1b63bd5e91a6381c6a7c0d592040082268a1edbb938880be9d114",
+  "common/cl_gate.py": "e9687af4b581f4d752a00f1f2dd21644e1f62f7e42b5cdf4ab613c64ac192e9b",
+  "common/registry.py": "2195389c15c0d053863534a1fac3d19d519966bb9f491d439179937f5d5cfe76",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "config/v2_phase4.json": "1c2ab2cb232a906d6d532a2d2e2076c1be4bbd22bd1199a5f3117f44a59e3555",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "docs/V2_PREREG_PHASE4.md": "63fe91834e4a7e45c5b237fec5af9e5283a537f82dd942e72c155204154810ac",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_2.md": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "figures + summary written (never overwritten)",
+   "pass": true,
+   "detail": "8 figures -> /mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures",
+   "level": "hard"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "figures": [
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/split_composition.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/recall_per_arm.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/forgetting.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/time_vs_macro_f1.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/gate_outcomes.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/poisoning.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/feedback_bias.png",
+  "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/figures/loop_diagram.png"
+ ],
+ "summary": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase4/rerun_fig_fix/summary.md",
+ "eval_run": "20261122T132747Z",
+ "runtime_s": 3.1,
+ "peak_rss_mb": 269
+}

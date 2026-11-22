@@ -1,0 +1,1749 @@
+{
+ "script": "diagnostics/phase3_2_test_counts.py",
+ "run_utc": "2026-11-22T14:08:42+00:00",
+ "git": "commit snapshots read read-only from .git/objects (loose objects, zlib); no git command run",
+ "snapshots": {
+  "phase2": {
+   "commit": "1383701bcb35cb860d597c75953a688fe07ea145",
+   "subject": "V2 Phase 2 complete (val only): multiclass specialists, diagnostics, orientation normaliser, Amendment 1",
+   "files": {
+    "test_diag_01.py": [
+     "test_best_threshold_both_directions",
+     "test_conflict_matrix",
+     "test_context_is_causal_and_windowed",
+     "test_majority_and_ceiling",
+     "test_round_sig",
+     "test_row_ids_exact_and_near"
+    ],
+    "test_diag_02.py": [
+     "test_derived_and_unpaired_defaults",
+     "test_ks_stat",
+     "test_normaliser_idempotent_and_leaves_unflagged_rows",
+     "test_rule_logic",
+     "test_swap_is_an_involution_on_single_packet_directions",
+     "test_swap_map_covers_every_feature_once"
+    ],
+    "test_orientation.py": [
+     "test_columns_order_and_refusals",
+     "test_dict_api_equals_dataframe_api",
+     "test_flow_id_rebuild_and_down_up",
+     "test_map_pinned_and_structural",
+     "test_non_tcp_never_touched",
+     "test_r3_truth_table",
+     "test_swap_twice_is_identity_on_pairs_and_identity",
+     "test_unpaired_defaults_port_scan_shape"
+    ],
+    "test_phase2_1_config.py": [
+     "test_class_weights",
+     "test_config_collects_all_errors",
+     "test_config_crlf_and_bad_json",
+     "test_config_rejections",
+     "test_failed_run_kept_not_deleted",
+     "test_load_split_refuses_test",
+     "test_phase2_scripts_never_name_the_test_file",
+     "test_pooled_mask",
+     "test_real_config_valid",
+     "test_run_id_validation",
+     "test_run_lifecycle_and_refusal",
+     "test_specialist_groups",
+     "test_stratified_sample",
+     "test_stratified_split"
+    ],
+    "test_phase2_2_train.py": [
+     "test_build_specs_counts_and_ids",
+     "test_build_specs_data_agnostic_and_skips",
+     "test_subset_mask_pools_attacks",
+     "test_train_one_seed_determinism",
+     "test_train_one_zero_row_class_and_early_stopping",
+     "test_weight_modes_reach_xgboost"
+    ],
+    "test_phase2_3_evaluate.py": [
+     "test_assemble_takes_each_rows_model",
+     "test_benign_hours_active_segments",
+     "test_build_systems_and_route",
+     "test_clopper_pearson",
+     "test_evaluate_entity_subsets_and_false_alarms",
+     "test_fp_threshold_v1_rule",
+     "test_garwood",
+     "test_per_class_and_macro_versions",
+     "test_precision_zero_when_never_predicted",
+     "test_t_ci"
+    ],
+    "test_phase2_4_calibrate.py": [
+     "test_calibration_improves_overconfident_model",
+     "test_cross_fit_folds_disjoint_and_stratified",
+     "test_ece_and_brier_known_values",
+     "test_fit_temperature_recovers_truth",
+     "test_nll_matches_naive_and_keeps_tiny_losses",
+     "test_reliability_bins",
+     "test_temperature_one_is_identity_and_bounds_hold"
+    ],
+    "test_phase2_5_shap.py": [
+     "test_dominance_flag",
+     "test_leakage_check_flags_identifiers",
+     "test_leakage_check_real_features_clean",
+     "test_sample_per_class_caps_and_keeps_rare",
+     "test_tree_shap_additivity_multiclass"
+    ],
+    "test_phase2_6_registry.py": [
+     "test_candidate_loads_offline_only",
+     "test_entries_are_immutable",
+     "test_keys_created_private_and_outside_repo",
+     "test_refuses_bad_manifest_signature",
+     "test_refuses_class_map_mismatch",
+     "test_refuses_features_mismatch",
+     "test_refuses_foreign_key",
+     "test_refuses_tampered_model_or_calibrator",
+     "test_refuses_tampered_state_log",
+     "test_rfc8032_vectors_pure_and_active_backend",
+     "test_transitions_and_promoted_load"
+    ],
+    "test_phase2_amendment1.py": [
+     "test_decide_rule",
+     "test_old_config_unchanged_behaviour",
+     "test_optional_keys_validated",
+     "test_scripts_take_config_option",
+     "test_select_primary_and_chosen",
+     "test_v2_1_config_loads_and_differs_only_where_intended"
+    ],
+    "test_rate_guard.py": [
+     "test_advance_earlier_time_is_noop",
+     "test_advance_quiet_line",
+     "test_constructor_validation",
+     "test_counts_mode_emits_below_threshold",
+     "test_deterministic_order",
+     "test_disabled_level",
+     "test_empty_input",
+     "test_flush",
+     "test_large_gre_flood_fast_and_bounded",
+     "test_late_packets_dropped_and_counted",
+     "test_per_proto_override",
+     "test_stream_vs_victim_aggregation",
+     "test_tcp_udp_after_flood_closes_window",
+     "test_tcp_udp_ignored",
+     "test_threshold_boundary",
+     "test_window_alignment_and_closing_order"
+    ],
+    "test_schemas.py": [
+     "test_all_errors_listed_together",
+     "test_assume_label",
+     "test_attack_empty_family_raises",
+     "test_attack_family_not_in_class_map_raises",
+     "test_bad_label_reported_not_raised",
+     "test_benign_with_family_raises",
+     "test_blank_mac_rule_reasons",
+     "test_class_map_crlf_fails",
+     "test_class_map_loads",
+     "test_class_map_one_byte_edit_fails_hash",
+     "test_class_map_reordered_fails_hash",
+     "test_class_map_structure_checks",
+     "test_dropped_constant_columns_tolerated",
+     "test_encode_valid_and_no_mutation",
+     "test_excluded_reaching_encoder_raises",
+     "test_extra_column_rejected",
+     "test_features_pin",
+     "test_lan_subnets_per_source_and_override",
+     "test_merge_reports",
+     "test_missing_feature_rejected",
+     "test_nan_inf_counted_not_failed",
+     "test_non_numeric_feature_rejected",
+     "test_null_ip_rejected",
+     "test_owner_col",
+     "test_reordered_features_rejected",
+     "test_schema_stage_columns_from_header",
+     "test_schema_stage_sees_rows_the_filter_would_reject",
+     "test_stages_split_checks",
+     "test_timestamps",
+     "test_to_binary_all_ids",
+     "test_to_binary_out_of_range_and_type",
+     "test_ts_format_matches_v1",
+     "test_unknown_label_raises_with_counts",
+     "test_unknown_source_raises",
+     "test_valid_frame_ok_and_not_mutated",
+     "test_verify_v2_lock_checks_orientation_map",
+     "test_verify_v2_lock_checks_phase2_prereg",
+     "test_verify_v2_lock_checks_prereg_amendment_1",
+     "test_verify_v2_lock_detects_edited_class_map",
+     "test_verify_v2_lock_detects_edited_config_py",
+     "test_verify_v2_lock_pins_pass",
+     "test_verify_v2_lock_with_v1"
+    ]
+   },
+   "total": 137,
+   "total_excl_v1": 121
+  },
+  "phase3": {
+   "commit": "e9c845beade9d28c952b293e0ffa2460f40469ca",
+   "subject": "V2 Phase 3 (val only): Amendment 2 + GLOBAL promotion, streaming runtime (replay/normalise/route/infer/calibrate/policy/signed logs), rate guard v2, parity gate",
+   "files": {
+    "test_alert_log.py": [
+     "test_bad_signature_and_other_key_fail",
+     "test_chain_verifies",
+     "test_cut_tail_detected_with_expected_count_or_head",
+     "test_deleted_reordered_inserted_lines_fail",
+     "test_edited_line_fails",
+     "test_refuses_existing_file_and_keys_in_repo",
+     "test_runtime_key_private_and_separate_from_registry_key"
+    ],
+    "test_diag_01.py": [
+     "test_best_threshold_both_directions",
+     "test_conflict_matrix",
+     "test_context_is_causal_and_windowed",
+     "test_majority_and_ceiling",
+     "test_round_sig",
+     "test_row_ids_exact_and_near"
+    ],
+    "test_diag_02.py": [
+     "test_derived_and_unpaired_defaults",
+     "test_ks_stat",
+     "test_normaliser_idempotent_and_leaves_unflagged_rows",
+     "test_rule_logic",
+     "test_swap_is_an_involution_on_single_packet_directions",
+     "test_swap_map_covers_every_feature_once"
+    ],
+    "test_flow_source.py": [
+     "test_emission_time_reconstruction",
+     "test_event_slice_and_busiest_window",
+     "test_order_by_emission_time_ties_in_file_order",
+     "test_pcap_source_refuses_unsliced_or_test_pcaps",
+     "test_raw_row_format",
+     "test_real_val_replay_covers_every_flow_once",
+     "test_refuses_test_split",
+     "test_speed_pacing_and_ticks"
+    ],
+    "test_inference.py": [
+     "test_explain_topk_and_additivity",
+     "test_nan_inf_policy_and_non_numeric",
+     "test_routed_uses_each_groups_model",
+     "test_single_equals_batch_equals_offline_global",
+     "test_vector_equals_offline_matrix"
+    ],
+    "test_model_loader.py": [
+     "test_missing_key_and_seed_outside_evaluation_refused",
+     "test_promoted_global_loads_and_candidate_refused",
+     "test_real_registry_promoted_global_and_routed_evaluation",
+     "test_real_seed_load_from_step22",
+     "test_routed_routing_from_serves_groups_and_bad_sets_refused",
+     "test_tampered_model_refused",
+     "test_wrong_class_map_features_or_orientation_refused"
+    ],
+    "test_orientation.py": [
+     "test_columns_order_and_refusals",
+     "test_dict_api_equals_dataframe_api",
+     "test_flow_id_rebuild_and_down_up",
+     "test_map_pinned_and_structural",
+     "test_non_tcp_never_touched",
+     "test_r3_truth_table",
+     "test_swap_twice_is_identity_on_pairs_and_identity",
+     "test_unpaired_defaults_port_scan_shape"
+    ],
+    "test_phase2_1_config.py": [
+     "test_class_weights",
+     "test_config_collects_all_errors",
+     "test_config_crlf_and_bad_json",
+     "test_config_rejections",
+     "test_failed_run_kept_not_deleted",
+     "test_load_split_refuses_test",
+     "test_phase2_scripts_never_name_the_test_file",
+     "test_pooled_mask",
+     "test_real_config_valid",
+     "test_run_id_validation",
+     "test_run_lifecycle_and_refusal",
+     "test_specialist_groups",
+     "test_stratified_sample",
+     "test_stratified_split"
+    ],
+    "test_phase2_2_train.py": [
+     "test_build_specs_counts_and_ids",
+     "test_build_specs_data_agnostic_and_skips",
+     "test_subset_mask_pools_attacks",
+     "test_train_one_seed_determinism",
+     "test_train_one_zero_row_class_and_early_stopping",
+     "test_weight_modes_reach_xgboost"
+    ],
+    "test_phase2_3_evaluate.py": [
+     "test_assemble_takes_each_rows_model",
+     "test_benign_hours_active_segments",
+     "test_build_systems_and_route",
+     "test_clopper_pearson",
+     "test_evaluate_entity_subsets_and_false_alarms",
+     "test_fp_threshold_v1_rule",
+     "test_garwood",
+     "test_per_class_and_macro_versions",
+     "test_precision_zero_when_never_predicted",
+     "test_t_ci"
+    ],
+    "test_phase2_4_calibrate.py": [
+     "test_calibration_improves_overconfident_model",
+     "test_cross_fit_folds_disjoint_and_stratified",
+     "test_ece_and_brier_known_values",
+     "test_fit_temperature_recovers_truth",
+     "test_nll_matches_naive_and_keeps_tiny_losses",
+     "test_reliability_bins",
+     "test_temperature_one_is_identity_and_bounds_hold"
+    ],
+    "test_phase2_5_shap.py": [
+     "test_dominance_flag",
+     "test_leakage_check_flags_identifiers",
+     "test_leakage_check_real_features_clean",
+     "test_sample_per_class_caps_and_keeps_rare",
+     "test_tree_shap_additivity_multiclass"
+    ],
+    "test_phase2_6_registry.py": [
+     "test_candidate_loads_offline_only",
+     "test_entries_are_immutable",
+     "test_keys_created_private_and_outside_repo",
+     "test_refuses_bad_manifest_signature",
+     "test_refuses_class_map_mismatch",
+     "test_refuses_features_mismatch",
+     "test_refuses_foreign_key",
+     "test_refuses_tampered_model_or_calibrator",
+     "test_refuses_tampered_state_log",
+     "test_rfc8032_vectors_pure_and_active_backend",
+     "test_transitions_and_promoted_load"
+    ],
+    "test_phase2_amendment1.py": [
+     "test_decide_rule",
+     "test_old_config_unchanged_behaviour",
+     "test_optional_keys_validated",
+     "test_scripts_take_config_option",
+     "test_select_primary_and_chosen",
+     "test_v2_1_config_loads_and_differs_only_where_intended"
+    ],
+    "test_phase3_config.py": [
+     "test_edited_or_crlf_file_fails_pin",
+     "test_invalid_values_listed_together",
+     "test_overrides_recorded_and_policy_locked",
+     "test_pinned_config_loads",
+     "test_refuses_test_split_in_pcap_source",
+     "test_refuses_test_split_in_source",
+     "test_speed_factor"
+    ],
+    "test_policy.py": [
+     "test_advance_closes_and_late_alerts_fold_in",
+     "test_aggregation_close_and_cooldown",
+     "test_alert_rule",
+     "test_keys_are_class_and_device",
+     "test_run_policy_equals_tracker_and_window_sweep",
+     "test_severity_from_config_with_medium_default"
+    ],
+    "test_rate_guard.py": [
+     "test_advance_earlier_time_is_noop",
+     "test_advance_quiet_line",
+     "test_constructor_validation",
+     "test_counts_mode_emits_below_threshold",
+     "test_deterministic_order",
+     "test_disabled_level",
+     "test_empty_input",
+     "test_flush",
+     "test_large_gre_flood_fast_and_bounded",
+     "test_late_packets_dropped_and_counted",
+     "test_per_proto_override",
+     "test_stream_vs_victim_aggregation",
+     "test_tcp_udp_after_flood_closes_window",
+     "test_tcp_udp_ignored",
+     "test_threshold_boundary",
+     "test_window_alignment_and_closing_order"
+    ],
+    "test_rate_guard_v2.py": [
+     "test_benign_at_threshold_never_alerts",
+     "test_empty_window_resets_streak",
+     "test_fallback_threshold_and_late_packets",
+     "test_families_separate_and_unprotected_not_counted",
+     "test_flood_alerts_on_third_consecutive_window",
+     "test_reader_equals_v1_tshark_reader_on_val_slice",
+     "test_reader_stops_at_cut",
+     "test_record_mode",
+     "test_split_confinement",
+     "test_v1_parity_wrapper_equals_v1_guard"
+    ],
+    "test_routing.py": [
+     "test_ip_mac_map_resolver",
+     "test_owner_truth_table",
+     "test_protected_device_rule",
+     "test_real_val_routing_matches_dataset_100pct"
+    ],
+    "test_runtime_e2e.py": [
+     "test_block_policy_is_lossless",
+     "test_end_to_end_tiny_stream",
+     "test_queue_overflow_counted_and_logged"
+    ],
+    "test_schemas.py": [
+     "test_all_errors_listed_together",
+     "test_assume_label",
+     "test_attack_empty_family_raises",
+     "test_attack_family_not_in_class_map_raises",
+     "test_bad_label_reported_not_raised",
+     "test_benign_with_family_raises",
+     "test_blank_mac_rule_reasons",
+     "test_class_map_crlf_fails",
+     "test_class_map_loads",
+     "test_class_map_one_byte_edit_fails_hash",
+     "test_class_map_reordered_fails_hash",
+     "test_class_map_structure_checks",
+     "test_dropped_constant_columns_tolerated",
+     "test_encode_valid_and_no_mutation",
+     "test_excluded_reaching_encoder_raises",
+     "test_extra_column_rejected",
+     "test_features_pin",
+     "test_lan_subnets_per_source_and_override",
+     "test_merge_reports",
+     "test_missing_feature_rejected",
+     "test_nan_inf_counted_not_failed",
+     "test_non_numeric_feature_rejected",
+     "test_null_ip_rejected",
+     "test_owner_col",
+     "test_reordered_features_rejected",
+     "test_schema_stage_columns_from_header",
+     "test_schema_stage_sees_rows_the_filter_would_reject",
+     "test_stages_split_checks",
+     "test_timestamps",
+     "test_to_binary_all_ids",
+     "test_to_binary_out_of_range_and_type",
+     "test_ts_format_matches_v1",
+     "test_unknown_label_raises_with_counts",
+     "test_unknown_source_raises",
+     "test_valid_frame_ok_and_not_mutated",
+     "test_verify_v2_lock_checks_orientation_map",
+     "test_verify_v2_lock_checks_phase2_prereg",
+     "test_verify_v2_lock_checks_phase3_prereg_and_config",
+     "test_verify_v2_lock_checks_prereg_amendment_1",
+     "test_verify_v2_lock_checks_prereg_amendment_2",
+     "test_verify_v2_lock_detects_edited_class_map",
+     "test_verify_v2_lock_detects_edited_config_py",
+     "test_verify_v2_lock_pins_pass",
+     "test_verify_v2_lock_with_v1"
+    ]
+   },
+   "total": 196,
+   "total_excl_v1": 180
+  },
+  "orient_r4": {
+   "commit": "f7b1d4ded99b228a9d4a52afeb2003e0e6f00c26",
+   "subject": "Orientation R4 step A (train, read-only): STOP - best admissible rule recall 75.25 % < 90 % (benign limit binds; reversed rows are two shapes, best rule catches",
+   "files": {
+    "test_alert_log.py": [
+     "test_bad_signature_and_other_key_fail",
+     "test_chain_verifies",
+     "test_cut_tail_detected_with_expected_count_or_head",
+     "test_deleted_reordered_inserted_lines_fail",
+     "test_edited_line_fails",
+     "test_refuses_existing_file_and_keys_in_repo",
+     "test_runtime_key_private_and_separate_from_registry_key"
+    ],
+    "test_diag_01.py": [
+     "test_best_threshold_both_directions",
+     "test_conflict_matrix",
+     "test_context_is_causal_and_windowed",
+     "test_majority_and_ceiling",
+     "test_round_sig",
+     "test_row_ids_exact_and_near"
+    ],
+    "test_diag_02.py": [
+     "test_derived_and_unpaired_defaults",
+     "test_ks_stat",
+     "test_normaliser_idempotent_and_leaves_unflagged_rows",
+     "test_rule_logic",
+     "test_swap_is_an_involution_on_single_packet_directions",
+     "test_swap_map_covers_every_feature_once"
+    ],
+    "test_flow_source.py": [
+     "test_emission_time_reconstruction",
+     "test_event_slice_and_busiest_window",
+     "test_order_by_emission_time_ties_in_file_order",
+     "test_pcap_source_refuses_unsliced_or_test_pcaps",
+     "test_raw_row_format",
+     "test_real_val_replay_covers_every_flow_once",
+     "test_refuses_test_split",
+     "test_speed_pacing_and_ticks"
+    ],
+    "test_inference.py": [
+     "test_explain_topk_and_additivity",
+     "test_nan_inf_policy_and_non_numeric",
+     "test_routed_uses_each_groups_model",
+     "test_single_equals_batch_equals_offline_global",
+     "test_vector_equals_offline_matrix"
+    ],
+    "test_model_loader.py": [
+     "test_missing_key_and_seed_outside_evaluation_refused",
+     "test_promoted_global_loads_and_candidate_refused",
+     "test_real_registry_promoted_global_and_routed_evaluation",
+     "test_real_seed_load_from_step22",
+     "test_routed_routing_from_serves_groups_and_bad_sets_refused",
+     "test_tampered_model_refused",
+     "test_wrong_class_map_features_or_orientation_refused"
+    ],
+    "test_orientation.py": [
+     "test_columns_order_and_refusals",
+     "test_dict_api_equals_dataframe_api",
+     "test_flow_id_rebuild_and_down_up",
+     "test_map_pinned_and_structural",
+     "test_non_tcp_never_touched",
+     "test_r3_truth_table",
+     "test_swap_twice_is_identity_on_pairs_and_identity",
+     "test_unpaired_defaults_port_scan_shape"
+    ],
+    "test_phase2_1_config.py": [
+     "test_class_weights",
+     "test_config_collects_all_errors",
+     "test_config_crlf_and_bad_json",
+     "test_config_rejections",
+     "test_failed_run_kept_not_deleted",
+     "test_load_split_refuses_test",
+     "test_phase2_scripts_never_name_the_test_file",
+     "test_pooled_mask",
+     "test_real_config_valid",
+     "test_run_id_validation",
+     "test_run_lifecycle_and_refusal",
+     "test_specialist_groups",
+     "test_stratified_sample",
+     "test_stratified_split"
+    ],
+    "test_phase2_2_train.py": [
+     "test_build_specs_counts_and_ids",
+     "test_build_specs_data_agnostic_and_skips",
+     "test_subset_mask_pools_attacks",
+     "test_train_one_seed_determinism",
+     "test_train_one_zero_row_class_and_early_stopping",
+     "test_weight_modes_reach_xgboost"
+    ],
+    "test_phase2_3_evaluate.py": [
+     "test_assemble_takes_each_rows_model",
+     "test_benign_hours_active_segments",
+     "test_build_systems_and_route",
+     "test_clopper_pearson",
+     "test_evaluate_entity_subsets_and_false_alarms",
+     "test_fp_threshold_v1_rule",
+     "test_garwood",
+     "test_per_class_and_macro_versions",
+     "test_precision_zero_when_never_predicted",
+     "test_t_ci"
+    ],
+    "test_phase2_4_calibrate.py": [
+     "test_calibration_improves_overconfident_model",
+     "test_cross_fit_folds_disjoint_and_stratified",
+     "test_ece_and_brier_known_values",
+     "test_fit_temperature_recovers_truth",
+     "test_nll_matches_naive_and_keeps_tiny_losses",
+     "test_reliability_bins",
+     "test_temperature_one_is_identity_and_bounds_hold"
+    ],
+    "test_phase2_5_shap.py": [
+     "test_dominance_flag",
+     "test_leakage_check_flags_identifiers",
+     "test_leakage_check_real_features_clean",
+     "test_sample_per_class_caps_and_keeps_rare",
+     "test_tree_shap_additivity_multiclass"
+    ],
+    "test_phase2_6_registry.py": [
+     "test_candidate_loads_offline_only",
+     "test_entries_are_immutable",
+     "test_keys_created_private_and_outside_repo",
+     "test_refuses_bad_manifest_signature",
+     "test_refuses_class_map_mismatch",
+     "test_refuses_features_mismatch",
+     "test_refuses_foreign_key",
+     "test_refuses_tampered_model_or_calibrator",
+     "test_refuses_tampered_state_log",
+     "test_rfc8032_vectors_pure_and_active_backend",
+     "test_transitions_and_promoted_load"
+    ],
+    "test_phase2_amendment1.py": [
+     "test_decide_rule",
+     "test_old_config_unchanged_behaviour",
+     "test_optional_keys_validated",
+     "test_scripts_take_config_option",
+     "test_select_primary_and_chosen",
+     "test_v2_1_config_loads_and_differs_only_where_intended"
+    ],
+    "test_phase3_config.py": [
+     "test_edited_or_crlf_file_fails_pin",
+     "test_invalid_values_listed_together",
+     "test_overrides_recorded_and_policy_locked",
+     "test_pinned_config_loads",
+     "test_refuses_test_split_in_pcap_source",
+     "test_refuses_test_split_in_source",
+     "test_speed_factor"
+    ],
+    "test_policy.py": [
+     "test_advance_closes_and_late_alerts_fold_in",
+     "test_aggregation_close_and_cooldown",
+     "test_alert_rule",
+     "test_keys_are_class_and_device",
+     "test_run_policy_equals_tracker_and_window_sweep",
+     "test_severity_from_config_with_medium_default"
+    ],
+    "test_rate_guard.py": [
+     "test_advance_earlier_time_is_noop",
+     "test_advance_quiet_line",
+     "test_constructor_validation",
+     "test_counts_mode_emits_below_threshold",
+     "test_deterministic_order",
+     "test_disabled_level",
+     "test_empty_input",
+     "test_flush",
+     "test_large_gre_flood_fast_and_bounded",
+     "test_late_packets_dropped_and_counted",
+     "test_per_proto_override",
+     "test_stream_vs_victim_aggregation",
+     "test_tcp_udp_after_flood_closes_window",
+     "test_tcp_udp_ignored",
+     "test_threshold_boundary",
+     "test_window_alignment_and_closing_order"
+    ],
+    "test_rate_guard_v2.py": [
+     "test_benign_at_threshold_never_alerts",
+     "test_empty_window_resets_streak",
+     "test_fallback_threshold_and_late_packets",
+     "test_families_separate_and_unprotected_not_counted",
+     "test_flood_alerts_on_third_consecutive_window",
+     "test_reader_equals_v1_tshark_reader_on_val_slice",
+     "test_reader_stops_at_cut",
+     "test_record_mode",
+     "test_split_confinement",
+     "test_v1_parity_wrapper_equals_v1_guard"
+    ],
+    "test_routing.py": [
+     "test_ip_mac_map_resolver",
+     "test_owner_truth_table",
+     "test_protected_device_rule",
+     "test_real_val_routing_matches_dataset_100pct"
+    ],
+    "test_runtime_e2e.py": [
+     "test_block_policy_is_lossless",
+     "test_end_to_end_tiny_stream",
+     "test_queue_overflow_counted_and_logged"
+    ],
+    "test_schemas.py": [
+     "test_all_errors_listed_together",
+     "test_assume_label",
+     "test_attack_empty_family_raises",
+     "test_attack_family_not_in_class_map_raises",
+     "test_bad_label_reported_not_raised",
+     "test_benign_with_family_raises",
+     "test_blank_mac_rule_reasons",
+     "test_class_map_crlf_fails",
+     "test_class_map_loads",
+     "test_class_map_one_byte_edit_fails_hash",
+     "test_class_map_reordered_fails_hash",
+     "test_class_map_structure_checks",
+     "test_dropped_constant_columns_tolerated",
+     "test_encode_valid_and_no_mutation",
+     "test_excluded_reaching_encoder_raises",
+     "test_extra_column_rejected",
+     "test_features_pin",
+     "test_lan_subnets_per_source_and_override",
+     "test_merge_reports",
+     "test_missing_feature_rejected",
+     "test_nan_inf_counted_not_failed",
+     "test_non_numeric_feature_rejected",
+     "test_null_ip_rejected",
+     "test_owner_col",
+     "test_reordered_features_rejected",
+     "test_schema_stage_columns_from_header",
+     "test_schema_stage_sees_rows_the_filter_would_reject",
+     "test_stages_split_checks",
+     "test_timestamps",
+     "test_to_binary_all_ids",
+     "test_to_binary_out_of_range_and_type",
+     "test_ts_format_matches_v1",
+     "test_unknown_label_raises_with_counts",
+     "test_unknown_source_raises",
+     "test_valid_frame_ok_and_not_mutated",
+     "test_verify_v2_lock_checks_orientation_map",
+     "test_verify_v2_lock_checks_phase2_prereg",
+     "test_verify_v2_lock_checks_phase3_prereg_and_config",
+     "test_verify_v2_lock_checks_prereg_amendment_1",
+     "test_verify_v2_lock_checks_prereg_amendment_2",
+     "test_verify_v2_lock_detects_edited_class_map",
+     "test_verify_v2_lock_detects_edited_config_py",
+     "test_verify_v2_lock_pins_pass",
+     "test_verify_v2_lock_with_v1"
+    ]
+   },
+   "total": 196,
+   "total_excl_v1": 180
+  },
+  "phase3_1": {
+   "commit": "eabd7c90e52c861738be6231c7b2bd12f027549d",
+   "subject": "Phase 3.1 (val only): chunked predictions (parity PASS, identical to rerun_full row for row; flow peak 1407->1293 MB, packet path 8230->1383 MB, small residual ",
+   "files": {
+    "test_alert_log.py": [
+     "test_bad_signature_and_other_key_fail",
+     "test_chain_verifies",
+     "test_cut_tail_detected_with_expected_count_or_head",
+     "test_deleted_reordered_inserted_lines_fail",
+     "test_edited_line_fails",
+     "test_refuses_existing_file_and_keys_in_repo",
+     "test_runtime_key_private_and_separate_from_registry_key"
+    ],
+    "test_diag_01.py": [
+     "test_best_threshold_both_directions",
+     "test_conflict_matrix",
+     "test_context_is_causal_and_windowed",
+     "test_majority_and_ceiling",
+     "test_round_sig",
+     "test_row_ids_exact_and_near"
+    ],
+    "test_diag_02.py": [
+     "test_derived_and_unpaired_defaults",
+     "test_ks_stat",
+     "test_normaliser_idempotent_and_leaves_unflagged_rows",
+     "test_rule_logic",
+     "test_swap_is_an_involution_on_single_packet_directions",
+     "test_swap_map_covers_every_feature_once"
+    ],
+    "test_flow_source.py": [
+     "test_emission_time_reconstruction",
+     "test_event_slice_and_busiest_window",
+     "test_order_by_emission_time_ties_in_file_order",
+     "test_pcap_source_refuses_unsliced_or_test_pcaps",
+     "test_raw_row_format",
+     "test_real_val_replay_covers_every_flow_once",
+     "test_refuses_test_split",
+     "test_speed_pacing_and_ticks"
+    ],
+    "test_inference.py": [
+     "test_explain_topk_and_additivity",
+     "test_nan_inf_policy_and_non_numeric",
+     "test_routed_uses_each_groups_model",
+     "test_single_equals_batch_equals_offline_global",
+     "test_vector_equals_offline_matrix"
+    ],
+    "test_mac_learner.py": [
+     "test_arp_wins_on_conflict",
+     "test_binding_and_ignored_sources",
+     "test_change_and_flap_events",
+     "test_gateway_rule",
+     "test_learned_then_static_falls_back",
+     "test_packet_reader_arp_option",
+     "test_runtime_causality_no_lookahead",
+     "test_unknown_binding_routes_to_fallback_and_learned_routes"
+    ],
+    "test_model_loader.py": [
+     "test_missing_key_and_seed_outside_evaluation_refused",
+     "test_promoted_global_loads_and_candidate_refused",
+     "test_real_registry_promoted_global_and_routed_evaluation",
+     "test_real_seed_load_from_step22",
+     "test_routed_routing_from_serves_groups_and_bad_sets_refused",
+     "test_tampered_model_refused",
+     "test_wrong_class_map_features_or_orientation_refused"
+    ],
+    "test_orientation.py": [
+     "test_columns_order_and_refusals",
+     "test_dict_api_equals_dataframe_api",
+     "test_flow_id_rebuild_and_down_up",
+     "test_map_pinned_and_structural",
+     "test_non_tcp_never_touched",
+     "test_r3_truth_table",
+     "test_swap_twice_is_identity_on_pairs_and_identity",
+     "test_unpaired_defaults_port_scan_shape"
+    ],
+    "test_phase2_1_config.py": [
+     "test_class_weights",
+     "test_config_collects_all_errors",
+     "test_config_crlf_and_bad_json",
+     "test_config_rejections",
+     "test_failed_run_kept_not_deleted",
+     "test_load_split_refuses_test",
+     "test_phase2_scripts_never_name_the_test_file",
+     "test_pooled_mask",
+     "test_real_config_valid",
+     "test_run_id_validation",
+     "test_run_lifecycle_and_refusal",
+     "test_specialist_groups",
+     "test_stratified_sample",
+     "test_stratified_split"
+    ],
+    "test_phase2_2_train.py": [
+     "test_build_specs_counts_and_ids",
+     "test_build_specs_data_agnostic_and_skips",
+     "test_subset_mask_pools_attacks",
+     "test_train_one_seed_determinism",
+     "test_train_one_zero_row_class_and_early_stopping",
+     "test_weight_modes_reach_xgboost"
+    ],
+    "test_phase2_3_evaluate.py": [
+     "test_assemble_takes_each_rows_model",
+     "test_benign_hours_active_segments",
+     "test_build_systems_and_route",
+     "test_clopper_pearson",
+     "test_evaluate_entity_subsets_and_false_alarms",
+     "test_fp_threshold_v1_rule",
+     "test_garwood",
+     "test_per_class_and_macro_versions",
+     "test_precision_zero_when_never_predicted",
+     "test_t_ci"
+    ],
+    "test_phase2_4_calibrate.py": [
+     "test_calibration_improves_overconfident_model",
+     "test_cross_fit_folds_disjoint_and_stratified",
+     "test_ece_and_brier_known_values",
+     "test_fit_temperature_recovers_truth",
+     "test_nll_matches_naive_and_keeps_tiny_losses",
+     "test_reliability_bins",
+     "test_temperature_one_is_identity_and_bounds_hold"
+    ],
+    "test_phase2_5_shap.py": [
+     "test_dominance_flag",
+     "test_leakage_check_flags_identifiers",
+     "test_leakage_check_real_features_clean",
+     "test_sample_per_class_caps_and_keeps_rare",
+     "test_tree_shap_additivity_multiclass"
+    ],
+    "test_phase2_6_registry.py": [
+     "test_candidate_loads_offline_only",
+     "test_entries_are_immutable",
+     "test_keys_created_private_and_outside_repo",
+     "test_refuses_bad_manifest_signature",
+     "test_refuses_class_map_mismatch",
+     "test_refuses_features_mismatch",
+     "test_refuses_foreign_key",
+     "test_refuses_tampered_model_or_calibrator",
+     "test_refuses_tampered_state_log",
+     "test_rfc8032_vectors_pure_and_active_backend",
+     "test_transitions_and_promoted_load"
+    ],
+    "test_phase2_amendment1.py": [
+     "test_decide_rule",
+     "test_old_config_unchanged_behaviour",
+     "test_optional_keys_validated",
+     "test_scripts_take_config_option",
+     "test_select_primary_and_chosen",
+     "test_v2_1_config_loads_and_differs_only_where_intended"
+    ],
+    "test_phase3_config.py": [
+     "test_edited_or_crlf_file_fails_pin",
+     "test_invalid_values_listed_together",
+     "test_overrides_recorded_and_policy_locked",
+     "test_pinned_config_loads",
+     "test_refuses_test_split_in_pcap_source",
+     "test_refuses_test_split_in_source",
+     "test_speed_factor"
+    ],
+    "test_policy.py": [
+     "test_advance_closes_and_late_alerts_fold_in",
+     "test_aggregation_close_and_cooldown",
+     "test_alert_rule",
+     "test_keys_are_class_and_device",
+     "test_run_policy_equals_tracker_and_window_sweep",
+     "test_severity_from_config_with_medium_default"
+    ],
+    "test_predictions_io.py": [
+     "test_atomic_no_tmp_and_sha_checked",
+     "test_both_layouts_give_identical_frames",
+     "test_chunk_by_rows_exact",
+     "test_chunk_by_time",
+     "test_crash_between_parts_leaves_readable_prefix",
+     "test_read_single_layout_and_refusals",
+     "test_runtime_chunked_config_same_rows"
+    ],
+    "test_rate_guard.py": [
+     "test_advance_earlier_time_is_noop",
+     "test_advance_quiet_line",
+     "test_constructor_validation",
+     "test_counts_mode_emits_below_threshold",
+     "test_deterministic_order",
+     "test_disabled_level",
+     "test_empty_input",
+     "test_flush",
+     "test_large_gre_flood_fast_and_bounded",
+     "test_late_packets_dropped_and_counted",
+     "test_per_proto_override",
+     "test_stream_vs_victim_aggregation",
+     "test_tcp_udp_after_flood_closes_window",
+     "test_tcp_udp_ignored",
+     "test_threshold_boundary",
+     "test_window_alignment_and_closing_order"
+    ],
+    "test_rate_guard_v2.py": [
+     "test_benign_at_threshold_never_alerts",
+     "test_empty_window_resets_streak",
+     "test_fallback_threshold_and_late_packets",
+     "test_families_separate_and_unprotected_not_counted",
+     "test_flood_alerts_on_third_consecutive_window",
+     "test_reader_equals_v1_tshark_reader_on_val_slice",
+     "test_reader_stops_at_cut",
+     "test_record_mode",
+     "test_split_confinement",
+     "test_v1_parity_wrapper_equals_v1_guard"
+    ],
+    "test_routing.py": [
+     "test_ip_mac_map_resolver",
+     "test_owner_truth_table",
+     "test_protected_device_rule",
+     "test_real_val_routing_matches_dataset_100pct"
+    ],
+    "test_runtime_e2e.py": [
+     "test_block_policy_is_lossless",
+     "test_end_to_end_tiny_stream",
+     "test_queue_overflow_counted_and_logged"
+    ],
+    "test_schemas.py": [
+     "test_all_errors_listed_together",
+     "test_assume_label",
+     "test_attack_empty_family_raises",
+     "test_attack_family_not_in_class_map_raises",
+     "test_bad_label_reported_not_raised",
+     "test_benign_with_family_raises",
+     "test_blank_mac_rule_reasons",
+     "test_class_map_crlf_fails",
+     "test_class_map_loads",
+     "test_class_map_one_byte_edit_fails_hash",
+     "test_class_map_reordered_fails_hash",
+     "test_class_map_structure_checks",
+     "test_dropped_constant_columns_tolerated",
+     "test_encode_valid_and_no_mutation",
+     "test_excluded_reaching_encoder_raises",
+     "test_extra_column_rejected",
+     "test_features_pin",
+     "test_lan_subnets_per_source_and_override",
+     "test_merge_reports",
+     "test_missing_feature_rejected",
+     "test_nan_inf_counted_not_failed",
+     "test_non_numeric_feature_rejected",
+     "test_null_ip_rejected",
+     "test_owner_col",
+     "test_reordered_features_rejected",
+     "test_schema_stage_columns_from_header",
+     "test_schema_stage_sees_rows_the_filter_would_reject",
+     "test_stages_split_checks",
+     "test_timestamps",
+     "test_to_binary_all_ids",
+     "test_to_binary_out_of_range_and_type",
+     "test_ts_format_matches_v1",
+     "test_unknown_label_raises_with_counts",
+     "test_unknown_source_raises",
+     "test_valid_frame_ok_and_not_mutated",
+     "test_verify_v2_lock_checks_orientation_map",
+     "test_verify_v2_lock_checks_phase2_prereg",
+     "test_verify_v2_lock_checks_phase3_prereg_and_config",
+     "test_verify_v2_lock_checks_prereg_amendment_1",
+     "test_verify_v2_lock_checks_prereg_amendment_2",
+     "test_verify_v2_lock_detects_edited_class_map",
+     "test_verify_v2_lock_detects_edited_config_py",
+     "test_verify_v2_lock_pins_pass",
+     "test_verify_v2_lock_with_v1"
+    ]
+   },
+   "total": 211,
+   "total_excl_v1": 195
+  },
+  "phase4": {
+   "commit": "14029adbfd05debfe671da4dc922d32dc5135e93",
+   "subject": "V2 Phase 4 (val only): continual-learning loop - val-A/B split, runtime on val-A (parity exact), review queue, simulated operator, Ed25519-signed append-only la",
+   "files": {
+    "test_alert_log.py": [
+     "test_bad_signature_and_other_key_fail",
+     "test_chain_verifies",
+     "test_cut_tail_detected_with_expected_count_or_head",
+     "test_deleted_reordered_inserted_lines_fail",
+     "test_edited_line_fails",
+     "test_refuses_existing_file_and_keys_in_repo",
+     "test_runtime_key_private_and_separate_from_registry_key"
+    ],
+    "test_cl_gate.py": [
+     "test_all_hold_pass",
+     "test_i_limit_inclusive",
+     "test_i_recall_drop_fails",
+     "test_ii_macro_f1_fails",
+     "test_iii_fa_fails",
+     "test_nonrare_and_eval_set",
+     "test_poison_targets_and_flip",
+     "test_poisoning_verdict",
+     "test_rare_class_not_gated",
+     "test_verdict_affected_group_blocks",
+     "test_verdict_equal_needs_cost",
+     "test_verdict_lower_wins",
+     "test_verdict_zero_vs_zero_not_lower"
+    ],
+    "test_cl_loop_e2e.py": [
+     "test_fit_equals_step22_train_one",
+     "test_gate_and_candidate_registration",
+     "test_queue_labels_and_validator",
+     "test_register_default_by_unchanged",
+     "test_warm_start_semantics"
+    ],
+    "test_cl_split.py": [
+     "test_config_edited_or_crlf_fails_pin",
+     "test_config_invalid_values_listed",
+     "test_config_pinned_loads",
+     "test_jsonable",
+     "test_rows_outside_window_refused",
+     "test_val_interval",
+     "test_windows_clip_and_midpoint"
+    ],
+    "test_cl_validator.py": [
+     "test_a_tampered_or_unsigned_fires",
+     "test_b_id_mismatch_fires",
+     "test_b_unknown_label_fires",
+     "test_c_only_confident_items_count",
+     "test_c_threshold",
+     "test_clean_batch_valid",
+     "test_multiple_rules_reported"
+    ],
+    "test_diag_01.py": [
+     "test_best_threshold_both_directions",
+     "test_conflict_matrix",
+     "test_context_is_causal_and_windowed",
+     "test_majority_and_ceiling",
+     "test_round_sig",
+     "test_row_ids_exact_and_near"
+    ],
+    "test_diag_02.py": [
+     "test_derived_and_unpaired_defaults",
+     "test_ks_stat",
+     "test_normaliser_idempotent_and_leaves_unflagged_rows",
+     "test_rule_logic",
+     "test_swap_is_an_involution_on_single_packet_directions",
+     "test_swap_map_covers_every_feature_once"
+    ],
+    "test_flow_source.py": [
+     "test_emission_time_reconstruction",
+     "test_event_slice_and_busiest_window",
+     "test_order_by_emission_time_ties_in_file_order",
+     "test_pcap_source_refuses_unsliced_or_test_pcaps",
+     "test_raw_row_format",
+     "test_real_val_replay_covers_every_flow_once",
+     "test_refuses_test_split",
+     "test_speed_pacing_and_ticks"
+    ],
+    "test_inference.py": [
+     "test_explain_topk_and_additivity",
+     "test_nan_inf_policy_and_non_numeric",
+     "test_routed_uses_each_groups_model",
+     "test_single_equals_batch_equals_offline_global",
+     "test_vector_equals_offline_matrix"
+    ],
+    "test_label_store.py": [
+     "test_append_only_and_index_chain",
+     "test_duplicate_uid_refused",
+     "test_edited_manifest_refused",
+     "test_keys_inside_repo_refused_and_mode",
+     "test_missing_or_foreign_signature_refused",
+     "test_roundtrip_signed",
+     "test_tampered_parquet_refused",
+     "test_unindexed_batch_refused"
+    ],
+    "test_mac_learner.py": [
+     "test_arp_wins_on_conflict",
+     "test_binding_and_ignored_sources",
+     "test_change_and_flap_events",
+     "test_gateway_rule",
+     "test_learned_then_static_falls_back",
+     "test_packet_reader_arp_option",
+     "test_runtime_causality_no_lookahead",
+     "test_unknown_binding_routes_to_fallback_and_learned_routes"
+    ],
+    "test_model_loader.py": [
+     "test_missing_key_and_seed_outside_evaluation_refused",
+     "test_promoted_global_loads_and_candidate_refused",
+     "test_real_registry_promoted_global_and_routed_evaluation",
+     "test_real_seed_load_from_step22",
+     "test_routed_routing_from_serves_groups_and_bad_sets_refused",
+     "test_tampered_model_refused",
+     "test_wrong_class_map_features_or_orientation_refused"
+    ],
+    "test_operator_sim.py": [
+     "test_bad_inputs",
+     "test_budget_ge_queue_takes_all",
+     "test_budget_proportions_and_uniform_within_reason",
+     "test_budget_split_edge_cases",
+     "test_noise_flips_to_other_class_at_rate",
+     "test_noise_zero_is_ground_truth_whole_queue",
+     "test_seeded"
+    ],
+    "test_orientation.py": [
+     "test_columns_order_and_refusals",
+     "test_dict_api_equals_dataframe_api",
+     "test_flow_id_rebuild_and_down_up",
+     "test_map_pinned_and_structural",
+     "test_non_tcp_never_touched",
+     "test_r3_truth_table",
+     "test_swap_twice_is_identity_on_pairs_and_identity",
+     "test_unpaired_defaults_port_scan_shape"
+    ],
+    "test_phase2_1_config.py": [
+     "test_class_weights",
+     "test_config_collects_all_errors",
+     "test_config_crlf_and_bad_json",
+     "test_config_rejections",
+     "test_failed_run_kept_not_deleted",
+     "test_load_split_refuses_test",
+     "test_phase2_scripts_never_name_the_test_file",
+     "test_pooled_mask",
+     "test_real_config_valid",
+     "test_run_id_validation",
+     "test_run_lifecycle_and_refusal",
+     "test_specialist_groups",
+     "test_stratified_sample",
+     "test_stratified_split"
+    ],
+    "test_phase2_2_train.py": [
+     "test_build_specs_counts_and_ids",
+     "test_build_specs_data_agnostic_and_skips",
+     "test_subset_mask_pools_attacks",
+     "test_train_one_seed_determinism",
+     "test_train_one_zero_row_class_and_early_stopping",
+     "test_weight_modes_reach_xgboost"
+    ],
+    "test_phase2_3_evaluate.py": [
+     "test_assemble_takes_each_rows_model",
+     "test_benign_hours_active_segments",
+     "test_build_systems_and_route",
+     "test_clopper_pearson",
+     "test_evaluate_entity_subsets_and_false_alarms",
+     "test_fp_threshold_v1_rule",
+     "test_garwood",
+     "test_per_class_and_macro_versions",
+     "test_precision_zero_when_never_predicted",
+     "test_t_ci"
+    ],
+    "test_phase2_4_calibrate.py": [
+     "test_calibration_improves_overconfident_model",
+     "test_cross_fit_folds_disjoint_and_stratified",
+     "test_ece_and_brier_known_values",
+     "test_fit_temperature_recovers_truth",
+     "test_nll_matches_naive_and_keeps_tiny_losses",
+     "test_reliability_bins",
+     "test_temperature_one_is_identity_and_bounds_hold"
+    ],
+    "test_phase2_5_shap.py": [
+     "test_dominance_flag",
+     "test_leakage_check_flags_identifiers",
+     "test_leakage_check_real_features_clean",
+     "test_sample_per_class_caps_and_keeps_rare",
+     "test_tree_shap_additivity_multiclass"
+    ],
+    "test_phase2_6_registry.py": [
+     "test_candidate_loads_offline_only",
+     "test_entries_are_immutable",
+     "test_keys_created_private_and_outside_repo",
+     "test_refuses_bad_manifest_signature",
+     "test_refuses_class_map_mismatch",
+     "test_refuses_features_mismatch",
+     "test_refuses_foreign_key",
+     "test_refuses_tampered_model_or_calibrator",
+     "test_refuses_tampered_state_log",
+     "test_rfc8032_vectors_pure_and_active_backend",
+     "test_transitions_and_promoted_load"
+    ],
+    "test_phase2_amendment1.py": [
+     "test_decide_rule",
+     "test_old_config_unchanged_behaviour",
+     "test_optional_keys_validated",
+     "test_scripts_take_config_option",
+     "test_select_primary_and_chosen",
+     "test_v2_1_config_loads_and_differs_only_where_intended"
+    ],
+    "test_phase3_config.py": [
+     "test_edited_or_crlf_file_fails_pin",
+     "test_invalid_values_listed_together",
+     "test_overrides_recorded_and_policy_locked",
+     "test_pinned_config_loads",
+     "test_refuses_test_split_in_pcap_source",
+     "test_refuses_test_split_in_source",
+     "test_speed_factor"
+    ],
+    "test_policy.py": [
+     "test_advance_closes_and_late_alerts_fold_in",
+     "test_aggregation_close_and_cooldown",
+     "test_alert_rule",
+     "test_keys_are_class_and_device",
+     "test_run_policy_equals_tracker_and_window_sweep",
+     "test_severity_from_config_with_medium_default"
+    ],
+    "test_predictions_io.py": [
+     "test_atomic_no_tmp_and_sha_checked",
+     "test_both_layouts_give_identical_frames",
+     "test_chunk_by_rows_exact",
+     "test_chunk_by_time",
+     "test_crash_between_parts_leaves_readable_prefix",
+     "test_read_single_layout_and_refusals",
+     "test_runtime_chunked_config_same_rows"
+    ],
+    "test_rate_guard.py": [
+     "test_advance_earlier_time_is_noop",
+     "test_advance_quiet_line",
+     "test_constructor_validation",
+     "test_counts_mode_emits_below_threshold",
+     "test_deterministic_order",
+     "test_disabled_level",
+     "test_empty_input",
+     "test_flush",
+     "test_large_gre_flood_fast_and_bounded",
+     "test_late_packets_dropped_and_counted",
+     "test_per_proto_override",
+     "test_stream_vs_victim_aggregation",
+     "test_tcp_udp_after_flood_closes_window",
+     "test_tcp_udp_ignored",
+     "test_threshold_boundary",
+     "test_window_alignment_and_closing_order"
+    ],
+    "test_rate_guard_v2.py": [
+     "test_benign_at_threshold_never_alerts",
+     "test_empty_window_resets_streak",
+     "test_fallback_threshold_and_late_packets",
+     "test_families_separate_and_unprotected_not_counted",
+     "test_flood_alerts_on_third_consecutive_window",
+     "test_reader_equals_v1_tshark_reader_on_val_slice",
+     "test_reader_stops_at_cut",
+     "test_record_mode",
+     "test_split_confinement",
+     "test_v1_parity_wrapper_equals_v1_guard"
+    ],
+    "test_replay_buffer.py": [
+     "test_bad_inputs",
+     "test_positions_valid_and_deterministic",
+     "test_small_class_kept_whole",
+     "test_stratification_counts",
+     "test_tiny_stratum_keeps_one"
+    ],
+    "test_review_queue.py": [
+     "test_every_alert_queued_with_reason_alert",
+     "test_no_alerts_and_all_alerts",
+     "test_random_items_are_non_alerted_exact_count",
+     "test_rate_one_and_bad_rate",
+     "test_rate_zero_alerts_only_and_ascending",
+     "test_seeded_determinism"
+    ],
+    "test_routing.py": [
+     "test_ip_mac_map_resolver",
+     "test_owner_truth_table",
+     "test_protected_device_rule",
+     "test_real_val_routing_matches_dataset_100pct"
+    ],
+    "test_runtime_e2e.py": [
+     "test_block_policy_is_lossless",
+     "test_end_to_end_tiny_stream",
+     "test_queue_overflow_counted_and_logged"
+    ],
+    "test_schemas.py": [
+     "test_all_errors_listed_together",
+     "test_assume_label",
+     "test_attack_empty_family_raises",
+     "test_attack_family_not_in_class_map_raises",
+     "test_bad_label_reported_not_raised",
+     "test_benign_with_family_raises",
+     "test_blank_mac_rule_reasons",
+     "test_class_map_crlf_fails",
+     "test_class_map_loads",
+     "test_class_map_one_byte_edit_fails_hash",
+     "test_class_map_reordered_fails_hash",
+     "test_class_map_structure_checks",
+     "test_dropped_constant_columns_tolerated",
+     "test_encode_valid_and_no_mutation",
+     "test_excluded_reaching_encoder_raises",
+     "test_extra_column_rejected",
+     "test_features_pin",
+     "test_lan_subnets_per_source_and_override",
+     "test_merge_reports",
+     "test_missing_feature_rejected",
+     "test_nan_inf_counted_not_failed",
+     "test_non_numeric_feature_rejected",
+     "test_null_ip_rejected",
+     "test_owner_col",
+     "test_reordered_features_rejected",
+     "test_schema_stage_columns_from_header",
+     "test_schema_stage_sees_rows_the_filter_would_reject",
+     "test_stages_split_checks",
+     "test_timestamps",
+     "test_to_binary_all_ids",
+     "test_to_binary_out_of_range_and_type",
+     "test_ts_format_matches_v1",
+     "test_unknown_label_raises_with_counts",
+     "test_unknown_source_raises",
+     "test_valid_frame_ok_and_not_mutated",
+     "test_verify_v2_lock_checks_orientation_map",
+     "test_verify_v2_lock_checks_phase2_prereg",
+     "test_verify_v2_lock_checks_phase3_prereg_and_config",
+     "test_verify_v2_lock_checks_phase4_prereg_and_config",
+     "test_verify_v2_lock_checks_prereg_amendment_1",
+     "test_verify_v2_lock_checks_prereg_amendment_2",
+     "test_verify_v2_lock_detects_edited_class_map",
+     "test_verify_v2_lock_detects_edited_config_py",
+     "test_verify_v2_lock_pins_pass",
+     "test_verify_v2_lock_with_v1"
+    ]
+   },
+   "total": 270,
+   "total_excl_v1": 254
+  }
+ },
+ "v1_sha256_before": {
+  "tests/test_rate_guard.py": "5608054267fadfceacdec61c5497c18496616098e546d5113c57b2c58d6dc5bf",
+  "rate_guard.py": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef"
+ },
+ "now": {
+  "test_alert_log.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 0.3,
+   "failed": []
+  },
+  "test_cl_gate.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 13,
+   "ran": 13,
+   "passed": 13,
+   "exit": 0,
+   "seconds": 2.0,
+   "failed": []
+  },
+  "test_cl_loop_e2e.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 5,
+   "ran": 5,
+   "passed": 5,
+   "exit": 0,
+   "seconds": 7.3,
+   "failed": []
+  },
+  "test_cl_split.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 1.1,
+   "failed": []
+  },
+  "test_cl_validator.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 1.4,
+   "failed": []
+  },
+  "test_diag_01.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 6,
+   "ran": 6,
+   "passed": 6,
+   "exit": 0,
+   "seconds": 2.1,
+   "failed": []
+  },
+  "test_diag_02.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 6,
+   "ran": 6,
+   "passed": 6,
+   "exit": 0,
+   "seconds": 3.4,
+   "failed": []
+  },
+  "test_flow_source.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 8,
+   "ran": 8,
+   "passed": 8,
+   "exit": 0,
+   "seconds": 9.3,
+   "failed": []
+  },
+  "test_inference.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 5,
+   "ran": 5,
+   "passed": 5,
+   "exit": 0,
+   "seconds": 5.5,
+   "failed": []
+  },
+  "test_label_store.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 8,
+   "ran": 8,
+   "passed": 8,
+   "exit": 0,
+   "seconds": 1.3,
+   "failed": []
+  },
+  "test_mac_learner.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 14,
+   "ran": 14,
+   "passed": 14,
+   "exit": 0,
+   "seconds": 6.8,
+   "failed": []
+  },
+  "test_model_loader.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 4.3,
+   "failed": []
+  },
+  "test_operator_sim.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 0.4,
+   "failed": []
+  },
+  "test_orientation.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 8,
+   "ran": 8,
+   "passed": 8,
+   "exit": 0,
+   "seconds": 7.1,
+   "failed": []
+  },
+  "test_phase2_1_config.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 14,
+   "ran": 14,
+   "passed": 14,
+   "exit": 0,
+   "seconds": 1.5,
+   "failed": []
+  },
+  "test_phase2_2_train.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 6,
+   "ran": 6,
+   "passed": 6,
+   "exit": 0,
+   "seconds": 9.4,
+   "failed": []
+  },
+  "test_phase2_3_evaluate.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 10,
+   "ran": 10,
+   "passed": 10,
+   "exit": 0,
+   "seconds": 4.0,
+   "failed": []
+  },
+  "test_phase2_4_calibrate.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 4.1,
+   "failed": []
+  },
+  "test_phase2_5_shap.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 5,
+   "ran": 5,
+   "passed": 5,
+   "exit": 0,
+   "seconds": 3.7,
+   "failed": []
+  },
+  "test_phase2_6_registry.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 11,
+   "ran": 11,
+   "passed": 11,
+   "exit": 0,
+   "seconds": 3.7,
+   "failed": []
+  },
+  "test_phase2_amendment1.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 6,
+   "ran": 6,
+   "passed": 6,
+   "exit": 0,
+   "seconds": 1.3,
+   "failed": []
+  },
+  "test_phase3_config.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 1.1,
+   "failed": []
+  },
+  "test_policy.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 6,
+   "ran": 6,
+   "passed": 6,
+   "exit": 0,
+   "seconds": 1.1,
+   "failed": []
+  },
+  "test_predictions_io.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 7,
+   "ran": 7,
+   "passed": 7,
+   "exit": 0,
+   "seconds": 5.0,
+   "failed": []
+  },
+  "test_rate_guard.py": {
+   "method": "import-and-call driver (pytest not installed)",
+   "static_defs": 16,
+   "ran": 16,
+   "passed": 16,
+   "exit": 0,
+   "seconds": 5.3,
+   "failed": []
+  },
+  "test_rate_guard_v2.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 10,
+   "ran": 10,
+   "passed": 10,
+   "exit": 0,
+   "seconds": 6.1,
+   "failed": []
+  },
+  "test_replay_buffer.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 5,
+   "ran": 5,
+   "passed": 5,
+   "exit": 0,
+   "seconds": 0.4,
+   "failed": []
+  },
+  "test_review_queue.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 6,
+   "ran": 6,
+   "passed": 6,
+   "exit": 0,
+   "seconds": 0.4,
+   "failed": []
+  },
+  "test_routing.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 4,
+   "ran": 4,
+   "passed": 4,
+   "exit": 0,
+   "seconds": 4.1,
+   "failed": []
+  },
+  "test_runtime_e2e.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 3,
+   "ran": 3,
+   "passed": 3,
+   "exit": 0,
+   "seconds": 5.3,
+   "failed": []
+  },
+  "test_schemas.py": {
+   "method": "plain runner: python tests/<file>",
+   "static_defs": 45,
+   "ran": 45,
+   "passed": 45,
+   "exit": 0,
+   "seconds": 5.8,
+   "failed": []
+  }
+ },
+ "now_total_ran": 276,
+ "now_total_passed": 276,
+ "now_total_ran_excl_v1": 260,
+ "static_equals_ran": true,
+ "changes": {
+  "phase3->phase3_1": {
+   "test_mac_learner.py": {
+    "added": [
+     "test_arp_wins_on_conflict",
+     "test_binding_and_ignored_sources",
+     "test_change_and_flap_events",
+     "test_gateway_rule",
+     "test_learned_then_static_falls_back",
+     "test_packet_reader_arp_option",
+     "test_runtime_causality_no_lookahead",
+     "test_unknown_binding_routes_to_fallback_and_learned_routes"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_predictions_io.py": {
+    "added": [
+     "test_atomic_no_tmp_and_sha_checked",
+     "test_both_layouts_give_identical_frames",
+     "test_chunk_by_rows_exact",
+     "test_chunk_by_time",
+     "test_crash_between_parts_leaves_readable_prefix",
+     "test_read_single_layout_and_refusals",
+     "test_runtime_chunked_config_same_rows"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   }
+  },
+  "phase3_1->phase4": {
+   "test_cl_gate.py": {
+    "added": [
+     "test_all_hold_pass",
+     "test_i_limit_inclusive",
+     "test_i_recall_drop_fails",
+     "test_ii_macro_f1_fails",
+     "test_iii_fa_fails",
+     "test_nonrare_and_eval_set",
+     "test_poison_targets_and_flip",
+     "test_poisoning_verdict",
+     "test_rare_class_not_gated",
+     "test_verdict_affected_group_blocks",
+     "test_verdict_equal_needs_cost",
+     "test_verdict_lower_wins",
+     "test_verdict_zero_vs_zero_not_lower"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_cl_loop_e2e.py": {
+    "added": [
+     "test_fit_equals_step22_train_one",
+     "test_gate_and_candidate_registration",
+     "test_queue_labels_and_validator",
+     "test_register_default_by_unchanged",
+     "test_warm_start_semantics"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_cl_split.py": {
+    "added": [
+     "test_config_edited_or_crlf_fails_pin",
+     "test_config_invalid_values_listed",
+     "test_config_pinned_loads",
+     "test_jsonable",
+     "test_rows_outside_window_refused",
+     "test_val_interval",
+     "test_windows_clip_and_midpoint"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_cl_validator.py": {
+    "added": [
+     "test_a_tampered_or_unsigned_fires",
+     "test_b_id_mismatch_fires",
+     "test_b_unknown_label_fires",
+     "test_c_only_confident_items_count",
+     "test_c_threshold",
+     "test_clean_batch_valid",
+     "test_multiple_rules_reported"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_label_store.py": {
+    "added": [
+     "test_append_only_and_index_chain",
+     "test_duplicate_uid_refused",
+     "test_edited_manifest_refused",
+     "test_keys_inside_repo_refused_and_mode",
+     "test_missing_or_foreign_signature_refused",
+     "test_roundtrip_signed",
+     "test_tampered_parquet_refused",
+     "test_unindexed_batch_refused"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_operator_sim.py": {
+    "added": [
+     "test_bad_inputs",
+     "test_budget_ge_queue_takes_all",
+     "test_budget_proportions_and_uniform_within_reason",
+     "test_budget_split_edge_cases",
+     "test_noise_flips_to_other_class_at_rate",
+     "test_noise_zero_is_ground_truth_whole_queue",
+     "test_seeded"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_replay_buffer.py": {
+    "added": [
+     "test_bad_inputs",
+     "test_positions_valid_and_deterministic",
+     "test_small_class_kept_whole",
+     "test_stratification_counts",
+     "test_tiny_stratum_keeps_one"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_review_queue.py": {
+    "added": [
+     "test_every_alert_queued_with_reason_alert",
+     "test_no_alerts_and_all_alerts",
+     "test_random_items_are_non_alerted_exact_count",
+     "test_rate_one_and_bad_rate",
+     "test_rate_zero_alerts_only_and_ascending",
+     "test_seeded_determinism"
+    ],
+    "removed": [],
+    "new_file": true,
+    "file_gone": false
+   },
+   "test_schemas.py": {
+    "added": [
+     "test_verify_v2_lock_checks_phase4_prereg_and_config"
+    ],
+    "removed": [],
+    "new_file": false,
+    "file_gone": false
+   }
+  },
+  "phase4->now": {
+   "test_mac_learner.py": {
+    "added": [
+     "test_runtime_unexpected_gateway_health_log_predictions_unchanged",
+     "test_unexpected_gateway_absent_under_phase3_1_config_and_config_pin",
+     "test_unexpected_gateway_inventory_gateway_exempt",
+     "test_unexpected_gateway_none_on_port_scan_like_traffic",
+     "test_unexpected_gateway_spoofing_source_fires_once_per_mac",
+     "test_unexpected_gateway_warmup"
+    ],
+    "removed": [],
+    "new_file": false,
+    "file_gone": false
+   }
+  }
+ },
+ "removed_tests": [],
+ "v1_sha256_after": {
+  "tests/test_rate_guard.py": "5608054267fadfceacdec61c5497c18496616098e546d5113c57b2c58d6dc5bf",
+  "rate_guard.py": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef"
+ },
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ }
+}

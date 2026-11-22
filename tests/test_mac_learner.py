@@ -3,6 +3,10 @@ binding from IPv4 frames; ARP precedence; the gateway rule (threshold, window, d
 change and flap events; unknown binding -> the router's unknown rule (fallback group); causality in the runtime (a
 flow is routed only with packets up to its event time); learned_then_static fallback; ARP frames from a pcap
 (packet_source arp=True; off by default).
+Phase 3.2: the unexpected_gateway health event (warm-up; inventory gateway exempt; a spoofing source fires exactly
+once per MAC; port-scan-like traffic fires none; absent under config/v2_phase3_1.json); config/v2_phase3_2.json is
+pinned and differs from v2_phase3_1.json only in its note and the two new keys; in the runtime the event goes to the
+hash-chained health log and predictions are identical to the Phase 3.1 config's.
 
 Plain asserts, no pytest fixtures or imports. Usage (repo root): python tests/test_mac_learner.py
 """
@@ -189,6 +193,171 @@ def test_packet_reader_arp_option():
     for x in got:
         L.observe(x)
     assert L.resolve("10.0.0.1") == A and L.bind["10.0.0.1"][1] == "arp"
+
+
+# --------------------------------------------------------------------------- Phase 3.2: unexpected_gateway
+def _spoof(L, t0: float, mac: str, n: int, base: str = "172.16", dt_: float = 0.01) -> None:
+    """n frames from one MAC, each with a different (spoofed) source IP."""
+    for k in range(n):
+        L.observe(_ip(t0 + k * dt_, f"{base}.{k // 250}.{k % 250 + 1}", mac))
+
+
+def _unexpected(ev) -> list:
+    return [e for e in ev if e["kind"] == "unexpected_gateway"]
+
+
+def test_unexpected_gateway_warmup():
+    L = MLR.MacLearner(gateway_warmup_s=300, inventory={})
+    L.observe(_ip(1000.0, "10.0.0.1", A))                          # warm-up origin = first frame (t = 1000)
+    _spoof(L, 1001.0, B, 20)                                       # B becomes a gateway inside the warm-up
+    ev = L.drain_events()
+    assert B in L.gateways and not _unexpected(ev) and L.stats["gateway_in_warmup"] == 1
+    _spoof(L, 1400.0, B, 50)                                       # sticky: never fires later either
+    assert not _unexpected(L.drain_events())
+    _spoof(L, 1299.0, G, 9, base="172.17", dt_=0.0)                # at 1299 < 1300: still warm-up
+    assert G in L.gateways and not _unexpected(L.drain_events())
+    C2 = "02:00:00:00:00:0c"
+    _spoof(L, 1300.0, C2, 9, base="172.18", dt_=0.0)               # exactly at the end of the warm-up: fires
+    u = _unexpected(L.drain_events())
+    assert len(u) == 1 and u[0]["mac"] == C2 and u[0]["event_time"] == 1300.0
+    assert u[0]["distinct_source_ips"] == 9 and u[0]["first_time"] == 1300.0 and u[0]["last_time"] == 1300.0
+    assert u[0]["in_inventory"] is False and u[0]["inventory_role"] == "" and u[0]["mac_first_seen"] == 1300.0
+    M = MLR.MacLearner(gateway_warmup_s=0, inventory={})          # warm-up 0: the first new gateway fires
+    _spoof(M, 5.0, B, 9)
+    assert len(_unexpected(M.drain_events())) == 1
+
+
+def test_unexpected_gateway_inventory_gateway_exempt():
+    inv = {G: "gateway", "02:00:00:00:00:0d": "router", A: "iot"}
+    L = MLR.MacLearner(gateway_warmup_s=10, inventory=inv)
+    L.observe(_arp(0.0, "10.0.0.1", G))
+    for k in range(30):                                            # the router forwards remote hosts after warm-up
+        L.observe(_ip(100.0 + k, f"8.8.{k}.1", G))
+        L.observe(_ip(100.0 + k, f"9.9.{k}.1", "02:00:00:00:00:0d"))
+    ev = L.drain_events()
+    assert G in L.gateways and "02:00:00:00:00:0d" in L.gateways and not _unexpected(ev)
+    assert L.stats["gateway_inventory_exempt"] == 2
+    _spoof(L, 200.0, A, 12)                                        # an inventory IoT device spoofing: not exempt
+    u = _unexpected(L.drain_events())
+    assert len(u) == 1 and u[0]["mac"] == A and u[0]["in_inventory"] is True and u[0]["inventory_role"] == "iot"
+    assert u[0]["first_time"] == 200.0 and u[0]["last_time"] == 200.0 + 8 * 0.01
+    assert MLR.MacLearner(gateway_warmup_s=10, inventory={G.upper(): "Gateway"}).inventory == {G: "gateway"}
+
+
+def test_unexpected_gateway_spoofing_source_fires_once_per_mac():
+    L = MLR.MacLearner(gateway_warmup_s=300, inventory={})
+    L.observe(_ip(0.0, "10.0.0.1", "02:00:00:00:00:01"))
+    srcs = [f"02:00:00:00:01:{k:02x}" for k in range(3)]
+    for rnd in range(4):                                           # three flood sources, spoofing for a long time
+        for j, m in enumerate(srcs):
+            _spoof(L, 400.0 + 200.0 * rnd + j, m, 200, base=f"10.{100 + j}")
+    u = _unexpected(L.drain_events())
+    assert sorted(e["mac"] for e in u) == sorted(srcs), u
+    assert all(e["distinct_source_ips"] == 9 and e["first_time"] < e["last_time"] for e in u)
+    assert L.stats["unexpected_gateway"] == 3
+
+
+def test_unexpected_gateway_none_on_port_scan_like_traffic():
+    """A scanner (one source IP, many destinations / ports) and normal hosts never pass the distinct-source-IP rule."""
+    L = MLR.MacLearner(gateway_warmup_s=300, inventory={G: "gateway"})
+    L.observe(_arp(0.0, "192.168.1.1", G))
+    for k in range(5000):
+        t = 400.0 + k * 0.05
+        L.observe((t, "192.168.1.50", f"192.168.1.{k % 254 + 1}", 6, A, "02:00:00:00:00:ff"))   # scanner
+        L.observe((t, f"192.168.1.{k % 254 + 1}", "192.168.1.50", 6, f"02:00:00:00:02:{k % 254:02x}", A))  # replies
+        if k % 10 == 0:
+            L.observe(_ip(t, f"93.184.{k % 200}.{k % 7 + 1}", G))    # the inventory router forwarding remote hosts
+    ev = L.drain_events()
+    assert not _unexpected(ev) and A not in L.gateways and list(L.gateways) == [G]
+    assert L.resolve("192.168.1.50") == A
+
+
+def test_unexpected_gateway_absent_under_phase3_1_config_and_config_pin():
+    from common import schemas as S
+    c31 = C.load_phase3_config(C.CONFIG_PATH_3_1)
+    L31 = MLR.MacLearner.from_config(c31["routing"])
+    assert L31.warmup is None and "gateway_warmup_s" not in L31.describe()["params"]
+    L31.observe(_ip(0.0, "10.0.0.1", A))
+    _spoof(L31, 1000.0, B, 20)
+    assert B in L31.gateways and not _unexpected(L31.drain_events()) and "gateway_in_warmup" not in L31.stats
+    c32 = C.load_phase3_config(C.CONFIG_PATH_3_2)                  # pinned: verify_pin=True
+    assert c32["_pinned"] and c32["_sha256"] == S.V2_PHASE3_2_CONFIG_SHA256 == C.pin_for(C.CONFIG_PATH_3_2)
+    L32 = MLR.MacLearner.from_config(c32["routing"])
+    ml = c32["routing"]["mac_learner"]
+    assert L32.warmup == ml["gateway_warmup_s"] == 300 and L32.gw_roles == set(ml["inventory_gateway_roles"])
+    gw = [m for m, r in L32.inventory.items() if r in L32.gw_roles]
+    assert len(gw) >= 1 and len(L32.inventory) == len(RT.Router(c32).inv)
+    a, b = (json_load(C.CONFIG_PATH_3_1), json_load(C.CONFIG_PATH_3_2))
+    for d in (a, b):
+        d.pop("note")
+    extra = {k: b["routing"]["mac_learner"].pop(k) for k in ("gateway_warmup_s", "inventory_gateway_roles")}
+    assert a == b and extra == {"gateway_warmup_s": 300, "inventory_gateway_roles": ["gateway", "router"]}
+    res = S.verify_v2_lock(strict=False, v1=False)
+    assert any("v2_phase3_2.json" in n and ok for n, ok, _ in res["checks"])
+    edited = Path(tempfile.mkdtemp(prefix="p32_")) / "v2_phase3_2.json"
+    edited.write_bytes(C.CONFIG_PATH_3_2.read_bytes().replace(b'"gateway_warmup_s": 300', b'"gateway_warmup_s": 30'))
+    assert not S.verify_v2_lock(strict=False, v1=False, phase3_2_config=edited)["ok"]
+    bad = copy.deepcopy(c32)
+    bad["routing"]["mac_learner"]["gateway_warmup_s"] = -1
+    assert C.validate(bad)
+    bad["routing"]["mac_learner"].update(gateway_warmup_s=0, inventory_gateway_roles=[])
+    assert C.validate(bad)
+
+
+def json_load(p: Path) -> dict:
+    import json
+    return json.loads(Path(p).read_text(encoding="utf-8"))
+
+
+def test_runtime_unexpected_gateway_health_log_predictions_unchanged():
+    """Under v2_phase3_2.json a spoofing MAC after the warm-up produces one unexpected_gateway record in the signed,
+    hash-chained health log; predictions are identical to the same run under v2_phase3_1.json."""
+    sys.path.insert(0, str(REPO / "tests"))
+    import json
+    import test_runtime_e2e as E
+    from common import alert_log as AL
+    from common import flow_source as FS
+    from common import model_loader as ML
+    from common import predictions_io as PIO
+    from common import runtime as RTM
+    raw = E._data()["raw"].iloc[:40]
+    rows = [r for k, t, r in FS.CsvReplaySource(E.CFG, frame=raw).events() if k == "flow"]
+    rows = [{k: v for k, v in r.items() if k not in ("src_mac", "dst_mac")} for r in rows]
+    ts = [float(r["_meta"]["event_time"]) for r in rows]
+    t0 = min(ts) - 400.0                                          # warm-up origin 400 s before the flows
+    spoofer = "02:00:00:00:0e:01"
+    pk = [(t0, "10.0.0.1", "10.0.0.2", 6, A, B)] + [(min(ts) - 50.0 + k * 0.01, f"172.20.0.{k + 1}", "10.0.0.2", 6,
+                                                     spoofer, B) for k in range(12)]
+
+    class Rows(FS.FlowSource):
+        def __init__(self):
+            super().__init__("max")
+
+        def __len__(self):
+            return len(rows)
+
+        def events(self):
+            for r in sorted(rows, key=lambda r: r["_meta"]["event_time"]):
+                yield "flow", r["_meta"]["event_time"], dict(r, _meta=dict(r["_meta"]))
+
+    out = {}
+    for label, path in (("3_1", C.CONFIG_PATH_3_1), ("3_2", C.CONFIG_PATH_3_2)):
+        d = Path(tempfile.mkdtemp(prefix="p32rt_"))
+        sk, _ = AL.ensure_runtime_keys(d / "keys")
+        run = d / "run"
+        run.mkdir()
+        cfg = C.load_phase3_config(path)
+        router = RT.Router(cfg, ip_mac_source="learned")
+        rt = RTM.Runtime(cfg, ML.load_runtime_model(cfg), run, sk, router=router)
+        summ = rt.run(Rows(), list(pk))
+        hl = [json.loads(x) for x in (run / "health.jsonl").read_text(encoding="utf-8").splitlines()]
+        out[label] = (PIO.read_predictions(run), [h for h in hl if h.get("kind") == "unexpected_gateway"], summ, run, sk)
+    P1, u1, s1, _, _ = out["3_1"]
+    P2, u2, s2, run2, sk2 = out["3_2"]
+    assert len(P1) == len(rows) and P1.equals(P2)
+    assert u1 == [] and len(u2) == 1 and u2[0]["mac"] == spoofer and u2[0]["distinct_source_ips"] == 9
+    assert s2["counts"].get("unexpected_gateway") == 1 and "unexpected_gateway" not in s1["counts"]
+    assert AL.verify_chain(run2 / "health.jsonl", AL.REG.public_key(sk2))["ok"]
 
 
 def main() -> int:

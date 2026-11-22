@@ -45,7 +45,7 @@ Runs: step 31 `20261122T132156Z`, 32 `20261122T132232Z`, 33 `20261122T132243Z`, 
 - retrain time S2-G1 14.50 s vs S2-GLOBAL 13.85 s (global / per-group = 0.96, needs >= 2.0)
 - affected group G1: S2-G1 0.99959 [0.99956, 0.99961], S2-GLOBAL 0.99963 [0.99962, 0.99965]
 - **In the per-group arm, the other groups' specialists are unchanged, so their forgetting is zero by construction. The real question of Amendment 2 §4 is whether retraining GLOBAL causes forgetting on the other groups. If it doesn't, per-group can win only on cost.**
-- kill rule (Amendment 2 section 5): Phase 4 test does NOT favour per-group (Amendment 2 section 5: no Stage 3 routing claim)
+- kill rule (Amendment 2 §5): the Phase 4 (continual-learning) routing test does NOT favour per-group, so there is no CL routing claim. The routing claim now rests entirely on the Phase 5 zero-day test (Amendment 2 §3); §5 fires only if Phase 5 also fails.
 
 ## Poisoning
 

@@ -1,0 +1,440 @@
+{
+ "script": "diagnostics/phase3_2_memory_soak.py",
+ "run_id": "20261122T134922Z",
+ "dry_run": false,
+ "config": "config/v2_phase3_1.json",
+ "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+ "pinned": true,
+ "rule": {
+  "fit_runs": [
+   4,
+   10
+  ],
+  "slope_mb_per_run_gt": 5.0,
+  "ci_level": 0.95,
+  "leak_iff": "slope > 5 MB/run AND the 95 % CI lower bound > 0",
+  "otherwise": "PLATEAU"
+ },
+ "tracemalloc": false,
+ "rss_start_mb": 400.890625,
+ "code_sha256": {
+  "diagnostics/phase3_2_memory_soak.py": "28ff4d5cfe569c5132b72cfb64daf9530e958e391f52ada456f82261a1041cfc",
+  "common/runtime.py": "999fa94fa87656b77b5149ed13db320c0b2f85e9f97a4fcf80ea060c913e43b7",
+  "common/flow_source.py": "59880526c60d64696e187bab8193fc4ae5e2765112e1308373cd2c4e545e0591",
+  "common/predictions_io.py": "def3e231457026562d250ed8b44f7bc6be176988a0384904d3f8614dfbbcc426",
+  "common/inference.py": "e4c8ee19c1909604b1cc98da339017c1fc0326255c4965a399a3efda4c46013c",
+  "common/policy.py": "95214d681cf3580a7a6edcefd357c6b66cc49182e248cbf2cee1a2a06ee48a48",
+  "common/routing.py": "b0e211f1e16b9724f7cff3d65dfb0994c70ab2b47ff3caa482d305060d518fd0",
+  "common/alert_log.py": "c19cd3855a62126c7141143f71332fd4fd9207240918f012708055f2f8feaf86",
+  "common/model_loader.py": "8edcb1df7869d244d48018cfb851aa7f5d5b90c5da9b1a2456b6864f047a072a",
+  "common/mac_learner.py": "8c4bb91e99c4ffab2eef1b2c59f18d93a69dbb12183d5972e967f5538af17ca3"
+ },
+ "parity_reference": "/home/krithikk/lgids_cache/v2/runtime/20261122T072459Z_GLOBAL_s0",
+ "runs": [
+  {
+   "run": 1,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r1",
+   "flows": 157558,
+   "wall_s": 60.31451857799999,
+   "in_run_rss_max_mb": 1274.7421875,
+   "rss_before_trim_mb": 665.3359375,
+   "rss_after_run_mb": 560.90625,
+   "malloc_before_trim": {
+    "heap_total_mb": 156.1171875,
+    "in_use_mb": 46.24391174316406,
+    "free_in_heap_mb": 109.87327575683594,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.1263580322265625
+   },
+   "malloc": {
+    "heap_total_mb": 155.9921875,
+    "in_use_mb": 46.24391174316406,
+    "free_in_heap_mb": 109.74827575683594,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127254,
+   "process_peak_rss_mb": 1276.9921875,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.38052411799998254,
+   "rss_after_compare_mb": 613.74609375
+  },
+  {
+   "run": 2,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r2",
+   "flows": 157558,
+   "wall_s": 51.91431765499999,
+   "in_run_rss_max_mb": 1329.16015625,
+   "rss_before_trim_mb": 719.6640625,
+   "rss_after_run_mb": 612.1015625,
+   "malloc_before_trim": {
+    "heap_total_mb": 160.70703125,
+    "in_use_mb": 46.35740661621094,
+    "free_in_heap_mb": 114.34962463378906,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 1.3276519775390625
+   },
+   "malloc": {
+    "heap_total_mb": 159.3828125,
+    "in_use_mb": 46.35740661621094,
+    "free_in_heap_mb": 113.02540588378906,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0034332275390625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127281,
+   "process_peak_rss_mb": 1330.28515625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.42875439700000584,
+   "rss_after_compare_mb": 628.80078125
+  },
+  {
+   "run": 3,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r3",
+   "flows": 157558,
+   "wall_s": 66.790201822,
+   "in_run_rss_max_mb": 1344.70703125,
+   "rss_before_trim_mb": 759.296875,
+   "rss_after_run_mb": 651.84375,
+   "malloc_before_trim": {
+    "heap_total_mb": 160.890625,
+    "in_use_mb": 46.39271545410156,
+    "free_in_heap_mb": 114.49790954589844,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 3.7318267822265625
+   },
+   "malloc": {
+    "heap_total_mb": 157.16015625,
+    "in_use_mb": 46.39271545410156,
+    "free_in_heap_mb": 110.76744079589844,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127295,
+   "process_peak_rss_mb": 1346.70703125,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.38120737200000576,
+   "rss_after_compare_mb": 665.01953125
+  },
+  {
+   "run": 4,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r4",
+   "flows": 157558,
+   "wall_s": 85.69724988799999,
+   "in_run_rss_max_mb": 1352.21484375,
+   "rss_before_trim_mb": 762.09375,
+   "rss_after_run_mb": 654.390625,
+   "malloc_before_trim": {
+    "heap_total_mb": 161.5546875,
+    "in_use_mb": 46.430145263671875,
+    "free_in_heap_mb": 115.12454223632812,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 3.7318267822265625
+   },
+   "malloc": {
+    "heap_total_mb": 157.82421875,
+    "in_use_mb": 46.430145263671875,
+    "free_in_heap_mb": 111.39407348632812,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127309,
+   "process_peak_rss_mb": 1354.58984375,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.43313270700002704,
+   "rss_after_compare_mb": 650.00390625
+  },
+  {
+   "run": 5,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r5",
+   "flows": 157558,
+   "wall_s": 65.94010299300004,
+   "in_run_rss_max_mb": 1375.16015625,
+   "rss_before_trim_mb": 790.875,
+   "rss_after_run_mb": 682.98828125,
+   "malloc_before_trim": {
+    "heap_total_mb": 161.5625,
+    "in_use_mb": 46.43885803222656,
+    "free_in_heap_mb": 115.12364196777344,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 3.7318267822265625
+   },
+   "malloc": {
+    "heap_total_mb": 157.83203125,
+    "in_use_mb": 46.43885803222656,
+    "free_in_heap_mb": 111.39317321777344,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127323,
+   "process_peak_rss_mb": 1377.41015625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.3912303650000126,
+   "rss_after_compare_mb": 703.83203125
+  },
+  {
+   "run": 6,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r6",
+   "flows": 157558,
+   "wall_s": 54.69175148099998,
+   "in_run_rss_max_mb": 1364.51953125,
+   "rss_before_trim_mb": 784.9296875,
+   "rss_after_run_mb": 678.43359375,
+   "malloc_before_trim": {
+    "heap_total_mb": 160.47265625,
+    "in_use_mb": 46.458160400390625,
+    "free_in_heap_mb": 114.01449584960938,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 2.5326080322265625
+   },
+   "malloc": {
+    "heap_total_mb": 157.94140625,
+    "in_use_mb": 46.458160400390625,
+    "free_in_heap_mb": 111.48324584960938,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127337,
+   "process_peak_rss_mb": 1377.41015625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.41310750200000257,
+   "rss_after_compare_mb": 702.16015625
+  },
+  {
+   "run": 7,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r7",
+   "flows": 157558,
+   "wall_s": 79.42318323500001,
+   "in_run_rss_max_mb": 1375.2109375,
+   "rss_before_trim_mb": 797.31640625,
+   "rss_after_run_mb": 689.99609375,
+   "malloc_before_trim": {
+    "heap_total_mb": 161.73046875,
+    "in_use_mb": 46.47355651855469,
+    "free_in_heap_mb": 115.25691223144531,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 3.7318267822265625
+   },
+   "malloc": {
+    "heap_total_mb": 158.0,
+    "in_use_mb": 46.47355651855469,
+    "free_in_heap_mb": 111.52644348144531,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127351,
+   "process_peak_rss_mb": 1377.41015625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.45010333200002606,
+   "rss_after_compare_mb": 706.38671875
+  },
+  {
+   "run": 8,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r8",
+   "flows": 157558,
+   "wall_s": 87.23626398099998,
+   "in_run_rss_max_mb": 1355.07421875,
+   "rss_before_trim_mb": 770.109375,
+   "rss_after_run_mb": 659.046875,
+   "malloc_before_trim": {
+    "heap_total_mb": 165.578125,
+    "in_use_mb": 46.48663330078125,
+    "free_in_heap_mb": 119.09149169921875,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.1255035400390625
+   },
+   "malloc": {
+    "heap_total_mb": 165.453125,
+    "in_use_mb": 46.48663330078125,
+    "free_in_heap_mb": 118.96649169921875,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0005035400390625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127365,
+   "process_peak_rss_mb": 1377.41015625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.3865798219999306,
+   "rss_after_compare_mb": 680.04296875
+  },
+  {
+   "run": 9,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r9",
+   "flows": 157558,
+   "wall_s": 55.69390002900002,
+   "in_run_rss_max_mb": 1358.6328125,
+   "rss_before_trim_mb": 780.66796875,
+   "rss_after_run_mb": 669.49609375,
+   "malloc_before_trim": {
+    "heap_total_mb": 165.7734375,
+    "in_use_mb": 46.485107421875,
+    "free_in_heap_mb": 119.288330078125,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.1255340576171875
+   },
+   "malloc": {
+    "heap_total_mb": 165.6484375,
+    "in_use_mb": 46.485107421875,
+    "free_in_heap_mb": 119.163330078125,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0005340576171875
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127379,
+   "process_peak_rss_mb": 1377.41015625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.37111470199999985,
+   "rss_after_compare_mb": 689.19140625
+  },
+  {
+   "run": 10,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem32/20261122T134922Z_r10",
+   "flows": 157558,
+   "wall_s": 81.376712096,
+   "in_run_rss_max_mb": 1353.0,
+   "rss_before_trim_mb": 773.4609375,
+   "rss_after_run_mb": 668.3203125,
+   "malloc_before_trim": {
+    "heap_total_mb": 159.68359375,
+    "in_use_mb": 46.49104309082031,
+    "free_in_heap_mb": 113.19255065917969,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 1.3294830322265625
+   },
+   "malloc": {
+    "heap_total_mb": 158.35546875,
+    "in_use_mb": 46.49104309082031,
+    "free_in_heap_mb": 111.86442565917969,
+    "mmapped_mb": 19.0546875,
+    "top_releasable_mb": 0.0013580322265625
+   },
+   "arrow_pool": {
+    "backend": "mimalloc",
+    "allocated_mb": 27.65814208984375,
+    "max_mb": 240.11688232421875
+   },
+   "gc_objects": 127393,
+   "process_peak_rss_mb": 1377.41015625,
+   "predictions_equal_phase3_1": false,
+   "compare_s": 0.42018535099998644,
+   "rss_after_compare_mb": 697.44140625
+  }
+ ],
+ "rss_after_model_load_mb": 423.515625,
+ "malloc_after_model_load": {
+  "heap_total_mb": 49.4765625,
+  "in_use_mb": 45.590484619140625,
+  "free_in_heap_mb": 3.886077880859375,
+  "mmapped_mb": 19.0546875,
+  "top_releasable_mb": 0.0034332275390625
+ },
+ "fit": {
+  "n": 7,
+  "df": 5,
+  "slope_mb_per_run": -0.16364397321428573,
+  "intercept_mb": 672.9557756696429,
+  "se": 2.6493587035211403,
+  "t_quantile": 2.5705818356363146,
+  "ci": [
+   -6.974037332570705,
+   6.646749386142134
+  ],
+  "residual_sd_mb": 14.019088526642882,
+  "runs": [
+   4,
+   10
+  ]
+ },
+ "verdict": "PLATEAU",
+ "fit_heap_in_use": {
+  "n": 7,
+  "df": 5,
+  "slope_mb_per_run": 0.010845184326171875,
+  "intercept_mb": 46.390298570905415,
+  "se": 0.0013762373469377255,
+  "t_quantile": 2.5705818356363146,
+  "ci": [
+   0.007307453600609445,
+   0.014382915051734304
+  ],
+  "residual_sd_mb": 0.0072823635299930824
+ },
+ "fit_gc_objects": {
+  "n": 7,
+  "df": 5,
+  "slope_mb_per_run": 14.0,
+  "intercept_mb": 127253.0,
+  "se": 0.0,
+  "t_quantile": 2.5705818356363146,
+  "ci": [
+   14.0,
+   14.0
+  ],
+  "residual_sd_mb": 0.0
+ },
+ "per_run_growth_mb": [
+  51.1953125,
+  39.7421875,
+  2.546875,
+  28.59765625,
+  -4.5546875,
+  11.5625,
+  -30.94921875,
+  10.44921875,
+  -1.17578125
+ ],
+ "process_peak_rss_mb": 1377.41015625,
+ "figure": "results/phase3_2/memory/figures/rss_per_run.png",
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ }
+}

@@ -10,6 +10,9 @@ Phase 3 pin, so it is accepted only with verify_pin=False (tests) and is then ma
 Phase 3.1 optional keys (validated only when present; absent = Phase 3 behaviour): predictions_chunk_rows /
 predictions_chunk_seconds (chunked prediction writing), routing.ip_mac_source ({source kind: static | learned |
 learned_then_static}), routing.mac_learner (gateway / flap parameters), packets.open_sequentially (bool).
+Phase 3.2 optional keys (config/v2_phase3_2.json, pinned as V2_PHASE3_2_CONFIG_SHA256): routing.mac_learner.
+gateway_warmup_s (>= 0 s of event time) and routing.mac_learner.inventory_gateway_roles (non-empty list of role
+names): the unexpected_gateway health event (common/mac_learner.py); predictions, alerts and incidents unchanged.
 Only operational fields may be overridden for one run (mode, source.speed, batch.max_flows, source.slice_minutes,
 rate_guard.enabled, the evaluation seed); every override is listed in cfg["_overrides"] for the run manifest.
 Policy, routing, rate-guard rule and paths can only change by editing (and re-pinning) the file.
@@ -28,6 +31,7 @@ from common import schemas as S
 
 CONFIG_PATH = CONFIG_DIR / "v2_phase3.json"
 CONFIG_PATH_3_1 = CONFIG_DIR / "v2_phase3_1.json"
+CONFIG_PATH_3_2 = CONFIG_DIR / "v2_phase3_2.json"
 IP_MAC_SOURCES = ("static", "learned", "learned_then_static")
 LEARNER_KEYS = ("gateway_distinct_ip_threshold", "gateway_window_s", "flap_count", "flap_window_s")
 MODES = ("GLOBAL", "ROUTED")
@@ -217,17 +221,36 @@ def validate(cfg: dict) -> list[str]:
              f"routing.mac_learner needs {LEARNER_KEYS} > 0 (threshold and flap_count ints)")
     if "open_sequentially" in pk:
         need(isinstance(pk.get("open_sequentially"), bool), "packets.open_sequentially must be a bool")
+    ml2 = ro.get("mac_learner") if isinstance(ro.get("mac_learner"), dict) else {}
+    if "gateway_warmup_s" in ml2:                                    # Phase 3.2
+        need(_is_num(ml2.get("gateway_warmup_s")) and ml2.get("gateway_warmup_s", -1) >= 0,
+             "routing.mac_learner.gateway_warmup_s must be a number >= 0")
+    if "inventory_gateway_roles" in ml2:
+        gr = ml2.get("inventory_gateway_roles")
+        need(isinstance(gr, list) and bool(gr) and all(isinstance(x, str) and x.strip() for x in gr),
+             "routing.mac_learner.inventory_gateway_roles must be a non-empty list of role names")
     return E
 
 
 def pin_for(path: Path) -> str:
-    """The pinned sha256 a config file must match (Phase 3.1 file -> its own pin; anything else -> the Phase 3 pin)."""
+    """The pinned sha256 a config file must match (Phase 3.1 / 3.2 files -> their own pins; anything else -> the
+    Phase 3 pin)."""
     try:
-        if Path(path).resolve() == CONFIG_PATH_3_1.resolve():
+        rp = Path(path).resolve()
+        if rp == CONFIG_PATH_3_1.resolve():
             return S.V2_PHASE3_1_CONFIG_SHA256
+        if rp == CONFIG_PATH_3_2.resolve():
+            return S.V2_PHASE3_2_CONFIG_SHA256
     except OSError:
         pass
     return S.V2_PHASE3_CONFIG_SHA256
+
+
+def pin_name(want: str) -> str:
+    for n in ("V2_PHASE3_1_CONFIG_SHA256", "V2_PHASE3_2_CONFIG_SHA256"):
+        if want == getattr(S, n, None):
+            return n
+    return "V2_PHASE3_CONFIG_SHA256"
 
 
 def ip_mac_source(cfg: dict, source_kind: str) -> str:
@@ -244,7 +267,7 @@ def load_phase3_config(path: Path = CONFIG_PATH, verify_pin: bool = True) -> dic
     sha = hashlib.sha256(raw).hexdigest()
     want = pin_for(path)
     if verify_pin and sha != want:
-        name = "V2_PHASE3_1_CONFIG_SHA256" if want == S.V2_PHASE3_1_CONFIG_SHA256 else "V2_PHASE3_CONFIG_SHA256"
+        name = pin_name(want)
         raise ConfigError(f"{path}: sha256 {sha} != pinned {name} {want} "
                           f"(policy config edited? DFD P5 integrity check failed)")
     try:

@@ -1,0 +1,1110 @@
+{
+ "script": "diagnostics/phase3_2_gateway.py",
+ "run_id": "20261122T140322Z",
+ "dry_run": false,
+ "rule": {
+  "safe_iff": "routing agreement (group AND device == dataset) >= 0.99 of matched flows on every flood slice",
+  "threshold": 0.99,
+  "reference_slices": [
+   "Recon-PortScan"
+  ]
+ },
+ "configs": {
+  "phase3_1": {
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/v2_phase3_1.json",
+   "sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+   "pinned": true
+  },
+  "phase3_2": {
+   "path": "/mnt/d/Projects/Company Project/Paper_Implemetation/config/v2_phase3_2.json",
+   "sha256": "71f47711c6dca64cbb6f167666a3d6862aea3fb22f051020a7a32654d556aaf6",
+   "pinned": true
+  }
+ },
+ "learner_params": {
+  "threshold": 8,
+  "window_s": 300.0,
+  "warmup_s": 300.0,
+  "inventory_gateway_roles": [
+   "gateway",
+   "router"
+  ]
+ },
+ "attack_identity": {
+  "rule": "13_rate_guard_calibrate.MacBook.get(mac)[0] != '' (ATTACKER_MACS.matches(mac) or device_table role == testbed_pi)",
+  "ATTACKER_MACS.exact": [
+   "e4:5f:01:55:90:c4"
+  ],
+  "ATTACKER_MACS.prefixes": [
+   "dc:a6:32"
+  ],
+  "device_table_testbed_pi": [
+   "dc:a6:32:c9:e4:90",
+   "dc:a6:32:c9:e4:ab",
+   "dc:a6:32:c9:e4:c6",
+   "dc:a6:32:c9:e4:d5",
+   "dc:a6:32:c9:e5:02",
+   "dc:a6:32:c9:e5:a4",
+   "dc:a6:32:c9:e5:ef",
+   "dc:a6:32:c9:e6:f4",
+   "dc:a6:32:dc:27:d5",
+   "e4:5f:01:55:90:c4"
+  ]
+ },
+ "code_sha256": {
+  "diagnostics/phase3_2_gateway.py": "249bb761296c25ef26504d72a4c6f461193be5b5bbedc409dbe886d2227f1ef1",
+  "28_run_stream.py": "4728cf339c230c882a7db03537c2164039e26adbb74007b28b010eccd0d14d7f",
+  "common/mac_learner.py": "4c9a6cc3b1bbb7fcab07ed8fe1a0cbb01a8c2945fef83e1a46f576c4e373bd07",
+  "common/runtime.py": "999fa94fa87656b77b5149ed13db320c0b2f85e9f97a4fcf80ea060c913e43b7",
+  "common/routing.py": "b0e211f1e16b9724f7cff3d65dfb0994c70ab2b47ff3caa482d305060d518fd0",
+  "common/phase3_config.py": "9836b50d31b804c2afb1e6b8db492bbaf7264a5663450038c7e59a0718be991e",
+  "common/packet_source.py": "bc8f33152b464aa636bfcfb0628a6fdca64b7c1563c286910c735ce52c1a4e25",
+  "common/flow_source.py": "59880526c60d64696e187bab8193fc4ae5e2765112e1308373cd2c4e545e0591",
+  "common/schemas.py": "b604e11ef6337f30faec7742cd65f29f70d51f3e72a6c1ad96b22e539cbbaa64"
+ },
+ "slices": {
+  "Recon-PortScan": {
+   "slice": {
+    "split": "val",
+    "session": "Recon-PortScan",
+    "source_pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+    "source_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+    "labels": [
+     "train",
+     "gap@train|val",
+     "val",
+     "gap@val|test",
+     "test"
+    ],
+    "boundaries_epoch": [
+     1664288918.6,
+     1664289038.6,
+     1664291060.8,
+     1664291180.8
+    ],
+    "stop": 1664291060.8,
+    "window": [
+     null,
+     null
+    ],
+    "max_packets": null,
+    "frames_written": 143215,
+    "first_ts": 1664289038.6094,
+    "last_ts": 1664291040.701944,
+    "reader_counts": {
+     "frames": 663549,
+     "stopped_at_cut": 1
+    },
+    "pcap_sha256": "fb58a8958299d320fcd4634047dd8ea710176e5e46200e412c626a36e32eab41"
+   },
+   "cfm": {
+    "wall_s": 3.64603313300006,
+    "csv": "/home/krithikk/lgids_cache/v2/runtime_inputs/20261122T140322Z_p32/cfm_Recon-PortScan/Recon-PortScan_val.pcap_Flow__phase3.csv"
+   },
+   "csv_rows": 29677,
+   "lean_source_rows_identical": true,
+   "dataset_rows_in_window": 28528,
+   "matched": 28135,
+   "match_rate_of_dataset": 0.9862240605720696,
+   "dataset_labels_matched": {
+    "benign": 9956,
+    "port_scan": 18179
+   },
+   "runs": {
+    "phase3_1": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_Recon-PortScan_PCAP_GLOBAL_s0_phase3_1",
+     "flows": 29677,
+     "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+     "agree_both": 1.0,
+     "agree_group": 1.0,
+     "agree_device": 1.0,
+     "disagree_n": 0,
+     "agree_by_label": {
+      "benign": {
+       "n": 9956,
+       "agree_both": 1.0
+      },
+      "port_scan": {
+       "n": 18179,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_unbound": 1980,
+      "learned_dst_unbound": 4974,
+      "learned_both_unbound": 56,
+      "no_device": 520,
+      "learned_src_bound": 27697,
+      "learned_dst_bound": 24703,
+      "device_side": 28481,
+      "device_device_initiator": 127,
+      "unregistered_mac": 549
+     },
+     "learner": {
+      "bindings": 73,
+      "bindings_arp": 62,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1664289039.949918
+      },
+      "stats": {
+       "ip_frames": 137970,
+       "bound_ip": 67,
+       "arp_frames": 3696,
+       "bound_arp": 14,
+       "gateways": 1,
+       "behind_gateway": 38142,
+       "ignored_ip": 213,
+       "ignored_arp": 3
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0
+      }
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 1980,
+      "learned_dst_unbound": 4974,
+      "learned_both_unbound": 56,
+      "learned_src_bound": 27697,
+      "learned_dst_bound": 24703
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 9,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 8,
+         "distinct_ips": 9,
+         "event_time": 1664289039.949918,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 3696,
+     "packets": 141666
+    },
+    "phase3_2": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_Recon-PortScan_PCAP_GLOBAL_s0_phase3_2",
+     "flows": 29677,
+     "config_sha256": "71f47711c6dca64cbb6f167666a3d6862aea3fb22f051020a7a32654d556aaf6",
+     "agree_both": 1.0,
+     "agree_group": 1.0,
+     "agree_device": 1.0,
+     "disagree_n": 0,
+     "agree_by_label": {
+      "benign": {
+       "n": 9956,
+       "agree_both": 1.0
+      },
+      "port_scan": {
+       "n": 18179,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_unbound": 1980,
+      "learned_dst_unbound": 4974,
+      "learned_both_unbound": 56,
+      "no_device": 520,
+      "learned_src_bound": 27697,
+      "learned_dst_bound": 24703,
+      "device_side": 28481,
+      "device_device_initiator": 127,
+      "unregistered_mac": 549
+     },
+     "learner": {
+      "bindings": 73,
+      "bindings_arp": 62,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1664289039.949918
+      },
+      "stats": {
+       "ip_frames": 137970,
+       "bound_ip": 67,
+       "arp_frames": 3696,
+       "bound_arp": 14,
+       "gateways": 1,
+       "gateway_in_warmup": 1,
+       "behind_gateway": 38142,
+       "ignored_ip": 213,
+       "ignored_arp": 3
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0,
+       "gateway_warmup_s": 300.0,
+       "inventory_gateway_roles": [
+        "gateway",
+        "router"
+       ],
+       "inventory_macs": 74
+      },
+      "t_first": 1664289038.6094
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 1980,
+      "learned_dst_unbound": 4974,
+      "learned_both_unbound": 56,
+      "learned_src_bound": 27697,
+      "learned_dst_bound": 24703
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 9,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 8,
+         "distinct_ips": 9,
+         "event_time": 1664289039.949918,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 3696,
+     "packets": 141666
+    }
+   },
+   "pcap_predictions_equal_3_1_vs_3_2": true,
+   "gateway_macs": [
+    {
+     "mac": "3c:18:a0:41:c3:a0",
+     "detected_at": 1664289039.949918,
+     "detected_s_after_first_frame": 1.3405179977416992,
+     "in_warmup": true,
+     "inventory_name": "Gateway / router",
+     "inventory_role": "gateway",
+     "attack_source": false,
+     "attack_identity_category": "other_device",
+     "frames_from": 38161,
+     "max_distinct_src_ips_in_window": 183,
+     "matched_flows_touching": 2486,
+     "unexpected_gateway_event": false,
+     "event": null
+    }
+   ],
+   "attack_source_macs_in_matched_flows": [
+    "dc:a6:32:dc:27:d5"
+   ],
+   "spoofing_sources": [],
+   "t_first": 1664289038.6094,
+   "expected_events": 0,
+   "fired_events": 0
+  },
+  "Mirai-udpplain": {
+   "slice": {
+    "split": "val",
+    "session": "Mirai-udpplain",
+    "source_pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap",
+    "source_sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7",
+    "labels": [
+     "train",
+     "gap@train|val",
+     "val"
+    ],
+    "boundaries_epoch": [
+     1674145167.95,
+     1674145287.95
+    ],
+    "stop": null,
+    "window": [
+     null,
+     null
+    ],
+    "max_packets": null,
+    "frames_written": 348598,
+    "first_ts": 1674145320.567693,
+    "last_ts": 1674145406.574506,
+    "reader_counts": {
+     "frames": 3642269
+    },
+    "pcap_sha256": "32038c32f23c285ed4679d32db7a3a8707d22c521aa9c48590148cb7b0e56333"
+   },
+   "cfm": {
+    "wall_s": 2.718450682000025,
+    "csv": "/home/krithikk/lgids_cache/v2/runtime_inputs/20261122T140322Z_p32/cfm_Mirai-udpplain/Mirai-udpplain_val.pcap_Flow__phase3.csv"
+   },
+   "csv_rows": 646,
+   "lean_source_rows_identical": true,
+   "dataset_rows_in_window": 597,
+   "matched": 592,
+   "match_rate_of_dataset": 0.9916247906197655,
+   "dataset_labels_matched": {
+    "benign": 577,
+    "udp_flood": 15
+   },
+   "runs": {
+    "phase3_1": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_Mirai-udpplain_PCAP_GLOBAL_s0_phase3_1",
+     "flows": 646,
+     "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+     "agree_both": 1.0,
+     "agree_group": 1.0,
+     "agree_device": 1.0,
+     "disagree_n": 0,
+     "agree_by_label": {
+      "benign": {
+       "n": 577,
+       "agree_both": 1.0
+      },
+      "udp_flood": {
+       "n": 15,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_bound": 609,
+      "learned_dst_unbound": 388,
+      "device_side": 604,
+      "unregistered_mac": 20,
+      "learned_dst_bound": 258,
+      "learned_src_unbound": 37,
+      "no_device": 22,
+      "learned_both_unbound": 3
+     },
+     "learner": {
+      "bindings": 62,
+      "bindings_arp": 55,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1674145322.042554
+      },
+      "stats": {
+       "ip_frames": 347514,
+       "bound_ip": 56,
+       "arp_frames": 951,
+       "bound_arp": 13,
+       "gateways": 1,
+       "behind_gateway": 1412,
+       "ignored_ip": 20
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0
+      }
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 37,
+      "learned_dst_unbound": 388,
+      "learned_both_unbound": 3,
+      "learned_src_bound": 609,
+      "learned_dst_bound": 258
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 4,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 7,
+         "distinct_ips": 9,
+         "event_time": 1674145322.042554,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 951,
+     "packets": 348465
+    },
+    "phase3_2": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_Mirai-udpplain_PCAP_GLOBAL_s0_phase3_2",
+     "flows": 646,
+     "config_sha256": "71f47711c6dca64cbb6f167666a3d6862aea3fb22f051020a7a32654d556aaf6",
+     "agree_both": 1.0,
+     "agree_group": 1.0,
+     "agree_device": 1.0,
+     "disagree_n": 0,
+     "agree_by_label": {
+      "benign": {
+       "n": 577,
+       "agree_both": 1.0
+      },
+      "udp_flood": {
+       "n": 15,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_bound": 609,
+      "learned_dst_unbound": 388,
+      "device_side": 604,
+      "unregistered_mac": 20,
+      "learned_dst_bound": 258,
+      "learned_src_unbound": 37,
+      "no_device": 22,
+      "learned_both_unbound": 3
+     },
+     "learner": {
+      "bindings": 62,
+      "bindings_arp": 55,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1674145322.042554
+      },
+      "stats": {
+       "ip_frames": 347514,
+       "bound_ip": 56,
+       "arp_frames": 951,
+       "bound_arp": 13,
+       "gateways": 1,
+       "gateway_in_warmup": 1,
+       "behind_gateway": 1412,
+       "ignored_ip": 20
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0,
+       "gateway_warmup_s": 300.0,
+       "inventory_gateway_roles": [
+        "gateway",
+        "router"
+       ],
+       "inventory_macs": 74
+      },
+      "t_first": 1674145320.567693
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 37,
+      "learned_dst_unbound": 388,
+      "learned_both_unbound": 3,
+      "learned_src_bound": 609,
+      "learned_dst_bound": 258
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 4,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 7,
+         "distinct_ips": 9,
+         "event_time": 1674145322.042554,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 951,
+     "packets": 348465
+    }
+   },
+   "pcap_predictions_equal_3_1_vs_3_2": true,
+   "gateway_macs": [
+    {
+     "mac": "3c:18:a0:41:c3:a0",
+     "detected_at": 1674145322.042554,
+     "detected_s_after_first_frame": 1.4748609066009521,
+     "in_warmup": true,
+     "inventory_name": "Gateway / router",
+     "inventory_role": "gateway",
+     "attack_source": false,
+     "attack_identity_category": "other_device",
+     "frames_from": 1437,
+     "max_distinct_src_ips_in_window": 86,
+     "matched_flows_touching": 192,
+     "unexpected_gateway_event": false,
+     "event": null
+    }
+   ],
+   "attack_source_macs_in_matched_flows": [
+    "dc:a6:32:c9:e4:90",
+    "dc:a6:32:c9:e4:ab",
+    "dc:a6:32:c9:e4:d5",
+    "dc:a6:32:c9:e5:a4",
+    "dc:a6:32:c9:e5:ef",
+    "dc:a6:32:dc:27:d5",
+    "e4:5f:01:55:90:c4"
+   ],
+   "spoofing_sources": [],
+   "t_first": 1674145320.567693,
+   "verdict": "SAFE",
+   "expected_events": 0,
+   "fired_events": 0
+  },
+  "DDoS-SYN_Flood5": {
+   "slice": {
+    "split": "val",
+    "session": "DDoS-SYN_Flood5",
+    "source_pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap",
+    "source_sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad",
+    "labels": [
+     "train",
+     "gap@train|val",
+     "val"
+    ],
+    "boundaries_epoch": [
+     1661795094.3,
+     1661795214.3
+    ],
+    "stop": null,
+    "window": [
+     null,
+     null
+    ],
+    "max_packets": null,
+    "frames_written": 2275892,
+    "first_ts": 1661795214.300565,
+    "last_ts": 1661795830.785191,
+    "reader_counts": {
+     "frames": 26720136
+    },
+    "pcap_sha256": "21be46b92f50f1267edc8e67ef529e1af374d09f73a8efa532b8a7bcca545ce3"
+   },
+   "cfm": {
+    "wall_s": 41.579195361000075,
+    "csv": "/home/krithikk/lgids_cache/v2/runtime_inputs/20261122T140322Z_p32/cfm_DDoS-SYN_Flood5/DDoS-SYN_Flood5_val.pcap_Flow__phase3.csv"
+   },
+   "csv_rows": 788588,
+   "lean_source_rows_identical": null,
+   "dataset_rows_in_window": 51205,
+   "matched": 32809,
+   "match_rate_of_dataset": 0.6407382091592618,
+   "dataset_labels_matched": {
+    "benign": 1108,
+    "syn_flood": 31701
+   },
+   "runs": {
+    "phase3_1": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_DDoS-SYN_Flood5_PCAP_GLOBAL_s0_phase3_1",
+     "flows": 788588,
+     "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+     "agree_both": 1.0,
+     "agree_group": 1.0,
+     "agree_device": 1.0,
+     "disagree_n": 0,
+     "agree_by_label": {
+      "benign": {
+       "n": 1108,
+       "agree_both": 1.0
+      },
+      "syn_flood": {
+       "n": 31701,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_unbound": 199,
+      "learned_dst_unbound": 607,
+      "learned_both_unbound": 8,
+      "no_device": 27,
+      "learned_src_bound": 788389,
+      "device_side": 788422,
+      "unregistered_mac": 76,
+      "learned_dst_bound": 787981,
+      "device_device_initiator": 63
+     },
+     "learner": {
+      "bindings": 72,
+      "bindings_arp": 59,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1661795215.010931
+      },
+      "stats": {
+       "ip_frames": 2273559,
+       "bound_ip": 65,
+       "arp_frames": 2116,
+       "bound_arp": 15,
+       "ignored_ip": 22,
+       "gateways": 1,
+       "behind_gateway": 3153,
+       "ignored_arp": 2
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0
+      }
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 199,
+      "learned_dst_unbound": 607,
+      "learned_both_unbound": 8,
+      "learned_src_bound": 788389,
+      "learned_dst_bound": 787981
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 6,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 8,
+         "distinct_ips": 9,
+         "event_time": 1661795215.010931,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 2116,
+     "packets": 2275675
+    },
+    "phase3_2": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_DDoS-SYN_Flood5_PCAP_GLOBAL_s0_phase3_2",
+     "flows": 788588,
+     "config_sha256": "71f47711c6dca64cbb6f167666a3d6862aea3fb22f051020a7a32654d556aaf6",
+     "agree_both": 1.0,
+     "agree_group": 1.0,
+     "agree_device": 1.0,
+     "disagree_n": 0,
+     "agree_by_label": {
+      "benign": {
+       "n": 1108,
+       "agree_both": 1.0
+      },
+      "syn_flood": {
+       "n": 31701,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_unbound": 199,
+      "learned_dst_unbound": 607,
+      "learned_both_unbound": 8,
+      "no_device": 27,
+      "learned_src_bound": 788389,
+      "device_side": 788422,
+      "unregistered_mac": 76,
+      "learned_dst_bound": 787981,
+      "device_device_initiator": 63
+     },
+     "learner": {
+      "bindings": 72,
+      "bindings_arp": 59,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1661795215.010931
+      },
+      "stats": {
+       "ip_frames": 2273559,
+       "bound_ip": 65,
+       "arp_frames": 2116,
+       "bound_arp": 15,
+       "ignored_ip": 22,
+       "gateways": 1,
+       "gateway_in_warmup": 1,
+       "behind_gateway": 3153,
+       "ignored_arp": 2
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0,
+       "gateway_warmup_s": 300.0,
+       "inventory_gateway_roles": [
+        "gateway",
+        "router"
+       ],
+       "inventory_macs": 74
+      },
+      "t_first": 1661795214.300565
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 199,
+      "learned_dst_unbound": 607,
+      "learned_both_unbound": 8,
+      "learned_src_bound": 788389,
+      "learned_dst_bound": 787981
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 6,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 8,
+         "distinct_ips": 9,
+         "event_time": 1661795215.010931,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 2116,
+     "packets": 2275675
+    }
+   },
+   "pcap_predictions_equal_3_1_vs_3_2": true,
+   "gateway_macs": [
+    {
+     "mac": "3c:18:a0:41:c3:a0",
+     "detected_at": 1661795215.010931,
+     "detected_s_after_first_frame": 0.7103660106658936,
+     "in_warmup": true,
+     "inventory_name": "Gateway / router",
+     "inventory_role": "gateway",
+     "attack_source": false,
+     "attack_identity_category": "other_device",
+     "frames_from": 3166,
+     "max_distinct_src_ips_in_window": 94,
+     "matched_flows_touching": 392,
+     "unexpected_gateway_event": false,
+     "event": null
+    }
+   ],
+   "attack_source_macs_in_matched_flows": [
+    "dc:a6:32:c9:e4:90",
+    "dc:a6:32:c9:e4:ab",
+    "dc:a6:32:c9:e4:d5",
+    "dc:a6:32:c9:e5:a4",
+    "dc:a6:32:c9:e5:ef",
+    "dc:a6:32:dc:27:d5",
+    "e4:5f:01:55:90:c4"
+   ],
+   "spoofing_sources": [],
+   "t_first": 1661795214.300565,
+   "verdict": "SAFE",
+   "expected_events": 0,
+   "fired_events": 0
+  },
+  "DDoS-SYN_Flood": {
+   "slice": {
+    "split": "val",
+    "session": "DDoS-SYN_Flood",
+    "source_pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap",
+    "source_sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8",
+    "labels": [
+     "train",
+     "gap@train|val",
+     "val"
+    ],
+    "boundaries_epoch": [
+     1661540858.65,
+     1661540978.65
+    ],
+    "stop": null,
+    "window": [
+     null,
+     null
+    ],
+    "max_packets": null,
+    "frames_written": 2901590,
+    "first_ts": 1661776020.356885,
+    "last_ts": 1661776304.275216,
+    "reader_counts": {
+     "frames": 26597011
+    },
+    "pcap_sha256": "37da64fc006e97113a45af12b6ea9716f4e6f9ce42bb604822540e432485237b"
+   },
+   "cfm": {
+    "wall_s": 44.90637314700007,
+    "csv": "/home/krithikk/lgids_cache/v2/runtime_inputs/20261122T140322Z_p32/cfm_DDoS-SYN_Flood/DDoS-SYN_Flood_val.pcap_Flow__phase3.csv"
+   },
+   "csv_rows": 792359,
+   "lean_source_rows_identical": null,
+   "dataset_rows_in_window": 52542,
+   "matched": 52529,
+   "match_rate_of_dataset": 0.9997525788892695,
+   "dataset_labels_matched": {
+    "benign": 2426,
+    "syn_flood": 50103
+   },
+   "runs": {
+    "phase3_1": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_DDoS-SYN_Flood_PCAP_GLOBAL_s0_phase3_1",
+     "flows": 792359,
+     "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+     "agree_both": 0.9999619257933713,
+     "agree_group": 0.9999619257933713,
+     "agree_device": 0.9999619257933713,
+     "disagree_n": 2,
+     "agree_by_label": {
+      "benign": {
+       "n": 2426,
+       "agree_both": 0.9991755976916735
+      },
+      "syn_flood": {
+       "n": 50103,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_unbound": 505,
+      "learned_dst_unbound": 984,
+      "learned_both_unbound": 10,
+      "no_device": 34,
+      "learned_src_bound": 791854,
+      "learned_dst_bound": 791375,
+      "device_side": 792167,
+      "unregistered_mac": 99,
+      "device_device_initiator": 59
+     },
+     "learner": {
+      "bindings": 69,
+      "bindings_arp": 60,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1661776022.540118
+      },
+      "stats": {
+       "ip_frames": 2895782,
+       "bound_ip": 59,
+       "arp_frames": 5333,
+       "bound_arp": 17,
+       "gateways": 1,
+       "behind_gateway": 7484,
+       "ignored_ip": 71
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0
+      }
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 505,
+      "learned_dst_unbound": 984,
+      "learned_both_unbound": 10,
+      "learned_src_bound": 791854,
+      "learned_dst_bound": 791375
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 7,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 7,
+         "distinct_ips": 9,
+         "event_time": 1661776022.540118,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 5333,
+     "packets": 2901115,
+     "disagree_patterns": [
+      {
+       "dataset_group": "G1",
+       "dataset_device": "ac:17:02:05:34:27",
+       "runtime_group": "GEN",
+       "runtime_device": "",
+       "runtime_rule": "-",
+       "n": 2
+      }
+     ]
+    },
+    "phase3_2": {
+     "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140322Z_p32_DDoS-SYN_Flood_PCAP_GLOBAL_s0_phase3_2",
+     "flows": 792359,
+     "config_sha256": "71f47711c6dca64cbb6f167666a3d6862aea3fb22f051020a7a32654d556aaf6",
+     "agree_both": 0.9999619257933713,
+     "agree_group": 0.9999619257933713,
+     "agree_device": 0.9999619257933713,
+     "disagree_n": 2,
+     "agree_by_label": {
+      "benign": {
+       "n": 2426,
+       "agree_both": 0.9991755976916735
+      },
+      "syn_flood": {
+       "n": 50103,
+       "agree_both": 1.0
+      }
+     },
+     "router": {
+      "learned_src_unbound": 505,
+      "learned_dst_unbound": 984,
+      "learned_both_unbound": 10,
+      "no_device": 34,
+      "learned_src_bound": 791854,
+      "learned_dst_bound": 791375,
+      "device_side": 792167,
+      "unregistered_mac": 99,
+      "device_device_initiator": 59
+     },
+     "learner": {
+      "bindings": 69,
+      "bindings_arp": 60,
+      "gateways": {
+       "3c:18:a0:41:c3:a0": 1661776022.540118
+      },
+      "stats": {
+       "ip_frames": 2895782,
+       "bound_ip": 59,
+       "arp_frames": 5333,
+       "bound_arp": 17,
+       "gateways": 1,
+       "gateway_in_warmup": 1,
+       "behind_gateway": 7484,
+       "ignored_ip": 71
+      },
+      "params": {
+       "gateway_distinct_ip_threshold": 8,
+       "gateway_window_s": 300.0,
+       "flap_count": 3,
+       "flap_window_s": 60.0,
+       "gateway_warmup_s": 300.0,
+       "inventory_gateway_roles": [
+        "gateway",
+        "router"
+       ],
+       "inventory_macs": 74
+      },
+      "t_first": 1661776020.356885
+     },
+     "unknown_binding": {
+      "learned_src_unbound": 505,
+      "learned_dst_unbound": 984,
+      "learned_both_unbound": 10,
+      "learned_src_bound": 791854,
+      "learned_dst_bound": 791375
+     },
+     "health": {
+      "chain_ok": true,
+      "records": 7,
+      "events": {
+       "gateway_detected": [
+        {
+         "bindings_dropped": 7,
+         "distinct_ips": 9,
+         "event_time": 1661776022.540118,
+         "kind": "gateway_detected",
+         "mac": "3c:18:a0:41:c3:a0",
+         "stream": "health",
+         "window_s": 300.0
+        }
+       ]
+      },
+      "counts": {
+       "gateway_detected": 1,
+       "unexpected_gateway": 0,
+       "ip_mac_change": 0,
+       "ip_mac_flap": 0
+      }
+     },
+     "arp_records": 5333,
+     "packets": 2901115,
+     "disagree_patterns": [
+      {
+       "dataset_group": "G1",
+       "dataset_device": "ac:17:02:05:34:27",
+       "runtime_group": "GEN",
+       "runtime_device": "",
+       "runtime_rule": "-",
+       "n": 2
+      }
+     ]
+    }
+   },
+   "pcap_predictions_equal_3_1_vs_3_2": true,
+   "gateway_macs": [
+    {
+     "mac": "3c:18:a0:41:c3:a0",
+     "detected_at": 1661776022.540118,
+     "detected_s_after_first_frame": 2.1832330226898193,
+     "in_warmup": true,
+     "inventory_name": "Gateway / router",
+     "inventory_role": "gateway",
+     "attack_source": false,
+     "attack_identity_category": "other_device",
+     "frames_from": 7516,
+     "max_distinct_src_ips_in_window": 118,
+     "matched_flows_touching": 969,
+     "unexpected_gateway_event": false,
+     "event": null
+    }
+   ],
+   "attack_source_macs_in_matched_flows": [
+    "dc:a6:32:c9:e4:90",
+    "dc:a6:32:c9:e4:ab",
+    "dc:a6:32:c9:e4:d5",
+    "dc:a6:32:c9:e5:ef",
+    "dc:a6:32:dc:27:d5",
+    "e4:5f:01:55:90:c4"
+   ],
+   "spoofing_sources": [],
+   "t_first": 1661776020.356885,
+   "verdict": "SAFE",
+   "expected_events": 0,
+   "fired_events": 0
+  }
+ },
+ "verdict": "SAFE",
+ "figure": "results/phase3_2/gateway/figures/distinct_src_ips.png",
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ }
+}

@@ -1,0 +1,422 @@
+{
+ "gateway_run": "20261122T140322Z",
+ "slices": {
+  "Recon-PortScan": {
+   "attack_sources": {
+    "dc:a6:32:dc:27:d5": {
+     "category": "testbed",
+     "frames": 18219,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.178"
+     ]
+    },
+    "dc:a6:32:dc:28:48": {
+     "category": "testbed",
+     "frames": 638,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.98"
+     ]
+    },
+    "dc:a6:32:c9:e4:c6": {
+     "category": "testbed",
+     "frames": 2,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.86"
+     ]
+    },
+    "dc:a6:32:c9:e5:a4": {
+     "category": "testbed",
+     "frames": 1,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.127"
+     ]
+    },
+    "dc:a6:32:c9:e6:f4": {
+     "category": "testbed",
+     "frames": 1,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.4"
+     ]
+    },
+    "dc:a6:32:c9:e4:ab": {
+     "category": "testbed",
+     "frames": 1,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.27"
+     ]
+    },
+    "dc:a6:32:c9:e5:02": {
+     "category": "testbed",
+     "frames": 1,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.217"
+     ]
+    }
+   },
+   "frames": 143215,
+   "attack_source_frames": 18863,
+   "max_distinct_src_ips_any_attack_source": 1,
+   "dataset_rows_in_window": 28528,
+   "matched": 28135,
+   "unmatched_recount": 393,
+   "unmatched_flow_id_absent_from_cfm": 311,
+   "unmatched_start_s_rel_hist_60s": {
+    "0": 5,
+    "60": 70,
+    "120": 13,
+    "180": 5,
+    "240": 19,
+    "300": 8,
+    "360": 3,
+    "420": 18,
+    "480": 12,
+    "540": 2,
+    "600": 18,
+    "660": 11,
+    "720": 19,
+    "780": 3,
+    "840": 18,
+    "900": 10,
+    "960": 16,
+    "1020": 7,
+    "1080": 13,
+    "1140": 20,
+    "1200": 15,
+    "1260": 7,
+    "1620": 20,
+    "1680": 12,
+    "1740": 16,
+    "1800": 2,
+    "1860": 16,
+    "1920": 14,
+    "1980": 1
+   },
+   "all_start_s_rel_hist_60s": {
+    "0": 177,
+    "60": 1448,
+    "120": 1509,
+    "180": 157,
+    "240": 2538,
+    "300": 422,
+    "360": 156,
+    "420": 2346,
+    "480": 452,
+    "540": 164,
+    "600": 971,
+    "660": 1824,
+    "720": 518,
+    "780": 174,
+    "840": 2353,
+    "900": 467,
+    "960": 518,
+    "1020": 172,
+    "1080": 1440,
+    "1140": 1906,
+    "1200": 1876,
+    "1260": 252,
+    "1620": 2319,
+    "1680": 510,
+    "1740": 503,
+    "1800": 226,
+    "1860": 2487,
+    "1920": 478,
+    "1980": 165
+   }
+  },
+  "Mirai-udpplain": {
+   "attack_sources": {
+    "dc:a6:32:c9:e4:90": {
+     "category": "testbed",
+     "frames": 75492,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.238"
+     ]
+    },
+    "dc:a6:32:c9:e4:d5": {
+     "category": "testbed",
+     "frames": 60969,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.150"
+     ]
+    },
+    "dc:a6:32:dc:27:d5": {
+     "category": "testbed",
+     "frames": 46048,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.147"
+     ]
+    },
+    "dc:a6:32:c9:e5:a4": {
+     "category": "testbed",
+     "frames": 45316,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.162"
+     ]
+    },
+    "e4:5f:01:55:90:c4": {
+     "category": "attacker",
+     "frames": 41609,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.128"
+     ]
+    },
+    "dc:a6:32:c9:e4:ab": {
+     "category": "testbed",
+     "frames": 39946,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.207"
+     ]
+    },
+    "dc:a6:32:c9:e5:ef": {
+     "category": "testbed",
+     "frames": 34571,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.106"
+     ]
+    }
+   },
+   "frames": 348598,
+   "attack_source_frames": 343951,
+   "max_distinct_src_ips_any_attack_source": 1,
+   "dataset_rows_in_window": 597,
+   "matched": 592,
+   "unmatched_recount": 5,
+   "unmatched_flow_id_absent_from_cfm": 2,
+   "unmatched_start_s_rel_hist_60s": {
+    "0": 5
+   },
+   "all_start_s_rel_hist_60s": {
+    "0": 351,
+    "60": 246
+   }
+  },
+  "DDoS-SYN_Flood5": {
+   "attack_sources": {
+    "dc:a6:32:c9:e5:a4": {
+     "category": "testbed",
+     "frames": 410233,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.96"
+     ]
+    },
+    "dc:a6:32:dc:27:d5": {
+     "category": "testbed",
+     "frames": 408361,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.17"
+     ]
+    },
+    "dc:a6:32:c9:e4:90": {
+     "category": "testbed",
+     "frames": 380561,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.195"
+     ]
+    },
+    "dc:a6:32:c9:e4:ab": {
+     "category": "testbed",
+     "frames": 374844,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.240"
+     ]
+    },
+    "dc:a6:32:c9:e4:d5": {
+     "category": "testbed",
+     "frames": 364110,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.224"
+     ]
+    },
+    "dc:a6:32:c9:e5:ef": {
+     "category": "testbed",
+     "frames": 326160,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.58"
+     ]
+    },
+    "e4:5f:01:55:90:c4": {
+     "category": "attacker",
+     "frames": 1100,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.134"
+     ]
+    },
+    "dc:a6:32:c9:e5:02": {
+     "category": "testbed",
+     "frames": 3,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.242"
+     ]
+    },
+    "dc:a6:32:c9:e6:f4": {
+     "category": "testbed",
+     "frames": 1,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.90"
+     ]
+    }
+   },
+   "frames": 2275892,
+   "attack_source_frames": 2265373,
+   "max_distinct_src_ips_any_attack_source": 1,
+   "dataset_rows_in_window": 51205,
+   "matched": 32809,
+   "unmatched_recount": 18396,
+   "unmatched_flow_id_absent_from_cfm": 17,
+   "unmatched_start_s_rel_hist_60s": {
+    "0": 16445,
+    "60": 1943,
+    "540": 8
+   },
+   "all_start_s_rel_hist_60s": {
+    "0": 20913,
+    "60": 2000,
+    "540": 28087,
+    "600": 205
+   }
+  },
+  "DDoS-SYN_Flood": {
+   "attack_sources": {
+    "dc:a6:32:c9:e4:ab": {
+     "category": "testbed",
+     "frames": 1148657,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.240"
+     ]
+    },
+    "dc:a6:32:c9:e5:ef": {
+     "category": "testbed",
+     "frames": 434117,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.58"
+     ]
+    },
+    "e4:5f:01:55:90:c4": {
+     "category": "attacker",
+     "frames": 359865,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.134"
+     ]
+    },
+    "dc:a6:32:dc:27:d5": {
+     "category": "testbed",
+     "frames": 328283,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.17"
+     ]
+    },
+    "dc:a6:32:c9:e4:d5": {
+     "category": "testbed",
+     "frames": 306549,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.224"
+     ]
+    },
+    "dc:a6:32:c9:e4:90": {
+     "category": "testbed",
+     "frames": 289974,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.195"
+     ]
+    },
+    "dc:a6:32:c9:e5:a4": {
+     "category": "testbed",
+     "frames": 302,
+     "distinct_src_ips_slice": 1,
+     "max_distinct_src_ips_in_window": 1,
+     "src_ips": [
+      "192.168.137.96"
+     ]
+    }
+   },
+   "frames": 2901590,
+   "attack_source_frames": 2867747,
+   "max_distinct_src_ips_any_attack_source": 1,
+   "dataset_rows_in_window": 52542,
+   "matched": 52529,
+   "unmatched_recount": 13,
+   "unmatched_flow_id_absent_from_cfm": 13,
+   "unmatched_start_s_rel_hist_60s": {
+    "60": 2,
+    "120": 3,
+    "180": 6,
+    "240": 2
+   },
+   "all_start_s_rel_hist_60s": {
+    "0": 451,
+    "60": 24176,
+    "120": 2031,
+    "180": 13959,
+    "240": 11925
+   }
+  }
+ },
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ }
+}

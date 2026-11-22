@@ -1,0 +1,80 @@
+{
+ "GLOBAL_s0": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140750Z_GLOBAL_s0",
+  "mode": "GLOBAL",
+  "seed": 0,
+  "evaluation_only": false,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "packets": 6252317,
+   "flow_alerts": 118321,
+   "batches": 14100,
+   "rg_alerts_v2": 397,
+   "rg_alerts_v1": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 249.68177468199997,
+  "flows_per_s": 631.0352455667588,
+  "incidents": 20,
+  "logs": {
+   "alerts": {
+    "n": 118718,
+    "head_sha256": "bc20d0d861edb93b62b5bb19bbd675bdcae4f7bc756a0a4c6b11a290e515f207",
+    "file_sha256": "7e93870d5a66b5c15e0c37682cd4d82756385a81811969567d17737a4a6af951"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "a70fe40129450352d919b683ca6760e31dcba563868616111aaf659bcd448be4",
+    "file_sha256": "29b9ae71d35b779fbfbbcb2386e548f5376fef7e5c5dc20a145e65c81c06f88b"
+   },
+   "outbox": {
+    "n": 40,
+    "head_sha256": "2135ce5c748896e7dbdb9a8e6d0aa47de6b65ab7db2da2b17de5f57a875ae8d9",
+    "file_sha256": "c27039e8d89f6cf436fedfc36d7ae2c1de129b0330255a6a8658c7fbfe52d791"
+   }
+  },
+  "peak_rss_mb": 1393.83984375
+ },
+ "ROUTED_s0": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T140750Z_ROUTED_s0",
+  "mode": "ROUTED",
+  "seed": 0,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "packets": 6252317,
+   "flow_alerts": 118338,
+   "batches": 14100,
+   "rg_alerts_v2": 397,
+   "rg_alerts_v1": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 216.42930403899982,
+  "flows_per_s": 727.9882948364913,
+  "incidents": 21,
+  "logs": {
+   "alerts": {
+    "n": 118735,
+    "head_sha256": "1b5f9bb6b7c63e24593ef9a3f49c8c882be1c9f30fc3328af73dc44dff92edc8",
+    "file_sha256": "6a74e0cb0e6c9ae41fa29890190ee42f52f659572274e1b2fb582304884f4a4b"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "a7191639a4cb7ab3ae5d0987bf8f418397ba8dbd07e56a0e1c728c3d6803d069",
+    "file_sha256": "f9559172cf2f682ed0bf61f80abb50bd02c5465ae58752b7fafd7a7ad2cf8e06"
+   },
+   "outbox": {
+    "n": 42,
+    "head_sha256": "bb82fddddfdb24630faeff273995ea4afa2ab911e36979204c80bbb02fc1d361",
+    "file_sha256": "88bc9784b1c9510a1e1d5d720f885bd42a6d2f49b8995bb809767caf9d10caf0"
+   }
+  },
+  "peak_rss_mb": 1459.0
+ }
+}

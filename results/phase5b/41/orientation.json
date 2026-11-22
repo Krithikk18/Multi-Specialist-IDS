@@ -1,0 +1,1005 @@
+{
+ "flip": {
+  "rows": 157558,
+  "swapped_by_guard": 137593,
+  "not_swapped_non_tcp": 19965,
+  "rows_with_changed_flow_features": 137570
+ },
+ "agreement": {
+  "GLOBAL|0": {
+   "all": 0.9309841455210145,
+   "benign": 0.9848411381906341,
+   "tcp": 0.9209698167784698,
+   "tcp_benign": 0.969105944765174,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.969105944765174,
+    "syn_flood": 0.9977240284696088,
+    "udp_flood": 0.6,
+    "port_scan": 0.44727432752076574
+   },
+   "n_changed": 10874
+  },
+  "GLOBAL_CTX|0": {
+   "all": 0.9748854390129349,
+   "benign": 0.9997448003062396,
+   "tcp": 0.9712412695413284,
+   "tcp_benign": 0.9994798980600198,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9994798980600198,
+    "syn_flood": 0.9993611307984867,
+    "udp_flood": 0.9,
+    "port_scan": 0.786456900819627
+   },
+   "n_changed": 3957
+  },
+  "CTX_ONLY|0": {
+   "all": 1.0,
+   "benign": 1.0,
+   "tcp": 1.0,
+   "tcp_benign": 1.0,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 1.0,
+    "syn_flood": 1.0,
+    "udp_flood": 1.0,
+    "port_scan": 1.0
+   },
+   "n_changed": 0
+  },
+  "GLOBAL_NOFP|0": {
+   "all": 0.9273600832709225,
+   "benign": 0.9853004976394029,
+   "tcp": 0.9168198963610067,
+   "tcp_benign": 0.9700421282571384,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9700421282571384,
+    "syn_flood": 0.9981033570580073,
+    "udp_flood": 0.7,
+    "port_scan": 0.41272897299081357
+   },
+   "n_changed": 11445
+  },
+  "GLOBAL_CTX_NOFP|0": {
+   "all": 0.9996699628073471,
+   "benign": 0.9996937603674876,
+   "tcp": 0.9996220737973589,
+   "tcp_benign": 0.9993758776720237,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9993758776720237,
+    "syn_flood": 0.9996106890803278,
+    "udp_flood": 0.9,
+    "port_scan": 1.0
+   },
+   "n_changed": 52
+  },
+  "GLOBAL|1": {
+   "all": 0.931682301120857,
+   "benign": 0.9873420951894858,
+   "tcp": 0.9217692760532876,
+   "tcp_benign": 0.9742029437769802,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9742029437769802,
+    "syn_flood": 0.9980135160765445,
+    "udp_flood": 0.6,
+    "port_scan": 0.44633918257329885
+   },
+   "n_changed": 10764
+  },
+  "GLOBAL_CTX|1": {
+   "all": 0.9467434214701888,
+   "benign": 0.999310960826847,
+   "tcp": 0.9390157929545835,
+   "tcp_benign": 0.9985957247620534,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9985957247620534,
+    "syn_flood": 0.9964263254040349,
+    "udp_flood": 0.9,
+    "port_scan": 0.5596567467957534
+   },
+   "n_changed": 8391
+  },
+  "CTX_ONLY|1": {
+   "all": 1.0,
+   "benign": 1.0,
+   "tcp": 1.0,
+   "tcp_benign": 1.0,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 1.0,
+    "syn_flood": 1.0,
+    "udp_flood": 1.0,
+    "port_scan": 1.0
+   },
+   "n_changed": 0
+  },
+  "GLOBAL_NOFP|1": {
+   "all": 0.9271760240673276,
+   "benign": 0.9853260176087789,
+   "tcp": 0.9166091298249184,
+   "tcp_benign": 0.9700941384511365,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9700941384511365,
+    "syn_flood": 0.9978338341136189,
+    "udp_flood": 0.7,
+    "port_scan": 0.4125639474118488
+   },
+   "n_changed": 11474
+  },
+  "GLOBAL_CTX_NOFP|1": {
+   "all": 0.9996890034146155,
+   "benign": 0.9996427204287355,
+   "tcp": 0.9996438772321267,
+   "tcp_benign": 0.9992718572840277,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9992718572840277,
+    "syn_flood": 0.999660600736696,
+    "udp_flood": 0.9,
+    "port_scan": 1.0
+   },
+   "n_changed": 49
+  },
+  "GLOBAL|2": {
+   "all": 0.9322535193389101,
+   "benign": 0.9845859384968738,
+   "tcp": 0.9224233790963203,
+   "tcp_benign": 0.9685858428251938,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9685858428251938,
+    "syn_flood": 0.997464487856494,
+    "udp_flood": 0.6,
+    "port_scan": 0.46025633973265856
+   },
+   "n_changed": 10674
+  },
+  "GLOBAL_CTX|2": {
+   "all": 0.9745807892966399,
+   "benign": 0.9998979201224959,
+   "tcp": 0.9708924145850443,
+   "tcp_benign": 0.9997919592240079,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9997919592240079,
+    "syn_flood": 0.9993611307984867,
+    "udp_flood": 0.9,
+    "port_scan": 0.7834864403982618
+   },
+   "n_changed": 4005
+  },
+  "CTX_ONLY|2": {
+   "all": 1.0,
+   "benign": 1.0,
+   "tcp": 1.0,
+   "tcp_benign": 1.0,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 1.0,
+    "syn_flood": 1.0,
+    "udp_flood": 1.0,
+    "port_scan": 1.0
+   },
+   "n_changed": 0
+  },
+  "GLOBAL_NOFP|2": {
+   "all": 0.9270300460782696,
+   "benign": 0.98473905831313,
+   "tcp": 0.9164419701583656,
+   "tcp_benign": 0.9688979039891819,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9688979039891819,
+    "syn_flood": 0.9978238517823452,
+    "udp_flood": 0.7,
+    "port_scan": 0.41261895593817044
+   },
+   "n_changed": 11497
+  },
+  "GLOBAL_CTX_NOFP|2": {
+   "all": 0.9997905533200472,
+   "benign": 0.9996172004593594,
+   "tcp": 0.9997601622175547,
+   "tcp_benign": 0.9992198470900296,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9992198470900296,
+    "syn_flood": 0.9998303003683481,
+    "udp_flood": 0.9,
+    "port_scan": 1.0
+   },
+   "n_changed": 33
+  },
+  "GLOBAL|3": {
+   "all": 0.9327549219969788,
+   "benign": 0.9873420951894858,
+   "tcp": 0.9229975362118712,
+   "tcp_benign": 0.9742029437769802,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9742029437769802,
+    "syn_flood": 0.9976541521506933,
+    "udp_flood": 0.6,
+    "port_scan": 0.4576159304692227
+   },
+   "n_changed": 10595
+  },
+  "GLOBAL_CTX|3": {
+   "all": 0.9731527437515074,
+   "benign": 0.9996937603674876,
+   "tcp": 0.9692571569774625,
+   "tcp_benign": 0.9993758776720237,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9993758776720237,
+    "syn_flood": 0.9995707597552332,
+    "udp_flood": 0.9,
+    "port_scan": 0.7703944111337258
+   },
+   "n_changed": 4230
+  },
+  "CTX_ONLY|3": {
+   "all": 1.0,
+   "benign": 1.0,
+   "tcp": 1.0,
+   "tcp_benign": 1.0,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 1.0,
+    "syn_flood": 1.0,
+    "udp_flood": 1.0,
+    "port_scan": 1.0
+   },
+   "n_changed": 0
+  },
+  "GLOBAL_NOFP|3": {
+   "all": 0.9284580916234022,
+   "benign": 0.9853260176087789,
+   "tcp": 0.9180772277659474,
+   "tcp_benign": 0.9700941384511365,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9700941384511365,
+    "syn_flood": 0.9981632510456492,
+    "udp_flood": 0.6,
+    "port_scan": 0.4219153968865174
+   },
+   "n_changed": 11272
+  },
+  "GLOBAL_CTX_NOFP|3": {
+   "all": 0.9997143908909735,
+   "benign": 0.9996682403981115,
+   "tcp": 0.9996729484784836,
+   "tcp_benign": 0.9993238674780257,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9993238674780257,
+    "syn_flood": 0.9997005300617906,
+    "udp_flood": 0.9,
+    "port_scan": 0.9999449914736784
+   },
+   "n_changed": 45
+  },
+  "GLOBAL|4": {
+   "all": 0.932291600553447,
+   "benign": 0.9846624984050019,
+   "tcp": 0.9224669859658559,
+   "tcp_benign": 0.9687418734071878,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9687418734071878,
+    "syn_flood": 0.9975044171815886,
+    "udp_flood": 0.6,
+    "port_scan": 0.460201331206337
+   },
+   "n_changed": 10668
+  },
+  "GLOBAL_CTX|4": {
+   "all": 0.9726957691770649,
+   "benign": 0.9998213602143677,
+   "tcp": 0.9687338745430364,
+   "tcp_benign": 0.9996359286420138,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9996359286420138,
+    "syn_flood": 0.9963065374287511,
+    "udp_flood": 0.9,
+    "port_scan": 0.7841465427141207
+   },
+   "n_changed": 4302
+  },
+  "CTX_ONLY|4": {
+   "all": 1.0,
+   "benign": 1.0,
+   "tcp": 1.0,
+   "tcp_benign": 1.0,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 1.0,
+    "syn_flood": 1.0,
+    "udp_flood": 1.0,
+    "port_scan": 1.0
+   },
+   "n_changed": 0
+  },
+  "GLOBAL_NOFP|4": {
+   "all": 0.9281026669543914,
+   "benign": 0.9853260176087789,
+   "tcp": 0.9176702303169493,
+   "tcp_benign": 0.9700941384511365,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9700941384511365,
+    "syn_flood": 0.9980534454016391,
+    "udp_flood": 0.6,
+    "port_scan": 0.4194400132020463
+   },
+   "n_changed": 11328
+  },
+  "GLOBAL_CTX_NOFP|4": {
+   "all": 0.9997905533200472,
+   "benign": 0.9996172004593594,
+   "tcp": 0.9997601622175547,
+   "tcp_benign": 0.9992198470900296,
+   "non_tcp": 1.0,
+   "per_class": {
+    "benign": 0.9992198470900296,
+    "syn_flood": 0.9998303003683481,
+    "udp_flood": 0.9,
+    "port_scan": 1.0
+   },
+   "n_changed": 33
+  }
+ },
+ "h_c1": {
+  "verdict": "HOLDS",
+  "all": {
+   "mean": 0.04170270289913005,
+   "lo": 0.029295094953958413,
+   "hi": 0.04882951894355088,
+   "n": 5,
+   "resamples": 10000,
+   "seed": 0,
+   "diffs": [
+    0.050271452762858604,
+    0.01724651690129586,
+    0.048469035488723944,
+    0.046259620765591314,
+    0.04626688857718053
+   ]
+  },
+  "benign": {
+   "mean": 0.028407967961720515,
+   "lo": 0.025849066417017785,
+   "hi": 0.030914859312425214,
+   "n": 5,
+   "resamples": 10000,
+   "seed": 0,
+   "diffs": [
+    0.030373953294845824,
+    0.024392780985073137,
+    0.0312061163988141,
+    0.025172933895043492,
+    0.030894055234826023
+   ]
+  },
+  "all_ok": true,
+  "benign_ok": true,
+  "scope": "TCP flows only (the normaliser's TCP guard); non-TCP agreement is 1 by construction, not evidence"
+ },
+ "real_reversals": {
+  "available": true,
+  "source_sha256": "eac92420c48df13d9550fe1f26e55aca37ee06398eb85cdd15b2d30d5876d969",
+  "incidents_sha256": "f686d941259ac4c3c74db002b375aa250c51437108930ef70606633eb9251599",
+  "h1_flows": 233,
+  "h1_flows_in_val": 233,
+  "arms": {
+   "GLOBAL": {
+    "0": {
+     "error_rate": 0.8326180257510729,
+     "errors": 194,
+     "incidents": 3,
+     "incidents_still_false": 3
+    },
+    "1": {
+     "error_rate": 0.4678111587982833,
+     "errors": 109,
+     "incidents": 4,
+     "incidents_still_false": 4
+    },
+    "2": {
+     "error_rate": 0.9484978540772532,
+     "errors": 221,
+     "incidents": 3,
+     "incidents_still_false": 3
+    },
+    "3": {
+     "error_rate": 0.8669527896995708,
+     "errors": 202,
+     "incidents": 4,
+     "incidents_still_false": 4
+    },
+    "4": {
+     "error_rate": 0.8927038626609443,
+     "errors": 208,
+     "incidents": 3,
+     "incidents_still_false": 3
+    }
+   },
+   "GLOBAL_CTX": {
+    "0": {
+     "error_rate": 0.0944206008583691,
+     "errors": 22,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "1": {
+     "error_rate": 0.13733905579399142,
+     "errors": 32,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "2": {
+     "error_rate": 0.13733905579399142,
+     "errors": 32,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "3": {
+     "error_rate": 0.14163090128755365,
+     "errors": 33,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "4": {
+     "error_rate": 0.14163090128755365,
+     "errors": 33,
+     "incidents": 3,
+     "incidents_still_false": 1
+    }
+   },
+   "CTX_ONLY": {
+    "0": {
+     "error_rate": 0.1072961373390558,
+     "errors": 25,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "1": {
+     "error_rate": 0.14163090128755365,
+     "errors": 33,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "2": {
+     "error_rate": 0.14163090128755365,
+     "errors": 33,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "3": {
+     "error_rate": 0.14163090128755365,
+     "errors": 33,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "4": {
+     "error_rate": 0.11158798283261803,
+     "errors": 26,
+     "incidents": 3,
+     "incidents_still_false": 1
+    }
+   },
+   "GLOBAL_NOFP": {
+    "0": {
+     "error_rate": 0.8197424892703863,
+     "errors": 191,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "1": {
+     "error_rate": 0.8626609442060086,
+     "errors": 201,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "2": {
+     "error_rate": 0.8454935622317596,
+     "errors": 197,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "3": {
+     "error_rate": 0.8197424892703863,
+     "errors": 191,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "4": {
+     "error_rate": 0.8154506437768241,
+     "errors": 190,
+     "incidents": 3,
+     "incidents_still_false": 1
+    }
+   },
+   "GLOBAL_CTX_NOFP": {
+    "0": {
+     "error_rate": 0.12017167381974249,
+     "errors": 28,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "1": {
+     "error_rate": 0.12875536480686695,
+     "errors": 30,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "2": {
+     "error_rate": 0.12875536480686695,
+     "errors": 30,
+     "incidents": 3,
+     "incidents_still_false": 1
+    },
+    "3": {
+     "error_rate": 0.13733905579399142,
+     "errors": 32,
+     "incidents": 4,
+     "incidents_still_false": 1
+    },
+    "4": {
+     "error_rate": 0.13733905579399142,
+     "errors": 32,
+     "incidents": 3,
+     "incidents_still_false": 1
+    }
+   }
+  }
+ },
+ "contamination": {
+  "window_s": 60,
+  "n_benign": 39185,
+  "contaminated": 509,
+  "share": 0.012989664412402705,
+  "file": "/home/krithikk/lgids_cache/v2/phase5b/orient/20261122T185605Z/contaminated.npy",
+  "file_sha256": "e346611e4e018cc95159ae6c6c86d747dac46bdaed02d8bb2e98d0b37b5ee7f7",
+  "arms": {
+   "GLOBAL": {
+    "0": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 1,
+      "fa_rate": 0.0019646365422396855,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 1.6736401673640167
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "1": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 1,
+      "fa_rate": 0.0019646365422396855,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 1.6736401673640167
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "2": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 1,
+      "fa_rate": 0.0019646365422396855,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 1.6736401673640167
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "3": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "4": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 1,
+      "fa_rate": 0.0019646365422396855,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 1.6736401673640167
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 2,
+      "fa_rate": 5.171165580721895e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.0241820768136558
+     }
+    }
+   },
+   "GLOBAL_CTX": {
+    "0": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "1": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    },
+    "2": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "3": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    },
+    "4": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    }
+   },
+   "CTX_ONLY": {
+    "0": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 2,
+      "fa_rate": 0.003929273084479371,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 3.3472803347280333
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 2,
+      "fa_rate": 5.171165580721895e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.0241820768136558
+     }
+    },
+    "1": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 2,
+      "fa_rate": 0.003929273084479371,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 3.3472803347280333
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 5,
+      "fa_rate": 0.00012927913951804736,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 2.5604551920341394
+     }
+    },
+    "2": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 2,
+      "fa_rate": 0.003929273084479371,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 3.3472803347280333
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 2,
+      "fa_rate": 5.171165580721895e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.0241820768136558
+     }
+    },
+    "3": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 3,
+      "fa_rate": 0.005893909626719057,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 5.02092050209205
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 3,
+      "fa_rate": 7.756748371082842e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.5362731152204836
+     }
+    },
+    "4": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 1,
+      "fa_rate": 0.0019646365422396855,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 1.6736401673640167
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 2,
+      "fa_rate": 5.171165580721895e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.0241820768136558
+     }
+    }
+   },
+   "GLOBAL_NOFP": {
+    "0": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 3,
+      "fa_rate": 7.756748371082842e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.5362731152204836
+     }
+    },
+    "1": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 1,
+      "fa_rate": 2.5855827903609474e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.5120910384068279
+     }
+    },
+    "2": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 3,
+      "fa_rate": 7.756748371082842e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.5362731152204836
+     }
+    },
+    "3": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 2,
+      "fa_rate": 5.171165580721895e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.0241820768136558
+     }
+    },
+    "4": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 2,
+      "fa_rate": 5.171165580721895e-05,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 1.0241820768136558
+     }
+    }
+   },
+   "GLOBAL_CTX_NOFP": {
+    "0": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    },
+    "1": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    },
+    "2": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    },
+    "3": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    },
+    "4": {
+     "contaminated": {
+      "n_benign": 509,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 0.5975,
+      "fa_per_hour": 0.0
+     },
+     "clean": {
+      "n_benign": 38676,
+      "fa_count": 0,
+      "fa_rate": 0.0,
+      "benign_hours": 1.9527777777777777,
+      "fa_per_hour": 0.0
+     }
+    }
+   }
+  }
+ },
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "arms": [
+  "GLOBAL",
+  "GLOBAL_CTX",
+  "CTX_ONLY",
+  "GLOBAL_NOFP",
+  "GLOBAL_CTX_NOFP"
+ ],
+ "names": [
+  "benign",
+  "syn_flood",
+  "udp_flood",
+  "port_scan"
+ ]
+}

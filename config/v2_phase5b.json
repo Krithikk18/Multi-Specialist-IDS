@@ -1,0 +1,106 @@
+{
+ "version": 1,
+ "note": "Phase 5B (orientation-free host / host-pair time-window context features; H-C1 orientation robustness, H-C2 fingerprint independence, H-C3 zero-day with context; Part B TreeSHAP perturbation check). OFFLINE, train + val only. Pre-registered in docs/V2_PREREG_PHASE5B.md; validated by common/context_config.py; sha256 pinned in common/schemas.py (V2_PHASE5B_CONFIG_SHA256). Changes nothing in the runtime, registers nothing, promotes nothing. Every column name used by the context code is listed here; classes come from the class map and groups from the dataset.",
+ "phase2_config": "config/v2_phase2_v2_1.json",
+ "phase5_config": "config/v2_phase5.json",
+ "source_dataset": "v2_1_oriented",
+ "dataset_version": "v2_2_context",
+ "feature_list": "config/features_v2_2_context.json",
+ "deployed": {
+  "entry": "GLOBAL__none__s0__20261121T075821Z",
+  "model_id": "GLOBAL__none",
+  "weights": "none",
+  "train_run": "20261121T075821Z"
+ },
+ "columns": {
+  "src_ip": "Src IP",
+  "dst_ip": "Dst IP",
+  "src_port": "Src Port",
+  "dst_port": "Dst Port",
+  "flow_id": "Flow ID",
+  "start": "start_ts",
+  "start_unit_us": 1000000,
+  "duration": "Flow Duration",
+  "duration_unit_us": 1,
+  "fwd_pkts": "Total Fwd Packet",
+  "bwd_pkts": "Total Bwd packets",
+  "fwd_bytes": "Total Length of Fwd Packet",
+  "bwd_bytes": "Total Length of Bwd Packet",
+  "syn": "SYN Flag Count",
+  "ack": "ACK Flag Count",
+  "session": "session",
+  "split": "split",
+  "row": "row_in_file",
+  "label_id": "label_id",
+  "group": "group"
+ },
+ "context": {
+  "prefix": "ctx",
+  "windows_s": [10, 60],
+  "short_flow_max_pkts": 2,
+  "max_tracked_hosts": 4096,
+  "max_tracked_pairs": 16384,
+  "host_stats": ["n_flows", "n_peers", "n_port_pairs", "sum_pkts", "sum_bytes", "share_short", "share_syn_no_ack"],
+  "pair_stats": ["n_flows", "n_peers", "n_port_pairs", "sum_pkts", "sum_bytes", "share_short", "share_syn_no_ack", "mean_duration"],
+  "combine": ["max", "min"],
+  "warmup_column": "ctx_warmup",
+  "segment_keys": ["session", "split"],
+  "tie_break": "t_end_us, start, canonical (unordered-endpoint) Flow ID, row position in the split file",
+  "decaying_statistics": "future work (not built)"
+ },
+ "reference_check": {"slice_rows": 10000, "seed": 0},
+ "stage1": {
+  "seeds": [0, 1, 2, 3, 4],
+  "weights": "none",
+  "nthread": 4,
+  "arms": ["GLOBAL", "GLOBAL_CTX", "CTX_ONLY", "GLOBAL_NOFP", "GLOBAL_CTX_NOFP"],
+  "reused_arms": ["GLOBAL"],
+  "fingerprint_features": ["FWD Init Win Bytes", "Bwd Init Win Bytes", "Fwd Header Length", "Bwd Header Length"],
+  "fingerprint_source": "results/phase3_1/initwin_ablation/summary.md",
+  "h_c2_class": "port_scan"
+ },
+ "noninferiority": {"macro_f1_margin": 0.002, "fa_count_margin": 2},
+ "eval": {
+  "ci_level": 0.95,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 0,
+  "benign_hours_idle_gap_s": 300,
+  "min_val_flows": 50,
+  "contamination_window_s": 60
+ },
+ "flip": {"reversal_source": "results/diag_03/B_flows.csv", "reversal_hypothesis": "H1", "incidents_source": "results/diag_03/B_incidents.csv"},
+ "zeroday": {
+  "phase5a_runs": {"36": "20261122T174129Z", "37": "20261122T174358Z", "38": "20261122T174504Z"},
+  "min_misses": 30,
+  "recall_lo_min": 0.5,
+  "seeds": [0, 1, 2, 3, 4],
+  "primary_arm": "CTX_TAIL_GLOBAL",
+  "report_only_arms": ["CTX_IF_GLOBAL", "CTX_TAIL_PER_GROUP", "FLOWCTX_TAIL_GLOBAL"]
+ },
+ "tail": {
+  "fit_share": 0.8,
+  "q_grid": {"lo": 0.99, "hi": 0.999999, "n": 241, "spacing": "log-spaced in 1 - q"},
+  "target_flag_rate": 0.001,
+  "quantile_method": "higher",
+  "min_group_benign": 10000,
+  "decision": "D165: H-C3 primary detector = this per-feature upper-tail rule (raw context features, any-feature OR, strictly greater, one shared q calibrated on held-out train benign); the Phase 5A IsolationForest recipe is the report-only arm CTX_IF_GLOBAL"
+ },
+ "shap": {
+  "models": ["GLOBAL", "GLOBAL_CTX"],
+  "seed_model": 0,
+  "per_class_cap": 1000,
+  "benign_cap": 1000,
+  "sample_seed": 0,
+  "k": 5,
+  "random_draws": 5,
+  "random_seed": 0,
+  "temperature_bounds": [0.05, 20.0]
+ },
+ "paths": {
+  "cache_root": "~/lgids_cache/v2/phase5b",
+  "datasets_root": "~/lgids_cache/v2/datasets",
+  "registry_root": "~/lgids_cache/v2/registry",
+  "results": "results/phase5b",
+  "min_free_gb": 20
+ }
+}

@@ -1,0 +1,2922 @@
+{
+ "h_c2": {
+  "syn_flood": {
+   "verdict": "DOES_NOT_HOLD",
+   "delta_flow": [
+    1.9964662547278245e-05,
+    -0.0009583038022699109,
+    0.0001696996316519206,
+    8.984098146280761e-05,
+    7.9858650189224e-05
+   ],
+   "delta_ctx": [
+    -0.021751499845273914,
+    -0.021751499845273803,
+    -0.021881270151831278,
+    -0.021761482176547498,
+    -0.023588248799624623
+   ],
+   "diff": {
+    "mean": -0.02202701218842649,
+    "lo": -0.022925422003054606,
+    "hi": -0.021240404484063214,
+    "n": 5,
+    "resamples": 10000,
+    "seed": 0,
+    "diffs": [
+     -0.021771464507821192,
+     -0.020793196043003892,
+     -0.0220509697834832,
+     -0.021851323158010305,
+     -0.023668107449813847
+    ]
+   },
+   "rare": false
+  },
+  "udp_flood": {
+   "verdict": "HOLDS",
+   "delta_flow": [
+    -0.11764705882352944,
+    -0.05882352941176472,
+    -0.05882352941176472,
+    -0.05882352941176472,
+    0.0
+   ],
+   "delta_ctx": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diff": {
+    "mean": 0.05882352941176472,
+    "lo": 0.02352941176470589,
+    "hi": 0.09411764705882356,
+    "n": 5,
+    "resamples": 10000,
+    "seed": 0,
+    "diffs": [
+     0.11764705882352944,
+     0.05882352941176472,
+     0.05882352941176472,
+     0.05882352941176472,
+     0.0
+    ]
+   },
+   "rare": true
+  },
+  "port_scan": {
+   "verdict": "HOLDS",
+   "delta_flow": [
+    -0.009791517685241224,
+    -0.009791517685241224,
+    -0.00984652621156279,
+    -0.00984652621156279,
+    -0.016392540843830794
+   ],
+   "delta_ctx": [
+    -5.500852632156494e-05,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diff": {
+    "mean": 0.011122724022223451,
+    "lo": 0.009780515979976912,
+    "hi": 0.01376313328565928,
+    "n": 5,
+    "resamples": 10000,
+    "seed": 0,
+    "diffs": [
+     0.00973650915891966,
+     0.009791517685241224,
+     0.00984652621156279,
+     0.00984652621156279,
+     0.016392540843830794
+    ]
+   },
+   "rare": false
+  }
+ },
+ "h_c2_class": "port_scan",
+ "h_c3": {
+  "verdict": "DOES_NOT_HOLD",
+  "recall": {
+   "mean": 0.8536321744774373,
+   "lo": 0.8046033117368919,
+   "hi": 0.8999845630693339,
+   "n": 10,
+   "resamples": 10000,
+   "seed": 0
+  },
+  "fa": {
+   "mean": 163.9715504978663,
+   "lo": 155.47083926031297,
+   "hi": 171.448079658606,
+   "n": 5,
+   "resamples": 10000,
+   "seed": 0
+  },
+  "fa_ref": 18.742532005689903,
+  "recall_ok": true,
+  "fa_ok": false,
+  "eligible_pairs": [
+   {
+    "k": 1,
+    "s": 0,
+    "n_miss": 221,
+    "recall": 0.7873303167420814
+   },
+   {
+    "k": 3,
+    "s": 0,
+    "n_miss": 8370,
+    "recall": 0.8953405017921147
+   },
+   {
+    "k": 1,
+    "s": 1,
+    "n_miss": 236,
+    "recall": 0.7457627118644068
+   },
+   {
+    "k": 3,
+    "s": 1,
+    "n_miss": 8367,
+    "recall": 0.8938687701685192
+   },
+   {
+    "k": 1,
+    "s": 2,
+    "n_miss": 9718,
+    "recall": 0.9936200864375386
+   },
+   {
+    "k": 3,
+    "s": 2,
+    "n_miss": 8368,
+    "recall": 0.8942399617590823
+   },
+   {
+    "k": 1,
+    "s": 3,
+    "n_miss": 214,
+    "recall": 0.7990654205607477
+   },
+   {
+    "k": 3,
+    "s": 3,
+    "n_miss": 8368,
+    "recall": 0.8948374760994264
+   },
+   {
+    "k": 1,
+    "s": 4,
+    "n_miss": 229,
+    "recall": 0.7379912663755459
+   },
+   {
+    "k": 3,
+    "s": 4,
+    "n_miss": 8370,
+    "recall": 0.8942652329749103
+   }
+  ],
+  "reason": "FA/h CI upper bound 171.448 > reference 18.743"
+ },
+ "h_c3_rule_on_report_only_arms": {
+  "CTX_IF_GLOBAL": {
+   "verdict": "DOES_NOT_HOLD",
+   "recall": {
+    "mean": 0.8664112181163721,
+    "lo": 0.8023058093018393,
+    "hi": 0.9187568251400698,
+    "n": 10,
+    "resamples": 10000,
+    "seed": 0
+   },
+   "fa": {
+    "mean": 19.45945945945946,
+    "lo": 12.392603129445238,
+    "hi": 25.604551920341397,
+    "n": 5,
+    "resamples": 10000,
+    "seed": 0
+   },
+   "fa_ref": 18.742532005689903,
+   "recall_ok": true,
+   "fa_ok": false,
+   "eligible_pairs": [
+    {
+     "k": 1,
+     "s": 0,
+     "n_miss": 221,
+     "recall": 0.9321266968325792
+    },
+    {
+     "k": 3,
+     "s": 0,
+     "n_miss": 8370,
+     "recall": 0.8583034647550777
+    },
+    {
+     "k": 1,
+     "s": 1,
+     "n_miss": 236,
+     "recall": 0.8983050847457628
+    },
+    {
+     "k": 3,
+     "s": 1,
+     "n_miss": 8367,
+     "recall": 0.6419266164694634
+    },
+    {
+     "k": 1,
+     "s": 2,
+     "n_miss": 9718,
+     "recall": 0.9978390615352953
+    },
+    {
+     "k": 3,
+     "s": 2,
+     "n_miss": 8368,
+     "recall": 0.9023661567877629
+    },
+    {
+     "k": 1,
+     "s": 3,
+     "n_miss": 214,
+     "recall": 0.9112149532710281
+    },
+    {
+     "k": 3,
+     "s": 3,
+     "n_miss": 8368,
+     "recall": 0.748565965583174
+    },
+    {
+     "k": 1,
+     "s": 4,
+     "n_miss": 229,
+     "recall": 0.9039301310043668
+    },
+    {
+     "k": 3,
+     "s": 4,
+     "n_miss": 8370,
+     "recall": 0.8695340501792115
+    }
+   ],
+   "reason": "FA/h CI upper bound 25.605 > reference 18.743"
+  },
+  "CTX_TAIL_PER_GROUP": {
+   "verdict": "DOES_NOT_HOLD",
+   "recall": {
+    "mean": 0.8993726122000056,
+    "lo": 0.8304026148386732,
+    "hi": 0.9651299110256526,
+    "n": 10,
+    "resamples": 10000,
+    "seed": 0
+   },
+   "fa": {
+    "mean": 173.80369843527737,
+    "lo": 172.2674253200569,
+    "hi": 175.33997155049786,
+    "n": 5,
+    "resamples": 10000,
+    "seed": 0
+   },
+   "fa_ref": 18.742532005689903,
+   "recall_ok": true,
+   "fa_ok": false,
+   "eligible_pairs": [
+    {
+     "k": 1,
+     "s": 0,
+     "n_miss": 221,
+     "recall": 0.7692307692307693
+    },
+    {
+     "k": 3,
+     "s": 0,
+     "n_miss": 8370,
+     "recall": 0.9853046594982079
+    },
+    {
+     "k": 1,
+     "s": 1,
+     "n_miss": 236,
+     "recall": 0.7669491525423728
+    },
+    {
+     "k": 3,
+     "s": 1,
+     "n_miss": 8367,
+     "recall": 0.9852993904625313
+    },
+    {
+     "k": 1,
+     "s": 2,
+     "n_miss": 9718,
+     "recall": 0.9936200864375386
+    },
+    {
+     "k": 3,
+     "s": 2,
+     "n_miss": 8368,
+     "recall": 0.9853011472275335
+    },
+    {
+     "k": 1,
+     "s": 3,
+     "n_miss": 214,
+     "recall": 0.7990654205607477
+    },
+    {
+     "k": 3,
+     "s": 3,
+     "n_miss": 8368,
+     "recall": 0.9853011472275335
+    },
+    {
+     "k": 1,
+     "s": 4,
+     "n_miss": 229,
+     "recall": 0.7379912663755459
+    },
+    {
+     "k": 3,
+     "s": 4,
+     "n_miss": 8370,
+     "recall": 0.985663082437276
+    }
+   ],
+   "reason": "FA/h CI upper bound 175.340 > reference 18.743"
+  },
+  "FLOWCTX_TAIL_GLOBAL": {
+   "verdict": "DOES_NOT_HOLD",
+   "recall": {
+    "mean": 0.8375556683444876,
+    "lo": 0.7822236185101746,
+    "hi": 0.8906435995017901,
+    "n": 10,
+    "resamples": 10000,
+    "seed": 0
+   },
+   "fa": {
+    "mean": 132.7339971550498,
+    "lo": 126.07681365576101,
+    "hi": 139.5960170697013,
+    "n": 5,
+    "resamples": 10000,
+    "seed": 0
+   },
+   "fa_ref": 18.742532005689903,
+   "recall_ok": true,
+   "fa_ok": false,
+   "eligible_pairs": [
+    {
+     "k": 1,
+     "s": 0,
+     "n_miss": 221,
+     "recall": 0.7330316742081447
+    },
+    {
+     "k": 3,
+     "s": 0,
+     "n_miss": 8370,
+     "recall": 0.8933094384707287
+    },
+    {
+     "k": 1,
+     "s": 1,
+     "n_miss": 236,
+     "recall": 0.7372881355932204
+    },
+    {
+     "k": 3,
+     "s": 1,
+     "n_miss": 8367,
+     "recall": 0.8929126329628302
+    },
+    {
+     "k": 1,
+     "s": 2,
+     "n_miss": 9718,
+     "recall": 0.9720107017904919
+    },
+    {
+     "k": 3,
+     "s": 2,
+     "n_miss": 8368,
+     "recall": 0.8923279158699808
+    },
+    {
+     "k": 1,
+     "s": 3,
+     "n_miss": 214,
+     "recall": 0.7570093457943925
+    },
+    {
+     "k": 3,
+     "s": 3,
+     "n_miss": 8368,
+     "recall": 0.892925430210325
+    },
+    {
+     "k": 1,
+     "s": 4,
+     "n_miss": 229,
+     "recall": 0.7117903930131004
+    },
+    {
+     "k": 3,
+     "s": 4,
+     "n_miss": 8370,
+     "recall": 0.8929510155316607
+    }
+   ],
+   "reason": "FA/h CI upper bound 139.596 > reference 18.743"
+  }
+ },
+ "primary_arm": "CTX_TAIL_GLOBAL",
+ "arms": {
+  "CTX_TAIL_GLOBAL": {
+   "0": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 0,
+      "n_miss": 221,
+      "flagged": 174,
+      "recall": 0.7873303167420814,
+      "rare": false,
+      "detector_alone": 0.9891591882368208,
+      "combined": 0.9995308304301387,
+      "combined_fa": 344,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 0,
+      "n_miss": 8370,
+      "flagged": 7494,
+      "recall": 0.8953405017921147,
+      "rare": false,
+      "detector_alone": 0.9023598657791958,
+      "combined": 0.951812530942296,
+      "combined_fa": 344,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 0,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 341,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 341,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 174.6230440967283,
+     "flag_rate": 0.00870230955722853
+    },
+    "fa_contamination": {
+     "contaminated": 111,
+     "n_contaminated": 509,
+     "clean": 230,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 315,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 26,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    },
+    "top_firing_features": {
+     "benign": {
+      "ctx_hostmax_n_peers_60s": 169,
+      "ctx_hostmax_n_flows_60s": 96,
+      "ctx_hostmax_n_port_pairs_60s": 96,
+      "ctx_hostmax_n_flows_10s": 36,
+      "ctx_hostmax_n_port_pairs_10s": 36
+     },
+     "syn_flood": {
+      "ctx_hostmin_share_syn_no_ack_60s": 99090,
+      "ctx_hostmin_n_flows_10s": 91540,
+      "ctx_pair_n_flows_10s": 91540,
+      "ctx_hostmin_n_port_pairs_10s": 91536,
+      "ctx_pair_n_port_pairs_10s": 91536
+     },
+     "udp_flood": {
+      "ctx_hostmax_sum_pkts_10s": 2,
+      "ctx_hostmax_sum_bytes_10s": 2
+     },
+     "port_scan": {
+      "ctx_hostmin_n_flows_10s": 13469,
+      "ctx_hostmin_n_port_pairs_10s": 13469,
+      "ctx_pair_n_flows_10s": 13469,
+      "ctx_pair_n_port_pairs_10s": 13469,
+      "ctx_hostmin_n_flows_60s": 11227
+     }
+    }
+   },
+   "1": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 1,
+      "n_miss": 236,
+      "flagged": 176,
+      "recall": 0.7457627118644068,
+      "rare": false,
+      "detector_alone": 0.9813530051808299,
+      "combined": 0.9994010601235812,
+      "combined_fa": 329,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 1,
+      "n_miss": 8367,
+      "flagged": 7479,
+      "recall": 0.8938687701685192,
+      "rare": false,
+      "detector_alone": 0.9010946696737995,
+      "combined": 0.9511524286264371,
+      "combined_fa": 327,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 1,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 324,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 324,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 165.91749644381224,
+     "flag_rate": 0.008268470077835906
+    },
+    "fa_contamination": {
+     "contaminated": 106,
+     "n_contaminated": 509,
+     "clean": 218,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 299,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 25,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    },
+    "top_firing_features": {
+     "benign": {
+      "ctx_hostmax_n_peers_60s": 169,
+      "ctx_hostmax_n_port_pairs_60s": 83,
+      "ctx_hostmax_n_flows_60s": 78,
+      "ctx_hostmax_n_flows_10s": 36,
+      "ctx_hostmax_n_port_pairs_10s": 36
+     },
+     "syn_flood": {
+      "ctx_hostmin_share_syn_no_ack_60s": 95778,
+      "ctx_hostmin_n_flows_10s": 91469,
+      "ctx_pair_n_flows_10s": 91469,
+      "ctx_hostmin_n_port_pairs_10s": 91463,
+      "ctx_pair_n_port_pairs_10s": 91463
+     },
+     "udp_flood": {
+      "ctx_hostmax_sum_pkts_10s": 2,
+      "ctx_hostmax_sum_bytes_10s": 2
+     },
+     "port_scan": {
+      "ctx_hostmin_n_flows_10s": 13426,
+      "ctx_hostmin_n_port_pairs_10s": 13426,
+      "ctx_pair_n_flows_10s": 13426,
+      "ctx_pair_n_port_pairs_10s": 13426,
+      "ctx_hostmin_n_flows_60s": 11165
+     }
+    }
+   },
+   "2": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 2,
+      "n_miss": 9718,
+      "flagged": 9656,
+      "recall": 0.9936200864375386,
+      "rare": false,
+      "detector_alone": 0.9500683789692245,
+      "combined": 0.9993810954610339,
+      "combined_fa": 291,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 2,
+      "n_miss": 8368,
+      "flagged": 7483,
+      "recall": 0.8942399617590823,
+      "rare": false,
+      "detector_alone": 0.8580229935640025,
+      "combined": 0.9513174542054018,
+      "combined_fa": 291,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 2,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 288,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 288,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 147.48221906116643,
+     "flag_rate": 0.007349751180298583
+    },
+    "fa_contamination": {
+     "contaminated": 68,
+     "n_contaminated": 509,
+     "clean": 220,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 263,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 25,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    },
+    "top_firing_features": {
+     "benign": {
+      "ctx_hostmax_n_peers_60s": 169,
+      "ctx_hostmax_n_flows_60s": 50,
+      "ctx_hostmax_n_port_pairs_60s": 50,
+      "ctx_hostmax_n_peers_10s": 31,
+      "ctx_hostmax_n_flows_10s": 29
+     },
+     "syn_flood": {
+      "ctx_hostmin_n_flows_10s": 91492,
+      "ctx_pair_n_flows_10s": 91492,
+      "ctx_hostmin_n_port_pairs_10s": 91487,
+      "ctx_pair_n_port_pairs_10s": 91487,
+      "ctx_hostmin_n_flows_60s": 84255
+     },
+     "udp_flood": {
+      "ctx_hostmax_sum_pkts_10s": 2,
+      "ctx_hostmax_sum_bytes_10s": 2
+     },
+     "port_scan": {
+      "ctx_hostmin_n_flows_10s": 13442,
+      "ctx_hostmin_n_port_pairs_10s": 13442,
+      "ctx_pair_n_flows_10s": 13442,
+      "ctx_pair_n_port_pairs_10s": 13442,
+      "ctx_hostmin_n_flows_60s": 11165
+     }
+    }
+   },
+   "3": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 3,
+      "n_miss": 214,
+      "flagged": 171,
+      "recall": 0.7990654205607477,
+      "rare": false,
+      "detector_alone": 0.9877416971959632,
+      "combined": 0.9995707597552332,
+      "combined_fa": 341,
+      "stage1_fa": 7
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 3,
+      "n_miss": 8368,
+      "flagged": 7488,
+      "recall": 0.8948374760994264,
+      "rare": false,
+      "detector_alone": 0.9018647890423016,
+      "combined": 0.9515924968370097,
+      "combined_fa": 335,
+      "stage1_fa": 1
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 3,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 335,
+      "stage1_fa": 1
+     }
+    ],
+    "fa": {
+     "fa_count": 334,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 171.03840682788052,
+     "flag_rate": 0.008523669771596274
+    },
+    "fa_contamination": {
+     "contaminated": 111,
+     "n_contaminated": 509,
+     "clean": 223,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 309,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 25,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    },
+    "top_firing_features": {
+     "benign": {
+      "ctx_hostmax_n_peers_60s": 169,
+      "ctx_hostmax_n_flows_60s": 92,
+      "ctx_hostmax_n_port_pairs_60s": 92,
+      "ctx_hostmax_n_flows_10s": 36,
+      "ctx_hostmax_n_port_pairs_10s": 36
+     },
+     "syn_flood": {
+      "ctx_hostmin_share_syn_no_ack_60s": 98948,
+      "ctx_hostmin_n_flows_10s": 91517,
+      "ctx_pair_n_flows_10s": 91517,
+      "ctx_hostmin_n_port_pairs_10s": 91511,
+      "ctx_pair_n_port_pairs_10s": 91511
+     },
+     "udp_flood": {
+      "ctx_hostmax_sum_pkts_10s": 2,
+      "ctx_hostmax_sum_bytes_10s": 2
+     },
+     "port_scan": {
+      "ctx_hostmin_n_flows_10s": 13454,
+      "ctx_hostmin_n_port_pairs_10s": 13454,
+      "ctx_pair_n_flows_10s": 13454,
+      "ctx_pair_n_port_pairs_10s": 13454,
+      "ctx_hostmin_n_flows_60s": 11173
+     }
+    }
+   },
+   "4": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 4,
+      "n_miss": 229,
+      "flagged": 169,
+      "recall": 0.7379912663755459,
+      "rare": false,
+      "detector_alone": 0.9813829521746509,
+      "combined": 0.9994010601235812,
+      "combined_fa": 319,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 4,
+      "n_miss": 8370,
+      "flagged": 7485,
+      "recall": 0.8942652329749103,
+      "rare": false,
+      "detector_alone": 0.9014797293580505,
+      "combined": 0.9513174542054018,
+      "combined_fa": 317,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 4,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 314,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 314,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 160.79658605974396,
+     "flag_rate": 0.00801327038407554
+    },
+    "fa_contamination": {
+     "contaminated": 100,
+     "n_contaminated": 509,
+     "clean": 214,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 291,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 23,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    },
+    "top_firing_features": {
+     "benign": {
+      "ctx_hostmax_n_peers_60s": 169,
+      "ctx_hostmax_n_port_pairs_60s": 83,
+      "ctx_hostmax_n_flows_60s": 78,
+      "ctx_hostmax_n_flows_10s": 29,
+      "ctx_hostmax_n_port_pairs_10s": 28
+     },
+     "syn_flood": {
+      "ctx_hostmin_share_syn_no_ack_60s": 95778,
+      "ctx_hostmin_n_flows_10s": 91492,
+      "ctx_pair_n_flows_10s": 91492,
+      "ctx_hostmin_n_port_pairs_10s": 91487,
+      "ctx_pair_n_port_pairs_10s": 91487
+     },
+     "udp_flood": {
+      "ctx_hostmax_sum_pkts_10s": 2,
+      "ctx_hostmax_sum_bytes_10s": 2
+     },
+     "port_scan": {
+      "ctx_hostmin_n_flows_10s": 13442,
+      "ctx_hostmin_n_port_pairs_10s": 13442,
+      "ctx_pair_n_flows_10s": 13442,
+      "ctx_pair_n_port_pairs_10s": 13442,
+      "ctx_hostmin_n_flows_60s": 11143
+     }
+    }
+   }
+  },
+  "CTX_IF_GLOBAL": {
+   "0": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 0,
+      "n_miss": 221,
+      "flagged": 206,
+      "recall": 0.9321266968325792,
+      "rare": false,
+      "detector_alone": 0.9950787106820927,
+      "combined": 0.9998502650308954,
+      "combined_fa": 62,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 0,
+      "n_miss": 8370,
+      "flagged": 7184,
+      "recall": 0.8583034647550777,
+      "rare": false,
+      "detector_alone": 0.8290335001925299,
+      "combined": 0.9347598877826063,
+      "combined_fa": 62,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 0,
+      "n_miss": 17,
+      "flagged": 0,
+      "recall": 0.0,
+      "rare": true,
+      "detector_alone": 0.0,
+      "combined": 0.0,
+      "combined_fa": 59,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 59,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 30.213371266002845,
+     "flag_rate": 0.0015056781931861681
+    },
+    "fa_contamination": {
+     "contaminated": 57,
+     "n_contaminated": 509,
+     "clean": 2,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 57,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 2,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "1": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 1,
+      "n_miss": 236,
+      "flagged": 212,
+      "recall": 0.8983050847457628,
+      "rare": false,
+      "detector_alone": 0.9879912554778043,
+      "combined": 0.9997604240494326,
+      "combined_fa": 50,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 1,
+      "n_miss": 8367,
+      "flagged": 5371,
+      "recall": 0.6419266164694634,
+      "rare": false,
+      "detector_alone": 0.5410088563727378,
+      "combined": 0.8351944551405468,
+      "combined_fa": 48,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 1,
+      "n_miss": 17,
+      "flagged": 0,
+      "recall": 0.0,
+      "rare": true,
+      "detector_alone": 0.0,
+      "combined": 0.0,
+      "combined_fa": 45,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 45,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 23.044096728307256,
+     "flag_rate": 0.0011483986219216536
+    },
+    "fa_contamination": {
+     "contaminated": 45,
+     "n_contaminated": 509,
+     "clean": 0,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 43,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 2,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "2": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 2,
+      "n_miss": 9718,
+      "flagged": 9697,
+      "recall": 0.9978390615352953,
+      "rare": false,
+      "detector_alone": 0.9894486758437565,
+      "combined": 0.9997903710432534,
+      "combined_fa": 45,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 2,
+      "n_miss": 8368,
+      "flagged": 7551,
+      "recall": 0.9023661567877629,
+      "rare": false,
+      "detector_alone": 0.868694647670389,
+      "combined": 0.9550580339952692,
+      "combined_fa": 45,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 2,
+      "n_miss": 17,
+      "flagged": 0,
+      "recall": 0.0,
+      "rare": true,
+      "detector_alone": 0.0,
+      "combined": 0.0,
+      "combined_fa": 42,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 42,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 21.50782361308677,
+     "flag_rate": 0.0010718387137935435
+    },
+    "fa_contamination": {
+     "contaminated": 42,
+     "n_contaminated": 509,
+     "clean": 0,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 41,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 1,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "3": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 3,
+      "n_miss": 214,
+      "flagged": 195,
+      "recall": 0.9112149532710281,
+      "rare": false,
+      "detector_alone": 0.9892989408746519,
+      "combined": 0.9998103357058007,
+      "combined_fa": 23,
+      "stage1_fa": 7
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 3,
+      "n_miss": 8368,
+      "flagged": 6264,
+      "recall": 0.748565965583174,
+      "rare": false,
+      "detector_alone": 0.6852962209142417,
+      "combined": 0.884262060619396,
+      "combined_fa": 17,
+      "stage1_fa": 1
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 3,
+      "n_miss": 17,
+      "flagged": 0,
+      "recall": 0.0,
+      "rare": true,
+      "detector_alone": 0.0,
+      "combined": 0.0,
+      "combined_fa": 17,
+      "stage1_fa": 1
+     }
+    ],
+    "fa": {
+     "fa_count": 16,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 8.193456614509246,
+     "flag_rate": 0.00040831951001658797
+    },
+    "fa_contamination": {
+     "contaminated": 16,
+     "n_contaminated": 509,
+     "clean": 0,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 15,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 1,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "4": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 4,
+      "n_miss": 229,
+      "flagged": 207,
+      "recall": 0.9039301310043668,
+      "rare": false,
+      "detector_alone": 0.9917845413617896,
+      "combined": 0.9997803887119798,
+      "combined_fa": 33,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 4,
+      "n_miss": 8370,
+      "flagged": 7278,
+      "recall": 0.8695340501792115,
+      "rare": false,
+      "detector_alone": 0.8223774685076187,
+      "combined": 0.9399306892568348,
+      "combined_fa": 31,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 4,
+      "n_miss": 17,
+      "flagged": 0,
+      "recall": 0.0,
+      "rare": true,
+      "detector_alone": 0.0,
+      "combined": 0.0,
+      "combined_fa": 28,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 28,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 14.338549075391182,
+     "flag_rate": 0.000714559142529029
+    },
+    "fa_contamination": {
+     "contaminated": 28,
+     "n_contaminated": 509,
+     "clean": 0,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 26,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 2,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   }
+  },
+  "CTX_TAIL_PER_GROUP": {
+   "0": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 0,
+      "n_miss": 221,
+      "flagged": 170,
+      "recall": 0.7692307692307693,
+      "rare": false,
+      "detector_alone": 0.9775697016281182,
+      "combined": 0.9994909011050441,
+      "combined_fa": 345,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 0,
+      "n_miss": 8370,
+      "flagged": 8247,
+      "recall": 0.9853046594982079,
+      "rare": false,
+      "detector_alone": 0.9422410473623412,
+      "combined": 0.9932339512624456,
+      "combined_fa": 345,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 0,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 342,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 342,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 175.13513513513513,
+     "flag_rate": 0.008727829526604568
+    },
+    "fa_contamination": {
+     "contaminated": 112,
+     "n_contaminated": 509,
+     "clean": 230,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 307,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 35,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "1": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 1,
+      "n_miss": 236,
+      "flagged": 181,
+      "recall": 0.7669491525423728,
+      "rare": false,
+      "detector_alone": 0.9775497369655709,
+      "combined": 0.9994509717799495,
+      "combined_fa": 345,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 1,
+      "n_miss": 8367,
+      "flagged": 8244,
+      "recall": 0.9852993904625313,
+      "rare": false,
+      "detector_alone": 0.942131030309698,
+      "combined": 0.9932339512624456,
+      "combined_fa": 343,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 1,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 340,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 340,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 174.11095305832148,
+     "flag_rate": 0.008676789587852495
+    },
+    "fa_contamination": {
+     "contaminated": 112,
+     "n_contaminated": 509,
+     "clean": 228,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 308,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 32,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "2": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 2,
+      "n_miss": 9718,
+      "flagged": 9656,
+      "recall": 0.9936200864375386,
+      "rare": false,
+      "detector_alone": 0.9693742076524552,
+      "combined": 0.9993810954610339,
+      "combined_fa": 338,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 2,
+      "n_miss": 8368,
+      "flagged": 8245,
+      "recall": 0.9853011472275335,
+      "rare": false,
+      "detector_alone": 0.9416359535728038,
+      "combined": 0.9932339512624456,
+      "combined_fa": 338,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 2,
+      "n_miss": 17,
+      "flagged": 0,
+      "recall": 0.0,
+      "rare": true,
+      "detector_alone": 0.0,
+      "combined": 0.0,
+      "combined_fa": 335,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 335,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 171.55049786628734,
+     "flag_rate": 0.00854918974097231
+    },
+    "fa_contamination": {
+     "contaminated": 111,
+     "n_contaminated": 509,
+     "clean": 224,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 300,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 35,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "3": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 3,
+      "n_miss": 214,
+      "flagged": 171,
+      "recall": 0.7990654205607477,
+      "rare": false,
+      "detector_alone": 0.9809038002735159,
+      "combined": 0.9995707597552332,
+      "combined_fa": 351,
+      "stage1_fa": 7
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 3,
+      "n_miss": 8368,
+      "flagged": 8245,
+      "recall": 0.9853011472275335,
+      "rare": false,
+      "detector_alone": 0.9422410473623412,
+      "combined": 0.9932339512624456,
+      "combined_fa": 345,
+      "stage1_fa": 1
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 3,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 345,
+      "stage1_fa": 1
+     }
+    ],
+    "fa": {
+     "fa_count": 344,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 176.1593172119488,
+     "flag_rate": 0.008778869465356642
+    },
+    "fa_contamination": {
+     "contaminated": 112,
+     "n_contaminated": 509,
+     "clean": 232,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 309,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 35,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "4": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 4,
+      "n_miss": 229,
+      "flagged": 169,
+      "recall": 0.7379912663755459,
+      "rare": false,
+      "detector_alone": 0.9760324226119768,
+      "combined": 0.9994010601235812,
+      "combined_fa": 341,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 4,
+      "n_miss": 8370,
+      "flagged": 8250,
+      "recall": 0.985663082437276,
+      "rare": false,
+      "detector_alone": 0.9418559876780901,
+      "combined": 0.9933989768414104,
+      "combined_fa": 339,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 4,
+      "n_miss": 17,
+      "flagged": 2,
+      "recall": 0.11764705882352941,
+      "rare": true,
+      "detector_alone": 0.11764705882352941,
+      "combined": 0.11764705882352941,
+      "combined_fa": 336,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 336,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 172.06258890469417,
+     "flag_rate": 0.008574709710348348
+    },
+    "fa_contamination": {
+     "contaminated": 112,
+     "n_contaminated": 509,
+     "clean": 224,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 306,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 30,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   }
+  },
+  "FLOWCTX_TAIL_GLOBAL": {
+   "0": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 0,
+      "n_miss": 221,
+      "flagged": 162,
+      "recall": 0.7330316742081447,
+      "rare": false,
+      "detector_alone": 0.9479720894017589,
+      "combined": 0.9994110424548549,
+      "combined_fa": 263,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 0,
+      "n_miss": 8370,
+      "flagged": 7477,
+      "recall": 0.8933094384707287,
+      "rare": false,
+      "detector_alone": 0.8570878486165355,
+      "combined": 0.9508773859948292,
+      "combined_fa": 263,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 0,
+      "n_miss": 17,
+      "flagged": 7,
+      "recall": 0.4117647058823529,
+      "rare": true,
+      "detector_alone": 0.4117647058823529,
+      "combined": 0.4117647058823529,
+      "combined_fa": 260,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 260,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 133.14366998577526,
+     "flag_rate": 0.006635192037769555
+    },
+    "fa_contamination": {
+     "contaminated": 9,
+     "n_contaminated": 509,
+     "clean": 251,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 220,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 39,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 1,
+      "n": 291
+     }
+    }
+   },
+   "1": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 1,
+      "n_miss": 236,
+      "flagged": 174,
+      "recall": 0.7372881355932204,
+      "rare": false,
+      "detector_alone": 0.9487906405661979,
+      "combined": 0.9993810954610339,
+      "combined_fa": 288,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 1,
+      "n_miss": 8367,
+      "flagged": 7471,
+      "recall": 0.8929126329628302,
+      "rare": false,
+      "detector_alone": 0.8567027889322845,
+      "combined": 0.9507123604158645,
+      "combined_fa": 286,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 1,
+      "n_miss": 17,
+      "flagged": 7,
+      "recall": 0.4117647058823529,
+      "rare": true,
+      "detector_alone": 0.4117647058823529,
+      "combined": 0.4117647058823529,
+      "combined_fa": 283,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 283,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 144.9217638691323,
+     "flag_rate": 0.0072221513334184
+    },
+    "fa_contamination": {
+     "contaminated": 28,
+     "n_contaminated": 509,
+     "clean": 255,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 240,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 42,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 1,
+      "n": 291
+     }
+    }
+   },
+   "2": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 2,
+      "n_miss": 9718,
+      "flagged": 9446,
+      "recall": 0.9720107017904919,
+      "rare": false,
+      "detector_alone": 0.9456162592211785,
+      "combined": 0.9972848058935684,
+      "combined_fa": 242,
+      "stage1_fa": 3
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 2,
+      "n_miss": 8368,
+      "flagged": 7467,
+      "recall": 0.8923279158699808,
+      "rare": false,
+      "detector_alone": 0.8562077121953903,
+      "combined": 0.9504373177842566,
+      "combined_fa": 242,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 2,
+      "n_miss": 17,
+      "flagged": 7,
+      "recall": 0.4117647058823529,
+      "rare": true,
+      "detector_alone": 0.4117647058823529,
+      "combined": 0.4117647058823529,
+      "combined_fa": 239,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 239,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 122.38975817923186,
+     "flag_rate": 0.006099272680872783
+    },
+    "fa_contamination": {
+     "contaminated": 4,
+     "n_contaminated": 509,
+     "clean": 235,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 212,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 27,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   },
+   "3": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 3,
+      "n_miss": 214,
+      "flagged": 162,
+      "recall": 0.7570093457943925,
+      "rare": false,
+      "detector_alone": 0.9483015063337892,
+      "combined": 0.9994809187737704,
+      "combined_fa": 273,
+      "stage1_fa": 7
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 3,
+      "n_miss": 8368,
+      "flagged": 7472,
+      "recall": 0.892925430210325,
+      "rare": false,
+      "detector_alone": 0.8567027889322845,
+      "combined": 0.9507123604158645,
+      "combined_fa": 267,
+      "stage1_fa": 1
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 3,
+      "n_miss": 17,
+      "flagged": 7,
+      "recall": 0.4117647058823529,
+      "rare": true,
+      "detector_alone": 0.4117647058823529,
+      "combined": 0.4117647058823529,
+      "combined_fa": 267,
+      "stage1_fa": 1
+     }
+    ],
+    "fa": {
+     "fa_count": 266,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 136.21621621621622,
+     "flag_rate": 0.0067883118540257754
+    },
+    "fa_contamination": {
+     "contaminated": 9,
+     "n_contaminated": 509,
+     "clean": 257,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 223,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 42,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 1,
+      "n": 291
+     }
+    }
+   },
+   "4": {
+    "pairs": [
+     {
+      "k": 1,
+      "class": "syn_flood",
+      "s": 4,
+      "n_miss": 229,
+      "flagged": 163,
+      "recall": 0.7117903930131004,
+      "rare": false,
+      "detector_alone": 0.9457859588528305,
+      "combined": 0.9993411661359394,
+      "combined_fa": 253,
+      "stage1_fa": 5
+     },
+     {
+      "k": 3,
+      "class": "port_scan",
+      "s": 4,
+      "n_miss": 8370,
+      "flagged": 7474,
+      "recall": 0.8929510155316607,
+      "rare": false,
+      "detector_alone": 0.8567027889322845,
+      "combined": 0.9507123604158645,
+      "combined_fa": 251,
+      "stage1_fa": 3
+     },
+     {
+      "k": 2,
+      "class": "udp_flood",
+      "s": 4,
+      "n_miss": 17,
+      "flagged": 7,
+      "recall": 0.4117647058823529,
+      "rare": true,
+      "detector_alone": 0.4117647058823529,
+      "combined": 0.4117647058823529,
+      "combined_fa": 248,
+      "stage1_fa": 0
+     }
+    ],
+    "fa": {
+     "fa_count": 248,
+     "n_benign": 39185,
+     "benign_hours": 1.9527777777777777,
+     "fa_per_hour": 126.99857752489332,
+     "flag_rate": 0.006328952405257114
+    },
+    "fa_contamination": {
+     "contaminated": 5,
+     "n_contaminated": 509,
+     "clean": 243,
+     "n_clean": 38676
+    },
+    "drift": {
+     "G1": {
+      "flagged": 207,
+      "n": 35833
+     },
+     "G2": {
+      "flagged": 41,
+      "n": 3061
+     },
+     "GEN": {
+      "flagged": 0,
+      "n": 291
+     }
+    }
+   }
+  }
+ },
+ "rules": {
+  "0": {
+   "CTX_TAIL_GLOBAL": {
+    "q": 0.9998834085598804,
+    "hold_rate": 0.0009821038847664775,
+    "met": true,
+    "n_fit": 109970,
+    "n_hold": 27492,
+    "t": {
+     "ctx_hostmax_n_flows_10s": 4330.0,
+     "ctx_hostmax_n_peers_10s": 24.0,
+     "ctx_hostmax_n_port_pairs_10s": 4208.0,
+     "ctx_hostmax_sum_pkts_10s": 158089.0,
+     "ctx_hostmax_sum_bytes_10s": 80939223.0,
+     "ctx_hostmax_share_short_10s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_10s": 1.0,
+     "ctx_hostmin_n_flows_10s": 220.0,
+     "ctx_hostmin_n_peers_10s": 11.0,
+     "ctx_hostmin_n_port_pairs_10s": 220.0,
+     "ctx_hostmin_sum_pkts_10s": 4172.0,
+     "ctx_hostmin_sum_bytes_10s": 3737889.0,
+     "ctx_hostmin_share_short_10s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_n_flows_10s": 220.0,
+     "ctx_pair_n_peers_10s": 1.0,
+     "ctx_pair_n_port_pairs_10s": 220.0,
+     "ctx_pair_sum_pkts_10s": 4172.0,
+     "ctx_pair_sum_bytes_10s": 3737889.0,
+     "ctx_pair_share_short_10s": 1.0,
+     "ctx_pair_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_mean_duration_10s": 119.999226,
+     "ctx_hostmax_n_flows_60s": 13772.0,
+     "ctx_hostmax_n_peers_60s": 36.0,
+     "ctx_hostmax_n_port_pairs_60s": 12554.0,
+     "ctx_hostmax_sum_pkts_60s": 567297.0,
+     "ctx_hostmax_sum_bytes_60s": 290407760.0,
+     "ctx_hostmax_share_short_60s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_60s": 1.0,
+     "ctx_hostmin_n_flows_60s": 778.0,
+     "ctx_hostmin_n_peers_60s": 19.0,
+     "ctx_hostmin_n_port_pairs_60s": 778.0,
+     "ctx_hostmin_sum_pkts_60s": 5618.0,
+     "ctx_hostmin_sum_bytes_60s": 5045437.0,
+     "ctx_hostmin_share_short_60s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_60s": 0.6666666666666666,
+     "ctx_pair_n_flows_60s": 778.0,
+     "ctx_pair_n_peers_60s": 1.0,
+     "ctx_pair_n_port_pairs_60s": 778.0,
+     "ctx_pair_sum_pkts_60s": 5618.0,
+     "ctx_pair_sum_bytes_60s": 5045437.0,
+     "ctx_pair_share_short_60s": 1.0,
+     "ctx_pair_share_syn_no_ack_60s": 1.0,
+     "ctx_pair_mean_duration_60s": 119.999692
+    }
+   },
+   "CTX_TAIL_PER_GROUP": {
+    "__global__": {
+     "q": 0.9998834085598804,
+     "hold_rate": 0.0009821038847664775,
+     "met": true,
+     "n_fit": 109970
+    },
+    "G1": {
+     "q": 0.9999174595814719,
+     "hold_rate": 0.0008747813046738316,
+     "met": true,
+     "n_fit": 96022
+    },
+    "G2": {
+     "q": 0.9999235577725736,
+     "hold_rate": 0.0003071253071253071,
+     "met": true,
+     "n_fit": 13023
+    },
+    "fallback": [
+     {
+      "group": "GEN",
+      "n": 1155
+     }
+    ]
+   },
+   "FLOWCTX_TAIL_GLOBAL": {
+    "q": 0.9999728772742061,
+    "hold_rate": 0.0009457296668121635,
+    "met": true
+   },
+   "CTX_IF_GLOBAL": {
+    "threshold": 0.6530457210032089
+   }
+  },
+  "1": {
+   "CTX_TAIL_GLOBAL": {
+    "q": 0.9999369042655509,
+    "hold_rate": 0.0008002327949949076,
+    "met": true,
+    "n_fit": 109970,
+    "n_hold": 27492,
+    "t": {
+     "ctx_hostmax_n_flows_10s": 4356.0,
+     "ctx_hostmax_n_peers_10s": 24.0,
+     "ctx_hostmax_n_port_pairs_10s": 4252.0,
+     "ctx_hostmax_sum_pkts_10s": 171182.0,
+     "ctx_hostmax_sum_bytes_10s": 87634823.0,
+     "ctx_hostmax_share_short_10s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_10s": 1.0,
+     "ctx_hostmin_n_flows_10s": 223.0,
+     "ctx_hostmin_n_peers_10s": 11.0,
+     "ctx_hostmin_n_port_pairs_10s": 223.0,
+     "ctx_hostmin_sum_pkts_10s": 4828.0,
+     "ctx_hostmin_sum_bytes_10s": 4586216.0,
+     "ctx_hostmin_share_short_10s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_n_flows_10s": 223.0,
+     "ctx_pair_n_peers_10s": 1.0,
+     "ctx_pair_n_port_pairs_10s": 223.0,
+     "ctx_pair_sum_pkts_10s": 4828.0,
+     "ctx_pair_sum_bytes_10s": 4586216.0,
+     "ctx_pair_share_short_10s": 1.0,
+     "ctx_pair_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_mean_duration_10s": 119.999653,
+     "ctx_hostmax_n_flows_60s": 16589.0,
+     "ctx_hostmax_n_peers_60s": 36.0,
+     "ctx_hostmax_n_port_pairs_60s": 14939.0,
+     "ctx_hostmax_sum_pkts_60s": 595327.0,
+     "ctx_hostmax_sum_bytes_60s": 304755381.0,
+     "ctx_hostmax_share_short_60s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_60s": 1.0,
+     "ctx_hostmin_n_flows_60s": 783.0,
+     "ctx_hostmin_n_peers_60s": 19.0,
+     "ctx_hostmin_n_port_pairs_60s": 783.0,
+     "ctx_hostmin_sum_pkts_60s": 8200.0,
+     "ctx_hostmin_sum_bytes_60s": 8125509.0,
+     "ctx_hostmin_share_short_60s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_60s": 0.9322689408964696,
+     "ctx_pair_n_flows_60s": 783.0,
+     "ctx_pair_n_peers_60s": 1.0,
+     "ctx_pair_n_port_pairs_60s": 783.0,
+     "ctx_pair_sum_pkts_60s": 8200.0,
+     "ctx_pair_sum_bytes_60s": 8125509.0,
+     "ctx_pair_share_short_60s": 1.0,
+     "ctx_pair_share_syn_no_ack_60s": 1.0,
+     "ctx_pair_mean_duration_60s": 119.999883
+    }
+   },
+   "CTX_TAIL_PER_GROUP": {
+    "__global__": {
+     "q": 0.9999369042655509,
+     "hold_rate": 0.0008002327949949076,
+     "met": true,
+     "n_fit": 109970
+    },
+    "G1": {
+     "q": 0.9999073881271857,
+     "hold_rate": 0.000999750062484379,
+     "met": true,
+     "n_fit": 96022
+    },
+    "G2": {
+     "q": 0.9999235577725736,
+     "hold_rate": 0.0006142506142506142,
+     "met": true,
+     "n_fit": 13023
+    },
+    "fallback": [
+     {
+      "group": "GEN",
+      "n": 1155
+     }
+    ]
+   },
+   "FLOWCTX_TAIL_GLOBAL": {
+    "q": 0.9999728772742061,
+    "hold_rate": 0.0009457296668121635,
+    "met": true
+   },
+   "CTX_IF_GLOBAL": {
+    "threshold": 0.6699714718434012
+   }
+  },
+  "2": {
+   "CTX_TAIL_GLOBAL": {
+    "q": 0.9999369042655509,
+    "hold_rate": 0.0009457296668121635,
+    "met": true,
+    "n_fit": 109970,
+    "n_hold": 27492,
+    "t": {
+     "ctx_hostmax_n_flows_10s": 4683.0,
+     "ctx_hostmax_n_peers_10s": 24.0,
+     "ctx_hostmax_n_port_pairs_10s": 4576.0,
+     "ctx_hostmax_sum_pkts_10s": 172757.0,
+     "ctx_hostmax_sum_bytes_10s": 88440036.0,
+     "ctx_hostmax_share_short_10s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_10s": 1.0,
+     "ctx_hostmin_n_flows_10s": 222.0,
+     "ctx_hostmin_n_peers_10s": 11.0,
+     "ctx_hostmin_n_port_pairs_10s": 222.0,
+     "ctx_hostmin_sum_pkts_10s": 4320.0,
+     "ctx_hostmin_sum_bytes_10s": 4135544.0,
+     "ctx_hostmin_share_short_10s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_n_flows_10s": 222.0,
+     "ctx_pair_n_peers_10s": 1.0,
+     "ctx_pair_n_port_pairs_10s": 222.0,
+     "ctx_pair_sum_pkts_10s": 4320.0,
+     "ctx_pair_sum_bytes_10s": 4135544.0,
+     "ctx_pair_share_short_10s": 1.0,
+     "ctx_pair_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_mean_duration_10s": 119.999434,
+     "ctx_hostmax_n_flows_60s": 19291.0,
+     "ctx_hostmax_n_peers_60s": 36.0,
+     "ctx_hostmax_n_port_pairs_60s": 17057.0,
+     "ctx_hostmax_sum_pkts_60s": 595331.0,
+     "ctx_hostmax_sum_bytes_60s": 304756079.0,
+     "ctx_hostmax_share_short_60s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_60s": 1.0,
+     "ctx_hostmin_n_flows_60s": 783.0,
+     "ctx_hostmin_n_peers_60s": 19.0,
+     "ctx_hostmin_n_port_pairs_60s": 783.0,
+     "ctx_hostmin_sum_pkts_60s": 8162.0,
+     "ctx_hostmin_sum_bytes_60s": 8125509.0,
+     "ctx_hostmin_share_short_60s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_60s": 1.0,
+     "ctx_pair_n_flows_60s": 783.0,
+     "ctx_pair_n_peers_60s": 1.0,
+     "ctx_pair_n_port_pairs_60s": 783.0,
+     "ctx_pair_sum_pkts_60s": 8162.0,
+     "ctx_pair_sum_bytes_60s": 8125509.0,
+     "ctx_pair_share_short_60s": 1.0,
+     "ctx_pair_share_syn_no_ack_60s": 1.0,
+     "ctx_pair_mean_duration_60s": 119.999896
+    }
+   },
+   "CTX_TAIL_PER_GROUP": {
+    "__global__": {
+     "q": 0.9999369042655509,
+     "hold_rate": 0.0009457296668121635,
+     "met": true,
+     "n_fit": 109970
+    },
+    "G1": {
+     "q": 0.9999586317959754,
+     "hold_rate": 0.0008747813046738316,
+     "met": true,
+     "n_fit": 96022
+    },
+    "G2": {
+     "q": 0.9999235577725736,
+     "hold_rate": 0.0006142506142506142,
+     "met": true,
+     "n_fit": 13023
+    },
+    "fallback": [
+     {
+      "group": "GEN",
+      "n": 1155
+     }
+    ]
+   },
+   "FLOWCTX_TAIL_GLOBAL": {
+    "q": 0.9999822172058993,
+    "hold_rate": 0.0006911101411319657,
+    "met": true
+   },
+   "CTX_IF_GLOBAL": {
+    "threshold": 0.6575970977787929
+   }
+  },
+  "3": {
+   "CTX_TAIL_GLOBAL": {
+    "q": 0.9999108749061854,
+    "hold_rate": 0.0009821038847664775,
+    "met": true,
+    "n_fit": 109970,
+    "n_hold": 27492,
+    "t": {
+     "ctx_hostmax_n_flows_10s": 4342.0,
+     "ctx_hostmax_n_peers_10s": 24.0,
+     "ctx_hostmax_n_port_pairs_10s": 4216.0,
+     "ctx_hostmax_sum_pkts_10s": 158089.0,
+     "ctx_hostmax_sum_bytes_10s": 80939223.0,
+     "ctx_hostmax_share_short_10s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_10s": 1.0,
+     "ctx_hostmin_n_flows_10s": 221.0,
+     "ctx_hostmin_n_peers_10s": 11.0,
+     "ctx_hostmin_n_port_pairs_10s": 221.0,
+     "ctx_hostmin_sum_pkts_10s": 4319.0,
+     "ctx_hostmin_sum_bytes_10s": 3957501.0,
+     "ctx_hostmin_share_short_10s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_n_flows_10s": 221.0,
+     "ctx_pair_n_peers_10s": 1.0,
+     "ctx_pair_n_port_pairs_10s": 221.0,
+     "ctx_pair_sum_pkts_10s": 4319.0,
+     "ctx_pair_sum_bytes_10s": 3957501.0,
+     "ctx_pair_share_short_10s": 1.0,
+     "ctx_pair_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_mean_duration_10s": 119.999447,
+     "ctx_hostmax_n_flows_60s": 14645.0,
+     "ctx_hostmax_n_peers_60s": 36.0,
+     "ctx_hostmax_n_port_pairs_60s": 13316.0,
+     "ctx_hostmax_sum_pkts_60s": 595325.0,
+     "ctx_hostmax_sum_bytes_60s": 304755381.0,
+     "ctx_hostmax_share_short_60s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_60s": 1.0,
+     "ctx_hostmin_n_flows_60s": 782.0,
+     "ctx_hostmin_n_peers_60s": 19.0,
+     "ctx_hostmin_n_port_pairs_60s": 782.0,
+     "ctx_hostmin_sum_pkts_60s": 6004.0,
+     "ctx_hostmin_sum_bytes_60s": 5400570.0,
+     "ctx_hostmin_share_short_60s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_60s": 0.7142857142857143,
+     "ctx_pair_n_flows_60s": 782.0,
+     "ctx_pair_n_peers_60s": 1.0,
+     "ctx_pair_n_port_pairs_60s": 782.0,
+     "ctx_pair_sum_pkts_60s": 6004.0,
+     "ctx_pair_sum_bytes_60s": 5400570.0,
+     "ctx_pair_share_short_60s": 1.0,
+     "ctx_pair_share_syn_no_ack_60s": 1.0,
+     "ctx_pair_mean_duration_60s": 119.999861
+    }
+   },
+   "CTX_TAIL_PER_GROUP": {
+    "__global__": {
+     "q": 0.9999108749061854,
+     "hold_rate": 0.0009821038847664775,
+     "met": true,
+     "n_fit": 109970
+    },
+    "G1": {
+     "q": 0.999896087769615,
+     "hold_rate": 0.0009164375572773473,
+     "met": true,
+     "n_fit": 96022
+    },
+    "G2": {
+     "q": 0.9999235577725736,
+     "hold_rate": 0.0009213759213759214,
+     "met": true,
+     "n_fit": 13023
+    },
+    "fallback": [
+     {
+      "group": "GEN",
+      "n": 1155
+     }
+    ]
+   },
+   "FLOWCTX_TAIL_GLOBAL": {
+    "q": 0.9999728772742061,
+    "hold_rate": 0.0008729812309035355,
+    "met": true
+   },
+   "CTX_IF_GLOBAL": {
+    "threshold": 0.6655717525079806
+   }
+  },
+  "4": {
+   "CTX_TAIL_GLOBAL": {
+    "q": 0.9999458830473444,
+    "hold_rate": 0.0009821038847664775,
+    "met": true,
+    "n_fit": 109970,
+    "n_hold": 27492,
+    "t": {
+     "ctx_hostmax_n_flows_10s": 4669.0,
+     "ctx_hostmax_n_peers_10s": 25.0,
+     "ctx_hostmax_n_port_pairs_10s": 4564.0,
+     "ctx_hostmax_sum_pkts_10s": 171167.0,
+     "ctx_hostmax_sum_bytes_10s": 87629971.0,
+     "ctx_hostmax_share_short_10s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_10s": 1.0,
+     "ctx_hostmin_n_flows_10s": 222.0,
+     "ctx_hostmin_n_peers_10s": 11.0,
+     "ctx_hostmin_n_port_pairs_10s": 222.0,
+     "ctx_hostmin_sum_pkts_10s": 4828.0,
+     "ctx_hostmin_sum_bytes_10s": 4586216.0,
+     "ctx_hostmin_share_short_10s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_n_flows_10s": 222.0,
+     "ctx_pair_n_peers_10s": 1.0,
+     "ctx_pair_n_port_pairs_10s": 222.0,
+     "ctx_pair_sum_pkts_10s": 4828.0,
+     "ctx_pair_sum_bytes_10s": 4586216.0,
+     "ctx_pair_share_short_10s": 1.0,
+     "ctx_pair_share_syn_no_ack_10s": 1.0,
+     "ctx_pair_mean_duration_10s": 119.999588,
+     "ctx_hostmax_n_flows_60s": 16589.0,
+     "ctx_hostmax_n_peers_60s": 36.0,
+     "ctx_hostmax_n_port_pairs_60s": 14939.0,
+     "ctx_hostmax_sum_pkts_60s": 595333.0,
+     "ctx_hostmax_sum_bytes_60s": 304756431.0,
+     "ctx_hostmax_share_short_60s": 1.0,
+     "ctx_hostmax_share_syn_no_ack_60s": 1.0,
+     "ctx_hostmin_n_flows_60s": 786.0,
+     "ctx_hostmin_n_peers_60s": 19.0,
+     "ctx_hostmin_n_port_pairs_60s": 786.0,
+     "ctx_hostmin_sum_pkts_60s": 8200.0,
+     "ctx_hostmin_sum_bytes_60s": 8125509.0,
+     "ctx_hostmin_share_short_60s": 1.0,
+     "ctx_hostmin_share_syn_no_ack_60s": 0.9322689408964696,
+     "ctx_pair_n_flows_60s": 786.0,
+     "ctx_pair_n_peers_60s": 1.0,
+     "ctx_pair_n_port_pairs_60s": 786.0,
+     "ctx_pair_sum_pkts_60s": 8200.0,
+     "ctx_pair_sum_bytes_60s": 8125509.0,
+     "ctx_pair_share_short_60s": 1.0,
+     "ctx_pair_share_syn_no_ack_60s": 1.0,
+     "ctx_pair_mean_duration_60s": 119.999904
+    }
+   },
+   "CTX_TAIL_PER_GROUP": {
+    "__global__": {
+     "q": 0.9999458830473444,
+     "hold_rate": 0.0009821038847664775,
+     "met": true,
+     "n_fit": 109970
+    },
+    "G1": {
+     "q": 0.99993927978043,
+     "hold_rate": 0.0009164375572773473,
+     "met": true,
+     "n_fit": 96022
+    },
+    "G2": {
+     "q": 0.9999235577725736,
+     "hold_rate": 0.0006142506142506142,
+     "met": true,
+     "n_fit": 13023
+    },
+    "fallback": [
+     {
+      "group": "GEN",
+      "n": 1155
+     }
+    ]
+   },
+   "FLOWCTX_TAIL_GLOBAL": {
+    "q": 0.9999822172058993,
+    "hold_rate": 0.0008366070129492216,
+    "met": true
+   },
+   "CTX_IF_GLOBAL": {
+    "threshold": 0.6602442129435
+   }
+  }
+ },
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "names": [
+  "benign",
+  "syn_flood",
+  "udp_flood",
+  "port_scan"
+ ],
+ "nonrare": [
+  1,
+  3
+ ],
+ "rare": [
+  2
+ ],
+ "fa_ref": 18.742532005689903,
+ "benign_hours": 1.9527777777777777,
+ "hist": {
+  "seed": 0,
+  "edges": [
+   0.5880000000000001,
+   0.6143488003797962,
+   0.6418783138232903,
+   0.6706414491277972,
+   0.7006934859806638,
+   0.7320921812009497,
+   0.7648978797418907,
+   0.7991736306674833,
+   0.8349853083260794,
+   0.8724017389538794,
+   0.9114948329516394,
+   0.9523397230888135,
+   0.9950149089007481,
+   1.03960240755644,
+   1.0861879114868145,
+   1.134860953076464,
+   1.1857150767353704,
+   1.2388480186813142,
+   1.294361894778491,
+   1.3523633967933435,
+   1.4129639974447907,
+   1.4762801646429395,
+   1.5424335853280238,
+   1.6115513993397608,
+   1.6837664437666053,
+   1.759217508244506,
+   1.8380496016958277,
+   1.9204142310210774,
+   2.006469692279061,
+   2.096381374915068,
+   2.190322079621802,
+   2.2884723504439366,
+   2.3910208217645663,
+   2.498164580840435,
+   2.610109546582683,
+   2.727070865311097,
+   2.849273324242458,
+   2.976951783507667,
+   3.110351627527942,
+   3.2497292366175814,
+   3.395352479719663,
+   3.5475012292216683,
+   3.7064678988404496,
+   3.872558005610296,
+   4.046090757054186,
+   4.227399664666701,
+   4.416833184887654,
+   4.614755388798308,
+   4.82154666182728,
+   5.037604434810885,
+   5.263343947812939,
+   5.499199048172007,
+   5.745623024309846,
+   6.003089476903553,
+   6.272093229095708,
+   6.55315127749182,
+   6.846803785772838,
+   7.153615122832297,
+   7.474174947433316,
+   7.8090993414700405,
+   8.159031994011524,
+   8.524645438403667,
+   8.906642344806794,
+   9.305756870652974,
+   9.722756071618539,
+   10.15844137582352,
+   10.613650124091269,
+   11.089257179228479,
+   11.586176607418468,
+   12.10536343495917,
+   12.647815483722134,
+   13.214575288860043,
+   13.806732102448413,
+   14.42542398691225,
+   15.071840002261016,
+   15.747222491335512,
+   16.4528694674587,
+   17.190137109079302,
+   17.96044236620253,
+   18.765265683617333,
+   19.606153846153845
+  ],
+  "threshold": 1.0,
+  "score": "max_j (x_j + 1) / (t_j + 1)",
+  "train_benign": [
+   3811,
+   258,
+   500,
+   238,
+   88,
+   691,
+   94,
+   406,
+   141,
+   392,
+   379,
+   135,
+   20347,
+   5,
+   0,
+   0,
+   3,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "train_benign_label": "train benign (held-out 20 %)",
+  "val_benign": [
+   4080,
+   241,
+   531,
+   251,
+   112,
+   754,
+   132,
+   502,
+   167,
+   389,
+   405,
+   300,
+   30995,
+   33,
+   19,
+   26,
+   54,
+   90,
+   28,
+   18,
+   8,
+   24,
+   16,
+   4,
+   1,
+   1,
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "misses": {
+   "syn_flood": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    47,
+    2,
+    2,
+    6,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4,
+    0,
+    1,
+    1,
+    0,
+    3,
+    3,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    3,
+    2,
+    0,
+    1,
+    13,
+    6,
+    9,
+    7,
+    4,
+    6,
+    5,
+    13,
+    3,
+    11,
+    5,
+    8,
+    4,
+    3,
+    7,
+    1,
+    13,
+    2,
+    3,
+    1,
+    2,
+    2,
+    2,
+    1,
+    0,
+    2,
+    2,
+    4,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "port_scan": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    904,
+    42,
+    40,
+    49,
+    43,
+    64,
+    92,
+    152,
+    258,
+    256,
+    278,
+    279,
+    297,
+    276,
+    283,
+    188,
+    160,
+    168,
+    169,
+    179,
+    194,
+    190,
+    202,
+    219,
+    223,
+    239,
+    249,
+    255,
+    265,
+    289,
+    287,
+    316,
+    320,
+    333,
+    297,
+    230,
+    80,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ },
+ "out_of_range": {
+  "benign": 0.005001913997703202,
+  "syn_flood": 0.9455962945586313,
+  "udp_flood": 0.0,
+  "port_scan": 0.8562077121953903,
+  "misses": {
+   "syn_flood|0": 0.7194570135746606,
+   "syn_flood|1": 0.7203389830508474,
+   "syn_flood|2": 0.9720107017904919,
+   "syn_flood|3": 0.7476635514018691,
+   "syn_flood|4": 0.7117903930131004,
+   "port_scan|0": 0.8923536439665471,
+   "port_scan|1": 0.8923150472092746,
+   "port_scan|2": 0.8923279158699808,
+   "port_scan|3": 0.8923279158699808,
+   "port_scan|4": 0.8923536439665471,
+   "udp_flood|0": 0.0,
+   "udp_flood|1": 0.0,
+   "udp_flood|2": 0.0,
+   "udp_flood|3": 0.0,
+   "udp_flood|4": 0.0
+  }
+ },
+ "phase5a_global_normal_recall": {
+  "1|0": 0.0,
+  "1|1": 0.0,
+  "1|2": 0.0,
+  "1|3": 0.0,
+  "1|4": 0.0,
+  "3|0": 0.0,
+  "3|1": 0.0,
+  "3|2": 0.0,
+  "3|3": 0.0,
+  "3|4": 0.0,
+  "2|0": 0.0,
+  "2|1": 0.0,
+  "2|2": 0.0,
+  "2|3": 0.0,
+  "2|4": 0.0
+ },
+ "contamination_share": 0.012989664412402705,
+ "per_group_note": "CTX_TAIL_PER_GROUP is report-only and not a routing claim (D163)"
+}

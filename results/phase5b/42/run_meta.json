@@ -1,0 +1,13 @@
+{
+ "script": "42_context_zeroday.py",
+ "step": "42",
+ "run_id": "20261122T185630Z",
+ "status": "PASS",
+ "dry_run": false,
+ "rerun_tag": null,
+ "run_utc": "2026-11-22T18:56:30+00:00",
+ "run_manifest_sha256": "3477c93d6655a1f72fc525c838978cf0c7e6f160af457708bcce16777f97b63d",
+ "config_sha256": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+ "runtime_s": 33.5,
+ "peak_rss_mb": 2596
+}

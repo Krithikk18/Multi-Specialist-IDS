@@ -1,0 +1,13 @@
+{
+ "script": "44_phase5b_report.py",
+ "step": "44",
+ "run_id": "20261122T185712Z",
+ "status": "PASS",
+ "dry_run": false,
+ "rerun_tag": null,
+ "run_utc": "2026-11-22T18:57:12+00:00",
+ "run_manifest_sha256": "e52f614451f195a68e09f15ea594f84891265bc8cc65bcb0896191b46cf73f76",
+ "config_sha256": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+ "runtime_s": 5.0,
+ "peak_rss_mb": 314
+}

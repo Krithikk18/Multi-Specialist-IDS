@@ -1,0 +1,13 @@
+{
+ "script": "43_shap_perturbation.py",
+ "step": "43",
+ "run_id": "20261122T185706Z",
+ "status": "PASS",
+ "dry_run": false,
+ "rerun_tag": null,
+ "run_utc": "2026-11-22T18:57:06+00:00",
+ "run_manifest_sha256": "13dbf4795ba8399077cd9f97cc6e20dcad3effc379f27a090c83e49a92fe4eb5",
+ "config_sha256": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+ "runtime_s": 4.7,
+ "peak_rss_mb": 2270
+}

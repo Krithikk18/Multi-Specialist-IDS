@@ -1,0 +1,372 @@
+{
+ "run_id": "20261122T185056Z",
+ "step": "39",
+ "script": "39_build_context_dataset.py",
+ "created_utc": "2026-11-22T18:50:56+00:00",
+ "dry_run": false,
+ "rerun_tag": null,
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase5b/39",
+ "cache_root": "/home/krithikk/lgids_cache/v2/phase5b",
+ "argv": [
+  "39_build_context_dataset.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase5b.json",
+  "sha256": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+  "pinned": true
+ },
+ "pins": {
+  "prereg_phase5b": "5b700e1333e209bc768fb63aa35798391cb25c64311608bec9ddebf87aa4c607",
+  "phase5b_config": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+  "features_v2_2_context": "69973a8cbcd8d3e40378c265cd5687af41c875f4f92c17e8f50a031f822fcbc2",
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "phase5_config": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248"
+ },
+ "code_sha256": {
+  "39_build_context_dataset.py": "26c190f3599bd4395750690cf1ffe3812eee94a9fddad36f1f11d06fb37bb399",
+  "common/schemas.py": "91fb93e53733ec1bca32852bbb82921e072dd509f446f435586d48feb275c19b",
+  "common/context_config.py": "56d85b299fa03995d52cdb4a3627da349a9d94d37709bc93c309d5f9f57b3c84",
+  "common/context_features.py": "8dc952dd5afa1678dd4b2049866a910e8568b9c57f623d9dee74ce1e0b7c0b27",
+  "common/phase5b_run.py": "304044bf5239ea79f931109172d7dbf9217a5107763d5025328c67eb04d06a23",
+  "common/phase5b_eval.py": "5e01ad4ba1fc4608b7270c24a214881060441b3d48d7c2f97b302d155e058dbf",
+  "common/shap_perturb.py": "70d0f48730e42dab14b621ee4780138467dceff270552f5065ebc713f10e0449",
+  "common/tail_rule.py": "9d3107755e09ab9194fe5060f39f5ecd938b2d22a4d77ac0ac7b9b11555a4abf",
+  "common/zeroday_run.py": "96796712cd626aafcc8297dda6ffa53196b00d49b0f717225306e6d1e1f0bd36",
+  "common/zeroday_metrics.py": "20f13472da0ceac4b69c5909b65f5f43944342a78640dcf980625597d23b1f5f",
+  "common/normal_model.py": "c3929528f6bae0e83405b617fdf571d19c16681b212ae06fa927d30c003c9507",
+  "common/loao.py": "9e1844e53d33f513e2c7c097aad582fbdf2b44db30f8fe68d13b8e42e2dc905d",
+  "common/cl_retrain.py": "7cad1437a9c1b63bd5e91a6381c6a7c0d592040082268a1edbb938880be9d114",
+  "common/cl_gate.py": "e9687af4b581f4d752a00f1f2dd21644e1f62f7e42b5cdf4ab613c64ac192e9b",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "config/v2_phase5b.json": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+  "config/features_v2_2_context.json": "69973a8cbcd8d3e40378c265cd5687af41c875f4f92c17e8f50a031f822fcbc2",
+  "config/v2_phase5.json": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "docs/V2_PREREG_PHASE5B.md": "5b700e1333e209bc768fb63aa35798391cb25c64311608bec9ddebf87aa4c607",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "registry": "not touched (Phase 5B registers nothing)",
+ "checks": [
+  {
+   "check": "free space on the cache filesystem >= 20 GB",
+   "pass": true,
+   "detail": "937.9 GB",
+   "level": "hard"
+  },
+  {
+   "check": "pinned feature list == names generated from the config",
+   "pass": true,
+   "detail": "114 = 70 flow + 44 context",
+   "level": "hard"
+  },
+  {
+   "check": "phase2 config dataset == source_dataset",
+   "pass": true,
+   "detail": "v2_1_oriented",
+   "level": "hard"
+  },
+  {
+   "check": "train: every v2_1 column and the row order unchanged",
+   "pass": true,
+   "detail": "92 columns",
+   "level": "hard"
+  },
+  {
+   "check": "real-data reference check: streaming == naive on the val slice (exact, all 44)",
+   "pass": true,
+   "detail": "10,000 flows of segment ['benign_night', 'val'], mismatches 0",
+   "level": "hard"
+  },
+  {
+   "check": "val: every v2_1 column and the row order unchanged",
+   "pass": true,
+   "detail": "92 columns",
+   "level": "hard"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "dataset": {
+  "dir": "/home/krithikk/lgids_cache/v2/datasets/v2_2_context",
+  "manifest_sha256": "cfa2800eb7cfa86b284849ab54a093e54f1af6ecd9f4a1850952937a7b484047",
+  "files": {
+   "train": {
+    "path": "/home/krithikk/lgids_cache/v2/datasets/v2_2_context/train.parquet",
+    "rows": 636193,
+    "bytes": 130486837,
+    "file_sha256": "17b54555c67ffc4633cc910274322af6e1f0f0ce6a6344bd1f6ef54248e41d53",
+    "source_file_sha256": "77fc070c190a886dae8e90dabc8f9fafbb687f3bd376a82e1cbdc1c411100578",
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "warmup": 4055,
+    "warmup_share": 0.006373851960018422
+   },
+   "val": {
+    "path": "/home/krithikk/lgids_cache/v2/datasets/v2_2_context/val.parquet",
+    "rows": 157558,
+    "bytes": 36623913,
+    "file_sha256": "35b993365f2a7c646f51a4ed6ec4fcbf5965bc5d13585157f0ad9e9ca13320f3",
+    "source_file_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "warmup": 16777,
+    "warmup_share": 0.1064814227141751
+   }
+  },
+  "dry_run": false,
+  "dataset_version": "v2_2_context"
+ },
+ "counts": {
+  "train": {
+   "benign|G1": 120028,
+   "benign|G2": 16279,
+   "benign|GEN": 1155,
+   "syn_flood|G1": 200605,
+   "syn_flood|G2": 199985,
+   "udp_flood|G1": 95,
+   "port_scan|G1": 50472,
+   "port_scan|G2": 43218,
+   "port_scan|GEN": 4356
+  },
+  "val": {
+   "benign|G1": 35833,
+   "benign|G2": 3061,
+   "benign|GEN": 291,
+   "syn_flood|G1": 50103,
+   "syn_flood|G2": 50074,
+   "udp_flood|G1": 17,
+   "port_scan|G1": 7763,
+   "port_scan|G2": 10416
+  }
+ },
+ "segments": {
+  "train": [
+   {
+    "n": 217404,
+    "seconds": 4.981446143999989,
+    "us_per_flow": 22.91331412485506,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 466,
+    "peak_pairs": 725,
+    "peak_events": 80370,
+    "segment": [
+     "DDoS-SYN_Flood",
+     "train"
+    ],
+    "warmup": 1185
+   },
+   {
+    "n": 206544,
+    "seconds": 4.134641313000003,
+    "us_per_flow": 20.018210710550793,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 294,
+    "peak_pairs": 460,
+    "peak_events": 135032,
+    "segment": [
+     "DDoS-SYN_Flood5",
+     "train"
+    ],
+    "warmup": 286
+   },
+   {
+    "n": 6720,
+    "seconds": 0.1439029670000025,
+    "us_per_flow": 21.414131994047988,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 378,
+    "peak_pairs": 559,
+    "peak_events": 5268,
+    "segment": [
+     "Mirai-udpplain",
+     "train"
+    ],
+    "warmup": 170
+   },
+   {
+    "n": 119689,
+    "seconds": 2.146066769000015,
+    "us_per_flow": 17.930359256072112,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 458,
+    "peak_pairs": 639,
+    "peak_events": 133302,
+    "segment": [
+     "Recon-PortScan",
+     "train"
+    ],
+    "warmup": 2252
+   },
+   {
+    "n": 85836,
+    "seconds": 1.8111873000000003,
+    "us_per_flow": 21.10055571089054,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 808,
+    "peak_pairs": 1050,
+    "peak_events": 7270,
+    "segment": [
+     "benign_night",
+     "train"
+    ],
+    "warmup": 162
+   }
+  ],
+  "val": [
+   {
+    "n": 52542,
+    "seconds": 0.9812049609999747,
+    "us_per_flow": 18.674678561911893,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 166,
+    "peak_pairs": 220,
+    "peak_events": 114794,
+    "segment": [
+     "DDoS-SYN_Flood",
+     "val"
+    ],
+    "warmup": 339
+   },
+   {
+    "n": 51205,
+    "seconds": 0.9440924639999935,
+    "us_per_flow": 18.437505399863166,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 173,
+    "peak_pairs": 220,
+    "peak_events": 187633,
+    "segment": [
+     "DDoS-SYN_Flood5",
+     "val"
+    ],
+    "warmup": 15636
+   },
+   {
+    "n": 597,
+    "seconds": 0.010335518000005095,
+    "us_per_flow": 17.312425460645052,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 135,
+    "peak_pairs": 160,
+    "peak_events": 2277,
+    "segment": [
+     "Mirai-udpplain",
+     "val"
+    ],
+    "warmup": 258
+   },
+   {
+    "n": 28528,
+    "seconds": 0.5205898629999979,
+    "us_per_flow": 18.24838274677502,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 312,
+    "peak_pairs": 406,
+    "peak_events": 33759,
+    "segment": [
+     "Recon-PortScan",
+     "val"
+    ],
+    "warmup": 177
+   },
+   {
+    "n": 24686,
+    "seconds": 0.54601038200002,
+    "us_per_flow": 22.11822012476788,
+    "evictions": {
+     "host": 0,
+     "pair": 0
+    },
+    "peak_hosts": 492,
+    "peak_pairs": 723,
+    "peak_events": 5175,
+    "segment": [
+     "benign_night",
+     "val"
+    ],
+    "warmup": 367
+   }
+  ]
+ },
+ "reference_check": {
+  "segment": [
+   "benign_night",
+   "val"
+  ],
+  "start": 9355,
+  "rows": 10000,
+  "segment_rows": 24686,
+  "equal": true,
+  "mismatches": 0,
+  "evictions": {
+   "host": 0,
+   "pair": 0
+  },
+  "first_mismatches": []
+ },
+ "val_cost": {
+  "us_per_flow": 19.05478102032262,
+  "peak_hosts": 492,
+  "peak_pairs": 723,
+  "peak_events": 187633,
+  "state_note": "peak tracked keys and window events within one segment (2 windows per key)"
+ },
+ "feature_summary_top": [
+  "ctx_hostmin_share_syn_no_ack_60s",
+  "ctx_hostmin_share_syn_no_ack_10s",
+  "ctx_pair_share_syn_no_ack_10s",
+  "ctx_pair_n_port_pairs_60s",
+  "ctx_pair_n_flows_60s",
+  "ctx_hostmax_n_port_pairs_10s"
+ ],
+ "runtime_s": 30.0,
+ "peak_rss_mb": 2057
+}

@@ -1,0 +1,13 @@
+{
+ "script": "39_build_context_dataset.py",
+ "step": "39",
+ "run_id": "20261122T185056Z",
+ "status": "PASS",
+ "dry_run": false,
+ "rerun_tag": null,
+ "run_utc": "2026-11-22T18:50:56+00:00",
+ "run_manifest_sha256": "9729c03e97db44aba029711886e19d304b449831aa4696333f93264bedcf8b77",
+ "config_sha256": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+ "runtime_s": 30.0,
+ "peak_rss_mb": 2057
+}

@@ -1,0 +1,106 @@
+{
+ "run_id": "20261122T185605Z",
+ "step": "41",
+ "script": "41_orientation_eval.py",
+ "created_utc": "2026-11-22T18:56:05+00:00",
+ "dry_run": false,
+ "rerun_tag": null,
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase5b/41",
+ "cache_root": "/home/krithikk/lgids_cache/v2/phase5b",
+ "argv": [
+  "41_orientation_eval.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase5b.json",
+  "sha256": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+  "pinned": true
+ },
+ "pins": {
+  "prereg_phase5b": "5b700e1333e209bc768fb63aa35798391cb25c64311608bec9ddebf87aa4c607",
+  "phase5b_config": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+  "features_v2_2_context": "69973a8cbcd8d3e40378c265cd5687af41c875f4f92c17e8f50a031f822fcbc2",
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "phase5_config": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248"
+ },
+ "code_sha256": {
+  "41_orientation_eval.py": "7b429fd99d027886847c9fb2e1fca3576ba2ed4c782eb0b7b813369158087aa9",
+  "common/schemas.py": "91fb93e53733ec1bca32852bbb82921e072dd509f446f435586d48feb275c19b",
+  "common/context_config.py": "56d85b299fa03995d52cdb4a3627da349a9d94d37709bc93c309d5f9f57b3c84",
+  "common/context_features.py": "8dc952dd5afa1678dd4b2049866a910e8568b9c57f623d9dee74ce1e0b7c0b27",
+  "common/phase5b_run.py": "304044bf5239ea79f931109172d7dbf9217a5107763d5025328c67eb04d06a23",
+  "common/phase5b_eval.py": "5e01ad4ba1fc4608b7270c24a214881060441b3d48d7c2f97b302d155e058dbf",
+  "common/shap_perturb.py": "70d0f48730e42dab14b621ee4780138467dceff270552f5065ebc713f10e0449",
+  "common/tail_rule.py": "9d3107755e09ab9194fe5060f39f5ecd938b2d22a4d77ac0ac7b9b11555a4abf",
+  "common/zeroday_run.py": "96796712cd626aafcc8297dda6ffa53196b00d49b0f717225306e6d1e1f0bd36",
+  "common/zeroday_metrics.py": "20f13472da0ceac4b69c5909b65f5f43944342a78640dcf980625597d23b1f5f",
+  "common/normal_model.py": "c3929528f6bae0e83405b617fdf571d19c16681b212ae06fa927d30c003c9507",
+  "common/loao.py": "9e1844e53d33f513e2c7c097aad582fbdf2b44db30f8fe68d13b8e42e2dc905d",
+  "common/cl_retrain.py": "7cad1437a9c1b63bd5e91a6381c6a7c0d592040082268a1edbb938880be9d114",
+  "common/cl_gate.py": "e9687af4b581f4d752a00f1f2dd21644e1f62f7e42b5cdf4ab613c64ac192e9b",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "config/v2_phase5b.json": "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c",
+  "config/features_v2_2_context.json": "69973a8cbcd8d3e40378c265cd5687af41c875f4f92c17e8f50a031f822fcbc2",
+  "config/v2_phase5.json": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "docs/V2_PREREG_PHASE5B.md": "5b700e1333e209bc768fb63aa35798391cb25c64311608bec9ddebf87aa4c607"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "registry": "not touched (Phase 5B registers nothing)",
+ "checks": [
+  {
+   "check": "val rows == step 40's (uid sha256)",
+   "pass": true,
+   "detail": "157,558",
+   "level": "hard"
+  },
+  {
+   "check": "context recomputed on the original val stream == stored (exact)",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  },
+  {
+   "check": "context recomputed on the FLIPPED val stream == stored (exact)",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  },
+  {
+   "check": "CTX_ONLY flip agreement == 1.0 exactly (every seed)",
+   "pass": true,
+   "detail": "[1.0, 1.0, 1.0, 1.0, 1.0]",
+   "level": "hard"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "dataset_run": "20261122T185056Z",
+ "stage1_run": "20261122T185128Z",
+ "flip": {
+  "rows": 157558,
+  "swapped_by_guard": 137593,
+  "not_swapped_non_tcp": 19965,
+  "rows_with_changed_flow_features": 137570
+ },
+ "h_c1": "HOLDS",
+ "contamination_file": "/home/krithikk/lgids_cache/v2/phase5b/orient/20261122T185605Z/contaminated.npy",
+ "contamination_sha256": "e346611e4e018cc95159ae6c6c86d747dac46bdaed02d8bb2e98d0b37b5ee7f7",
+ "runtime_s": 23.3,
+ "peak_rss_mb": 1282
+}

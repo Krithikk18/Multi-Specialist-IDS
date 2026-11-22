@@ -109,6 +109,14 @@ PREREG_PHASE5_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE5.md"
 PREREG_PHASE5_SHA256 = "08514d5891d62dd11e8b0b6af350cc7a9ae5564024a6884763607595b79dcc8e"
 V2_PHASE5_CONFIG_PATH = CONFIG_DIR / "v2_phase5.json"
 V2_PHASE5_CONFIG_SHA256 = "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248"
+# Phase 5B step 0: context-feature pre-registration (with the D165 H-C3 detector change), its config and the 70 + 44
+# feature list, pinned before step B (the dataset build)
+PREREG_PHASE5B_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE5B.md"
+PREREG_PHASE5B_SHA256 = "5b700e1333e209bc768fb63aa35798391cb25c64311608bec9ddebf87aa4c607"
+V2_PHASE5B_CONFIG_PATH = CONFIG_DIR / "v2_phase5b.json"
+V2_PHASE5B_CONFIG_SHA256 = "8263ec26d666ecb4ca2841e8737782a46bdcd804f7c4426d59a8ef9a46ec192c"
+FEATURES_V2_2_CONTEXT_PATH = CONFIG_DIR / "features_v2_2_context.json"
+FEATURES_V2_2_CONTEXT_SHA256 = "69973a8cbcd8d3e40378c265cd5687af41c875f4f92c17e8f50a031f822fcbc2"
 
 # --------------------------------------------------------------------------- column contract (V1 names)
 TS_FORMAT = "%d/%m/%Y %I:%M:%S %p"          # == 04_tag_flows.TS_FORMAT (asserted in tests)
@@ -613,7 +621,10 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
                    phase4_config: Path = V2_PHASE4_CONFIG_PATH,
                    phase3_2_config: Path = V2_PHASE3_2_CONFIG_PATH,
                    prereg_phase5: Path = PREREG_PHASE5_PATH,
-                   phase5_config: Path = V2_PHASE5_CONFIG_PATH) -> dict:
+                   phase5_config: Path = V2_PHASE5_CONFIG_PATH,
+                   prereg_phase5b: Path = PREREG_PHASE5B_PATH,
+                   phase5b_config: Path = V2_PHASE5B_CONFIG_PATH,
+                   features_v2_2_context: Path = FEATURES_V2_2_CONTEXT_PATH) -> dict:
     """V2 pins + V1's verify_lock(). Returns {"ok", "checks": [(name, ok, detail)], "env"} like V1;
     raises LockError on any failed check when strict. The path arguments exist for tests."""
     checks = []
@@ -650,7 +661,14 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
     pin("config/v2_phase3_2.json sha256 (Phase 3.2 runtime config)", phase3_2_config, V2_PHASE3_2_CONFIG_SHA256)
     pin("docs/V2_PREREG_PHASE5.md sha256 (Phase 5A zero-day pre-registration)", prereg_phase5, PREREG_PHASE5_SHA256)
     pin("config/v2_phase5.json sha256 (Phase 5A zero-day config)", phase5_config, V2_PHASE5_CONFIG_SHA256)
-    for name, p in (("docs/V2_PREREG_PHASE3.md", prereg_phase3), ("config/v2_phase3.json", phase3_config),
+    pin("docs/V2_PREREG_PHASE5B.md sha256 (Phase 5B context-feature pre-registration)", prereg_phase5b,
+        PREREG_PHASE5B_SHA256)
+    pin("config/v2_phase5b.json sha256 (Phase 5B context-feature config)", phase5b_config, V2_PHASE5B_CONFIG_SHA256)
+    pin("config/features_v2_2_context.json sha256 (Phase 5B 70 + 44 feature list)", features_v2_2_context,
+        FEATURES_V2_2_CONTEXT_SHA256)
+    for name, p in (("docs/V2_PREREG_PHASE5B.md", prereg_phase5b), ("config/v2_phase5b.json", phase5b_config),
+                    ("config/features_v2_2_context.json", features_v2_2_context),
+                    ("docs/V2_PREREG_PHASE3.md", prereg_phase3), ("config/v2_phase3.json", phase3_config),
                     ("config/v2_phase3_1.json", phase3_1_config), ("docs/V2_PREREG_PHASE4.md", prereg_phase4),
                     ("config/v2_phase4.json", phase4_config), ("config/v2_phase3_2.json", phase3_2_config),
                     ("docs/V2_PREREG_PHASE5.md", prereg_phase5), ("config/v2_phase5.json", phase5_config)):

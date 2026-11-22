@@ -37,7 +37,8 @@ COMMON5 = ["common/schemas.py", "common/zeroday_config.py", "common/zeroday_run.
 
 class ZRun:
     def __init__(self, step: str, script: str, cfg: dict, dry_run: bool, run_id: str | None = None,
-                 rerun_tag: str | None = None, results_root: Path | None = None, cache_root: Path | None = None):
+                 rerun_tag: str | None = None, results_root: Path | None = None, cache_root: Path | None = None,
+                 lock_prefix: str = "phase5a"):
         self.step, self.script, self.cfg, self.dry = step, script, cfg, dry_run
         self.run_id = run_id or new_run_id()
         for name, v in (("run id", self.run_id), ("rerun tag", rerun_tag)):
@@ -55,7 +56,7 @@ class ZRun:
         self.cache = cr.with_name(cr.name + "_dry_run") if dry_run else cr
         self.res.mkdir(parents=True, exist_ok=True)
         self.cache.mkdir(parents=True, exist_ok=True)
-        self._lock = open(self.cache / f".phase5a_{step}.lock", "a+", encoding="utf-8")
+        self._lock = open(self.cache / f".{lock_prefix}_{step}.lock", "a+", encoding="utf-8")
         try:
             fcntl.flock(self._lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:

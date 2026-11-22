@@ -87,6 +87,14 @@ ORIENTATION_MAP_SHA256 = "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bff
 # Phase 2 closeout: Amendment 1 to the Phase 2 pre-registration (v2_1_oriented data + A1 selection rule) -- bytes (LF)
 PREREG_PHASE2_AMENDMENT_1_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE2_AMENDMENT_1.md"
 PREREG_PHASE2_AMENDMENT_1_SHA256 = "c436599da4216c3e4a1a91db51e852436e88bc0c5ac4992cc64e4716b865b20f"
+# Phase 3 step 0: Amendment 2 (Stage 1 primary = FLAT_GLOBAL; pre-registered routing tests for Phases 4 / 5) -- bytes (LF)
+PREREG_PHASE2_AMENDMENT_2_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE2_AMENDMENT_2.md"
+PREREG_PHASE2_AMENDMENT_2_SHA256 = "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+# Phase 3 step B: streaming-runtime pre-registration + the runtime policy config (integrity-checked at startup, DFD P5)
+PREREG_PHASE3_PATH = REPO_ROOT / "docs" / "V2_PREREG_PHASE3.md"
+PREREG_PHASE3_SHA256 = "14ff67c4f1200a89ac47226b480bf45575ba1c8c48794193aa9903c4ed4017ab"
+V2_PHASE3_CONFIG_PATH = CONFIG_DIR / "v2_phase3.json"
+V2_PHASE3_CONFIG_SHA256 = "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692"
 
 # --------------------------------------------------------------------------- column contract (V1 names)
 TS_FORMAT = "%d/%m/%Y %I:%M:%S %p"          # == 04_tag_flows.TS_FORMAT (asserted in tests)
@@ -582,7 +590,10 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
                    features: Path = FEATURES_PATH, class_map: Path = CLASS_MAP_PATH,
                    prereg_phase2: Path = PREREG_PHASE2_PATH, v1: bool = True,
                    orientation_map: Path = ORIENTATION_MAP_PATH,
-                   prereg_amendment_1: Path = PREREG_PHASE2_AMENDMENT_1_PATH) -> dict:
+                   prereg_amendment_1: Path = PREREG_PHASE2_AMENDMENT_1_PATH,
+                   prereg_amendment_2: Path = PREREG_PHASE2_AMENDMENT_2_PATH,
+                   prereg_phase3: Path = PREREG_PHASE3_PATH,
+                   phase3_config: Path = V2_PHASE3_CONFIG_PATH) -> dict:
     """V2 pins + V1's verify_lock(). Returns {"ok", "checks": [(name, ok, detail)], "env"} like V1;
     raises LockError on any failed check when strict. The path arguments exist for tests."""
     checks = []
@@ -607,6 +618,15 @@ def verify_v2_lock(strict: bool = True, *, config_py: Path = CONFIG_PY_PATH, pre
         PREREG_PHASE2_AMENDMENT_1_SHA256)
     if Path(prereg_amendment_1).is_file() and b"\r" in Path(prereg_amendment_1).read_bytes():
         check("docs/V2_PREREG_PHASE2_AMENDMENT_1.md LF only", False, "CR bytes found (the pin is over LF bytes)")
+    pin("docs/V2_PREREG_PHASE2_AMENDMENT_2.md sha256 (Phase 2 prereg amendment 2)", prereg_amendment_2,
+        PREREG_PHASE2_AMENDMENT_2_SHA256)
+    if Path(prereg_amendment_2).is_file() and b"\r" in Path(prereg_amendment_2).read_bytes():
+        check("docs/V2_PREREG_PHASE2_AMENDMENT_2.md LF only", False, "CR bytes found (the pin is over LF bytes)")
+    pin("docs/V2_PREREG_PHASE3.md sha256 (Phase 3 pre-registration)", prereg_phase3, PREREG_PHASE3_SHA256)
+    pin("config/v2_phase3.json sha256 (Phase 3 runtime policy config)", phase3_config, V2_PHASE3_CONFIG_SHA256)
+    for name, p in (("docs/V2_PREREG_PHASE3.md", prereg_phase3), ("config/v2_phase3.json", phase3_config)):
+        if Path(p).is_file() and b"\r" in Path(p).read_bytes():
+            check(f"{name} LF only", False, "CR bytes found (the pin is over LF bytes)")
     try:
         P = json.loads(Path(prereg).read_bytes())
         check("step10_prereg records the same config.py / features pins",

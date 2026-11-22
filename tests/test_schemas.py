@@ -422,6 +422,35 @@ def test_verify_v2_lock_checks_prereg_amendment_1():
     assert not S.verify_v2_lock(strict=False, v1=False, prereg_amendment_1=crlf)["ok"]
 
 
+def test_verify_v2_lock_checks_prereg_amendment_2():
+    res = S.verify_v2_lock(strict=False, v1=False)
+    assert any("AMENDMENT_2" in c[0] and c[1] for c in res["checks"]), res["checks"]
+    raw = S.PREREG_PHASE2_AMENDMENT_2_PATH.read_bytes()
+    edited = _tmp_bytes(raw.replace(b"FLAT_GLOBAL", b"ROUTED", 1), "V2_PREREG_PHASE2_AMENDMENT_2.md")
+    res = S.verify_v2_lock(strict=False, v1=False, prereg_amendment_2=edited)
+    assert not res["ok"] and not next(c[1] for c in res["checks"] if "AMENDMENT_2" in c[0])
+    assert _raises(lambda: S.verify_v2_lock(strict=True, v1=False, prereg_amendment_2=edited), exc=LockError)
+    crlf = _tmp_bytes(raw.replace(b"\n", b"\r\n"), "V2_PREREG_PHASE2_AMENDMENT_2.md")
+    assert not S.verify_v2_lock(strict=False, v1=False, prereg_amendment_2=crlf)["ok"]
+    missing = S.PREREG_PHASE2_AMENDMENT_2_PATH.with_name("no_such_amendment_2.md")
+    assert not S.verify_v2_lock(strict=False, v1=False, prereg_amendment_2=missing)["ok"]
+
+
+def test_verify_v2_lock_checks_phase3_prereg_and_config():
+    res = S.verify_v2_lock(strict=False, v1=False)
+    for tag in ("V2_PREREG_PHASE3", "v2_phase3.json"):
+        assert any(tag in c[0] and c[1] for c in res["checks"]), (tag, res["checks"])
+    for kw, path, a, b in (("prereg_phase3", S.PREREG_PHASE3_PATH, b"0.5", b"0.6"),
+                           ("phase3_config", S.V2_PHASE3_CONFIG_PATH, b"\"cooldown_s\": 300", b"\"cooldown_s\": 30")):
+        raw = path.read_bytes()
+        assert a in raw
+        edited = _tmp_bytes(raw.replace(a, b, 1), path.name)
+        assert not S.verify_v2_lock(strict=False, v1=False, **{kw: edited})["ok"]
+        assert _raises(lambda: S.verify_v2_lock(strict=True, v1=False, **{kw: edited}), exc=LockError)
+        crlf = _tmp_bytes(raw.replace(b"\n", b"\r\n"), path.name)
+        assert not S.verify_v2_lock(strict=False, v1=False, **{kw: crlf})["ok"]
+
+
 def test_verify_v2_lock_with_v1():
     """Full lock incl. V1 verify_lock (needs the extractor jar: runs in WSL)."""
     res = S.verify_v2_lock(strict=False)

@@ -1,0 +1,55 @@
+{
+ "version": 1,
+ "rule": {
+  "window_s": 1.0,
+  "multiplier": 2,
+  "consecutive": 3,
+  "families": {
+   "TCP": [
+    6
+   ],
+   "UDP": [
+    17
+   ]
+  },
+  "other_family": "other",
+  "min_train_windows": 60,
+  "statement": "threshold[group][family] = multiplier x max packets in one window into one device of the group, train benign (no attacker / testbed-Pi MAC on either side); alert iff count > threshold for `consecutive` windows in a row",
+  "fallback_group": "GEN"
+ },
+ "thresholds": {
+  "G1": {
+   "TCP": 3448,
+   "UDP": 698,
+   "other": 20
+  },
+  "G2": {
+   "TCP": 644,
+   "UDP": 26,
+   "other": 16
+  },
+  "GEN": {
+   "TCP": 712,
+   "UDP": 54,
+   "other": 8
+  }
+ },
+ "source": {
+  "G1": {
+   "TCP": "own",
+   "UDP": "own",
+   "other": "own"
+  },
+  "G2": {
+   "TCP": "own",
+   "UDP": "own",
+   "other": "own"
+  },
+  "GEN": {
+   "TCP": "own",
+   "UDP": "own",
+   "other": "own"
+  }
+ },
+ "dry_run": false
+}

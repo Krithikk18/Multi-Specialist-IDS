@@ -1,0 +1,12 @@
+{
+ "script": "27_fit_rate_guard.py",
+ "step": "27",
+ "run_id": "20261121T191447Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-21T19:14:47+00:00",
+ "run_manifest_sha256": "6b16ebd4168236c079d5c058aeb0ef4733b6a8d7a85754826e9ec834071680cf",
+ "config_sha256": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+ "runtime_s": 98.5,
+ "peak_rss_mb": 1928
+}

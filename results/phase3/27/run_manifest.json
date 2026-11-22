@@ -1,0 +1,328 @@
+{
+ "run_id": "20261121T191447Z",
+ "step": "27",
+ "script": "27_fit_rate_guard.py",
+ "created_utc": "2026-11-21T19:14:47+00:00",
+ "dry_run": false,
+ "argv": [
+  "27_fit_rate_guard.py"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase3.json",
+  "sha256": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+  "pinned": true,
+  "overrides": {}
+ },
+ "pins": {
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "prereg_phase3": "14ff67c4f1200a89ac47226b480bf45575ba1c8c48794193aa9903c4ed4017ab",
+  "amendment_2": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "code_sha256": {
+  "27_fit_rate_guard.py": "b663ed6b5afd25dbe64672b41a9e38f995f208a8c8a718d9012ee27421ceba7e",
+  "common/schemas.py": "90bd2c8f8423d853bae852da18fc8d906c62dfa0082272763d9a94d54992d15a",
+  "common/phase3_config.py": "d3ab3a3ee8678017c8084e23169d709f11602b3ac0eeaa0d131ab46019dc74fe",
+  "common/phase3_run.py": "831bf7430699e997e3628b13b12b9051f05dbe943ca1543588753de269194003",
+  "common/model_loader.py": "8edcb1df7869d244d48018cfb851aa7f5d5b90c5da9b1a2456b6864f047a072a",
+  "common/flow_source.py": "080efafb2bcdf738374babf1c5b7e156200faa514f05b43ba286bb67538df8bd",
+  "common/routing.py": "8141a9af1deced5189aef617e6e0d3299cd1a8ed9e16161f39c49c76bacd01a4",
+  "common/inference.py": "e4c8ee19c1909604b1cc98da339017c1fc0326255c4965a399a3efda4c46013c",
+  "common/policy.py": "95214d681cf3580a7a6edcefd357c6b66cc49182e248cbf2cee1a2a06ee48a48",
+  "common/packet_source.py": "5bf46e3b81010e65927af9aa0620459459ba456941099c4e16fd9123a72de08c",
+  "common/rate_guard_v2.py": "61175992eb9b6ac38ec1753eb79d612048c5f9a3ffe435a8f737c95ab3190f77",
+  "common/alert_log.py": "c19cd3855a62126c7141143f71332fd4fd9207240918f012708055f2f8feaf86",
+  "common/runtime.py": "ddea0bacf3b97a8c19f5d8eafafa160fb11a563a7ba9693785352bc1bf57b786",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "config/v2_phase3.json": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "docs/V2_PREREG_PHASE3.md": "14ff67c4f1200a89ac47226b480bf45575ba1c8c48794193aa9903c4ed4017ab",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_2.md": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46",
+  "rate_guard.py": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+  "config/rate_guard_v1.json": "894f75f1b40ad371fc50555b89b91424244650bcc4301dc3a20a04085a42ca8c",
+  "07a_attack_coverage.py": "7effc404fbb2fd138be585d7cb9995c60d60f40da70e1c3d18e963ca84227cb7",
+  "13_rate_guard_calibrate.py": "3425334cb5aa1e42c12387f55a2f3f5d2daa0ad379f112e742456c92fe6a3c61",
+  "config/device_table.csv": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "config/behaviour_groups.json": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "zero train-benign windows above an own-data threshold (by construction)",
+   "pass": true,
+   "detail": "0 windows over",
+   "level": "hard"
+  },
+  {
+   "check": "train-benign windows above a fallback / pooled threshold (groups with < min windows; report-only)",
+   "pass": true,
+   "detail": "{}",
+   "level": "warn"
+  },
+  {
+   "check": "every group label x family has a threshold",
+   "pass": true,
+   "detail": "3 groups x 3 families",
+   "level": "hard"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "fallback_train_benign_over": {},
+ "fit_dir": "/home/krithikk/lgids_cache/v2/rate_guard/v2_1",
+ "thresholds_sha256": "c83eddc157a032c42462fe42953398f3d7776964ebfee95592c6a9ee03c3e618",
+ "thresholds": {
+  "G1": {
+   "TCP": 3448,
+   "UDP": 698,
+   "other": 20
+  },
+  "G2": {
+   "TCP": 644,
+   "UDP": 26,
+   "other": 16
+  },
+  "GEN": {
+   "TCP": 712,
+   "UDP": 54,
+   "other": 8
+  }
+ },
+ "source": {
+  "G1": {
+   "TCP": "own",
+   "UDP": "own",
+   "other": "own"
+  },
+  "G2": {
+   "TCP": "own",
+   "UDP": "own",
+   "other": "own"
+  },
+  "GEN": {
+   "TCP": "own",
+   "UDP": "own",
+   "other": "own"
+  }
+ },
+ "sessions": {
+  "benign_night": {
+   "reader": {
+    "frames": 2484725,
+    "kept": 2395158,
+    "non_ipv4": 89567,
+    "excluded": 23469,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 2371689,
+    "not_protected": 1384626,
+    "windows_closed": 23331,
+    "alerts": 0,
+    "counted": 987063
+   },
+   "pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8"
+  },
+  "DDoS-SYN_Flood": {
+   "reader": {
+    "frames": 22836905,
+    "kept": 22805264,
+    "non_ipv4": 31641,
+    "excluded": 22659532,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 145732,
+    "counted": 72788,
+    "not_protected": 72944,
+    "windows_closed": 2081,
+    "alerts": 0
+   },
+   "pcap_sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8"
+  },
+  "DDoS-SYN_Flood5": {
+   "reader": {
+    "frames": 22279406,
+    "kept": 22257594,
+    "excluded": 22180901,
+    "non_ipv4": 21812,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 76693,
+    "not_protected": 39477,
+    "counted": 37216,
+    "windows_closed": 1222,
+    "alerts": 0
+   },
+   "pcap_sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad"
+  },
+  "Recon-PortScan": {
+   "reader": {
+    "frames": 509717,
+    "kept": 490626,
+    "non_ipv4": 19091,
+    "excluded": 192030,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 298596,
+    "not_protected": 147712,
+    "counted": 150884,
+    "windows_closed": 4905,
+    "alerts": 0
+   },
+   "pcap_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1"
+  },
+  "Mirai-udpplain": {
+   "reader": {
+    "frames": 3293671,
+    "kept": 3275152,
+    "non_ipv4": 18519,
+    "excluded": 3214995,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 60157,
+    "counted": 22003,
+    "not_protected": 38154,
+    "windows_closed": 1323,
+    "alerts": 0
+   },
+   "pcap_sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7"
+  }
+ },
+ "exclusion": {
+  "eth.dst ATTACKER_MACS": 483118,
+  "eth.src ATTACKER_MACS": 47787809
+ },
+ "per_group_family": {
+  "G1|TCP": {
+   "max": 1724,
+   "n": 119954,
+   "threshold": 3448,
+   "source": "own",
+   "max_at": {
+    "count": 1724,
+    "window_start": 1664210974.0,
+    "device": "2c:71:ff:05:f1:15",
+    "session": "Recon-PortScan"
+   }
+  },
+  "G1|UDP": {
+   "max": 349,
+   "n": 77826,
+   "threshold": 698,
+   "source": "own",
+   "max_at": {
+    "count": 349,
+    "window_start": 1665170547.0,
+    "device": "cc:f4:11:9c:d0:00",
+    "session": "benign_night"
+   }
+  },
+  "G1|other": {
+   "max": 10,
+   "n": 5793,
+   "threshold": 20,
+   "source": "own",
+   "max_at": {
+    "count": 10,
+    "window_start": 1661538092.0,
+    "device": "40:5d:82:35:14:c8",
+    "session": "DDoS-SYN_Flood"
+   }
+  },
+  "G2|TCP": {
+   "max": 322,
+   "n": 58893,
+   "threshold": 644,
+   "source": "own",
+   "max_at": {
+    "count": 322,
+    "window_start": 1665172063.0,
+    "device": "b0:09:da:3e:82:6c",
+    "session": "benign_night"
+   }
+  },
+  "G2|UDP": {
+   "max": 13,
+   "n": 4660,
+   "threshold": 26,
+   "source": "own",
+   "max_at": {
+    "count": 13,
+    "window_start": 1664217427.0,
+    "device": "b0:09:da:3e:82:6c",
+    "session": "Recon-PortScan"
+   }
+  },
+  "G2|other": {
+   "max": 8,
+   "n": 1200,
+   "threshold": 16,
+   "source": "own",
+   "max_at": {
+    "count": 8,
+    "window_start": 1661539733.0,
+    "device": "44:bb:3b:00:39:07",
+    "session": "DDoS-SYN_Flood"
+   }
+  },
+  "GEN|TCP": {
+   "max": 356,
+   "n": 4626,
+   "threshold": 712,
+   "source": "own",
+   "max_at": {
+    "count": 356,
+    "window_start": 1661794566.0,
+    "device": "ee:06:3b:b8:d1:df",
+    "session": "DDoS-SYN_Flood5"
+   }
+  },
+  "GEN|UDP": {
+   "max": 27,
+   "n": 2944,
+   "threshold": 54,
+   "source": "own",
+   "max_at": {
+    "count": 27,
+    "window_start": 1661794572.0,
+    "device": "ee:06:3b:b8:d1:df",
+    "session": "DDoS-SYN_Flood5"
+   }
+  },
+  "GEN|other": {
+   "max": 4,
+   "n": 332,
+   "threshold": 8,
+   "source": "own",
+   "max_at": {
+    "count": 4,
+    "window_start": 1661539613.0,
+    "device": "c0:e7:bf:0a:79:d1",
+    "session": "DDoS-SYN_Flood"
+   }
+  }
+ },
+ "figures": [
+  "figures/train_benign_rates.png"
+ ],
+ "runtime_s": 98.5,
+ "peak_rss_mb": 1928
+}

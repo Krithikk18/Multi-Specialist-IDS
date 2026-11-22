@@ -1,0 +1,12 @@
+{
+ "script": "30_benchmark_runtime.py",
+ "step": "30",
+ "run_id": "20261122T051936Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-22T05:19:36+00:00",
+ "run_manifest_sha256": "265b78c05ce115bdd91173d26fb0908c266a43469dbbc5792b9f5ca8d8ab034c",
+ "config_sha256": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+ "runtime_s": 763.1,
+ "peak_rss_mb": 7646
+}

@@ -1,0 +1,231 @@
+{
+ "status": "PASS",
+ "run_id": "20261121T191447Z",
+ "fallback_train_benign_over": {},
+ "thresholds_sha256": "c83eddc157a032c42462fe42953398f3d7776964ebfee95592c6a9ee03c3e618",
+ "rule": {
+  "window_s": 1.0,
+  "multiplier": 2,
+  "consecutive": 3,
+  "families": {
+   "TCP": [
+    6
+   ],
+   "UDP": [
+    17
+   ]
+  },
+  "other_family": "other",
+  "min_train_windows": 60,
+  "statement": "threshold[group][family] = multiplier x max packets in one window into one device of the group, train benign (no attacker / testbed-Pi MAC on either side); alert iff count > threshold for `consecutive` windows in a row",
+  "fallback_group": "GEN"
+ },
+ "sessions": {
+  "benign_night": {
+   "reader": {
+    "frames": 2484725,
+    "kept": 2395158,
+    "non_ipv4": 89567,
+    "excluded": 23469,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 2371689,
+    "not_protected": 1384626,
+    "windows_closed": 23331,
+    "alerts": 0,
+    "counted": 987063
+   },
+   "pcap_sha256": "549a89337f529412f2507f862d06394c95e5966b9c01aaa980511590657d1dc8"
+  },
+  "DDoS-SYN_Flood": {
+   "reader": {
+    "frames": 22836905,
+    "kept": 22805264,
+    "non_ipv4": 31641,
+    "excluded": 22659532,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 145732,
+    "counted": 72788,
+    "not_protected": 72944,
+    "windows_closed": 2081,
+    "alerts": 0
+   },
+   "pcap_sha256": "5e8124a87e12483af05cb5b4f36dc095c2a979b08f2ee4e18918c26ad3b041b8"
+  },
+  "DDoS-SYN_Flood5": {
+   "reader": {
+    "frames": 22279406,
+    "kept": 22257594,
+    "excluded": 22180901,
+    "non_ipv4": 21812,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 76693,
+    "not_protected": 39477,
+    "counted": 37216,
+    "windows_closed": 1222,
+    "alerts": 0
+   },
+   "pcap_sha256": "298d6249ddb4e721d67c05b0cd015b7f9ad1dcdcf3eb305c739d803f1b8ee9ad"
+  },
+  "Recon-PortScan": {
+   "reader": {
+    "frames": 509717,
+    "kept": 490626,
+    "non_ipv4": 19091,
+    "excluded": 192030,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 298596,
+    "not_protected": 147712,
+    "counted": 150884,
+    "windows_closed": 4905,
+    "alerts": 0
+   },
+   "pcap_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1"
+  },
+  "Mirai-udpplain": {
+   "reader": {
+    "frames": 3293671,
+    "kept": 3275152,
+    "non_ipv4": 18519,
+    "excluded": 3214995,
+    "stopped_at_cut": 1
+   },
+   "guard": {
+    "packets": 60157,
+    "counted": 22003,
+    "not_protected": 38154,
+    "windows_closed": 1323,
+    "alerts": 0
+   },
+   "pcap_sha256": "845a8c833c5841203b75d776a353526f55a7fbcd9ca3079b53848e85a62ed3a7"
+  }
+ },
+ "exclusion": {
+  "eth.dst ATTACKER_MACS": 483118,
+  "eth.src ATTACKER_MACS": 47787809
+ },
+ "per_group_family": {
+  "G1|TCP": {
+   "max": 1724,
+   "n": 119954,
+   "threshold": 3448,
+   "source": "own",
+   "max_at": {
+    "count": 1724,
+    "window_start": 1664210974.0,
+    "device": "2c:71:ff:05:f1:15",
+    "session": "Recon-PortScan"
+   }
+  },
+  "G1|UDP": {
+   "max": 349,
+   "n": 77826,
+   "threshold": 698,
+   "source": "own",
+   "max_at": {
+    "count": 349,
+    "window_start": 1665170547.0,
+    "device": "cc:f4:11:9c:d0:00",
+    "session": "benign_night"
+   }
+  },
+  "G1|other": {
+   "max": 10,
+   "n": 5793,
+   "threshold": 20,
+   "source": "own",
+   "max_at": {
+    "count": 10,
+    "window_start": 1661538092.0,
+    "device": "40:5d:82:35:14:c8",
+    "session": "DDoS-SYN_Flood"
+   }
+  },
+  "G2|TCP": {
+   "max": 322,
+   "n": 58893,
+   "threshold": 644,
+   "source": "own",
+   "max_at": {
+    "count": 322,
+    "window_start": 1665172063.0,
+    "device": "b0:09:da:3e:82:6c",
+    "session": "benign_night"
+   }
+  },
+  "G2|UDP": {
+   "max": 13,
+   "n": 4660,
+   "threshold": 26,
+   "source": "own",
+   "max_at": {
+    "count": 13,
+    "window_start": 1664217427.0,
+    "device": "b0:09:da:3e:82:6c",
+    "session": "Recon-PortScan"
+   }
+  },
+  "G2|other": {
+   "max": 8,
+   "n": 1200,
+   "threshold": 16,
+   "source": "own",
+   "max_at": {
+    "count": 8,
+    "window_start": 1661539733.0,
+    "device": "44:bb:3b:00:39:07",
+    "session": "DDoS-SYN_Flood"
+   }
+  },
+  "GEN|TCP": {
+   "max": 356,
+   "n": 4626,
+   "threshold": 712,
+   "source": "own",
+   "max_at": {
+    "count": 356,
+    "window_start": 1661794566.0,
+    "device": "ee:06:3b:b8:d1:df",
+    "session": "DDoS-SYN_Flood5"
+   }
+  },
+  "GEN|UDP": {
+   "max": 27,
+   "n": 2944,
+   "threshold": 54,
+   "source": "own",
+   "max_at": {
+    "count": 27,
+    "window_start": 1661794572.0,
+    "device": "ee:06:3b:b8:d1:df",
+    "session": "DDoS-SYN_Flood5"
+   }
+  },
+  "GEN|other": {
+   "max": 4,
+   "n": 332,
+   "threshold": 8,
+   "source": "own",
+   "max_at": {
+    "count": 4,
+    "window_start": 1661539613.0,
+    "device": "c0:e7:bf:0a:79:d1",
+    "session": "DDoS-SYN_Flood"
+   }
+  }
+ },
+ "inputs_sha256": {
+  "split_definition": "67f329c0c34fddb51eb91936b9d49799633b5ce8078b95f470391c18c60ea627",
+  "config/device_table.csv": "506d16bbaa3c0052fa63a619645ba5220cc1b70f084786c5ec86c8d686857532",
+  "config/behaviour_groups.json": "5b26490de8a996ca4140c8cfe85cb0e453c6fefe2268b1c554f3749c0ff4e532",
+  "config/v2_phase3.json": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692"
+ },
+ "dry_run": false
+}

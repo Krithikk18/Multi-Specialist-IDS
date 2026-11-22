@@ -1,0 +1,392 @@
+{
+ "GLOBAL_s0": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_GLOBAL_s0",
+  "mode": "GLOBAL",
+  "seed": 0,
+  "evaluation_only": false,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "packets": 6252317,
+   "flow_alerts": 118321,
+   "batches": 14100,
+   "rg_alerts_v2": 397,
+   "rg_alerts_v1": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 142.87887083,
+  "flows_per_s": 1102.73827812837,
+  "incidents": 20,
+  "logs": {
+   "alerts": {
+    "n": 118718,
+    "head_sha256": "5900148d7a9f4ff01f4137da9dffb494f2924c11de13aa946709f0d7cd00cb79",
+    "file_sha256": "163afbc2568139f1bd21c009e5396f1164bd46e3d781af426e0cb8a776af76e4"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "9d08a37dcdc320db086c08e6b9d54c0af0413307586f503102fc12f49e48acaa",
+    "file_sha256": "77b514846dbc86116230eefd0a886c6d5a53d893a82818e21ccea692e8194851"
+   },
+   "outbox": {
+    "n": 40,
+    "head_sha256": "2930562283ecd8d3f447038925da2f7e299f0f71860b623cfb859fdfc6a50198",
+    "file_sha256": "471265feac2eb67be4e6c843817520b31c85123459b8c4321e82748d1b295676"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "ROUTED_s0": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_ROUTED_s0",
+  "mode": "ROUTED",
+  "seed": 0,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "packets": 6252317,
+   "flow_alerts": 118338,
+   "batches": 14100,
+   "rg_alerts_v2": 397,
+   "rg_alerts_v1": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 94.86383844199997,
+  "flows_per_s": 1660.8857767897662,
+  "incidents": 21,
+  "logs": {
+   "alerts": {
+    "n": 118735,
+    "head_sha256": "104e85341b21658d1356bc21c7d1d251da42110034487e24381ef3ddabd8ee12",
+    "file_sha256": "e82920219a10456989838ca12bc4e5ba7598ceee3d45398c531fd9bda7f9aead"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "e9d2885fb7f2a2daaeadc4e5ebfad342945f0a33899bef3c0b7e2524fe77c1cd",
+    "file_sha256": "e5aee93e5b16a4a70f8ea5fab97739579a24ff8274687f63db760d90f5beefd7"
+   },
+   "outbox": {
+    "n": 42,
+    "head_sha256": "cafeadf46f948ddffc8f7843da4d5b2ff61c9523095f42d23d225663300cc1da",
+    "file_sha256": "c382f0b8d2eaf5f543749b90cd39ac4a4d9975b549ed34e34f9fb462ea2c9b28"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "GLOBAL_s1": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_GLOBAL_s1",
+  "mode": "GLOBAL",
+  "seed": 1,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118239,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 52.96452127700002,
+  "flows_per_s": 2974.783802462498,
+  "incidents": 17,
+  "logs": {
+   "alerts": {
+    "n": 118239,
+    "head_sha256": "127006bc77e8b823cc667c7b18de21a22fb09e1201e9362862e458deebf94c6e",
+    "file_sha256": "66630de98e4c027e1ebefe84d9bf7aef7ac8c4ee08caf30809e24a47dfc67c90"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "a2398ba12c67a82a2defd41757089756295e3f4082668f63ea6de009f7a2b491",
+    "file_sha256": "b6c96d013f9a121cf2126825ef2eebaa8029dffefab6391ba9722736953feb8a"
+   },
+   "outbox": {
+    "n": 34,
+    "head_sha256": "dec686211839839bf94eafb99411f43ef2fbcf3d6bd52723228d024e24951ad5",
+    "file_sha256": "e58ca53214221c072f975167dbfb2a0b5f5d533f869d0929773f54784ff78e90"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "GLOBAL_s2": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_GLOBAL_s2",
+  "mode": "GLOBAL",
+  "seed": 2,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118312,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 47.36424212000003,
+  "flows_per_s": 3326.517916212356,
+  "incidents": 16,
+  "logs": {
+   "alerts": {
+    "n": 118312,
+    "head_sha256": "9b35d7e9fcce0f63e2fdfa204c465c548176a078cd652167c6af744e9efa8fc0",
+    "file_sha256": "64ff88f2a3533542e10cc48950971b34a3fb92b69a28eae1431e9b4dd50969ad"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "7982c0a1ec54fc003a0a86af10bffa4f708b94a3452c2f13c936098b2d6f1683",
+    "file_sha256": "688b0b7691e1eca93bb107bb0065d9700edf2d539061a1d635a8f4fceb392396"
+   },
+   "outbox": {
+    "n": 32,
+    "head_sha256": "16308274505d6fa18973017056cd2bc7d1d7de42ca4a075b1da7204188aef0be",
+    "file_sha256": "49d3babb06735ab06e14b8d8d7a87c24051d90e5a9674c3f1a9b0920c17e2564"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "GLOBAL_s3": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_GLOBAL_s3",
+  "mode": "GLOBAL",
+  "seed": 3,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118314,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 63.992037970999945,
+  "flows_per_s": 2462.1500579713133,
+  "incidents": 17,
+  "logs": {
+   "alerts": {
+    "n": 118314,
+    "head_sha256": "df9291a020f64599bd7e5534b38e8e7bbeb1501b5e17ac852950318f1d3ce257",
+    "file_sha256": "7257104cbdca011e86881f383c619afcff9b2fe1b55c42de91fedcfe5be46a39"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "ea9c03f1b278b13f6e39f091d0552042c31c91d251c7ff86205745641fb607ee",
+    "file_sha256": "fde1bd2e0407a1da1e126d1d889ec538fc95bc928bc077adf1313db7d3194654"
+   },
+   "outbox": {
+    "n": 34,
+    "head_sha256": "54ab976a411db1504eba158d5c4a7e356a01e35b748452bdd841e07e53bb9ab2",
+    "file_sha256": "e76e7eb16e888a024dc4d81ed09430fe8bd06aa108a15d4a9cd4b3cda30d9ea7"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "GLOBAL_s4": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_GLOBAL_s4",
+  "mode": "GLOBAL",
+  "seed": 4,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118336,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 46.268610570999954,
+  "flows_per_s": 3405.2892026706663,
+  "incidents": 16,
+  "logs": {
+   "alerts": {
+    "n": 118336,
+    "head_sha256": "a44b146323f1769e9ac7ac2dbccacf8fcf74f5cdfabcc9a8241c13018e02bb53",
+    "file_sha256": "43ae916874d32d498784481d39f5cac71a7e6e0afee5aac692f554f31ea372d2"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "c7b79b658e3d06245695557bb25299b50620b10b640ad5f4d5bd2cefae2b7fa0",
+    "file_sha256": "a3d3a70682d7fbfbc2ca51608c5df9956388b91f1504675c1e3f3142b40d0b12"
+   },
+   "outbox": {
+    "n": 32,
+    "head_sha256": "9c5aabcee36f0837db8b7e4ece5de2e60ee573a0251101bea65a557332fa2eee",
+    "file_sha256": "726c1222fa7b99bf156ab78fc48546ce21982507abcd7b22287a8b771b77a79c"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "ROUTED_s1": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_ROUTED_s1",
+  "mode": "ROUTED",
+  "seed": 1,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118324,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 47.40278466400002,
+  "flows_per_s": 3323.813170825325,
+  "incidents": 17,
+  "logs": {
+   "alerts": {
+    "n": 118324,
+    "head_sha256": "a959e879d5616ecb0103cbf9dd7037f7f37fea42a5680e31fb0d3f139df02072",
+    "file_sha256": "389052fb6a750750891001221f6af80a49c6f3fec9be08f3638c58b379a8948d"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "a4356ebad014c773abced46726cdc13b01cf28d795de949088d45db5791c9f8b",
+    "file_sha256": "d1232ffb1ee36f6d36091e37e252b755987f1167c663c252eee09de94df1587d"
+   },
+   "outbox": {
+    "n": 34,
+    "head_sha256": "e8afbf46b69388a97950e5755fb108dfcc327d9e75c80e2466928f85bc1b5330",
+    "file_sha256": "5444381b6f2d893ddc5ae82efce644fc1534a1580c190c7885865d6d0a8c33e4"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "ROUTED_s2": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_ROUTED_s2",
+  "mode": "ROUTED",
+  "seed": 2,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118340,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 61.94999218600003,
+  "flows_per_s": 2543.309441056011,
+  "incidents": 17,
+  "logs": {
+   "alerts": {
+    "n": 118340,
+    "head_sha256": "0ca8fcbf272a25798b9bd2db76cf4ecdf318c32cd3876a231958157e106f7d70",
+    "file_sha256": "bf58d4aa61c895711995377c1a27ec8f31dc4e5f3f41c9d0ee35e1a0f3419b07"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "e20c7cfe8e12c3a85d25f166d7629800a3c2238a9ea01443c4962bd7979cde5a",
+    "file_sha256": "77cd7a74bd17b21e3f489719141bed42817827618c22daf27e1072afb089ab60"
+   },
+   "outbox": {
+    "n": 34,
+    "head_sha256": "2bdb83cd665228c732caa8ab5fe0a1f79d59f4f76edba23eebb74a13c80a0a91",
+    "file_sha256": "8abc28de8b5187092c73958a70e5b10d7d647dbe860e2705fabe692ef5ff205c"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "ROUTED_s3": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_ROUTED_s3",
+  "mode": "ROUTED",
+  "seed": 3,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118347,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 53.829967141,
+  "flows_per_s": 2926.9570161040424,
+  "incidents": 18,
+  "logs": {
+   "alerts": {
+    "n": 118347,
+    "head_sha256": "a14f229ddf2e831ea45bb199f349a1b2e718728492b3018476094585c165390a",
+    "file_sha256": "83da6d8492c286335b1b7db8db850884be1d55c51de176e6e9e6f9d117f91e9e"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "ba45b639b457275511adba97be653e0c0281960f293738cd4970d791564a1cf1",
+    "file_sha256": "1c16d3bd31e2106ffcd586780a2e771d5c23b6348dc470ed781d93eda124ed7d"
+   },
+   "outbox": {
+    "n": 36,
+    "head_sha256": "dfce3bf907d05419506f0d5aa796fab7548b1f90ee1026cff88bcaaeb3e02004",
+    "file_sha256": "03f00ec9d27ceb2cae9316c4de901d4be8b149e0463451518482d1c521356cd0"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ },
+ "ROUTED_s4": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T050150Z_ROUTED_s4",
+  "mode": "ROUTED",
+  "seed": 4,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "flow_alerts": 118336,
+   "batches": 14100,
+   "rg_alerts_v2": 0,
+   "rg_alerts_v1": 0,
+   "packets": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 42.74205462000009,
+  "flows_per_s": 3686.2523666860557,
+  "incidents": 17,
+  "logs": {
+   "alerts": {
+    "n": 118336,
+    "head_sha256": "ca2cb115695d737ec6e3c976091873a39db9f5322f0a8c750e987ec172931786",
+    "file_sha256": "adfeb437a4aa68e8651bc08cbc39a01094afb87c27154a407400e8f29610b04f"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "d054b1cd255d575e0109f7f3afb505a90273d53d556bd757760971795576ae2a",
+    "file_sha256": "4bb41944f38ca65e03e1cba835a1d7e2f7532666f6e42e70293376daf0e87736"
+   },
+   "outbox": {
+    "n": 34,
+    "head_sha256": "31d2f25c6f66cfc99ebb502922296284c791e4eb1bac86ae75a04cc9dea9e83c",
+    "file_sha256": "276e54a6407271cb15183e8dbc368b795d7933d02059d0ea332c0ee7de275b08"
+   }
+  },
+  "peak_rss_mb": 8230.5
+ }
+}

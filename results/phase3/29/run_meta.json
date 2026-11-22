@@ -1,0 +1,12 @@
+{
+ "script": "29_eval_stream.py",
+ "step": "29",
+ "run_id": "20261122T051547Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-22T05:15:47+00:00",
+ "run_manifest_sha256": "0a1c66a79cb99cea85b023cb702b78a22022a2a1f0cf87ee16fac6e9e291adf4",
+ "config_sha256": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+ "runtime_s": 165.8,
+ "peak_rss_mb": 1643
+}

@@ -1,0 +1,90 @@
+{
+ "version": 1,
+ "note": "Phase 3 streaming runtime (docs/V2_PREREG_PHASE3.md). Validated by common/phase3_config.py; its sha256 is pinned in common/schemas.py (V2_PHASE3_CONFIG_SHA256) and checked at runtime startup (DFD P5). Class names, groups and devices are named only here and in the files it points to.",
+ "phase2_config": "config/v2_phase2_v2_1.json",
+ "mode": "GLOBAL",
+ "models": {
+  "registry_root": "~/lgids_cache/v2/registry",
+  "registry_keys_dir": "~/lgids_cache/v2/keys",
+  "GLOBAL": {"entries": ["GLOBAL__none__s0__20261121T075821Z"]},
+  "ROUTED": {"entries": ["SPEC_G1__none__s0__20261121T075821Z", "SPEC_G2__none__s0__20261121T075821Z", "GLOBAL__none__s0__20261121T075821Z"]},
+  "evaluation": {
+   "note": "comparison runs only (ROUTED, seeds 1-4): never a deployment path; recorded in every run manifest",
+   "allow_states": ["candidate", "approved", "promoted"],
+   "train_run": "20261121T075821Z",
+   "calib_run": "20261121T080937Z",
+   "weights": "none",
+   "seeds": [0, 1, 2, 3, 4]
+  }
+ },
+ "source": {
+  "kind": "csv_replay",
+  "replay_phase2_config": "config/v2_phase2.json",
+  "replay_dataset_version": "v2_0_v1equiv",
+  "reference_dataset_version": "v2_1_oriented",
+  "split": "val",
+  "speed": "max",
+  "slice_minutes": 10,
+  "tick_s": 1.0
+ },
+ "pcap_source": {
+  "split": "val",
+  "slice_session": "Recon-PortScan",
+  "flow_timeout_s": 120,
+  "match_tolerance": {"abs": 1e-9, "rel": 1e-6}
+ },
+ "batch": {"max_flows": 64, "max_event_s": 0.2},
+ "queue": {"max_items": 20000, "overflow_max_speed": "block", "overflow_paced": "drop"},
+ "features": {"dtype": "float32", "nan_inf_to": 0.0},
+ "explain": {"top_k": 3},
+ "policy": {
+  "confidence_threshold": 0.5,
+  "aggregation_window_s": 60,
+  "cooldown_s": 300,
+  "severity_levels": ["High", "Medium", "Low"],
+  "severity_default": "Medium",
+  "severity": {"syn_flood": "High", "udp_flood": "High", "port_scan": "Medium", "rate_guard": "High"},
+  "rate_guard_class": "rate_guard"
+ },
+ "episodes": {"gap_s": 60, "detect_slack_s": 120},
+ "routing": {
+  "inventory": "config/device_table.csv",
+  "groups": "config/behaviour_groups.json",
+  "ip_mac_map": "config/ip_mac_map.csv",
+  "mac_column": "mac",
+  "name_column": "device_name",
+  "role_column": "role",
+  "group_column": "behaviour_group",
+  "owner_roles": ["iot"],
+  "fallback_group": "GEN",
+  "unknown_device": "unknown",
+  "ip_map_tolerance_s": 1.0
+ },
+ "rate_guard": {
+  "enabled": true,
+  "window_s": 1.0,
+  "consecutive": 3,
+  "multiplier": 2,
+  "families": {"TCP": [6], "UDP": [17]},
+  "other_family": "other",
+  "min_train_windows": 60,
+  "v1_config": "config/rate_guard_v1.json",
+  "fit_dir": "~/lgids_cache/v2/rate_guard/v2_1"
+ },
+ "packets": {
+  "split_definition": "~/lgids_cache/v2/datasets/v2_1_oriented/split_definition.json",
+  "attack_set": "config/attack_set.json",
+  "attack_pcap_root": "~/lgids_cache/ciciot2023/attack",
+  "benign_session": "benign_night",
+  "benign_pcap": "~/lgids_cache/BenignTraffic.pcap"
+ },
+ "paths": {
+  "runtime_root": "~/lgids_cache/v2/runtime",
+  "runtime_keys_dir": "~/lgids_cache/keys/runtime",
+  "results": "results/phase3",
+  "outbox": "alerts_outbox.jsonl"
+ },
+ "sweeps": {"confidence_threshold": [0.5, 0.7, 0.9], "aggregation_window_s": [30, 60, 120]},
+ "benchmark": {"batch_sizes": [1, 16, 64, 256], "speeds": ["1x", "10x", "max"], "rss_sample_s": 0.5},
+ "eval": {"ci_level": 0.95, "bootstrap": 10000, "bootstrap_seed": 0, "benign_hours_idle_gap_s": 300}
+}

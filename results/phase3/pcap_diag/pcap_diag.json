@@ -1,0 +1,49 @@
+{
+ "step28_run": "20261122T050150Z",
+ "lag_s": {
+  "a_prereg_rule": {
+   "p50": 1018.0,
+   "p95": 1804.984905052185,
+   "p99": 1836.9861095237732,
+   "max": 1922.0
+  },
+  "b_running_max_end_only": {
+   "p50": 70.0078649520874,
+   "p95": 187.5570740699768,
+   "p99": 189.2906211566925,
+   "max": 190.30498600006104
+  },
+  "c_sweeper_aware": {
+   "p50": 221.42835593223572,
+   "p95": 377.0,
+   "p99": 378.9896471977234,
+   "max": 380.0
+  },
+  "share_raised_by_successor_clause": 0.9230043468005527
+ },
+ "routing": {
+  "config_map": "config/ip_mac_map.csv",
+  "capture_map": "/home/krithikk/lgids_cache/maps/Recon-PortScan_ip_mac_map.csv",
+  "matched": 28135,
+  "config_map_group_agree": 0.008672472009952017,
+  "config_map_device_agree": 0.0,
+  "config_map_ipmap_stats": {
+   "ipmap_src_unmapped": 28135,
+   "ipmap_dst_unmapped": 28135,
+   "no_device": 28135
+  },
+  "capture_map_group_agree": 1.0,
+  "capture_map_device_agree": 1.0,
+  "capture_map_ipmap_stats": {
+   "ipmap_src_mapped": 26295,
+   "ipmap_dst_unmapped": 4063,
+   "device_side": 28078,
+   "ipmap_dst_mapped": 24072,
+   "ipmap_src_unmapped": 1840,
+   "device_device_initiator": 57
+  },
+  "pred_agree_matched": 1.0,
+  "pred_disagree_matched": 0
+ },
+ "sweeper": "idle sweeper: every 10 s of capture time, flows past flow timeout + 60 s slack are emitted and removed (tombstones rebuild the identical successor flow); rows are identical to the singlepkt-only jar a96e7255... after sorting, only the row order changes (regression: BenignTraffic.pcap and the 3M-packet SYN cut)"
+}

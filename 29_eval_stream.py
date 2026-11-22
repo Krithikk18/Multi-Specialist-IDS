@@ -83,8 +83,8 @@ def episodes(gt: dict, gap: float) -> list[dict]:
 
 
 def load_run(d: Path, gt: dict) -> dict:
-    import pyarrow.parquet as pq
-    P = pq.read_table(d / "predictions.parquet").to_pandas()
+    from common.predictions_io import read_predictions
+    P = read_predictions(d)                                            # single file (Phase 3) or parts (Phase 3.1)
     pos = {u: i for i, u in enumerate(gt["uid"])}
     gi = np.array([pos[u] for u in P["flow_uid"]], dtype=np.int64)
     A = [json.loads(x) for x in (d / "alerts.jsonl").read_text(encoding="utf-8").splitlines()]

@@ -1,0 +1,80 @@
+{
+ "GLOBAL_s0": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T072459Z_GLOBAL_s0",
+  "mode": "GLOBAL",
+  "seed": 0,
+  "evaluation_only": false,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "packets": 6252317,
+   "flow_alerts": 118321,
+   "batches": 14100,
+   "rg_alerts_v2": 397,
+   "rg_alerts_v1": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 125.751170986,
+  "flows_per_s": 1252.9346547201621,
+  "incidents": 20,
+  "logs": {
+   "alerts": {
+    "n": 118718,
+    "head_sha256": "1499f6b17702d1e961343703ad975e32e0ed5e2503eb2b906272fc28a763f201",
+    "file_sha256": "adb280ae1148eab335e3f12e2e4d7888bbdc635db6aa5f80530487b143b731c5"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "54fb2a111294fc56be7d5a4040c2a4261fb91099d1f69a940db74ff9f14e8673",
+    "file_sha256": "9e79f8db2c8840f246263d7f4baa89ef9a939f3b8ff3697d472be62c9355b744"
+   },
+   "outbox": {
+    "n": 40,
+    "head_sha256": "74cad708d5cbc6a37ccf1605687c9c0274f164e6edd5fcfb844b6b0f3a980ab3",
+    "file_sha256": "ff9457370df635c58abfff95514dc436a99d3a17afdb6d865b01299046457521"
+   }
+  },
+  "peak_rss_mb": 1382.53515625
+ },
+ "ROUTED_s0": {
+  "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T072459Z_ROUTED_s0",
+  "mode": "ROUTED",
+  "seed": 0,
+  "evaluation_only": true,
+  "counts": {
+   "backlog_peak": 20000,
+   "flows_scored": 157558,
+   "flows_in": 157558,
+   "packets": 6252317,
+   "flow_alerts": 118338,
+   "batches": 14100,
+   "rg_alerts_v2": 397,
+   "rg_alerts_v1": 0,
+   "dropped": 0,
+   "quarantined": 0
+  },
+  "wall_s": 89.860910986,
+  "flows_per_s": 1753.3541366450977,
+  "incidents": 21,
+  "logs": {
+   "alerts": {
+    "n": 118735,
+    "head_sha256": "18201fa7972ccfbb9adb94a801aa78cdc072becada8e28190939f1604400b0b5",
+    "file_sha256": "f0524fc364e97f5dccf499371633d0f007e6a6a2f96d69491506646754b3f784"
+   },
+   "health": {
+    "n": 124,
+    "head_sha256": "8b43c68536fe9a8a47bee93a52d74ff2b5220831d947ee43988ad1c4cbd7d8c9",
+    "file_sha256": "40ee6b4f10a025ed5a0c624f4e9fa4e8b1d11d044aca0ac7b133416aa8a4e5f2"
+   },
+   "outbox": {
+    "n": 42,
+    "head_sha256": "812835e838da72e78a7329ad25e9afbeff8689266bdc76d028762703169c2e6a",
+    "file_sha256": "e6e65d50747653321680b4cd390635c116c687102f8f88005dd67b7b09858716"
+   }
+  },
+  "peak_rss_mb": 1415.80859375
+ }
+}

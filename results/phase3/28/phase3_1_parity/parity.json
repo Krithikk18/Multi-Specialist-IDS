@@ -1,0 +1,19 @@
+{
+ "GLOBAL_s0": {
+  "n_runtime": 157558,
+  "n_offline": 157558,
+  "features_equal_rows": 157558,
+  "class_agree": 157558,
+  "max_abs_dp": 0.0,
+  "group_agree": 157558,
+  "device_agree": 157558
+ },
+ "ROUTED_s0": {
+  "n_runtime": 157558,
+  "n_offline": 157558,
+  "class_agree": 157558,
+  "max_abs_dp": 0.0,
+  "group_agree": 157558,
+  "device_agree": 157558
+ }
+}

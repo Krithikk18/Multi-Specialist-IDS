@@ -1,6 +1,7 @@
 """common/routing.py -- flow -> MAC -> device -> group at runtime, with ingest's exact rule (Phase 3).
 
     router = Router(cfg)                                    # inventory + groups + IP -> MAC map from config/v2_phase3.json
+    router = Router(cfg, ip_mac_source="learned")           # Phase 3.1: rows without MACs use passive IP -> MAC learning
     r = router.route(raw_row)                               # Route(device_mac, device, group, rule, side)
     p = router.protected_for_dst_mac(mac)                   # rate guard: (device_mac, device, group) or None
 
@@ -14,6 +15,10 @@ extractor wrote it (BEFORE orientation normalising: the normaliser swaps the MAC
 MACs: the row's src_mac / dst_mac when present (dataset replay); when a row has no MAC keys (CICFlowMeter output), they
 are resolved from the IP -> MAC map like 04: map rows of that IP whose [first_seen - tol, last_seen + tol] holds the
 flow start; one distinct MAC -> it, several -> ambiguous (no MAC), none -> "".
+ip_mac_source (Phase 3.1; default "static" = the behaviour above): "learned" resolves those MACs from
+self.learner (common/mac_learner.MacLearner, fed with packets by the runtime in event time up to the flow's emission:
+no lookahead); "learned_then_static" falls back to the map when nothing is learned. An unbound IP gives "" and the
+unowned / unknown rule applies (fallback group), counted in stats (learned_src_unbound, learned_dst_unbound).
 Nothing here names a device, group or role: all come from the config and the files it points to.
 """
 
@@ -26,6 +31,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from config.config import REPO_ROOT
+from common.mac_learner import MacLearner
 
 
 @dataclass(frozen=True)
@@ -66,7 +72,7 @@ class IpMacMap:
 
 
 class Router:
-    def __init__(self, cfg: dict):
+    def __init__(self, cfg: dict, ip_mac_source: str | None = None):
         ro = cfg["routing"]
         self.cfg = ro
         self.owner_roles = {r.lower() for r in ro["owner_roles"]}
@@ -84,6 +90,10 @@ class Router:
                 self.inv[mac] = (r[ro["name_column"]].strip(), r[ro["role_column"]].strip().lower(),
                                  r[ro["group_column"]].strip())
         self.ipmap = IpMacMap(REPO_ROOT / ro["ip_mac_map"], ro["ip_map_tolerance_s"])
+        self.ip_mac_source = ip_mac_source or "static"
+        if self.ip_mac_source not in ("static", "learned", "learned_then_static"):
+            raise ValueError(f"ip_mac_source {self.ip_mac_source!r}")
+        self.learner = MacLearner.from_config(ro) if self.ip_mac_source != "static" else None
         self._cache: dict = {}
         self.stats = defaultdict(int)
 
@@ -104,11 +114,26 @@ class Router:
         if "src_mac" in row or "dst_mac" in row:
             return norm_mac(row.get("src_mac")), norm_mac(row.get("dst_mac"))
         t = float(row["_meta"]["start_ts"])
-        s, ss = self.ipmap.resolve(row["Src IP"], t)
-        d, ds = self.ipmap.resolve(row["Dst IP"], t)
-        self.stats[f"ipmap_src_{ss}"] += 1
-        self.stats[f"ipmap_dst_{ds}"] += 1
-        return s, d
+        if self.learner is None:
+            s, ss = self.ipmap.resolve(row["Src IP"], t)
+            d, ds = self.ipmap.resolve(row["Dst IP"], t)
+            self.stats[f"ipmap_src_{ss}"] += 1
+            self.stats[f"ipmap_dst_{ds}"] += 1
+            return s, d
+        out = []
+        for side, ip in (("src", row["Src IP"]), ("dst", row["Dst IP"])):
+            m = self.learner.resolve(ip)
+            if m:
+                self.stats[f"learned_{side}_bound"] += 1
+            else:
+                self.stats[f"learned_{side}_unbound"] += 1
+                if self.ip_mac_source == "learned_then_static":
+                    m, st = self.ipmap.resolve(ip, t)
+                    self.stats[f"static_fallback_{side}_{st}"] += 1
+            out.append(m)
+        if not out[0] and not out[1]:
+            self.stats["learned_both_unbound"] += 1
+        return out[0], out[1]
 
     def route_macs(self, smac: str, dmac: str) -> Route:
         k = (smac, dmac)

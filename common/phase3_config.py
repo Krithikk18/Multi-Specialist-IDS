@@ -5,7 +5,11 @@
     speed_factor("10x") -> 10.0 ; speed_factor("max") -> None
 
 Integrity (DFD P5): the default config file must match common/schemas.V2_PHASE3_CONFIG_SHA256 byte for byte (LF
-only); a different file is accepted only with verify_pin=False (tests) and is then marked "_pinned": False.
+only); config/v2_phase3_1.json (Phase 3.1) must match V2_PHASE3_1_CONFIG_SHA256; any other file is checked against the
+Phase 3 pin, so it is accepted only with verify_pin=False (tests) and is then marked "_pinned": False.
+Phase 3.1 optional keys (validated only when present; absent = Phase 3 behaviour): predictions_chunk_rows /
+predictions_chunk_seconds (chunked prediction writing), routing.ip_mac_source ({source kind: static | learned |
+learned_then_static}), routing.mac_learner (gateway / flap parameters), packets.open_sequentially (bool).
 Only operational fields may be overridden for one run (mode, source.speed, batch.max_flows, source.slice_minutes,
 rate_guard.enabled, the evaluation seed); every override is listed in cfg["_overrides"] for the run manifest.
 Policy, routing, rate-guard rule and paths can only change by editing (and re-pinning) the file.
@@ -23,6 +27,9 @@ from config.config import CONFIG_DIR, REPO_ROOT
 from common import schemas as S
 
 CONFIG_PATH = CONFIG_DIR / "v2_phase3.json"
+CONFIG_PATH_3_1 = CONFIG_DIR / "v2_phase3_1.json"
+IP_MAC_SOURCES = ("static", "learned", "learned_then_static")
+LEARNER_KEYS = ("gateway_distinct_ip_threshold", "gateway_window_s", "flap_count", "flap_window_s")
 MODES = ("GLOBAL", "ROUTED")
 SOURCE_KINDS = ("csv_replay", "cicfm_pcap")
 ALLOWED_SPLITS = ("train", "val")
@@ -193,7 +200,39 @@ def validate(cfg: dict) -> list[str]:
     need(_is_int(ev2.get("bootstrap_seed")), "eval.bootstrap_seed must be an int")
     need(_is_num(ev2.get("benign_hours_idle_gap_s")) and ev2.get("benign_hours_idle_gap_s", 0) > 0,
          "eval.benign_hours_idle_gap_s must be > 0")
+    # ---- Phase 3.1 optional keys
+    if "predictions_chunk_rows" in cfg or "predictions_chunk_seconds" in cfg:
+        need(_is_int(cfg.get("predictions_chunk_rows")) and cfg.get("predictions_chunk_rows", 0) >= 1,
+             "predictions_chunk_rows must be an int >= 1 (set together with predictions_chunk_seconds)")
+        need(_is_num(cfg.get("predictions_chunk_seconds")) and cfg.get("predictions_chunk_seconds", 0) > 0,
+             "predictions_chunk_seconds must be > 0 (set together with predictions_chunk_rows)")
+    if "ip_mac_source" in ro:
+        im = ro.get("ip_mac_source")
+        need(isinstance(im, dict) and im and set(im) <= set(SOURCE_KINDS) and all(v in IP_MAC_SOURCES for v in im.values()),
+             f"routing.ip_mac_source must map source kinds {SOURCE_KINDS} to one of {IP_MAC_SOURCES}")
+    if "mac_learner" in ro:
+        ml = ro.get("mac_learner") or {}
+        need(isinstance(ml, dict) and all(_is_num(ml.get(k)) and ml.get(k, 0) > 0 for k in LEARNER_KEYS)
+             and _is_int(ml.get("gateway_distinct_ip_threshold")) and _is_int(ml.get("flap_count")),
+             f"routing.mac_learner needs {LEARNER_KEYS} > 0 (threshold and flap_count ints)")
+    if "open_sequentially" in pk:
+        need(isinstance(pk.get("open_sequentially"), bool), "packets.open_sequentially must be a bool")
     return E
+
+
+def pin_for(path: Path) -> str:
+    """The pinned sha256 a config file must match (Phase 3.1 file -> its own pin; anything else -> the Phase 3 pin)."""
+    try:
+        if Path(path).resolve() == CONFIG_PATH_3_1.resolve():
+            return S.V2_PHASE3_1_CONFIG_SHA256
+    except OSError:
+        pass
+    return S.V2_PHASE3_CONFIG_SHA256
+
+
+def ip_mac_source(cfg: dict, source_kind: str) -> str:
+    """How rows without MAC columns are routed for this source kind: static (Phase 3) unless the config says otherwise."""
+    return ((cfg.get("routing") or {}).get("ip_mac_source") or {}).get(source_kind, "static")
 
 
 def load_phase3_config(path: Path = CONFIG_PATH, verify_pin: bool = True) -> dict:
@@ -203,8 +242,10 @@ def load_phase3_config(path: Path = CONFIG_PATH, verify_pin: bool = True) -> dic
     if b"\r" in raw:
         raise ConfigError(f"{path}: CR bytes (the pin is over LF bytes)")
     sha = hashlib.sha256(raw).hexdigest()
-    if verify_pin and sha != S.V2_PHASE3_CONFIG_SHA256:
-        raise ConfigError(f"{path}: sha256 {sha} != pinned V2_PHASE3_CONFIG_SHA256 {S.V2_PHASE3_CONFIG_SHA256} "
+    want = pin_for(path)
+    if verify_pin and sha != want:
+        name = "V2_PHASE3_1_CONFIG_SHA256" if want == S.V2_PHASE3_1_CONFIG_SHA256 else "V2_PHASE3_CONFIG_SHA256"
+        raise ConfigError(f"{path}: sha256 {sha} != pinned {name} {want} "
                           f"(policy config edited? DFD P5 integrity check failed)")
     try:
         cfg = json.loads(raw)
@@ -219,7 +260,7 @@ def load_phase3_config(path: Path = CONFIG_PATH, verify_pin: bool = True) -> dic
     errs = validate(cfg)
     if errs:
         raise ConfigError(f"{path}: " + "; ".join(errs))
-    cfg["_sha256"], cfg["_path"], cfg["_pinned"] = sha, str(path), sha == S.V2_PHASE3_CONFIG_SHA256
+    cfg["_sha256"], cfg["_path"], cfg["_pinned"] = sha, str(path), sha == want
     cfg["_overrides"] = {}
     return cfg
 

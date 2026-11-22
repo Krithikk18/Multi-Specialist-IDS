@@ -14,6 +14,13 @@ checked) gives per session the cut labels and boundaries; a packet's split = lab
 STOPS at the first packet at or after the first boundary that leads into a label that is neither the wanted split
 nor an earlier one (for a time_split capture: the start of gap@val|test), so no test-window packet is ever read.
 Every capture's sha256 is checked against its record (config/config.py DATASET / config/attack_set.json).
+
+Phase 3.1 options (all off by default = the Phase 3 behaviour): arp=True also yields ARP frames as
+(ts, sender_ip, target_ip, ARP_PROTO, sender_mac, target_mac) for passive IP -> MAC learning (rate guards skip them);
+release_pages=True drops already-read pages of the memory map (madvise MADV_DONTNEED; no effect on the data read);
+PacketSource(sequential=True) opens one capture at a time in the order of its window's first instant instead of a
+heap merge of all captures at once, and counts cross-session inversions (a packet earlier than the latest packet of an
+earlier capture): with 0 inversions the sequence equals the heap merge.
 """
 
 from __future__ import annotations
@@ -34,6 +41,10 @@ MAGIC = {b"\xd4\xc3\xb2\xa1": ("<", 1e-6), b"\xa1\xb2\xc3\xd4": (">", 1e-6),
          b"\x4d\x3c\xb2\xa1": ("<", 1e-9), b"\xa1\xb2\x3c\x4d": (">", 1e-9)}
 VLAN = (0x8100, 0x88A8)
 IPV4 = 0x0800
+ARP = 0x0806
+ARP_PROTO = -1                       # protocol marker of an ARP record (== common/mac_learner.ARP_PROTO)
+ARP_ETH_IPV4 = bytes([0x08, 0x00, 0x06, 0x04])   # ARP ptype IPv4, hlen 6, plen 4
+RELEASE_BYTES = 64 << 20             # release_pages: drop read pages every 64 MB
 SPLIT_ORDER = ("train", "gap@train|val", "val", "gap@val|test", "test")
 _SHA_DONE: dict = {}
 
@@ -57,10 +68,12 @@ def _ip(b: bytes, cache: dict) -> str:
 
 
 def iter_pcap(path: Path, counts: Counter | None = None, stop_at: float | None = None, raw: bool = False,
-              start_at: float | None = None):
+              start_at: float | None = None, arp: bool = False, release_pages: bool = False):
     """Yield (ts, src_ip, dst_ip, proto, src_mac, dst_mac) per IPv4 packet in file order; raw=True yields
     (ts, record_header_bytes, frame_bytes) for every frame instead. Stops BEFORE the first frame with ts >= stop_at;
-    frames with ts < start_at are skipped on their record header alone (never parsed; counted)."""
+    frames with ts < start_at are skipped on their record header alone (never parsed; counted). arp=True: ARP frames
+    (Ethernet / IPv4) are yielded too, with proto ARP_PROTO. release_pages=True: read pages are dropped from the
+    process (madvise) every RELEASE_BYTES."""
     c = counts if counts is not None else Counter()
     with open(path, "rb") as fh, mmap.mmap(fh.fileno(), 0, access=mmap.ACCESS_READ) as mm:
         if len(mm) < 24 or mm[:4] not in MAGIC:
@@ -72,7 +85,15 @@ def iter_pcap(path: Path, counts: Counter | None = None, stop_at: float | None =
         rec = struct.Struct(bo + "IIII")
         off, n = 24, len(mm)
         macs, ips = {}, {}
+        rel = 0
+        page = mmap.PAGESIZE
         while off + 16 <= n:
+            if release_pages and off - rel >= RELEASE_BYTES:
+                upto = (off // page) * page
+                if upto > rel:
+                    mm.madvise(mmap.MADV_DONTNEED, rel, upto - rel)
+                    c["pages_released_mb"] += (upto - rel) >> 20
+                    rel = upto
             s, frac, incl, _orig = rec.unpack_from(mm, off)
             ts = s + frac * unit
             if stop_at is not None and ts >= stop_at:
@@ -98,6 +119,11 @@ def iter_pcap(path: Path, counts: Counter | None = None, stop_at: float | None =
                 et = (mm[l3 + 2] << 8) | mm[l3 + 3]
                 l3 += 4
             if et != IPV4 or l3 + 20 > off:
+                if arp and et == ARP and l3 + 28 <= off and mm[l3 + 2:l3 + 6] == ARP_ETH_IPV4:
+                    c["arp"] += 1
+                    yield (ts, _ip(mm[l3 + 14:l3 + 18], ips), _ip(mm[l3 + 24:l3 + 28], ips), ARP_PROTO,
+                           _mac(mm[l3 + 8:l3 + 14], macs), _mac(mm[l3 + 18:l3 + 24], macs))
+                    continue
                 c["non_ipv4"] += 1
                 continue
             yield (ts, _ip(mm[l3 + 12:l3 + 16], ips), _ip(mm[l3 + 16:l3 + 20], ips), mm[l3 + 9],
@@ -166,7 +192,8 @@ def session_plan(cfg: dict, session: str, split: str) -> dict:
             "start": start, "pcap": pcap, "sha256": sha}
 
 
-def session_packets(cfg: dict, session: str, split: str, counts: Counter | None = None, verify_sha: bool = True):
+def session_packets(cfg: dict, session: str, split: str, counts: Counter | None = None, verify_sha: bool = True,
+                    arp: bool = False, release_pages: bool = False):
     """The `split` packets of one session, in file order (packets of other splits are counted and skipped)."""
     P = session_plan(cfg, session, split)
     c = counts if counts is not None else Counter()
@@ -175,7 +202,7 @@ def session_packets(cfg: dict, session: str, split: str, counts: Counter | None 
         if got != P["sha256"]:
             raise PacketSourceError(f"{P['pcap']}: sha256 {got} != record {P['sha256']}")
     labels, bounds = P["labels"], P["bounds"]
-    for pkt in iter_pcap(P["pcap"], c, stop_at=P["stop"], start_at=P["start"]):
+    for pkt in iter_pcap(P["pcap"], c, stop_at=P["stop"], start_at=P["start"], arp=arp, release_pages=release_pages):
         lab = labels[bisect.bisect_right(bounds, pkt[0])]
         if lab == split:
             c["kept"] += 1
@@ -190,22 +217,51 @@ def sessions_with(cfg: dict, split: str) -> list[str]:
 
 
 class PacketSource:
-    """Every session's `split` packets merged in time order (heap merge; sessions are separate captures)."""
+    """Every session's `split` packets merged in time order (heap merge; sessions are separate captures).
+    sequential=True (Phase 3.1): one capture open at a time, in the order of its window's first instant, pages
+    released as read; cross_session_inversions counts packets earlier than the latest packet of an earlier capture
+    (0 -> the same sequence as the heap merge)."""
 
-    def __init__(self, cfg: dict, split: str, sessions: list[str] | None = None, verify_sha: bool = True):
+    def __init__(self, cfg: dict, split: str, sessions: list[str] | None = None, verify_sha: bool = True,
+                 sequential: bool = False, arp: bool = False):
         C.refuse_test(split, "(PacketSource)")
         self.cfg, self.split, self.verify = cfg, split, verify_sha
+        self.sequential, self.arp = bool(sequential), bool(arp)
         self.sessions = sessions if sessions is not None else sessions_with(cfg, split)
         self.counts = {s: Counter() for s in self.sessions}
         self.plans = {s: session_plan(cfg, s, split) for s in self.sessions}
+        self.order = sorted(self.sessions, key=lambda s: (self.plans[s]["start"] if self.plans[s]["start"] is not None
+                                                          else float("-inf"), s))
+        self.cross_session_inversions = 0
+        self.cross_session_ties = 0
 
     def __iter__(self):
-        gens = [session_packets(self.cfg, s, self.split, self.counts[s], self.verify) for s in self.sessions]
+        if self.sequential:
+            return self._sequential()
+        gens = [session_packets(self.cfg, s, self.split, self.counts[s], self.verify, arp=self.arp) for s in self.sessions]
         return heapq.merge(*gens, key=lambda p: p[0])
 
+    def _sequential(self):
+        hi = float("-inf")
+        for s in self.order:
+            before = hi
+            for p in session_packets(self.cfg, s, self.split, self.counts[s], self.verify, arp=self.arp,
+                                     release_pages=True):
+                if p[0] < before:
+                    self.cross_session_inversions += 1
+                elif p[0] == before:
+                    self.cross_session_ties += 1
+                if p[0] > hi:
+                    hi = p[0]
+                yield p
+
     def describe(self) -> dict:
-        return {"split": self.split, "sessions": {s: {"pcap": str(p["pcap"]), "sha256": p["sha256"], "stop": p["stop"],
-                                                      "counts": dict(self.counts[s])} for s, p in self.plans.items()}}
+        return {"split": self.split, "sequential": self.sequential, "arp": self.arp,
+                "order": self.order if self.sequential else None,
+                "cross_session_inversions": self.cross_session_inversions if self.sequential else None,
+                "cross_session_ties": self.cross_session_ties if self.sequential else None,
+                "sessions": {s: {"pcap": str(p["pcap"]), "sha256": p["sha256"], "stop": p["stop"],
+                                 "counts": dict(self.counts[s])} for s, p in self.plans.items()}}
 
 
 def write_slice(cfg: dict, session: str, split: str, out: Path, t0: float | None = None, t1: float | None = None,

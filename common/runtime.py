@@ -16,6 +16,12 @@ Packets: consumed lazily in event-time order up to each flow's event time; v2 an
 same policy with class policy.rate_guard_class. Hot path: dicts / lists / numpy only; pandas never runs per flow.
 Outputs in run_dir: predictions.parquet (every flow; Phase 4's review queue), alerts.jsonl, health.jsonl and the
 outbox (hash-chained, signed: common/alert_log.py), incidents.json, latency.npz (per-stage ns), rss.json.
+Phase 3.1 (only when the config carries predictions_chunk_rows / predictions_chunk_seconds): predictions are written
+as predictions/part-NNNNN.parquet + predictions/manifest.json while the run goes (common/predictions_io.ChunkWriter;
+read either layout with predictions_io.read_predictions) and per-flow latency buffers are compact arrays; the rows
+are the same rows in the same order. When the router learns IP -> MAC (router.learner), every packet is shown to the
+learner (ARP records go to the learner only), its events (ip_mac_change, ip_mac_flap, gateway_detected) go to the
+health log, and the event clock is advanced to a flow's event time BEFORE the flow is routed (no lookahead).
 """
 
 from __future__ import annotations
@@ -25,6 +31,7 @@ import math
 import queue
 import threading
 import time
+from array import array
 from collections import defaultdict
 from pathlib import Path
 
@@ -32,12 +39,14 @@ import numpy as np
 
 from common import alert_log as AL
 from common import orientation as OR
+from common import predictions_io as PIO
 from common import schemas as S
 from common.inference import Inference
 from common.policy import Policy
 from common.routing import Router
 
 STAGES = ("route", "normalise", "features", "predict", "calibrate", "shap", "policy", "log")
+PK_ARP = -1                          # common/packet_source.ARP_PROTO (ARP records feed the IP -> MAC learner only)
 _END = ("end", None, None, None)
 
 
@@ -80,11 +89,22 @@ class Runtime:
         self.alerts = AL.ChainLog(self.dir / "alerts.jsonl", secret, "alerts")
         self.health = AL.ChainLog(self.dir / "health.jsonl", secret, "health")
         self.outbox = AL.ChainLog(self.dir / cfg["paths"]["outbox"], secret, "outbox")
-        self.lat = {s: [] for s in STAGES}
-        self.lat_batch = {s: [] for s in ("predict", "calibrate", "shap", "policy", "log")}
-        self.batch_sizes: list = []
-        self.e2e: list = []
-        self.qwait: list = []
+        self.chunk = None
+        if cfg.get("predictions_chunk_rows") is not None:
+            self.chunk = PIO.ChunkWriter(self.dir, cfg["predictions_chunk_rows"], cfg["predictions_chunk_seconds"])
+        if self.chunk is None:
+            self.lat = {s: [] for s in STAGES}
+            self.lat_batch = {s: [] for s in ("predict", "calibrate", "shap", "policy", "log")}
+            self.batch_sizes: list = []
+            self.e2e: list = []
+            self.qwait: list = []
+        else:                                                          # compact buffers (same values)
+            self.lat = {s: array("d") for s in STAGES}                # per-flow stages hold batch averages (float)
+            self.lat_batch = {s: array("q") for s in ("predict", "calibrate", "shap", "policy", "log")}
+            self.batch_sizes = array("q")
+            self.e2e = array("d")
+            self.qwait = array("d")
+        self.learner = getattr(self.router, "learner", None)
         self.rss: list = []
         self.counts = defaultdict(int)
         self.cols = defaultdict(list)
@@ -147,6 +167,14 @@ class Runtime:
                 return
             self._pk_next = None
             self.counts["packets"] += 1
+            if self.learner is not None:
+                self.learner.observe(p)
+                for ev in self.learner.drain_events():
+                    self.counts[ev["kind"]] += 1
+                    self._health(ev.pop("kind"), **ev)
+                if p[3] == PK_ARP:
+                    self.counts["arp_records"] += 1
+                    continue
             for a in self.rg2.update(*p) if self.rg2 is not None else ():
                 self._rg_alert_v2(a)
             for a in self.v1.update(*p) if self.v1 is not None else ():
@@ -233,7 +261,7 @@ class Runtime:
                                 "probs": [round(float(v), 9) for v in P[i]], "model": {"model_id": mids[i], **self.model_ref[mids[i]]},
                                 "policy": pd_[i], "top3": [[f, v, c] for f, v, c in top[j]],
                                 "orientation_flipped": bool(flow.get(self.omap["machine"]["flag_column"]))})
-        C = self.cols
+        C = self.cols if self.chunk is None else defaultdict(list)
         fc = self.omap["machine"]["flag_column"]
         for i, b in enumerate(B):
             t, meta, r, flow, x, wq = b
@@ -257,6 +285,8 @@ class Runtime:
             for k in range(len(self.names)):
                 C[f"p_{k}"].append(float(P[i, k]))
                 C[f"z_{k}"].append(float(z[i, k]))
+        if self.chunk is not None:
+            self.chunk.add(C)
         if self.store_features:
             self.featbuf.append(X)
         t5 = time.perf_counter_ns()
@@ -331,6 +361,13 @@ class Runtime:
                 continue
             self.counts["flows_in"] += 1
             self.qwait.append(time.monotonic() - wq)
+            if self.learner is not None:                               # learn from packets up to this flow first
+                try:
+                    tl = float(payload["_meta"]["event_time"])
+                except (TypeError, KeyError, ValueError):
+                    tl = math.nan
+                if math.isfinite(tl):
+                    self._on_time(tl)
             try:
                 tt, meta, r, flow, x = self._prepare(payload)
             except (ValueError, TypeError, KeyError, OR.OrientationError) as e:
@@ -365,9 +402,14 @@ class Runtime:
     def _write(self, incidents: list, wall: float, source) -> dict:
         import pyarrow as pa
         import pyarrow.parquet as pq
-        C = self.cols
-        tbl = pa.table({k: v for k, v in C.items()}) if C else pa.table({"flow_uid": pa.array([], pa.string())})
-        pq.write_table(tbl, self.dir / "predictions.parquet")
+        if self.chunk is not None:
+            pred_info = self.chunk.close()
+            pred_info = {k: v for k, v in pred_info.items() if k != "parts"} | {"n_parts": len(pred_info["parts"])}
+        else:
+            C = self.cols
+            tbl = pa.table({k: v for k, v in C.items()}) if C else pa.table({"flow_uid": pa.array([], pa.string())})
+            pq.write_table(tbl, self.dir / "predictions.parquet")
+            pred_info = {"layout": "single", "rows": tbl.num_rows}
         if self.store_features and self.featbuf:
             np.save(self.dir / "features.npy", np.vstack(self.featbuf))
         (self.dir / "incidents.json").write_text(json.dumps([i.as_dict() for i in incidents], indent=0) + "\n",
@@ -384,6 +426,7 @@ class Runtime:
         if self.v1 is not None:
             rg["v1"] = self.v1.stats()
         return {"counts": dict(self.counts), "wall_s": wall, "logs": logs, "incidents": len(incidents),
+                "predictions": pred_info, "learner": self.learner.describe() if self.learner is not None else None,
                 "incident_decisions": dict(self.pol.tracker.counts), "rate_guard": rg, "router": dict(self.router.stats),
                 "source_stats": getattr(source, "stats", {}), "peak_rss_mb": peak_rss_mb(),
                 "flows_per_s": self.counts["flows_scored"] / wall if wall > 0 else float("nan")}

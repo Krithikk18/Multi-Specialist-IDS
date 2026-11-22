@@ -1,0 +1,85 @@
+{
+ "label": "after_malloc_trim",
+ "malloc_trim": true,
+ "config": "config/v2_phase3_1.json",
+ "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+ "pinned": true,
+ "chunked": true,
+ "run_id": "20261122T073607Z",
+ "rss_start_mb": 170.30859375,
+ "runs": [
+  {
+   "k": 0,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem31/20261122T073607Z_after_malloc_trim_r0",
+   "flows": 157558,
+   "wall_s": 68.54658551099999,
+   "predictions": {
+    "layout": "parts",
+    "version": 1,
+    "chunk_rows": 10000,
+    "chunk_seconds": 60.0,
+    "time_column": "event_time",
+    "complete": true,
+    "rows": 157558,
+    "n_parts": 120
+   },
+   "in_run_rss_max_mb": 1233.78515625,
+   "rss_after_run_mb": 442.359375,
+   "process_peak_rss_mb": 1271.16015625
+  },
+  {
+   "k": 1,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem31/20261122T073607Z_after_malloc_trim_r1",
+   "flows": 157558,
+   "wall_s": 49.11646201299993,
+   "predictions": {
+    "layout": "parts",
+    "version": 1,
+    "chunk_rows": 10000,
+    "chunk_seconds": 60.0,
+    "time_column": "event_time",
+    "complete": true,
+    "rows": 157558,
+    "n_parts": 120
+   },
+   "in_run_rss_max_mb": 1221.03125,
+   "rss_after_run_mb": 448.1875,
+   "process_peak_rss_mb": 1271.16015625
+  },
+  {
+   "k": 2,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem31/20261122T073607Z_after_malloc_trim_r2",
+   "flows": 157558,
+   "wall_s": 68.13574940000001,
+   "predictions": {
+    "layout": "parts",
+    "version": 1,
+    "chunk_rows": 10000,
+    "chunk_seconds": 60.0,
+    "time_column": "event_time",
+    "complete": true,
+    "rows": 157558,
+    "n_parts": 120
+   },
+   "in_run_rss_max_mb": 1216.80078125,
+   "rss_after_run_mb": 475.515625,
+   "process_peak_rss_mb": 1271.16015625
+  }
+ ],
+ "rss_after_model_load_mb": 198.18359375,
+ "per_run_growth_mb": [
+  5.828125,
+  27.328125
+ ],
+ "process_peak_rss_mb": 1271.16015625,
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ }
+}

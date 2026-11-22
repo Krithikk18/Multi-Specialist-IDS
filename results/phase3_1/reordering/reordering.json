@@ -1,0 +1,3422 @@
+{
+ "captures": [
+  {
+   "session": "DDoS-SYN_Flood",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood.pcap",
+   "format": "pcap",
+   "timestamp_resolution": "us",
+   "mode": "train",
+   "labels": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "reader": {
+    "frames": 26597011
+   },
+   "frames": {
+    "train": 22836904,
+    "val": 2901590
+   },
+   "inversions": {
+    "train": 61,
+    "val": 13
+   },
+   "inversion_rate": 2.875071090017932e-06,
+   "magnitude_s": {
+    "p50": 9.5367431640625e-07,
+    "p90": 1.1920928955078125e-06,
+    "p99": 6.217956542968746e-06,
+    "max": 6.9141387939453125e-06
+   },
+   "below_running_max_s": {
+    "p50": 9.5367431640625e-07,
+    "p90": 1.1920928955078125e-06,
+    "p99": 6.217956542968746e-06,
+    "max": 6.9141387939453125e-06
+   },
+   "magnitude_log10_hist": [
+    0,
+    0,
+    0,
+    55,
+    15,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "inv_by_proto": {
+    "non-IPv4": 70,
+    "TCP": 4
+   },
+   "all_by_proto": {
+    "UDP": 57149,
+    "non-IPv4": 37449,
+    "TCP": 25638332,
+    "ICMP": 5458,
+    "other IP": 106
+   },
+   "inv_by_flags": {
+    "S": 4
+   },
+   "all_by_flags": {
+    "AP": 22741,
+    "S": 24800596,
+    "A": 40388,
+    "SA": 408515,
+    "AF": 8702,
+    "AR": 866,
+    "R": 355166,
+    "AFP": 1358
+   },
+   "inv_by_src": {
+    "-": 70,
+    "attack source": 4
+   },
+   "all_by_src": {
+    "inventory device": 475987,
+    "other listed host": 73288,
+    "-": 37449,
+    "unlisted host": 8504,
+    "attack source": 25143266
+   },
+   "inv_by_dst": {
+    "-": 70,
+    "inventory device": 4
+   },
+   "all_by_dst": {
+    "other listed host": 72734,
+    "inventory device": 25216920,
+    "broadcast / multicast": 9413,
+    "-": 37449,
+    "unlisted host": 7199,
+    "attack source": 394779
+   },
+   "duplicates_within_1ms": 1519,
+   "share_ts_on_whole_ms": 0.0009961344280671588,
+   "non_ipv4": 37449,
+   "handshakes": [
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4382
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 304
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 32
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 194473
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 4731
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2180
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 16
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 8
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 7
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 23
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 15
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 67
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 142378
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5381
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 500
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 6
+    },
+    {
+     "device": "Smart Board",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 3
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 69
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 11
+    },
+    {
+     "device": "Wemo Smart Plug 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "AMCREST WiFi Camera",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Sonos One Speaker",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Wemo Smart Plug 1",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "AMCREST WiFi Camera",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2278
+    },
+    {
+     "device": "AMCREST WiFi Camera",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2095
+    }
+   ],
+   "handshake_cells": [
+    {
+     "mac": "1c:fe:2b:98:16:dd",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 194473
+    },
+    {
+     "mac": "1c:fe:2b:98:16:dd",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2180
+    },
+    {
+     "mac": "1c:12:b0:9b:0c:ec",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 142378
+    },
+    {
+     "mac": "1c:12:b0:9b:0c:ec",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5381
+    },
+    {
+     "mac": "cc:f4:11:9c:d0:00",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 500
+    },
+    {
+     "mac": "cc:f4:11:9c:d0:00",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 69
+    },
+    {
+     "mac": "9c:8e:cd:1d:ab:9f",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2278
+    },
+    {
+     "mac": "9c:8e:cd:1d:ab:9f",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2095
+    }
+   ],
+   "unpaired": {
+    "syn_unanswered": 20109761,
+    "responder_unmatched": 353487
+   },
+   "attack_class": "syn_flood"
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/DDoS-SYN_Flood/DDoS-SYN_Flood5.pcap",
+   "format": "pcap",
+   "timestamp_resolution": "us",
+   "mode": "train",
+   "labels": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "reader": {
+    "frames": 26720136
+   },
+   "frames": {
+    "train": 22279405,
+    "val": 2275892
+   },
+   "inversions": {
+    "train": 53,
+    "val": 3
+   },
+   "inversion_rate": 2.2805669994543337e-06,
+   "magnitude_s": {
+    "p50": 9.5367431640625e-07,
+    "p90": 1.1920928955078125e-06,
+    "p99": 4.303455352783223e-06,
+    "max": 8.106231689453125e-06
+   },
+   "below_running_max_s": {
+    "p50": 9.5367431640625e-07,
+    "p90": 1.1920928955078125e-06,
+    "p99": 4.303455352783223e-06,
+    "max": 8.106231689453125e-06
+   },
+   "magnitude_log10_hist": [
+    0,
+    0,
+    0,
+    46,
+    9,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "inv_by_proto": {
+    "non-IPv4": 55,
+    "TCP": 1
+   },
+   "all_by_proto": {
+    "TCP": 24499364,
+    "UDP": 27577,
+    "non-IPv4": 24145,
+    "ICMP": 4158,
+    "other IP": 53
+   },
+   "inv_by_flags": {
+    "S": 1
+   },
+   "all_by_flags": {
+    "S": 24452030,
+    "R": 944,
+    "AP": 10371,
+    "A": 22180,
+    "SA": 8407,
+    "AFP": 547,
+    "AF": 4441,
+    "AR": 444
+   },
+   "inv_by_src": {
+    "-": 55,
+    "attack source": 1
+   },
+   "all_by_src": {
+    "attack source": 24446071,
+    "inventory device": 39432,
+    "other listed host": 38336,
+    "-": 24145,
+    "unlisted host": 7313
+   },
+   "inv_by_dst": {
+    "-": 55,
+    "inventory device": 1
+   },
+   "all_by_dst": {
+    "inventory device": 24480995,
+    "other listed host": 38305,
+    "-": 24145,
+    "broadcast / multicast": 4872,
+    "unlisted host": 6755,
+    "attack source": 225
+   },
+   "duplicates_within_1ms": 365,
+   "share_ts_on_whole_ms": 0.0010019019521531343,
+   "non_ipv4": 24145,
+   "handshakes": [
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 3324
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1922
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (1)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 24
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (1)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 14
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 5
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 154
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 11
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 25
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 55
+    },
+    {
+     "device": "Nest Indoor Camera",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 6
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 8
+    },
+    {
+     "device": "Unidentified ESP plug (2)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 24
+    },
+    {
+     "device": "Unidentified ESP plug (2)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 22
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "Teckin Plug 2",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Unidentified ESP plug (3)",
+     "class": "syn_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    }
+   ],
+   "handshake_cells": [
+    {
+     "mac": "b8:f0:09:03:29:79",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 24
+    },
+    {
+     "mac": "b8:f0:09:03:29:79",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 14
+    },
+    {
+     "mac": "50:02:91:10:09:8f",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 24
+    },
+    {
+     "mac": "50:02:91:10:09:8f",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 22
+    },
+    {
+     "mac": "c4:dd:57:0c:39:94",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    }
+   ],
+   "unpaired": {
+    "syn_unanswered": 21069925,
+    "responder_unmatched": 1933
+   },
+   "attack_class": "syn_flood"
+  },
+  {
+   "session": "Mirai-udpplain",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Mirai-udpplain/Mirai-udpplain.pcap",
+   "format": "pcap",
+   "timestamp_resolution": "us",
+   "mode": "train",
+   "labels": [
+    "train",
+    "gap@train|val",
+    "val"
+   ],
+   "reader": {
+    "frames": 3642269
+   },
+   "frames": {
+    "train": 3293670,
+    "val": 348598
+   },
+   "inversions": {},
+   "inversion_rate": 0.0,
+   "magnitude_s": {},
+   "below_running_max_s": {},
+   "magnitude_log10_hist": [],
+   "inv_by_proto": {},
+   "all_by_proto": {
+    "TCP": 36779,
+    "non-IPv4": 19603,
+    "UDP": 3581696,
+    "ICMP": 4114,
+    "other IP": 76
+   },
+   "inv_by_flags": {},
+   "all_by_flags": {
+    "SA": 5651,
+    "A": 14076,
+    "AP": 9530,
+    "S": 4019,
+    "AF": 1137,
+    "AFP": 594,
+    "AR": 668,
+    "R": 1104
+   },
+   "inv_by_src": {},
+   "all_by_src": {
+    "other listed host": 33425,
+    "-": 19603,
+    "inventory device": 29714,
+    "unlisted host": 1045,
+    "attack source": 3558481
+   },
+   "inv_by_dst": {},
+   "all_by_dst": {
+    "inventory device": 3581136,
+    "-": 19603,
+    "broadcast / multicast": 5728,
+    "other listed host": 34349,
+    "unlisted host": 682,
+    "attack source": 770
+   },
+   "duplicates_within_1ms": 501,
+   "share_ts_on_whole_ms": 0.0010128304671704553,
+   "non_ipv4": 19603,
+   "handshakes": [
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1883
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1434
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "udp_flood",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 6
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 4
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "udp_flood",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 10
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 25
+    },
+    {
+     "device": "Unidentified ESP plug (3)",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 10
+    },
+    {
+     "device": "Unidentified ESP plug (3)",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 25
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    }
+   ],
+   "handshake_cells": [
+    {
+     "mac": "00:17:88:60:d6:4f",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 6
+    },
+    {
+     "mac": "cc:f4:11:9c:d0:00",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 10
+    }
+   ],
+   "unpaired": {
+    "syn_unanswered": 104,
+    "responder_unmatched": 1620
+   },
+   "attack_class": "udp_flood"
+  },
+  {
+   "session": "Recon-PortScan",
+   "pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+   "format": "pcap",
+   "timestamp_resolution": "us",
+   "mode": "time_split",
+   "labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "reader": {
+    "frames": 663549,
+    "stopped_at_cut": 1
+   },
+   "frames": {
+    "train": 509716,
+    "val": 143215
+   },
+   "inversions": {},
+   "inversion_rate": 0.0,
+   "magnitude_s": {},
+   "below_running_max_s": {},
+   "magnitude_log10_hist": [],
+   "inv_by_proto": {},
+   "all_by_proto": {
+    "TCP": 517218,
+    "ICMP": 6027,
+    "UDP": 105131,
+    "non-IPv4": 24336,
+    "other IP": 219
+   },
+   "inv_by_flags": {},
+   "all_by_flags": {
+    "AP": 85459,
+    "A": 154172,
+    "AF": 26207,
+    "S": 136908,
+    "SA": 13204,
+    "AR": 100053,
+    "R": 1036,
+    "AFP": 179
+   },
+   "inv_by_src": {},
+   "all_by_src": {
+    "inventory device": 322378,
+    "other listed host": 148996,
+    "-": 24336,
+    "unlisted host": 33567,
+    "attack source": 123654
+   },
+   "inv_by_dst": {},
+   "all_by_dst": {
+    "other listed host": 170058,
+    "inventory device": 289446,
+    "-": 24336,
+    "broadcast / multicast": 33889,
+    "attack source": 103365,
+    "unlisted host": 31837
+   },
+   "duplicates_within_1ms": 300,
+   "share_ts_on_whole_ms": 0.0010047003435278766,
+   "non_ipv4": 24336,
+   "handshakes": [
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 9289
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 44
+    },
+    {
+     "device": "unlisted host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1092
+    },
+    {
+     "device": "other listed host",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 17
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 40
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 21
+    },
+    {
+     "device": "other listed host",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 138
+    },
+    {
+     "device": "unlisted host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2279
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2000
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 3
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 27
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 119
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2987
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 15
+    },
+    {
+     "device": "Sonos One Speaker",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2995
+    },
+    {
+     "device": "Sonos One Speaker",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 6
+    },
+    {
+     "device": "AMCREST WiFi Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3292
+    },
+    {
+     "device": "AMCREST WiFi Camera",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 12
+    },
+    {
+     "device": "Arlo Base Station",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2989
+    },
+    {
+     "device": "Arlo Base Station",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 12
+    },
+    {
+     "device": "Arlo Q Indoor Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3280
+    },
+    {
+     "device": "unlisted host",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4001
+    },
+    {
+     "device": "unlisted host",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "HeimVision Smart WiFi Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3073
+    },
+    {
+     "device": "HeimVision Smart WiFi Camera",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 12
+    },
+    {
+     "device": "Home Eye Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4996
+    },
+    {
+     "device": "Home Eye Camera",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 5
+    },
+    {
+     "device": "Nest Indoor Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4319
+    },
+    {
+     "device": "Netatmo Camera",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 23
+    },
+    {
+     "device": "Amazon Smart Plug",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4125
+    },
+    {
+     "device": "Atomi Coffee Maker",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3154
+    },
+    {
+     "device": "Atomi Coffee Maker",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    },
+    {
+     "device": "Eufy HomeBase 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2988
+    },
+    {
+     "device": "Eufy HomeBase 2",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 9
+    },
+    {
+     "device": "GoSund Power Strip (2)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 979
+    },
+    {
+     "device": "GoSund Power Strip (2)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1039
+    },
+    {
+     "device": "GoSund Power Strip (2)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "GoSund Power Strip (2)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (1)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1247
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (1)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 751
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (1)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (1)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 3
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Unidentified Amazon device (1c:12:b0)",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 4
+    },
+    {
+     "device": "Unidentified ESP plug (2)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 2015
+    },
+    {
+     "device": "Unidentified ESP plug (2)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 847
+    },
+    {
+     "device": "Unidentified ESP plug (2)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "Unidentified ESP plug (3)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1401
+    },
+    {
+     "device": "Unidentified ESP plug (3)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 607
+    },
+    {
+     "device": "Unidentified ESP plug (3)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "GoSund Power Strip (1)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1851
+    },
+    {
+     "device": "GoSund Power Strip (1)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 152
+    },
+    {
+     "device": "GoSund Power Strip (1)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "Unidentified ESP plug (1)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1532
+    },
+    {
+     "device": "Unidentified ESP plug (1)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 472
+    },
+    {
+     "device": "Unidentified ESP plug (1)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (2)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1628
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (2)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 401
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (2)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "device": "GoSund Smart Plug WP2 (2)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Unidentified ESP plug (2)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1004
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 3
+    },
+    {
+     "device": "Smart Board",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 964
+    },
+    {
+     "device": "Smart Board",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 40
+    },
+    {
+     "device": "Teckin Plug 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 993
+    },
+    {
+     "device": "Teckin Plug 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 10
+    },
+    {
+     "device": "Teckin Plug 1",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Teckin Plug 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2091
+    },
+    {
+     "device": "Teckin Plug 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 18
+    },
+    {
+     "device": "Teckin Plug 2",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Yutron Plug 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2020
+    },
+    {
+     "device": "Yutron Plug 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "Yutron Plug 1",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Yutron Plug 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1501
+    },
+    {
+     "device": "Yutron Plug 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 640
+    },
+    {
+     "device": "Yutron Plug 2",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "device": "Yutron Plug 2",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Levoit Air Purifier",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1921
+    },
+    {
+     "device": "Levoit Air Purifier",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 55
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "Wyze Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 36
+    },
+    {
+     "device": "Wyze Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 965
+    },
+    {
+     "device": "Yi Outdoor Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2305
+    },
+    {
+     "device": "Yi Outdoor Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 156
+    },
+    {
+     "device": "TP-Link Tapo Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 25
+    },
+    {
+     "device": "TP-Link Tapo Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1968
+    },
+    {
+     "device": "TP-Link Tapo Camera",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 7
+    },
+    {
+     "device": "TP-Link Tapo Camera",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "device": "LampUX RGB",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 710
+    },
+    {
+     "device": "LampUX RGB",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "LampUX RGB",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 351
+    },
+    {
+     "device": "Yi Indoor 2 Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 292
+    },
+    {
+     "device": "Yi Indoor 2 Camera",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2993
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Wemo Smart Plug 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 296
+    },
+    {
+     "device": "Wemo Smart Plug 1",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1704
+    },
+    {
+     "device": "Wemo Smart Plug 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1066
+    },
+    {
+     "device": "Wemo Smart Plug 2",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "device": "Wemo Smart Plug 2",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 928
+    },
+    {
+     "device": "Wemo Smart Plug 2",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Lumiman Bulb",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 802
+    },
+    {
+     "device": "Lumiman Bulb",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1285
+    },
+    {
+     "device": "Lumiman Bulb",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "device": "Lumiman Bulb",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Teckin Light Strip",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 169
+    },
+    {
+     "device": "Teckin Light Strip",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2004
+    },
+    {
+     "device": "Teckin Light Strip",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1395
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 599
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Netatmo Weather Station",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "Netatmo Weather Station",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "device": "LIFX Lightbulb",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1998
+    },
+    {
+     "device": "LIFX Lightbulb",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "LIFX Lightbulb",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1895
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 7
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1113
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 7
+    },
+    {
+     "device": "unlisted host",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1842
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 148
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 9
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "port_scan",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Govee Smart Humidifier",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 71
+    },
+    {
+     "device": "Govee Smart Humidifier",
+     "class": "port_scan",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2017
+    }
+   ],
+   "handshake_cells": [
+    {
+     "mac": "3c:18:a0:41:c3:a0",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 17
+    },
+    {
+     "mac": "1c:fe:2b:98:16:dd",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "1c:fe:2b:98:16:dd",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 40
+    },
+    {
+     "mac": "3c:18:a0:41:c3:a0",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 138
+    },
+    {
+     "mac": "1c:12:b0:9b:0c:ec",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2000
+    },
+    {
+     "mac": "08:7c:39:ce:6e:2a",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 119
+    },
+    {
+     "mac": "cc:f4:11:9c:d0:00",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2987
+    },
+    {
+     "mac": "cc:f4:11:9c:d0:00",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 15
+    },
+    {
+     "mac": "48:a6:b8:f9:1b:88",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2995
+    },
+    {
+     "mac": "48:a6:b8:f9:1b:88",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 6
+    },
+    {
+     "mac": "9c:8e:cd:1d:ab:9f",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3292
+    },
+    {
+     "mac": "9c:8e:cd:1d:ab:9f",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 12
+    },
+    {
+     "mac": "3c:37:86:6f:b9:51",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2989
+    },
+    {
+     "mac": "3c:37:86:6f:b9:51",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 12
+    },
+    {
+     "mac": "40:5d:82:35:14:c8",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3280
+    },
+    {
+     "mac": "c0:e7:bf:0a:79:d1",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2000
+    },
+    {
+     "mac": "c0:e7:bf:0a:79:d1",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "44:01:bb:ec:10:4a",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3073
+    },
+    {
+     "mac": "44:01:bb:ec:10:4a",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 12
+    },
+    {
+     "mac": "34:75:63:73:f3:36",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4996
+    },
+    {
+     "mac": "34:75:63:73:f3:36",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 5
+    },
+    {
+     "mac": "44:bb:3b:00:39:07",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4319
+    },
+    {
+     "mac": "70:ee:50:68:0e:32",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 23
+    },
+    {
+     "mac": "b8:5f:98:d0:76:e6",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 4125
+    },
+    {
+     "mac": "68:57:2d:56:ac:47",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 3154
+    },
+    {
+     "mac": "68:57:2d:56:ac:47",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    },
+    {
+     "mac": "8c:85:80:6c:b6:47",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2988
+    },
+    {
+     "mac": "8c:85:80:6c:b6:47",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 9
+    },
+    {
+     "mac": "50:02:91:b1:68:0c",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2001
+    },
+    {
+     "mac": "50:02:91:b1:68:0c",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "b8:f0:09:03:9a:af",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 979
+    },
+    {
+     "mac": "b8:f0:09:03:9a:af",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1039
+    },
+    {
+     "mac": "b8:f0:09:03:9a:af",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "b8:f0:09:03:9a:af",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "mac": "b8:f0:09:03:29:79",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1247
+    },
+    {
+     "mac": "b8:f0:09:03:29:79",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 751
+    },
+    {
+     "mac": "b8:f0:09:03:29:79",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "b8:f0:09:03:29:79",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "mac": "50:02:91:10:09:8f",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 2015
+    },
+    {
+     "mac": "50:02:91:10:09:8f",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 847
+    },
+    {
+     "mac": "50:02:91:10:09:8f",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "mac": "c4:dd:57:0c:39:94",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1401
+    },
+    {
+     "mac": "c4:dd:57:0c:39:94",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 607
+    },
+    {
+     "mac": "c4:dd:57:0c:39:94",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "mac": "50:02:91:1a:ce:e1",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1851
+    },
+    {
+     "mac": "50:02:91:1a:ce:e1",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 152
+    },
+    {
+     "mac": "50:02:91:1a:ce:e1",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "mac": "24:a1:60:14:7f:f9",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1532
+    },
+    {
+     "mac": "24:a1:60:14:7f:f9",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 472
+    },
+    {
+     "mac": "24:a1:60:14:7f:f9",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "mac": "50:02:91:10:ac:d8",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1628
+    },
+    {
+     "mac": "50:02:91:10:ac:d8",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 401
+    },
+    {
+     "mac": "50:02:91:10:ac:d8",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "mac": "50:02:91:10:ac:d8",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "50:02:91:10:09:8f",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "00:17:88:60:d6:4f",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1004
+    },
+    {
+     "mac": "00:17:88:60:d6:4f",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 3
+    },
+    {
+     "mac": "00:02:75:f6:e3:cb",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 964
+    },
+    {
+     "mac": "00:02:75:f6:e3:cb",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 40
+    },
+    {
+     "mac": "d4:a6:51:76:06:64",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 993
+    },
+    {
+     "mac": "d4:a6:51:76:06:64",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 10
+    },
+    {
+     "mac": "d4:a6:51:76:06:64",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "d4:a6:51:78:97:4e",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2091
+    },
+    {
+     "mac": "d4:a6:51:78:97:4e",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 18
+    },
+    {
+     "mac": "d4:a6:51:78:97:4e",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "d4:a6:51:20:91:d1",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2020
+    },
+    {
+     "mac": "d4:a6:51:20:91:d1",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "mac": "d4:a6:51:20:91:d1",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "d4:a6:51:21:6c:29",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1501
+    },
+    {
+     "mac": "d4:a6:51:21:6c:29",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 640
+    },
+    {
+     "mac": "d4:a6:51:21:6c:29",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "mac": "d4:a6:51:21:6c:29",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "1c:9d:c2:8c:9a:94",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1921
+    },
+    {
+     "mac": "1c:9d:c2:8c:9a:94",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 55
+    },
+    {
+     "mac": "7c:78:b2:86:0d:81",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 36
+    },
+    {
+     "mac": "7c:78:b2:86:0d:81",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 965
+    },
+    {
+     "mac": "2c:d2:6b:66:d2:87",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2305
+    },
+    {
+     "mac": "2c:d2:6b:66:d2:87",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 156
+    },
+    {
+     "mac": "6c:5a:b0:44:1d:90",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 25
+    },
+    {
+     "mac": "6c:5a:b0:44:1d:90",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1968
+    },
+    {
+     "mac": "6c:5a:b0:44:1d:90",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 7
+    },
+    {
+     "mac": "6c:5a:b0:44:1d:90",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "mac": "f4:cf:a2:34:48:6b",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 710
+    },
+    {
+     "mac": "f4:cf:a2:34:48:6b",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "f4:cf:a2:34:48:6b",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 351
+    },
+    {
+     "mac": "84:7a:b6:62:3a:6c",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 292
+    },
+    {
+     "mac": "84:7a:b6:62:3a:6c",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2993
+    },
+    {
+     "mac": "30:23:03:f3:84:2b",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 296
+    },
+    {
+     "mac": "30:23:03:f3:84:2b",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1704
+    },
+    {
+     "mac": "30:23:03:f3:57:cb",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1066
+    },
+    {
+     "mac": "30:23:03:f3:57:cb",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "mac": "30:23:03:f3:57:cb",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 928
+    },
+    {
+     "mac": "30:23:03:f3:57:cb",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "84:e3:42:42:ed:0b",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 802
+    },
+    {
+     "mac": "84:e3:42:42:ed:0b",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1285
+    },
+    {
+     "mac": "84:e3:42:42:ed:0b",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 1
+    },
+    {
+     "mac": "84:e3:42:42:ed:0b",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "18:69:d8:eb:d4:3e",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 169
+    },
+    {
+     "mac": "18:69:d8:eb:d4:3e",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2004
+    },
+    {
+     "mac": "18:69:d8:eb:d4:3e",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "2c:71:ff:05:f1:15",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1395
+    },
+    {
+     "mac": "2c:71:ff:05:f1:15",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "mac": "2c:71:ff:05:f1:15",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 599
+    },
+    {
+     "mac": "2c:71:ff:05:f1:15",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "70:ee:50:6b:a8:1a",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "70:ee:50:6b:a8:1a",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 2
+    },
+    {
+     "mac": "d0:73:d5:35:fb:c8",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1998
+    },
+    {
+     "mac": "d0:73:d5:35:fb:c8",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "mac": "d0:73:d5:35:fb:c8",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "mac": "b0:f1:ec:d3:e7:98",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1895
+    },
+    {
+     "mac": "b0:f1:ec:d3:e7:98",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 7
+    },
+    {
+     "mac": "b0:f1:ec:d3:e7:98",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1113
+    },
+    {
+     "mac": "b0:f1:ec:d3:e7:98",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "mac": "ac:f1:08:4e:00:82",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 1842
+    },
+    {
+     "mac": "ac:f1:08:4e:00:82",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 148
+    },
+    {
+     "mac": "ac:f1:08:4e:00:82",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 9
+    },
+    {
+     "mac": "ac:f1:08:4e:00:82",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "mac": "d4:ad:fc:29:c8:a2",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 71
+    },
+    {
+     "mac": "d4:ad:fc:29:c8:a2",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 2017
+    }
+   ],
+   "unpaired": {
+    "syn_unanswered": 21679,
+    "responder_unmatched": 983
+   },
+   "attack_class": "port_scan"
+  },
+  {
+   "session": "benign_night",
+   "pcap": "/home/krithikk/lgids_cache/BenignTraffic.pcap",
+   "format": "pcap",
+   "timestamp_resolution": "us",
+   "mode": "time_split",
+   "labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "reader": {
+    "frames": 3118089,
+    "stopped_at_cut": 1
+   },
+   "frames": {
+    "train": 2484724,
+    "val": 617786
+   },
+   "inversions": {},
+   "inversion_rate": 0.0,
+   "magnitude_s": {},
+   "below_running_max_s": {},
+   "magnitude_log10_hist": [],
+   "inv_by_proto": {},
+   "all_by_proto": {
+    "TCP": 2382020,
+    "UDP": 570216,
+    "non-IPv4": 109861,
+    "ICMP": 39449,
+    "other IP": 964
+   },
+   "inv_by_flags": {},
+   "all_by_flags": {
+    "A": 1671300,
+    "AP": 537475,
+    "AF": 78455,
+    "S": 47763,
+    "SA": 40152,
+    "AR": 1597,
+    "R": 4397,
+    "AFP": 881
+   },
+   "inv_by_src": {},
+   "all_by_src": {
+    "inventory device": 1568372,
+    "-": 109861,
+    "other listed host": 1409227,
+    "attack source": 15050
+   },
+   "inv_by_dst": {},
+   "all_by_dst": {
+    "other listed host": 1535484,
+    "broadcast / multicast": 139415,
+    "-": 109861,
+    "inventory device": 1303892,
+    "attack source": 13857,
+    "unlisted host": 1
+   },
+   "duplicates_within_1ms": 788,
+   "share_ts_on_whole_ms": 0.0010001579366383992,
+   "non_ipv4": 109861,
+   "handshakes": [
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 39649
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 7
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 18
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 24
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 42
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 133
+    },
+    {
+     "device": "Philips Hue Bridge",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 75
+    },
+    {
+     "device": "Amazon Echo Show",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 4
+    },
+    {
+     "device": "Amazon Alexa Echo Dot 1",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 21
+    },
+    {
+     "device": "Harman Kardon speaker (Ampak)",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 14
+    },
+    {
+     "device": "other listed host",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 44
+    },
+    {
+     "device": "AMCREST WiFi Camera",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 4
+    },
+    {
+     "device": "Wemo Smart Plug 2",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 5
+    },
+    {
+     "device": "Sonos One Speaker",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 4
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": true,
+     "n": 17
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 2
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": true,
+     "n": 43
+    },
+    {
+     "device": "LG Smart TV",
+     "class": "benign",
+     "type": "RST/ACK",
+     "responder_first": false,
+     "n": 1
+    },
+    {
+     "device": "Amazon Alexa Echo Studio",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 6
+    },
+    {
+     "device": "Google Nest Mini Speaker",
+     "class": "benign",
+     "type": "SYN/ACK",
+     "responder_first": false,
+     "n": 1
+    }
+   ],
+   "handshake_cells": [],
+   "unpaired": {
+    "syn_unanswered": 2167,
+    "responder_unmatched": 3254
+   },
+   "attack_class": "benign"
+  }
+ ],
+ "map_r3_h1": [
+  {
+   "session": "DDoS-SYN_Flood",
+   "device": "Amazon Alexa Echo Dot 1",
+   "mac": "1c:fe:2b:98:16:dd",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 196653,
+   "synack_responder_first": 2180,
+   "dataset_tcp_attack_flows": 70558,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 503
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 147759,
+   "synack_responder_first": 5381,
+   "dataset_tcp_attack_flows": 70487,
+   "dataset_r3_flips": 1,
+   "dataset_h1_shape": 533
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "device": "Google Nest Mini Speaker",
+   "mac": "cc:f4:11:9c:d0:00",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 569,
+   "synack_responder_first": 69,
+   "dataset_tcp_attack_flows": 59560,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 17
+  },
+  {
+   "session": "DDoS-SYN_Flood",
+   "device": "AMCREST WiFi Camera",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 4373,
+   "synack_responder_first": 2095,
+   "dataset_tcp_attack_flows": 50103,
+   "dataset_r3_flips": 3,
+   "dataset_h1_shape": 259
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "mac": "b8:f0:09:03:29:79",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 38,
+   "synack_responder_first": 14,
+   "dataset_tcp_attack_flows": 116443,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "device": "Unidentified ESP plug (2)",
+   "mac": "50:02:91:10:09:8f",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 46,
+   "synack_responder_first": 22,
+   "dataset_tcp_attack_flows": 105953,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "DDoS-SYN_Flood5",
+   "device": "Unidentified ESP plug (3)",
+   "mac": "c4:dd:57:0c:39:94",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 4,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 27663,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Mirai-udpplain",
+   "device": "Philips Hue Bridge",
+   "mac": "00:17:88:60:d6:4f",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 6,
+   "synack_responder_first": 6,
+   "dataset_tcp_attack_flows": 7,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Mirai-udpplain",
+   "device": "Google Nest Mini Speaker",
+   "mac": "cc:f4:11:9c:d0:00",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 10,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 35,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 6
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Gateway / router",
+   "mac": "3c:18:a0:41:c3:a0",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 155,
+   "synack_responder_first": 17,
+   "dataset_tcp_attack_flows": 0,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Amazon Alexa Echo Dot 1",
+   "mac": "1c:fe:2b:98:16:dd",
+   "rst_handshakes": 40,
+   "rst_responder_first": 0,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 1957,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Unidentified Amazon device (1c:12:b0)",
+   "mac": "1c:12:b0:9b:0c:ec",
+   "rst_handshakes": 2000,
+   "rst_responder_first": 0,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2000,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Amazon Alexa Echo Studio",
+   "mac": "08:7c:39:ce:6e:2a",
+   "rst_handshakes": 119,
+   "rst_responder_first": 0,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 7006,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Google Nest Mini Speaker",
+   "mac": "cc:f4:11:9c:d0:00",
+   "rst_handshakes": 2987,
+   "rst_responder_first": 0,
+   "synack_handshakes": 15,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2999,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Sonos One Speaker",
+   "mac": "48:a6:b8:f9:1b:88",
+   "rst_handshakes": 2995,
+   "rst_responder_first": 0,
+   "synack_handshakes": 6,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3001,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "AMCREST WiFi Camera",
+   "mac": "9c:8e:cd:1d:ab:9f",
+   "rst_handshakes": 3292,
+   "rst_responder_first": 0,
+   "synack_handshakes": 12,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3306,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Arlo Base Station",
+   "mac": "3c:37:86:6f:b9:51",
+   "rst_handshakes": 2989,
+   "rst_responder_first": 0,
+   "synack_handshakes": 12,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3001,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Arlo Q Indoor Camera",
+   "mac": "40:5d:82:35:14:c8",
+   "rst_handshakes": 3280,
+   "rst_responder_first": 0,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3280,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "c0:e7:bf:0a:79:d1",
+   "mac": "c0:e7:bf:0a:79:d1",
+   "rst_handshakes": 2000,
+   "rst_responder_first": 0,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 0,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "HeimVision Smart WiFi Camera",
+   "mac": "44:01:bb:ec:10:4a",
+   "rst_handshakes": 3073,
+   "rst_responder_first": 0,
+   "synack_handshakes": 12,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3088,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Home Eye Camera",
+   "mac": "34:75:63:73:f3:36",
+   "rst_handshakes": 4996,
+   "rst_responder_first": 0,
+   "synack_handshakes": 5,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 5002,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Nest Indoor Camera",
+   "mac": "44:bb:3b:00:39:07",
+   "rst_handshakes": 4319,
+   "rst_responder_first": 0,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 4363,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Netatmo Camera",
+   "mac": "70:ee:50:68:0e:32",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 23,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 4015,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Amazon Smart Plug",
+   "mac": "b8:5f:98:d0:76:e6",
+   "rst_handshakes": 4125,
+   "rst_responder_first": 0,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 4282,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Atomi Coffee Maker",
+   "mac": "68:57:2d:56:ac:47",
+   "rst_handshakes": 3154,
+   "rst_responder_first": 0,
+   "synack_handshakes": 4,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3465,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Eufy HomeBase 2",
+   "mac": "8c:85:80:6c:b6:47",
+   "rst_handshakes": 2988,
+   "rst_responder_first": 0,
+   "synack_handshakes": 9,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3003,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "50:02:91:b1:68:0c",
+   "mac": "50:02:91:b1:68:0c",
+   "rst_handshakes": 2001,
+   "rst_responder_first": 0,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 0,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "GoSund Power Strip (2)",
+   "mac": "b8:f0:09:03:9a:af",
+   "rst_handshakes": 2018,
+   "rst_responder_first": 1039,
+   "synack_handshakes": 2,
+   "synack_responder_first": 1,
+   "dataset_tcp_attack_flows": 2178,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "GoSund Smart Plug WP2 (1)",
+   "mac": "b8:f0:09:03:29:79",
+   "rst_handshakes": 1998,
+   "rst_responder_first": 1247,
+   "synack_handshakes": 2,
+   "synack_responder_first": 1,
+   "dataset_tcp_attack_flows": 2177,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Unidentified ESP plug (2)",
+   "mac": "50:02:91:10:09:8f",
+   "rst_handshakes": 2862,
+   "rst_responder_first": 2015,
+   "synack_handshakes": 3,
+   "synack_responder_first": 2,
+   "dataset_tcp_attack_flows": 3815,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Unidentified ESP plug (3)",
+   "mac": "c4:dd:57:0c:39:94",
+   "rst_handshakes": 2008,
+   "rst_responder_first": 1401,
+   "synack_handshakes": 2,
+   "synack_responder_first": 2,
+   "dataset_tcp_attack_flows": 2128,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "GoSund Power Strip (1)",
+   "mac": "50:02:91:1a:ce:e1",
+   "rst_handshakes": 2003,
+   "rst_responder_first": 1851,
+   "synack_handshakes": 2,
+   "synack_responder_first": 2,
+   "dataset_tcp_attack_flows": 2129,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Unidentified ESP plug (1)",
+   "mac": "24:a1:60:14:7f:f9",
+   "rst_handshakes": 2004,
+   "rst_responder_first": 1532,
+   "synack_handshakes": 2,
+   "synack_responder_first": 2,
+   "dataset_tcp_attack_flows": 2171,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "GoSund Smart Plug WP2 (2)",
+   "mac": "50:02:91:10:ac:d8",
+   "rst_handshakes": 2029,
+   "rst_responder_first": 1628,
+   "synack_handshakes": 2,
+   "synack_responder_first": 1,
+   "dataset_tcp_attack_flows": 2184,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Philips Hue Bridge",
+   "mac": "00:17:88:60:d6:4f",
+   "rst_handshakes": 1004,
+   "rst_responder_first": 1004,
+   "synack_handshakes": 3,
+   "synack_responder_first": 3,
+   "dataset_tcp_attack_flows": 1108,
+   "dataset_r3_flips": 1004,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Smart Board",
+   "mac": "00:02:75:f6:e3:cb",
+   "rst_handshakes": 1004,
+   "rst_responder_first": 40,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 1004,
+   "dataset_r3_flips": 40,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Teckin Plug 1",
+   "mac": "d4:a6:51:76:06:64",
+   "rst_handshakes": 1003,
+   "rst_responder_first": 10,
+   "synack_handshakes": 1,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 1013,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Teckin Plug 2",
+   "mac": "d4:a6:51:78:97:4e",
+   "rst_handshakes": 2109,
+   "rst_responder_first": 18,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2118,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Yutron Plug 1",
+   "mac": "d4:a6:51:20:91:d1",
+   "rst_handshakes": 2022,
+   "rst_responder_first": 2,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2030,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Yutron Plug 2",
+   "mac": "d4:a6:51:21:6c:29",
+   "rst_handshakes": 2141,
+   "rst_responder_first": 640,
+   "synack_handshakes": 2,
+   "synack_responder_first": 1,
+   "dataset_tcp_attack_flows": 2170,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Levoit Air Purifier",
+   "mac": "1c:9d:c2:8c:9a:94",
+   "rst_handshakes": 1976,
+   "rst_responder_first": 55,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2756,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Wyze Camera",
+   "mac": "7c:78:b2:86:0d:81",
+   "rst_handshakes": 1001,
+   "rst_responder_first": 36,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 1001,
+   "dataset_r3_flips": 36,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Yi Outdoor Camera",
+   "mac": "2c:d2:6b:66:d2:87",
+   "rst_handshakes": 2461,
+   "rst_responder_first": 156,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2468,
+   "dataset_r3_flips": 156,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "TP-Link Tapo Camera",
+   "mac": "6c:5a:b0:44:1d:90",
+   "rst_handshakes": 1993,
+   "rst_responder_first": 25,
+   "synack_handshakes": 8,
+   "synack_responder_first": 1,
+   "dataset_tcp_attack_flows": 2001,
+   "dataset_r3_flips": 25,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "LampUX RGB",
+   "mac": "f4:cf:a2:34:48:6b",
+   "rst_handshakes": 1061,
+   "rst_responder_first": 351,
+   "synack_handshakes": 1,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 1151,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Yi Indoor 2 Camera",
+   "mac": "84:7a:b6:62:3a:6c",
+   "rst_handshakes": 3285,
+   "rst_responder_first": 292,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 3323,
+   "dataset_r3_flips": 292,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Wemo Smart Plug 1",
+   "mac": "30:23:03:f3:84:2b",
+   "rst_handshakes": 2000,
+   "rst_responder_first": 296,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2002,
+   "dataset_r3_flips": 296,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Wemo Smart Plug 2",
+   "mac": "30:23:03:f3:57:cb",
+   "rst_handshakes": 1994,
+   "rst_responder_first": 1066,
+   "synack_handshakes": 6,
+   "synack_responder_first": 5,
+   "dataset_tcp_attack_flows": 2001,
+   "dataset_r3_flips": 1066,
+   "dataset_h1_shape": 5
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Lumiman Bulb",
+   "mac": "84:e3:42:42:ed:0b",
+   "rst_handshakes": 2087,
+   "rst_responder_first": 1285,
+   "synack_handshakes": 2,
+   "synack_responder_first": 1,
+   "dataset_tcp_attack_flows": 2138,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 1
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Teckin Light Strip",
+   "mac": "18:69:d8:eb:d4:3e",
+   "rst_handshakes": 2173,
+   "rst_responder_first": 169,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2175,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Amazon Echo Show",
+   "mac": "2c:71:ff:05:f1:15",
+   "rst_handshakes": 1994,
+   "rst_responder_first": 1395,
+   "synack_handshakes": 6,
+   "synack_responder_first": 5,
+   "dataset_tcp_attack_flows": 2000,
+   "dataset_r3_flips": 1395,
+   "dataset_h1_shape": 5
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Netatmo Weather Station",
+   "mac": "70:ee:50:6b:a8:1a",
+   "rst_handshakes": 0,
+   "rst_responder_first": 0,
+   "synack_handshakes": 4,
+   "synack_responder_first": 2,
+   "dataset_tcp_attack_flows": 2002,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 2
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "LIFX Lightbulb",
+   "mac": "d0:73:d5:35:fb:c8",
+   "rst_handshakes": 2003,
+   "rst_responder_first": 5,
+   "synack_handshakes": 2,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2005,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Harman Kardon speaker (Ampak)",
+   "mac": "b0:f1:ec:d3:e7:98",
+   "rst_handshakes": 3008,
+   "rst_responder_first": 1113,
+   "synack_handshakes": 12,
+   "synack_responder_first": 5,
+   "dataset_tcp_attack_flows": 3765,
+   "dataset_r3_flips": 1113,
+   "dataset_h1_shape": 5
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "LG Smart TV",
+   "mac": "ac:f1:08:4e:00:82",
+   "rst_handshakes": 1990,
+   "rst_responder_first": 1842,
+   "synack_handshakes": 10,
+   "synack_responder_first": 9,
+   "dataset_tcp_attack_flows": 1998,
+   "dataset_r3_flips": 1840,
+   "dataset_h1_shape": 9
+  },
+  {
+   "session": "Recon-PortScan",
+   "device": "Govee Smart Humidifier",
+   "mac": "d4:ad:fc:29:c8:a2",
+   "rst_handshakes": 2088,
+   "rst_responder_first": 71,
+   "synack_handshakes": 0,
+   "synack_responder_first": 0,
+   "dataset_tcp_attack_flows": 2096,
+   "dataset_r3_flips": 0,
+   "dataset_h1_shape": 0
+  }
+ ],
+ "map_spearman": {
+  "rst_first_vs_r3_flip_share": 0.4365576921842539,
+  "synack_first_vs_h1_share": 0.6327313965513918,
+  "cells": 53
+ }
+}

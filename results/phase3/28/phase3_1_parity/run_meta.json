@@ -1,0 +1,12 @@
+{
+ "script": "28_run_stream.py",
+ "step": "28",
+ "run_id": "20261122T072459Z",
+ "status": "PASS",
+ "dry_run": false,
+ "run_utc": "2026-11-22T07:24:59+00:00",
+ "run_manifest_sha256": "1e2353ee7fcb094a8d6c43e2dc9e6a969019f5502100b6352e72b80cdbbe34f1",
+ "config_sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+ "runtime_s": 244.2,
+ "peak_rss_mb": 1415
+}

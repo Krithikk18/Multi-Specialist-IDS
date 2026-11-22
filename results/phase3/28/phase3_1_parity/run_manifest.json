@@ -1,0 +1,519 @@
+{
+ "run_id": "20261122T072459Z",
+ "step": "28",
+ "script": "28_run_stream.py",
+ "created_utc": "2026-11-22T07:24:59+00:00",
+ "dry_run": false,
+ "rerun_tag": "phase3_1_parity",
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase3/28/phase3_1_parity",
+ "argv": [
+  "28_run_stream.py",
+  "--config",
+  "config/v2_phase3_1.json",
+  "--s0-only",
+  "--compare-to",
+  "rerun_full",
+  "--rerun-tag",
+  "phase3_1_parity"
+ ],
+ "status": "PASS",
+ "config": {
+  "path": "config/v2_phase3.json",
+  "sha256": "14e45250569f3deef0cdbd80bd32880c8ff24c76a4c0c7dbe3bf9c56a898a9e4",
+  "pinned": true,
+  "overrides": {}
+ },
+ "pins": {
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "prereg_phase3": "14ff67c4f1200a89ac47226b480bf45575ba1c8c48794193aa9903c4ed4017ab",
+  "amendment_2": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "code_sha256": {
+  "28_run_stream.py": "4728cf339c230c882a7db03537c2164039e26adbb74007b28b010eccd0d14d7f",
+  "common/schemas.py": "4462d5e3d12ac90a29308446f650c3613e4853524ffc20d3fd90df66c4a6656e",
+  "common/phase3_config.py": "3f8366e548fa43168666b3c3df87695f01087ca5ef698d0284d0bfa645feb6d5",
+  "common/phase3_run.py": "b7aad811fa84e90a48681269801c599817c969119c3361b6788ed4cb33239cc7",
+  "common/model_loader.py": "8edcb1df7869d244d48018cfb851aa7f5d5b90c5da9b1a2456b6864f047a072a",
+  "common/flow_source.py": "59880526c60d64696e187bab8193fc4ae5e2765112e1308373cd2c4e545e0591",
+  "common/routing.py": "b0e211f1e16b9724f7cff3d65dfb0994c70ab2b47ff3caa482d305060d518fd0",
+  "common/inference.py": "e4c8ee19c1909604b1cc98da339017c1fc0326255c4965a399a3efda4c46013c",
+  "common/policy.py": "95214d681cf3580a7a6edcefd357c6b66cc49182e248cbf2cee1a2a06ee48a48",
+  "common/packet_source.py": "bc8f33152b464aa636bfcfb0628a6fdca64b7c1563c286910c735ce52c1a4e25",
+  "common/rate_guard_v2.py": "61175992eb9b6ac38ec1753eb79d612048c5f9a3ffe435a8f737c95ab3190f77",
+  "common/alert_log.py": "c19cd3855a62126c7141143f71332fd4fd9207240918f012708055f2f8feaf86",
+  "common/runtime.py": "999fa94fa87656b77b5149ed13db320c0b2f85e9f97a4fcf80ea060c913e43b7",
+  "common/orientation.py": "4c96a3d79a2af2f3f60067234302d83e15d8153d883d31efa7e79e164c25c695",
+  "common/registry.py": "503bc8955dadec0dfa9a45f3cd3897ba0ee8c3465e18a624f07eac81acb70d10",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "config/v2_phase3.json": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "config/orientation_map.json": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "docs/V2_PREREG_PHASE3.md": "14ff67c4f1200a89ac47226b480bf45575ba1c8c48794193aa9903c4ed4017ab",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_2.md": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46",
+  "rate_guard.py": "ba7ebfa44ba1f431439a8c5e11d5cbf41d2dfbe77670701e445e3c5e5c61d8ef",
+  "config/rate_guard_v1.json": "894f75f1b40ad371fc50555b89b91424244650bcc4301dc3a20a04085a42ca8c"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "checks": [
+  {
+   "check": "offline reference reproduces step 23 (FLAT_GLOBAL_A1_none seed 0: FA count, recall)",
+   "pass": true,
+   "detail": "FA 2 vs 2; recall [0.999949, 0.997914, 0.647059, 0.999175] vs [0.999949, 0.997914, 0.647059, 0.999175]",
+   "level": "hard"
+  },
+  {
+   "check": "parity GLOBAL_s0: every val flow processed and matched 1:1 (0 quarantined, 0 dropped)",
+   "pass": true,
+   "detail": "runtime 157,558 / offline 157,558; quarantined 0, dropped 0",
+   "level": "hard"
+  },
+  {
+   "check": "parity GLOBAL_s0: runtime-normalised features == v2_1_oriented (exact float32, all 70)",
+   "pass": true,
+   "detail": "157,558 / 157,558 rows identical",
+   "level": "hard"
+  },
+  {
+   "check": "parity GLOBAL_s0: predicted class == offline step 23 path (100 %)",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "hard"
+  },
+  {
+   "check": "parity GLOBAL_s0: calibrated probabilities within 1e-06 of softmax(margin / T)",
+   "pass": true,
+   "detail": "max |dp| 0.000e+00",
+   "level": "hard"
+  },
+  {
+   "check": "parity GLOBAL_s0: routing group == dataset group (100 %)",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "hard"
+  },
+  {
+   "check": "parity GLOBAL_s0: protected device == dataset device_mac (100 %)",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "hard"
+  },
+  {
+   "check": "parity ROUTED_s0: every val flow processed and matched 1:1 (0 quarantined, 0 dropped)",
+   "pass": true,
+   "detail": "runtime 157,558 / offline 157,558; quarantined 0, dropped 0",
+   "level": "warn"
+  },
+  {
+   "check": "parity ROUTED_s0: predicted class == offline step 23 path (100 %)",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "warn"
+  },
+  {
+   "check": "parity ROUTED_s0: calibrated probabilities within 1e-06 of softmax(margin / T)",
+   "pass": true,
+   "detail": "max |dp| 0.000e+00",
+   "level": "warn"
+  },
+  {
+   "check": "parity ROUTED_s0: routing group == dataset group (100 %)",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "warn"
+  },
+  {
+   "check": "parity ROUTED_s0: protected device == dataset device_mac (100 %)",
+   "pass": true,
+   "detail": "157,558 / 157,558",
+   "level": "warn"
+  },
+  {
+   "check": "compare GLOBAL_s0: predictions identical to rerun_full row for row (every column)",
+   "pass": true,
+   "detail": "157,558 rows (parts) vs 157,558 (single)",
+   "level": "hard"
+  },
+  {
+   "check": "compare GLOBAL_s0: rate-guard alerts and incidents identical to rerun_full",
+   "pass": true,
+   "detail": "rate-guard alerts 397 vs 397; incidents 20 vs 20",
+   "level": "hard"
+  },
+  {
+   "check": "compare ROUTED_s0: predictions identical to rerun_full row for row (every column)",
+   "pass": true,
+   "detail": "157,558 rows (parts) vs 157,558 (single)",
+   "level": "hard"
+  },
+  {
+   "check": "compare ROUTED_s0: rate-guard alerts and incidents identical to rerun_full",
+   "pass": true,
+   "detail": "rate-guard alerts 397 vs 397; incidents 21 vs 21",
+   "level": "hard"
+  },
+  {
+   "check": "pcap path: feature equality on matched flows >= 99 % (report-only target)",
+   "pass": true,
+   "detail": "28,131 / 28,135 matched rows identical; matched 28,135 of 28,528 dataset rows (98.6%); CSV rows 29,677",
+   "level": "warn"
+  },
+  {
+   "check": "pcap path: learned routing group agreement on matched flows >= 99 % (report-only target)",
+   "pass": true,
+   "detail": "learned (learned) group 100.00%, device 100.00%; static group 0.87%, device 0.00%",
+   "level": "warn"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "runtime_key_fingerprint": "a67c1cc451c9500f",
+ "reference": {
+  "dataset": "v2_1_oriented",
+  "val_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "n": 157558
+ },
+ "compare_to": {
+  "run_id": "20261122T050150Z",
+  "tag": "rerun_full",
+  "runs": {
+   "GLOBAL_s0": {
+    "rows": 157558,
+    "predictions_equal": true,
+    "rate_guard_alerts": 397,
+    "rate_guard_equal": true,
+    "incidents_equal": true,
+    "layout": "parts",
+    "layout_before": "single"
+   },
+   "ROUTED_s0": {
+    "rows": 157558,
+    "predictions_equal": true,
+    "rate_guard_alerts": 397,
+    "rate_guard_equal": true,
+    "incidents_equal": true,
+    "layout": "parts",
+    "layout_before": "single"
+   }
+  }
+ },
+ "parity_gate": "PASS",
+ "figures": [
+  "figures/parity_confusion.png",
+  "figures/parity_abs_dp_hist.png",
+  "figures/pcap_feature_mismatch.png"
+ ],
+ "runs": {
+  "GLOBAL_s0": {
+   "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T072459Z_GLOBAL_s0",
+   "mode": "GLOBAL",
+   "seed": 0,
+   "evaluation_only": false,
+   "counts": {
+    "backlog_peak": 20000,
+    "flows_scored": 157558,
+    "flows_in": 157558,
+    "packets": 6252317,
+    "flow_alerts": 118321,
+    "batches": 14100,
+    "rg_alerts_v2": 397,
+    "rg_alerts_v1": 0,
+    "dropped": 0,
+    "quarantined": 0
+   },
+   "wall_s": 125.751170986,
+   "flows_per_s": 1252.9346547201621,
+   "incidents": 20,
+   "logs": {
+    "alerts": {
+     "n": 118718,
+     "head_sha256": "1499f6b17702d1e961343703ad975e32e0ed5e2503eb2b906272fc28a763f201",
+     "file_sha256": "adb280ae1148eab335e3f12e2e4d7888bbdc635db6aa5f80530487b143b731c5"
+    },
+    "health": {
+     "n": 124,
+     "head_sha256": "54fb2a111294fc56be7d5a4040c2a4261fb91099d1f69a940db74ff9f14e8673",
+     "file_sha256": "9e79f8db2c8840f246263d7f4baa89ef9a939f3b8ff3697d472be62c9355b744"
+    },
+    "outbox": {
+     "n": 40,
+     "head_sha256": "74cad708d5cbc6a37ccf1605687c9c0274f164e6edd5fcfb844b6b0f3a980ab3",
+     "file_sha256": "ff9457370df635c58abfff95514dc436a99d3a17afdb6d865b01299046457521"
+    }
+   },
+   "peak_rss_mb": 1382.53515625
+  },
+  "ROUTED_s0": {
+   "dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T072459Z_ROUTED_s0",
+   "mode": "ROUTED",
+   "seed": 0,
+   "evaluation_only": true,
+   "counts": {
+    "backlog_peak": 20000,
+    "flows_scored": 157558,
+    "flows_in": 157558,
+    "packets": 6252317,
+    "flow_alerts": 118338,
+    "batches": 14100,
+    "rg_alerts_v2": 397,
+    "rg_alerts_v1": 0,
+    "dropped": 0,
+    "quarantined": 0
+   },
+   "wall_s": 89.860910986,
+   "flows_per_s": 1753.3541366450977,
+   "incidents": 21,
+   "logs": {
+    "alerts": {
+     "n": 118735,
+     "head_sha256": "18201fa7972ccfbb9adb94a801aa78cdc072becada8e28190939f1604400b0b5",
+     "file_sha256": "f0524fc364e97f5dccf499371633d0f007e6a6a2f96d69491506646754b3f784"
+    },
+    "health": {
+     "n": 124,
+     "head_sha256": "8b43c68536fe9a8a47bee93a52d74ff2b5220831d947ee43988ad1c4cbd7d8c9",
+     "file_sha256": "40ee6b4f10a025ed5a0c624f4e9fa4e8b1d11d044aca0ac7b133416aa8a4e5f2"
+    },
+    "outbox": {
+     "n": 42,
+     "head_sha256": "812835e838da72e78a7329ad25e9afbeff8689266bdc76d028762703169c2e6a",
+     "file_sha256": "e6e65d50747653321680b4cd390635c116c687102f8f88005dd67b7b09858716"
+    }
+   },
+   "peak_rss_mb": 1415.80859375
+  }
+ },
+ "pcap_path": {
+  "slice": {
+   "split": "val",
+   "session": "Recon-PortScan",
+   "source_pcap": "/home/krithikk/lgids_cache/ciciot2023/attack/Recon-PortScan/Recon-PortScan.pcap",
+   "source_sha256": "e13368bdc571a6ec53f8dd9e5491137dd0656c9d997bd62b323e957722bd4fc1",
+   "labels": [
+    "train",
+    "gap@train|val",
+    "val",
+    "gap@val|test",
+    "test"
+   ],
+   "boundaries_epoch": [
+    1664288918.6,
+    1664289038.6,
+    1664291060.8,
+    1664291180.8
+   ],
+   "stop": 1664291060.8,
+   "window": [
+    null,
+    null
+   ],
+   "max_packets": null,
+   "frames_written": 143215,
+   "first_ts": 1664289038.6094,
+   "last_ts": 1664291040.701944,
+   "reader_counts": {
+    "frames": 663549,
+    "stopped_at_cut": 1
+   },
+   "pcap_sha256": "fb58a8958299d320fcd4634047dd8ea710176e5e46200e412c626a36e32eab41"
+  },
+  "cfm": {
+   "wall_s": 3.4838291469999945,
+   "csv": "/home/krithikk/lgids_cache/v2/runtime_inputs/20261122T072459Z/cfm/Recon-PortScan_val.pcap_Flow__phase3.csv"
+  },
+  "schema": {
+   "required_pass": true,
+   "checks": [
+    {
+     "check": "feature columns present",
+     "pass": true,
+     "required": true
+    },
+    {
+     "check": "feature columns in features_v1 order",
+     "pass": true,
+     "required": true
+    },
+    {
+     "check": "no extra / duplicate columns",
+     "pass": true,
+     "required": false
+    },
+    {
+     "check": "required metadata columns present",
+     "pass": false,
+     "required": false
+    },
+    {
+     "check": "feature dtypes numeric",
+     "pass": true,
+     "required": true
+    },
+    {
+     "check": "Timestamp parses (TS_FORMAT, tz=UTC)",
+     "pass": true,
+     "required": true
+    },
+    {
+     "check": "raw label vocabulary (all rows, before the filter)",
+     "pass": true,
+     "required": false
+    }
+   ]
+  },
+  "csv_rows": 29677,
+  "dataset_rows_in_window": 28528,
+  "matched": 28135,
+  "match_rate_of_dataset": 0.9862240605720696,
+  "feature_equal_rows": 28131,
+  "feature_equal_share": 0.9998578283277058,
+  "mismatch_by_feature": {
+   "Flow Duration": 4,
+   "Total Fwd Packet": 3,
+   "Total Bwd packets": 2,
+   "Total Length of Fwd Packet": 2,
+   "Total Length of Bwd Packet": 1,
+   "Fwd Packet Length Max": 2,
+   "Fwd Packet Length Min": 1,
+   "Fwd Packet Length Mean": 2,
+   "Fwd Packet Length Std": 1,
+   "Bwd Packet Length Max": 1,
+   "Bwd Packet Length Mean": 1,
+   "Bwd Packet Length Std": 1,
+   "Flow Bytes/s": 3,
+   "Flow Packets/s": 4,
+   "Flow IAT Mean": 4,
+   "Flow IAT Std": 2,
+   "Flow IAT Max": 4,
+   "Flow IAT Min": 4,
+   "Fwd IAT Total": 3,
+   "Fwd IAT Mean": 3,
+   "Fwd IAT Std": 1,
+   "Fwd IAT Max": 3,
+   "Fwd IAT Min": 3,
+   "Bwd IAT Total": 1,
+   "Bwd IAT Mean": 1,
+   "Bwd IAT Max": 1,
+   "Bwd IAT Min": 1,
+   "Fwd PSH Flags": 2,
+   "Fwd Header Length": 4,
+   "Bwd Header Length": 2,
+   "Fwd Packets/s": 4,
+   "Bwd Packets/s": 2,
+   "Packet Length Max": 3,
+   "Packet Length Mean": 3,
+   "Packet Length Std": 3,
+   "Packet Length Variance": 3,
+   "FIN Flag Count": 2,
+   "RST Flag Count": 3,
+   "PSH Flag Count": 3,
+   "ACK Flag Count": 2,
+   "Down/Up Ratio": 2,
+   "Average Packet Size": 3,
+   "Fwd Segment Size Avg": 2,
+   "Bwd Segment Size Avg": 1,
+   "FWD Init Win Bytes": 3,
+   "Bwd Init Win Bytes": 1,
+   "Fwd Seg Size Min": 1
+  },
+  "lag_s_all": {
+   "p50": 1018.0,
+   "p95": 1804.984905052185,
+   "p99": 1836.9861095237732,
+   "max": 1922.0
+  },
+  "lag_s_matched": {
+   "p50": 1032.952399969101,
+   "p95": 1804.9854199886322,
+   "max": 1922.0
+  },
+  "frames_per_s_incl_jvm": 41108.502729913074,
+  "runtime": {
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime/20261122T072459Z_PCAP_GLOBAL_s0",
+   "flows": 29677,
+   "router": {
+    "learned_src_unbound": 1980,
+    "learned_dst_unbound": 4974,
+    "learned_both_unbound": 56,
+    "no_device": 520,
+    "learned_src_bound": 27697,
+    "learned_dst_bound": 24703,
+    "device_side": 28481,
+    "device_device_initiator": 127,
+    "unregistered_mac": 549
+   },
+   "ip_mac_source": "learned",
+   "learner": {
+    "bindings": 73,
+    "bindings_arp": 62,
+    "gateways": {
+     "3c:18:a0:41:c3:a0": 1664289039.949918
+    },
+    "stats": {
+     "ip_frames": 137970,
+     "bound_ip": 67,
+     "arp_frames": 3696,
+     "bound_arp": 14,
+     "gateways": 1,
+     "behind_gateway": 38142,
+     "ignored_ip": 213,
+     "ignored_arp": 3
+    },
+    "params": {
+     "gateway_distinct_ip_threshold": 8,
+     "gateway_window_s": 300.0,
+     "flap_count": 3,
+     "flap_window_s": 60.0
+    }
+   },
+   "health_events": {
+    "ip_mac_change": 0,
+    "ip_mac_flap": 0,
+    "gateway_detected": 1
+   },
+   "arp_records": 3696,
+   "group_agree_matched": 1.0,
+   "device_agree_matched": 1.0
+  },
+  "static_routing": {
+   "group_agree_matched": 0.008672472009952017,
+   "device_agree_matched": 0.0,
+   "router": {
+    "ipmap_src_unmapped": 28135,
+    "ipmap_dst_unmapped": 28135,
+    "no_device": 28135
+   }
+  }
+ },
+ "parity": {
+  "GLOBAL_s0": {
+   "n_runtime": 157558,
+   "n_offline": 157558,
+   "features_equal_rows": 157558,
+   "class_agree": 157558,
+   "max_abs_dp": 0.0,
+   "group_agree": 157558,
+   "device_agree": 157558
+  },
+  "ROUTED_s0": {
+   "n_runtime": 157558,
+   "n_offline": 157558,
+   "class_agree": 157558,
+   "max_abs_dp": 0.0,
+   "group_agree": 157558,
+   "device_agree": 157558
+  }
+ },
+ "runtime_s": 244.2,
+ "peak_rss_mb": 1415
+}

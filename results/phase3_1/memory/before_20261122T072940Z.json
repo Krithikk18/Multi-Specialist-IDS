@@ -1,0 +1,66 @@
+{
+ "label": "before",
+ "config": "config/v2_phase3.json",
+ "config_sha256": "398ee6b73ff7a1458563da9073d2221518d6e6e437478a14bd827f46899ac692",
+ "pinned": true,
+ "chunked": false,
+ "run_id": "20261122T072940Z",
+ "rss_start_mb": 170.078125,
+ "runs": [
+  {
+   "k": 0,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem31/20261122T072940Z_before_r0",
+   "flows": 157558,
+   "wall_s": 79.73994283399998,
+   "predictions": {
+    "layout": "single",
+    "rows": 157558
+   },
+   "in_run_rss_max_mb": 1406.7265625,
+   "rss_after_run_mb": 643.9140625,
+   "process_peak_rss_mb": 1406.8515625
+  },
+  {
+   "k": 1,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem31/20261122T072940Z_before_r1",
+   "flows": 157558,
+   "wall_s": 46.285320565000006,
+   "predictions": {
+    "layout": "single",
+    "rows": 157558
+   },
+   "in_run_rss_max_mb": 1321.2265625,
+   "rss_after_run_mb": 701.203125,
+   "process_peak_rss_mb": 1406.8515625
+  },
+  {
+   "k": 2,
+   "run_dir": "/home/krithikk/lgids_cache/v2/runtime_mem31/20261122T072940Z_before_r2",
+   "flows": 157558,
+   "wall_s": 46.786422522000066,
+   "predictions": {
+    "layout": "single",
+    "rows": 157558
+   },
+   "in_run_rss_max_mb": 1328.0703125,
+   "rss_after_run_mb": 693.64453125,
+   "process_peak_rss_mb": 1406.8515625
+  }
+ ],
+ "rss_after_model_load_mb": 198.328125,
+ "per_run_growth_mb": [
+  57.2890625,
+  -7.55859375
+ ],
+ "process_peak_rss_mb": 1406.8515625,
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ }
+}

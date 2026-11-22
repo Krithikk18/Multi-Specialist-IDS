@@ -19,6 +19,12 @@ equality within tolerance, mismatch profile by feature, emission-time lag; the r
 Outputs: results/phase3/28/ summary.md, parity.json, runs.json, run_manifest.json, run_meta.json, run.log, figures/.
 --dry-run: the 5 % val sample, GLOBAL / ROUTED s0 only, packets of Recon-PortScan only, a 20,000-packet pcap slice;
 *_dry_run cache dirs, results/phase3/28/dry_run/<run_id>/.
+Phase 3.1 options: --config <file> (e.g. config/v2_phase3_1.json: chunked predictions, sequential capture reading,
+learned IP -> MAC routing on the pcap path; pinned like the Phase 3 config); --s0-only (GLOBAL s0 with the packet path
++ ROUTED s0); --compare-to <tag> (hard checks: every run's predictions, rate-guard alerts and incidents equal those of
+the same run in results/phase3/28/<tag>/, row for row). Predictions are read with common/predictions_io (either
+layout). The pcap path routes with routing.ip_mac_source[cicfm_pcap] (learned: the slice's own frames, ARP included,
+feed the learner in event time) and reports static vs learned routing agreement side by side.
 """
 
 from __future__ import annotations
@@ -37,6 +43,7 @@ from common import alert_log as AL
 from common import flow_source as FS
 from common import model_loader as ML
 from common import packet_source as PK
+from common import predictions_io as PIO
 from common import phase3_config as C
 from common import phase3_run as R3
 from common import plot_style as PS
@@ -79,7 +86,7 @@ def offline_scores(rm, ref: dict) -> dict:
 
 
 def run_one(cfg, run, tag: str, mode: str, seed: int, dry: bool, packets: bool, store: bool, secret: bytes,
-            pk_sessions=None, source=None) -> dict:
+            pk_sessions=None, source=None, learn_pcap: Path | None = None) -> dict:
     rcfg = C.with_overrides(cfg, mode=mode, seed=seed, rate_guard_enabled=packets)
     root = C.expand(cfg["paths"]["runtime_root"])
     root = root.with_name(root.name + "_dry_run") if dry else root
@@ -87,21 +94,31 @@ def run_one(cfg, run, tag: str, mode: str, seed: int, dry: bool, packets: bool, 
     d.mkdir(parents=True, exist_ok=False)
     rm = ML.load_runtime_model(rcfg, mode=mode, seed=seed, evaluation=not (mode == cfg["mode"] and seed == 0))
     src = source if source is not None else FS.CsvReplaySource(rcfg, sample=dry)
-    router = Router(rcfg)
+    kind = "cicfm_pcap" if source is not None else rcfg["source"]["kind"]
+    router = Router(rcfg, ip_mac_source=C.ip_mac_source(rcfg, kind))
     rg, pkts, thr_info = None, None, None
     if packets:
         T, TM = RG.load_thresholds(rcfg)
         r = rcfg["rate_guard"]
         rg = (RG.RateGuardV2(router, T["thresholds"], r["families"], r["other_family"], r["window_s"], r["consecutive"],
                              fallback_group=router.fallback), RG.V1Guard(rcfg))
-        pkts = PK.PacketSource(rcfg, rcfg["source"]["split"], sessions=pk_sessions)
+        pkts = PK.PacketSource(rcfg, rcfg["source"]["split"], sessions=pk_sessions,
+                               sequential=bool(rcfg["packets"].get("open_sequentially", False)),
+                               arp=router.learner is not None)
         thr_info = {"thresholds_sha256": TM["thresholds_sha256"], "fit_run": TM["run_id"]}
+    learn_counts = None
+    if pkts is None and router.learner is not None and learn_pcap is not None:
+        from collections import Counter
+        learn_counts = Counter()
+        pkts = PK.iter_pcap(Path(learn_pcap), learn_counts, arp=True)  # the slice is already split-confined
     rt = Runtime(rcfg, rm, d, secret, rate_guard=rg, store_features=store, router=router)
     run.log(f"  run {tag}: {len(src):,} flows, packets {'on' if packets else 'off'} -> {d}")
     summ = rt.run(src, pkts, info=getattr(src, "info", {}))
     man = {"run_dir": str(d), "tag": tag, "mode": mode, "seed": seed, "evaluation_only": rm.evaluation_only,
            "model": rm.describe(), "config_sha256": rcfg["_sha256"], "overrides": rcfg["_overrides"],
-           "source": getattr(src, "info", {}), "packets": pkts.describe() if pkts else None, "rate_guard": thr_info,
+           "source": getattr(src, "info", {}), "packets": (pkts.describe() if hasattr(pkts, "describe") else
+                                                            {"learner_frames_from": str(learn_pcap), "reader": dict(learn_counts or {})})
+           if pkts is not None else None, "rate_guard": thr_info, "ip_mac_source": router.ip_mac_source,
            "runtime_key_fingerprint": AL.REG.fingerprint(AL.REG.public_key(secret)),
            "summary": summ, "parent_run": run.run_id, "script": SCRIPT}
     R3.write_json(d / "manifest.json", man)
@@ -116,7 +133,7 @@ def run_one(cfg, run, tag: str, mode: str, seed: int, dry: bool, packets: bool, 
 def parity(run, M, res: dict, ref: dict, off: dict, hard: bool, label: str) -> dict:
     import pyarrow.parquet as pq
     d = res["dir"]
-    P = pq.read_table(d / "predictions.parquet").to_pandas()
+    P = PIO.read_predictions(d)
     K = len(res["rm"].class_names)
     c = res["summary"]["counts"]
     pos = {u: i for i, u in enumerate(ref["uid"])}
@@ -204,19 +221,73 @@ def pcap_path(cfg, run, M, dry: bool, secret: bytes) -> dict:
               f"{rep['feature_equal_rows']:,} / {rep['matched']:,} matched rows identical; matched "
               f"{rep['matched']:,} of {rep['dataset_rows_in_window']:,} dataset rows ({rep['match_rate_of_dataset']:.1%}); "
               f"CSV rows {rep['csv_rows']:,}", warn=True)
-    r = run_one(cfg, run, "PCAP_GLOBAL_s0", cfg["mode"], 0, dry, False, False, secret, source=src)
-    import pyarrow.parquet as pq
-    P = pq.read_table(r["dir"] / "predictions.parquet").to_pandas()
+    r = run_one(cfg, run, "PCAP_GLOBAL_s0", cfg["mode"], 0, dry, False, False, secret, source=src, learn_pcap=pcap)
+    P = PIO.read_predictions(r["dir"])
     rows = P["row"].to_numpy()
     g_rt = dict(zip(rows, P["group"]))
+    m_rt = dict(zip(rows, P["device_mac"]))
     pred_rt = dict(zip(rows, P["pred"]))
-    rep["runtime"] = {"run_dir": str(r["dir"]), "flows": int(len(P)), "router": r["summary"]["router"]}
+    rep["runtime"] = {"run_dir": str(r["dir"]), "flows": int(len(P)), "router": r["summary"]["router"],
+                      "ip_mac_source": r["manifest"]["ip_mac_source"], "learner": r["summary"].get("learner"),
+                      "health_events": {k: r["summary"]["counts"].get(k, 0)
+                                        for k in ("ip_mac_change", "ip_mac_flap", "gateway_detected")},
+                      "arp_records": r["summary"]["counts"].get("arp_records", 0)}
     if len(pairs):
         rep["runtime"]["group_agree_matched"] = float(np.mean([g_rt.get(j) == ds["group"].iloc[i] for i, j in pairs]))
+        rep["runtime"]["device_agree_matched"] = float(np.mean([m_rt.get(j) == ds["device_mac"].iloc[i] for i, j in pairs]))
+        # the same rows routed with the static IP -> MAC map (Phase 3's pcap-path routing), for comparison
+        st = Router(cfg, ip_mac_source="static")
+        sg, sm = [], []
+        for i, j in pairs:
+            rr = st.route({"Src IP": src._ids["Src IP"][j], "Dst IP": src._ids["Dst IP"][j], "_meta": {"start_ts": src._start[j]}})
+            sg.append(rr.group == ds["group"].iloc[i])
+            sm.append(rr.device_mac == ds["device_mac"].iloc[i])
+        rep["static_routing"] = {"group_agree_matched": float(np.mean(sg)), "device_agree_matched": float(np.mean(sm)),
+                                 "router": dict(st.stats)}
+        run.check(M, "pcap path: learned routing group agreement on matched flows >= 99 % (report-only target)",
+                  rep["runtime"]["group_agree_matched"] >= 0.99,
+                  f"learned ({rep['runtime']['ip_mac_source']}) group {rep['runtime']['group_agree_matched']:.2%}, device "
+                  f"{rep['runtime']['device_agree_matched']:.2%}; static group {rep['static_routing']['group_agree_matched']:.2%}, "
+                  f"device {rep['static_routing']['device_agree_matched']:.2%}", warn=True)
         rep["_pred_matched"] = [pred_rt.get(j) for _, j in pairs]
         rep["_ds_rows"] = di
     rep["_mismatch"] = rep["mismatch_by_feature"]
     return rep
+
+
+def _rg_records(d: Path) -> list:
+    out = []
+    for line in (d / "alerts.jsonl").read_text(encoding="utf-8").splitlines():
+        a = json.loads(line)
+        if a.get("path") == "rate_guard":
+            out.append({k: v for k, v in a.items() if k not in ("wall_time", "sig", "prev_sha256", "seq")})
+    return out
+
+
+def compare_runs(run, M: dict, runs: dict, tag: str) -> dict:
+    """Hard: each run's predictions (row for row, every column), rate-guard alert records (minus wall time / chain
+    fields) and incidents equal the same run of the earlier step 28 run results/phase3/28/<tag>/."""
+    up = R3.resolve("28", None, False, tag)
+    out = {"run_id": up["meta"]["run_id"], "tag": tag, "runs": {}}
+    for t, r in runs.items():
+        o = up["manifest"]["runs"].get(t)
+        if o is None:
+            run.check(M, f"compare {t}: present in {tag}", False, "")
+            continue
+        od, nd = Path(o["dir"]), r["dir"]
+        Po, Pn = PIO.read_predictions(od), PIO.read_predictions(nd)
+        same_p = list(Po.columns) == list(Pn.columns) and len(Po) == len(Pn) and Po.equals(Pn)
+        rgo, rgn = _rg_records(od), _rg_records(nd)
+        inc_o = json.loads((od / "incidents.json").read_text(encoding="utf-8"))
+        inc_n = json.loads((nd / "incidents.json").read_text(encoding="utf-8"))
+        out["runs"][t] = {"rows": int(len(Pn)), "predictions_equal": bool(same_p), "rate_guard_alerts": len(rgn),
+                          "rate_guard_equal": rgo == rgn, "incidents_equal": inc_o == inc_n,
+                          "layout": PIO.layout(nd), "layout_before": PIO.layout(od)}
+        run.check(M, f"compare {t}: predictions identical to {tag} row for row (every column)", same_p,
+                  f"{len(Pn):,} rows ({PIO.layout(nd)}) vs {len(Po):,} ({PIO.layout(od)})")
+        run.check(M, f"compare {t}: rate-guard alerts and incidents identical to {tag}", rgo == rgn and inc_o == inc_n,
+                  f"rate-guard alerts {len(rgn)} vs {len(rgo)}; incidents {len(inc_n)} vs {len(inc_o)}")
+    return out
 
 
 def figures(run, par: dict, names: list, pcap: dict | None) -> list:
@@ -277,8 +348,12 @@ def main() -> int:
     ap.add_argument("--run-id", default=None)
     ap.add_argument("--no-pcap", action="store_true")
     ap.add_argument("--rerun-tag", default=None, help="full re-run: results go to results/phase3/28/<tag>/ (D85)")
+    ap.add_argument("--config", default=None, help="runtime config file (default config/v2_phase3.json); pinned")
+    ap.add_argument("--s0-only", action="store_true", help="GLOBAL s0 (with the packet path) + ROUTED s0 only")
+    ap.add_argument("--compare-to", default=None, help="rerun tag of an earlier full step 28 run: predictions, rate-guard "
+                    "alerts and incidents must equal its runs' row for row (hard)")
     args = ap.parse_args()
-    cfg = C.load_phase3_config()
+    cfg = C.load_phase3_config(Path(args.config)) if args.config else C.load_phase3_config()
     run = R3.Run("28", SCRIPT, cfg, args.dry_run, args.run_id, args.rerun_tag)
     M = run.base_manifest()
     R3.lock_banner(run, M, "start")
@@ -292,7 +367,7 @@ def main() -> int:
         pk_sessions = ["Recon-PortScan"] if args.dry_run else None
         seeds = [0] if args.dry_run else cfg["models"]["evaluation"]["seeds"]
         plan = [("GLOBAL", 0, True, True), ("ROUTED", 0, True, False)] + \
-               [(m, s, False, False) for m in ("GLOBAL", "ROUTED") for s in seeds if s != 0]
+               ([] if args.s0_only else [(m, s, False, False) for m in ("GLOBAL", "ROUTED") for s in seeds if s != 0])
         for mode, seed, packets, store in plan:
             tag = f"{mode}_s{seed}"
             runs[tag] = run_one(cfg, run, tag, mode, seed, args.dry_run, packets, store, secret, pk_sessions)
@@ -306,6 +381,8 @@ def main() -> int:
                           fa == s0["fa_count"] and np.allclose(rec, s0["recall"], atol=1e-12, rtol=0),
                           f"FA {fa} vs {s0['fa_count']}; recall {np.round(rec, 6).tolist()} vs {np.round(s0['recall'], 6).tolist()}")
             par[tag] = parity(run, M, runs[tag], ref, off, hard=(tag == "GLOBAL_s0"), label=f"parity {tag}")
+        if args.compare_to:
+            M["compare_to"] = compare_runs(run, M, runs, args.compare_to)
         hard = [c for c in M["checks"] if c["level"] == "hard"]
         gate = all(c["pass"] for c in hard)
         M["parity_gate"] = "PASS" if gate else "FAIL"
@@ -382,8 +459,13 @@ def write_summary(run, M: dict, dry: bool) -> None:
               f"of matched flows (target >= 99 %)",
               f"- emission-time lag (reconstructed emission - (start + duration)), all rows: p50 {p['lag_s_all']['p50']:.2f} s, "
               f"p95 {p['lag_s_all']['p95']:.2f} s, p99 {p['lag_s_all']['p99']:.2f} s, max {p['lag_s_all']['max']:.1f} s",
-              f"- runtime on this source: {p['runtime']['flows']:,} flows; routing through the IP -> MAC map; group == "
-              f"dataset group on matched flows: {p['runtime'].get('group_agree_matched', float('nan')):.2%}",
+              f"- runtime on this source: {p['runtime']['flows']:,} flows; routing `{p['runtime'].get('ip_mac_source', 'static')}`; "
+              f"group == dataset group on matched flows: {p['runtime'].get('group_agree_matched', float('nan')):.2%}, device "
+              f"{p['runtime'].get('device_agree_matched', float('nan')):.2%}"
+              + (f"; static IP -> MAC map on the same rows: group {p['static_routing']['group_agree_matched']:.2%}, device "
+                 f"{p['static_routing']['device_agree_matched']:.2%}" if p.get("static_routing") else ""),
+              f"- learner: {p['runtime'].get('learner')}; health events {p['runtime'].get('health_events')}; ARP records "
+              f"{p['runtime'].get('arp_records', 0):,}",
               f"- mismatching features (count of matched flows): {p['mismatch_by_feature'] or 'none'}"]
     if M.get("pcap_error"):
         L += ["", "pcap path error (report-only):", "", "```", M["pcap_error"][-2000:], "```"]

@@ -1,0 +1,56 @@
+{
+ "version": 1,
+ "note": "Phase 5A (zero-day test: leave-one-attack-out Stage 1 + models of normal, per-group vs global; OFFLINE, train + val only) parameters, pre-registered in docs/V2_PREREG_PHASE5.md. Validated by common/zeroday_config.py; its sha256 is pinned in common/schemas.py (V2_PHASE5_CONFIG_SHA256). Changes nothing in the runtime, registers nothing, promotes nothing. No class, group, device, IP or feature name appears here: classes come from the class map, groups from the dataset's group column, features from features_v1.json.",
+ "phase2_config": "config/v2_phase2_v2_1.json",
+ "deployed": {
+  "entry": "GLOBAL__none__s0__20261121T075821Z",
+  "model_id": "GLOBAL__none",
+  "weights": "none",
+  "train_run": "20261121T075821Z"
+ },
+ "pinned_facts": {
+  "amendment2_s4_phase4": "DOES_NOT_WIN",
+  "phase4_eval_run": "20261122T132747Z"
+ },
+ "loao": {
+  "seeds": [0, 1, 2, 3, 4],
+  "weights": "none",
+  "nthread": 4,
+  "rare_min_val_flows": 50,
+  "rare_classes_report_only": true,
+  "control_full_refit_seed": 0
+ },
+ "normal_model": {
+  "arms": ["GLOBAL_NORMAL", "PER_GROUP_NORMAL", "RANDOM_GROUP_NORMAL"],
+  "verdict_arms": ["GLOBAL_NORMAL", "PER_GROUP_NORMAL"],
+  "seeds": [0, 1, 2, 3, 4],
+  "transform": "signed_log1p",
+  "n_estimators": 200,
+  "max_samples_cap": 256,
+  "max_features": 1.0,
+  "bootstrap": false,
+  "n_jobs": 4,
+  "threshold_quantile": 0.999,
+  "quantile_method": "linear",
+  "min_group_benign": 1000,
+  "random_group_perm_seed_base": 1000,
+  "score_chunk_rows": 50000
+ },
+ "threshold_check": {"fit_frac": 0.9, "split_seed_base": 2000},
+ "eval": {
+  "min_misses": 30,
+  "ci_level": 0.95,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 0,
+  "fa_margin_per_h": 0.5,
+  "min_support_classes": 2,
+  "benign_hours_idle_gap_s": 300,
+  "single_flow_timing_calls": 200,
+  "score_hist_bins": 80
+ },
+ "paths": {
+  "cache_root": "~/lgids_cache/v2/zeroday",
+  "registry_root": "~/lgids_cache/v2/registry",
+  "results": "results/phase5a"
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "source": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase5a/38/eval.json",
+ "source_sha256": "ba7cd6ade715745b784198135af44fd2a84116d068beaa0a64579e87ea70f850",
+ "created_utc": "2026-11-22T17:46:43+00:00",
+ "figures": [
+  "1_pipeline.png",
+  "2_where_heldout_flows_go.png",
+  "3_miss_recall_pairs.png",
+  "4_verdict_cis.png",
+  "5_false_alarms.png",
+  "6_score_distributions.png",
+  "7_threshold_check.png"
+ ]
+}

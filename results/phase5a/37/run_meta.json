@@ -1,0 +1,13 @@
+{
+ "script": "37_fit_normal_models.py",
+ "step": "37",
+ "run_id": "20261122T174358Z",
+ "status": "PASS",
+ "dry_run": false,
+ "rerun_tag": null,
+ "run_utc": "2026-11-22T17:43:58+00:00",
+ "run_manifest_sha256": "d007e283314c8935de4d71a26d0ed0e9ece3042b7ef2c58dc208b484bbdf664a",
+ "config_sha256": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248",
+ "runtime_s": 64.8,
+ "peak_rss_mb": 1587
+}

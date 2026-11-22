@@ -1,0 +1,126 @@
+{
+ "run_id": "20261122T174504Z",
+ "step": "38",
+ "script": "38_zeroday_eval.py",
+ "created_utc": "2026-11-22T17:45:04+00:00",
+ "dry_run": false,
+ "rerun_tag": null,
+ "results_dir": "/mnt/d/Projects/Company Project/Paper_Implemetation/results/phase5a/38",
+ "cache_root": "/home/krithikk/lgids_cache/v2/zeroday",
+ "argv": [
+  "38_zeroday_eval.py"
+ ],
+ "status": "FAIL",
+ "config": {
+  "path": "config/v2_phase5.json",
+  "sha256": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248",
+  "pinned": true
+ },
+ "pins": {
+  "prereg_phase5": "08514d5891d62dd11e8b0b6af350cc7a9ae5564024a6884763607595b79dcc8e",
+  "phase5_config": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248",
+  "class_map": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "features": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "orientation_map": "09d62055760943be26ff55335b4f5fccc5ac598ed5e981d7df7bffc92bd2a022",
+  "amendment_2": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46"
+ },
+ "code_sha256": {
+  "38_zeroday_eval.py": "8a30e71b37ae107e7abfbf29c15b979f58bcd33f0830b4904e273f6d7c47cf10",
+  "common/schemas.py": "4f23cb58b6590192d2525056d1e3c03525233b0be8936f2218e08a51bc5885b6",
+  "common/zeroday_config.py": "e9bef130714b6b1d016b6e7d9242975b0e99e6e443dfc7718acd1a727e52d85d",
+  "common/zeroday_run.py": "e2b3697719154838cca36ebf31dd189302cc7ada47d10e7eaca8689f65235806",
+  "common/loao.py": "9e1844e53d33f513e2c7c097aad582fbdf2b44db30f8fe68d13b8e42e2dc905d",
+  "common/normal_model.py": "c3929528f6bae0e83405b617fdf571d19c16681b212ae06fa927d30c003c9507",
+  "common/zeroday_metrics.py": "20f13472da0ceac4b69c5909b65f5f43944342a78640dcf980625597d23b1f5f",
+  "common/cl_retrain.py": "7cad1437a9c1b63bd5e91a6381c6a7c0d592040082268a1edbb938880be9d114",
+  "common/cl_run.py": "4ea81d737b7c6e6b0e53444cab499d07e6a36c21ff87d088eb3e19607ef32a1a",
+  "common/phase2_data.py": "986bb4e9a2961df7038901d23c49025319fde349732918d3f643bef5492f7d29",
+  "common/phase2_metrics.py": "3b80f2eda21ee0b7b9370e811d2a69fb3ec74327f76eb3ca5a55e77f3ea71367",
+  "config/v2_phase5.json": "1658e3f74308b8319d06424457be7f5a83d409cc5b660774e0154b7d97fbd248",
+  "config/v2_phase2_v2_1.json": "e9dc754e9379d62eb1467ddbcbb469ed933038e3b6b433c67da6ca33c8aaf703",
+  "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580",
+  "config/features_v1.json": "623d0d2483670f34b1e0332da87eb9897854c31b35486e01b8675850e0eb7db8",
+  "docs/V2_PREREG_PHASE5.md": "08514d5891d62dd11e8b0b6af350cc7a9ae5564024a6884763607595b79dcc8e",
+  "docs/V2_PREREG_PHASE2_AMENDMENT_2.md": "075f738ea48639fd0f9422ccff42052c32aa9ebec508e9da9e10f5576ba35e46",
+  "common/phase2_config.py": "a096b29397a89b460037d09e10313ebd497ebbeb63bb2c44d70c91a8728c22f1",
+  "common/plot_style.py": "bfb8b18c95e0c71267d90f1695630a2a0d72c1ebc0fc6f070ecc5295fcfcde7c"
+ },
+ "git": "not recorded (no git commands); code identified by code_sha256",
+ "registry": "not touched (Phase 5A registers nothing)",
+ "checks": [
+  {
+   "check": "val rows / order == step 36's (uid sha256)",
+   "pass": true,
+   "detail": "157,558 rows",
+   "level": "hard"
+  },
+  {
+   "check": "step 37 trained on the same train file",
+   "pass": true,
+   "detail": "",
+   "level": "hard"
+  },
+  {
+   "check": "step 36 and step 37 seeds match",
+   "pass": true,
+   "detail": "[0, 1, 2, 3, 4]",
+   "level": "hard"
+  },
+  {
+   "check": "verdict declared (the two readings of Amendment 2 \u00a73 agree)",
+   "pass": false,
+   "detail": "CONFLICT",
+   "level": "hard"
+  }
+ ],
+ "lock": {
+  "start": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  },
+  "end": {
+   "config/config.py": "c19bf4ffe4ee25a959c19d38d820e903511211e42018876364d272e61003ddcf",
+   "config/class_map.json": "64063149b74d09f6caf458906809361e121844eab5c31fdcc28c50578e357580"
+  }
+ },
+ "loao_run": "20261122T174129Z",
+ "normal_run": "20261122T174358Z",
+ "data": {
+  "val_rows": 157558,
+  "val_sha256": "46c65f945a984e54924bd037d64bc9d9c47ac28d0947a9e2523aadb5832ccbba",
+  "nonfinite_before_cleaning": {},
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "benign_hours": 1.9527777777777777
+ },
+ "scores_dir": "/home/krithikk/lgids_cache/v2/zeroday/eval/20261122T174504Z",
+ "verdict": {
+  "status": "CONFLICT",
+  "prereg": "DOES_NOT_WIN",
+  "literal": "PER_GROUP_WINS",
+  "kill_line": "Kill rule \u00a75: not evaluated (the \u00a73 verdict is CONFLICT; a human decision is needed).",
+  "ci_d": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "n": 10,
+   "resamples": 10000,
+   "seed": 0
+  },
+  "ci_fa": {
+   "mean": -6.145092460881935,
+   "lo": -9.217638691322902,
+   "hi": -3.6870554765291623,
+   "n": 5,
+   "resamples": 10000,
+   "seed": 0
+  }
+ },
+ "runtime_s": 26.0,
+ "peak_rss_mb": 912
+}
